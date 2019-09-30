@@ -128,7 +128,8 @@ namespace clinic_ivf.gui
                 //row["status_abnormal"] = "";
             }
 
-            frm.setEggStiReport(dt, txtPttNameE.Text, "", txtVisitLMP.Text, txtG.Text, txtP.Text, txtA.Text,cboDoctor.Text, txtOPUDate.Text, txtOPUTime.Text, txtEmbryoTranferDate.Text, txtEmbryoTranferTime.Text,txtAllergy.Text);
+            frm.setEggStiReport(dt, txtPttNameE.Text, "", txtVisitLMP.Text, txtG.Text, txtP.Text, txtA.Text,cboDoctor.Text
+                , txtOPUDate.Text, txtOPUTime.Text, txtEmbryoTranferDate.Text, txtEmbryoTranferTime.Text,txtAllergy.Text, txtVisitHeight.Text, txtVisitBP.Text, txtVisitBW.Text, txtVisitPulse.Text);
             frm.ShowDialog(this);
         }
 

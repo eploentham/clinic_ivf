@@ -830,6 +830,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>EggSti.xsd</DependentUpon>
     </Compile>
+    <Compile Include="report\LabFET.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LabFET.xsd</DependentUpon>
+    </Compile>
     <Compile Include="report\LabOPU.cs">
       <DependentUpon>LabOPU.xsd</DependentUpon>
     </Compile>
@@ -1246,6 +1251,17 @@
     </None>
     <None Include="report\EggSti.xss">
       <DependentUpon>EggSti.xsd</DependentUpon>
+    </None>
+    <None Include="report\LabFET.xsc">
+      <DependentUpon>LabFET.xsd</DependentUpon>
+    </None>
+    <None Include="report\LabFET.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>LabFET.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="report\LabFET.xss">
+      <DependentUpon>LabFET.xsd</DependentUpon>
     </None>
     <None Include="report\LabOPU.xsc">
       <DependentUpon>LabOPU.xsd</DependentUpon>

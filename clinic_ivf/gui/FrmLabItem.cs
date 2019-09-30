@@ -475,6 +475,7 @@ namespace clinic_ivf.gui
             txtlisMinValue.Value = labI.lis_min_value;
             chkReqNurseScr.Checked = labI.status_send_request.Equals("0") ? true : false;
             chkReqLabFormA.Checked = labI.status_send_request.Equals("1") ? true : false;
+            txtSort1.Value = labI.sort1;
         }
         private void setControlEnableInterpret(Boolean flag)
         {
@@ -495,7 +496,7 @@ namespace clinic_ivf.gui
         private void setLabItem()
         {
             labI.LID = txtID.Text;
-            labI.LName = txtLabName.Text;
+            labI.LName = txtLabName.Text.Trim();
             labI.LGID = cboLabGroup.SelectedItem == null ? "" : ((ComboBoxItem)cboLabGroup.SelectedItem).Value;
             labI.Price = txtPrice.Text;
             labI.status_show_qty = chkShowQty.Checked ? "1" : "0";
@@ -515,6 +516,7 @@ namespace clinic_ivf.gui
             labI.lis_max_value = txtlisMaxValue.Text.Trim();
             labI.lis_min_value = txtlisMinValue.Text.Trim();
             labI.status_send_request = chkReqNurseScr.Checked ? "0" : chkReqLabFormA.Checked ? "1" : "0";
+            labI.sort1 = txtSort1.Text.Trim();
         }
         private void grfPosi_AfterRowColChange(object sender, C1.Win.C1FlexGrid.RangeEventArgs e)
         {

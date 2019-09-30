@@ -387,6 +387,10 @@ namespace clinic_ivf.report {
             
             private global::System.Data.DataColumn columnembryo_freezing_day1;
             
+            private global::System.Data.DataColumn columnet_day;
+            
+            private global::System.Data.DataColumn columnet_remark;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public lab_form_aDataTable() {
@@ -854,6 +858,22 @@ namespace clinic_ivf.report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn et_dayColumn {
+                get {
+                    return this.columnet_day;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn et_remarkColumn {
+                get {
+                    return this.columnet_remark;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -943,7 +963,9 @@ namespace clinic_ivf.report {
                         string fet1_day, 
                         string status_sperm_pesa, 
                         string status_sperm_iui, 
-                        string embryo_freezing_day1) {
+                        string embryo_freezing_day1, 
+                        string et_day, 
+                        string et_remark) {
                 lab_form_aRow rowlab_form_aRow = ((lab_form_aRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         form_a_id,
@@ -999,7 +1021,9 @@ namespace clinic_ivf.report {
                         fet1_day,
                         status_sperm_pesa,
                         status_sperm_iui,
-                        embryo_freezing_day1};
+                        embryo_freezing_day1,
+                        et_day,
+                        et_remark};
                 rowlab_form_aRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowlab_form_aRow);
                 return rowlab_form_aRow;
@@ -1076,6 +1100,8 @@ namespace clinic_ivf.report {
                 this.columnstatus_sperm_pesa = base.Columns["status_sperm_pesa"];
                 this.columnstatus_sperm_iui = base.Columns["status_sperm_iui"];
                 this.columnembryo_freezing_day1 = base.Columns["embryo_freezing_day1"];
+                this.columnet_day = base.Columns["et_day"];
+                this.columnet_remark = base.Columns["et_remark"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1189,6 +1215,10 @@ namespace clinic_ivf.report {
                 base.Columns.Add(this.columnstatus_sperm_iui);
                 this.columnembryo_freezing_day1 = new global::System.Data.DataColumn("embryo_freezing_day1", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnembryo_freezing_day1);
+                this.columnet_day = new global::System.Data.DataColumn("et_day", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnet_day);
+                this.columnet_remark = new global::System.Data.DataColumn("et_remark", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnet_remark);
                 this.columnform_a_id.Caption = "DataColumn1";
                 this.columnhn_female.Caption = "DataColumn1";
                 this.columnname_female.Caption = "DataColumn1";
@@ -2237,6 +2267,38 @@ namespace clinic_ivf.report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string et_day {
+                get {
+                    try {
+                        return ((string)(this[this.tablelab_form_a.et_dayColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'et_day\' in table \'lab_form_a\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablelab_form_a.et_dayColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string et_remark {
+                get {
+                    try {
+                        return ((string)(this[this.tablelab_form_a.et_remarkColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'et_remark\' in table \'lab_form_a\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablelab_form_a.et_remarkColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool Isform_a_idNull() {
                 return this.IsNull(this.tablelab_form_a.form_a_idColumn);
             }
@@ -2881,6 +2943,30 @@ namespace clinic_ivf.report {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void Setembryo_freezing_day1Null() {
                 this[this.tablelab_form_a.embryo_freezing_day1Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Iset_dayNull() {
+                return this.IsNull(this.tablelab_form_a.et_dayColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Setet_dayNull() {
+                this[this.tablelab_form_a.et_dayColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Iset_remarkNull() {
+                return this.IsNull(this.tablelab_form_a.et_remarkColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Setet_remarkNull() {
+                this[this.tablelab_form_a.et_remarkColumn] = global::System.Convert.DBNull;
             }
         }
         

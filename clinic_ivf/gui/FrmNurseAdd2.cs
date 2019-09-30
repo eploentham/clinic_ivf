@@ -1890,7 +1890,8 @@ namespace clinic_ivf.gui
             }
 
             frm.setEggStiReport(dt, txtPttNameE.Text+" ["+txtHn.Text+"]"+" DOB "+ txtDob.Text, txtName_2.Text, txtEggStiVisitLMP.Text, txtEggStiG.Text, txtEggStiP.Text, txtEggStiA.Text
-                , cboEggStiDtr.Text, txtEggStiOPUDate.Text, txtEggStiOPUTime.Text, txtEggStiEmbryoTranferDate.Text, txtEggStiEmbryoTranferTime.Text, txtAllergy.Text);
+                , cboEggStiDtr.Text, txtEggStiOPUDate.Text, txtEggStiOPUTime.Text, txtEggStiEmbryoTranferDate.Text
+                , txtEggStiEmbryoTranferTime.Text, txtAllergy.Text, txtVisitHeight.Text, txtVisitBP.Text, txtVisitBW.Text, txtVisitPulse.Text);
             frm.ShowDialog(this);
         }
 

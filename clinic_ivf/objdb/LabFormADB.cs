@@ -109,6 +109,8 @@ namespace clinic_ivf.objdb
             lformA.req_id_sperm_freezing = "req_id_sperm_freezing";
             lformA.status_sperm_iui = "status_sperm_iui";
             lformA.status_sperm_pesa = "status_sperm_pesa";
+            lformA.et_day = "et_day";
+            lformA.et_remark = "et_remark";
 
             lformA.pkField = "form_a_id";
             lformA.table = "lab_t_form_a";
@@ -175,6 +177,9 @@ namespace clinic_ivf.objdb
             p.dob_donor = p.dob_donor == null ? "" : p.dob_donor;
             p.dob_female = p.dob_female == null ? "" : p.dob_female;
             p.dob_male = p.dob_male == null ? "" : p.dob_male;
+            p.et_day = p.et_day == null ? "" : p.et_day;
+            p.et_remark = p.et_remark == null ? "" : p.et_remark;
+
             p.y_selection = p.y_selection == null ? "0" : p.y_selection;
             p.x_selection = p.x_selection == null ? "0" : p.x_selection;
             p.status_wait_confirm_day1 = p.status_wait_confirm_day1 == null ? "0" : p.status_wait_confirm_day1;
@@ -305,6 +310,8 @@ namespace clinic_ivf.objdb
                     "," + lformA.req_id_sperm_freezing + "='" + p.req_id_sperm_freezing + "' " +
                     "," + lformA.status_sperm_iui + "='" + p.status_sperm_iui + "' " +
                     "," + lformA.status_sperm_pesa + "='" + p.status_sperm_pesa + "' " +
+                    "," + lformA.et_day + "='" + p.et_day + "' " +
+                    "," + lformA.et_remark + "='" + p.et_remark + "' " +
                     "";
                 re = conn.ExecuteNonQuery(conn.conn, sql);
             }
@@ -400,6 +407,8 @@ namespace clinic_ivf.objdb
                     "," + lformA.staff_req_id + "='" + p.staff_req_id + "' " +
                     "," + lformA.status_sperm_pesa + "='" + p.status_sperm_pesa + "' " +
                     "," + lformA.status_sperm_iui + "='" + p.status_sperm_iui + "' " +
+                    "," + lformA.et_day + "='" + p.et_day + "' " +
+                    "," + lformA.et_remark + "='" + p.et_remark + "' " +
                 " Where " + lformA.pkField + " = '" + p.form_a_id + "' "
                 ;
             try
@@ -800,6 +809,38 @@ namespace clinic_ivf.objdb
             }
             return c;
         }
+        public DataTable selectDistinctByEtRemark()
+        {
+            DataTable dt = new DataTable();
+            String sql = "select distinct lformA.et_remark " +
+                "From " + lformA.table + " lformA " +
+                "Where lformA." + lformA.active + "='1' ";
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
+        public C1ComboBox setCboEtRemark(C1ComboBox c)
+        {
+            ComboBoxItem item = new ComboBoxItem();
+            DataTable dt = selectDistinctByEtRemark();
+            //String aaa = "";
+            ComboBoxItem item1 = new ComboBoxItem();
+            //item1.Text = "";
+            //item1.Value = "";
+            c.Items.Clear();
+            //c.Items.Add(item1);
+            //for (int i = 0; i < dt.Rows.Count; i++)
+            int i = 0;
+            foreach (DataRow row in dt.Rows)
+            {
+                item = new ComboBoxItem();
+                item.Text = row[lformA.et_remark].ToString();
+                item.Value = i.ToString();
+
+                c.Items.Add(item);
+                i++;
+            }
+            return c;
+        }
         public DataTable selectDistinctByOPUWaitRemark()
         {
             DataTable dt = new DataTable();
@@ -956,6 +997,8 @@ namespace clinic_ivf.objdb
                 vs1.req_id_semem_analysis = dt.Rows[0][lformA.req_id_semem_analysis].ToString();
                 vs1.status_sperm_iui = dt.Rows[0][lformA.status_sperm_iui].ToString();
                 vs1.status_sperm_pesa = dt.Rows[0][lformA.status_sperm_pesa].ToString();
+                vs1.et_day = dt.Rows[0][lformA.et_day].ToString();
+                vs1.et_remark = dt.Rows[0][lformA.et_remark].ToString();
             }
             else
             {
@@ -1052,6 +1095,8 @@ namespace clinic_ivf.objdb
             lforma1.req_id_sperm_freezing = "";
             lforma1.status_sperm_iui = "";
             lforma1.status_sperm_pesa = "";
+            lforma1.et_day = "";
+            lforma1.et_remark = "";
             return lforma1;
         }
     }

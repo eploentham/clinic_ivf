@@ -191,7 +191,7 @@ namespace clinic_ivf.objdb
                 //"Left Join lab_b_unit on LabItem.lab_unit_id = lab_b_unit.lab_unit_id " +
                 //"Left Join lab_b_method on LabItem.method_id = lab_b_method.method_id " +
                 "Where lbRes." + lbRes.status_result + " in ('1','2')  and lbRes.visit_id = '"+vsid+"'" +
-                "Order By lbRes." + lbRes.req_id;
+                "Order By LabItem.sort1, lbRes." + lbRes.req_id;
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
@@ -221,7 +221,7 @@ namespace clinic_ivf.objdb
                 "Left Join lab_b_method on LabItem.method_id = lab_b_method.method_id " +
                 "Left Join Doctor dtr on dtr.ID = lbRes.doctor_id " +
                 "Where lbRes." + lbRes.status_result + " ='2'  and lbRes.visit_id = '" + vsid + "' and LabItem.lab_group_id = '2550000000' " +
-                "Order By lbRes." + lbRes.req_id;
+                "Order By LabItem.sort1, lbRes." + lbRes.req_id;
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
@@ -237,7 +237,7 @@ namespace clinic_ivf.objdb
                 "Left Join lab_b_method on LabItem.method_id = lab_b_method.method_id " +
                 "Left Join Doctor dtr on dtr.ID = lbRes.doctor_id " +
                 "Where lbRes." + lbRes.status_result + " ='2'  and lbRes.visit_id = '" + vsid + "' and LabItem.lab_group_id = '2550000001' " +
-                "Order By lbRes." + lbRes.req_id;
+                "Order By LabItem.sort1, lbRes." + lbRes.req_id;
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }

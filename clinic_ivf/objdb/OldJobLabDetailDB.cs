@@ -275,7 +275,7 @@ namespace clinic_ivf.objdb
             DataTable dt = new DataTable();
             String sql = "select jlabD.* " +
                 "From " + jlabD.table + " jlabD " +
-                "Left Join labItem li on jlabD.LID = li.LID " +
+                "Left Join LabItem li on jlabD.LID = li.LID " +
                 "Where jlabD." + jlabD.VN + " ='" + vn + "' and jlabD.active = '1' and jlabD.req_id = 0 and li.status_outlab = '0' and li.status_send_request = '0' " +
                 "Order By jlabD." + jlabD.LID;
             dt = conn.selectData(conn.conn, sql);

@@ -172,9 +172,9 @@ namespace clinic_ivf.gui
             reporter = ic.ivfDB.stfDB.getIdByNameSurname(cboEmbryologistReport.Text);
             approved = ic.ivfDB.stfDB.getIdByNameSurname(cboEmbryologistAppv.Text);
             stf = ic.ivfDB.stfDB.selectByPk1(reporter);
-            reportername = stf.prefix_name_t + " " + stf.staff_fname_e + " " + stf.staff_lname_e;
+            reportername = stf.prefix_name_t + " " + stf.staff_fname_e + " " + stf.staff_lname_e + " " + stf.doctor_id;
             stf = ic.ivfDB.stfDB.selectByPk1(approved);
-            approvedname = stf.prefix_name_t + " " + stf.staff_fname_e + " " + stf.staff_lname_e;
+            approvedname = stf.prefix_name_t + " " + stf.staff_fname_e + " " + stf.staff_lname_e + " " + stf.doctor_id;
             foreach (DataRow row in dt.Rows)
             {
                 collectdate = row[ic.ivfDB.lbresDB.lbRes.req_date_time].ToString();
@@ -349,9 +349,9 @@ namespace clinic_ivf.gui
             reporter = ic.ivfDB.stfDB.getIdByNameSurname(cboEmbryologistReport.Text);
             approved = ic.ivfDB.stfDB.getIdByNameSurname(cboEmbryologistAppv.Text);
             stf = ic.ivfDB.stfDB.selectByPk1(reporter);
-            reportername = stf.prefix_name_t + " " + stf.staff_fname_e + " " + stf.staff_lname_e;
+            reportername = stf.prefix_name_t + " " + stf.staff_fname_e + " " + stf.staff_lname_e + " " + stf.doctor_id;
             stf = ic.ivfDB.stfDB.selectByPk1(approved);
-            approvedname = stf.prefix_name_t + " " + stf.staff_fname_e + " " + stf.staff_lname_e;
+            approvedname = stf.prefix_name_t + " " + stf.staff_fname_e + " " + stf.staff_lname_e + " " + stf.doctor_id;
             foreach (DataRow row in dt.Rows)
             {
                 collectdate = row[ic.ivfDB.lbresDB.lbRes.req_date_time].ToString();
@@ -549,9 +549,9 @@ namespace clinic_ivf.gui
             reporter = ic.ivfDB.stfDB.getIdByNameSurname(cboEmbryologistReport.Text);
             approved = ic.ivfDB.stfDB.getIdByNameSurname(cboEmbryologistAppv.Text);
             stf = ic.ivfDB.stfDB.selectByPk1(reporter);
-            reportername = stf.prefix_name_t+" "+stf.staff_fname_e+" "+stf.staff_lname_e;
+            reportername = stf.prefix_name_t+" "+stf.staff_fname_e+" "+stf.staff_lname_e + " " + stf.doctor_id;
             stf = ic.ivfDB.stfDB.selectByPk1(approved);
-            approvedname = stf.prefix_name_t + " " + stf.staff_fname_e + " " + stf.staff_lname_e;
+            approvedname = stf.prefix_name_t + " " + stf.staff_fname_e + " " + stf.staff_lname_e + " " + stf.doctor_id;
             foreach (DataRow row in dt.Rows)
             {
                 collectdate = row[ic.ivfDB.lbresDB.lbRes.date_time_collect].ToString();

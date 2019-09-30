@@ -97,6 +97,9 @@
             this.chkSememAnalysis = new C1.Win.C1Input.C1CheckBox();
             this.btnPrintSperm = new C1.Win.C1Input.C1Button();
             this.gbETFET = new System.Windows.Forms.GroupBox();
+            this.txtPasswordVoidFET = new C1.Win.C1Input.C1TextBox();
+            this.chkVoidFET = new C1.Win.C1Input.C1CheckBox();
+            this.btnVoidFET = new C1.Win.C1Input.C1Button();
             this.btnPrintFet = new C1.Win.C1Input.C1Button();
             this.txtEmbryoTranferTime = new C1.Win.C1Input.C1TextBox();
             this.label34 = new System.Windows.Forms.Label();
@@ -129,6 +132,9 @@
             this.txtEmbryoTranferDate = new C1.Win.C1Input.C1DateEdit();
             this.label14 = new System.Windows.Forms.Label();
             this.gbOPU = new System.Windows.Forms.GroupBox();
+            this.txtPasswordVoidOPU = new C1.Win.C1Input.C1TextBox();
+            this.chkVoidOPU = new C1.Win.C1Input.C1CheckBox();
+            this.btnVoidOPU = new C1.Win.C1Input.C1Button();
             this.btnPrintOPU = new C1.Win.C1Input.C1Button();
             this.txtFrozenSpermDate = new C1.Win.C1Input.C1DateEdit();
             this.lbMessage = new System.Windows.Forms.Label();
@@ -184,12 +190,10 @@
             this.chkEmbryoTranfer = new C1.Win.C1Input.C1CheckBox();
             this.chkFrozenSperm = new C1.Win.C1Input.C1CheckBox();
             this.chkFreshSprem = new C1.Win.C1Input.C1CheckBox();
-            this.txtPasswordVoidOPU = new C1.Win.C1Input.C1TextBox();
-            this.chkVoidOPU = new C1.Win.C1Input.C1CheckBox();
-            this.btnVoidOPU = new C1.Win.C1Input.C1Button();
-            this.txtPasswordVoidFET = new C1.Win.C1Input.C1TextBox();
-            this.chkVoidFET = new C1.Win.C1Input.C1CheckBox();
-            this.btnVoidFET = new C1.Win.C1Input.C1Button();
+            this.label20 = new System.Windows.Forms.Label();
+            this.cboEtDay = new C1.Win.C1Input.C1ComboBox();
+            this.label25 = new System.Windows.Forms.Label();
+            this.cboEtRemark = new C1.Win.C1Input.C1ComboBox();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -240,6 +244,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.chkSememAnalysis)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPrintSperm)).BeginInit();
             this.gbETFET.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPasswordVoidFET)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkVoidFET)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnVoidFET)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPrintFet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEmbryoTranferTime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkAssistHatching)).BeginInit();
@@ -257,6 +264,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtFETNo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEmbryoTranferDate)).BeginInit();
             this.gbOPU.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPasswordVoidOPU)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkVoidOPU)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnVoidOPU)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPrintOPU)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtFrozenSpermDate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkOpuTimeModi)).BeginInit();
@@ -288,19 +298,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.chkEmbryoTranfer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkFrozenSperm)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkFreshSprem)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPasswordVoidOPU)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkVoidOPU)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnVoidOPU)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPasswordVoidFET)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkVoidFET)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnVoidFET)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboEtDay)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboEtRemark)).BeginInit();
             this.SuspendLayout();
             // 
             // sB
             // 
             this.sB.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.sB1});
-            this.sB.Location = new System.Drawing.Point(0, 810);
+            this.sB.Location = new System.Drawing.Point(0, 823);
             this.sB.Name = "sB";
             this.sB.Size = new System.Drawing.Size(1046, 22);
             this.sB.TabIndex = 10;
@@ -747,11 +753,12 @@
             | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
             | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
             | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
+            this.txtFormADate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.txtFormADate.GMTOffset = System.TimeSpan.Parse("00:00:00");
             this.txtFormADate.ImagePadding = new System.Windows.Forms.Padding(0);
             this.txtFormADate.Location = new System.Drawing.Point(742, 35);
             this.txtFormADate.Name = "txtFormADate";
-            this.txtFormADate.Size = new System.Drawing.Size(128, 18);
+            this.txtFormADate.Size = new System.Drawing.Size(128, 20);
             this.txtFormADate.TabIndex = 528;
             this.txtFormADate.Tag = null;
             this.theme1.SetTheme(this.txtFormADate, "(default)");
@@ -935,7 +942,7 @@
             this.groupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.groupBox2.Location = new System.Drawing.Point(0, 105);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1046, 705);
+            this.groupBox2.Size = new System.Drawing.Size(1046, 718);
             this.groupBox2.TabIndex = 12;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Description";
@@ -950,7 +957,7 @@
             this.groupBox5.Controls.Add(this.gbSpermAnalysis);
             this.groupBox5.Controls.Add(this.btnPrintSperm);
             this.groupBox5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.groupBox5.Location = new System.Drawing.Point(11, 465);
+            this.groupBox5.Location = new System.Drawing.Point(11, 480);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(1026, 232);
             this.groupBox5.TabIndex = 13;
@@ -968,7 +975,7 @@
             this.gbSpermIUI.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.gbSpermIUI.Location = new System.Drawing.Point(14, 171);
             this.gbSpermIUI.Name = "gbSpermIUI";
-            this.gbSpermIUI.Size = new System.Drawing.Size(924, 54);
+            this.gbSpermIUI.Size = new System.Drawing.Size(987, 54);
             this.gbSpermIUI.TabIndex = 727;
             this.gbSpermIUI.TabStop = false;
             this.gbSpermIUI.Text = "Sperm IUI";
@@ -985,7 +992,7 @@
             this.chkSpermIUI.Location = new System.Drawing.Point(22, 15);
             this.chkSpermIUI.Name = "chkSpermIUI";
             this.chkSpermIUI.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
-            this.chkSpermIUI.Size = new System.Drawing.Size(195, 24);
+            this.chkSpermIUI.Size = new System.Drawing.Size(183, 24);
             this.chkSpermIUI.TabIndex = 736;
             this.chkSpermIUI.Text = "Sperm preparation for IUI :";
             this.theme1.SetTheme(this.chkSpermIUI, "(default)");
@@ -1029,14 +1036,15 @@
             | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
             | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
             this.txtIUIDate.EmptyAsNull = true;
+            this.txtIUIDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.txtIUIDate.GMTOffset = System.TimeSpan.Parse("00:00:00");
             this.txtIUIDate.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.txtIUIDate.Location = new System.Drawing.Point(202, 19);
+            this.txtIUIDate.Location = new System.Drawing.Point(207, 19);
             this.txtIUIDate.MaskInfo.EmptyAsNull = false;
             this.txtIUIDate.MaskInfo.Inherit = ((C1.Win.C1Input.MaskInfoInheritFlags)((C1.Win.C1Input.MaskInfoInheritFlags.CaseSensitive | C1.Win.C1Input.MaskInfoInheritFlags.ErrorMessage)));
             this.txtIUIDate.MaskInfo.SaveBlanks = true;
             this.txtIUIDate.Name = "txtIUIDate";
-            this.txtIUIDate.Size = new System.Drawing.Size(176, 18);
+            this.txtIUIDate.Size = new System.Drawing.Size(176, 20);
             this.txtIUIDate.TabIndex = 733;
             this.txtIUIDate.Tag = null;
             this.theme1.SetTheme(this.txtIUIDate, "(default)");
@@ -1052,7 +1060,7 @@
             this.cboRemark.ImagePadding = new System.Windows.Forms.Padding(0);
             this.cboRemark.ItemsDisplayMember = "";
             this.cboRemark.ItemsValueMember = "";
-            this.cboRemark.Location = new System.Drawing.Point(446, 17);
+            this.cboRemark.Location = new System.Drawing.Point(461, 17);
             this.cboRemark.Name = "cboRemark";
             this.cboRemark.Size = new System.Drawing.Size(463, 20);
             this.cboRemark.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
@@ -1069,7 +1077,7 @@
             this.label27.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label27.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label27.Location = new System.Drawing.Point(378, 19);
+            this.label27.Location = new System.Drawing.Point(393, 19);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(62, 16);
             this.label27.TabIndex = 734;
@@ -1125,13 +1133,14 @@
             | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
             this.txtPasaTeseDate.EditFormat.TrimStart = true;
             this.txtPasaTeseDate.EmptyAsNull = true;
+            this.txtPasaTeseDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.txtPasaTeseDate.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.txtPasaTeseDate.Location = new System.Drawing.Point(185, 19);
+            this.txtPasaTeseDate.Location = new System.Drawing.Point(190, 19);
             this.txtPasaTeseDate.MaskInfo.EmptyAsNull = false;
             this.txtPasaTeseDate.MaskInfo.Inherit = ((C1.Win.C1Input.MaskInfoInheritFlags)((C1.Win.C1Input.MaskInfoInheritFlags.CaseSensitive | C1.Win.C1Input.MaskInfoInheritFlags.ErrorMessage)));
             this.txtPasaTeseDate.MaskInfo.SaveBlanks = true;
             this.txtPasaTeseDate.Name = "txtPasaTeseDate";
-            this.txtPasaTeseDate.Size = new System.Drawing.Size(176, 18);
+            this.txtPasaTeseDate.Size = new System.Drawing.Size(176, 20);
             this.txtPasaTeseDate.TabIndex = 732;
             this.txtPasaTeseDate.Tag = null;
             this.theme1.SetTheme(this.txtPasaTeseDate, "(default)");
@@ -1296,11 +1305,12 @@
             | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
             | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
             this.txtSpermFreezingDateStart.EmptyAsNull = true;
+            this.txtSpermFreezingDateStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.txtSpermFreezingDateStart.GMTOffset = System.TimeSpan.Parse("00:00:00");
             this.txtSpermFreezingDateStart.ImagePadding = new System.Windows.Forms.Padding(0);
             this.txtSpermFreezingDateStart.Location = new System.Drawing.Point(116, 5);
             this.txtSpermFreezingDateStart.Name = "txtSpermFreezingDateStart";
-            this.txtSpermFreezingDateStart.Size = new System.Drawing.Size(125, 18);
+            this.txtSpermFreezingDateStart.Size = new System.Drawing.Size(125, 20);
             this.txtSpermFreezingDateStart.TabIndex = 721;
             this.txtSpermFreezingDateStart.Tag = null;
             this.theme1.SetTheme(this.txtSpermFreezingDateStart, "(default)");
@@ -1465,11 +1475,12 @@
             | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
             | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
             this.txtSpermAnalysisDateStart.EmptyAsNull = true;
+            this.txtSpermAnalysisDateStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.txtSpermAnalysisDateStart.GMTOffset = System.TimeSpan.Parse("00:00:00");
             this.txtSpermAnalysisDateStart.ImagePadding = new System.Windows.Forms.Padding(0);
             this.txtSpermAnalysisDateStart.Location = new System.Drawing.Point(120, 3);
             this.txtSpermAnalysisDateStart.Name = "txtSpermAnalysisDateStart";
-            this.txtSpermAnalysisDateStart.Size = new System.Drawing.Size(121, 18);
+            this.txtSpermAnalysisDateStart.Size = new System.Drawing.Size(121, 20);
             this.txtSpermAnalysisDateStart.TabIndex = 717;
             this.txtSpermAnalysisDateStart.Tag = null;
             this.theme1.SetTheme(this.txtSpermAnalysisDateStart, "(default)");
@@ -1511,6 +1522,10 @@
             // gbETFET
             // 
             this.gbETFET.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.gbETFET.Controls.Add(this.cboEtRemark);
+            this.gbETFET.Controls.Add(this.label25);
+            this.gbETFET.Controls.Add(this.label20);
+            this.gbETFET.Controls.Add(this.cboEtDay);
             this.gbETFET.Controls.Add(this.txtPasswordVoidFET);
             this.gbETFET.Controls.Add(this.chkVoidFET);
             this.gbETFET.Controls.Add(this.btnVoidFET);
@@ -1528,11 +1543,58 @@
             this.gbETFET.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.gbETFET.Location = new System.Drawing.Point(11, 306);
             this.gbETFET.Name = "gbETFET";
-            this.gbETFET.Size = new System.Drawing.Size(1025, 153);
+            this.gbETFET.Size = new System.Drawing.Size(1025, 168);
             this.gbETFET.TabIndex = 13;
             this.gbETFET.TabStop = false;
             this.gbETFET.Text = "ET FET";
             this.theme1.SetTheme(this.gbETFET, "(default)");
+            // 
+            // txtPasswordVoidFET
+            // 
+            this.txtPasswordVoidFET.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPasswordVoidFET.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtPasswordVoidFET.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtPasswordVoidFET.Location = new System.Drawing.Point(758, 37);
+            this.txtPasswordVoidFET.Name = "txtPasswordVoidFET";
+            this.txtPasswordVoidFET.PasswordChar = '*';
+            this.txtPasswordVoidFET.Size = new System.Drawing.Size(78, 20);
+            this.txtPasswordVoidFET.TabIndex = 751;
+            this.txtPasswordVoidFET.Tag = null;
+            this.theme1.SetTheme(this.txtPasswordVoidFET, "(default)");
+            this.txtPasswordVoidFET.Visible = false;
+            this.txtPasswordVoidFET.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // chkVoidFET
+            // 
+            this.chkVoidFET.BackColor = System.Drawing.Color.Transparent;
+            this.chkVoidFET.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkVoidFET.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.chkVoidFET.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chkVoidFET.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkVoidFET.Location = new System.Drawing.Point(691, 12);
+            this.chkVoidFET.Name = "chkVoidFET";
+            this.chkVoidFET.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.chkVoidFET.Size = new System.Drawing.Size(141, 24);
+            this.chkVoidFET.TabIndex = 750;
+            this.chkVoidFET.Text = "ต้องการยกเลิกET FET";
+            this.theme1.SetTheme(this.chkVoidFET, "(default)");
+            this.chkVoidFET.UseVisualStyleBackColor = true;
+            this.chkVoidFET.Value = null;
+            this.chkVoidFET.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // btnVoidFET
+            // 
+            this.btnVoidFET.Image = global::clinic_ivf.Properties.Resources.trash24;
+            this.btnVoidFET.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnVoidFET.Location = new System.Drawing.Point(838, 18);
+            this.btnVoidFET.Name = "btnVoidFET";
+            this.btnVoidFET.Size = new System.Drawing.Size(83, 39);
+            this.btnVoidFET.TabIndex = 749;
+            this.btnVoidFET.Text = "ยกเลิกช้อมูล";
+            this.btnVoidFET.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnVoidFET, "(default)");
+            this.btnVoidFET.UseVisualStyleBackColor = true;
+            this.btnVoidFET.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // btnPrintFet
             // 
@@ -1542,7 +1604,7 @@
             this.btnPrintFet.Name = "btnPrintFet";
             this.btnPrintFet.Size = new System.Drawing.Size(97, 35);
             this.btnPrintFet.TabIndex = 746;
-            this.btnPrintFet.Text = "Print FET";
+            this.btnPrintFet.Text = "Print ET/FET";
             this.btnPrintFet.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.theme1.SetTheme(this.btnPrintFet, "(default)");
             this.btnPrintFet.UseVisualStyleBackColor = true;
@@ -1589,7 +1651,7 @@
             this.chkAssistHatching.Location = new System.Drawing.Point(570, 16);
             this.chkAssistHatching.Name = "chkAssistHatching";
             this.chkAssistHatching.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
-            this.chkAssistHatching.Size = new System.Drawing.Size(135, 24);
+            this.chkAssistHatching.Size = new System.Drawing.Size(121, 24);
             this.chkAssistHatching.TabIndex = 731;
             this.chkAssistHatching.Text = "Assist Hatching";
             this.theme1.SetTheme(this.chkAssistHatching, "(default)");
@@ -1634,7 +1696,7 @@
             this.pnFET.Controls.Add(this.txtFET1No);
             this.pnFET.Controls.Add(this.txtFETNo);
             this.pnFET.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.pnFET.Location = new System.Drawing.Point(88, 59);
+            this.pnFET.Location = new System.Drawing.Point(88, 76);
             this.pnFET.Name = "pnFET";
             this.pnFET.Size = new System.Drawing.Size(919, 85);
             this.pnFET.TabIndex = 13;
@@ -2021,7 +2083,7 @@
             this.chkFET.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
             this.chkFET.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
             this.chkFET.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkFET.Location = new System.Drawing.Point(25, 64);
+            this.chkFET.Location = new System.Drawing.Point(25, 81);
             this.chkFET.Name = "chkFET";
             this.chkFET.Size = new System.Drawing.Size(65, 17);
             this.chkFET.TabIndex = 723;
@@ -2053,7 +2115,7 @@
             this.label15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label15.Location = new System.Drawing.Point(53, 91);
+            this.label15.Location = new System.Drawing.Point(53, 110);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(32, 16);
             this.label15.TabIndex = 715;
@@ -2160,6 +2222,53 @@
             this.gbOPU.TabStop = false;
             this.gbOPU.Text = "OPU";
             this.theme1.SetTheme(this.gbOPU, "(default)");
+            // 
+            // txtPasswordVoidOPU
+            // 
+            this.txtPasswordVoidOPU.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPasswordVoidOPU.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtPasswordVoidOPU.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtPasswordVoidOPU.Location = new System.Drawing.Point(844, 111);
+            this.txtPasswordVoidOPU.Name = "txtPasswordVoidOPU";
+            this.txtPasswordVoidOPU.PasswordChar = '*';
+            this.txtPasswordVoidOPU.Size = new System.Drawing.Size(78, 20);
+            this.txtPasswordVoidOPU.TabIndex = 748;
+            this.txtPasswordVoidOPU.Tag = null;
+            this.theme1.SetTheme(this.txtPasswordVoidOPU, "(default)");
+            this.txtPasswordVoidOPU.Visible = false;
+            this.txtPasswordVoidOPU.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // chkVoidOPU
+            // 
+            this.chkVoidOPU.BackColor = System.Drawing.Color.Transparent;
+            this.chkVoidOPU.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkVoidOPU.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.chkVoidOPU.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chkVoidOPU.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkVoidOPU.Location = new System.Drawing.Point(813, 81);
+            this.chkVoidOPU.Name = "chkVoidOPU";
+            this.chkVoidOPU.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.chkVoidOPU.Size = new System.Drawing.Size(122, 24);
+            this.chkVoidOPU.TabIndex = 747;
+            this.chkVoidOPU.Text = "ต้องการยกเลิกOPU";
+            this.theme1.SetTheme(this.chkVoidOPU, "(default)");
+            this.chkVoidOPU.UseVisualStyleBackColor = true;
+            this.chkVoidOPU.Value = null;
+            this.chkVoidOPU.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // btnVoidOPU
+            // 
+            this.btnVoidOPU.Image = global::clinic_ivf.Properties.Resources.trash24;
+            this.btnVoidOPU.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnVoidOPU.Location = new System.Drawing.Point(941, 92);
+            this.btnVoidOPU.Name = "btnVoidOPU";
+            this.btnVoidOPU.Size = new System.Drawing.Size(83, 39);
+            this.btnVoidOPU.TabIndex = 746;
+            this.btnVoidOPU.Text = "ยกเลิกช้อมูล";
+            this.btnVoidOPU.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnVoidOPU, "(default)");
+            this.btnVoidOPU.UseVisualStyleBackColor = true;
+            this.btnVoidOPU.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // btnPrintOPU
             // 
@@ -3105,105 +3214,79 @@
             this.chkFreshSprem.Value = null;
             this.chkFreshSprem.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // txtPasswordVoidOPU
+            // label20
             // 
-            this.txtPasswordVoidOPU.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtPasswordVoidOPU.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtPasswordVoidOPU.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtPasswordVoidOPU.Location = new System.Drawing.Point(844, 111);
-            this.txtPasswordVoidOPU.Name = "txtPasswordVoidOPU";
-            this.txtPasswordVoidOPU.PasswordChar = '*';
-            this.txtPasswordVoidOPU.Size = new System.Drawing.Size(78, 20);
-            this.txtPasswordVoidOPU.TabIndex = 748;
-            this.txtPasswordVoidOPU.Tag = null;
-            this.theme1.SetTheme(this.txtPasswordVoidOPU, "(default)");
-            this.txtPasswordVoidOPU.Visible = false;
-            this.txtPasswordVoidOPU.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.label20.AutoSize = true;
+            this.label20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label20.Location = new System.Drawing.Point(623, 39);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(60, 16);
+            this.label20.TabIndex = 753;
+            this.label20.Text = "ET Day :";
+            this.theme1.SetTheme(this.label20, "(default)");
             // 
-            // chkVoidOPU
+            // cboEtDay
             // 
-            this.chkVoidOPU.BackColor = System.Drawing.Color.Transparent;
-            this.chkVoidOPU.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.chkVoidOPU.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.chkVoidOPU.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.chkVoidOPU.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkVoidOPU.Location = new System.Drawing.Point(813, 81);
-            this.chkVoidOPU.Name = "chkVoidOPU";
-            this.chkVoidOPU.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
-            this.chkVoidOPU.Size = new System.Drawing.Size(122, 24);
-            this.chkVoidOPU.TabIndex = 747;
-            this.chkVoidOPU.Text = "ต้องการยกเลิกOPU";
-            this.theme1.SetTheme(this.chkVoidOPU, "(default)");
-            this.chkVoidOPU.UseVisualStyleBackColor = true;
-            this.chkVoidOPU.Value = null;
-            this.chkVoidOPU.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.cboEtDay.AllowSpinLoop = false;
+            this.cboEtDay.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cboEtDay.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.cboEtDay.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboEtDay.GapHeight = 0;
+            this.cboEtDay.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.cboEtDay.ItemsDisplayMember = "";
+            this.cboEtDay.ItemsValueMember = "";
+            this.cboEtDay.Location = new System.Drawing.Point(686, 38);
+            this.cboEtDay.Name = "cboEtDay";
+            this.cboEtDay.Size = new System.Drawing.Size(68, 20);
+            this.cboEtDay.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.cboEtDay.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
+            this.cboEtDay.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboEtDay.TabIndex = 752;
+            this.cboEtDay.Tag = null;
+            this.theme1.SetTheme(this.cboEtDay, "(default)");
+            this.cboEtDay.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // btnVoidOPU
+            // label25
             // 
-            this.btnVoidOPU.Image = global::clinic_ivf.Properties.Resources.trash24;
-            this.btnVoidOPU.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnVoidOPU.Location = new System.Drawing.Point(941, 92);
-            this.btnVoidOPU.Name = "btnVoidOPU";
-            this.btnVoidOPU.Size = new System.Drawing.Size(83, 39);
-            this.btnVoidOPU.TabIndex = 746;
-            this.btnVoidOPU.Text = "ยกเลิกช้อมูล";
-            this.btnVoidOPU.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.theme1.SetTheme(this.btnVoidOPU, "(default)");
-            this.btnVoidOPU.UseVisualStyleBackColor = true;
-            this.btnVoidOPU.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.label25.AutoSize = true;
+            this.label25.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label25.Location = new System.Drawing.Point(219, 42);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(83, 16);
+            this.label25.TabIndex = 755;
+            this.label25.Text = "ET Remark :";
+            this.theme1.SetTheme(this.label25, "(default)");
             // 
-            // txtPasswordVoidFET
+            // cboEtRemark
             // 
-            this.txtPasswordVoidFET.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtPasswordVoidFET.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtPasswordVoidFET.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtPasswordVoidFET.Location = new System.Drawing.Point(741, 37);
-            this.txtPasswordVoidFET.Name = "txtPasswordVoidFET";
-            this.txtPasswordVoidFET.PasswordChar = '*';
-            this.txtPasswordVoidFET.Size = new System.Drawing.Size(78, 20);
-            this.txtPasswordVoidFET.TabIndex = 751;
-            this.txtPasswordVoidFET.Tag = null;
-            this.theme1.SetTheme(this.txtPasswordVoidFET, "(default)");
-            this.txtPasswordVoidFET.Visible = false;
-            this.txtPasswordVoidFET.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // chkVoidFET
-            // 
-            this.chkVoidFET.BackColor = System.Drawing.Color.Transparent;
-            this.chkVoidFET.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.chkVoidFET.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.chkVoidFET.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.chkVoidFET.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkVoidFET.Location = new System.Drawing.Point(691, 12);
-            this.chkVoidFET.Name = "chkVoidFET";
-            this.chkVoidFET.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
-            this.chkVoidFET.Size = new System.Drawing.Size(141, 24);
-            this.chkVoidFET.TabIndex = 750;
-            this.chkVoidFET.Text = "ต้องการยกเลิกET FET";
-            this.theme1.SetTheme(this.chkVoidFET, "(default)");
-            this.chkVoidFET.UseVisualStyleBackColor = true;
-            this.chkVoidFET.Value = null;
-            this.chkVoidFET.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // btnVoidFET
-            // 
-            this.btnVoidFET.Image = global::clinic_ivf.Properties.Resources.trash24;
-            this.btnVoidFET.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnVoidFET.Location = new System.Drawing.Point(838, 18);
-            this.btnVoidFET.Name = "btnVoidFET";
-            this.btnVoidFET.Size = new System.Drawing.Size(83, 39);
-            this.btnVoidFET.TabIndex = 749;
-            this.btnVoidFET.Text = "ยกเลิกช้อมูล";
-            this.btnVoidFET.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.theme1.SetTheme(this.btnVoidFET, "(default)");
-            this.btnVoidFET.UseVisualStyleBackColor = true;
-            this.btnVoidFET.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.cboEtRemark.AllowSpinLoop = false;
+            this.cboEtRemark.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cboEtRemark.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.cboEtRemark.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboEtRemark.GapHeight = 0;
+            this.cboEtRemark.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.cboEtRemark.ItemsDisplayMember = "";
+            this.cboEtRemark.ItemsValueMember = "";
+            this.cboEtRemark.Location = new System.Drawing.Point(308, 40);
+            this.cboEtRemark.Name = "cboEtRemark";
+            this.cboEtRemark.Size = new System.Drawing.Size(313, 20);
+            this.cboEtRemark.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.cboEtRemark.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
+            this.cboEtRemark.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboEtRemark.TabIndex = 756;
+            this.cboEtRemark.Tag = null;
+            this.theme1.SetTheme(this.cboEtRemark, "(default)");
+            this.cboEtRemark.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // FrmLabFormA
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1046, 832);
+            this.ClientSize = new System.Drawing.Size(1046, 845);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.sB);
@@ -3267,6 +3350,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnPrintSperm)).EndInit();
             this.gbETFET.ResumeLayout(false);
             this.gbETFET.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPasswordVoidFET)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkVoidFET)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnVoidFET)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPrintFet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEmbryoTranferTime)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkAssistHatching)).EndInit();
@@ -3288,6 +3374,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtEmbryoTranferDate)).EndInit();
             this.gbOPU.ResumeLayout(false);
             this.gbOPU.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPasswordVoidOPU)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkVoidOPU)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnVoidOPU)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPrintOPU)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtFrozenSpermDate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkOpuTimeModi)).EndInit();
@@ -3325,12 +3414,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.chkEmbryoTranfer)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkFrozenSperm)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkFreshSprem)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPasswordVoidOPU)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkVoidOPU)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnVoidOPU)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPasswordVoidFET)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkVoidFET)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnVoidFET)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboEtDay)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboEtRemark)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3500,5 +3585,9 @@
         private C1.Win.C1Input.C1TextBox txtPasswordVoidFET;
         private C1.Win.C1Input.C1CheckBox chkVoidFET;
         private C1.Win.C1Input.C1Button btnVoidFET;
+        private C1.Win.C1Input.C1ComboBox cboEtRemark;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label label20;
+        private C1.Win.C1Input.C1ComboBox cboEtDay;
     }
 }
