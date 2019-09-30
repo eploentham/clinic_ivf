@@ -824,10 +824,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>EggSti.xsd</DependentUpon>
     </Compile>
-    <Compile Include="report\LabFET.Designer.cs">
+    <Compile Include="report\LabFETEmbryoDev.cs">
+      <DependentUpon>LabFETEmbryoDev.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="report\LabFETEmbryoDev.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>LabFET.xsd</DependentUpon>
+      <DependentUpon>LabFETEmbryoDev.xsd</DependentUpon>
     </Compile>
     <Compile Include="report\LabOPU.cs">
       <DependentUpon>LabOPU.xsd</DependentUpon>
@@ -1243,16 +1246,16 @@
     <None Include="report\EggSti.xss">
       <DependentUpon>EggSti.xsd</DependentUpon>
     </None>
-    <None Include="report\LabFET.xsc">
-      <DependentUpon>LabFET.xsd</DependentUpon>
+    <None Include="report\LabFETEmbryoDev.xsc">
+      <DependentUpon>LabFETEmbryoDev.xsd</DependentUpon>
     </None>
-    <None Include="report\LabFET.xsd">
+    <None Include="report\LabFETEmbryoDev.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>LabFET.Designer.cs</LastGenOutput>
+      <LastGenOutput>LabFETEmbryoDev.Designer.cs</LastGenOutput>
     </None>
-    <None Include="report\LabFET.xss">
-      <DependentUpon>LabFET.xsd</DependentUpon>
+    <None Include="report\LabFETEmbryoDev.xss">
+      <DependentUpon>LabFETEmbryoDev.xsd</DependentUpon>
     </None>
     <None Include="report\LabOPU.xsc">
       <DependentUpon>LabOPU.xsd</DependentUpon>

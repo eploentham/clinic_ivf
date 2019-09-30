@@ -99,6 +99,9 @@ namespace clinic_ivf.gui
 
             btnHnSearch.Click += BtnHnSearch_Click;
             btnDonorSearch.Click += BtnDonorSearch_Click;
+            btnPrintOpuEmbryoDev.Click += BtnPrintOpuEmbryoDev_Click1;
+            txtFreezeNo.KeyUp += TxtFreezeNo_KeyUp;
+
             setTheme();
             setFocusColor();
             initGrf();
@@ -106,6 +109,98 @@ namespace clinic_ivf.gui
             setGrf();
 
         }
+
+        private void TxtFreezeNo_KeyUp(object sender, KeyEventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (e.KeyCode == Keys.Enter)
+            {
+                int chk = 0;
+                if(int.TryParse(txtFreezeNo.Text, out chk))
+                {
+                    if (MessageBox.Show("ต้องการ ให้เพิ่ม Embryo Development จำนวน " + chk + " Embryo", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+                    {
+                        String cnt = "", re = "";
+                        ic.cStf.staff_id = "";
+                        FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+                        frm.ShowDialog(this);
+                        if (!ic.cStf.staff_id.Equals(""))
+                        {
+                            FrmWaiting frmW = new FrmWaiting();
+                            frmW.Show();
+                            try
+                            {
+                                Boolean chkSave = false;
+                                frmW.pB.Minimum = 1;
+                                frmW.pB.Maximum = chk;
+                                for (int i = 1; i <= chk; i++)
+                                {
+                                    LabOpuEmbryoDev opuEmDev = new LabOpuEmbryoDev();
+                                    opuEmDev.opu_embryo_dev_id = "";
+                                    opuEmDev.opu_fet_id = txtID.Text;
+                                    opuEmDev.opu_embryo_dev_no = i.ToString();
+                                    opuEmDev.desc0 = "";
+                                    opuEmDev.active = "1";
+                                    opuEmDev.remark = "";
+                                    opuEmDev.path_pic = "";
+                                    opuEmDev.date_create = "";
+                                    opuEmDev.date_modi = "";
+                                    opuEmDev.date_cancel = "";
+                                    opuEmDev.user_create = ic.cStf.staff_id;
+                                    opuEmDev.user_modi = "";
+                                    opuEmDev.user_cancel = "";
+                                    opuEmDev.desc1 = "";
+                                    opuEmDev.desc2 = "";
+                                    opuEmDev.desc3 = "";
+                                    opuEmDev.day = "2";
+                                    re = ic.ivfDB.opuEmDevDB.insertLabOpuEmbryoDev(opuEmDev, ic.cStf.staff_id);
+                                    opuEmDev.day = "3";
+                                    re = ic.ivfDB.opuEmDevDB.insertLabOpuEmbryoDev(opuEmDev, ic.cStf.staff_id);
+                                    opuEmDev.day = "5";
+                                    re = ic.ivfDB.opuEmDevDB.insertLabOpuEmbryoDev(opuEmDev, ic.cStf.staff_id);
+                                    opuEmDev.day = "6";
+                                    re = ic.ivfDB.opuEmDevDB.insertLabOpuEmbryoDev(opuEmDev, ic.cStf.staff_id);
+                                    long chk1 = 0;
+                                    if (long.TryParse(re, out chk1))
+                                    {
+                                        chkSave = true;
+                                        //MessageBox.Show("Error", "");
+                                    }
+                                    else
+                                    {
+                                        chkSave = false;
+                                    }
+                                    frmW.pB.Value = i;
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+
+                            }
+                            finally
+                            {
+                                frmW.Dispose();
+                            }
+                            setGrfDay2();
+                            setGrfDay3();
+                            setGrfDay5();
+                            setGrfDay6();
+                            setGrfDay2Img();
+                            setGrfDay3Img();
+                            setGrfDay5Img();
+                            setGrfDay6Img();
+                        }
+                    }
+                }
+            }
+        }
+
+        private void BtnPrintOpuEmbryoDev_Click1(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+
+        }
+
         private void setTheme()
         {
             theme1.SetTheme(sB, "BeigeOne");

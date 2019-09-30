@@ -30,9 +30,10 @@ namespace clinic_ivf.gui
         C1SuperTooltip stt;
         C1SuperErrorProvider sep;
         Color color;
-        public enum opuReport {OPUReport, OPUEmbryoDevReport };
+        public enum opuReport {OPUReport, OPUEmbryoDevReport, FETReport, FETEmbryoDevReport };
         opuReport opureport;
         String aaa = "₀₁₂₃₄₅₆₇₈₉";
+
         
         public FrmLabOPUPrint(IvfControl ic, String opuid, opuReport opureport)
         {
@@ -68,6 +69,14 @@ namespace clinic_ivf.gui
                 chkEmbryoDev20.Hide();
                 label1.Text = "Day :";
             }
+            else if (opureport == opuReport.FETEmbryoDevReport)
+            {
+                groupBox2.Hide();
+                label7.Hide();
+                cboEmbryoDev2.Hide();
+                
+                
+            }
             else
             {
                 groupBox2.Show();
@@ -81,6 +90,10 @@ namespace clinic_ivf.gui
         private void BtnExport_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
+            setExportOPU();
+        }
+        private void setExportOPU()
+        {
             DataTable dt = new DataTable();
             dt = ic.ivfDB.setOPUReport(txtID.Text, cboEmbryoDev1.Text, cboEmbryoDev2.Text, chkEmbryoDev20.Checked);
             try
@@ -118,7 +131,6 @@ namespace clinic_ivf.gui
                 MessageBox.Show(ex.ToString());
             }
         }
-
         private void ChkEmbryoDev20_CheckedChanged(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
@@ -137,44 +149,87 @@ namespace clinic_ivf.gui
             //throw new NotImplementedException();
             if (opureport == opuReport.OPUReport)
             {
-                DataTable dt = new DataTable();
-                FrmReport frm = new FrmReport(ic);
-                dt = ic.ivfDB.setOPUReport(txtID.Text, cboEmbryoDev1.Text, cboEmbryoDev2.Text, chkEmbryoDev20.Checked);
-                if (dt == null) return;
-                if (chkEmbryoFreez2Col.Checked)
-                {
-                    if (chkEmbryoDev20.Checked)
-                    {
-                        frm.setOPUReport(dt, FrmReport.flagEmbryoDev.twocolumn, FrmReport.flagEmbryoDevMore20.More20);
-                    }
-                    else
-                    {
-                        frm.setOPUReport(dt, FrmReport.flagEmbryoDev.twocolumn, FrmReport.flagEmbryoDevMore20.Days2);
-                    }
-                }
-                else
-                {
-                    if (chkEmbryoDev20.Checked)
-                    {
-                        frm.setOPUReport(dt, FrmReport.flagEmbryoDev.onecolumn, FrmReport.flagEmbryoDevMore20.More20);
-                    }
-                    else
-                    {
-                        frm.setOPUReport(dt, FrmReport.flagEmbryoDev.onecolumn, FrmReport.flagEmbryoDevMore20.Days2);
-                    }
-                }
-                //dt.AcceptChanges();
-                frm.ShowDialog(this);
-                //frm.setOPUReport(dt);
+                printOPUReport();
             }
             else if (opureport == opuReport.OPUEmbryoDevReport)
             {
-                setEmbryoDev();
+                printOPUEmbryoDev();
             }
             
         }
-        
-        private void setEmbryoDev()
+        private void printFETEmbryoDev()
+        {
+            FrmReport frm = new FrmReport(ic);
+            DataTable dt = new DataTable();
+            FrmWaiting frmW = new FrmWaiting();
+            frmW.Show();
+            try
+            {
+                int i = 0;
+                String day = "";
+                LabFet fet = new LabFet();
+                fet = ic.ivfDB.fetDB.selectByPk1(txtID.Text);
+                day = cboEmbryoDev1.SelectedItem == null ? "" : ((ComboBoxItem)cboEmbryoDev1.SelectedItem).Value;
+                if (day.Equals("2"))
+                {
+                    dt = ic.ivfDB.opuEmDevDB.selectByOpuFetId_DayPrint(txtID.Text, objdb.LabOpuEmbryoDevDB.Day1.Day2);
+                }
+                else if (day.Equals("3"))
+                {
+                    dt = ic.ivfDB.opuEmDevDB.selectByOpuFetId_DayPrint(txtID.Text, objdb.LabOpuEmbryoDevDB.Day1.Day3);
+                }
+                else if (day.Equals("5"))
+                {
+                    dt = ic.ivfDB.opuEmDevDB.selectByOpuFetId_DayPrint(txtID.Text, objdb.LabOpuEmbryoDevDB.Day1.Day5);
+                }
+                else if (day.Equals("6"))
+                {
+                    dt = ic.ivfDB.opuEmDevDB.selectByOpuFetId_DayPrint(txtID.Text, objdb.LabOpuEmbryoDevDB.Day1.Day6);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("" + ex.Message, "");
+            }
+            finally
+            {
+                frmW.Dispose();
+            }
+            frm.ShowDialog(this);
+        }
+        private void printOPUReport()
+        {
+            DataTable dt = new DataTable();
+            FrmReport frm = new FrmReport(ic);
+            dt = ic.ivfDB.setOPUReport(txtID.Text, cboEmbryoDev1.Text, cboEmbryoDev2.Text, chkEmbryoDev20.Checked);
+            if (dt == null) return;
+            if (chkEmbryoFreez2Col.Checked)
+            {
+                if (chkEmbryoDev20.Checked)
+                {
+                    frm.setOPUReport(dt, FrmReport.flagEmbryoDev.twocolumn, FrmReport.flagEmbryoDevMore20.More20);
+                }
+                else
+                {
+                    frm.setOPUReport(dt, FrmReport.flagEmbryoDev.twocolumn, FrmReport.flagEmbryoDevMore20.Days2);
+                }
+            }
+            else
+            {
+                if (chkEmbryoDev20.Checked)
+                {
+                    frm.setOPUReport(dt, FrmReport.flagEmbryoDev.onecolumn, FrmReport.flagEmbryoDevMore20.More20);
+                }
+                else
+                {
+                    frm.setOPUReport(dt, FrmReport.flagEmbryoDev.onecolumn, FrmReport.flagEmbryoDevMore20.Days2);
+                }
+            }
+            //dt.AcceptChanges();
+            frm.ShowDialog(this);
+            //frm.setOPUReport(dt);
+        }
+        private void printOPUEmbryoDev()
         {
             FrmReport frm = new FrmReport(ic);
             DataTable dt = new DataTable();
@@ -265,6 +320,7 @@ namespace clinic_ivf.gui
             }
             catch (Exception ex)
             {
+                ic.logw.WriteLog("error printOPUEmbryoDev "+ ex.Message);
                 MessageBox.Show("" + ex.Message, "");
             }
             finally
