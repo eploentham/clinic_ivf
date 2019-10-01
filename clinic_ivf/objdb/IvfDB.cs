@@ -1808,6 +1808,8 @@ namespace clinic_ivf.objdb
             dt.Rows[0]["embryo_freez_no_straw_0"] = dt.Rows[0]["embryo_freez_no_of_straw_0"].ToString();
             dt.Rows[0]["embryo_freez_no_straw_1"] = dt.Rows[0]["embryo_freez_no_of_straw_1"].ToString();
             j = 1;
+            stfid = "";
+            checkedid = "";
             if (!EmbryoDev20 && dtdev2.Rows.Count > 0)
             {
                 foreach (DataRow row in dtdev2.Rows)
@@ -1826,8 +1828,11 @@ namespace clinic_ivf.objdb
                     j++;
                 }
             }
-            dt.Rows[0]["embryo_dev_1_staff_name"] = stfDB.getStaffNameBylStf(stfid);
-            dt.Rows[0]["embryo_dev_1_checked_name"] = stfDB.getStaffNameBylStf(checkedid);
+            if (!day2.Equals(""))
+            {
+                dt.Rows[0]["embryo_dev_1_staff_name"] = stfDB.getStaffNameBylStf(stfid);
+                dt.Rows[0]["embryo_dev_1_checked_name"] = stfDB.getStaffNameBylStf(checkedid);
+            }
 
             dt.Rows[0]["embryo_for_et_doctor"] = dt.Rows[0]["embryo_for_et_doctor"].ToString().Equals("") ? "-" : dtrOldDB.getlDtrNameByID(dt.Rows[0]["embryo_for_et_doctor"].ToString());
 

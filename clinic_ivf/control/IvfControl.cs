@@ -42,7 +42,7 @@ namespace clinic_ivf.control
         
         public Staff sStf, cStf;
         
-        public LogFile lf;
+        //public LogFile lf;
         public Staff user;
 
         public Color cTxtFocus;

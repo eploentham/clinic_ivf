@@ -242,6 +242,7 @@ namespace clinic_ivf.objdb
             catch (Exception ex)
             {
                 sql = ex.Message + " " + ex.InnerException;
+                new LogWriter("Error insert PatientAppointment " + sql);
             }
             return re;
         }
@@ -337,6 +338,7 @@ namespace clinic_ivf.objdb
             catch (Exception ex)
             {
                 sql = ex.Message + " " + ex.InnerException;
+                new LogWriter("Error update PatientAppointment " + sql);
             }
             return re;
         }
