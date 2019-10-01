@@ -21,7 +21,7 @@ namespace clinic_ivf.object1
             m_exePath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             try
             {
-                double len = new FileInfo(m_exePath + "\\" + "log.txt").Length;
+                long len = new FileInfo(m_exePath + "\\" + "log.txt").Length;
                 string[] sizes = { "B", "KB", "MB", "GB", "TB" };
                 //if (len > 1000)
                 //{

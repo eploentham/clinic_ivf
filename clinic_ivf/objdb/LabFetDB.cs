@@ -89,6 +89,7 @@ namespace clinic_ivf.objdb
             fet.approve_result_day3_date = "approve_result_day3_date";
             fet.approve_result_day5_date = "approve_result_day5_date";
             fet.fet_time = "fet_time";
+            fet.embryo_freez_freeze_media = "embryo_freez_freeze_media";
 
             fet.table = "lab_t_fet";
             fet.pkField = "fet_id";
@@ -192,6 +193,7 @@ namespace clinic_ivf.objdb
             p.date_pic_embryo = p.date_pic_embryo == null ? "" : p.date_pic_embryo;
             p.hn_donor = p.hn_donor == null ? "" : p.hn_donor;
             p.name_donor = p.name_donor == null ? "" : p.name_donor;
+            p.embryo_freez_freeze_media = p.embryo_freez_freeze_media == null ? "" : p.embryo_freez_freeze_media;
 
             p.remark = p.remark == null ? "" : p.remark;
             //p.sort1 = p.sort1 == null ? "" : p.sort1;
@@ -242,6 +244,7 @@ namespace clinic_ivf.objdb
                 "," + fet.name_donor + " = '" + p.name_donor + "'" +
                 "," + fet.dob_donor + " = '" + p.dob_donor + "'" +
                 "," + fet.fet_time + " = '" + p.fet_time + "'" +
+                "," + fet.embryo_freez_freeze_media + " = '" + p.embryo_freez_freeze_media + "'" +
                "";
             try
             {
@@ -281,6 +284,7 @@ namespace clinic_ivf.objdb
                 "," + fet.hn_donor + " = '" + p.hn_donor + "' " +
                 "," + fet.name_donor + " = '" + p.name_donor + "' " +
                 "," + fet.dob_donor + " = '" + p.dob_donor + "'" +
+                //"," + fet.embryo_freez_freeze_media + " = '" + p.embryo_freez_freeze_media + "'" +
                 "Where " + fet.pkField + "='" + p.fet_id + "'";
 
             try
@@ -350,12 +354,13 @@ namespace clinic_ivf.objdb
                 "," + fet.thaw_no_of_thaw + " = '" + p.thaw_no_of_thaw.Replace("'", "''") + "'" +
                 "," + fet.thaw_no_of_survival + " = '" + p.thaw_no_of_survival.Replace("'", "''") + "'" +
                 "," + fet.thaw_no_of_remaining + " = '" + p.thaw_no_of_remaining + "'" +
-                "," + fet.media_date + " = '" + p.media_date + "'" +
+                //"," + fet.media_date + " = '" + p.media_date + "'" +
                 "," + fet.media_exp + " = '" + p.media_exp + "'" +
                 "," + fet.media_lot_no + " = '" + p.media_lot_no + "'" +
                 "," + fet.date_modi + " = now()" +
                 "," + fet.user_modi + " = '" + userId + "' " +
                 "," + fet.media_thawing + " = '" + p.media_thawing + "' " +
+                "," + fet.embryo_freez_freeze_media + " = '" + p.embryo_freez_freeze_media + "'" +
                 "Where " + fet.pkField + "='" + p.fet_id + "'";
             try
             {
@@ -445,7 +450,7 @@ namespace clinic_ivf.objdb
                 fet1.media_lot_no = dt.Rows[0][fet.media_lot_no].ToString();
                 fet1.media_exp = dt.Rows[0][fet.media_exp].ToString();
                 fet1.media_thawing = dt.Rows[0][fet.media_thawing].ToString();
-                //fet1.dob_donor = dt.Rows[0][fet.dob_donor].ToString();
+                fet1.embryo_freez_freeze_media = dt.Rows[0][fet.embryo_freez_freeze_media].ToString();
             }
             else
             {
@@ -520,6 +525,7 @@ namespace clinic_ivf.objdb
                 fet1.media_lot_no = "";
                 fet1.media_exp = "";
                 fet1.media_thawing = "";
+                fet1.embryo_freez_freeze_media = "";
             }
 
             return fet1;

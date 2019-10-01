@@ -26,6 +26,7 @@ namespace clinic_ivf.gui
         Font ff, ffB;
 
         LabOpu opu;
+        LabFet fet;
 
         C1SuperTooltip stt;
         C1SuperErrorProvider sep;
@@ -51,6 +52,7 @@ namespace clinic_ivf.gui
             color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
 
             opu = new LabOpu();
+            fet = new LabFet();
             setControl();
 
             sB1.Text = "";
@@ -72,10 +74,10 @@ namespace clinic_ivf.gui
             else if (opureport == opuReport.FETEmbryoDevReport)
             {
                 groupBox2.Hide();
-                label7.Hide();
-                cboEmbryoDev2.Hide();
-                
-                
+                chkEmbryoDev20.Hide();
+                //label7.Hide();
+                //cboEmbryoDev2.Hide();
+
             }
             else
             {
@@ -155,7 +157,11 @@ namespace clinic_ivf.gui
             {
                 printOPUEmbryoDev();
             }
-            
+            else if (opureport == opuReport.FETEmbryoDevReport)
+            {
+                printFETEmbryoDev();
+            }
+
         }
         private void printFETEmbryoDev()
         {
@@ -172,20 +178,72 @@ namespace clinic_ivf.gui
                 day = cboEmbryoDev1.SelectedItem == null ? "" : ((ComboBoxItem)cboEmbryoDev1.SelectedItem).Value;
                 if (day.Equals("2"))
                 {
-                    dt = ic.ivfDB.opuEmDevDB.selectByOpuFetId_DayPrint(txtID.Text, objdb.LabOpuEmbryoDevDB.Day1.Day2);
+                    dt = ic.ivfDB.opuEmDevDB.selectByFetFetId_DayPrint(txtID.Text, objdb.LabOpuEmbryoDevDB.Day1.Day2);
                 }
                 else if (day.Equals("3"))
                 {
-                    dt = ic.ivfDB.opuEmDevDB.selectByOpuFetId_DayPrint(txtID.Text, objdb.LabOpuEmbryoDevDB.Day1.Day3);
+                    dt = ic.ivfDB.opuEmDevDB.selectByFetFetId_DayPrint(txtID.Text, objdb.LabOpuEmbryoDevDB.Day1.Day3);
                 }
                 else if (day.Equals("5"))
                 {
-                    dt = ic.ivfDB.opuEmDevDB.selectByOpuFetId_DayPrint(txtID.Text, objdb.LabOpuEmbryoDevDB.Day1.Day5);
+                    dt = ic.ivfDB.opuEmDevDB.selectByFetFetId_DayPrint(txtID.Text, objdb.LabOpuEmbryoDevDB.Day1.Day5);
                 }
                 else if (day.Equals("6"))
                 {
-                    dt = ic.ivfDB.opuEmDevDB.selectByOpuFetId_DayPrint(txtID.Text, objdb.LabOpuEmbryoDevDB.Day1.Day6);
+                    dt = ic.ivfDB.opuEmDevDB.selectByFetFetId_DayPrint(txtID.Text, objdb.LabOpuEmbryoDevDB.Day1.Day6);
                 }
+                if (dt.Rows.Count > 0)
+                {
+                    frmW.pB.Minimum = 1;
+                    frmW.pB.Maximum = dt.Rows.Count;
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        String path_pic = "", opuCode = "";
+                        path_pic = row["no1_pathpic"] != null ? row["no1_pathpic"].ToString() : "";
+                        opuCode = row["fet_code"] != null ? row["fet_code"].ToString() : "";
+                        if (!path_pic.Equals(""))
+                        {
+                            MemoryStream stream = ic.ftpC.download(path_pic);
+                            Image loadedImage = new Bitmap(stream);
+                            String[] ext = path_pic.Split('.');
+                            var extension = Path.GetExtension(path_pic);
+                            var name = Path.GetFileNameWithoutExtension(path_pic); // Get the name only
+                            //if (ext.Length > 0)
+                            //{
+                            String filename = name;
+                            String no = "", filename1 = "", st = "";
+                            no = filename.Substring(filename.Length - 2);
+                            no = no.Replace("_", "");
+                            filename1 = "embryo_dev_" + no + extension;
+                            if (File.Exists(filename1))
+                            {
+                                File.Delete(filename1);
+                                System.Threading.Thread.Sleep(200);
+                            }
+                            loadedImage.Save(filename1);
+                            row["no1_pathpic"] = System.IO.Directory.GetCurrentDirectory() + "\\" + filename1;
+                            //st = row["no1_desc2"].ToString();
+                            st = row["no1_desc3"].ToString();
+                            row["no1_desc2"] = "st# " + st;
+                            row["no1_desc3"] = row["no1_desc4"].ToString();
+                            //}footer11
+                        }
+                        //row["footer11"] = opu.remark_day2;
+                        //row["footer12"] = opu.remark_day3;
+                        //row["footer13"] = opu.remark_day5;
+                        //row["footer14"] = opu.remark_day6;
+                        //row["footer15"] = "";
+                        //row["footer16"] = "";
+                        i++;
+                        frmW.pB.Value = i;
+                    }
+                }
+                String date1 = "";
+                date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.fetDB.fet.fet_date].ToString());
+                dt.Rows[0][ic.ivfDB.fetDB.fet.fet_date] = date1.Replace("-", "/");
+
+                frm.setFETEmbryoDevReport(dt);
+
             }
             catch (Exception ex)
             {
@@ -331,13 +389,26 @@ namespace clinic_ivf.gui
         }
         private void setControl()
         {
-            opu = ic.ivfDB.opuDB.selectByPk1(opuId);
-            txtID.Value = opu.opu_id;
-            txtHnFeMale.Value = opu.hn_female;
-            txtHnMale.Value = opu.hn_male;
-            txtNameFeMale.Value = opu.name_female;
-            txtNameMale.Value = opu.name_male;
-            txtOpuCode.Value = opu.opu_code;
+            if(opureport == opuReport.OPUReport || opureport == opuReport.OPUEmbryoDevReport)
+            {
+                opu = ic.ivfDB.opuDB.selectByPk1(opuId);
+                txtID.Value = opu.opu_id;
+                txtHnFeMale.Value = opu.hn_female;
+                txtHnMale.Value = opu.hn_male;
+                txtNameFeMale.Value = opu.name_female;
+                txtNameMale.Value = opu.name_male;
+                txtOpuCode.Value = opu.opu_code;
+            }
+            else
+            {
+                fet = ic.ivfDB.fetDB.selectByPk1(opuId);
+                txtID.Value = fet.fet_id;
+                txtHnFeMale.Value = fet.hn_female;
+                txtHnMale.Value = fet.hn_male;
+                txtNameFeMale.Value = fet.name_female;
+                txtNameMale.Value = fet.name_male;
+                txtOpuCode.Value = fet.fet_code;
+            }
         }
         private void FrmLabOPUPrint_Load(object sender, EventArgs e)
         {

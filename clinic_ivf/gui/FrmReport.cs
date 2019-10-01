@@ -922,6 +922,27 @@ namespace clinic_ivf.gui
                 MessageBox.Show("error " + ex.Message, "");
             }
         }
+        public void setFETEmbryoDevReport(DataTable dt)
+        {
+            String chk = "", printerDefault = "";
+            ReportDocument rpt = new ReportDocument();
+            try
+            {
+                rpt.Load("lab_fet_embryo_dev.rpt");
+                rpt.SetDataSource(dt);
+                rpt.SetParameterValue("line1", ic.cop.comp_name_t);
+                rpt.SetParameterValue("line2", "โทรศัพท์ " + ic.cop.tele);
+                rpt.SetParameterValue("report_name", " Embryo development");
+                //rpt.SetParameterValue("date1", "" + date1);
+                this.crystalReportViewer1.ReportSource = rpt;
+                this.crystalReportViewer1.Refresh();
+            }
+            catch (Exception ex)
+            {
+                chk = ex.Message.ToString();
+                MessageBox.Show("error " + ex.Message, "");
+            }
+        }
         public void setOPUEmbryoDevReport(DataTable dt)
         {
             String chk = "", printerDefault = "";

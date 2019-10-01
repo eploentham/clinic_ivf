@@ -88,7 +88,8 @@ namespace clinic_ivf.gui
             ic.ivfDB.stfDB.setCboEmbryologist(cboCheckedDay3, "");
             ic.ivfDB.stfDB.setCboEmbryologist(cboCheckedDay5, "");
             ic.ivfDB.stfDB.setCboEmbryologist(cboCheckedDay6, "");
-            
+            ic.ivfDB.fdtDB.setCboFETFreezeMedia(cboEmbryoFreezMedia);
+
             ic.ivfDB.opuDB.setCboRemark(cboRemark);
 
             //stt.BackgroundGradient = C1.Win.C1SuperTooltip.BackgroundGradient.Gold;
@@ -99,7 +100,6 @@ namespace clinic_ivf.gui
 
             btnHnSearch.Click += BtnHnSearch_Click;
             btnDonorSearch.Click += BtnDonorSearch_Click;
-            btnPrintOpuEmbryoDev.Click += BtnPrintOpuEmbryoDev_Click1;
             txtFreezeNo.KeyUp += TxtFreezeNo_KeyUp;
 
             setTheme();
@@ -193,12 +193,6 @@ namespace clinic_ivf.gui
                     }
                 }
             }
-        }
-
-        private void BtnPrintOpuEmbryoDev_Click1(object sender, EventArgs e)
-        {
-            //throw new NotImplementedException();
-
         }
 
         private void setTheme()
@@ -713,7 +707,8 @@ namespace clinic_ivf.gui
             txtThawNo.Value = fet.thaw_no_of_thaw;
             txtThawSurvival.Value = fet.thaw_no_of_survival;
             txtThawRemain.Value = fet.thaw_no_of_remaining;
-            txtMediaDate.Value = fet.media_date;
+            //txtMediaDate.Value = fet.media_date;
+            ic.setC1Combo(cboEmbryoFreezMedia, fet.embryo_freez_freeze_media);
             txtMediaExp.Value = fet.media_exp;
             txtMediaLot.Value = fet.media_lot_no;
             txtMediaThawing.Value = fet.media_thawing;
@@ -739,7 +734,7 @@ namespace clinic_ivf.gui
             btnSaveDay3.Click += BtnSaveDay3_Click;
             btnSaveDay5.Click += BtnSaveDay5_Click;
             btnSaveDay6.Click += BtnSaveDay6_Click;
-            btnPrint.Click += BtnPrint_Click;
+            //btnPrint.Click += BtnPrint_Click;
             tC1.DoubleClick += TC1_DoubleClick;
             tabDay2.DoubleClick += TabDay2_DoubleClick;
             btnSaveImg2.Click += BtnSaveImg2_Click;
@@ -762,7 +757,7 @@ namespace clinic_ivf.gui
         private void BtnPrintOpuEmbryoDev_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            FrmLabOPUPrint frm = new FrmLabOPUPrint(ic, txtID.Text, FrmLabOPUPrint.opuReport.OPUEmbryoDevReport);
+            FrmLabOPUPrint frm = new FrmLabOPUPrint(ic, txtID.Text, FrmLabOPUPrint.opuReport.FETEmbryoDevReport);
             frm.ShowDialog(this);
         }
         private void BtnDay5ImgRef_Click(object sender, EventArgs e)
@@ -2219,7 +2214,8 @@ namespace clinic_ivf.gui
             fet.thaw_no_of_thaw = txtThawNo.Text;
             fet.thaw_no_of_survival = txtThawSurvival.Text;
             fet.thaw_no_of_remaining = txtThawRemain.Text;
-            fet.media_date = ic.datetoDB(txtMediaDate.Text);
+            //fet.media_date = ic.datetoDB(txtMediaDate.Text);
+            fet.embryo_freez_freeze_media = cboEmbryoFreezMedia.SelectedItem == null ? "" : ((ComboBoxItem)cboEmbryoFreezMedia.SelectedItem).Value;
             fet.media_exp = txtMediaExp.Text;
             fet.media_lot_no = txtMediaLot.Text;
             fet.media_thawing = txtMediaThawing.Text;

@@ -148,7 +148,7 @@ namespace clinic_ivf.gui
             ic.ivfDB.dtrOldDB.setCboDoctor(cboPeDoctor, "");
             ic.ivfDB.dtrOldDB.setCboDoctor(cboIuiDoctor, "");
 
-            ic.ivfDB.fdtDB.setCboSpermAnalysisAppearance(cboAppearance);
+            ic.ivfDB.fdtDB.setCboSpermAnalysisAppearanceNew(cboAppearance);
             ic.ivfDB.fdtDB.setCboSpermAnalysisAppearance(cboLiquefaction);
             ic.ivfDB.fdtDB.setCboSpermAnalysisAppearance(cboViscosity);
             ic.ivfDB.fdtDB.setCboSpermAnalysisAppearance(cboSfAppearance);

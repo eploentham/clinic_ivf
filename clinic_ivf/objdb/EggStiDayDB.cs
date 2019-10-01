@@ -113,8 +113,8 @@ namespace clinic_ivf.objdb
                 "," + eggsd.lt_ovary_2 + "='" + p.lt_ovary_2.Replace("'", "''") + "'" +
                 "," + eggsd.endo + "='" + p.endo.Replace("'", "''") + "'" +
                 "," + eggsd.egg_sti_id + "='" + p.egg_sti_id + "'" +
-                "," + eggsd.medication + "='" + p.medication + "'" +
-                "," + eggsd.medication2 + "='" + p.medication2 + "'" +
+                "," + eggsd.medication + "='" + p.medication.Replace("'", "''") + "'" +
+                "," + eggsd.medication2 + "='" + p.medication2.Replace("'", "''") + "'" +
                 " " +
 
                 "";

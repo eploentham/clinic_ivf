@@ -97,6 +97,10 @@
             this.chkSememAnalysis = new C1.Win.C1Input.C1CheckBox();
             this.btnPrintSperm = new C1.Win.C1Input.C1Button();
             this.gbETFET = new System.Windows.Forms.GroupBox();
+            this.cboEtRemark = new C1.Win.C1Input.C1ComboBox();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.cboEtDay = new C1.Win.C1Input.C1ComboBox();
             this.txtPasswordVoidFET = new C1.Win.C1Input.C1TextBox();
             this.chkVoidFET = new C1.Win.C1Input.C1CheckBox();
             this.btnVoidFET = new C1.Win.C1Input.C1Button();
@@ -190,10 +194,6 @@
             this.chkEmbryoTranfer = new C1.Win.C1Input.C1CheckBox();
             this.chkFrozenSperm = new C1.Win.C1Input.C1CheckBox();
             this.chkFreshSprem = new C1.Win.C1Input.C1CheckBox();
-            this.label20 = new System.Windows.Forms.Label();
-            this.cboEtDay = new C1.Win.C1Input.C1ComboBox();
-            this.label25 = new System.Windows.Forms.Label();
-            this.cboEtRemark = new C1.Win.C1Input.C1ComboBox();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -244,6 +244,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.chkSememAnalysis)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPrintSperm)).BeginInit();
             this.gbETFET.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cboEtRemark)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboEtDay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPasswordVoidFET)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkVoidFET)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnVoidFET)).BeginInit();
@@ -298,8 +300,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.chkEmbryoTranfer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkFrozenSperm)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkFreshSprem)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cboEtDay)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cboEtRemark)).BeginInit();
             this.SuspendLayout();
             // 
             // sB
@@ -308,7 +308,7 @@
             this.sB1});
             this.sB.Location = new System.Drawing.Point(0, 823);
             this.sB.Name = "sB";
-            this.sB.Size = new System.Drawing.Size(1046, 22);
+            this.sB.Size = new System.Drawing.Size(1111, 22);
             this.sB.TabIndex = 10;
             this.sB.Text = "statusStrip1";
             // 
@@ -363,7 +363,7 @@
             this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1046, 105);
+            this.groupBox1.Size = new System.Drawing.Size(1111, 105);
             this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Patient";
@@ -923,7 +923,7 @@
             this.txtVsId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtVsId.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtVsId.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtVsId.Location = new System.Drawing.Point(943, 63);
+            this.txtVsId.Location = new System.Drawing.Point(1014, 63);
             this.txtVsId.Name = "txtVsId";
             this.txtVsId.Size = new System.Drawing.Size(34, 20);
             this.txtVsId.TabIndex = 610;
@@ -942,7 +942,7 @@
             this.groupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.groupBox2.Location = new System.Drawing.Point(0, 105);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1046, 718);
+            this.groupBox2.Size = new System.Drawing.Size(1111, 718);
             this.groupBox2.TabIndex = 12;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Description";
@@ -1548,6 +1548,74 @@
             this.gbETFET.TabStop = false;
             this.gbETFET.Text = "ET FET";
             this.theme1.SetTheme(this.gbETFET, "(default)");
+            // 
+            // cboEtRemark
+            // 
+            this.cboEtRemark.AllowSpinLoop = false;
+            this.cboEtRemark.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cboEtRemark.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.cboEtRemark.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboEtRemark.GapHeight = 0;
+            this.cboEtRemark.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.cboEtRemark.ItemsDisplayMember = "";
+            this.cboEtRemark.ItemsValueMember = "";
+            this.cboEtRemark.Location = new System.Drawing.Point(308, 40);
+            this.cboEtRemark.Name = "cboEtRemark";
+            this.cboEtRemark.Size = new System.Drawing.Size(313, 20);
+            this.cboEtRemark.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.cboEtRemark.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
+            this.cboEtRemark.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboEtRemark.TabIndex = 756;
+            this.cboEtRemark.Tag = null;
+            this.theme1.SetTheme(this.cboEtRemark, "(default)");
+            this.cboEtRemark.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label25.Location = new System.Drawing.Point(219, 42);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(83, 16);
+            this.label25.TabIndex = 755;
+            this.label25.Text = "ET Remark :";
+            this.theme1.SetTheme(this.label25, "(default)");
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label20.Location = new System.Drawing.Point(623, 39);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(60, 16);
+            this.label20.TabIndex = 753;
+            this.label20.Text = "ET Day :";
+            this.theme1.SetTheme(this.label20, "(default)");
+            // 
+            // cboEtDay
+            // 
+            this.cboEtDay.AllowSpinLoop = false;
+            this.cboEtDay.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cboEtDay.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.cboEtDay.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboEtDay.GapHeight = 0;
+            this.cboEtDay.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.cboEtDay.ItemsDisplayMember = "";
+            this.cboEtDay.ItemsValueMember = "";
+            this.cboEtDay.Location = new System.Drawing.Point(686, 38);
+            this.cboEtDay.Name = "cboEtDay";
+            this.cboEtDay.Size = new System.Drawing.Size(68, 20);
+            this.cboEtDay.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.cboEtDay.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
+            this.cboEtDay.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboEtDay.TabIndex = 752;
+            this.cboEtDay.Tag = null;
+            this.theme1.SetTheme(this.cboEtDay, "(default)");
+            this.cboEtDay.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // txtPasswordVoidFET
             // 
@@ -2217,7 +2285,7 @@
             this.gbOPU.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.gbOPU.Location = new System.Drawing.Point(10, 14);
             this.gbOPU.Name = "gbOPU";
-            this.gbOPU.Size = new System.Drawing.Size(1028, 286);
+            this.gbOPU.Size = new System.Drawing.Size(1089, 286);
             this.gbOPU.TabIndex = 725;
             this.gbOPU.TabStop = false;
             this.gbOPU.Text = "OPU";
@@ -2260,7 +2328,7 @@
             // 
             this.btnVoidOPU.Image = global::clinic_ivf.Properties.Resources.trash24;
             this.btnVoidOPU.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnVoidOPU.Location = new System.Drawing.Point(941, 92);
+            this.btnVoidOPU.Location = new System.Drawing.Point(998, 92);
             this.btnVoidOPU.Name = "btnVoidOPU";
             this.btnVoidOPU.Size = new System.Drawing.Size(83, 39);
             this.btnVoidOPU.TabIndex = 746;
@@ -2274,7 +2342,7 @@
             // 
             this.btnPrintOPU.Image = global::clinic_ivf.Properties.Resources.printer_orange24;
             this.btnPrintOPU.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPrintOPU.Location = new System.Drawing.Point(925, 137);
+            this.btnPrintOPU.Location = new System.Drawing.Point(982, 137);
             this.btnPrintOPU.Name = "btnPrintOPU";
             this.btnPrintOPU.Size = new System.Drawing.Size(97, 35);
             this.btnPrintOPU.TabIndex = 745;
@@ -2914,7 +2982,7 @@
             // 
             this.btnPrint.Image = global::clinic_ivf.Properties.Resources.print;
             this.btnPrint.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPrint.Location = new System.Drawing.Point(945, 19);
+            this.btnPrint.Location = new System.Drawing.Point(1002, 19);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(79, 34);
             this.btnPrint.TabIndex = 728;
@@ -3079,7 +3147,7 @@
             this.label11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label11.Location = new System.Drawing.Point(831, 23);
+            this.label11.Location = new System.Drawing.Point(859, 23);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(27, 16);
             this.label11.TabIndex = 708;
@@ -3091,9 +3159,9 @@
             this.txtNoofOocyteLt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtNoofOocyteLt.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtNoofOocyteLt.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtNoofOocyteLt.Location = new System.Drawing.Point(864, 21);
+            this.txtNoofOocyteLt.Location = new System.Drawing.Point(892, 21);
             this.txtNoofOocyteLt.Name = "txtNoofOocyteLt";
-            this.txtNoofOocyteLt.Size = new System.Drawing.Size(77, 20);
+            this.txtNoofOocyteLt.Size = new System.Drawing.Size(106, 20);
             this.txtNoofOocyteLt.TabIndex = 707;
             this.txtNoofOocyteLt.Tag = null;
             this.theme1.SetTheme(this.txtNoofOocyteLt, "(default)");
@@ -3130,9 +3198,9 @@
             this.txtNoofOocyteRt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtNoofOocyteRt.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtNoofOocyteRt.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtNoofOocyteRt.Location = new System.Drawing.Point(743, 21);
+            this.txtNoofOocyteRt.Location = new System.Drawing.Point(744, 21);
             this.txtNoofOocyteRt.Name = "txtNoofOocyteRt";
-            this.txtNoofOocyteRt.Size = new System.Drawing.Size(86, 20);
+            this.txtNoofOocyteRt.Size = new System.Drawing.Size(106, 20);
             this.txtNoofOocyteRt.TabIndex = 704;
             this.txtNoofOocyteRt.Tag = null;
             this.theme1.SetTheme(this.txtNoofOocyteRt, "(default)");
@@ -3214,79 +3282,11 @@
             this.chkFreshSprem.Value = null;
             this.chkFreshSprem.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label20.Location = new System.Drawing.Point(623, 39);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(60, 16);
-            this.label20.TabIndex = 753;
-            this.label20.Text = "ET Day :";
-            this.theme1.SetTheme(this.label20, "(default)");
-            // 
-            // cboEtDay
-            // 
-            this.cboEtDay.AllowSpinLoop = false;
-            this.cboEtDay.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.cboEtDay.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.cboEtDay.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.cboEtDay.GapHeight = 0;
-            this.cboEtDay.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.cboEtDay.ItemsDisplayMember = "";
-            this.cboEtDay.ItemsValueMember = "";
-            this.cboEtDay.Location = new System.Drawing.Point(686, 38);
-            this.cboEtDay.Name = "cboEtDay";
-            this.cboEtDay.Size = new System.Drawing.Size(68, 20);
-            this.cboEtDay.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.cboEtDay.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
-            this.cboEtDay.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.cboEtDay.TabIndex = 752;
-            this.cboEtDay.Tag = null;
-            this.theme1.SetTheme(this.cboEtDay, "(default)");
-            this.cboEtDay.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label25.Location = new System.Drawing.Point(219, 42);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(83, 16);
-            this.label25.TabIndex = 755;
-            this.label25.Text = "ET Remark :";
-            this.theme1.SetTheme(this.label25, "(default)");
-            // 
-            // cboEtRemark
-            // 
-            this.cboEtRemark.AllowSpinLoop = false;
-            this.cboEtRemark.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.cboEtRemark.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.cboEtRemark.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.cboEtRemark.GapHeight = 0;
-            this.cboEtRemark.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.cboEtRemark.ItemsDisplayMember = "";
-            this.cboEtRemark.ItemsValueMember = "";
-            this.cboEtRemark.Location = new System.Drawing.Point(308, 40);
-            this.cboEtRemark.Name = "cboEtRemark";
-            this.cboEtRemark.Size = new System.Drawing.Size(313, 20);
-            this.cboEtRemark.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.cboEtRemark.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
-            this.cboEtRemark.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.cboEtRemark.TabIndex = 756;
-            this.cboEtRemark.Tag = null;
-            this.theme1.SetTheme(this.cboEtRemark, "(default)");
-            this.cboEtRemark.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
             // FrmLabFormA
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1046, 845);
+            this.ClientSize = new System.Drawing.Size(1111, 845);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.sB);
@@ -3350,6 +3350,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnPrintSperm)).EndInit();
             this.gbETFET.ResumeLayout(false);
             this.gbETFET.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cboEtRemark)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboEtDay)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPasswordVoidFET)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkVoidFET)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnVoidFET)).EndInit();
@@ -3414,8 +3416,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.chkEmbryoTranfer)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkFrozenSperm)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkFreshSprem)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cboEtDay)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cboEtRemark)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

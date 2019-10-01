@@ -59,6 +59,17 @@ namespace clinic_ivf.objdb
 
             return dt;
         }
+        public DataTable selectFETFreezeMedia()
+        {
+            DataTable dt = new DataTable();
+            String sql = "select fdt.*  " +
+                "From " + fdt.table + " fdt " +
+                " " +
+                "Where fdt." + fdt.active + " ='1' and fdt." + fdt.status_combo + "='fet_freeze_media'";
+            dt = conn.selectData(conn.conn, sql);
+
+            return dt;
+        }
         public DataTable selectOPUFreezeMedia()
         {
             DataTable dt = new DataTable();
@@ -88,6 +99,17 @@ namespace clinic_ivf.objdb
                 "From " + fdt.table + " fdt " +
                 " " +
                 "Where fdt." + fdt.active + " ='1' and fdt." + fdt.status_combo + "='sperm_analysis_wbc'";
+            dt = conn.selectData(conn.conn, sql);
+
+            return dt;
+        }
+        public DataTable selectSpermAnalysisAppearanceNew()
+        {
+            DataTable dt = new DataTable();
+            String sql = "select fdt.*  " +
+                "From " + fdt.table + " fdt " +
+                " " +
+                "Where fdt." + fdt.active + " ='1' and fdt." + fdt.status_combo + "='sperm_analysis_appeairance_new'";
             dt = conn.selectData(conn.conn, sql);
 
             return dt;
@@ -222,6 +244,21 @@ namespace clinic_ivf.objdb
                 "Where fdt." + fdt.pkField + " ='" + copId + "' ";
             dt = conn.selectData(conn.conn, sql);
             return dt;
+        }
+        public void getlFETFreezeMedia()
+        {
+            //lDept = new List<Position>();
+            lFreezeMedia.Clear();
+            DataTable dt = new DataTable();
+            dt = selectFETFreezeMedia();
+            foreach (DataRow row in dt.Rows)
+            {
+                FDocType itm1 = new FDocType();
+                itm1.doc_type_id = row[fdt.doc_type_id].ToString();
+                itm1.doc_type_name = row[fdt.doc_type_name].ToString();
+
+                lFreezeMedia.Add(itm1);
+            }
         }
         public void getlOPUFreezeMedia()
         {
@@ -554,6 +591,32 @@ namespace clinic_ivf.objdb
             }
             return c;
         }
+
+        public C1ComboBox setCboFETFreezeMedia(C1ComboBox c)
+        {
+            ComboBoxItem item = new ComboBoxItem();
+            if (lFreezeMedia.Count <= 0)
+            {
+                getlFETFreezeMedia();
+            }
+            //DataTable dt = selectFETFreezeMedia();
+            //String aaa = "";
+            ComboBoxItem item1 = new ComboBoxItem();
+            item1.Text = "";
+            item1.Value = "000";
+            c.Items.Clear();
+            c.Items.Add(item1);
+            //for (int i = 0; i < dt.Rows.Count; i++)
+            foreach (FDocType row in lFreezeMedia)
+            {
+                item = new ComboBoxItem();
+                item.Text = row.doc_type_name;
+                item.Value = row.doc_type_id;
+
+                c.Items.Add(item);
+            }
+            return c;
+        }
         public C1ComboBox setCboOPUFreezeMedia(C1ComboBox c)
         {
             ComboBoxItem item = new ComboBoxItem();
@@ -561,7 +624,7 @@ namespace clinic_ivf.objdb
             {
                 getlOPUFreezeMedia();
             }
-            DataTable dt = selectOPUFreezeMedia();
+            //DataTable dt = selectOPUFreezeMedia();
             //String aaa = "";
             ComboBoxItem item1 = new ComboBoxItem();
             item1.Text = "";
@@ -604,6 +667,27 @@ namespace clinic_ivf.objdb
         {
             ComboBoxItem item = new ComboBoxItem();
             DataTable dt = selectSpermAnalysisWbc();
+            //String aaa = "";
+            ComboBoxItem item1 = new ComboBoxItem();
+            item1.Text = "";
+            item1.Value = "000";
+            c.Items.Clear();
+            c.Items.Add(item1);
+            //for (int i = 0; i < dt.Rows.Count; i++)
+            foreach (DataRow row in dt.Rows)
+            {
+                item = new ComboBoxItem();
+                item.Text = row[fdt.doc_type_name].ToString();
+                item.Value = row[fdt.doc_type_id].ToString();
+
+                c.Items.Add(item);
+            }
+            return c;
+        }
+        public C1ComboBox setCboSpermAnalysisAppearanceNew(C1ComboBox c)
+        {
+            ComboBoxItem item = new ComboBoxItem();
+            DataTable dt = selectSpermAnalysisAppearanceNew();
             //String aaa = "";
             ComboBoxItem item1 = new ComboBoxItem();
             item1.Text = "";

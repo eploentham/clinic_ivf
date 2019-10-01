@@ -465,5 +465,42 @@ namespace clinic_ivf.objdb
 
             return dt;
         }
+        public DataTable selectByFetFetId_DayPrint(String opufetid, Day1 day1)
+        {
+            DataTable dt = new DataTable();
+            String day = "";
+            if (day1 == Day1.Day2)
+            {
+                day = "2";
+            }
+            else if (day1 == Day1.Day3)
+            {
+                day = "3";
+            }
+            else if (day1 == Day1.Day5)
+            {
+                day = "5";
+            }
+            else if (day1 == Day1.Day6)
+            {
+                day = "6";
+            }
+            String sql = "select fet.hn_male, fet.hn_female, fet.name_male, fet.name_female, proce.proce_name_t as procedure1, dtr.Name as doctor, opuEmDev.embryo_dev_date as fet_date " +
+                ", opuEmDev.day as day1, opuEmDev.opu_embryo_dev_no as no1, opuEmDev.desc0  as no1_desc0, opuEmDev.path_pic as no1_pathpic, opuEmDev.desc1 as no1_desc1" +
+                ", opuEmDev.desc2 as no1_desc2, opuEmDev.desc3 as no1_desc3, fet.fet_id, fet.fet_code, 'Number of transfer' as footer1" +
+                ", 'Number of Freeze' as footer2,'Number of Discard' as footer3, fet.remark as footer4,'' as footer5, 'st# = straw number' as footer6 " +
+                ", fet.embryo_for_et_number_of_transfer, fet.embryo_for_et_number_of_freeze,fet.embryo_for_et_number_of_discard, opuEmDev.desc4 as no1_desc4  " +
+                "From " + opuEmDev.table + " opuEmDev " +
+                "Left Join lab_t_fet fet on fet.fet_id = opuEmDev.opu_fet_id " +
+                "Left Join lab_b_procedure proce on proce.proce_id = fet.proce_id " +
+                "Left Join Doctor dtr on dtr.ID = fet.doctor_id " +
+                "Where opuEmDev." + opuEmDev.active + " ='1' and " + opuEmDev.opu_fet_id + "='" + opufetid + "' and " + opuEmDev.day + "='" + day + "' " +
+                "and length(opuEmDev.path_pic) > 0 " +
+                "Order By opuEmDev." + opuEmDev.opu_embryo_dev_id;
+
+            dt = conn.selectData(conn.conn, sql);
+
+            return dt;
+        }
     }
 }

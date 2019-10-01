@@ -24,6 +24,7 @@ namespace clinic_ivf.object1
             m_exePath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             try
             {
+                checkLogFile();
                 using (StreamWriter w = File.AppendText(m_exePath + "\\" + "log.txt"))
                 {
                     Log(logMessage, w);
@@ -33,11 +34,35 @@ namespace clinic_ivf.object1
             {
             }
         }
+        private void checkLogFile()
+        {
+            if (File.Exists(m_exePath + "\\" + "log.txt"))
+            {
+                long len = new FileInfo(m_exePath + "\\" + "log.txt").Length;
+                string[] sizes = { "B", "KB", "MB", "GB", "TB" };
+                if (len > 300000)
+                {
+                    File.Delete(m_exePath + "\\" + "log.txt");
+                    using (StreamWriter sw = File.CreateText(m_exePath + "\\" + "log.txt"))
+                    {
+                        sw.WriteLine("Log " + System.DateTime.Now.ToString("dd-MM-yyyy hh:mm:ss"));
+                    }
+                }
+            }
+            else
+            {
+                using (StreamWriter sw = File.CreateText(m_exePath + "\\" + "log.txt"))
+                {
+                    sw.WriteLine("Log " + System.DateTime.Now.ToString("dd-MM-yyyy hh:mm:ss"));
+                }
+            }
+        }
         public void WriteLog(string logMessage)
         {
             m_exePath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             try
             {
+                checkLogFile();
                 using (StreamWriter w = File.AppendText(m_exePath + "\\" + "log.txt"))
                 {
                     Log(logMessage, w);

@@ -79,6 +79,7 @@ namespace clinic_ivf.object1
         public String approve_result_day3_date { get; set; }
         public String approve_result_day5_date { get; set; }
         public String fet_time { get; set; }
+        public String embryo_freez_freeze_media { get; set; }
 
     }
 }
