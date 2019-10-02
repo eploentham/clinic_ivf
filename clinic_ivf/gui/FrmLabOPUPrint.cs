@@ -75,8 +75,8 @@ namespace clinic_ivf.gui
             {
                 groupBox2.Hide();
                 chkEmbryoDev20.Hide();
-                //label7.Hide();
-                //cboEmbryoDev2.Hide();
+                label7.Hide();
+                cboEmbryoDev2.Hide();
 
             }
             else
@@ -378,7 +378,7 @@ namespace clinic_ivf.gui
             }
             catch (Exception ex)
             {
-                ic.logw.WriteLog("error printOPUEmbryoDev "+ ex.Message);
+                ic.logw.WriteLog("e", "error printOPUEmbryoDev " + ex.Message);
                 MessageBox.Show("" + ex.Message, "");
             }
             finally

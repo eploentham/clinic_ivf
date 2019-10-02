@@ -1421,10 +1421,11 @@ namespace clinic_ivf.gui
                 hn = grfQue[grfQue.Row, colPttHn] != null ? grfQue[grfQue.Row, colPttHn].ToString() : "";
                 FrmPrintCritiAnes frm = new FrmPrintCritiAnes(ic, hn, name, vsid);
                 frm.ShowDialog(this);
-                ic.logw.WriteLog("Print Paitent Authen Sign (Finish)");
+                ic.logw.WriteLog("g", "Print Authen Sign (Finish)");
             }
             catch(Exception ex)
             {
+                ic.logw.WriteLog("e", "Print Authen Sign (Finish) err" + ex.Message);
                 MessageBox.Show(ex.Message, "");
             }
             
@@ -1447,10 +1448,11 @@ namespace clinic_ivf.gui
                 FrmReport frm = new FrmReport(ic);
                 frm.setOpdCheckList(name, hn, ptt.AgeStringShort() + " [" + ic.datetoShow(ptt.patient_birthday) + "]", ptt2.Name + " " + ptt2.patient_hn + " " + ptt2.AgeStringShort() + " [" + ic.datetoShow(ptt2.patient_birthday) + "]");
                 frm.ShowDialog(this);
-                ic.logw.WriteLog("Print Paitent Check List (Finish)");
+                ic.logw.WriteLog("g", "Print Check List (Finish)");
             }
             catch(Exception ex)
             {
+                ic.logw.WriteLog("e", "Print Check List (Finish) err" + ex.Message);
                 MessageBox.Show(ex.Message, "");
             }
         }
@@ -1467,10 +1469,11 @@ namespace clinic_ivf.gui
                 hn = grfQue[grfQue.Row, colPttHn] != null ? grfQue[grfQue.Row, colPttHn].ToString() : "";
                 FrmPrintCritiAnes frm = new FrmPrintCritiAnes(ic, hn, name, vsid);
                 frm.ShowDialog(this);
-                ic.logw.WriteLog("Print Paitent Authen Sign (Queue)");
+                ic.logw.WriteLog("g", "Print Authen Sign (Queue)");
             }
             catch(Exception ex)
             {
+                ic.logw.WriteLog("e", "Print Authen Sign (Queue) err" + ex.Message);
                 MessageBox.Show(ex.Message, "");
             }
             
@@ -1489,10 +1492,11 @@ namespace clinic_ivf.gui
 
                 FrmPrintCritiAnes frm = new FrmPrintCritiAnes(ic, hn, name, vsid);
                 frm.ShowDialog(this);
-                ic.logw.WriteLog("Print Paitent Authen Sign (Search)");
+                ic.logw.WriteLog("g", "Print Authen Sign (Search)");
             }
             catch (Exception ex)
             {
+                ic.logw.WriteLog("e", "Print Authen Sign (Search) err" + ex.Message);
                 MessageBox.Show(ex.Message, "");
             }
             
@@ -1515,11 +1519,12 @@ namespace clinic_ivf.gui
                 FrmReport frm = new FrmReport(ic);
                 frm.setOpdCheckList(name, hn, ptt.AgeStringShort() + " [" + ic.datetoShow(ptt.patient_birthday) + "]", ptt2.Name + " " + ptt2.patient_hn + " " + ptt2.AgeStringShort() + " [" + ic.datetoShow(ptt2.patient_birthday) + "]");
                 frm.ShowDialog(this);
-                ic.logw.WriteLog("Print Paitent Check List (Queue)");
+                ic.logw.WriteLog("g", "Print Check List (Queue)");
             }
             catch(Exception ex)
             {
                 MessageBox.Show(ex.Message, "");
+                ic.logw.WriteLog("e", "Print Check List (Queue) err" + ex.Message);
             }
             
         }
@@ -1540,11 +1545,12 @@ namespace clinic_ivf.gui
                 FrmReport frm = new FrmReport(ic);
                 frm.setOpdCheckList(name, hn, ptt.AgeStringShort() + " [" + ic.datetoShow(ptt.patient_birthday) + "]", ptt2.Name + " " + ptt2.patient_hn + " " + ptt2.AgeStringShort() + " [" + ic.datetoShow(ptt2.patient_birthday) + "]");
                 frm.ShowDialog(this);
-                ic.logw.WriteLog("Print Paitent Check List (Search)");
+                ic.logw.WriteLog("g", "Print Check List (Search)");
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "");
+                ic.logw.WriteLog("e", "Print Check List (Search) err " + ex.Message);
             }
             
         }
@@ -1564,11 +1570,12 @@ namespace clinic_ivf.gui
                 FrmReport frm = new FrmReport(ic);
                 frm.setOpdOrderOPU(name, hn, ptt.AgeStringShort() + " [" + ic.datetoShow(ptt.patient_birthday) + "]");
                 frm.ShowDialog(this);
-                ic.logw.WriteLog("Print Print Order OPU (Search)");
+                ic.logw.WriteLog("g", "Print Order OPU (Search)");
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "");
+                ic.logw.WriteLog("e", "Print Order OPU (Search) err " + ex.Message);
             }
             
         }
@@ -1588,10 +1595,11 @@ namespace clinic_ivf.gui
                 FrmReport frm = new FrmReport(ic);
                 frm.setOpdOrderOPU(name, hn, ptt.AgeStringShort() + " [" + ic.datetoShow(ptt.patient_birthday) + "]");
                 frm.ShowDialog(this);
-                ic.logw.WriteLog("Print Print Order OPU (Finish)");
+                ic.logw.WriteLog("g", "Print Order OPU (Finish)");
             }
             catch (Exception ex)
             {
+                ic.logw.WriteLog("e", "Print Order OPU (Finish) err " + ex.Message);
                 MessageBox.Show(ex.Message, "");
             }
             
@@ -1612,10 +1620,11 @@ namespace clinic_ivf.gui
                 FrmReport frm = new FrmReport(ic);
                 frm.setOpdOrderOPU(name, hn, ptt.AgeStringShort() + " [" + ic.datetoShow(ptt.patient_birthday) + "]");
                 frm.ShowDialog(this);
-                ic.logw.WriteLog("Print Print Order OPU (Queue)");
+                ic.logw.WriteLog("g", "Print Order OPU (Queue)");
             }
             catch (Exception ex)
             {
+                ic.logw.WriteLog("e", "Print Order OPU (Queue) err " + ex.Message);
                 MessageBox.Show(ex.Message, "");
             }
             
@@ -1636,10 +1645,11 @@ namespace clinic_ivf.gui
                 FrmReport frm = new FrmReport(ic);
                 frm.setOpdOrderETFET(name, hn, ptt.AgeStringShort() + " [" + ic.datetoShow(ptt.patient_birthday) + "]");
                 frm.ShowDialog(this);
-                ic.logw.WriteLog("Print Print Order ET FET (Search)");
+                ic.logw.WriteLog("g", "Print Order ET FET (Search)");
             }
             catch (Exception ex)
             {
+                ic.logw.WriteLog("e", "Print Order ET FET (Search) err " + ex.Message);
                 MessageBox.Show(ex.Message, "");
             }
             
@@ -1660,10 +1670,11 @@ namespace clinic_ivf.gui
                 FrmReport frm = new FrmReport(ic);
                 frm.setOpdOrderETFET(name, hn, ptt.AgeStringShort() + " [" + ic.datetoShow(ptt.patient_birthday) + "]");
                 frm.ShowDialog(this);
-                ic.logw.WriteLog("Print Print Order ET FET (Finish)");
+                ic.logw.WriteLog("g", "Print Order ET FET (Finish)");
             }
             catch (Exception ex)
             {
+                ic.logw.WriteLog("e", "Print Order ET FET (Finish) err " + ex.Message);
                 MessageBox.Show(ex.Message, "");
             }
             
@@ -1684,10 +1695,11 @@ namespace clinic_ivf.gui
                 FrmReport frm = new FrmReport(ic);
                 frm.setOpdOrderETFET(name, hn, ptt.AgeStringShort() + " [" + ic.datetoShow(ptt.patient_birthday) + "]");
                 frm.ShowDialog(this);
-                ic.logw.WriteLog("Print Print Order ET FET (Queue)");
+                ic.logw.WriteLog("g", "Print Order ET FET (Queue)");
             }
             catch (Exception ex)
             {
+                ic.logw.WriteLog("e", "Print Order ET FET (Queue) err " + ex.Message);
                 MessageBox.Show(ex.Message, "");
             }
             
@@ -1708,10 +1720,11 @@ namespace clinic_ivf.gui
                 FrmReport frm = new FrmReport(ic);
                 frm.setOpdpostoperationnote(name, hn, ptt.AgeStringShort() + " [" + ic.datetoShow(ptt.patient_birthday) + "]");
                 frm.ShowDialog(this);
-                ic.logw.WriteLog("Print Print Operation Note (Search)");
+                ic.logw.WriteLog("g", "Print Print Operation Note (Search)");
             }
             catch (Exception ex)
             {
+                ic.logw.WriteLog("e", "Print Operation Note (Search) err " + ex.Message);
                 MessageBox.Show(ex.Message, "");
             }
             
@@ -1732,10 +1745,11 @@ namespace clinic_ivf.gui
                 FrmReport frm = new FrmReport(ic);
                 frm.setOpdpostoperationnote(name, hn, ptt.AgeStringShort() + " [" + ic.datetoShow(ptt.patient_birthday) + "]");
                 frm.ShowDialog(this);
-                ic.logw.WriteLog("Print Print Operation Note (Finish)");
+                ic.logw.WriteLog("g", "Print Print Operation Note (Finish)");
             }
             catch (Exception ex)
             {
+                ic.logw.WriteLog("e", "Print Operation Note (Finish) err " + ex.Message);
                 MessageBox.Show(ex.Message, "");
             }
             
@@ -1756,10 +1770,11 @@ namespace clinic_ivf.gui
                 FrmReport frm = new FrmReport(ic);
                 frm.setOpdpostoperationnote(name, hn, ptt.AgeStringShort() + " [" + ic.datetoShow(ptt.patient_birthday) + "]");
                 frm.ShowDialog(this);
-                ic.logw.WriteLog("Print Print Operation Note (Queue)");
+                ic.logw.WriteLog("g", "Print Print Operation Note (Queue)");
             }
             catch (Exception ex)
             {
+                ic.logw.WriteLog("e", "Print Operation Note (Queue) err " + ex.Message);
                 MessageBox.Show(ex.Message, "");
             }
             
@@ -1778,10 +1793,11 @@ namespace clinic_ivf.gui
                 FrmReport frm = new FrmReport(ic);
                 frm.setPatientMedicalHistory(name, hn);
                 frm.ShowDialog(this);
-                ic.logw.WriteLog("Print Print Patient History (Finish)");
+                ic.logw.WriteLog("g", "Print Print Patient History (Finish)");
             }
             catch (Exception ex)
             {
+                ic.logw.WriteLog("e", "Print Operation History (Finish) err " + ex.Message);
                 MessageBox.Show(ex.Message, "");
             }
             
@@ -1800,10 +1816,11 @@ namespace clinic_ivf.gui
                 FrmReport frm = new FrmReport(ic);
                 frm.setPatientMedicalHistory(name, hn);
                 frm.ShowDialog(this);
-                ic.logw.WriteLog("Print Print Patient History (Search)");
+                ic.logw.WriteLog("g", "Print Print Patient History (Search)");
             }
             catch (Exception ex)
             {
+                ic.logw.WriteLog("e", "Print Operation History (Search) err " + ex.Message);
                 MessageBox.Show(ex.Message, "");
             }
             
@@ -1846,6 +1863,7 @@ namespace clinic_ivf.gui
             }
             catch (Exception ex)
             {
+                ic.logw.WriteLog("e", "Print ContextMenu_prn_sticker_vn_grfque err " + ex.Message);
                 MessageBox.Show(this, ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -1910,6 +1928,7 @@ namespace clinic_ivf.gui
             }
             catch (Exception ex)
             {
+                ic.logw.WriteLog("e", "Print ContextMenu_prn_sticker_vn err " + ex.Message);
                 MessageBox.Show(this, ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }

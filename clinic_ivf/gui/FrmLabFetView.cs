@@ -89,7 +89,7 @@ namespace clinic_ivf.gui
             //throw new NotImplementedException();
             String txt = "";
             txt = "ป้อน LAB FET ใหม่ ";
-            FrmLabFetAdd1 frm = new FrmLabFetAdd1(ic, "", "");
+            FrmLabFetAdd2 frm = new FrmLabFetAdd2(ic, "", "");
             frm.FormBorderStyle = FormBorderStyle.None;
             menu.AddNewTab(frm, txt);
         }
@@ -759,7 +759,7 @@ namespace clinic_ivf.gui
         private void openLabOPUAdd(String opdId, String name)
         {
             //FrmLabOPUAdd frm = new FrmLabOPUAdd(ic, "", opdId);
-            FrmLabFetAdd1 frm = new FrmLabFetAdd1(ic, "", opdId);
+            FrmLabFetAdd2 frm = new FrmLabFetAdd2(ic, "", opdId);
             String txt = "";
             if (!name.Equals(""))
             {
@@ -795,7 +795,7 @@ namespace clinic_ivf.gui
                         if (long.TryParse(re1, out chk1))
                         {
                             //FrmLabOPUAdd frm = new FrmLabOPUAdd(ic, "", re1);
-                            FrmLabFetAdd1 frm = new FrmLabFetAdd1(ic, "", re1);
+                            FrmLabFetAdd2 frm = new FrmLabFetAdd2(ic, "", re1);
                             String txt = "";
                             if (!name.Equals(""))
                             {
@@ -817,7 +817,7 @@ namespace clinic_ivf.gui
                         if (long.TryParse(re1, out chk1))
                         {
                             //FrmLabOPUAdd frm = new FrmLabOPUAdd(ic, "", re1);
-                            FrmLabFetAdd1 frm = new FrmLabFetAdd1(ic, "", re1);
+                            FrmLabFetAdd2 frm = new FrmLabFetAdd2(ic, "", re1);
                             String txt = "";
                             if (!name.Equals(""))
                             {

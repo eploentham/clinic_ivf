@@ -64,7 +64,6 @@ namespace clinic_ivf.object1
         public String date_pic_embryo { get; set; }
         public String hn_donor { get; set; }
         public String name_donor { get; set; }
-
         public String doctor_name { get; set; }
         public String proce_name { get; set; }
         public String dob_donor { get; set; }
@@ -80,6 +79,7 @@ namespace clinic_ivf.object1
         public String approve_result_day5_date { get; set; }
         public String fet_time { get; set; }
         public String embryo_freez_freeze_media { get; set; }
+        public String embryo_pic_day { get; set; }
 
     }
 }

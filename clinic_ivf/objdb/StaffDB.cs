@@ -15,7 +15,7 @@ namespace clinic_ivf.objdb
         public Staff stf;
         ConnectDB conn;
 
-        public List<Staff> lStf;
+        public List<Staff> lStf, lStfEx;
         public List<Staff> ldtr;
 
         public StaffDB(ConnectDB c)
@@ -79,6 +79,33 @@ namespace clinic_ivf.objdb
 
             lStf = new List<Staff>();
             ldtr = new List<Staff>();
+            lStfEx = new List<Staff>();
+        }
+        public void getlStfEx()
+        {
+            //lDept = new List<Position>();
+
+            lStfEx.Clear();
+            DataTable dt = new DataTable();
+            dt = selectAllEx();
+            foreach (DataRow row in dt.Rows)
+            {
+                Staff stf1 = new Staff();
+                stf1.staff_id = row[stf.staff_id].ToString();
+                stf1.staff_code = row[stf.staff_code].ToString();
+                stf1.staff_fname_t = row[stf.staff_fname_t].ToString();
+                stf1.staff_lname_t = row[stf.staff_lname_t].ToString();
+                stf1.staff_fname_e = row[stf.staff_fname_e].ToString();
+                stf1.staff_lname_e = row[stf.staff_lname_e].ToString();
+                stf1.doctor_id_old = row[stf.doctor_id_old].ToString();
+                stf1.doctor_id = row[stf.doctor_id].ToString();
+                //cus1.date_cancel = row[dept.date_cancel].ToString();
+                //cus1.user_create = row[dept.user_create].ToString();
+                //cus1.user_modi = row[dept.user_modi].ToString();
+                //cus1.user_cancel = row[dept.user_cancel].ToString();
+                //cus1.active = row[dept.active].ToString();
+                lStfEx.Add(stf1);
+            }
         }
         public void getlStf()
         {
@@ -456,6 +483,17 @@ namespace clinic_ivf.objdb
 
             return dt;
         }
+        public DataTable selectAllEx()
+        {
+            DataTable dt = new DataTable();
+            String sql = "select cop.*  " +
+                "From " + stf.table + " cop " +
+                " " +
+                "Where cop." + stf.active + " ='1' ";
+            dt = conn.selectData(conn.connEx, sql);
+
+            return dt;
+        }
         public DataTable selectAll()
         {
             DataTable dt = new DataTable();
@@ -754,6 +792,22 @@ namespace clinic_ivf.objdb
             stf1.doctor_id = "0";
             stf1.doctor_id_old = "0";
             return stf1;
+        }
+        public String getStaffNameBylStfEx(String selected)
+        {
+            String re = "";
+            int i = 0;
+            if (lStfEx.Count <= 0) getlStfEx();
+            foreach (Staff cus1 in lStfEx)
+            {
+                if (cus1.staff_id.Equals(selected))
+                {
+                    re = cus1.staff_fname_e + " " + cus1.staff_lname_e;
+                    break;
+                }
+                i++;
+            }
+            return re;
         }
         public String getStaffNameBylStf(String selected)
         {

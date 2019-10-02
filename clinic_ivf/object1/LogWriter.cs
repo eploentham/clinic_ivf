@@ -11,15 +11,21 @@ namespace clinic_ivf.object1
     public class LogWriter
     {
         private string m_exePath = string.Empty;
-        public LogWriter(string logMessage)
+        /*
+         * type = g,e,w
+         * g = general
+         * e = error
+         * w = warn
+         * */
+        public LogWriter(String type, string logMessage)
         {
-            LogWrite(logMessage);
+            LogWrite(type,logMessage);
         }
         public LogWriter()
         {
             
         }
-        private void LogWrite(string logMessage)
+        private void LogWrite(String type,string logMessage)
         {
             m_exePath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             try
@@ -27,7 +33,7 @@ namespace clinic_ivf.object1
                 checkLogFile();
                 using (StreamWriter w = File.AppendText(m_exePath + "\\" + "log.txt"))
                 {
-                    Log(logMessage, w);
+                    Log(type, logMessage, w);
                 }
             }
             catch (Exception ex)
@@ -40,7 +46,7 @@ namespace clinic_ivf.object1
             {
                 long len = new FileInfo(m_exePath + "\\" + "log.txt").Length;
                 string[] sizes = { "B", "KB", "MB", "GB", "TB" };
-                if (len > 300000)
+                if (len > 6000000)
                 {
                     File.Delete(m_exePath + "\\" + "log.txt");
                     using (StreamWriter sw = File.CreateText(m_exePath + "\\" + "log.txt"))
@@ -57,7 +63,7 @@ namespace clinic_ivf.object1
                 }
             }
         }
-        public void WriteLog(string logMessage)
+        public void WriteLog(String type, string logMessage)
         {
             m_exePath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             try
@@ -65,7 +71,7 @@ namespace clinic_ivf.object1
                 checkLogFile();
                 using (StreamWriter w = File.AppendText(m_exePath + "\\" + "log.txt"))
                 {
-                    Log(logMessage, w);
+                    Log(type, logMessage, w);
                 }
             }
             catch (Exception ex)
@@ -73,13 +79,13 @@ namespace clinic_ivf.object1
             }
         }
 
-        public void Log(string logMessage, TextWriter txtWriter)
+        public void Log(String type,string logMessage, TextWriter txtWriter)
         {
             try
             {
                 //txtWriter.Write("\r\nLog Entry : ");
                 //txtWriter.WriteLine("{0} {1}", DateTime.Now.ToLongTimeString(),DateTime.Now.ToLongDateString());
-                txtWriter.WriteLine("{0} {1}", DateTime.Now.ToShortDateString(), DateTime.Now.ToShortTimeString() + "->" + logMessage);
+                txtWriter.WriteLine("{0} {1}", DateTime.Now.ToShortDateString(), type+"#"+DateTime.Now.ToShortTimeString() + "#" + logMessage);
                 //txtWriter.WriteLine("  :");
                 //txtWriter.Write("  :{0}", logMessage);
                 //txtWriter.WriteLine("-------------------------------");

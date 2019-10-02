@@ -1380,7 +1380,8 @@ namespace clinic_ivf.gui
                 if (stf.IndexOf("@") >= 0)
                 {
                     stf = stf.Substring(0, stf.IndexOf("@"));
-                    row1[colStfCreate] = ic.ivfDB.stfDB.getStaffNameBylStf(stf);
+                    
+                    row1[colStfCreate] = ic.ivfDB.stfDB.getStaffNameBylStfEx(stf);  // ต้องเป็น ex เพราะ เป็นข้อมูลจากอีก database หนึ่ง
                 }
                 
                 stf = "";
@@ -1388,7 +1389,7 @@ namespace clinic_ivf.gui
                 if (stf.IndexOf("@") >= 0)
                 {
                     stf = stf.Substring(0, stf.IndexOf("@"));
-                    row1[colStfModi] = ic.ivfDB.stfDB.getStaffNameBylStf(stf);
+                    row1[colStfModi] = ic.ivfDB.stfDB.getStaffNameBylStfEx(stf);  // ต้องเป็น ex เพราะ เป็นข้อมูลจากอีก database หนึ่ง
                 }
                 
                 stf = "";
@@ -1396,7 +1397,7 @@ namespace clinic_ivf.gui
                 if (stf.IndexOf("@") >= 0)
                 {
                     stf = stf.Substring(0, stf.IndexOf("@"));
-                    row1[colStfSave] = ic.ivfDB.stfDB.getStaffNameBylStf(stf);
+                    row1[colStfSave] = ic.ivfDB.stfDB.getStaffNameBylStfEx(stf);  // ต้องเป็น ex เพราะ เป็นข้อมูลจากอีก database หนึ่ง
                 }
 
                 if (!row[ic.ivfDB.pApmDB.pApm.tvs_day].ToString().Equals(""))

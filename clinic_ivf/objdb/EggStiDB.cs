@@ -155,7 +155,7 @@ namespace clinic_ivf.objdb
             catch (Exception ex)
             {
                 sql = ex.Message + " " + ex.InnerException;
-                new LogWriter("Error insert EggSti " + sql);
+                new LogWriter("e", "Error insert EggSti " + sql);
             }
 
             return re;
@@ -206,6 +206,7 @@ namespace clinic_ivf.objdb
             catch (Exception ex)
             {
                 sql = ex.Message + " " + ex.InnerException;
+                new LogWriter("e", "Error update EggSti " + sql);
             }
 
             return re;

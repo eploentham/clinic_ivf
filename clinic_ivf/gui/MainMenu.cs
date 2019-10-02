@@ -507,7 +507,7 @@ namespace clinic_ivf.gui
             {
                 if (ic.video != null)
                 {
-                    ic.logw.WriteLog("MainMenu4_FormClosing ic.video != null");
+                    ic.logw.WriteLog("w", "MainMenu4_FormClosing ic.video != null");
                     if (ic.video.IsRunning)
                     {
                         ic.video.Stop();
@@ -655,8 +655,8 @@ namespace clinic_ivf.gui
         {
             String date = "";
             date = DateTime.Now.Year+"-"+ DateTime.Now.ToString("MM-dd");
-            this.Text = ic.iniC.statusAppDonor.Equals("1") ? "โปรแกรมClinic IVF Donor " +"สวัสดี คุณ "+ic.user.staff_fname_t +" "+ic.user.staff_lname_t+" Update 2019-10-01 "
-                : "โปรแกรมClinic IVF " + "สวัสดี คุณ " + ic.user.staff_fname_t + " " + ic.user.staff_lname_t + " Update 2019-10-01 format date "+ date;
+            this.Text = ic.iniC.statusAppDonor.Equals("1") ? "โปรแกรมClinic IVF Donor " +"สวัสดี คุณ "+ic.user.staff_fname_t +" "+ic.user.staff_lname_t+" Update 2019-10-02 "
+                : "โปรแกรมClinic IVF " + "สวัสดี คุณ " + ic.user.staff_fname_t + " " + ic.user.staff_lname_t + " Update 2019-10-02 format date "+ date;
 
             //theme1.SetTheme(this, ic.theme);
             theme1.SetTheme(this, ic.theme);

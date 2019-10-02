@@ -1738,7 +1738,7 @@ namespace clinic_ivf.gui
             RichTextBoxStreamType fileType = RichTextBoxStreamType.RichText;
             this.SetDocumentProperties("progressnote_"+txtVn.Text + ".rtf", fileType);
             this.SaveDocumentAs(this.documentFileType);
-
+            setGrfPg();
             return true;
         }
 
@@ -1747,6 +1747,7 @@ namespace clinic_ivf.gui
             //string filePathName = this.documentPath + '\\' + this.documentName;
             try
             {
+                ic.logw.WriteLog("g", "SaveDocumentAs HN " + txtHn.Text + " VN " + txtVn.Text);
                 String filePathName = this.documentPath + '\\' + this.documentName;
                 if (File.Exists(filePathName))
                 {
@@ -1764,7 +1765,7 @@ namespace clinic_ivf.gui
             }
             catch(Exception ex)
             {
-
+                ic.logw.WriteLog("e", "SaveDocumentAs HN " + txtHn.Text + " VN " + txtVn.Text+" "+ ex.Message);
             }
         }
 
@@ -2701,7 +2702,7 @@ namespace clinic_ivf.gui
             String lmpdate = "",err="";
             DateTime lmpdate1 = new DateTime();
             lmpdate = ic.datetoDB(txtEggStiVisitLMP.Text);
-            ic.logw.WriteLog("BtnGenEggSti_Click HN "+txtHn.Text+" VN "+txtVn.Text);
+            ic.logw.WriteLog("g","BtnGenEggSti_Click HN "+txtHn.Text+" VN "+txtVn.Text);
             if (!DateTime.TryParse(lmpdate, out lmpdate1))
             {
                 MessageBox.Show("วันที่ LMP Date ไม่ถูกต้อง ", "");
@@ -2716,7 +2717,7 @@ namespace clinic_ivf.gui
                 if (!ic.cStf.staff_id.Equals(""))
                 {
                     long chk = 0, chk1 = 0, max=0;
-                    ic.logw.WriteLog("BtnGenEggSti_Click HN " + txtHn.Text + " VN " + txtVn.Text);
+                    ic.logw.WriteLog("g", "BtnGenEggSti_Click HN " + txtHn.Text + " VN " + txtVn.Text);
                     String re = ic.ivfDB.eggsDB.insertEggSti(eggs, ic.cStf.staff_id);
                     if (long.TryParse(re, out chk))
                     {
@@ -2777,7 +2778,7 @@ namespace clinic_ivf.gui
                         }
                         catch(Exception ex)
                         {
-                            ic.logw.WriteLog("BtnGenEggSti_Click error " + ex.Message);
+                            ic.logw.WriteLog("e", "BtnGenEggSti_Click error " + ex.Message);
                         }
                         
                         setControlEggSti();

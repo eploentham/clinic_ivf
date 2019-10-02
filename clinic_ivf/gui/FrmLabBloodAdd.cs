@@ -218,7 +218,8 @@ namespace clinic_ivf.gui
             dt.Columns.Add("line1", typeof(String));
             dt.Columns.Add("line2", typeof(String));
             dt.Columns.Add("line3", typeof(String));
-
+            dt.Columns.Add("sign_reporter", typeof(String));
+            dt.Columns.Add("sign_approved", typeof(String));
             String chk = "", printerDefault = "";
             String amh = "", collectdate = "", receivedate = "", reporter = "", approved = "", reportername = "", approvedname = "";
             Staff stf = new Staff();

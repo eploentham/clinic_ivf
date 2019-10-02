@@ -90,6 +90,7 @@ namespace clinic_ivf.objdb
             fet.approve_result_day5_date = "approve_result_day5_date";
             fet.fet_time = "fet_time";
             fet.embryo_freez_freeze_media = "embryo_freez_freeze_media";
+            fet.embryo_pic_day = "embryo_pic_day";
 
             fet.table = "lab_t_fet";
             fet.pkField = "fet_id";
@@ -199,6 +200,7 @@ namespace clinic_ivf.objdb
             //p.sort1 = p.sort1 == null ? "" : p.sort1;
             p.dob_donor = p.dob_donor == null ? "" : p.dob_donor;
             p.fet_time = p.fet_time == null ? "" : p.fet_time;
+            p.embryo_pic_day = p.embryo_pic_day == null ? "" : p.embryo_pic_day;
 
             p.doctor_id = int.TryParse(p.doctor_id, out chk) ? chk.ToString() : "0";
             p.proce_id = int.TryParse(p.proce_id, out chk) ? chk.ToString() : "0";
@@ -373,6 +375,26 @@ namespace clinic_ivf.objdb
 
             return re;
         }
+        public String updateEmbryoPicDay(String fetid, String day)
+        {
+            String re = "";
+            String sql = "";
+            int chk = 0;
+            
+            sql = "Update " + fet.table + " Set " +
+                " " + fet.embryo_pic_day + " = '" + day + "'" +                
+                "Where " + fet.pkField + "='" + fetid + "'";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+
+            return re;
+        }
         public LabFet setLabFET(DataTable dt)
         {
             LabFet fet1 = new LabFet();
@@ -451,6 +473,7 @@ namespace clinic_ivf.objdb
                 fet1.media_exp = dt.Rows[0][fet.media_exp].ToString();
                 fet1.media_thawing = dt.Rows[0][fet.media_thawing].ToString();
                 fet1.embryo_freez_freeze_media = dt.Rows[0][fet.embryo_freez_freeze_media].ToString();
+                fet1.embryo_pic_day = dt.Rows[0][fet.embryo_pic_day].ToString();
             }
             else
             {
@@ -526,6 +549,7 @@ namespace clinic_ivf.objdb
                 fet1.media_exp = "";
                 fet1.media_thawing = "";
                 fet1.embryo_freez_freeze_media = "";
+                fet1.embryo_pic_day = "";
             }
 
             return fet1;

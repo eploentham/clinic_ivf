@@ -425,9 +425,8 @@ namespace clinic_ivf.objdb
             }
             catch (Exception ex)
             {
-                new LogWriter("Error insert LabSperm sql " + sql);
                 sql = ex.Message + " " + ex.InnerException;
-                new LogWriter("Error insert LabSperm " + sql);
+                new LogWriter("e", "Error insert LabSperm " + sql);
             }
             return re;
         }
@@ -525,9 +524,8 @@ namespace clinic_ivf.objdb
             }
             catch (Exception ex)
             {
-                new LogWriter("Error insert LabSperm sql " + sql);
                 sql = ex.Message + " " + ex.InnerException;
-                new LogWriter("Error insert LabSperm " + sql);
+                new LogWriter("e", "Error insert LabSperm " + sql);
             }
             return re;
         }
