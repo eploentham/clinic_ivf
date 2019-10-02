@@ -159,101 +159,101 @@ namespace clinic_ivf.gui
             }
             else if (opureport == opuReport.FETEmbryoDevReport)
             {
-                printFETEmbryoDev();
+                //printFETEmbryoDev();
             }
 
         }
         private void printFETEmbryoDev()
         {
-            FrmReport frm = new FrmReport(ic);
-            DataTable dt = new DataTable();
-            FrmWaiting frmW = new FrmWaiting();
-            frmW.Show();
-            try
-            {
-                int i = 0;
-                String day = "";
-                LabFet fet = new LabFet();
-                fet = ic.ivfDB.fetDB.selectByPk1(txtID.Text);
-                day = cboEmbryoDev1.SelectedItem == null ? "" : ((ComboBoxItem)cboEmbryoDev1.SelectedItem).Value;
-                if (day.Equals("2"))
-                {
-                    dt = ic.ivfDB.opuEmDevDB.selectByFetFetId_DayPrint(txtID.Text, objdb.LabOpuEmbryoDevDB.Day1.Day2);
-                }
-                else if (day.Equals("3"))
-                {
-                    dt = ic.ivfDB.opuEmDevDB.selectByFetFetId_DayPrint(txtID.Text, objdb.LabOpuEmbryoDevDB.Day1.Day3);
-                }
-                else if (day.Equals("5"))
-                {
-                    dt = ic.ivfDB.opuEmDevDB.selectByFetFetId_DayPrint(txtID.Text, objdb.LabOpuEmbryoDevDB.Day1.Day5);
-                }
-                else if (day.Equals("6"))
-                {
-                    dt = ic.ivfDB.opuEmDevDB.selectByFetFetId_DayPrint(txtID.Text, objdb.LabOpuEmbryoDevDB.Day1.Day6);
-                }
-                if (dt.Rows.Count > 0)
-                {
-                    frmW.pB.Minimum = 1;
-                    frmW.pB.Maximum = dt.Rows.Count;
-                    foreach (DataRow row in dt.Rows)
-                    {
-                        String path_pic = "", opuCode = "";
-                        path_pic = row["no1_pathpic"] != null ? row["no1_pathpic"].ToString() : "";
-                        opuCode = row["fet_code"] != null ? row["fet_code"].ToString() : "";
-                        if (!path_pic.Equals(""))
-                        {
-                            MemoryStream stream = ic.ftpC.download(path_pic);
-                            Image loadedImage = new Bitmap(stream);
-                            String[] ext = path_pic.Split('.');
-                            var extension = Path.GetExtension(path_pic);
-                            var name = Path.GetFileNameWithoutExtension(path_pic); // Get the name only
-                            //if (ext.Length > 0)
-                            //{
-                            String filename = name;
-                            String no = "", filename1 = "", st = "";
-                            no = filename.Substring(filename.Length - 2);
-                            no = no.Replace("_", "");
-                            filename1 = "embryo_dev_" + no + extension;
-                            if (File.Exists(filename1))
-                            {
-                                File.Delete(filename1);
-                                System.Threading.Thread.Sleep(200);
-                            }
-                            loadedImage.Save(filename1);
-                            row["no1_pathpic"] = System.IO.Directory.GetCurrentDirectory() + "\\" + filename1;
-                            //st = row["no1_desc2"].ToString();
-                            st = row["no1_desc3"].ToString();
-                            row["no1_desc2"] = "st# " + st;
-                            row["no1_desc3"] = row["no1_desc4"].ToString();
-                            //}footer11
-                        }
-                        //row["footer11"] = opu.remark_day2;
-                        //row["footer12"] = opu.remark_day3;
-                        //row["footer13"] = opu.remark_day5;
-                        //row["footer14"] = opu.remark_day6;
-                        //row["footer15"] = "";
-                        //row["footer16"] = "";
-                        i++;
-                        frmW.pB.Value = i;
-                    }
-                }
-                String date1 = "";
-                date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.fetDB.fet.fet_date].ToString());
-                dt.Rows[0][ic.ivfDB.fetDB.fet.fet_date] = date1.Replace("-", "/");
+            //FrmReport frm = new FrmReport(ic);
+            //DataTable dt = new DataTable();
+            //FrmWaiting frmW = new FrmWaiting();
+            //frmW.Show();
+            //try
+            //{
+            //    int i = 0;
+            //    String day = "";
+            //    LabFet fet = new LabFet();
+            //    fet = ic.ivfDB.fetDB.selectByPk1(txtID.Text);
+            //    day = cboEmbryoDev1.SelectedItem == null ? "" : ((ComboBoxItem)cboEmbryoDev1.SelectedItem).Value;
+            //    if (day.Equals("2"))
+            //    {
+            //        dt = ic.ivfDB.opuEmDevDB.selectByFetFetId_DayPrint(txtID.Text, objdb.LabOpuEmbryoDevDB.Day1.Day2);
+            //    }
+            //    else if (day.Equals("3"))
+            //    {
+            //        dt = ic.ivfDB.opuEmDevDB.selectByFetFetId_DayPrint(txtID.Text, objdb.LabOpuEmbryoDevDB.Day1.Day3);
+            //    }
+            //    else if (day.Equals("5"))
+            //    {
+            //        dt = ic.ivfDB.opuEmDevDB.selectByFetFetId_DayPrint(txtID.Text, objdb.LabOpuEmbryoDevDB.Day1.Day5);
+            //    }
+            //    else if (day.Equals("6"))
+            //    {
+            //        dt = ic.ivfDB.opuEmDevDB.selectByFetFetId_DayPrint(txtID.Text, objdb.LabOpuEmbryoDevDB.Day1.Day6);
+            //    }
+            //    if (dt.Rows.Count > 0)
+            //    {
+            //        frmW.pB.Minimum = 1;
+            //        frmW.pB.Maximum = dt.Rows.Count;
+            //        foreach (DataRow row in dt.Rows)
+            //        {
+            //            String path_pic = "", opuCode = "";
+            //            path_pic = row["no1_pathpic"] != null ? row["no1_pathpic"].ToString() : "";
+            //            opuCode = row["fet_code"] != null ? row["fet_code"].ToString() : "";
+            //            if (!path_pic.Equals(""))
+            //            {
+            //                MemoryStream stream = ic.ftpC.download(path_pic);
+            //                Image loadedImage = new Bitmap(stream);
+            //                String[] ext = path_pic.Split('.');
+            //                var extension = Path.GetExtension(path_pic);
+            //                var name = Path.GetFileNameWithoutExtension(path_pic); // Get the name only
+            //                //if (ext.Length > 0)
+            //                //{
+            //                String filename = name;
+            //                String no = "", filename1 = "", st = "";
+            //                no = filename.Substring(filename.Length - 2);
+            //                no = no.Replace("_", "");
+            //                filename1 = "embryo_dev_" + no + extension;
+            //                if (File.Exists(filename1))
+            //                {
+            //                    File.Delete(filename1);
+            //                    System.Threading.Thread.Sleep(200);
+            //                }
+            //                loadedImage.Save(filename1);
+            //                row["no1_pathpic"] = System.IO.Directory.GetCurrentDirectory() + "\\" + filename1;
+            //                //st = row["no1_desc2"].ToString();
+            //                st = row["no1_desc3"].ToString();
+            //                row["no1_desc2"] = "st# " + st;
+            //                row["no1_desc3"] = row["no1_desc4"].ToString();
+            //                //}footer11
+            //            }
+            //            //row["footer11"] = opu.remark_day2;
+            //            //row["footer12"] = opu.remark_day3;
+            //            //row["footer13"] = opu.remark_day5;
+            //            //row["footer14"] = opu.remark_day6;
+            //            //row["footer15"] = "";
+            //            //row["footer16"] = "";
+            //            i++;
+            //            frmW.pB.Value = i;
+            //        }
+            //    }
+            //    String date1 = "";
+            //    date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.fetDB.fet.fet_date].ToString());
+            //    dt.Rows[0][ic.ivfDB.fetDB.fet.fet_date] = date1.Replace("-", "/");
 
-                frm.setFETEmbryoDevReport(dt);
+            //    frm.setFETEmbryoDevReport(dt);
 
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("" + ex.Message, "");
-            }
-            finally
-            {
-                frmW.Dispose();
-            }
-            frm.ShowDialog(this);
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("" + ex.Message, "");
+            //}
+            //finally
+            //{
+            //    frmW.Dispose();
+            //}
+            //frm.ShowDialog(this);
         }
         private void printOPUReport()
         {

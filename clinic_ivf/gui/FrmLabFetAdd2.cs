@@ -1436,6 +1436,7 @@ namespace clinic_ivf.gui
         private void printFETEmbryoDev()
         {
             FrmReport frm = new FrmReport(ic);
+            DataTable dtEmbr = new DataTable();
             DataTable dt = new DataTable();
             FrmWaiting frmW = new FrmWaiting();
             frmW.Show();
@@ -1446,31 +1447,109 @@ namespace clinic_ivf.gui
                 LabFet fet = new LabFet();
                 fet = ic.ivfDB.fetDB.selectByPk1(txtID.Text);
                 day = cboEmbryoPicDay.SelectedItem == null ? "" : ((ComboBoxItem)cboEmbryoPicDay.SelectedItem).Value;
+                
                 if (day.Equals("2"))
                 {
-                    dt = ic.ivfDB.opuEmDevDB.selectByFetFetId_DayPrint(txtID.Text, objdb.LabOpuEmbryoDevDB.Day1.Day2);
+                    dt = ic.ivfDB.opuEmDevDB.selectByOpuFetId_DayPrint(txtID.Text, objdb.LabOpuEmbryoDevDB.Day1.Day2);      // ต้องใช้ method นี้ เพราะจะได้ดึง desc ให้เหมือน OPU
                 }
                 else if (day.Equals("3"))
                 {
-                    dt = ic.ivfDB.opuEmDevDB.selectByFetFetId_DayPrint(txtID.Text, objdb.LabOpuEmbryoDevDB.Day1.Day3);
+                    dt = ic.ivfDB.opuEmDevDB.selectByOpuFetId_DayPrint(txtID.Text, objdb.LabOpuEmbryoDevDB.Day1.Day3);      // ต้องใช้ method นี้ เพราะจะได้ดึง desc ให้เหมือน OPU
                 }
                 else if (day.Equals("5"))
                 {
-                    dt = ic.ivfDB.opuEmDevDB.selectByFetFetId_DayPrint(txtID.Text, objdb.LabOpuEmbryoDevDB.Day1.Day5);
+                    dt = ic.ivfDB.opuEmDevDB.selectByOpuFetId_DayPrint(txtID.Text, objdb.LabOpuEmbryoDevDB.Day1.Day5);      // ต้องใช้ method นี้ เพราะจะได้ดึง desc ให้เหมือน OPU
                 }
                 else if (day.Equals("6"))
                 {
-                    dt = ic.ivfDB.opuEmDevDB.selectByFetFetId_DayPrint(txtID.Text, objdb.LabOpuEmbryoDevDB.Day1.Day6);
+                    dt = ic.ivfDB.opuEmDevDB.selectByOpuFetId_DayPrint(txtID.Text, objdb.LabOpuEmbryoDevDB.Day1.Day6);      // ต้องใช้ method นี้ เพราะจะได้ดึง desc ให้เหมือน OPU
                 }
+                dtEmbr = ic.ivfDB.opuEmDevDB.selectByFetFetId_DayPrint(txtID.Text);      // fix ไว้ เพราะ รูปของ FET มีรูป day เดียว  เลยเอาลงที่ day2
+                
+                dtEmbr.Columns.Add("embryo_dev_0_01", typeof(String));
+                dtEmbr.Columns.Add("embryo_dev_0_02", typeof(String));
+                dtEmbr.Columns.Add("embryo_dev_0_03", typeof(String));
+                dtEmbr.Columns.Add("embryo_dev_0_04", typeof(String));
+                dtEmbr.Columns.Add("embryo_dev_0_05", typeof(String));
+                dtEmbr.Columns.Add("embryo_dev_1_01", typeof(String));
+                dtEmbr.Columns.Add("embryo_dev_1_02", typeof(String));
+                dtEmbr.Columns.Add("embryo_dev_1_03", typeof(String));
+                dtEmbr.Columns.Add("embryo_dev_1_04", typeof(String));
+                dtEmbr.Columns.Add("embryo_dev_1_05", typeof(String));
+                dtEmbr.Columns.Add("embryo_dev_1_name", typeof(String));
+                dtEmbr.Columns.Add("embryo_dev_1_date", typeof(String));
+                dtEmbr.Columns.Add("embryo_dev_0_name", typeof(String));
+                dtEmbr.Columns.Add("embryo_dev_0_date", typeof(String));
                 if (dt.Rows.Count > 0)
                 {
-                    frmW.pB.Minimum = 1;
-                    frmW.pB.Maximum = dt.Rows.Count;
                     foreach (DataRow row in dt.Rows)
                     {
-                        String path_pic = "", opuCode = "";
+                        String desc0 = "", date="", name="";
+                        desc0 = row["desc0"] != null ? row["desc0"].ToString() : "";
+                        date = row["embryo_dev_date"] != null ? row["embryo_dev_date"].ToString() : "";
+                        name = row["day"] != null ? row["day"].ToString() : "";
+                        if (row[ic.ivfDB.opuEmDevDB.opuEmDev.opu_embryo_dev_no].ToString().Trim().Equals("1"))
+                        {
+                            //row["embryo_dev_0_01"] = desc0;
+                            foreach (DataRow rowembryo in dtEmbr.Rows)
+                            {
+                                rowembryo["embryo_dev_0_01"] = desc0;
+                                rowembryo["embryo_dev_0_date"] = ic.datetoShow(date);
+                                rowembryo["embryo_dev_0_name"] = "Day "+name;
+                            }
+                        }
+                        else if (row[ic.ivfDB.opuEmDevDB.opuEmDev.opu_embryo_dev_no].ToString().Trim().Equals("2"))
+                        {
+                            //row["embryo_dev_0_02"] = desc0;
+                            foreach (DataRow rowembryo in dtEmbr.Rows)
+                            {
+                                rowembryo["embryo_dev_0_02"] = desc0;
+                            }
+                        }
+                        else if (row[ic.ivfDB.opuEmDevDB.opuEmDev.opu_embryo_dev_no].ToString().Trim().Equals("3"))
+                        {
+                            //row["embryo_dev_0_03"] = desc0;
+                            foreach (DataRow rowembryo in dtEmbr.Rows)
+                            {
+                                rowembryo["embryo_dev_0_03"] = desc0;
+                            }
+                        }
+                        else if (row[ic.ivfDB.opuEmDevDB.opuEmDev.opu_embryo_dev_no].ToString().Trim().Equals("4"))
+                        {
+                            //row["embryo_dev_0_04"] = desc0;
+                            foreach (DataRow rowembryo in dtEmbr.Rows)
+                            {
+                                rowembryo["embryo_dev_0_04"] = desc0;
+                            }
+                        }
+                        else if (row[ic.ivfDB.opuEmDevDB.opuEmDev.opu_embryo_dev_no].ToString().Trim().Equals("5"))
+                        {
+                            //row["embryo_dev_0_05"] = desc0;
+                            foreach (DataRow rowembryo in dtEmbr.Rows)
+                            {
+                                rowembryo["embryo_dev_0_05"] = desc0;
+                            }
+                        }
+                    }
+                }
+                if (dtEmbr.Rows.Count > 0)
+                {
+                    frmW.pB.Minimum = 1;
+                    frmW.pB.Maximum = dtEmbr.Rows.Count;
+                    foreach (DataRow row in dtEmbr.Rows)
+                    {
+                        String path_pic = "", opuCode = "", date="";
                         path_pic = row["no1_pathpic"] != null ? row["no1_pathpic"].ToString() : "";
                         opuCode = row["fet_code"] != null ? row["fet_code"].ToString() : "";
+                        //date = row["freeze_date"] != null ? row["freeze_date"].ToString() : "";
+                        //date = ic.datetoShow(date);
+                        //row["freeze_date"] = date;
+                        //date = "";
+                        //date = row["freeze_date"] != null ? row["freeze_date"].ToString() : "";
+                        //date = ic.datetoShow(date);
+                        row[ic.ivfDB.fetDB.fet.freeze_date] = ic.datetoShow(row[ic.ivfDB.fetDB.fet.freeze_date] != null ? row[ic.ivfDB.fetDB.fet.freeze_date] : "");
+                        row[ic.ivfDB.fetDB.fet.thaw_date] = ic.datetoShow(row[ic.ivfDB.fetDB.fet.thaw_date] != null ? row[ic.ivfDB.fetDB.fet.thaw_date] : "");
+                        row[ic.ivfDB.fetDB.fet.media_date] = ic.datetoShow(row[ic.ivfDB.fetDB.fet.media_date] != null ? row[ic.ivfDB.fetDB.fet.media_date] : "");
                         if (!path_pic.Equals(""))
                         {
                             MemoryStream stream = ic.ftpC.download(path_pic);
@@ -1509,10 +1588,10 @@ namespace clinic_ivf.gui
                     }
                 }
                 String date1 = "";
-                date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.fetDB.fet.fet_date].ToString());
-                dt.Rows[0][ic.ivfDB.fetDB.fet.fet_date] = date1.Replace("-", "/");
+                date1 = ic.datetoShow(dtEmbr.Rows[0][ic.ivfDB.fetDB.fet.fet_date].ToString());
+                dtEmbr.Rows[0][ic.ivfDB.fetDB.fet.fet_date] = date1.Replace("-", "/");
 
-                frm.setFETEmbryoDevReport(dt);
+                frm.setFETEmbryoDevReport(dtEmbr);
 
             }
             catch (Exception ex)
