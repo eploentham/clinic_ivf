@@ -21,6 +21,9 @@ using System.Windows.Forms;
 
 namespace clinic_ivf.gui
 {
+    /*
+     *          0012        OPU, FET การแก้ไขรูป และข้อมความ
+     */
     public partial class FrmLabOPUAdd2 : Form
     {
         IvfControl ic;
@@ -1439,12 +1442,13 @@ namespace clinic_ivf.gui
                                     if (ext.Length > 1)
                                     {
                                         filename = txtOpuCode.Text + "_day6_" + no + "." + ext[ext.Length - 1];
-                                        re = ic.ivfDB.opuEmDevDB.updatePathPic(id, no, ic.iniC.folderFTP + "/" + txtOpuCode.Text + "/" + filename, desc, desc1, ic.cStf.staff_id);
+                                        //re = ic.ivfDB.opuEmDevDB.updatePathPic(id, no, ic.iniC.folderFTP + "/" + txtOpuCode.Text + "/" + filename, desc, desc1, ic.cStf.staff_id);       // -0012
+                                        re = ic.ivfDB.opuEmDevDB.updatePathPicNoPic(id, no, desc, desc1, ic.cStf.staff_id);       // +0012
                                         long chk = 0;
                                         if (long.TryParse(re, out chk))
                                         {
-                                            if (File.Exists(path))
-                                                ic.savePicOPUtoServer(txtOpuCode.Text, filename, path);
+                                            //if (File.Exists(path))       // -0012
+                                            //    ic.savePicOPUtoServer(txtOpuCode.Text, filename, path);       // -0012
                                             grfDay6Img.Rows[i - 1].StyleNew.BackColor = color;
                                         }
                                     }
@@ -1506,12 +1510,13 @@ namespace clinic_ivf.gui
                                     if (ext.Length > 1)
                                     {
                                         filename = txtOpuCode.Text + "_day5_" + no + "." + ext[ext.Length - 1];
-                                        re = ic.ivfDB.opuEmDevDB.updatePathPic(id, no, ic.iniC.folderFTP + "/" + txtOpuCode.Text + "/" + filename, desc, desc1, ic.cStf.staff_id);
+                                        //re = ic.ivfDB.opuEmDevDB.updatePathPic(id, no, ic.iniC.folderFTP + "/" + txtOpuCode.Text + "/" + filename, desc, desc1, ic.cStf.staff_id);       // -0012
+                                        re = ic.ivfDB.opuEmDevDB.updatePathPic(id, no, ic.iniC.folderFTP + "/" + txtOpuCode.Text + "/" + filename, desc, desc1, ic.cStf.staff_id);       // +0012
                                         long chk = 0;
                                         if (long.TryParse(re, out chk))
                                         {
-                                            if (File.Exists(path))
-                                                ic.savePicOPUtoServer(txtOpuCode.Text, filename, path);
+                                            //if (File.Exists(path))       // -0012
+                                            //    ic.savePicOPUtoServer(txtOpuCode.Text, filename, path);       // -0012
                                             grfDay5Img.Rows[i - 1].StyleNew.BackColor = color;
                                         }
                                     }
@@ -1565,14 +1570,15 @@ namespace clinic_ivf.gui
                                     if (ext.Length > 1)
                                     {
                                         filename = txtOpuCode.Text + "_day3_" + no + "." + ext[ext.Length - 1];
-                                        re = ic.ivfDB.opuEmDevDB.updatePathPic(id, no, ic.iniC.folderFTP + "/" + txtOpuCode.Text + "/" + filename, desc, desc1, ic.cStf.staff_id);
+                                        //re = ic.ivfDB.opuEmDevDB.updatePathPic(id, no, ic.iniC.folderFTP + "/" + txtOpuCode.Text + "/" + filename, desc, desc1, ic.cStf.staff_id);       // -0012
+                                        re = ic.ivfDB.opuEmDevDB.updatePathPicNoPic(id, no, desc, desc1, ic.cStf.staff_id);       // +0012
                                         long chk = 0;
                                         if (long.TryParse(re, out chk))
                                         {
-                                            if (File.Exists(path))
-                                            {
-                                                ic.savePicOPUtoServer(txtOpuCode.Text, filename, path);
-                                            }
+                                            //if (File.Exists(path))       // -0012
+                                            //{       // -0012
+                                            //    ic.savePicOPUtoServer(txtOpuCode.Text, filename, path);       // -0012
+                                            //}       // -0012
                                             grfDay3Img.Rows[i - 1].StyleNew.BackColor = color;
                                         }
                                     }
@@ -1731,12 +1737,13 @@ namespace clinic_ivf.gui
                                     if (ext.Length > 1)
                                     {
                                         filename = txtOpuCode.Text + "_day2_" + no + "." + ext[ext.Length - 1];
-                                        re = ic.ivfDB.opuEmDevDB.updatePathPic(id, no, ic.iniC.folderFTP + "/" + txtOpuCode.Text + "/" + filename, desc, desc1, ic.cStf.staff_id);
+                                        //re = ic.ivfDB.opuEmDevDB.updatePathPic(id, no, ic.iniC.folderFTP + "/" + txtOpuCode.Text + "/" + filename, desc, desc1, ic.cStf.staff_id);       // -0012
+                                        re = ic.ivfDB.opuEmDevDB.updatePathPicNoPic(id, no, desc, desc1, ic.cStf.staff_id);       // +0012
                                         long chk = 0;
                                         if (long.TryParse(re, out chk))
                                         {
-                                            if (File.Exists(path))
-                                                ic.savePicOPUtoServer(txtOpuCode.Text, filename, path);
+                                            //if (File.Exists(path))           // -0012
+                                            //ic.savePicOPUtoServer(txtOpuCode.Text, filename, path);       // -0012
                                             grfDay2Img.Rows[i - 1].StyleNew.BackColor = color;
                                         }
                                     }

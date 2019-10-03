@@ -295,7 +295,7 @@ namespace clinic_ivf.objdb
                 "Left Join lab_t_result lbres on lreq.req_id = lbres.req_id " +
                 "Where  lreq.vn = '" + vn + "'  and lreq.active= '1'  " +
                 //"and lreq.item_id in ('14','18','66') " +
-                "Order By lreq.req_id ";
+                "Order By litem.sort1, lreq.req_id ";
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }

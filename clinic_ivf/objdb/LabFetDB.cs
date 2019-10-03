@@ -438,7 +438,6 @@ namespace clinic_ivf.objdb
                 fet1.user_cancel = dt.Rows[0][fet.user_cancel].ToString();
                 fet1.active = dt.Rows[0][fet.active].ToString();
                 fet1.remark = dt.Rows[0][fet.remark].ToString();
-
                 
                 fet1.req_id = dt.Rows[0][fet.req_id].ToString();
                 fet1.status_fet = dt.Rows[0][fet.status_fet].ToString();

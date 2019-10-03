@@ -20,6 +20,9 @@ using System.Windows.Forms;
 
 namespace clinic_ivf.gui
 {
+    /*
+     *          0012        OPU, FET การแก้ไขรูป และข้อมความ
+     */
     public partial class FrmLabFetAdd2 : Form
     {
         IvfControl ic;
@@ -1480,6 +1483,8 @@ namespace clinic_ivf.gui
                 dtEmbr.Columns.Add("embryo_dev_1_date", typeof(String));
                 dtEmbr.Columns.Add("embryo_dev_0_name", typeof(String));
                 dtEmbr.Columns.Add("embryo_dev_0_date", typeof(String));
+                dtEmbr.Columns.Add("dob_female", typeof(String));
+                dtEmbr.Columns.Add("dob_male", typeof(String));
                 if (dt.Rows.Count > 0)
                 {
                     foreach (DataRow row in dt.Rows)
@@ -1538,15 +1543,22 @@ namespace clinic_ivf.gui
                     frmW.pB.Maximum = dtEmbr.Rows.Count;
                     foreach (DataRow row in dtEmbr.Rows)
                     {
-                        String path_pic = "", opuCode = "", date="";
+                        String path_pic = "", opuCode = "", date="", dobfemale="", dobmale="", datefet="", no1="";
                         path_pic = row["no1_pathpic"] != null ? row["no1_pathpic"].ToString() : "";
                         opuCode = row["fet_code"] != null ? row["fet_code"].ToString() : "";
+                        dobfemale = ic.datetoShow(txtDobFeMale.Text);
+                        dobmale = ic.datetoShow(txtDobMale.Text);
+                        datefet = ic.datetoShow(txtDatePicEmbryo.Text);
                         //date = row["freeze_date"] != null ? row["freeze_date"].ToString() : "";
                         //date = ic.datetoShow(date);
                         //row["freeze_date"] = date;
                         //date = "";
                         //date = row["freeze_date"] != null ? row["freeze_date"].ToString() : "";
                         //date = ic.datetoShow(date);
+                        row["dob_female"] = dobfemale;
+                        row["dob_male"] = dobmale;
+                        row["fet_date"] = datefet;
+                        no1 = row["no1"].ToString();
                         row[ic.ivfDB.fetDB.fet.freeze_date] = ic.datetoShow(row[ic.ivfDB.fetDB.fet.freeze_date] != null ? row[ic.ivfDB.fetDB.fet.freeze_date] : "");
                         row[ic.ivfDB.fetDB.fet.thaw_date] = ic.datetoShow(row[ic.ivfDB.fetDB.fet.thaw_date] != null ? row[ic.ivfDB.fetDB.fet.thaw_date] : "");
                         row[ic.ivfDB.fetDB.fet.media_date] = ic.datetoShow(row[ic.ivfDB.fetDB.fet.media_date] != null ? row[ic.ivfDB.fetDB.fet.media_date] : "");
@@ -1654,14 +1666,15 @@ namespace clinic_ivf.gui
                                 if (ext.Length > 1)
                                 {
                                     filename = txtFetCode.Text + "_day"+ embryopicday + "_" + no + "." + ext[ext.Length - 1];
-                                    re = ic.ivfDB.opuEmDevDB.updatePathPic(id, no, ic.iniC.folderFTP + "/" + txtFetCode.Text + "/" + filename, desc, desc1, ic.cStf.staff_id);
+                                    //re = ic.ivfDB.opuEmDevDB.updatePathPic(id, no, ic.iniC.folderFTP + "/" + txtFetCode.Text + "/" + filename, desc, desc1, ic.cStf.staff_id);       // -0012
+                                    re = ic.ivfDB.opuEmDevDB.updatePathPicNoPic(id, no, desc, desc1, ic.cStf.staff_id);       // +0012
                                     long chk = 0;
                                     if (long.TryParse(re, out chk))
                                     {
-                                        if (File.Exists(path))
-                                        {
-                                            ic.savePicOPUtoServer(txtFetCode.Text, filename, path);
-                                        }
+                                        //if (File.Exists(path))       // -0012
+                                        //{       // -0012
+                                        //ic.savePicOPUtoServer(txtFetCode.Text, filename, path);       // -0012
+                                        //}       // -0012
                                         grfDay2Img.Rows[i - 1].StyleNew.BackColor = color;
                                     }
                                 }

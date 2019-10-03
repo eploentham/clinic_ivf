@@ -3103,7 +3103,7 @@
             this.c1SplitterPanel6.SizeRatio = 28.02D;
             this.c1SplitterPanel6.TabIndex = 0;
             this.c1SplitterPanel6.Text = "Panel 1";
-            this.c1SplitterPanel6.Width = 443;
+            this.c1SplitterPanel6.Width = 436;
             // 
             // pnApmAll
             // 

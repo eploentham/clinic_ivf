@@ -2001,6 +2001,7 @@ namespace clinic_ivf.gui
         private void BtnApmPrint_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
+            SetDefaultPrinter(ic.iniC.printerAppointment);      //A5
             FrmReport frm = new FrmReport(ic);
             DataTable dt = new DataTable();
             DataTable dtOld = new DataTable();

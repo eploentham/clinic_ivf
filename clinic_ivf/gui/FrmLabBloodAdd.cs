@@ -786,7 +786,7 @@ namespace clinic_ivf.gui
             if (grfProc.Col == colRsResult)
             {
                 String resid = "", labid = "", result = "", result2="";
-                result = grfProc[grfProc.Row, colRsResult] != null ? grfProc[grfProc.Row, colRsResult].ToString() : "";
+                result = grfProc[grfProc.Row, colRsResult] != null ? grfProc[grfProc.Row, colRsResult].ToString().Trim() : "";
                 if (result.Equals("w"))
                 {
                     grfProc[grfProc.Row, colRsInterpret] = "Wait for Result";

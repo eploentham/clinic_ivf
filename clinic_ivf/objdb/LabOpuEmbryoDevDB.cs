@@ -290,6 +290,29 @@ namespace clinic_ivf.objdb
 
             return re;
         }
+        public String updatePathPicNoPic(String id, String num, String desc3, String desc4, String userid)
+        {
+            String re = "";
+            String sql = "";
+            int chk = 0;
+            sql = "Update " + opuEmDev.table + " Set " +
+                " " + opuEmDev.desc3 + " = '" + desc3.Replace("'", "''") + "'" +
+                //"," + opuEmDev.path_pic + " = '" + filename + "'" +
+                "," + opuEmDev.desc4 + " = '" + desc4.Replace("'", "''") + "'" +
+                "," + opuEmDev.user_modi + " = '" + userid + "'" +
+                "," + opuEmDev.date_modi + " = now() " +
+                "Where " + opuEmDev.pkField + "='" + id + "'";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+
+            return re;
+        }
         public String updatePathPic(String id, String num, String filename, String desc3, String desc4, String userid)
         {
             String re = "";
@@ -487,7 +510,7 @@ namespace clinic_ivf.objdb
             //{
             //    day = "6";
             //}
-            String sql = "select fet.hn_male, fet.hn_female, fet.name_male, fet.name_female, proce.proce_name_t as procedure1, dtr.Name as doctor, opuEmDev.embryo_dev_date as fet_date " +
+            String sql = "select fet.hn_male, fet.hn_female, fet.name_male, fet.name_female, proce.proce_name_t as procedure1, dtr.Name as doctor_name, opuEmDev.embryo_dev_date as fet_date " +
                 ", opuEmDev.day as day1, opuEmDev.opu_embryo_dev_no as no1, opuEmDev.desc0  as no1_desc0, opuEmDev.path_pic as no1_pathpic, opuEmDev.desc1 as no1_desc1" +
                 ", opuEmDev.desc2 as no1_desc2, opuEmDev.desc3 as no1_desc3, fet.fet_id, fet.fet_code, 'Number of transfer' as footer1" +
                 ", 'Number of Freeze' as footer2,'Number of Discard' as footer3, fet.remark as footer4,'' as footer5, 'st# = straw number' as footer6 " +
@@ -495,11 +518,12 @@ namespace clinic_ivf.objdb
                 ", fet.embryo_for_et_no_of_et, fet.embryo_for_et_day, fet.embryo_for_et_date, fet.embryo_for_et_assisted, fet.embryo_for_et_remark" +
                 ", fet.embryo_for_et_volume, fet.embryo_for_et_catheter, fet.embryo_for_et_doctor, opuEmDev.desc0, opuEmDev.opu_embryo_dev_no" +
                 ",fet.freeze_date,fet.freeze_no_of_freeze,fet.freeze_stage_of_freeze,fet.thaw_date,fet.thaw_no_of_thaw,fet.thaw_no_of_survival" +
-                ",fet.thaw_no_of_remaining,fet.media_date,fet.media_lot_no,fet.media_exp,fet.media_thawing " +
+                ",fet.thaw_no_of_remaining,fet.media_date,fet.media_lot_no,fet.media_exp,fet.media_thawing, proce.proce_name_t " +
                 "From " + opuEmDev.table + " opuEmDev " +
                 "Left Join lab_t_fet fet on fet.fet_id = opuEmDev.opu_fet_id " +
                 "Left Join lab_b_procedure proce on proce.proce_id = fet.proce_id " +
                 "Left Join Doctor dtr on dtr.ID = fet.doctor_id " +
+                //"Left join f_patient_prefix fpp on fpp.f_patient_prefix_id = dtr.f_patient_prefix_id " +
                 "Where opuEmDev." + opuEmDev.active + " ='1' and " + opuEmDev.opu_fet_id + "='" + opufetid + "' and " + opuEmDev.day + "='" + day + "' " +
                 "and length(opuEmDev.path_pic) > 0 " +
                 "Order By opuEmDev." + opuEmDev.opu_embryo_dev_id;
