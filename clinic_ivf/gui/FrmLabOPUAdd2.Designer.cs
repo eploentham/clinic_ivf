@@ -263,7 +263,7 @@
             this.txtLabReqCode = new C1.Win.C1Input.C1TextBox();
             this.label62 = new System.Windows.Forms.Label();
             this.txtID = new C1.Win.C1Input.C1TextBox();
-            this.btnEdit = new C1.Win.C1Input.C1Button();
+            this.btnVoidEmbryo = new C1.Win.C1Input.C1Button();
             this.btnSave = new C1.Win.C1Input.C1Button();
             this.txtDobFeMale = new C1.Win.C1Input.C1DateEdit();
             this.txtDobMale = new C1.Win.C1Input.C1DateEdit();
@@ -445,7 +445,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnPrint)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtLabReqCode)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtID)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnEdit)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnVoidEmbryo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSave)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDobFeMale)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDobMale)).BeginInit();
@@ -4081,7 +4081,7 @@
             this.groupBox1.Controls.Add(this.txtLabReqCode);
             this.groupBox1.Controls.Add(this.label62);
             this.groupBox1.Controls.Add(this.txtID);
-            this.groupBox1.Controls.Add(this.btnEdit);
+            this.groupBox1.Controls.Add(this.btnVoidEmbryo);
             this.groupBox1.Controls.Add(this.btnSave);
             this.groupBox1.Controls.Add(this.txtDobFeMale);
             this.groupBox1.Controls.Add(this.txtDobMale);
@@ -4388,19 +4388,19 @@
             this.txtID.Visible = false;
             this.txtID.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // btnEdit
+            // btnVoidEmbryo
             // 
-            this.btnEdit.Image = global::clinic_ivf.Properties.Resources.lock24;
-            this.btnEdit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEdit.Location = new System.Drawing.Point(992, 14);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(83, 39);
-            this.btnEdit.TabIndex = 536;
-            this.btnEdit.Text = "แก้ไขช้อมูล";
-            this.btnEdit.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.theme1.SetTheme(this.btnEdit, "(default)");
-            this.btnEdit.UseVisualStyleBackColor = true;
-            this.btnEdit.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.btnVoidEmbryo.Image = global::clinic_ivf.Properties.Resources.lock24;
+            this.btnVoidEmbryo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnVoidEmbryo.Location = new System.Drawing.Point(992, 14);
+            this.btnVoidEmbryo.Name = "btnVoidEmbryo";
+            this.btnVoidEmbryo.Size = new System.Drawing.Size(83, 39);
+            this.btnVoidEmbryo.TabIndex = 536;
+            this.btnVoidEmbryo.Text = "แก้ไขช้อมูล";
+            this.btnVoidEmbryo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnVoidEmbryo, "(default)");
+            this.btnVoidEmbryo.UseVisualStyleBackColor = true;
+            this.btnVoidEmbryo.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // btnSave
             // 
@@ -4987,7 +4987,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnPrint)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtLabReqCode)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtID)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnEdit)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnVoidEmbryo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSave)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDobFeMale)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDobMale)).EndInit();
@@ -5027,7 +5027,7 @@
         private C1.Win.C1Input.C1TextBox txtLabReqCode;
         private System.Windows.Forms.Label label62;
         private C1.Win.C1Input.C1TextBox txtID;
-        private C1.Win.C1Input.C1Button btnEdit;
+        private C1.Win.C1Input.C1Button btnVoidEmbryo;
         private C1.Win.C1Input.C1Button btnSave;
         private C1.Win.C1Input.C1DateEdit txtDobFeMale;
         private C1.Win.C1Input.C1DateEdit txtDobMale;

@@ -395,6 +395,28 @@ namespace clinic_ivf.objdb
 
             return re;
         }
+        public String VoidLabFET(String fetid, String userid)
+        {
+            String re = "";
+            String sql = "";
+            int chk = 0;
+
+            sql = "Update " + fet.table + " Set " +
+                " " + fet.active + " = '3'" +
+                "," + fet.user_cancel + " = '"+ userid + "'" +
+                "," + fet.date_cancel + " = now() " +
+                "Where " + fet.pkField + "='" + fetid + "'";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+
+            return re;
+        }
         public LabFet setLabFET(DataTable dt)
         {
             LabFet fet1 = new LabFet();

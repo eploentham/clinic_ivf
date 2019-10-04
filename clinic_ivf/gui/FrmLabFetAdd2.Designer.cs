@@ -49,7 +49,7 @@
             this.txtLabReqCode = new C1.Win.C1Input.C1TextBox();
             this.label62 = new System.Windows.Forms.Label();
             this.txtID = new C1.Win.C1Input.C1TextBox();
-            this.btnEdit = new C1.Win.C1Input.C1Button();
+            this.btnVoid = new C1.Win.C1Input.C1Button();
             this.btnSave = new C1.Win.C1Input.C1Button();
             this.txtDobFeMale = new C1.Win.C1Input.C1DateEdit();
             this.txtDobMale = new C1.Win.C1Input.C1DateEdit();
@@ -84,6 +84,7 @@
             this.txtMediaLot = new C1.Win.C1Input.C1TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.txtThawDate = new C1.Win.C1Input.C1DateEdit();
             this.txtThawRemain = new C1.Win.C1Input.C1TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.txtThawSurvival = new C1.Win.C1Input.C1TextBox();
@@ -174,7 +175,6 @@
             this.label48 = new System.Windows.Forms.Label();
             this.sB = new System.Windows.Forms.StatusStrip();
             this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.txtThawDate = new C1.Win.C1Input.C1DateEdit();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1CommandDock1)).BeginInit();
             this.c1CommandDock1.SuspendLayout();
@@ -193,7 +193,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnPrintOpuEmbryoDev)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtLabReqCode)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtID)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnEdit)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnVoid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSave)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDobFeMale)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDobMale)).BeginInit();
@@ -217,6 +217,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtMediaExp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMediaLot)).BeginInit();
             this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtThawDate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtThawRemain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtThawSurvival)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtThawNo)).BeginInit();
@@ -281,7 +282,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtEmbryoForEtDay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEmbryoForEtNO)).BeginInit();
             this.sB.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtThawDate)).BeginInit();
             this.SuspendLayout();
             // 
             // theme1
@@ -420,7 +420,7 @@
             this.groupBox1.Controls.Add(this.txtLabReqCode);
             this.groupBox1.Controls.Add(this.label62);
             this.groupBox1.Controls.Add(this.txtID);
-            this.groupBox1.Controls.Add(this.btnEdit);
+            this.groupBox1.Controls.Add(this.btnVoid);
             this.groupBox1.Controls.Add(this.btnSave);
             this.groupBox1.Controls.Add(this.txtDobFeMale);
             this.groupBox1.Controls.Add(this.txtDobMale);
@@ -578,7 +578,7 @@
             // 
             this.btnPrintOpuEmbryoDev.Image = global::clinic_ivf.Properties.Resources.print;
             this.btnPrintOpuEmbryoDev.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPrintOpuEmbryoDev.Location = new System.Drawing.Point(1101, 25);
+            this.btnPrintOpuEmbryoDev.Location = new System.Drawing.Point(1105, 67);
             this.btnPrintOpuEmbryoDev.Name = "btnPrintOpuEmbryoDev";
             this.btnPrintOpuEmbryoDev.Size = new System.Drawing.Size(126, 34);
             this.btnPrintOpuEmbryoDev.TabIndex = 541;
@@ -628,19 +628,19 @@
             this.txtID.Visible = false;
             this.txtID.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // btnEdit
+            // btnVoid
             // 
-            this.btnEdit.Image = global::clinic_ivf.Properties.Resources.lock24;
-            this.btnEdit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEdit.Location = new System.Drawing.Point(1016, 20);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(83, 39);
-            this.btnEdit.TabIndex = 536;
-            this.btnEdit.Text = "แก้ไขช้อมูล";
-            this.btnEdit.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.theme1.SetTheme(this.btnEdit, "(default)");
-            this.btnEdit.UseVisualStyleBackColor = true;
-            this.btnEdit.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.btnVoid.Image = global::clinic_ivf.Properties.Resources.lock24;
+            this.btnVoid.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnVoid.Location = new System.Drawing.Point(1016, 20);
+            this.btnVoid.Name = "btnVoid";
+            this.btnVoid.Size = new System.Drawing.Size(126, 39);
+            this.btnVoid.TabIndex = 536;
+            this.btnVoid.Text = "ยกเลิกช้อมูลEmbryo";
+            this.btnVoid.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnVoid, "(default)");
+            this.btnVoid.UseVisualStyleBackColor = true;
+            this.btnVoid.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // btnSave
             // 
@@ -1242,6 +1242,53 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Date Time of thaw";
             this.theme1.SetTheme(this.groupBox4, "(default)");
+            // 
+            // txtThawDate
+            // 
+            this.txtThawDate.AllowSpinLoop = false;
+            this.txtThawDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            // 
+            // 
+            // 
+            this.txtThawDate.Calendar.ArrowColor = System.Drawing.Color.Black;
+            this.txtThawDate.Calendar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.txtThawDate.Calendar.DayNamesFont = new System.Drawing.Font("Tahoma", 8F);
+            this.txtThawDate.Calendar.Font = new System.Drawing.Font("Tahoma", 8F);
+            this.txtThawDate.Calendar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.txtThawDate.Calendar.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(71)))), ((int)(((byte)(47)))));
+            this.txtThawDate.Calendar.SelectionForeColor = System.Drawing.Color.White;
+            this.txtThawDate.Calendar.TitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.txtThawDate.Calendar.TitleFont = new System.Drawing.Font("Tahoma", 8F);
+            this.txtThawDate.Calendar.TitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.txtThawDate.Calendar.TodayBorderColor = System.Drawing.Color.White;
+            this.txtThawDate.Calendar.TrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtThawDate.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.txtThawDate.Culture = 1054;
+            this.txtThawDate.CurrentTimeZone = false;
+            this.txtThawDate.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtThawDate.DisplayFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
+            this.txtThawDate.DisplayFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
+            this.txtThawDate.DisplayFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)(((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
+            this.txtThawDate.EditFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
+            this.txtThawDate.EditFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
+            this.txtThawDate.EditFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)(((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
+            this.txtThawDate.EmptyAsNull = true;
+            this.txtThawDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtThawDate.GMTOffset = System.TimeSpan.Parse("00:00:00");
+            this.txtThawDate.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.txtThawDate.Location = new System.Drawing.Point(132, 14);
+            this.txtThawDate.Name = "txtThawDate";
+            this.txtThawDate.Size = new System.Drawing.Size(166, 20);
+            this.txtThawDate.TabIndex = 520;
+            this.txtThawDate.Tag = null;
+            this.theme1.SetTheme(this.txtThawDate, "(default)");
+            this.txtThawDate.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // txtThawRemain
             // 
@@ -2786,53 +2833,6 @@
             this.sB1.Size = new System.Drawing.Size(118, 17);
             this.sB1.Text = "toolStripStatusLabel1";
             // 
-            // txtThawDate
-            // 
-            this.txtThawDate.AllowSpinLoop = false;
-            this.txtThawDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            // 
-            // 
-            // 
-            this.txtThawDate.Calendar.ArrowColor = System.Drawing.Color.Black;
-            this.txtThawDate.Calendar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.txtThawDate.Calendar.DayNamesFont = new System.Drawing.Font("Tahoma", 8F);
-            this.txtThawDate.Calendar.Font = new System.Drawing.Font("Tahoma", 8F);
-            this.txtThawDate.Calendar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.txtThawDate.Calendar.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(71)))), ((int)(((byte)(47)))));
-            this.txtThawDate.Calendar.SelectionForeColor = System.Drawing.Color.White;
-            this.txtThawDate.Calendar.TitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.txtThawDate.Calendar.TitleFont = new System.Drawing.Font("Tahoma", 8F);
-            this.txtThawDate.Calendar.TitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.txtThawDate.Calendar.TodayBorderColor = System.Drawing.Color.White;
-            this.txtThawDate.Calendar.TrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtThawDate.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            this.txtThawDate.Culture = 1054;
-            this.txtThawDate.CurrentTimeZone = false;
-            this.txtThawDate.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtThawDate.DisplayFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
-            this.txtThawDate.DisplayFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
-            this.txtThawDate.DisplayFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)(((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
-            this.txtThawDate.EditFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
-            this.txtThawDate.EditFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
-            this.txtThawDate.EditFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)(((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
-            this.txtThawDate.EmptyAsNull = true;
-            this.txtThawDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtThawDate.GMTOffset = System.TimeSpan.Parse("00:00:00");
-            this.txtThawDate.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.txtThawDate.Location = new System.Drawing.Point(132, 14);
-            this.txtThawDate.Name = "txtThawDate";
-            this.txtThawDate.Size = new System.Drawing.Size(166, 20);
-            this.txtThawDate.TabIndex = 520;
-            this.txtThawDate.Tag = null;
-            this.theme1.SetTheme(this.txtThawDate, "(default)");
-            this.txtThawDate.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
             // FrmLabFetAdd2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2864,7 +2864,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnPrintOpuEmbryoDev)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtLabReqCode)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtID)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnEdit)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnVoid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSave)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDobFeMale)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDobMale)).EndInit();
@@ -2890,6 +2890,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtMediaLot)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtThawDate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtThawRemain)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtThawSurvival)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtThawNo)).EndInit();
@@ -2961,7 +2962,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtEmbryoForEtNO)).EndInit();
             this.sB.ResumeLayout(false);
             this.sB.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtThawDate)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2992,7 +2992,7 @@
         private C1.Win.C1Input.C1TextBox txtLabReqCode;
         private System.Windows.Forms.Label label62;
         private C1.Win.C1Input.C1TextBox txtID;
-        private C1.Win.C1Input.C1Button btnEdit;
+        private C1.Win.C1Input.C1Button btnVoid;
         private C1.Win.C1Input.C1Button btnSave;
         private C1.Win.C1Input.C1DateEdit txtDobFeMale;
         private C1.Win.C1Input.C1DateEdit txtDobMale;

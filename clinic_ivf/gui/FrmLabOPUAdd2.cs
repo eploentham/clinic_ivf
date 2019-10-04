@@ -886,7 +886,22 @@ namespace clinic_ivf.gui
             btnSaveImg6.Click += BtnSaveImg6_Click;
             btnDay6ImgRef.Click += BtnDay6ImgRef_Click;
             btnPrintOpuEmbryoDev.Click += BtnPrintOpuEmbryoDev_Click;
+            btnVoidEmbryo.Click += BtnVoidEmbryo_Click;
         }
+
+        private void BtnVoidEmbryo_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            ic.cStf.staff_id = "";
+            FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+            frm.ShowDialog(this);
+            if (!ic.cStf.staff_id.Equals(""))
+            {
+                ic.ivfDB.opuEmDevDB.VoidLabOpuEmbryoDevByOPUFET(txtID.Text, ic.cStf.staff_id);
+                setGrf();
+            }
+        }
+
         private void setKeyPress()
         {
             txtMaturaMii.KeyPress += TxtMaturaMii_KeyPress;
@@ -1004,13 +1019,13 @@ namespace clinic_ivf.gui
                     try
                     {
                         Image loadedImage, resizedImage;
-                        String[] sur = file.Split('.');
+                        String ext = Path.GetExtension(file);
                         String ex = "";
-                        if (sur.Length == 2)
-                        {
-                            ex = sur[1];
-                        }
-                        if (!ex.Equals("pdf"))
+                        //if (sur.Length == 2)
+                        //{
+                        //    ex = sur[1];
+                        //}
+                        if (!ext.ToLower().Equals(".pdf"))
                         {
                             loadedImage = Image.FromFile(file);
                             int originalWidth = loadedImage.Width;
@@ -1035,6 +1050,28 @@ namespace clinic_ivf.gui
                         //grfDay2Img[row - 1, colBtn] = "send";
 
                         grfDay6Img[ii, colDay2ImgPic] = resizedImage;
+
+                        String id = grfDay6Img[ii, colDay2ImgId] != null ? grfDay6Img[ii, colDay2ImgId].ToString() : "";
+                        String desc = grfDay6Img[ii, colDay2ImgDesc0] != null ? grfDay6Img[ii, colDay2ImgDesc0].ToString() : "";
+                        String no = grfDay6Img[ii, colDay2ImgNun] != null ? grfDay6Img[ii, colDay2ImgNun].ToString() : "";
+                        String desc1 = grfDay6Img[ii, colDay2ImgDesc1] != null ? grfDay6Img[ii, colDay2ImgDesc1].ToString() : "";
+                        String path = grfDay6Img[ii, colDay2PathPic] != null ? grfDay6Img[ii, colDay2PathPic].ToString() : "";
+                        if (id.Equals("")) continue;
+                        if (no.Length > 0)
+                        {
+                            String filename = "";
+
+                            filename = txtOpuCode.Text + "_day6_" + no + ext;
+                            String re = ic.ivfDB.opuEmDevDB.updatePathPic(id, no, ic.iniC.folderFTP + "/" + txtOpuCode.Text + "/" + filename, desc, desc1, ic.cStf.staff_id);
+                            long chk = 0;
+                            if (long.TryParse(re, out chk))
+                            {
+                                if (File.Exists(path))       // -0012
+                                {       // -0012
+                                    ic.savePicOPUtoServer(txtOpuCode.Text, filename, path);       // -0012
+                                }
+                            }
+                        }
 
                         i++;
                         //frmW.pB.Value = i;
@@ -1096,13 +1133,13 @@ namespace clinic_ivf.gui
                     try
                     {
                         Image loadedImage, resizedImage;
-                        String[] sur = file.Split('.');
+                        String ext = Path.GetExtension(file);
                         String ex = "";
-                        if (sur.Length == 2)
-                        {
-                            ex = sur[1];
-                        }
-                        if (!ex.Equals("pdf"))
+                        //if (sur.Length == 2)
+                        //{
+                        //    ex = sur[1];
+                        //}
+                        if (!ext.ToLower().Equals(".pdf"))
                         {
                             loadedImage = Image.FromFile(file);
                             int originalWidth = loadedImage.Width;
@@ -1127,6 +1164,28 @@ namespace clinic_ivf.gui
                         //grfDay2Img[row - 1, colBtn] = "send";
 
                         grfDay5Img[ii, colDay2ImgPic] = resizedImage;
+
+                        String id = grfDay5Img[ii, colDay2ImgId] != null ? grfDay5Img[ii, colDay2ImgId].ToString() : "";
+                        String desc = grfDay5Img[ii, colDay2ImgDesc0] != null ? grfDay5Img[ii, colDay2ImgDesc0].ToString() : "";
+                        String no = grfDay5Img[ii, colDay2ImgNun] != null ? grfDay5Img[ii, colDay2ImgNun].ToString() : "";
+                        String desc1 = grfDay5Img[ii, colDay2ImgDesc1] != null ? grfDay5Img[ii, colDay2ImgDesc1].ToString() : "";
+                        String path = grfDay5Img[ii, colDay2PathPic] != null ? grfDay5Img[ii, colDay2PathPic].ToString() : "";
+                        if (id.Equals("")) continue;
+                        if (no.Length > 0)
+                        {
+                            String filename = "";
+
+                            filename = txtOpuCode.Text + "_day5_" + no + ext;
+                            String re = ic.ivfDB.opuEmDevDB.updatePathPic(id, no, ic.iniC.folderFTP + "/" + txtOpuCode.Text + "/" + filename, desc, desc1, ic.cStf.staff_id);
+                            long chk = 0;
+                            if (long.TryParse(re, out chk))
+                            {
+                                if (File.Exists(path))       // -0012
+                                {       // -0012
+                                    ic.savePicOPUtoServer(txtOpuCode.Text, filename, path);       // -0012
+                                }
+                            }
+                        }
 
                         i++;
                         //frmW.pB.Value = i;
@@ -1639,13 +1698,13 @@ namespace clinic_ivf.gui
                     try
                     {
                         Image loadedImage, resizedImage;
-                        String[] sur = file.Split('.');
+                        String ext = Path.GetExtension(file);
                         String ex = "";
-                        if (sur.Length == 2)
-                        {
-                            ex = sur[1];
-                        }
-                        if (!ex.Equals("pdf"))
+                        //if (sur.Length == 2)
+                        //{
+                        //    ex = sur[1];
+                        //}
+                        if (!ext.ToLower().Equals(".pdf"))
                         {
                             loadedImage = Image.FromFile(file);
                             int originalWidth = loadedImage.Width;
@@ -1671,6 +1730,28 @@ namespace clinic_ivf.gui
                         //grfDay2Img[row - 1, colBtn] = "send";
 
                         grfDay3Img[ii, colDay2ImgPic] = resizedImage;
+
+                        String id = grfDay3Img[ii, colDay2ImgId] != null ? grfDay3Img[ii, colDay2ImgId].ToString() : "";
+                        String desc = grfDay3Img[ii, colDay2ImgDesc0] != null ? grfDay3Img[ii, colDay2ImgDesc0].ToString() : "";
+                        String no = grfDay3Img[ii, colDay2ImgNun] != null ? grfDay3Img[ii, colDay2ImgNun].ToString() : "";
+                        String desc1 = grfDay3Img[ii, colDay2ImgDesc1] != null ? grfDay3Img[ii, colDay2ImgDesc1].ToString() : "";
+                        String path = grfDay3Img[ii, colDay2PathPic] != null ? grfDay3Img[ii, colDay2PathPic].ToString() : "";
+                        if (id.Equals("")) continue;
+                        if (no.Length > 0)
+                        {
+                            String filename = "";
+
+                            filename = txtOpuCode.Text + "_day3_" + no + ext;
+                            String re = ic.ivfDB.opuEmDevDB.updatePathPic(id, no, ic.iniC.folderFTP + "/" + txtOpuCode.Text + "/" + filename, desc, desc1, ic.cStf.staff_id);
+                            long chk = 0;
+                            if (long.TryParse(re, out chk))
+                            {
+                                if (File.Exists(path))       // -0012
+                                {       // -0012
+                                    ic.savePicOPUtoServer(txtOpuCode.Text, filename, path);       // -0012
+                                }
+                            }
+                        }
 
                         i++;
                     }
@@ -1800,13 +1881,13 @@ namespace clinic_ivf.gui
                     try
                     {
                         Image loadedImage, resizedImage;
-                        String[] sur = file.Split('.');
+                        String ext = Path.GetExtension(file);
                         String ex = "";
-                        if (sur.Length == 2)
-                        {
-                            ex = sur[1];
-                        }
-                        if (!ex.Equals("pdf"))
+                        //if (sur.Length == 2)
+                        //{
+                        //    ex = sur[1];
+                        //}
+                        if (!ext.ToLower().Equals(".pdf"))
                         {
                             loadedImage = Image.FromFile(file);
                             int originalWidth = loadedImage.Width;
@@ -1831,6 +1912,28 @@ namespace clinic_ivf.gui
                         //grfDay2Img[row - 1, colBtn] = "send";
 
                         grfDay2Img[ii, colDay2ImgPic] = resizedImage;
+
+                        String id = grfDay2Img[ii, colDay2ImgId] != null ? grfDay2Img[ii, colDay2ImgId].ToString() : "";
+                        String desc = grfDay2Img[ii, colDay2ImgDesc0] != null ? grfDay2Img[ii, colDay2ImgDesc0].ToString() : "";
+                        String no = grfDay2Img[ii, colDay2ImgNun] != null ? grfDay2Img[ii, colDay2ImgNun].ToString() : "";
+                        String desc1 = grfDay2Img[ii, colDay2ImgDesc1] != null ? grfDay2Img[ii, colDay2ImgDesc1].ToString() : "";
+                        String path = grfDay2Img[ii, colDay2PathPic] != null ? grfDay2Img[ii, colDay2PathPic].ToString() : "";
+                        if (id.Equals("")) continue;
+                        if (no.Length > 0)
+                        {
+                            String filename = "";
+
+                            filename = txtOpuCode.Text + "_day2_" + no + ext;
+                            String re = ic.ivfDB.opuEmDevDB.updatePathPic(id, no, ic.iniC.folderFTP + "/" + txtOpuCode.Text + "/" + filename, desc, desc1, ic.cStf.staff_id);
+                            long chk = 0;
+                            if (long.TryParse(re, out chk))
+                            {
+                                if (File.Exists(path))       // -0012
+                                {       // -0012
+                                    ic.savePicOPUtoServer(txtOpuCode.Text, filename, path);       // -0012
+                                }
+                            }
+                        }
 
                         i++;
                         //frmW.pB.Value = i;
