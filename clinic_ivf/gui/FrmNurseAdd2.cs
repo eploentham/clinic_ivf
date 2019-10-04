@@ -4256,14 +4256,15 @@ namespace clinic_ivf.gui
             pttOld = ic.ivfDB.pttOldDB.selectByPk1(vsOld.PID);
             vs = ic.ivfDB.vsDB.selectByVn(vsid);
             ptt = ic.ivfDB.pttDB.selectByHn(vsOld.PIDS);
-            ptt.patient_birthday = pttOld.DateOfBirth;
+            //ptt.patient_birthday = pttOld.DateOfBirth;        //bug ทำให้ year เกิดผิด
             txtHn.Value = vsOld.PIDS;
             txtApmHn.Value = vsOld.PIDS;
             txtVn.Value = vsOld.VN;
             txtVnShow.Value = ic.showVN(vsOld.VN);
             txtPttNameE.Value = vsOld.PName;
             txtApmName.Value = vsOld.PName;
-            txtDob.Value = ic.datetoShow(pttOld.DateOfBirth) + " [" + ptt.AgeStringShort() + "]";
+            //txtDob.Value = ic.datetoShow(pttOld.DateOfBirth) + " [" + ptt.AgeStringShort() + "]";     //  bug ทำให้ year เกิดผิด
+            txtDob.Value = ic.datetoShow(ptt.patient_birthday) + " [" + ptt.AgeStringShort() + "]";
             txtAllergy.Value = ptt.allergy_description;
             txtIdOld.Value = pttOld.PID;
             txtVnOld.Value = vsOld.VN;

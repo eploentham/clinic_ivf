@@ -1485,6 +1485,10 @@ namespace clinic_ivf.gui
                 dtEmbr.Columns.Add("embryo_dev_0_date", typeof(String));
                 dtEmbr.Columns.Add("dob_female", typeof(String));
                 dtEmbr.Columns.Add("dob_male", typeof(String));
+                dtEmbr.Columns.Add("embryo_for_et_embryologist_name", typeof(String));
+                dtEmbr.Columns.Add("embryo_for_et_embryologist_name_rpt", typeof(String));
+                dtEmbr.Columns.Add("embryo_for_et_embryologist_name_apv", typeof(String));
+                //dtEmbr.Columns.Add("media_thawing", typeof(String));
                 if (dt.Rows.Count > 0)
                 {
                     foreach (DataRow row in dt.Rows)
@@ -1543,12 +1547,18 @@ namespace clinic_ivf.gui
                     frmW.pB.Maximum = dtEmbr.Rows.Count;
                     foreach (DataRow row in dtEmbr.Rows)
                     {
-                        String path_pic = "", opuCode = "", date="", dobfemale="", dobmale="", datefet="", no1="";
+                        String path_pic = "", opuCode = "", date="", dobfemale="", dobmale="", datefet="", no1="", etname="", rptname="", appvname="";
                         path_pic = row["no1_pathpic"] != null ? row["no1_pathpic"].ToString() : "";
                         opuCode = row["fet_code"] != null ? row["fet_code"].ToString() : "";
+                        etname = row["embryo_for_et_embryologist_id"] != null ? row["embryo_for_et_embryologist_id"].ToString() : "";
+                        rptname = row["embryologist_report_id"] != null ? row["embryologist_report_id"].ToString() : "";
+                        appvname = row["embryologist_approve_id"] != null ? row["embryologist_approve_id"].ToString() : "";
                         dobfemale = ic.datetoShow(txtDobFeMale.Text);
                         dobmale = ic.datetoShow(txtDobMale.Text);
                         datefet = ic.datetoShow(txtDatePicEmbryo.Text);
+                        etname = ic.ivfDB.stfDB.getStaffNameBylStf(etname);
+                        rptname = ic.ivfDB.stfDB.getStaffNameBylStf(rptname);
+                        appvname = ic.ivfDB.stfDB.getStaffNameBylStf(appvname);
                         //date = row["freeze_date"] != null ? row["freeze_date"].ToString() : "";
                         //date = ic.datetoShow(date);
                         //row["freeze_date"] = date;
@@ -1558,6 +1568,9 @@ namespace clinic_ivf.gui
                         row["dob_female"] = dobfemale;
                         row["dob_male"] = dobmale;
                         row["fet_date"] = datefet;
+                        row["embryo_for_et_embryologist_name_rpt"] = rptname;
+                        row["embryo_for_et_embryologist_name_apv"] = appvname;
+                        row["embryo_for_et_embryologist_name"] = etname;
                         no1 = row["no1"].ToString();
                         row[ic.ivfDB.fetDB.fet.freeze_date] = ic.datetoShow(row[ic.ivfDB.fetDB.fet.freeze_date] != null ? row[ic.ivfDB.fetDB.fet.freeze_date] : "");
                         row[ic.ivfDB.fetDB.fet.thaw_date] = ic.datetoShow(row[ic.ivfDB.fetDB.fet.thaw_date] != null ? row[ic.ivfDB.fetDB.fet.thaw_date] : "");
