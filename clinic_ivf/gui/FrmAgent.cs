@@ -261,9 +261,9 @@ namespace clinic_ivf.gui
         private void setAgent()
         {
             agn.agentid = txtID.Text;
-            agn.agentname = txtAgnNameT.Text;
-            agn.agent_code = txtAgnCode.Text;
-            agn.agent_email = txtAgnEmail.Text;
+            agn.agentname = txtAgnNameT.Text.Trim();
+            agn.agent_code = txtAgnCode.Text.Trim();
+            agn.agent_email = txtAgnEmail.Text.Trim();
             //agn.remark = txtRemark.Text;
             //posi.status_doctor = chkStatusDoctor.Checked == true ? "1" : "0";
             //posi.status_embryologist = chkEmbryologist.Checked == true ? "1" : "0";

@@ -3376,27 +3376,27 @@ namespace clinic_ivf.gui
             ptt.t_patient_id = txtID.Text;
             if (ic.iniC.statusAppDonor.Equals("1"))
             {
-                ptt.patient_hn = txtID.Text.Equals("") ? ic.ivfDB.copDB.genHNDoc() : txtHn.Text;
+                ptt.patient_hn = txtID.Text.Equals("") ? ic.ivfDB.copDB.genHNDoc() : txtHn.Text.Trim();
             }
             else
             {
-                ptt.patient_hn = txtHn.Text;
+                ptt.patient_hn = txtHn.Text.Trim();
             }
-            ptt.patient_firstname = txtPttName.Text;
-            ptt.patient_lastname = txtPttLName.Text;
-            ptt.remark = txtRemark.Text;
+            ptt.patient_firstname = txtPttName.Text.Trim();
+            ptt.patient_lastname = txtPttLName.Text.Trim();
+            ptt.remark = txtRemark.Text.Trim();
             ptt.line_id = txtLineID.Text;
-            ptt.email = txtEmail.Text;
-            ptt.mobile1 = txtMobile1.Text;
-            ptt.mobile2 = txtMobile2.Text;
+            ptt.email = txtEmail.Text.Trim();
+            ptt.mobile1 = txtMobile1.Text.Trim();
+            ptt.mobile2 = txtMobile2.Text.Trim();
             ptt.pid = txtPid.Text;
             ptt.passport = txtPaasport.Text;
-            ptt.patient_father_firstname = txtFatherFname.Text;
-            ptt.patient_father_lastname = txtFatherLname.Text;
-            ptt.patient_mother_firstname = txtMotherFname.Text;
-            ptt.patient_mother_lastname = txtMotherLname.Text;
-            ptt.patient_couple_firstname = txtCouFname.Text;
-            ptt.patient_couple_lastname = txtCouLname.Text;
+            ptt.patient_father_firstname = txtFatherFname.Text.Trim();
+            ptt.patient_father_lastname = txtFatherLname.Text.Trim();
+            ptt.patient_mother_firstname = txtMotherFname.Text.Trim();
+            ptt.patient_mother_lastname = txtMotherLname.Text.Trim();
+            ptt.patient_couple_firstname = txtCouFname.Text.Trim();
+            ptt.patient_couple_lastname = txtCouLname.Text.Trim();
             ptt.patient_record_date_time = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd HH:mm:ss");
 
             ptt.f_sex_id = cboSex.SelectedItem == null ? "" : ((ComboBoxItem)cboSex.SelectedItem).Value;
@@ -3413,7 +3413,7 @@ namespace clinic_ivf.gui
             ptt.patient_group = cboPttGroup.SelectedItem == null ? "" : ((ComboBoxItem)cboPttGroup.SelectedItem).Value;
             ptt.patient_type = cboPttType.SelectedItem == null ? "" : ((ComboBoxItem)cboPttType.SelectedItem).Value;
             //ptt.agent = txtAgent.Text;
-            ptt.patient_drugallergy = txtDrugAllergy.Text;
+            ptt.patient_drugallergy = txtDrugAllergy.Text.Trim();
             ptt.patient_father_mobile = txtFatherMobile.Text;
             ptt.patient_mother_mobile = txtMotherMobile.Text;
             ptt.patient_couple_mobile = txtCouMobile.Text;
@@ -3421,8 +3421,8 @@ namespace clinic_ivf.gui
             ptt.f_patient_prefix_id = cboPrefix.SelectedItem == null ? "" : ((ComboBoxItem)cboPrefix.SelectedItem).Value;
             ptt.patient_contact_f_patient_prefix_id = cboName1Prefix.SelectedItem == null ? "" : ((ComboBoxItem)cboName1Prefix.SelectedItem).Value;
 
-            ptt.patient_firstname_e = txtPttNameE.Text;
-            ptt.patient_lastname_e = txtPttLNameE.Text;
+            ptt.patient_firstname_e = txtPttNameE.Text.Trim();
+            ptt.patient_lastname_e = txtPttLNameE.Text.Trim();
             ptt.contract = txtContract.Text;
             ptt.insurance = txtInsurance.Text;
             ptt.patient_contact_firstname = txtContFname1.Text;
