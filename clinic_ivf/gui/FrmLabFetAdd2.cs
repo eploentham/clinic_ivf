@@ -92,11 +92,15 @@ namespace clinic_ivf.gui
             ic.ivfDB.stfDB.setCboEmbryologist(cboCheckedDay5, "");
             ic.ivfDB.stfDB.setCboEmbryologist(cboCheckedDay6, "");
             ic.ivfDB.fdtDB.setCboFETFreezeMedia(cboEmbryoFreezMedia);
+            ic.ivfDB.fdtDB.setCboFETFreezeStage(cboFreezeStage);
+            ic.ivfDB.dtrOldDB.setCboDoctor(cboEmbryoForEtDoctor, "");
 
             ic.ivfDB.opuDB.setCboRemark(cboRemark);
             ic.setCboDayEmbryoDev(cboEmbryoPicDay, "");
 
             //stt.BackgroundGradient = C1.Win.C1SuperTooltip.BackgroundGradient.Gold;
+            char c = '\u00B5';
+            label86.Text = c.ToString() + "l";
 
             setClick();
 
@@ -105,7 +109,7 @@ namespace clinic_ivf.gui
             btnHnSearch.Click += BtnHnSearch_Click;
             btnDonorSearch.Click += BtnDonorSearch_Click;
             txtFreezeNo.KeyUp += TxtFreezeNo_KeyUp;
-            txtFreezeStage.KeyUp += TxtFreezeNo_KeyUp;
+            //txtFreezeStage.KeyUp += TxtFreezeNo_KeyUp;
             txtThawNo.KeyUp += TxtFreezeNo_KeyUp;
             txtThawDate.KeyUp += TxtFreezeNo_KeyUp;
             txtThawSurvival.KeyUp += TxtFreezeNo_KeyUp;
@@ -141,12 +145,12 @@ namespace clinic_ivf.gui
                 if (sender.Equals(txtFreezeNo))
                 {
                     createFET();
-                    txtFreezeStage.Focus();
+                    cboFreezeStage.Focus();
                 }
-                else if (sender.Equals(txtFreezeStage))
-                {
-                    txtThawDate.Focus();
-                }
+                //else if (sender.Equals(txtFreezeStage))
+                //{
+                //    txtThawDate.Focus();
+                //}
                 else if (sender.Equals(txtThawNo))
                 {
                     txtThawSurvival.Focus();
@@ -781,7 +785,9 @@ namespace clinic_ivf.gui
             txtEmbryoForEtAsseted.Value = fet.embryo_for_et_assisted;
             txtEmbryoForEtVolume.Value = fet.embryo_for_et_volume;
             txtEmbryoForEtCatheter.Value = fet.embryo_for_et_catheter;
-            txtEmbryoForEtDoctor.Value = fet.embryo_for_et_doctor;
+            //txtEmbryoForEtDoctor.Value = fet.embryo_for_et_doctor;
+            ic.setC1Combo(cboEmbryoForEtDoctor, fet.embryo_for_et_doctor);
+
             txtEmbryoForEtNumTran.Value = fet.embryo_for_et_number_of_transfer;
             txtEmbryoForEtNumFreeze.Value = fet.embryo_for_et_number_of_freeze;
             txtEmbryoForEtNumDiscard.Value = fet.embryo_for_et_number_of_discard;
@@ -800,7 +806,8 @@ namespace clinic_ivf.gui
             txtDatePicEmbryo.Value = fet.date_pic_embryo;
             txtFreezeDate.Value = fet.freeze_date;
             txtFreezeNo.Value = fet.freeze_no_of_freeze;
-            txtFreezeStage.Value = fet.freeze_stage_of_freeze;
+            //txtFreezeStage.Value = fet.freeze_stage_of_freeze;
+            ic.setC1Combo(cboFreezeStage, fet.freeze_stage_of_freeze);
             txtThawDate.Value = fet.thaw_date;
             txtThawNo.Value = fet.thaw_no_of_thaw;
             txtThawSurvival.Value = fet.thaw_no_of_survival;
@@ -2579,7 +2586,8 @@ namespace clinic_ivf.gui
             fet.fet_id = txtID.Text;
             fet.freeze_date = ic.datetoDB(txtFreezeDate.Text);
             fet.freeze_no_of_freeze = txtFreezeNo.Text;
-            fet.freeze_stage_of_freeze = txtFreezeStage.Text;
+            //fet.freeze_stage_of_freeze = txtFreezeStage.Text;
+            fet.freeze_stage_of_freeze = cboFreezeStage.SelectedItem == null ? "" : ((ComboBoxItem)cboFreezeStage.SelectedItem).Value;
             fet.thaw_date = ic.datetoDB(txtThawDate.Text);
             fet.thaw_no_of_thaw = txtThawNo.Text;
             fet.thaw_no_of_survival = txtThawSurvival.Text;
@@ -2599,7 +2607,8 @@ namespace clinic_ivf.gui
             fet.embryo_for_et_assisted = txtEmbryoForEtAsseted.Text;
             fet.embryo_for_et_volume = txtEmbryoForEtVolume.Text;
             fet.embryo_for_et_catheter = txtEmbryoForEtCatheter.Text;
-            fet.embryo_for_et_doctor = txtEmbryoForEtDoctor.Text;
+            //fet.embryo_for_et_doctor = txtEmbryoForEtDoctor.Text;
+            fet.embryo_for_et_doctor = cboEmbryoForEtDoctor.SelectedItem == null ? "0" : ((ComboBoxItem)cboEmbryoForEtDoctor.SelectedItem).Value;
 
             fet.embryo_for_et_embryologist_id = cboEmbryoForEtEmbryologist.SelectedItem == null ? "0" : ((ComboBoxItem)cboEmbryoForEtEmbryologist.SelectedItem).Value;
             fet.embryologist_report_id = cboEmbryologistReport.SelectedItem == null ? "0" : ((ComboBoxItem)cboEmbryologistReport.SelectedItem).Value;

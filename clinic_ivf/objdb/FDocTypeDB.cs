@@ -260,6 +260,21 @@ namespace clinic_ivf.objdb
                 lFreezeMedia.Add(itm1);
             }
         }
+        public void getlFETFreezeStage()
+        {
+            //lDept = new List<Position>();
+            lFreezeMedia.Clear();
+            DataTable dt = new DataTable();
+            dt = selectOPUFreezeMedia();
+            foreach (DataRow row in dt.Rows)
+            {
+                FDocType itm1 = new FDocType();
+                itm1.doc_type_id = row[fdt.doc_type_id].ToString();
+                itm1.doc_type_name = row[fdt.doc_type_name].ToString();
+
+                lFreezeMedia.Add(itm1);
+            }
+        }
         public void getlOPUFreezeMedia()
         {
             //lDept = new List<Position>();
@@ -600,6 +615,31 @@ namespace clinic_ivf.objdb
                 getlFETFreezeMedia();
             }
             //DataTable dt = selectFETFreezeMedia();
+            //String aaa = "";
+            ComboBoxItem item1 = new ComboBoxItem();
+            item1.Text = "";
+            item1.Value = "000";
+            c.Items.Clear();
+            c.Items.Add(item1);
+            //for (int i = 0; i < dt.Rows.Count; i++)
+            foreach (FDocType row in lFreezeMedia)
+            {
+                item = new ComboBoxItem();
+                item.Text = row.doc_type_name;
+                item.Value = row.doc_type_id;
+
+                c.Items.Add(item);
+            }
+            return c;
+        }
+        public C1ComboBox setCboFETFreezeStage(C1ComboBox c)
+        {
+            ComboBoxItem item = new ComboBoxItem();
+            if (lFreezeMedia.Count <= 0)
+            {
+                getlFETFreezeStage();
+            }
+            //DataTable dt = selectOPUFreezeMedia();
             //String aaa = "";
             ComboBoxItem item1 = new ComboBoxItem();
             item1.Text = "";
