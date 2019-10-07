@@ -123,6 +123,7 @@ namespace clinic_ivf.objdb
                 catch (Exception ex)
                 {
                     sql = ex.Message + " " + ex.InnerException;
+                    new LogWriter("e", "Error insert JobPx " + sql);
                 }
             }
 

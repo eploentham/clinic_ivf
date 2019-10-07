@@ -786,6 +786,7 @@ namespace clinic_ivf.gui
             }
             lFormA.et_day = cboEtDay.SelectedItem == null ? "" : ((ComboBoxItem)cboEtDay.SelectedItem).Value;
             lFormA.et_remark = cboEtRemark.Text;
+            //lFormA.status_fet_active
             //lFormA.status_opu_active = chkSememPESA.Checked ? "1" : "0";
             //lFormA.embryo txtEmbryoTranferTime.Text
         }

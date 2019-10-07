@@ -775,9 +775,9 @@ namespace clinic_ivf.gui
             grfSearch.Cols[colDtr].Caption = "Doctor";
             grfSearch.Cols[colStatusOPU].Caption = "OPU";
             grfSearch.Cols[colStatusFet].Caption = "FET";
-            grfSearch.Cols[colStatusAna].Caption = "Analy";
-            grfSearch.Cols[colStatusFreezing].Caption = "Freez";
-            grfSearch.Cols[colStatusPesa].Caption = "Pesa";
+            grfSearch.Cols[colStatusAna].Caption = "SA";
+            grfSearch.Cols[colStatusFreezing].Caption = "SF";
+            grfSearch.Cols[colStatusPesa].Caption = "PESA";
             grfSearch.Cols[colStatusIUI].Caption = "IUI";
             grfSearch.Cols[colVsAgent].Caption = "Agent";
 
@@ -830,7 +830,7 @@ namespace clinic_ivf.gui
                 //grfSearch[i, colVsAgent] = row["AgentName"].ToString();
 
                 grfSearch[i, colStatusOPU] = row[ic.ivfDB.lFormaDB.lformA.status_opu_active].ToString().Equals("1") ? imgCorr : imgTran;
-                grfSearch[i, colStatusFet] = row[ic.ivfDB.lFormaDB.lformA.status_fet_active].ToString().Equals("1") ? imgCorr : imgTran;
+                grfSearch[i, colStatusFet] = row[ic.ivfDB.lFormaDB.lformA.status_fet].ToString().Equals("1") ? imgCorr : imgTran;
                 grfSearch[i, colStatusAna] = row[ic.ivfDB.lFormaDB.lformA.status_sperm_analysis].ToString().Equals("1") ? imgCorr : imgTran;
                 grfSearch[i, colStatusFreezing] = row[ic.ivfDB.lFormaDB.lformA.status_sperm_freezing].ToString().Equals("1") ? imgCorr : imgTran;
                 grfSearch[i, colStatusPesa] = row[ic.ivfDB.lFormaDB.lformA.status_sperm_pesa].ToString().Equals("1") ? imgCorr : imgTran;
