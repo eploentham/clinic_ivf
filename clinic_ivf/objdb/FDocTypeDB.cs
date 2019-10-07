@@ -15,7 +15,7 @@ namespace clinic_ivf.objdb
         ConnectDB conn;
         public List<FDocType> lFreezeMedia;
         public List<FDocType> lMethod;
-        public List<FDocType> lStage, lStageDay3, lStageDau3Desc1, lStageDay5, lStageDau5Desc1;
+        public List<FDocType> lStage, lStageDay3, lStageDau3Desc1, lStageDay5, lStageDau5Desc1, lFetStage;
         public List<FDocType> lEggstiRt1, lEggstiRt2, lEggstiLt1, lEggstiLt2, lEggstiMedi;
         //public List<FDocType> lFreezeMedia;
 
@@ -30,6 +30,7 @@ namespace clinic_ivf.objdb
             lFreezeMedia = new List<FDocType>();
             lMethod = new List<FDocType>();
             lStage = new List<FDocType>();
+            lFetStage = new List<FDocType>();
             lStageDay3 = new List<FDocType>();
             lStageDau3Desc1 = new List<FDocType>();
             lStageDay5 = new List<FDocType>();
@@ -143,6 +144,17 @@ namespace clinic_ivf.objdb
                 "From " + fdt.table + " fdt " +
                 " " +
                 "Where fdt." + fdt.active + " ='1' and fdt." + fdt.status_combo + "='opu_stage'";
+            dt = conn.selectData(conn.conn, sql);
+
+            return dt;
+        }
+        public DataTable selectFETStage()
+        {
+            DataTable dt = new DataTable();
+            String sql = "select fdt.*  " +
+                "From " + fdt.table + " fdt " +
+                " " +
+                "Where fdt." + fdt.active + " ='1' and fdt." + fdt.status_combo + "='fet_stage'";
             dt = conn.selectData(conn.conn, sql);
 
             return dt;
@@ -265,7 +277,7 @@ namespace clinic_ivf.objdb
             //lDept = new List<Position>();
             lFreezeMedia.Clear();
             DataTable dt = new DataTable();
-            dt = selectOPUFreezeMedia();
+            dt = selectFETFreezeMedia();
             foreach (DataRow row in dt.Rows)
             {
                 FDocType itm1 = new FDocType();
@@ -632,28 +644,50 @@ namespace clinic_ivf.objdb
             }
             return c;
         }
-        public C1ComboBox setCboFETFreezeStage(C1ComboBox c)
+        public void getlFETStage()
+        {
+            //lDept = new List<Position>();
+            lFetStage.Clear();
+            DataTable dt = new DataTable();
+            dt = selectFETStage();
+            //FDocType itm = new FDocType();
+            //itm.doc_type_id = "";
+            //itm.doc_type_name = "";
+            //lStage.Add(itm);
+            foreach (DataRow row in dt.Rows)
+            {
+                FDocType itm1 = new FDocType();
+                itm1.doc_type_id = row[fdt.doc_type_id].ToString();
+                itm1.doc_type_name = row[fdt.doc_type_name].ToString();
+
+                lFetStage.Add(itm1);
+            }
+        }
+        public C1ComboBox setCboFETStage(C1ComboBox c, String selected)
         {
             ComboBoxItem item = new ComboBoxItem();
-            if (lFreezeMedia.Count <= 0)
-            {
-                getlFETFreezeStage();
-            }
-            //DataTable dt = selectOPUFreezeMedia();
+            //DataTable dt = selectOPUStage();
+            if (lFetStage.Count <= 0) getlFETStage();
             //String aaa = "";
             ComboBoxItem item1 = new ComboBoxItem();
             item1.Text = "";
             item1.Value = "000";
             c.Items.Clear();
             c.Items.Add(item1);
-            //for (int i = 0; i < dt.Rows.Count; i++)
-            foreach (FDocType row in lFreezeMedia)
+            int i = 0;
+            foreach (FDocType row in lFetStage)
             {
                 item = new ComboBoxItem();
-                item.Text = row.doc_type_name;
                 item.Value = row.doc_type_id;
-
+                item.Text = row.doc_type_name;
                 c.Items.Add(item);
+                if (item.Value.Equals(selected))
+                {
+                    //c.SelectedItem = item.Value;
+                    c.SelectedText = item.Text;
+                    c.SelectedIndex = i + 1;
+                }
+                i++;
             }
             return c;
         }

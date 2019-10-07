@@ -173,7 +173,7 @@ namespace clinic_ivf.objdb
         }
         private void chkNull(LabFet p)
         {
-            int chk = 0;
+            long chk = 0;
 
             p.date_modi = p.date_modi == null ? "" : p.date_modi;
             p.date_cancel = p.date_cancel == null ? "" : p.date_cancel;
@@ -202,10 +202,13 @@ namespace clinic_ivf.objdb
             p.fet_time = p.fet_time == null ? "" : p.fet_time;
             p.embryo_pic_day = p.embryo_pic_day == null ? "" : p.embryo_pic_day;
 
-            p.doctor_id = int.TryParse(p.doctor_id, out chk) ? chk.ToString() : "0";
-            p.proce_id = int.TryParse(p.proce_id, out chk) ? chk.ToString() : "0";
-            p.req_id = int.TryParse(p.req_id, out chk) ? chk.ToString() : "0";
-            //p.embryo_freez_stage = int.TryParse(p.embryo_freez_stage, out chk) ? chk.ToString() : "0";
+            p.doctor_id = long.TryParse(p.doctor_id, out chk) ? chk.ToString() : "0";
+            p.proce_id = long.TryParse(p.proce_id, out chk) ? chk.ToString() : "0";
+            p.req_id = long.TryParse(p.req_id, out chk) ? chk.ToString() : "0";
+            p.embryologist_approve_id = long.TryParse(p.embryologist_approve_id, out chk) ? chk.ToString() : "0";
+            p.embryologist_report_id = long.TryParse(p.embryologist_report_id, out chk) ? chk.ToString() : "0";
+            p.embryo_for_et_embryologist_id = long.TryParse(p.embryo_for_et_embryologist_id, out chk) ? chk.ToString() : "0";
+            p.embryo_for_et_doctor = long.TryParse(p.embryo_for_et_doctor, out chk) ? chk.ToString() : "0";
             //p.status_lab = p.status_lab == null ? "0" : p.status_lab;
         }
         public String insert(LabFet p, String userId)

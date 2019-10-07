@@ -355,7 +355,7 @@ namespace clinic_ivf.gui
                                 }
                                 else if (itmcode.Equals("160"))
                                 {
-                                    FrmLabFetAdd2 frm1 = new FrmLabFetAdd2(ic, "", re3);
+                                    FrmLabFetAdd3 frm1 = new FrmLabFetAdd3(ic, "", re3);
                                     String txt = "";
                                     if (!name.Equals(""))
                                     {

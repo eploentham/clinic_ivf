@@ -7,7 +7,7 @@
     <ProjectGuid>{7D208141-0F7C-4B94-8BBA-D4B4FA8685A4}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>clinic_ivf</RootNamespace>
-    <AssemblyName>clinic_ivf_donor</AssemblyName>
+    <AssemblyName>clinic_ivf_ptt</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -32,7 +32,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Resources\icon-sqr-01.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\Treetog-I-Documents.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AForge, Version=2.2.5.0, Culture=neutral, PublicKeyToken=c1db6ff4eaa06aeb, processorArchitecture=MSIL">
@@ -225,11 +225,11 @@
     <Compile Include="gui\FrmLabFetAdd1.Designer.cs">
       <DependentUpon>FrmLabFetAdd1.cs</DependentUpon>
     </Compile>
-    <Compile Include="gui\FrmLabFetAdd2.cs">
+    <Compile Include="gui\FrmLabFetAdd3.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="gui\FrmLabFetAdd2.Designer.cs">
-      <DependentUpon>FrmLabFetAdd2.cs</DependentUpon>
+    <Compile Include="gui\FrmLabFetAdd3.Designer.cs">
+      <DependentUpon>FrmLabFetAdd3.cs</DependentUpon>
     </Compile>
     <Compile Include="gui\FrmLabFetView.cs">
       <SubType>Form</SubType>
@@ -996,8 +996,8 @@
     <EmbeddedResource Include="gui\FrmLabFetAdd1.resx">
       <DependentUpon>FrmLabFetAdd1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="gui\FrmLabFetAdd2.resx">
-      <DependentUpon>FrmLabFetAdd2.cs</DependentUpon>
+    <EmbeddedResource Include="gui\FrmLabFetAdd3.resx">
+      <DependentUpon>FrmLabFetAdd3.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="gui\FrmLabFetView.resx">
       <DependentUpon>FrmLabFetView.cs</DependentUpon>
