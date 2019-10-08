@@ -39,7 +39,7 @@ namespace clinic_ivf.gui
         int colDay5ID = 1, colDay5Num = 2, colDay5Desc = 3, colDay5Desc1 = 4, colDay5Desc2 = 5, colDay5Edit = 6;
         int colDay6ID = 1, colDay6Num = 2, colDay6Desc = 3, colDay6Desc1 = 4, colDay6Desc2 = 5, colDay6Edit = 6;
 
-        int colDay2ImgId = 1, colDay2ImgPic = 3, colDay2ImgNun = 2, colDay2ImgDesc0 = 4, colDay2PathPic = 5, colDay2ImgDesc1 = 6;
+        int colDay2ImgId = 1, colDay2ImgPic = 3, colDay2ImgNun = 2, colDay2ImgDesc0 = 4, colDay2PathPic = 5, colDay2ImgDesc1 = 6, colDay2ImgDesc2 = 7;
 
         C1FlexGrid grfDay2, grfDay3, grfDay5, grfDay6, grfDay2Img, grfDay3Img, grfDay5Img, grfDay6Img;
         C1SuperTooltip stt;
@@ -86,11 +86,11 @@ namespace clinic_ivf.gui
             ic.ivfDB.stfDB.setCboEmbryologist(cboEmbryologistAppv, "");
             ic.ivfDB.stfDB.setCboEmbryologist(cboEmbryologistReport, "");
             ic.ivfDB.stfDB.setCboEmbryologist(cboEmbryologistDay2, "");
-            //ic.ivfDB.stfDB.setCboEmbryologist(cboEmbryologistDay3, "");
+            ic.ivfDB.stfDB.setCboEmbryologist(cboEmbryologistDay3, "");
             //ic.ivfDB.stfDB.setCboEmbryologist(cboEmbryologistDay5, "");
             //ic.ivfDB.stfDB.setCboEmbryologist(cboEmbryologistDay6, "");
             ic.ivfDB.stfDB.setCboEmbryologist(cboCheckedDay2, "");
-            //ic.ivfDB.stfDB.setCboEmbryologist(cboCheckedDay3, "");
+            ic.ivfDB.stfDB.setCboEmbryologist(cboCheckedDay3, "");
             //ic.ivfDB.stfDB.setCboEmbryologist(cboCheckedDay5, "");
             //ic.ivfDB.stfDB.setCboEmbryologist(cboCheckedDay6, "");
             ic.ivfDB.fdtDB.setCboFETFreezeMedia(cboEmbryoFreezMedia);
@@ -99,6 +99,7 @@ namespace clinic_ivf.gui
 
             ic.ivfDB.opuDB.setCboRemark(cboRemark);
             ic.setCboDayEmbryoDev(cboEmbryoPicDay, "");
+            ic.setCboDayEmbryoDev(cboEmbryoPicDay1, "");
 
             //stt.BackgroundGradient = C1.Win.C1SuperTooltip.BackgroundGradient.Gold;
             char c = '\u00B5';
@@ -604,9 +605,9 @@ namespace clinic_ivf.gui
             grfDay3.Cols[colDay2Num].Visible = false;
             grfDay3.Cols[colDay2Edit].Visible = false;
 
-            ic.setC1Combo(cboEmbryologistDay2, staffId);
-            ic.setC1Combo(cboCheckedDay2, checkId);
-            txtDay2Date.Value = dateday2;
+            ic.setC1Combo(cboEmbryologistDay3, staffId);
+            ic.setC1Combo(cboCheckedDay3, checkId);
+            txtDay3Date.Value = dateday2;
         }
         private void setControl()
         {
@@ -654,6 +655,12 @@ namespace clinic_ivf.gui
             txtNameMale.Value = fet.name_male;
             txtLabReqCode.Value = lbReq.req_code;
             txtDobFeMale.Value = fet.dob_female;
+            if (fet.dob_female.Equals(""))
+            {
+                Patient ptt = new Patient();
+                ptt = ic.ivfDB.pttDB.selectByHn(fet.hn_female);
+                txtDobFeMale.Value = ptt.patient_birthday;
+            }
             txtDobMale.Value = fet.dob_male;
             ic.setC1Combo(cboDoctor, fet.doctor_id);
             txtFetDate.Value = fet.fet_date;
@@ -712,6 +719,7 @@ namespace clinic_ivf.gui
             //txtMediaThawing.Value = fet.media_thawing;
             ic.setC1Combo(cboMediaThawing, fet.media_thawing);
             ic.setC1Combo(cboEmbryoPicDay, fet.embryo_pic_day);
+            ic.setC1Combo(cboEmbryoPicDay1, fet.embryo_pic_day1);
         }
         private void initGrf()
         {
@@ -1060,13 +1068,14 @@ namespace clinic_ivf.gui
                         String no = grfDay2Img[ii, colDay2ImgNun] != null ? grfDay2Img[ii, colDay2ImgNun].ToString() : "";
                         String desc1 = grfDay2Img[ii, colDay2ImgDesc1] != null ? grfDay2Img[ii, colDay2ImgDesc1].ToString() : "";
                         String path = grfDay2Img[ii, colDay2PathPic] != null ? grfDay2Img[ii, colDay2PathPic].ToString() : "";
+                        String desc5 = grfDay2Img[ii, colDay2ImgDesc2] != null ? grfDay2Img[ii, colDay2ImgDesc2].ToString() : "";
                         if (id.Equals("")) continue;
                         if (no.Length > 0)
                         {
                             String filename = "";
                            
                             filename = txtFetCode.Text + "_day" + embryopicday + "_" + no + ext;
-                            String re = ic.ivfDB.opuEmDevDB.updatePathPic(id, no, ic.iniC.folderFTP + "/" + txtFetCode.Text + "/" + filename, desc, desc1, ic.cStf.staff_id);
+                            String re = ic.ivfDB.opuEmDevDB.updatePathPic(id, no, ic.iniC.folderFTP + "/" + txtFetCode.Text + "/" + filename, desc, desc1, desc5, ic.cStf.staff_id);
                             long chk = 0;
                             if (long.TryParse(re, out chk))
                             {
@@ -1391,19 +1400,21 @@ namespace clinic_ivf.gui
             FrmReport frm = new FrmReport(ic);
             DataTable dtEmbr = new DataTable();
             DataTable dt = new DataTable();
+            DataTable dt1 = new DataTable();
             FrmWaiting frmW = new FrmWaiting();
             frmW.Show();
             try
             {
                 int i = 0;
-                String day = "";
+                String day = "", day1 = "";
                 LabFet fet = new LabFet();
                 fet = ic.ivfDB.fetDB.selectByPk1(txtID.Text);
                 day = cboEmbryoPicDay.SelectedItem == null ? "" : ((ComboBoxItem)cboEmbryoPicDay.SelectedItem).Value;
-
+                day1 = cboEmbryoPicDay1.SelectedItem == null ? "" : ((ComboBoxItem)cboEmbryoPicDay1.SelectedItem).Value;
                 //if (day.Equals("2"))      // fix ไว้ เพราะ รูปของ FET มีรูป day เดียว  เลยเอาลงที่ day2      //      0013
                 //{      // fix ไว้ เพราะ รูปของ FET มีรูป day เดียว  เลยเอาลงที่ day2
-                dt = ic.ivfDB.opuEmDevDB.selectByOpuFetId_DayPrint(txtID.Text, objdb.LabOpuEmbryoDevDB.Day1.Day2);      // ต้องใช้ method นี้ เพราะจะได้ดึง desc ให้เหมือน OPU      // fix ไว้ เพราะ รูปของ FET มีรูป day เดียว  เลยเอาลงที่ day2      //      0013
+                dt = ic.ivfDB.opuEmDevDB.selectByFetId_DayPrint(txtID.Text, objdb.LabOpuEmbryoDevDB.Day1.Day2);      // ต้องใช้ method นี้ เพราะจะได้ดึง desc ให้เหมือน OPU      // fix ไว้ เพราะ รูปของ FET มีรูป day เดียว  เลยเอาลงที่ day2      //      0013
+                dt1 = ic.ivfDB.opuEmDevDB.selectByFetId_DayPrint(txtID.Text, objdb.LabOpuEmbryoDevDB.Day1.Day3);      // ต้องใช้ method นี้ เพราะจะได้ดึง desc ให้เหมือน OPU      // fix ไว้ เพราะ รูปของ FET มีรูป day เดียว  เลยเอาลงที่ day2      //      0013
                 //}      // fix ไว้ เพราะ รูปของ FET มีรูป day เดียว  เลยเอาลงที่ day2      //      0013
                 //else if (day.Equals("3"))      // fix ไว้ เพราะ รูปของ FET มีรูป day เดียว  เลยเอาลงที่ day2      //      0013
                 //{      // fix ไว้ เพราะ รูปของ FET มีรูป day เดียว  เลยเอาลงที่ day2      //      0013
@@ -1444,19 +1455,22 @@ namespace clinic_ivf.gui
                 {
                     foreach (DataRow row in dt.Rows)
                     {
-                        String desc0 = "", date="", name="", desc1="";
+                        String desc0 = "", date="", name="", desc1="", no="";
+
                         desc0 = row["desc0"] != null ? row["desc0"].ToString() : "";
                         desc1 = row["desc1"] != null ? row["desc1"].ToString() : "";
                         date = row["embryo_dev_date"] != null ? row["embryo_dev_date"].ToString() : "";
-                        name = row["day"] != null ? row["day"].ToString() : "";
+                        //name = row["day"] != null ? row["day"].ToString() : "";
+                        name = row["embryo_pic_day"] != null ? row["embryo_pic_day"].ToString() : "";
+                        no = row["opu_embryo_dev_no"] != null ? row["opu_embryo_dev_no"].ToString() : "";
                         desc00.Add(desc0 + " " + desc1);
                         if (row[ic.ivfDB.opuEmDevDB.opuEmDev.opu_embryo_dev_no].ToString().Trim().Equals("1"))
                         {
                             //row["embryo_dev_0_01"] = desc0;
                             foreach (DataRow rowembryo in dtEmbr.Rows)
                             {
-                                rowembryo["embryo_dev_0_01"] = desc0+" "+desc1;
-                                rowembryo["embryo_dev_0_date"] = ic.datetoShow(date);
+                                rowembryo["embryo_dev_0_01"] = no+". "+desc0 + " "+desc1;
+                                rowembryo["embryo_dev_0_date"] = "Date Time: " + ic.datetoShow(date);
                                 rowembryo["embryo_dev_0_name"] = "Day "+name;
                             }
                         }
@@ -1465,8 +1479,8 @@ namespace clinic_ivf.gui
                             //row["embryo_dev_0_02"] = desc0;
                             foreach (DataRow rowembryo in dtEmbr.Rows)
                             {
-                                rowembryo["embryo_dev_0_02"] = desc0 + " " + desc1;
-                                rowembryo["embryo_dev_0_date"] = ic.datetoShow(date);
+                                rowembryo["embryo_dev_0_02"] = no + ". " + desc0 + " " + desc1;
+                                rowembryo["embryo_dev_0_date"] = "Date Time: " + ic.datetoShow(date);
                                 rowembryo["embryo_dev_0_name"] = "Day " + name;
                             }
                         }
@@ -1475,8 +1489,8 @@ namespace clinic_ivf.gui
                             //row["embryo_dev_0_03"] = desc0;
                             foreach (DataRow rowembryo in dtEmbr.Rows)
                             {
-                                rowembryo["embryo_dev_0_03"] = desc0 + " " + desc1;
-                                rowembryo["embryo_dev_0_date"] = ic.datetoShow(date);
+                                rowembryo["embryo_dev_0_03"] = no + ". " + desc0 + " " + desc1;
+                                rowembryo["embryo_dev_0_date"] = "Date Time: " + ic.datetoShow(date);
                                 rowembryo["embryo_dev_0_name"] = "Day " + name;
                             }
                         }
@@ -1485,8 +1499,8 @@ namespace clinic_ivf.gui
                             //row["embryo_dev_0_04"] = desc0;
                             foreach (DataRow rowembryo in dtEmbr.Rows)
                             {
-                                rowembryo["embryo_dev_0_04"] = desc0 + " " + desc1;
-                                rowembryo["embryo_dev_0_date"] = ic.datetoShow(date);
+                                rowembryo["embryo_dev_0_04"] = no + ". " + desc0 + " " + desc1;
+                                rowembryo["embryo_dev_0_date"] = "Date Time: " + ic.datetoShow(date);
                                 rowembryo["embryo_dev_0_name"] = "Day " + name;
                             }
                         }
@@ -1495,11 +1509,90 @@ namespace clinic_ivf.gui
                             //row["embryo_dev_0_05"] = desc0;
                             foreach (DataRow rowembryo in dtEmbr.Rows)
                             {
-                                rowembryo["embryo_dev_0_05"] = desc0 + " " + desc1; ;
-                                rowembryo["embryo_dev_0_date"] = ic.datetoShow(date);
+                                rowembryo["embryo_dev_0_05"] = no + ". " + desc0 + " " + desc1; ;
+                                rowembryo["embryo_dev_0_date"] = "Date Time: " + ic.datetoShow(date);
                                 rowembryo["embryo_dev_0_name"] = "Day " + name;
                             }
                         }
+                    }
+                }
+                foreach (DataRow rowembryo in dtEmbr.Rows)
+                {
+                    rowembryo["embryo_dev_1_name"] = "";
+                }
+                if ((!day1.Equals("")) && (dt1.Rows.Count > 0))
+                {
+                    foreach (DataRow row in dt1.Rows)
+                    {
+                        String desc0 = "", date = "", name = "", desc1 = "", no = "";
+
+                        desc0 = row["desc0"] != null ? row["desc0"].ToString() : "";
+                        desc1 = row["desc1"] != null ? row["desc1"].ToString() : "";
+                        date = row["embryo_dev_date"] != null ? row["embryo_dev_date"].ToString() : "";
+                        //name = row["day"] != null ? row["day"].ToString() : "";
+                        name = row["opu_embryo_dev_no"] != null ? row["opu_embryo_dev_no"].ToString() : "";
+                        no = row["opu_embryo_dev_no"] != null ? row["opu_embryo_dev_no"].ToString() : "";
+                        desc00.Add(desc0 + " " + desc1);
+                        if (row[ic.ivfDB.opuEmDevDB.opuEmDev.opu_embryo_dev_no].ToString().Trim().Equals("1"))
+                        {
+                            //row["embryo_dev_0_01"] = desc0;
+                            foreach (DataRow rowembryo in dtEmbr.Rows)
+                            {
+                                rowembryo["embryo_dev_1_01"] = no + ". " + desc0 + " " + desc1;
+                                rowembryo["embryo_dev_1_date"] = "Date Time: "+ic.datetoShow(date);
+                                rowembryo["embryo_dev_1_name"] = "Day " + name;
+                            }
+                        }
+                        else if (row[ic.ivfDB.opuEmDevDB.opuEmDev.opu_embryo_dev_no].ToString().Trim().Equals("2"))
+                        {
+                            //row["embryo_dev_0_02"] = desc0;
+                            foreach (DataRow rowembryo in dtEmbr.Rows)
+                            {
+                                rowembryo["embryo_dev_1_02"] = no + ". " + desc0 + " " + desc1;
+                                rowembryo["embryo_dev_1_date"] = "Date Time: " + ic.datetoShow(date);
+                                rowembryo["embryo_dev_1_name"] = "Day " + name;
+                            }
+                        }
+                        else if (row[ic.ivfDB.opuEmDevDB.opuEmDev.opu_embryo_dev_no].ToString().Trim().Equals("3"))
+                        {
+                            //row["embryo_dev_0_03"] = desc0;
+                            foreach (DataRow rowembryo in dtEmbr.Rows)
+                            {
+                                rowembryo["embryo_dev_1_03"] = no + ". " + desc0 + " " + desc1;
+                                rowembryo["embryo_dev_1_date"] = "Date Time: " + ic.datetoShow(date);
+                                rowembryo["embryo_dev_1_name"] = "Day " + name;
+                            }
+                        }
+                        else if (row[ic.ivfDB.opuEmDevDB.opuEmDev.opu_embryo_dev_no].ToString().Trim().Equals("4"))
+                        {
+                            //row["embryo_dev_0_04"] = desc0;
+                            foreach (DataRow rowembryo in dtEmbr.Rows)
+                            {
+                                rowembryo["embryo_dev_1_04"] = no + ". " + desc0 + " " + desc1;
+                                rowembryo["embryo_dev_1_date"] = "Date Time: " + ic.datetoShow(date);
+                                rowembryo["embryo_dev_1_name"] = "Day " + name;
+                            }
+                        }
+                        else if (row[ic.ivfDB.opuEmDevDB.opuEmDev.opu_embryo_dev_no].ToString().Trim().Equals("5"))
+                        {
+                            //row["embryo_dev_0_05"] = desc0;
+                            foreach (DataRow rowembryo in dtEmbr.Rows)
+                            {
+                                rowembryo["embryo_dev_1_05"] = no + ". " + desc0 + " " + desc1; ;
+                                rowembryo["embryo_dev_1_date"] = "Date Time: " + ic.datetoShow(date);
+                                rowembryo["embryo_dev_1_name"] = "Day " + name;
+                            }
+                        }
+                        //else if (row[ic.ivfDB.opuEmDevDB.opuEmDev.opu_embryo_dev_no].ToString().Trim().Equals("6"))
+                        //{
+                        //    //row["embryo_dev_0_05"] = desc0;
+                        //    foreach (DataRow rowembryo in dtEmbr.Rows)
+                        //    {
+                        //        rowembryo["embryo_dev_1_05"] = no + ". " + desc0 + " " + desc1; ;
+                        //        rowembryo["embryo_dev_1_date"] = "Date Time: " + ic.datetoShow(date);
+                        //        rowembryo["embryo_dev_1_name"] = "Day " + name;
+                        //    }
+                        //}
                     }
                 }
                 if (dtEmbr.Rows.Count > 0)
@@ -1509,6 +1602,7 @@ namespace clinic_ivf.gui
                     foreach (DataRow row in dtEmbr.Rows)
                     {
                         String path_pic = "", opuCode = "", date="", dobfemale="", dobmale="", datefet="", no1="", etname="", rptname="", appvname="", desc0="", desc1="";
+                        String mediathawing = "", stateoffree = "";
                         path_pic = row["no1_pathpic"] != null ? row["no1_pathpic"].ToString() : "";
                         opuCode = row["fet_code"] != null ? row["fet_code"].ToString() : "";
                         etname = row["embryo_for_et_embryologist_id"] != null ? row["embryo_for_et_embryologist_id"].ToString() : "";
@@ -1516,12 +1610,16 @@ namespace clinic_ivf.gui
                         appvname = row["embryologist_approve_id"] != null ? row["embryologist_approve_id"].ToString() : "";
                         desc0 = row["desc0"] != null ? row["desc0"].ToString() : "";
                         desc1 = row["desc1"] != null ? row["desc1"].ToString() : "";
+                        mediathawing = row["media_thawing"] != null ? row["media_thawing"].ToString() : "";
+                        stateoffree = row["freeze_stage_of_freeze_name"] != null ? row["freeze_stage_of_freeze_name"].ToString() : "";
                         dobfemale = ic.datetoShow(txtDobFeMale.Text);
                         dobmale = ic.datetoShow(txtDobMale.Text);
                         datefet = ic.datetoShow(txtDatePicEmbryo.Text);
                         etname = ic.ivfDB.stfDB.getStaffNameBylStf(etname);
                         rptname = ic.ivfDB.stfDB.getStaffNameBylStf(rptname);
                         appvname = ic.ivfDB.stfDB.getStaffNameBylStf(appvname);
+                        mediathawing = ic.ivfDB.stfDB.getStaffNameBylStf(mediathawing);
+                        //stateoffree = ic.ivfDB.stfDB.getStaffNameBylStf(stateoffree);
                         //date = row["freeze_date"] != null ? row["freeze_date"].ToString() : "";
                         //date = ic.datetoShow(date);
                         //row["freeze_date"] = date;
@@ -1534,6 +1632,8 @@ namespace clinic_ivf.gui
                         row["embryo_for_et_embryologist_name_rpt"] = rptname;
                         row["embryo_for_et_embryologist_name_apv"] = appvname;
                         row["embryo_for_et_embryologist_name"] = etname;
+                        row["media_thawing"] = mediathawing;
+                        row["freeze_stage_of_freeze"] = stateoffree;
                         no1 = row["no1"].ToString();
                         row[ic.ivfDB.fetDB.fet.freeze_date] = ic.datetoShow(row[ic.ivfDB.fetDB.fet.freeze_date] != null ? row[ic.ivfDB.fetDB.fet.freeze_date] : "");
                         row[ic.ivfDB.fetDB.fet.thaw_date] = ic.datetoShow(row[ic.ivfDB.fetDB.fet.thaw_date] != null ? row[ic.ivfDB.fetDB.fet.thaw_date] : "");
@@ -1602,9 +1702,10 @@ namespace clinic_ivf.gui
         private void BtnSaveImg2_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            String embryopicday = "";
+            String embryopicday = "", embryopicday1 = "";
             int chk1 = 0;
             embryopicday = ((ComboBoxItem)cboEmbryoPicDay.SelectedItem).Value;
+            embryopicday1 = ((ComboBoxItem)cboEmbryoPicDay1.SelectedItem).Value;
             if (embryopicday.Equals(""))
             {
                 MessageBox.Show("กรุณา เลือก Embryo Pciture Day", "");
@@ -1615,7 +1716,17 @@ namespace clinic_ivf.gui
                 MessageBox.Show("Embryo Pciture Day ไม่ถูกต้อง", "");
                 return;
             }
-            if (MessageBox.Show("ต้องการ บันทึกช้อมูล Day 2 Embryo Development  ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+            //if (embryopicday1.Equals(""))
+            //{
+            //    MessageBox.Show("กรุณา เลือก Embryo Pciture Day1", "");
+            //    return;
+            //}
+            //if (!int.TryParse(embryopicday1, out chk1))
+            //{
+            //    MessageBox.Show("Embryo Pciture Day1 ไม่ถูกต้อง", "");
+            //    return;
+            //}
+            if (MessageBox.Show("ต้องการ บันทึกช้อมูล Day Embryo Development  ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
             {
                 ic.cStf.staff_id = "";
                 Boolean chkSave = false;
@@ -1630,6 +1741,7 @@ namespace clinic_ivf.gui
                     //embryopicday = ((ComboBoxItem)cboEmbryoPicDay.SelectedItem).Value;
 
                     ic.ivfDB.fetDB.updateEmbryoPicDay(txtID.Text, ((ComboBoxItem)cboEmbryoPicDay.SelectedItem).Value);
+                    ic.ivfDB.fetDB.updateEmbryoPicDay1(txtID.Text, ((ComboBoxItem)cboEmbryoPicDay1.SelectedItem).Value);
                     foreach (Row row in grfDay2Img.Rows)
                     {
                         try
@@ -1639,6 +1751,7 @@ namespace clinic_ivf.gui
                             String desc = row[colDay2ImgDesc0] != null ? row[colDay2ImgDesc0].ToString() : "";
                             String no = row[colDay2ImgNun] != null ? row[colDay2ImgNun].ToString() : "";
                             String desc1 = row[colDay2ImgDesc1] != null ? row[colDay2ImgDesc1].ToString() : "";
+                            String desc5 = row[colDay2ImgDesc2] != null ? row[colDay2ImgDesc2].ToString() : "";
                             i++;
                             if (i == 1) continue;
                             if (id.Equals("")) continue;
@@ -1650,7 +1763,7 @@ namespace clinic_ivf.gui
                                 {
                                     filename = txtFetCode.Text + "_day"+ embryopicday + "_" + no + "." + ext[ext.Length - 1];
                                     //re = ic.ivfDB.opuEmDevDB.updatePathPic(id, no, ic.iniC.folderFTP + "/" + txtFetCode.Text + "/" + filename, desc, desc1, ic.cStf.staff_id);       // -0012
-                                    re = ic.ivfDB.opuEmDevDB.updatePathPicNoPic(id, no, desc, desc1, ic.cStf.staff_id);       // +0012
+                                    re = ic.ivfDB.opuEmDevDB.updatePathPicNoPic(id, no, desc, desc1, desc5, ic.cStf.staff_id);       // +0012
                                     long chk = 0;
                                     if (long.TryParse(re, out chk))
                                     {
@@ -1972,6 +2085,31 @@ namespace clinic_ivf.gui
         {
             //calMotile();
             //calFertili();
+            String embryopicday = "", embryopicday1 = "";
+            int chk2 = 0;
+            embryopicday = ((ComboBoxItem)cboEmbryoPicDay.SelectedItem).Value;
+            embryopicday1 = ((ComboBoxItem)cboEmbryoPicDay1.SelectedItem).Value;
+            if (embryopicday.Equals(""))
+            {
+                MessageBox.Show("กรุณา เลือก Embryo Pciture Day", "");
+                return;
+            }
+            if (!int.TryParse(embryopicday, out chk2))
+            {
+                MessageBox.Show("Embryo Pciture Day ไม่ถูกต้อง", "");
+                return;
+            }
+            //if (embryopicday1.Equals(""))
+            //{
+            //    MessageBox.Show("กรุณา เลือก Embryo Pciture Day1", "");
+            //    return;
+            //}
+            //if (!int.TryParse(embryopicday1, out chk2))
+            //{
+            //    MessageBox.Show("Embryo Pciture Day1 ไม่ถูกต้อง", "");
+            //    return;
+            //}
+
             setFET();
             String re = ic.ivfDB.fetDB.update(fet, ic.user.staff_id);
             sB1.Text = "Save OPU";
@@ -1987,6 +2125,9 @@ namespace clinic_ivf.gui
                 String re2 = ic.ivfDB.fetDB.updateEmbryoEt(fet, ic.user.staff_id);
                 sB1.Text = "Save EmbryoET";
                 Application.DoEvents();
+                ic.ivfDB.fetDB.updateEmbryoPicDay(txtID.Text, ((ComboBoxItem)cboEmbryoPicDay.SelectedItem).Value);
+                ic.ivfDB.fetDB.updateEmbryoPicDay1(txtID.Text, ((ComboBoxItem)cboEmbryoPicDay1.SelectedItem).Value);
+
                 //setOPUFertilization();
                 //String re3 = ic.ivfDB.opuDB.updateFertili(opu, ic.user.staff_id);
                 //sB1.Text = "Save Fertili";
@@ -2112,6 +2253,7 @@ namespace clinic_ivf.gui
             fet.name_donor = txtNameDonor.Text;
             fet.date_pic_embryo = ic.datetoDB(txtDatePicEmbryo.Text);
             fet.embryo_pic_day = cboEmbryoPicDay.SelectedItem == null ? "" : ((ComboBoxItem)cboEmbryoPicDay.SelectedItem).Value;
+            fet.embryo_pic_day1 = cboEmbryoPicDay1.SelectedItem == null ? "" : ((ComboBoxItem)cboEmbryoPicDay1.SelectedItem).Value;
         }
         private void setThawing()
         {
@@ -2159,7 +2301,7 @@ namespace clinic_ivf.gui
             grfDay2Img.Clear();
             grfDay2Img.DataSource = null;
             grfDay2Img.Rows.Count = 1;
-            grfDay2Img.Cols.Count = 7;
+            grfDay2Img.Cols.Count = 8;
             DataTable dt = new DataTable();
             dt = ic.ivfDB.opuEmDevDB.selectByOpuFetId_Day(txtID.Text, objdb.LabOpuEmbryoDevDB.Day1.Day2);
 
@@ -2188,6 +2330,7 @@ namespace clinic_ivf.gui
             grfDay2Img.Cols[colDay2ImgDesc0].Caption = "Desc1";
             grfDay2Img.Cols[colDay2PathPic].Caption = "pathpic";
             grfDay2Img.Cols[colDay2ImgDesc1].Caption = "Desc4";
+            grfDay2Img.Cols[colDay2ImgDesc2].Caption = "Desc5";
 
             grfDay2Img.Cols[colDay2ImgPic].ImageAndText = false;
 
@@ -2205,6 +2348,7 @@ namespace clinic_ivf.gui
                 row1[colDay2ImgDesc0] = row[ic.ivfDB.opuEmDevDB.opuEmDev.desc3].ToString();
                 row1[colDay2PathPic] = row[ic.ivfDB.opuEmDevDB.opuEmDev.path_pic].ToString();
                 row1[colDay2ImgDesc1] = row[ic.ivfDB.opuEmDevDB.opuEmDev.desc4].ToString();
+                row1[colDay2ImgDesc2] = row[ic.ivfDB.opuEmDevDB.opuEmDev.desc5].ToString();
 
                 if (row[ic.ivfDB.opuEmDevDB.opuEmDev.path_pic] != null && !row[ic.ivfDB.opuEmDevDB.opuEmDev.path_pic].ToString().Equals(""))
                 {

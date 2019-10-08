@@ -477,6 +477,8 @@ namespace clinic_ivf.report {
             
             private global::System.Data.DataColumn columnmedia_thawing_media;
             
+            private global::System.Data.DataColumn columndesc5;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public lab_fet_embryo_devDataTable() {
@@ -1304,6 +1306,14 @@ namespace clinic_ivf.report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn desc5Column {
+                get {
+                    return this.columndesc5;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1438,7 +1448,8 @@ namespace clinic_ivf.report {
                         string media_lot_no, 
                         string media_exp, 
                         string media_thawing, 
-                        string media_thawing_media) {
+                        string media_thawing_media, 
+                        string desc5) {
                 lab_fet_embryo_devRow rowlab_fet_embryo_devRow = ((lab_fet_embryo_devRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         embryo_for_et_embryologist,
@@ -1539,7 +1550,8 @@ namespace clinic_ivf.report {
                         media_lot_no,
                         media_exp,
                         media_thawing,
-                        media_thawing_media};
+                        media_thawing_media,
+                        desc5};
                 rowlab_fet_embryo_devRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowlab_fet_embryo_devRow);
                 return rowlab_fet_embryo_devRow;
@@ -1661,6 +1673,7 @@ namespace clinic_ivf.report {
                 this.columnmedia_exp = base.Columns["media_exp"];
                 this.columnmedia_thawing = base.Columns["media_thawing"];
                 this.columnmedia_thawing_media = base.Columns["media_thawing_media"];
+                this.columndesc5 = base.Columns["desc5"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1864,6 +1877,8 @@ namespace clinic_ivf.report {
                 base.Columns.Add(this.columnmedia_thawing);
                 this.columnmedia_thawing_media = new global::System.Data.DataColumn("media_thawing_media", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnmedia_thawing_media);
+                this.columndesc5 = new global::System.Data.DataColumn("desc5", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndesc5);
                 this.columnembryo_for_et_embryologist.Caption = "DataColumn1";
                 this.columnembryologist_appv.Caption = "DataColumn1";
                 this.columnembryologist_report.Caption = "DataColumn1";
@@ -3700,6 +3715,22 @@ namespace clinic_ivf.report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string desc5 {
+                get {
+                    try {
+                        return ((string)(this[this.tablelab_fet_embryo_dev.desc5Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'desc5\' in table \'lab_fet_embryo_dev\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablelab_fet_embryo_dev.desc5Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool Isembryo_for_et_embryologistNull() {
                 return this.IsNull(this.tablelab_fet_embryo_dev.embryo_for_et_embryologistColumn);
             }
@@ -4884,6 +4915,18 @@ namespace clinic_ivf.report {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void Setmedia_thawing_mediaNull() {
                 this[this.tablelab_fet_embryo_dev.media_thawing_mediaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Isdesc5Null() {
+                return this.IsNull(this.tablelab_fet_embryo_dev.desc5Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Setdesc5Null() {
+                this[this.tablelab_fet_embryo_dev.desc5Column] = global::System.Convert.DBNull;
             }
         }
         

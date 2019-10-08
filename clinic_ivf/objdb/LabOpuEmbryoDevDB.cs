@@ -44,6 +44,7 @@ namespace clinic_ivf.objdb
             opuEmDev.checked_id = "checked_id";
             opuEmDev.embryo_dev_date = "embryo_dev_date";
             opuEmDev.desc4 = "desc4";
+            opuEmDev.desc5 = "desc5";
 
             opuEmDev.table = "lab_t_opu_embryo_dev";
             opuEmDev.pkField = "opu_embryo_dev_id";
@@ -75,6 +76,7 @@ namespace clinic_ivf.objdb
             p.desc3 = p.desc3 == null ? "" : p.desc3;
             p.embryo_dev_date = p.embryo_dev_date == null ? "" : p.embryo_dev_date;
             p.desc4 = p.desc4 == null ? "" : p.desc4;
+            p.desc5 = p.desc5 == null ? "" : p.desc5;
 
             //p.user_cancel = p.user_cancel == null ? "" : p.user_cancel;
         }
@@ -105,6 +107,7 @@ namespace clinic_ivf.objdb
                 "," + opuEmDev.checked_id + "='" + p.checked_id + "'" +
                 "," + opuEmDev.embryo_dev_date + "='" + p.embryo_dev_date + "'" +
                 "," + opuEmDev.desc4 + "='" + p.desc4.Replace("'", "''") + "'" +
+                "," + opuEmDev.desc5 + "='" + p.desc5.Replace("'", "''") + "'" +
                 " " +
                
                 "";
@@ -138,6 +141,7 @@ namespace clinic_ivf.objdb
                 "," + opuEmDev.checked_id + "='" + p.checked_id + "'" +
                 "," + opuEmDev.embryo_dev_date + "='" + p.embryo_dev_date + "'" +
                 "," + opuEmDev.desc4 + "='" + p.desc4.Replace("'", "''") + "'" +
+                "," + opuEmDev.desc5 + "='" + p.desc5.Replace("'", "''") + "'" +
                 "Where " + opuEmDev.pkField + "='" + p.opu_embryo_dev_id + "'"
                 ;
 
@@ -311,6 +315,29 @@ namespace clinic_ivf.objdb
 
             return re;
         }
+        public String updatePathPicNoPic(String id, String num, String desc3, String desc4, String desc5, String userid)
+        {
+            String re = "";
+            String sql = "";
+            int chk = 0;
+            sql = "Update " + opuEmDev.table + " Set " +
+                " " + opuEmDev.desc3 + " = '" + desc3.Replace("'", "''") + "'" +
+                "," + opuEmDev.desc5 + " = '" + desc5.Replace("'", "''") + "'" +
+                "," + opuEmDev.desc4 + " = '" + desc4.Replace("'", "''") + "'" +
+                "," + opuEmDev.user_modi + " = '" + userid + "'" +
+                "," + opuEmDev.date_modi + " = now() " +
+                "Where " + opuEmDev.pkField + "='" + id + "'";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+
+            return re;
+        }
         public String updatePathPicNoPic(String id, String num, String desc3, String desc4, String userid)
         {
             String re = "";
@@ -320,6 +347,30 @@ namespace clinic_ivf.objdb
                 " " + opuEmDev.desc3 + " = '" + desc3.Replace("'", "''") + "'" +
                 //"," + opuEmDev.path_pic + " = '" + filename + "'" +
                 "," + opuEmDev.desc4 + " = '" + desc4.Replace("'", "''") + "'" +
+                "," + opuEmDev.user_modi + " = '" + userid + "'" +
+                "," + opuEmDev.date_modi + " = now() " +
+                "Where " + opuEmDev.pkField + "='" + id + "'";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+
+            return re;
+        }
+        public String updatePathPic(String id, String num, String filename, String desc3, String desc4, String desc5, String userid)
+        {
+            String re = "";
+            String sql = "";
+            int chk = 0;
+            sql = "Update " + opuEmDev.table + " Set " +
+                " " + opuEmDev.desc3 + " = '" + desc3.Replace("'", "''") + "'" +
+                "," + opuEmDev.path_pic + " = '" + filename + "'" +
+                "," + opuEmDev.desc4 + " = '" + desc4.Replace("'", "''") + "'" +
+                "," + opuEmDev.desc5 + " = '" + desc5.Replace("'", "''") + "'" +
                 "," + opuEmDev.user_modi + " = '" + userid + "'" +
                 "," + opuEmDev.date_modi + " = now() " +
                 "Where " + opuEmDev.pkField + "='" + id + "'";
@@ -523,6 +574,57 @@ namespace clinic_ivf.objdb
 
             return dt;
         }
+        public DataTable selectByFetId_DayPrint(String fetid, Day1 day1)
+        {
+            DataTable dt = new DataTable();
+            String day = "";
+            if (day1 == Day1.Day2)
+            {
+                day = "2";
+            }
+            else if (day1 == Day1.Day3)
+            {
+                day = "3";
+            }
+            else if (day1 == Day1.Day5)
+            {
+                day = "5";
+            }
+            else if (day1 == Day1.Day6)
+            {
+                day = "6";
+            }
+            //String sql = "select opu.hn_male, opu.hn_female, opu.name_male, opu.name_female, proce.proce_name_t as procedure1, dtr.Name as doctor, opuEmDev.embryo_dev_date as opu_date " +
+            //    ", opuEmDev.day as day1, opuEmDev.opu_embryo_dev_no as no1, opuEmDev.desc0  as no1_desc0, opuEmDev.path_pic as no1_pathpic, opuEmDev.desc1 as no1_desc1" +
+            //    ", opuEmDev.desc2 as no1_desc2, opuEmDev.desc3 as no1_desc3, opu.opu_id, opu.opu_code, 'Number of transfer' as footer1" +
+            //    ", 'Number of Freeze' as footer2,'Number of Discard' as footer3, opu.remark as footer4,'' as footer5, 'st# = straw number' as footer6 " +
+            //    ", opu.embryo_for_et_number_of_transfer, opu.embryo_for_et_number_of_freeze,opu.embryo_for_et_number_of_discard, opuEmDev.desc4 as no1_desc4, opuEmDev.opu_embryo_dev_no, opuEmDev.desc0" +
+            //    ", opuEmDev.embryo_dev_date, opuEmDev.day, opuEmDev.desc1 " +
+            //    "From " + opuEmDev.table + " opuEmDev " +
+            //    "Left Join lab_t_opu opu on opu.opu_id = opuEmDev.opu_fet_id " +
+            //    "Left Join lab_b_procedure proce on proce.proce_id = opu.proce_id " +
+            //    "Left Join Doctor dtr on dtr.ID = opu.doctor_id " +
+            //    "Where opuEmDev." + opuEmDev.active + " ='1' and " + opuEmDev.opu_fet_id + "='" + opufetid + "' and " + opuEmDev.day + "='" + day + "' " +
+            //    "and length(opuEmDev.path_pic) > 0 " +
+            //    "Order By opuEmDev." + opuEmDev.opu_embryo_dev_id;
+            String sql = "select fet.hn_male, fet.hn_female, fet.name_male, fet.name_female, proce.proce_name_t as procedure1, dtr.Name as doctor, opuEmDev.embryo_dev_date as opu_date " +
+                ", opuEmDev.day as day1, opuEmDev.opu_embryo_dev_no as no1, opuEmDev.desc0  as no1_desc0, opuEmDev.path_pic as no1_pathpic, opuEmDev.desc1 as no1_desc1" +
+                ", opuEmDev.desc2 as no1_desc2, opuEmDev.desc3 as no1_desc3, fet.fet_id, fet.fet_code, 'Number of transfer' as footer1" +
+                ", 'Number of Freeze' as footer2,'Number of Discard' as footer3, fet.remark as footer4,'' as footer5, 'st# = straw number' as footer6 " +
+                ", fet.embryo_for_et_number_of_transfer, fet.embryo_for_et_number_of_freeze,fet.embryo_for_et_number_of_discard, opuEmDev.desc4 as no1_desc4, opuEmDev.opu_embryo_dev_no, opuEmDev.desc0" +
+                ", opuEmDev.embryo_dev_date, opuEmDev.day, opuEmDev.desc1, fet.embryo_pic_day, fet.embryo_pic_day1 " +
+                "From " + opuEmDev.table + " opuEmDev " +
+                "Left Join lab_t_fet fet on fet.fet_id = opuEmDev.opu_fet_id " +
+                "Left Join lab_b_procedure proce on proce.proce_id = fet.proce_id " +
+                "Left Join Doctor dtr on dtr.ID = fet.doctor_id " +
+                "Where opuEmDev." + opuEmDev.active + " ='1' and " + opuEmDev.opu_fet_id + "='" + fetid + "' and " + opuEmDev.day + "='" + day + "' " +
+                //"and length(opuEmDev.path_pic) > 0 " +
+                "Order By opuEmDev." + opuEmDev.opu_embryo_dev_id;
+
+            dt = conn.selectData(conn.conn, sql);
+
+            return dt;
+        }
         public DataTable selectByFetFetId_DayPrint(String opufetid)
         {
             // fix ไว้ เพราะ รูปของ FET มีรูป day เดียว  เลยเอาลงที่ day2
@@ -553,12 +655,14 @@ namespace clinic_ivf.objdb
                 ", fet.embryo_for_et_volume, fet.embryo_for_et_catheter, fet.embryo_for_et_doctor, opuEmDev.desc0, opuEmDev.opu_embryo_dev_no" +
                 ",fet.freeze_date,fet.freeze_no_of_freeze,fet.freeze_stage_of_freeze,fet.thaw_date,fet.thaw_no_of_thaw,fet.thaw_no_of_survival" +
                 ",fet.thaw_no_of_remaining,fet.media_date,fet.media_lot_no,fet.media_exp,fet.media_thawing, proce.proce_name_t" +
-                ",fet.embryo_for_et_embryologist_id,fet.embryologist_report_id,fet.embryologist_approve_id, fet.embryo_freez_freeze_media, fdt.doc_type_name as media_thawing_media, opuEmDev.desc1  " +
+                ",fet.embryo_for_et_embryologist_id,fet.embryologist_report_id,fet.embryologist_approve_id, fet.embryo_freez_freeze_media, fdt.doc_type_name as media_thawing_media, opuEmDev.desc1" +
+                ", fdtstate.doc_type_name as freeze_stage_of_freeze_name,opuEmDev.desc5  " +
                 "From " + opuEmDev.table + " opuEmDev " +
                 "Left Join lab_t_fet fet on fet.fet_id = opuEmDev.opu_fet_id " +
                 "Left Join lab_b_procedure proce on proce.proce_id = fet.proce_id " +
                 "Left Join Doctor dtr on dtr.ID = fet.doctor_id " +
                 "Left join f_doc_type fdt on fdt.doc_type_id = fet.embryo_freez_freeze_media " +
+                "Left join f_doc_type fdtstate on fdtstate.doc_type_id = fet.freeze_stage_of_freeze " +
                 "Where opuEmDev." + opuEmDev.active + " ='1' and " + opuEmDev.opu_fet_id + "='" + opufetid + "' and " + opuEmDev.day + "='" + day + "' " +
                 "and length(opuEmDev.path_pic) > 0 " +
                 "Order By opuEmDev." + opuEmDev.opu_embryo_dev_id;
