@@ -80,6 +80,7 @@ namespace clinic_ivf.object1
         public String fet_time { get; set; }
         public String embryo_freez_freeze_media { get; set; }
         public String embryo_pic_day { get; set; }
+        public String embryo_pic_day1 { get; set; }
 
     }
 }
