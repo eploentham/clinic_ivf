@@ -92,6 +92,9 @@ namespace clinic_ivf.objdb
             fet.embryo_freez_freeze_media = "embryo_freez_freeze_media";
             fet.embryo_pic_day = "embryo_pic_day";
             fet.embryo_pic_day1 = "embryo_pic_day1";
+            fet.remark1 = "remark1";
+            fet.remark2 = "remark2";
+            fet.freeze_date1 = "freeze_date1";
 
             fet.table = "lab_t_fet";
             fet.pkField = "fet_id";
@@ -129,6 +132,42 @@ namespace clinic_ivf.objdb
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
+        public DataTable selectDistinctByRemark1()
+        {
+            DataTable dt = new DataTable();
+            String sql = "select distinct fet.remark1 " +
+                "From " + fet.table + " fet " +
+                "Where fet." + fet.active + "='1' ";
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
+        public DataTable selectDistinctByRemark2()
+        {
+            DataTable dt = new DataTable();
+            String sql = "select distinct fet.remark2 " +
+                "From " + fet.table + " fet " +
+                "Where fet." + fet.active + "='1' ";
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
+        public DataTable selectDistinctByEtRemark()
+        {
+            DataTable dt = new DataTable();
+            String sql = "select distinct fet."+fet.embryo_for_et_remark+" " +
+                "From " + fet.table + " fet " +
+                "Where fet." + fet.active + "='1' ";
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
+        public DataTable selectDistinctByEtCatheter()
+        {
+            DataTable dt = new DataTable();
+            String sql = "select distinct fet." + fet.embryo_for_et_catheter + " " +
+                "From " + fet.table + " fet " +
+                "Where fet." + fet.active + "='1' ";
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
         public DataTable selectByStatusProcess1()
         {
             DataTable dt = new DataTable();
@@ -148,6 +187,98 @@ namespace clinic_ivf.objdb
                 "  ";
             dt = conn.selectData(conn.conn, sql);
             return dt;
+        }
+        public C1ComboBox setCboEtCatheter(C1ComboBox c)
+        {
+            ComboBoxItem item = new ComboBoxItem();
+            DataTable dt = selectDistinctByEtCatheter();
+            //String aaa = "";
+            ComboBoxItem item1 = new ComboBoxItem();
+            item1.Text = "";
+            item1.Value = "";
+            c.Items.Clear();
+            c.Items.Add(item1);
+            //for (int i = 0; i < dt.Rows.Count; i++)
+            int i = 0;
+            foreach (DataRow row in dt.Rows)
+            {
+                item = new ComboBoxItem();
+                item.Text = row[fet.embryo_for_et_catheter].ToString();
+                item.Value = i.ToString();
+
+                c.Items.Add(item);
+                i++;
+            }
+            return c;
+        }
+        public C1ComboBox setCboEtRemark(C1ComboBox c)
+        {
+            ComboBoxItem item = new ComboBoxItem();
+            DataTable dt = selectDistinctByEtRemark();
+            //String aaa = "";
+            ComboBoxItem item1 = new ComboBoxItem();
+            item1.Text = "";
+            item1.Value = "";
+            c.Items.Clear();
+            c.Items.Add(item1);
+            //for (int i = 0; i < dt.Rows.Count; i++)
+            int i = 0;
+            foreach (DataRow row in dt.Rows)
+            {
+                item = new ComboBoxItem();
+                item.Text = row[fet.embryo_for_et_remark].ToString();
+                item.Value = i.ToString();
+
+                c.Items.Add(item);
+                i++;
+            }
+            return c;
+        }
+        public C1ComboBox setCboRemark2(C1ComboBox c)
+        {
+            ComboBoxItem item = new ComboBoxItem();
+            DataTable dt = selectDistinctByRemark2();
+            //String aaa = "";
+            ComboBoxItem item1 = new ComboBoxItem();
+            item1.Text = "";
+            item1.Value = "";
+            c.Items.Clear();
+            c.Items.Add(item1);
+            //for (int i = 0; i < dt.Rows.Count; i++)
+            int i = 0;
+            foreach (DataRow row in dt.Rows)
+            {
+                item = new ComboBoxItem();
+                item.Text = row[fet.remark2].ToString();
+                item.Value = i.ToString();
+
+                c.Items.Add(item);
+                i++;
+            }
+            return c;
+        }
+        public C1ComboBox setCboRemark1(C1ComboBox c)
+        {
+            ComboBoxItem item = new ComboBoxItem();
+            DataTable dt = selectDistinctByRemark1();
+            //String aaa = "";
+            ComboBoxItem item1 = new ComboBoxItem();
+            item1.Text = "";
+            item1.Value = "";
+            c.Items.Clear();
+            c.Items.Add(item1);
+            //for (int i = 0; i < dt.Rows.Count; i++)
+            int i = 0;
+            foreach (DataRow row in dt.Rows)
+            {
+                item = new ComboBoxItem();
+                item.Text = row[fet.remark1].ToString();
+                item.Value = i.ToString();
+
+                c.Items.Add(item);
+                i++;
+            }
+            return c;
         }
         public C1ComboBox setCboRemark(C1ComboBox c)
         {
@@ -203,6 +334,8 @@ namespace clinic_ivf.objdb
             p.fet_time = p.fet_time == null ? "" : p.fet_time;
             p.embryo_pic_day = p.embryo_pic_day == null ? "" : p.embryo_pic_day;
             p.embryo_pic_day1 = p.embryo_pic_day1 == null ? "" : p.embryo_pic_day1;
+            p.remark1 = p.remark1 == null ? "" : p.remark1;
+            p.remark2 = p.remark2 == null ? "" : p.remark2;
 
             p.doctor_id = long.TryParse(p.doctor_id, out chk) ? chk.ToString() : "0";
             p.proce_id = long.TryParse(p.proce_id, out chk) ? chk.ToString() : "0";
@@ -252,6 +385,8 @@ namespace clinic_ivf.objdb
                 "," + fet.dob_donor + " = '" + p.dob_donor + "'" +
                 "," + fet.fet_time + " = '" + p.fet_time + "'" +
                 "," + fet.embryo_freez_freeze_media + " = '" + p.embryo_freez_freeze_media + "'" +
+                "," + fet.remark1 + " = '" + p.remark1 + "'" +
+                "," + fet.remark2 + " = '" + p.remark2 + "'" +
                "";
             try
             {
@@ -289,7 +424,7 @@ namespace clinic_ivf.objdb
                 "," + fet.user_modi + " = '" + userId + "' " +
                 "," + fet.date_pic_embryo + " = '" + p.date_pic_embryo + "' " +
                 "," + fet.hn_donor + " = '" + p.hn_donor + "' " +
-                "," + fet.name_donor + " = '" + p.name_donor + "' " +
+                "," + fet.name_donor + " = '" + p.name_donor.Replace("'", "''") + "' " +
                 "," + fet.dob_donor + " = '" + p.dob_donor + "'" +
                 //"," + fet.embryo_freez_freeze_media + " = '" + p.embryo_freez_freeze_media + "'" +
                 "Where " + fet.pkField + "='" + p.fet_id + "'";
@@ -329,6 +464,8 @@ namespace clinic_ivf.objdb
                 "," + fet.embryologist_report_id + " = '" + p.embryologist_report_id + "'" +
                 "," + fet.remark + " = '" + p.remark.Replace("'", "''") + "'" +
                 "," + fet.embryo_for_et_remark + " = '" + p.embryo_for_et_remark.Replace("'", "''") + "'" +
+                "," + fet.remark1 + " = '" + p.remark1.Replace("'", "''") + "'" +
+                "," + fet.remark2 + " = '" + p.remark2.Replace("'", "''") + "'" +
                 "Where " + fet.pkField + "='" + p.fet_id + "'"
                 ;
 
@@ -361,7 +498,7 @@ namespace clinic_ivf.objdb
                 "," + fet.thaw_no_of_thaw + " = '" + p.thaw_no_of_thaw.Replace("'", "''") + "'" +
                 "," + fet.thaw_no_of_survival + " = '" + p.thaw_no_of_survival.Replace("'", "''") + "'" +
                 "," + fet.thaw_no_of_remaining + " = '" + p.thaw_no_of_remaining + "'" +
-                //"," + fet.media_date + " = '" + p.media_date + "'" +
+                "," + fet.freeze_date1 + " = '" + p.freeze_date1 + "'" +
                 "," + fet.media_exp + " = '" + p.media_exp + "'" +
                 "," + fet.media_lot_no + " = '" + p.media_lot_no + "'" +
                 "," + fet.date_modi + " = now()" +
@@ -503,8 +640,8 @@ namespace clinic_ivf.objdb
                 //fet1.approve_result_day3_staff_id = dt.Rows[0][fet.approve_result_day3_staff_id].ToString();
                 //fet1.approve_result_day5_staff_id = dt.Rows[0][fet.approve_result_day5_staff_id].ToString();
                 //fet1.approve_result_day1_date = dt.Rows[0][fet.approve_result_day1_date].ToString();
-                //fet1.approve_result_day3_date = dt.Rows[0][fet.approve_result_day3_date].ToString();
-                //fet1.approve_result_day5_date = dt.Rows[0][fet.approve_result_day5_date].ToString();
+                fet1.remark1 = dt.Rows[0][fet.remark1].ToString();
+                fet1.remark2 = dt.Rows[0][fet.remark2].ToString();
                 fet1.fet_time = dt.Rows[0][fet.fet_time].ToString();
 
                 fet1.freeze_date = dt.Rows[0][fet.freeze_date].ToString();
@@ -521,6 +658,7 @@ namespace clinic_ivf.objdb
                 fet1.embryo_freez_freeze_media = dt.Rows[0][fet.embryo_freez_freeze_media].ToString();
                 fet1.embryo_pic_day = dt.Rows[0][fet.embryo_pic_day].ToString();
                 fet1.embryo_pic_day1 = dt.Rows[0][fet.embryo_pic_day1].ToString();
+                fet1.freeze_date1 = dt.Rows[0][fet.freeze_date1].ToString();
             }
             else
             {
@@ -598,6 +736,9 @@ namespace clinic_ivf.objdb
                 fet1.embryo_freez_freeze_media = "";
                 fet1.embryo_pic_day = "";
                 fet1.embryo_pic_day1 = "";
+                fet1.remark1 = "";
+                fet1.remark2 = "";
+                fet1.freeze_date1 = "";
             }
 
             return fet1;

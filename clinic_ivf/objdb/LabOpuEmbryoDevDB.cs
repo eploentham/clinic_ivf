@@ -656,7 +656,7 @@ namespace clinic_ivf.objdb
                 ",fet.freeze_date,fet.freeze_no_of_freeze,fet.freeze_stage_of_freeze,fet.thaw_date,fet.thaw_no_of_thaw,fet.thaw_no_of_survival" +
                 ",fet.thaw_no_of_remaining,fet.media_date,fet.media_lot_no,fet.media_exp,fet.media_thawing, proce.proce_name_t" +
                 ",fet.embryo_for_et_embryologist_id,fet.embryologist_report_id,fet.embryologist_approve_id, fet.embryo_freez_freeze_media, fdt.doc_type_name as media_thawing_media, opuEmDev.desc1" +
-                ", fdtstate.doc_type_name as freeze_stage_of_freeze_name,opuEmDev.desc5  " +
+                ", fdtstate.doc_type_name as freeze_stage_of_freeze_name,opuEmDev.desc5,fet.freeze_date1  " +
                 "From " + opuEmDev.table + " opuEmDev " +
                 "Left Join lab_t_fet fet on fet.fet_id = opuEmDev.opu_fet_id " +
                 "Left Join lab_b_procedure proce on proce.proce_id = fet.proce_id " +

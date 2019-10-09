@@ -97,8 +97,13 @@ namespace clinic_ivf.gui
             ic.ivfDB.fdtDB.setCboFETStage(cboFreezeStage,"");
             ic.ivfDB.dtrOldDB.setCboDoctor(cboEmbryoForEtDoctor, "");
 
-            ic.ivfDB.opuDB.setCboRemark(cboRemark);
-            ic.setCboDayEmbryoDev(cboEmbryoPicDay, "");
+            ic.ivfDB.fetDB.setCboRemark(cboRemark);
+            ic.ivfDB.fetDB.setCboRemark1(cboRemark1);
+            ic.ivfDB.fetDB.setCboRemark2(cboRemark2);
+            ic.ivfDB.fetDB.setCboEtRemark(cboEtRemark);
+            ic.ivfDB.fetDB.setCboEtCatheter(cboEmbryoForEtCatheter);
+
+            ic.setCboDayFETEmbryoDev(cboEmbryoPicDay, "");
             ic.setCboDayEmbryoDev(cboEmbryoPicDay1, "");
 
             //stt.BackgroundGradient = C1.Win.C1SuperTooltip.BackgroundGradient.Gold;
@@ -127,7 +132,7 @@ namespace clinic_ivf.gui
             txtEmbryoForEtDate.KeyUp += TxtFreezeNo_KeyUp;
             txtEmbryoForEtAsseted.KeyUp += TxtFreezeNo_KeyUp;
             txtEmbryoForEtVolume.KeyUp += TxtFreezeNo_KeyUp;
-            txtEmbryoForEtCatheter.KeyUp += TxtFreezeNo_KeyUp;
+            //txtEmbryoForEtCatheter.KeyUp += TxtFreezeNo_KeyUp;
             //txtEmbryoForEtDoctor.KeyUp += TxtFreezeNo_KeyUp;
             txtEmbryoForEtNumTran.KeyUp += TxtFreezeNo_KeyUp;
             txtEmbryoForEtNumFreeze.KeyUp += TxtFreezeNo_KeyUp;
@@ -197,12 +202,12 @@ namespace clinic_ivf.gui
                 }
                 else if (sender.Equals(txtEmbryoForEtVolume))
                 {
-                    txtEmbryoForEtCatheter.Focus();
+                    cboEmbryoForEtCatheter.Focus();
                 }
-                else if (sender.Equals(txtEmbryoForEtCatheter))
-                {
-                    cboEmbryoForEtDoctor.Focus();
-                }
+                //else if (sender.Equals(txtEmbryoForEtCatheter))
+                //{
+                //    cboEmbryoForEtDoctor.Focus();
+                //}
                 //else if (sender.Equals(txtEmbryoForEtDoctor))
                 //{
                 //    txtEmbryoForEtNumTran.Focus();
@@ -682,7 +687,7 @@ namespace clinic_ivf.gui
                 txtEmbryoForEtVolume.Value = fet.embryo_for_et_volume;
             }
             
-            txtEmbryoForEtCatheter.Value = fet.embryo_for_et_catheter;
+            //txtEmbryoForEtCatheter.Value = fet.embryo_for_et_catheter;
             //txtEmbryoForEtDoctor.Value = fet.embryo_for_et_doctor;
             ic.setC1Combo(cboEmbryoForEtDoctor, fet.embryo_for_et_doctor);
 
@@ -718,6 +723,11 @@ namespace clinic_ivf.gui
             ic.setC1Combo(cboMediaThawing, fet.media_thawing);
             ic.setC1Combo(cboEmbryoPicDay, fet.embryo_pic_day);
             ic.setC1Combo(cboEmbryoPicDay1, fet.embryo_pic_day1);
+            ic.setC1ComboByName(cboRemark1, fet.remark1);
+            ic.setC1ComboByName(cboRemark2, fet.remark2);
+            ic.setC1ComboByName(cboEtRemark, fet.embryo_for_et_remark);
+            ic.setC1ComboByName(cboEmbryoForEtCatheter, fet.embryo_for_et_catheter);
+            txtFreezeDate1.Value = fet.freeze_date1;
         }
         private void initGrf()
         {
@@ -1461,6 +1471,7 @@ namespace clinic_ivf.gui
                         //name = row["day"] != null ? row["day"].ToString() : "";
                         name = row["embryo_pic_day"] != null ? row["embryo_pic_day"].ToString() : "";
                         no = row["opu_embryo_dev_no"] != null ? row["opu_embryo_dev_no"].ToString() : "";
+                        if(desc0.Equals("") && desc1.Equals("")) continue;
                         desc00.Add(desc0 + " " + desc1);
                         if (row[ic.ivfDB.opuEmDevDB.opuEmDev.opu_embryo_dev_no].ToString().Trim().Equals("1"))
                         {
@@ -1613,7 +1624,7 @@ namespace clinic_ivf.gui
                         dobfemale = ic.datetoShow(txtDobFeMale.Text);
                         dobmale = ic.datetoShow(txtDobMale.Text);
                         datefet = ic.datetoShow(txtDatePicEmbryo.Text);
-                        etname = ic.ivfDB.stfDB.getStaffNameBylStf(etname);
+                        etname = ic.ivfDB.stfDB.getStaffNameBylStfLab(etname);
                         rptname = ic.ivfDB.stfDB.getStaffNameBylStf(rptname);
                         appvname = ic.ivfDB.stfDB.getStaffNameBylStf(appvname);
                         mediathawing = ic.ivfDB.stfDB.getStaffNameBylStf(mediathawing);
@@ -1633,7 +1644,17 @@ namespace clinic_ivf.gui
                         row["media_thawing"] = mediathawing;
                         row["freeze_stage_of_freeze"] = stateoffree;
                         no1 = row["no1"].ToString();
-                        row[ic.ivfDB.fetDB.fet.freeze_date] = ic.datetoShow(row[ic.ivfDB.fetDB.fet.freeze_date] != null ? row[ic.ivfDB.fetDB.fet.freeze_date] : "");
+                        if (!row[ic.ivfDB.fetDB.fet.freeze_date1].ToString().Equals(""))
+                        {
+                            String date11 = "";
+                            date11 = row[ic.ivfDB.fetDB.fet.freeze_date1].ToString();
+                            row[ic.ivfDB.fetDB.fet.freeze_date] = ic.datetoShow(row[ic.ivfDB.fetDB.fet.freeze_date] != null ? row[ic.ivfDB.fetDB.fet.freeze_date] : "") +","+ ic.datetoShow(date11);
+                        }
+                        else
+                        {
+                            row[ic.ivfDB.fetDB.fet.freeze_date] = ic.datetoShow(row[ic.ivfDB.fetDB.fet.freeze_date] != null ? row[ic.ivfDB.fetDB.fet.freeze_date] : "");
+                        }
+                        
                         row[ic.ivfDB.fetDB.fet.thaw_date] = ic.datetoShow(row[ic.ivfDB.fetDB.fet.thaw_date] != null ? row[ic.ivfDB.fetDB.fet.thaw_date] : "");
                         row[ic.ivfDB.fetDB.fet.media_date] = ic.datetoShow(row[ic.ivfDB.fetDB.fet.media_date] != null ? row[ic.ivfDB.fetDB.fet.media_date] : "");
                         if (!path_pic.Equals(""))
@@ -1682,7 +1703,6 @@ namespace clinic_ivf.gui
                     date1 = ic.datetoShow(dtEmbr.Rows[0][ic.ivfDB.fetDB.fet.fet_date].ToString());
                     dtEmbr.Rows[0][ic.ivfDB.fetDB.fet.fet_date] = date1.Replace("-", "/");
                 }
-                
 
                 frm.setFETEmbryoDevReport(dtEmbr);
 
@@ -1709,11 +1729,15 @@ namespace clinic_ivf.gui
                 MessageBox.Show("กรุณา เลือก Embryo Pciture Day", "");
                 return;
             }
-            if (!int.TryParse(embryopicday, out chk1))
+            if (!embryopicday.Equals("5,6"))
             {
-                MessageBox.Show("Embryo Pciture Day ไม่ถูกต้อง", "");
-                return;
+                if (!int.TryParse(embryopicday, out chk1))
+                {
+                    MessageBox.Show("Embryo Pciture Day ไม่ถูกต้อง", "");
+                    return;
+                }
             }
+            
             //if (embryopicday1.Equals(""))
             //{
             //    MessageBox.Show("กรุณา เลือก Embryo Pciture Day1", "");
@@ -1816,6 +1840,7 @@ namespace clinic_ivf.gui
                     dateday2 = ic.dateTimetoDB(txtDay2Date.Text);
                     String re1 = ic.ivfDB.opuEmDevDB.updateDevDate(txtID.Text, "2", dateday2);
                 }
+                saveLabFET();
                 foreach (Row row in grfDay2.Rows)
                 {
                     if (row[colDay2Edit] == null) continue;
@@ -2092,10 +2117,13 @@ namespace clinic_ivf.gui
                 MessageBox.Show("กรุณา เลือก Embryo Pciture Day", "");
                 return;
             }
-            if (!int.TryParse(embryopicday, out chk2))
+            if (!cboEmbryoPicDay.Text.Trim().Equals("5,6"))
             {
-                MessageBox.Show("Embryo Pciture Day ไม่ถูกต้อง", "");
-                return;
+                if (!int.TryParse(embryopicday, out chk2))
+                {
+                    MessageBox.Show("Embryo Pciture Day ไม่ถูกต้อง", "");
+                    return;
+                }
             }
             //if (embryopicday1.Equals(""))
             //{
@@ -2110,7 +2138,7 @@ namespace clinic_ivf.gui
 
             setFET();
             String re = ic.ivfDB.fetDB.update(fet, ic.user.staff_id);
-            sB1.Text = "Save OPU";
+            sB1.Text = "Save FET";
             Application.DoEvents();
             long chk1 = 0;
             if (long.TryParse(re, out chk1))
@@ -2246,7 +2274,9 @@ namespace clinic_ivf.gui
             fet.proce_id = cboOpuProce.SelectedItem == null ? "" : ((ComboBoxItem)cboOpuProce.SelectedItem).Value;
             fet.fet_code = txtFetCode.Text;
             fet.remark = cboRemark.Text;
-            fet.embryo_for_et_remark = cboRemark.Text;
+            fet.embryo_for_et_remark = cboEtRemark.Text;
+            fet.remark2 = cboRemark1.Text;
+            fet.remark1 = cboRemark2.Text;
             fet.hn_donor = txtHnDonor.Text;
             fet.name_donor = txtNameDonor.Text;
             fet.date_pic_embryo = ic.datetoDB(txtDatePicEmbryo.Text);
@@ -2270,6 +2300,7 @@ namespace clinic_ivf.gui
             fet.media_lot_no = txtMediaLot.Text;
             //fet.media_thawing = txtMediaThawing.Text;
             fet.media_thawing = cboMediaThawing.SelectedItem == null ? "" : ((ComboBoxItem)cboMediaThawing.SelectedItem).Value;
+            fet.freeze_date1 = ic.datetoDB(txtFreezeDate1.Text);
         }
         private void setFETEmbryeEt()
         {
@@ -2279,7 +2310,7 @@ namespace clinic_ivf.gui
             fet.embryo_for_et_date = ic.datetoDB(txtEmbryoForEtDate.Text);
             fet.embryo_for_et_assisted = txtEmbryoForEtAsseted.Text;
             fet.embryo_for_et_volume = txtEmbryoForEtVolume.Text;
-            fet.embryo_for_et_catheter = txtEmbryoForEtCatheter.Text;
+            //fet.embryo_for_et_catheter = txtEmbryoForEtCatheter.Text;
             //fet.embryo_for_et_doctor = txtEmbryoForEtDoctor.Text;
             fet.embryo_for_et_doctor = cboEmbryoForEtDoctor.SelectedItem == null ? "0" : ((ComboBoxItem)cboEmbryoForEtDoctor.SelectedItem).Value;
 
@@ -2292,7 +2323,10 @@ namespace clinic_ivf.gui
             fet.embryo_for_et_number_of_transfer = txtEmbryoForEtNumTran.Text;
             fet.embryo_for_et_number_of_freeze = txtEmbryoForEtNumFreeze.Text;
             fet.embryo_for_et_number_of_discard = txtEmbryoForEtNumDiscard.Text;
-            fet.embryo_for_et_remark = cboRemark.Text;
+            fet.embryo_for_et_remark = cboEtRemark.Text;
+            fet.remark1 = cboRemark1.Text;
+            fet.remark2 = cboRemark2.Text;
+            fet.embryo_for_et_catheter = cboEmbryoForEtCatheter.Text;
         }
         private void setGrfDay2Img()
         {

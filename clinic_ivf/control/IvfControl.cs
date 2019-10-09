@@ -516,6 +516,38 @@ namespace clinic_ivf.control
                 }
             }
         }
+        public void setCboDayFETEmbryoDev(C1ComboBox c, String selected)
+        {
+            ComboBoxItem item = new ComboBoxItem();
+            //DataTable dt = selectWard();
+
+            item = new ComboBoxItem();
+            item.Value = "";
+            item.Text = "";
+            c.Items.Add(item);
+
+            item = new ComboBoxItem();
+            item.Value = "2";
+            item.Text = "2";
+            c.Items.Add(item);
+            item = new ComboBoxItem();
+            item.Value = "3";
+            item.Text = "3";
+            c.Items.Add(item);
+            item = new ComboBoxItem();
+            item.Value = "5";
+            item.Text = "5";
+            c.Items.Add(item);
+            item = new ComboBoxItem();
+            item.Value = "6";
+            item.Text = "6";
+            c.Items.Add(item);
+            item = new ComboBoxItem();
+            item.Value = "5,6";
+            item.Text = "5,6";
+            c.Items.Add(item);
+
+        }
         public void setCboDayEmbryoDev(C1ComboBox c, String selected)
         {
             ComboBoxItem item = new ComboBoxItem();

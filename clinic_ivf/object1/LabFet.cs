@@ -81,6 +81,9 @@ namespace clinic_ivf.object1
         public String embryo_freez_freeze_media { get; set; }
         public String embryo_pic_day { get; set; }
         public String embryo_pic_day1 { get; set; }
+        public String remark1 { get; set; }
+        public String remark2 { get; set; }
+        public String freeze_date1 { get; set; }
 
     }
 }

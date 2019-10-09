@@ -125,7 +125,7 @@ namespace clinic_ivf.objdb
                 stf1.staff_lname_e = row[stf.staff_lname_e].ToString();
                 stf1.doctor_id_old = row[stf.doctor_id_old].ToString();
                 stf1.doctor_id = row[stf.doctor_id].ToString();
-                //cus1.date_cancel = row[dept.date_cancel].ToString();
+                stf1.name_lab = row["name"].ToString() + " " + row[stf.doctor_id].ToString();
                 //cus1.user_create = row[dept.user_create].ToString();
                 //cus1.user_modi = row[dept.user_modi].ToString();
                 //cus1.user_cancel = row[dept.user_cancel].ToString();
@@ -497,10 +497,10 @@ namespace clinic_ivf.objdb
         public DataTable selectAll()
         {
             DataTable dt = new DataTable();
-            String sql = "select cop.*  " +
-                "From " + stf.table + " cop " +
-                " " +
-                "Where cop." + stf.active + " ='1' ";
+            String sql = "select stf.*, concat(pfx.patient_prefix_description, ' ', stf.staff_fname_e, ' ' , stf.staff_lname_e) as name  " +
+                "From " + stf.table + " stf " +
+                "Left Join f_patient_prefix pfx On stf.prefix_id = pfx.f_patient_prefix_id " +
+                "Where stf." + stf.active + " ='1' ";
             dt = conn.selectData(conn.conn, sql);
 
             return dt;
@@ -803,6 +803,22 @@ namespace clinic_ivf.objdb
                 if (cus1.staff_id.Equals(selected))
                 {
                     re = cus1.staff_fname_e + " " + cus1.staff_lname_e;
+                    break;
+                }
+                i++;
+            }
+            return re;
+        }
+        public String getStaffNameBylStfLab(String selected)
+        {
+            String re = "";
+            int i = 0;
+            if (lStf.Count <= 0) getlStf();
+            foreach (Staff cus1 in lStf)
+            {
+                if (cus1.staff_id.Equals(selected))
+                {
+                    re = cus1.name_lab;
                     break;
                 }
                 i++;
