@@ -686,8 +686,6 @@ namespace clinic_ivf.gui
             //txtEmbryoForEtDoctor.Value = fet.embryo_for_et_doctor;
             ic.setC1Combo(cboEmbryoForEtDoctor, fet.embryo_for_et_doctor);
 
-            
-
             txtEmbryoForEtNumTran.Value = fet.embryo_for_et_number_of_transfer;
             txtEmbryoForEtNumFreeze.Value = fet.embryo_for_et_number_of_freeze;
             txtEmbryoForEtNumDiscard.Value = fet.embryo_for_et_number_of_discard;
