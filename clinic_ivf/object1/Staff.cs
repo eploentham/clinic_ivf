@@ -48,5 +48,6 @@ namespace clinic_ivf.object1
         public String doctor_id { get; set; }
         public String doctor_id_old { get; set; }
         public String name_lab { get; set; }
+        public String name_full { get; set; }
     }
 }

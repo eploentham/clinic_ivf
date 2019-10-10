@@ -115,8 +115,7 @@ namespace clinic_ivf.gui
 
             setKeyPress();
 
-            btnHnSearch.Click += BtnHnSearch_Click;
-            btnDonorSearch.Click += BtnDonorSearch_Click;
+            
             txtFreezeNo.KeyUp += TxtFreezeNo_KeyUp;
             //txtFreezeStage.KeyUp += TxtFreezeNo_KeyUp;
             txtThawNo.KeyUp += TxtFreezeNo_KeyUp;
@@ -756,6 +755,8 @@ namespace clinic_ivf.gui
             btnSaveImg2.Click += BtnSaveImg2_Click;
             btnDay2ImgRef.Click += BtnDay2ImgRef_Click;
             btnVoid.Click += BtnVoid_Click;
+            btnHnSearch.Click += BtnHnSearch_Click;
+            btnDonorSearch.Click += BtnDonorSearch_Click;
             //tabDay5.DoubleClick += TabDay5_DoubleClick;
             //tabDay6.DoubleClick += TabDay6_DoubleClick;
             //btnDay3ImgRef.Click += BtnDay3ImgRef_Click;
@@ -1541,6 +1542,7 @@ namespace clinic_ivf.gui
                         //name = row["day"] != null ? row["day"].ToString() : "";
                         name = row["opu_embryo_dev_no"] != null ? row["opu_embryo_dev_no"].ToString() : "";
                         no = row["opu_embryo_dev_no"] != null ? row["opu_embryo_dev_no"].ToString() : "";
+                        if (desc0.Equals("") && desc1.Equals("")) continue;
                         desc00.Add(desc0 + " " + desc1);
                         if (row[ic.ivfDB.opuEmDevDB.opuEmDev.opu_embryo_dev_no].ToString().Trim().Equals("1"))
                         {
@@ -1610,7 +1612,7 @@ namespace clinic_ivf.gui
                     frmW.pB.Maximum = dtEmbr.Rows.Count;
                     foreach (DataRow row in dtEmbr.Rows)
                     {
-                        String path_pic = "", opuCode = "", date="", dobfemale="", dobmale="", datefet="", no1="", etname="", rptname="", appvname="", desc0="", desc1="";
+                        String path_pic = "", opuCode = "", date="", dobfemale="", dobmale="", datefet="", no1="", etname="", rptname="", appvname="", desc0="", desc1="", doctor="";
                         String mediathawing = "", stateoffree = "";
                         path_pic = row["no1_pathpic"] != null ? row["no1_pathpic"].ToString() : "";
                         opuCode = row["fet_code"] != null ? row["fet_code"].ToString() : "";
@@ -1621,12 +1623,14 @@ namespace clinic_ivf.gui
                         desc1 = row["desc1"] != null ? row["desc1"].ToString() : "";
                         mediathawing = row["media_thawing"] != null ? row["media_thawing"].ToString() : "";
                         stateoffree = row["freeze_stage_of_freeze_name"] != null ? row["freeze_stage_of_freeze_name"].ToString() : "";
+                        doctor = row["embryo_for_et_doctor"] != null ? row["embryo_for_et_doctor"].ToString() : "";
                         dobfemale = ic.datetoShow(txtDobFeMale.Text);
                         dobmale = ic.datetoShow(txtDobMale.Text);
                         datefet = ic.datetoShow(txtDatePicEmbryo.Text);
-                        etname = ic.ivfDB.stfDB.getStaffNameBylStfLab(etname);
+                        etname = ic.ivfDB.stfDB.getStaffNameBylStf(etname);
                         rptname = ic.ivfDB.stfDB.getStaffNameBylStf(rptname);
                         appvname = ic.ivfDB.stfDB.getStaffNameBylStf(appvname);
+                        doctor = ic.ivfDB.stfDB.getDoctorBylStf(doctor);
                         mediathawing = ic.ivfDB.stfDB.getStaffNameBylStf(mediathawing);
                         //stateoffree = ic.ivfDB.stfDB.getStaffNameBylStf(stateoffree);
                         //date = row["freeze_date"] != null ? row["freeze_date"].ToString() : "";
@@ -1641,9 +1645,11 @@ namespace clinic_ivf.gui
                         row["embryo_for_et_embryologist_name_rpt"] = rptname;
                         row["embryo_for_et_embryologist_name_apv"] = appvname;
                         row["embryo_for_et_embryologist_name"] = etname;
+                        row["embryo_for_et_doctor"] = doctor;
                         row["media_thawing"] = mediathawing;
                         row["freeze_stage_of_freeze"] = stateoffree;
-                        no1 = row["no1"].ToString();
+                        no1 = "Day " + txtEmbryoForEtDay.Text + row["no1"].ToString();
+                        //row["no1"] = no1;
                         if (!row[ic.ivfDB.fetDB.fet.freeze_date1].ToString().Equals(""))
                         {
                             String date11 = "";

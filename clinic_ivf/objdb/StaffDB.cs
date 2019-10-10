@@ -126,8 +126,8 @@ namespace clinic_ivf.objdb
                 stf1.doctor_id_old = row[stf.doctor_id_old].ToString();
                 stf1.doctor_id = row[stf.doctor_id].ToString();
                 stf1.name_lab = row["name"].ToString() + " " + row[stf.doctor_id].ToString();
-                //cus1.user_create = row[dept.user_create].ToString();
-                //cus1.user_modi = row[dept.user_modi].ToString();
+                stf1.prefix_name_t = row[stf.user_create].ToString();
+                stf1.name_full = row["name"].ToString();
                 //cus1.user_cancel = row[dept.user_cancel].ToString();
                 //cus1.active = row[dept.active].ToString();
                 lStf.Add(stf1);
@@ -835,6 +835,22 @@ namespace clinic_ivf.objdb
                 if (cus1.staff_id.Equals(selected))
                 {
                     re = cus1.staff_fname_e + " " + cus1.staff_lname_e;
+                    break;
+                }
+                i++;
+            }
+            return re;
+        }
+        public String getDoctorBylStf(String selected)
+        {
+            String re = "";
+            int i = 0;
+            if (lStf.Count <= 0) getlStf();
+            foreach (Staff cus1 in lStf)
+            {
+                if (cus1.doctor_id_old.Equals(selected))
+                {
+                    re = cus1.name_full;
                     break;
                 }
                 i++;
