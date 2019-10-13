@@ -34,7 +34,7 @@ namespace clinic_ivf.gui
             {
                 err = "00" + ic.iniC.statusAppDonor;
 
-                rpt.Load("lab_blood_request.rpt");
+                rpt.Load("lab_blood_request5.rpt");
 
                 err = "01";
                 rpt.SetDataSource(dt);
