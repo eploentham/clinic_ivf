@@ -112,7 +112,7 @@ namespace clinic_ivf.gui
             frmW.Dispose();
             lbEmail.Text = "เริ่มส่ง Email";
             MailMessage mail = new MailMessage();
-
+            txtEmailSubject.Value = "Routine LAB Result HN " + txtHn.Text + " Name " + txtPttNameE.Text + " [VN " + txtVnShow.Text + "] Infectious Report Date " + System.DateTime.Now.ToString("dd/MM/") + System.DateTime.Now.Year;
             mail.From = new MailAddress(txtEmailTo.Text);
             mail.To.Add(txtEmailTo.Text);
             mail.Subject = txtEmailSubject.Text;
@@ -481,7 +481,21 @@ namespace clinic_ivf.gui
             ////frmW.Show();
             //frm.setSpermSf(dt);
             //frm.ShowDialog(this);
-            lbEmail.Text = "เตรียม Email";
+            String amh = "";
+            DataTable dt = new DataTable();
+            dt = ic.ivfDB.lbresDB.selectLabBloodByVsIdHormone(txtVsId.Text);
+            foreach (DataRow row in dt.Rows)
+            {
+                if (row["LID"].ToString().Equals("10"))
+                {
+                    amh = "1";
+                }
+                else
+                {
+                    //amh = "0";
+                }
+            }
+                lbEmail.Text = "เตรียม Email";
             FrmWaiting frmW = new FrmWaiting();
             frmW.Show();
             String filename = "", datetick = "";
@@ -499,7 +513,15 @@ namespace clinic_ivf.gui
             frmW.Dispose();
             lbEmail.Text = "เริ่มส่ง Email";
             MailMessage mail = new MailMessage();
-
+            if (amh.Equals("1"))
+            {
+                txtEmailSubject.Value = "Routine LAB Result HN " + txtHn.Text + " Name " + txtPttNameE.Text + " [VN " + txtVnShow.Text + "] Hormone & AMH Report Date " + System.DateTime.Now.ToString("dd/MM/") + System.DateTime.Now.Year;
+            }
+            else
+            {
+                txtEmailSubject.Value = "Routine LAB Result HN " + txtHn.Text + " Name " + txtPttNameE.Text + " [VN " + txtVnShow.Text + "] Hormone Report Date " + System.DateTime.Now.ToString("dd/MM/") + System.DateTime.Now.Year;
+            }
+            
             mail.From = new MailAddress(txtEmailTo.Text);
             mail.To.Add(txtEmailTo.Text);
             mail.Subject = txtEmailSubject.Text;
