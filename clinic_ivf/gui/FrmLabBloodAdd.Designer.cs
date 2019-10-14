@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmLabBloodAdd));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.cboDoctor = new C1.Win.C1Input.C1ComboBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.txtReceiveTime = new C1.Win.C1Input.C1DateEdit();
             this.label7 = new System.Windows.Forms.Label();
@@ -134,9 +136,8 @@
             this.tabHis = new C1.Win.C1Command.C1DockingTabPage();
             this.sB = new System.Windows.Forms.StatusStrip();
             this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.cboDoctor = new C1.Win.C1Input.C1ComboBox();
-            this.label9 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cboDoctor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtReceiveTime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCollectTime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDob)).BeginInit();
@@ -174,7 +175,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.c1Ribbon1)).BeginInit();
             this.tabReport.SuspendLayout();
             this.sB.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cboDoctor)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -216,6 +216,40 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1263, 135);
             this.panel1.TabIndex = 0;
+            // 
+            // cboDoctor
+            // 
+            this.cboDoctor.AllowSpinLoop = false;
+            this.cboDoctor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cboDoctor.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.cboDoctor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboDoctor.GapHeight = 0;
+            this.cboDoctor.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.cboDoctor.ItemsDisplayMember = "";
+            this.cboDoctor.ItemsValueMember = "";
+            this.cboDoctor.Location = new System.Drawing.Point(464, 58);
+            this.cboDoctor.Name = "cboDoctor";
+            this.cboDoctor.Size = new System.Drawing.Size(279, 20);
+            this.cboDoctor.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.cboDoctor.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
+            this.cboDoctor.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboDoctor.TabIndex = 982;
+            this.cboDoctor.Tag = null;
+            this.theme1.SetTheme(this.cboDoctor, "(default)");
+            this.cboDoctor.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label9.Location = new System.Drawing.Point(314, 61);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(54, 16);
+            this.label9.TabIndex = 981;
+            this.label9.Text = "Doctor :";
+            this.theme1.SetTheme(this.label9, "(default)");
             // 
             // label8
             // 
@@ -1376,40 +1410,6 @@
             this.sB1.Size = new System.Drawing.Size(118, 17);
             this.sB1.Text = "toolStripStatusLabel1";
             // 
-            // cboDoctor
-            // 
-            this.cboDoctor.AllowSpinLoop = false;
-            this.cboDoctor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.cboDoctor.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.cboDoctor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.cboDoctor.GapHeight = 0;
-            this.cboDoctor.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.cboDoctor.ItemsDisplayMember = "";
-            this.cboDoctor.ItemsValueMember = "";
-            this.cboDoctor.Location = new System.Drawing.Point(464, 58);
-            this.cboDoctor.Name = "cboDoctor";
-            this.cboDoctor.Size = new System.Drawing.Size(279, 20);
-            this.cboDoctor.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.cboDoctor.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
-            this.cboDoctor.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.cboDoctor.TabIndex = 982;
-            this.cboDoctor.Tag = null;
-            this.theme1.SetTheme(this.cboDoctor, "(default)");
-            this.cboDoctor.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label9.Location = new System.Drawing.Point(314, 61);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(54, 16);
-            this.label9.TabIndex = 981;
-            this.label9.Text = "Doctor :";
-            this.theme1.SetTheme(this.label9, "(default)");
-            // 
             // FrmLabBloodAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1423,6 +1423,7 @@
             this.Load += new System.EventHandler(this.FrmLabBloodAdd_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cboDoctor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtReceiveTime)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCollectTime)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDob)).EndInit();
@@ -1463,7 +1464,6 @@
             this.tabReport.ResumeLayout(false);
             this.sB.ResumeLayout(false);
             this.sB.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cboDoctor)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
