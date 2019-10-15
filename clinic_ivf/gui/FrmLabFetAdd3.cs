@@ -144,7 +144,28 @@ namespace clinic_ivf.gui
             setGrf();
 
         }
+        private void setControlFirstTime(Boolean flag)
+        {
+            //groupBox3.Enabled = flag;
+            groupBox4.Enabled = flag;
+            groupBox5.Enabled = flag;
+            groupBox7.Enabled = flag;
+            gbDay2.Enabled = flag;
+            gbDay3.Enabled = flag;
+            
+            pnGrf2Img.Enabled = flag;
+            grfDay2.Enabled = flag;
+            grfDay3.Enabled = flag;
+            grfDay5.Enabled = flag;
+            grfDay6.Enabled = flag;
+            grfDay6Img.Enabled = flag;
+            grfDay5Img.Enabled = flag;
+            grfDay3Img.Enabled = flag;
+            grfDay2Img.Enabled = flag;
 
+            btnPrintOpuEmbryoDev.Enabled = flag;
+            
+        }
         private void TxtFreezeNo_KeyUp(object sender, KeyEventArgs e)
         {
             //throw new NotImplementedException();
@@ -152,7 +173,7 @@ namespace clinic_ivf.gui
             {
                 if (sender.Equals(txtFreezeNo))
                 {
-                    createFET();
+                    //createFET();
                     cboFreezeStage.Focus();
                 }
                 //else if (sender.Equals(txtFreezeStage))
@@ -161,6 +182,7 @@ namespace clinic_ivf.gui
                 //}
                 else if (sender.Equals(txtThawNo))
                 {
+                    createFET();
                     txtThawSurvival.Focus();
                 }
                 else if (sender.Equals(txtThawSurvival))
@@ -625,11 +647,11 @@ namespace clinic_ivf.gui
                     dt = ic.ivfDB.opuEmDevDB.selectByOpuFetId_Day(txtID.Text, objdb.LabOpuEmbryoDevDB.Day1.Day2);
                     if (dt.Rows.Count > 0)
                     {
-                        //txtMaturaNoofOpu.Enabled = false;
+                        txtThawNo.Enabled = false;
                     }
                     else
                     {
-                        //setControlFirstTime(true);
+                        setControlFirstTime(false);
                     }
                     setControl1();
                 }
@@ -642,7 +664,7 @@ namespace clinic_ivf.gui
                     txtNameFeMale.Value = lbReq.name_female;
                     txtNameMale.Value = lbReq.name_male;
                     txtLabReqCode.Value = lbReq.req_code;
-                    
+                    setControlFirstTime(false);
                 }
             }
             catch (Exception ex)
@@ -1408,8 +1430,8 @@ namespace clinic_ivf.gui
         {
             FrmReport frm = new FrmReport(ic);
             DataTable dtEmbr = new DataTable();
-            DataTable dt = new DataTable();
-            DataTable dt1 = new DataTable();
+            DataTable dtLeft = new DataTable();
+            DataTable dtRight = new DataTable();
             FrmWaiting frmW = new FrmWaiting();
             frmW.Show();
             try
@@ -1422,8 +1444,8 @@ namespace clinic_ivf.gui
                 day1 = cboEmbryoPicDay1.SelectedItem == null ? "" : ((ComboBoxItem)cboEmbryoPicDay1.SelectedItem).Value;
                 //if (day.Equals("2"))      // fix ไว้ เพราะ รูปของ FET มีรูป day เดียว  เลยเอาลงที่ day2      //      0013
                 //{      // fix ไว้ เพราะ รูปของ FET มีรูป day เดียว  เลยเอาลงที่ day2
-                dt = ic.ivfDB.opuEmDevDB.selectByFetId_DayPrint(txtID.Text, objdb.LabOpuEmbryoDevDB.Day1.Day2);      // ต้องใช้ method นี้ เพราะจะได้ดึง desc ให้เหมือน OPU      // fix ไว้ เพราะ รูปของ FET มีรูป day เดียว  เลยเอาลงที่ day2      //      0013
-                dt1 = ic.ivfDB.opuEmDevDB.selectByFetId_DayPrint(txtID.Text, objdb.LabOpuEmbryoDevDB.Day1.Day3);      // ต้องใช้ method นี้ เพราะจะได้ดึง desc ให้เหมือน OPU      // fix ไว้ เพราะ รูปของ FET มีรูป day เดียว  เลยเอาลงที่ day2      //      0013
+                dtLeft = ic.ivfDB.opuEmDevDB.selectByFetId_DayPrint(txtID.Text, objdb.LabOpuEmbryoDevDB.Day1.Day2);      // ต้องใช้ method นี้ เพราะจะได้ดึง desc ให้เหมือน OPU      // fix ไว้ เพราะ รูปของ FET มีรูป day เดียว  เลยเอาลงที่ day2      //      0013
+                dtRight = ic.ivfDB.opuEmDevDB.selectByFetId_DayPrint(txtID.Text, objdb.LabOpuEmbryoDevDB.Day1.Day3);      // ต้องใช้ method นี้ เพราะจะได้ดึง desc ให้เหมือน OPU      // fix ไว้ เพราะ รูปของ FET มีรูป day เดียว  เลยเอาลงที่ day2      //      0013
                 //}      // fix ไว้ เพราะ รูปของ FET มีรูป day เดียว  เลยเอาลงที่ day2      //      0013
                 //else if (day.Equals("3"))      // fix ไว้ เพราะ รูปของ FET มีรูป day เดียว  เลยเอาลงที่ day2      //      0013
                 //{      // fix ไว้ เพราะ รูปของ FET มีรูป day เดียว  เลยเอาลงที่ day2      //      0013
@@ -1458,11 +1480,11 @@ namespace clinic_ivf.gui
                 dtEmbr.Columns.Add("embryo_for_et_embryologist_name", typeof(String));
                 dtEmbr.Columns.Add("embryo_for_et_embryologist_name_rpt", typeof(String));
                 dtEmbr.Columns.Add("embryo_for_et_embryologist_name_apv", typeof(String));
-                List<String> desc00 = new List<string>(); ;
+                
                 //dtEmbr.Columns.Add("media_thawing", typeof(String));
-                if (dt.Rows.Count > 0)
+                if (dtLeft.Rows.Count > 0)
                 {
-                    foreach (DataRow row in dt.Rows)
+                    foreach (DataRow row in dtLeft.Rows)
                     {
                         String desc0 = "", date="", name="", desc1="", no="";
 
@@ -1473,7 +1495,7 @@ namespace clinic_ivf.gui
                         name = row["embryo_pic_day"] != null ? row["embryo_pic_day"].ToString() : "";
                         no = row["opu_embryo_dev_no"] != null ? row["opu_embryo_dev_no"].ToString() : "";
                         if(desc0.Equals("") && desc1.Equals("")) continue;
-                        desc00.Add(desc0 + " " + desc1);
+                        //desc00.Add(desc0 + " " + desc1);
                         if (row[ic.ivfDB.opuEmDevDB.opuEmDev.opu_embryo_dev_no].ToString().Trim().Equals("1"))
                         {
                             //row["embryo_dev_0_01"] = desc0;
@@ -1530,9 +1552,10 @@ namespace clinic_ivf.gui
                 {
                     rowembryo["embryo_dev_1_name"] = "";
                 }
-                if ((!day1.Equals("")) && (dt1.Rows.Count > 0))
+                List<String> desc00 = new List<string>(); ;
+                if ((!day1.Equals("")) && (dtRight.Rows.Count > 0))
                 {
-                    foreach (DataRow row in dt1.Rows)
+                    foreach (DataRow row in dtRight.Rows)
                     {
                         String desc0 = "", date = "", name = "", desc1 = "", no = "";
 
@@ -1641,7 +1664,7 @@ namespace clinic_ivf.gui
                         //date = ic.datetoShow(date);
                         row["dob_female"] = dobfemale;
                         row["dob_male"] = dobmale;
-                        row["fet_date"] = datefet;
+                        row["fet_date"] = ic.datetoShow(datefet);
                         row["embryo_for_et_embryologist_name_rpt"] = rptname;
                         row["embryo_for_et_embryologist_name_apv"] = appvname;
                         row["embryo_for_et_embryologist_name"] = etname;
@@ -1754,8 +1777,8 @@ namespace clinic_ivf.gui
             //    MessageBox.Show("Embryo Pciture Day1 ไม่ถูกต้อง", "");
             //    return;
             //}
-            if (MessageBox.Show("ต้องการ บันทึกช้อมูล Day Embryo Development  ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-            {
+            //if (MessageBox.Show("ต้องการ บันทึกช้อมูล Day Embryo Development  ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+            //{
                 ic.cStf.staff_id = "";
                 Boolean chkSave = false;
                 FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
@@ -1813,7 +1836,7 @@ namespace clinic_ivf.gui
                     }
                     frmW.Dispose();
                 }
-            }
+            //}
         }
         private void BtnSaveDay2_Click(object sender, EventArgs e)
         {
@@ -3373,8 +3396,8 @@ namespace clinic_ivf.gui
             grfDay2.Rows[grfDay2.Row].StyleNew.BackColor = color;
             if (grfDay2.Col == colDay2Desc)
             {
-                if ((grfDay2.Row + 1) == grfDay2.Rows.Count)
-                    grfDay2.Rows.Add();
+                //if ((grfDay2.Row + 1) == grfDay2.Rows.Count)
+                //    grfDay2.Rows.Add();
             }
         }
 
@@ -3504,8 +3527,8 @@ namespace clinic_ivf.gui
             grfDay3.Rows[grfDay3.Row].StyleNew.BackColor = color;
             if (grfDay3.Col == colDay3Desc)
             {
-                if ((grfDay3.Row + 1) == grfDay3.Rows.Count)
-                    grfDay3.Rows.Add();
+                //if ((grfDay3.Row + 1) == grfDay3.Rows.Count)
+                //    grfDay3.Rows.Add();
             }
         }
         private void GrfDay5_GotFocus(object sender, EventArgs e)
