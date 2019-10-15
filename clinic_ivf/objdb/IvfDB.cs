@@ -223,7 +223,7 @@ namespace clinic_ivf.objdb
         public String genAppointmentRemarkPtt1(DataRow row1)
         {
             String re = "";
-            String hormo = "", tvs = "", opu = "", et = "", beta = "", other = "", appn = "", fet="", sperm = "", spermFreezing="", spermopu="", pesa="", e2="", lh="", fsh="", prl="", agent="", spermSA="";
+            String hormo = "", tvs = "", opu = "", et = "", beta = "", other = "", appn = "", fet="", sperm = "", spermFreezing="", spermopu="", pesa="", e2="", lh="", fsh="", prl="", agent="", spermSA="", pttname="";
             hormo = row1[pApmDB.pApm.hormone_test].ToString().Equals("1") ? "Hormone Test " : "";
             tvs = row1[pApmDB.pApm.tvs].ToString().Equals("1") ? "TVS Day " + row1[pApmDB.pApm.tvs_day].ToString() + " [Time " + row1[pApmDB.pApm.tvs_time].ToString() + "]" : "" ;
             opu = row1[pApmDB.pApm.opu].ToString().Equals("1") ? row1[pApmDB.pApm.opu_time] != null ? "OPU [" + row1[pApmDB.pApm.opu_time].ToString() + "]" : "OPU " + row1[pApmDB.pApm.opu_time].ToString() : "";
@@ -241,15 +241,61 @@ namespace clinic_ivf.objdb
             lh = row1[pApmDB.pApm.lh].ToString().Equals("1") ? "LH " : "";
             fsh = row1[pApmDB.pApm.fsh].ToString().Equals("1") ? "FSH " : "";
             prl = row1[pApmDB.pApm.prl].ToString().Equals("1") ? "PRL " : "";
+            //if (flagdonor.Equals("1"))      // donor ไม่เอา นามสกุล
+            //{
+            //    String[] tmp = row1["PatientName"].ToString().Split(' ');
+            //    if (tmp.Length >= 3)
+            //    {
+            //        pttname = tmp[0] + " " + tmp[1];
+            //    }
+            //}
+            //else
+            //{
+                pttname = row1["PatientName"] != null ? row1["PatientName"].ToString() : "";
+            //}
+            
             agent = !row1["AgentName"].ToString().Equals("") ? "Agent "+ row1["AgentName"].ToString() : "";
+
             spermSA = row1[pApmDB.pApm.sperm_sa].ToString().Equals("1") ? "Sperm SA " : "";
 
-            appn = row1[pApmDB.pApm.patient_appointment_time].ToString() + " " + hormo + " " + tvs + " " + opu + " " + beta + " " 
-                + et + " " + fet + " " + sperm + " " 
-                + spermFreezing + " " + spermopu + " " + pesa + " " + sperm + " "
-                + e2 + " " + lh + " " + fsh + " " + prl + " " + agent + " "
-                + other;
+            //appn = row1[pApmDB.pApm.patient_appointment_time].ToString() + " " + hormo + " " + tvs + " " + opu + " " + beta + " " 
+            //    + et + " " + fet + " " + sperm + " " 
+            //    + spermFreezing + " " + spermopu + " " + pesa + " " + sperm + " "
+            //    + e2 + " " + lh + " " + fsh + " " + prl + " " + agent + " "
+            //    + other;
+            
+            lh = trimText(lh + " ");
+            tvs = tvs + " ";
+            sperm = sperm + " ";
+            spermFreezing = spermFreezing + " ";
+            pesa = pesa + " ";
+            spermopu = spermopu + " ";
+            opu = trimText(opu + " ");
+            et = trimText(et + " ");
+            fet = trimText(fet + " ");
+            hormo = trimText(hormo + " ");
+            beta = trimText(beta + " ");
+            fsh = trimText(fsh + " ");
+            prl = trimText(prl + " ");
+            pttname = pttname + " ";
+            agent = agent + " ";
+            other = other + " ";
+            appn = row1[pApmDB.pApm.patient_appointment_time].ToString() + " "
+                + trimText(e2) + trimText(lh) + trimText(tvs) + trimText(sperm) + trimText(spermFreezing) + trimText(pesa) + trimText(spermopu) + trimText(opu) + trimText(et) + trimText(fet) + trimText(hormo) + trimText(beta) + trimText(fsh) + trimText(prl) + pttname + agent + other;
             return appn;
+        }
+        private String trimText(String txt)
+        {
+            String re = "";
+            if (txt.Trim().Equals(""))
+            {
+                re = "";
+            }
+            else
+            {
+                re = txt.Trim() + " ";
+            }
+            return re;
         }
         public String genAppointmentRemarkPttDonor(DataRow row1)
         {
@@ -476,30 +522,30 @@ namespace clinic_ivf.objdb
         }
         public LabFet setFET(String reqid)
         {
-            LabFet opu = new LabFet();
+            LabFet fet = new LabFet();
             LabRequest lbreq = new LabRequest();
             LabFormA lformA = new LabFormA();
             lbreq = lbReqDB.selectByPk1(reqid);
             lformA = lFormaDB.selectByVnOld(lbreq.vn);
-            opu.fet_id = "";
-            opu.fet_code = copDB.genFEFDoc();
+            fet.fet_id = "";
+            fet.fet_code = copDB.genFEFDoc();
             //opu.embryo_freez_stage = "";
             //opu.embryoid_freez_position = "";
-            opu.hn_male = lformA.hn_male;
-            opu.hn_female = lformA.hn_female;       // ให้ยึดจาก Lab Form A ถ้าข้อมูลไม่ถูกต้อง ให้แก้ที่ Lab Form A
-            opu.name_male = lformA.name_male;
-            opu.name_female = lformA.name_female;       // ให้ยึดจาก Lab Form A ถ้าข้อมูลไม่ถูกต้อง ให้แก้ที่ Lab Form A
-            opu.remark = lformA.fet_remark;       // ให้ยึดจาก Lab Form A ถ้าข้อมูลไม่ถูกต้อง ให้แก้ที่ Lab Form A
-            opu.dob_female = lformA.dob_female;       // ให้ยึดจาก Lab Form A ถ้าข้อมูลไม่ถูกต้อง ให้แก้ที่ Lab Form A
-            opu.dob_male = lformA.dob_male;
-            opu.doctor_id = lbreq.doctor_id;
-            opu.proce_id = "";
-            opu.fet_date = lformA.embryo_tranfer_date;
-            opu.req_id = reqid;
-            opu.hn_donor = lformA.hn_donor;
-            opu.name_donor = lformA.name_donor;
-            opu.dob_female = lbreq.dob_female;
-            return opu;
+            fet.hn_male = lformA.hn_male;
+            fet.hn_female = lformA.hn_female;       // ให้ยึดจาก Lab Form A ถ้าข้อมูลไม่ถูกต้อง ให้แก้ที่ Lab Form A
+            fet.name_male = lformA.name_male;
+            fet.name_female = lformA.name_female;       // ให้ยึดจาก Lab Form A ถ้าข้อมูลไม่ถูกต้อง ให้แก้ที่ Lab Form A
+            fet.remark = lformA.fet_remark;       // ให้ยึดจาก Lab Form A ถ้าข้อมูลไม่ถูกต้อง ให้แก้ที่ Lab Form A
+            fet.dob_female = lformA.dob_female;       // ให้ยึดจาก Lab Form A ถ้าข้อมูลไม่ถูกต้อง ให้แก้ที่ Lab Form A
+            fet.dob_male = lformA.dob_male;
+            fet.doctor_id = lbreq.doctor_id;
+            fet.proce_id = "";
+            fet.fet_date = lformA.embryo_tranfer_date;
+            fet.req_id = reqid;
+            fet.hn_donor = lformA.hn_donor;
+            fet.name_donor = lformA.name_donor;
+            fet.dob_female = lbreq.dob_female;
+            return fet;
         }
         public LabSperm setSperm(String reqid, String labsperm)
         {

@@ -146,8 +146,9 @@ namespace clinic_ivf.gui
         }
         private void setControlFirstTime(Boolean flag)
         {
-            //groupBox3.Enabled = flag;
-            groupBox4.Enabled = flag;
+            groupBox1.Enabled = flag;
+            groupBox3.Enabled = flag;
+            //groupBox4.Enabled = flag;
             groupBox5.Enabled = flag;
             groupBox7.Enabled = flag;
             gbDay2.Enabled = flag;
@@ -156,15 +157,18 @@ namespace clinic_ivf.gui
             pnGrf2Img.Enabled = flag;
             grfDay2.Enabled = flag;
             grfDay3.Enabled = flag;
-            grfDay5.Enabled = flag;
-            grfDay6.Enabled = flag;
-            grfDay6Img.Enabled = flag;
-            grfDay5Img.Enabled = flag;
-            grfDay3Img.Enabled = flag;
+            //grfDay5.Enabled = flag;
+            //grfDay6.Enabled = flag;
+            //grfDay6Img.Enabled = flag;
+            //grfDay5Img.Enabled = flag;
+            //grfDay3Img.Enabled = flag;
             grfDay2Img.Enabled = flag;
 
             btnPrintOpuEmbryoDev.Enabled = flag;
-            
+            txtThawDate.Enabled = flag;
+            txtThawNo.Enabled = true;
+            txtThawSurvival.Enabled = flag;
+            txtThawRemain.Enabled = flag;
         }
         private void TxtFreezeNo_KeyUp(object sender, KeyEventArgs e)
         {
@@ -250,7 +254,7 @@ namespace clinic_ivf.gui
         private void createFET()
         {
             int chk = 0;
-            if (int.TryParse(txtFreezeNo.Text, out chk))
+            if (int.TryParse(txtThawNo.Text, out chk))
             {
                 if (MessageBox.Show("ต้องการ ให้เพิ่ม Embryo Development จำนวน " + chk + " Embryo", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
                 {
@@ -648,6 +652,7 @@ namespace clinic_ivf.gui
                     if (dt.Rows.Count > 0)
                     {
                         txtThawNo.Enabled = false;
+                        setControlFirstTime(true);
                     }
                     else
                     {

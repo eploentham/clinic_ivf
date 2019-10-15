@@ -157,6 +157,7 @@ namespace clinic_ivf.gui
             }
             catch (Exception ex)
             {
+                ic.logw.WriteLog("e", this.Name + " initConfig webcanDevice " + ex.Message);
                 //MessageBox.Show(" no camera Found\n" + ex.Message);
             }
 
@@ -187,8 +188,10 @@ namespace clinic_ivf.gui
                 ic.setCboPttTypeDonor(cboPttType,"");
                 ic.setCboPttTypeDonor(cboVisitPttType,"");
                 ic.setCboPttGroup(cboPttGroup,"");
-                cboPttGroup.Show();
-                label32.Show();
+                //cboPttGroup.Show();       //62-10-15
+                cboPttGroup.Hide();
+                //label32.Show();       //62-10-15
+                label32.Hide();
                 setControlPtt(true);
             }
             else
@@ -236,6 +239,7 @@ namespace clinic_ivf.gui
             btnWebCamOn.Click += BtnWebCamOn_Click;
             btnCapture.Click += BtnCapture_Click;
             this.FormClosed += FrmPatientAdd_FormClosed;
+            
             btnPrvSticker.Click += BtnPrvSticker_Click;
             btnSavePic.Click += BtnSavePic_Click;
             tC1.DoubleClick += TC1_DoubleClick;

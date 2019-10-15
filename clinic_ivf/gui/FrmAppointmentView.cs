@@ -32,9 +32,13 @@ namespace clinic_ivf.gui
         Color bg, fc;
         Font ff, ffB;
 
-        int colID = 1, colpttId = 2, colVsTime = 3, colPttHn = 4, colVsCode = 5, colVsPttName = 6, colVsDoctor = 7, colVsSperm = 8, colVsDay6 = 9, colVsDay7 = 10, colVsDay8 = 11, colVsDay9=12, colVsDay10=13, colVsDay11=14;
-        int colVsTVS = 15, colVsPesa = 16, colVsSpermF = 17, colVsSpermSA=18, colVsOPU = 19, colVsET = 20, colVsFET=21, colVsHCG = 22, colVsSpermOPU = 23, colVsTrans = 24, colVsANC = 25, colVsAnes = 26;
-        int colVSE2 = 27, colVSLh = 28, colVSPrl = 29, colVSFsh = 30, colVsAgent=31, colVsRemark = 32, colVsStatus=33, colConn=34, colStfCreate=35,colStfModi=36, colStfSave=37;
+        //int colID = 1, colpttId = 2, colVsTime = 3, colPttHn = 4, colVsCode = 5, colVsPttName = 6, colVsDoctor = 7, colVsSperm = 8, colVsDay6 = 9, colVsDay7 = 10, colVsDay8 = 11, colVsDay9=12, colVsDay10=13, colVsDay11=14;
+        //int colVsTVS = 15, colVsPesa = 16, colVsSpermF = 17, colVsSpermSA=18, colVsOPU = 19, colVsET = 20, colVsFET=21, colVsHCG = 22, colVsSpermOPU = 23, colVsTrans = 24, colVsANC = 25, colVsAnes = 26;
+        //int colVSE2 = 27, colVSLh = 28, colVSPrl = 29, colVSFsh = 30, colVsAgent=31, colVsRemark = 32, colVsStatus=33, colConn=34, colStfCreate=35,colStfModi=36, colStfSave=37;
+
+        int colID = 1, colpttId = 2, colVsTime = 3, colPttHn = 4, colVsCode = 5, colVsPttName = 6, colVsDoctor = 7, colVsSperm = 8, colVsDay6 = 9, colVsDay7 = 10, colVsDay8 = 11, colVsDay9 = 12, colVsDay10 = 13, colVsDay11 = 14;
+        int colVSE2 = 15, colVSLh = 16, colVsTVS = 17, colVsPesa = 18, colVsSpermF = 19, colVsSpermSA = 20, colVsSpermOPU = 21, colVsOPU = 22, colVsET = 23, colVsFET = 24, colVsHCG = 25, colVsTrans = 26, colVsANC = 27, colVsAnes = 28;
+        int colVSPrl = 29, colVSFsh = 30, colVsAgent = 31, colVsRemark = 32, colVsStatus = 33, colConn = 34, colStfCreate = 35, colStfModi = 36, colStfSave = 37;
 
         int colpApmPttId = 1,colpApmPttName = 2;
 
@@ -188,7 +192,7 @@ namespace clinic_ivf.gui
                         txt.Dock = DockStyle.Fill;
                         txt.Multiline = true;
                         form.Controls.Add(txt);
-                        form.Size = new Size(400, 300);
+                        form.Size = new Size(600, 600);
                         String txt1 = "";
                         Boolean chk = false;
                         foreach(Control con in tabpage.Controls)
@@ -391,7 +395,7 @@ namespace clinic_ivf.gui
             grfAll.Rows.Count = 1;
             grfAll.Cols.Count = 3;
             grfAll.Cols[colpApmPttName].Editor = txt;
-            grfAll.Cols[colpApmPttName].Width = 720;
+            grfAll.Cols[colpApmPttName].Width = 850;
             grfAll.Cols[colpApmPttName].Caption = "Description";
             grfAll.Name = "grfAll";
             grfAll.Cols[colpApmPttId].Visible = false;
@@ -402,7 +406,7 @@ namespace clinic_ivf.gui
                 String appn = "";
                 appn = ic.ivfDB.genAppointmentRemarkPtt1(row1);
                 Row rowAll = grfAll.Rows.Add();
-                rowAll[colpApmPttName] = appn + " " + row1["PatientName"].ToString();
+                rowAll[colpApmPttName] = appn;
                 rowAll[0] = (grfAll.Rows.Count - 1);
             }
             foreach (DataRow row1 in dtDAll.Rows)
@@ -411,7 +415,7 @@ namespace clinic_ivf.gui
                 //appn = ic.ivfDB.genAppointmentRemarkPttDonor(row1);           // -003
                 appn = ic.ivfDB.genAppointmentRemarkPtt1(row1);         //      +003
                 Row rowAll = grfAll.Rows.Add();
-                rowAll[colpApmPttName] = appn + " " + row1["PatientName"].ToString();
+                rowAll[colpApmPttName] = appn;
                 rowAll[0] = (grfAll.Rows.Count - 1);
             }
 
@@ -501,7 +505,7 @@ namespace clinic_ivf.gui
                     //rowAll[0] = (grfAll.Rows.Count-1);
 
                     Row rowdtr = grf.Rows.Add();
-                    rowdtr[colpApmPttName] = appn + " " + row1["PatientName"].ToString();
+                    rowdtr[colpApmPttName] = appn;
                     rowdtr[0] = (grf.Rows.Count-1);
                     //i++;
                 }
@@ -519,7 +523,7 @@ namespace clinic_ivf.gui
                     //appn = ic.ivfDB.genAppointmentRemarkPttDonor(row1);//    -  แก้ให้เหลือแต่ t_appointment   62-08-22
                     appn = ic.ivfDB.genAppointmentRemarkPtt1(row1);//    +  แก้ให้เหลือแต่ t_appointment   62-08-22
                     Row rowdtr = grf.Rows.Add();
-                    rowdtr[colpApmPttName] = appn + " " + row1["PatientName"].ToString();
+                    rowdtr[colpApmPttName] = appn;
                     rowdtr[0] = (grf.Rows.Count-1);
 
                     //Row rowAll = grfAll.Rows.Add();
