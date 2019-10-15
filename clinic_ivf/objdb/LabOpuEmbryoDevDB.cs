@@ -220,7 +220,7 @@ namespace clinic_ivf.objdb
             int chk = 0;
             sql = "Update " + opuEmDev.table + " Set " +
                 " " + opuEmDev.staff_id + " = '" + staffid + "'" +
-                "Where " + opuEmDev.opu_fet_id + "='" + opufetid + "' and "+opuEmDev.day + "='"+day+"'";
+                "Where " + opuEmDev.opu_fet_id + "='" + opufetid + "' and "+opuEmDev.day + "='"+day+"' and "+opuEmDev.active + " = '1' ";
             try
             {
                 re = conn.ExecuteNonQuery(conn.conn, sql);
@@ -239,7 +239,7 @@ namespace clinic_ivf.objdb
             int chk = 0;
             sql = "Update " + opuEmDev.table + " Set " +
                 " " + opuEmDev.checked_id + " = '" + checkedid + "'" +
-                "Where " + opuEmDev.opu_fet_id + "='" + opufetid + "' and " + opuEmDev.day + "='" + day + "'";
+                "Where " + opuEmDev.opu_fet_id + "='" + opufetid + "' and " + opuEmDev.day + "='" + day + "' and " + opuEmDev.active + " = '1' ";
             try
             {
                 re = conn.ExecuteNonQuery(conn.conn, sql);
@@ -258,7 +258,7 @@ namespace clinic_ivf.objdb
             int chk = 0;
             sql = "Update " + opuEmDev.table + " Set " +
                 " " + opuEmDev.embryo_dev_date + " = '" + devdate + "'" +
-                "Where " + opuEmDev.opu_fet_id + "='" + opufetid + "' and " + opuEmDev.day + "='" + day + "'";
+                "Where " + opuEmDev.opu_fet_id + "='" + opufetid + "' and " + opuEmDev.day + "='" + day + "' and " + opuEmDev.active + " = '1' ";
             try
             {
                 re = conn.ExecuteNonQuery(conn.conn, sql);

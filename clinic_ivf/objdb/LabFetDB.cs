@@ -480,6 +480,43 @@ namespace clinic_ivf.objdb
 
             return re;
         }
+        public String updateThawingNoofThaw(String noofthaw, String fetid, String userId)
+        {
+            String re = "";
+            String sql = "";
+            int chk = 0;
+
+            //chkNull(p);
+            sql = "Update " + fet.table + " Set " +
+                //" " + fet.opu_code + " = '" + p.opu_code + "'" +
+                //" " + fet.embryo_freez_stage + " = '" + p.embryo_freez_stage.Replace("'", "''") + "'" +
+                //"," + fet.embryoid_freez_position + " = '" + p.embryoid_freez_position + "'" +
+                " " + fet.thaw_no_of_thaw + " = '" + noofthaw + "'" +
+                //"," + fet.freeze_no_of_freeze + " = '" + p.freeze_no_of_freeze.Replace("'", "''") + "'" +
+                //"," + fet.freeze_stage_of_freeze + " = '" + p.freeze_stage_of_freeze.Replace("'", "''") + "'" +
+                //"," + fet.thaw_date + " = '" + p.thaw_date.Replace("'", "''") + "'" +
+                //"," + fet.thaw_no_of_thaw + " = '" + p.thaw_no_of_thaw.Replace("'", "''") + "'" +
+                //"," + fet.thaw_no_of_survival + " = '" + p.thaw_no_of_survival.Replace("'", "''") + "'" +
+                //"," + fet.thaw_no_of_remaining + " = '" + p.thaw_no_of_remaining + "'" +
+                //"," + fet.freeze_date1 + " = '" + p.freeze_date1 + "'" +
+                //"," + fet.media_exp + " = '" + p.media_exp + "'" +
+                //"," + fet.media_lot_no + " = '" + p.media_lot_no + "'" +
+                //"," + fet.date_modi + " = now()" +
+                //"," + fet.user_modi + " = '" + userId + "' " +
+                //"," + fet.media_thawing + " = '" + p.media_thawing + "' " +
+                //"," + fet.embryo_freez_freeze_media + " = '" + p.embryo_freez_freeze_media + "'" +
+                "Where " + fet.pkField + "='" + fetid + "'";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+
+            return re;
+        }
         public String updateThawing(LabFet p, String userId)
         {
             String re = "";
