@@ -5179,7 +5179,6 @@ namespace clinic_ivf.gui
                 {
                     String err = "";
                 }
-
             }
             CellNoteManager mgr = new CellNoteManager(grfRxSet);
             grfRxSet.Cols[colBlId].Visible = false;
