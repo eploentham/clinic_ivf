@@ -23,6 +23,7 @@ namespace clinic_ivf.gui
         IvfControl ic;
         String lformaId = "", pttid="", vsid="", vn="", userIdVoid="";
         LabFormA lFormA;
+        LabRequest lreqSpA, lreqSpFz, lreqPesa, lreqIUI;
 
         C1SuperTooltip stt;
         C1SuperErrorProvider sep;
@@ -43,6 +44,11 @@ namespace clinic_ivf.gui
         private void initConfig()
         {
             lFormA = new LabFormA();
+            lreqSpA = new LabRequest();
+            lreqSpFz = new LabRequest();
+            lreqPesa = new LabRequest();
+            lreqIUI = new LabRequest();
+
             stt = new C1SuperTooltip();
             sep = new C1SuperErrorProvider();
 
@@ -843,7 +849,7 @@ namespace clinic_ivf.gui
                         String dtrid = "";
                         dtrid = cboDoctor.SelectedItem == null ? "" : ((ComboBoxItem)cboDoctor.SelectedItem).Value;
                         reqid = ic.ivfDB.oJsDB.selectByStatusOPU(txtVnOld.Text);
-                        lbReq = ic.ivfDB.setLabRequest(txtNameFeMale.Text, txtVnOld.Text, dtrid, cboRemark.Text, txtHnOld.Text, ic.datetoDB(txtDobFeMale.Text), reqid, "112", txtHnMale.Text, txtNameMale.Text, txtHnDonor.Text, txtNameDonor.Text, txtDonorDob.Text, txtVsId.Text);
+                        lbReq = ic.ivfDB.setLabRequest(txtReqOpuId.Text, txtNameFeMale.Text, txtVnOld.Text, dtrid, cboRemark.Text, txtHnOld.Text, ic.datetoDB(txtDobFeMale.Text), reqid, "112", txtHnMale.Text, txtNameMale.Text, txtHnDonor.Text, txtNameDonor.Text, txtDonorDob.Text, txtVsId.Text);
                         lbReq.form_a_id = re;
                         String re1 = ic.ivfDB.lbReqDB.insertLabRequest(lbReq, txtStfConfirmID.Text);
                         String re2 = ic.ivfDB.lFormaDB.updateReqIdOPU(re, re1);
@@ -856,7 +862,7 @@ namespace clinic_ivf.gui
                         reqid = "";
                         lbReq = new LabRequest();
                         reqid = ic.ivfDB.oJsDB.selectByStatusFET(txtVnOld.Text);
-                        lbReq = ic.ivfDB.setLabRequest(txtNameFeMale.Text, txtVnOld.Text, dtrid, cboRemark.Text, txtHnOld.Text, ic.datetoDB(txtDobFeMale.Text), reqid, "160", txtHnMale.Text, txtNameMale.Text, txtHnDonor.Text, txtNameDonor.Text, txtDonorDob.Text, txtVsId.Text);
+                        lbReq = ic.ivfDB.setLabRequest(txtReqFetId.Text, txtNameFeMale.Text, txtVnOld.Text, dtrid, cboRemark.Text, txtHnOld.Text, ic.datetoDB(txtDobFeMale.Text), reqid, "160", txtHnMale.Text, txtNameMale.Text, txtHnDonor.Text, txtNameDonor.Text, txtDonorDob.Text, txtVsId.Text);
                         lbReq.form_a_id = re;
                         String re2 = ic.ivfDB.lbReqDB.insertLabRequest(lbReq, txtStfConfirmID.Text);
                         if (chkFET.Checked)
@@ -869,7 +875,7 @@ namespace clinic_ivf.gui
                         String dtrid = "";
                         dtrid = cboDoctor.SelectedItem == null ? "" : ((ComboBoxItem)cboDoctor.SelectedItem).Value;
                         reqid = ic.ivfDB.oJlabdDB.selectByStatusSememAnalysis(txtVnOld.Text);
-                        lbReq = ic.ivfDB.setLabRequest(txtNameFeMale.Text, txtVnOld.Text, dtrid, cboRemark.Text, txtHnOld.Text, ic.datetoDB(txtDobFeMale.Text), reqid, "14", txtHnMale.Text, txtNameMale.Text, txtHnDonor.Text, txtNameDonor.Text, txtDonorDob.Text, txtVsId.Text);
+                        lbReq = ic.ivfDB.setLabRequest(txtReqSpAId.Text, txtNameFeMale.Text, txtVnOld.Text, dtrid, cboRemark.Text, txtHnOld.Text, ic.datetoDB(txtDobFeMale.Text), reqid, "14", txtHnMale.Text, txtNameMale.Text, txtHnDonor.Text, txtNameDonor.Text, txtDonorDob.Text, txtVsId.Text);
                         lbReq.form_a_id = re;
                         String re1 = ic.ivfDB.lbReqDB.insertLabRequest(lbReq, txtStfConfirmID.Text);
                         String re2 = ic.ivfDB.lFormaDB.updateReqIdSememAnalysis(re, re1);
@@ -879,7 +885,7 @@ namespace clinic_ivf.gui
                         String dtrid = "";
                         dtrid = cboDoctor.SelectedItem == null ? "" : ((ComboBoxItem)cboDoctor.SelectedItem).Value;
                         reqid = ic.ivfDB.oJlabdDB.selectByStatusSememFreezing(txtVnOld.Text);
-                        lbReq = ic.ivfDB.setLabRequest(txtNameFeMale.Text, txtVnOld.Text, dtrid, cboRemark.Text, txtHnOld.Text, ic.datetoDB(txtDobFeMale.Text), reqid, "18", txtHnMale.Text, txtNameMale.Text, txtHnDonor.Text, txtNameDonor.Text, txtDonorDob.Text, txtVsId.Text);
+                        lbReq = ic.ivfDB.setLabRequest(txtReqSpFzId.Text, txtNameFeMale.Text, txtVnOld.Text, dtrid, cboRemark.Text, txtHnOld.Text, ic.datetoDB(txtDobFeMale.Text), reqid, "18", txtHnMale.Text, txtNameMale.Text, txtHnDonor.Text, txtNameDonor.Text, txtDonorDob.Text, txtVsId.Text);
                         lbReq.form_a_id = re;
                         String re1 = ic.ivfDB.lbReqDB.insertLabRequest(lbReq, txtStfConfirmID.Text);
                         String re2 = ic.ivfDB.lFormaDB.updateReqIdSpermFreezing(re, re1);
@@ -889,7 +895,7 @@ namespace clinic_ivf.gui
                         String dtrid = "";
                         dtrid = cboDoctor.SelectedItem == null ? "" : ((ComboBoxItem)cboDoctor.SelectedItem).Value;
                         reqid = ic.ivfDB.oJlabdDB.selectByStatusPesa(txtVnOld.Text);
-                        lbReq = ic.ivfDB.setLabRequest(txtNameFeMale.Text, txtVnOld.Text, dtrid, cboRemark.Text, txtHnOld.Text, ic.datetoDB(txtDobFeMale.Text), reqid, "66", txtHnMale.Text, txtNameMale.Text, txtHnDonor.Text, txtNameDonor.Text, txtDonorDob.Text, txtVsId.Text);
+                        lbReq = ic.ivfDB.setLabRequest(txtReqPesaId.Text, txtNameFeMale.Text, txtVnOld.Text, dtrid, cboRemark.Text, txtHnOld.Text, ic.datetoDB(txtDobFeMale.Text), reqid, "66", txtHnMale.Text, txtNameMale.Text, txtHnDonor.Text, txtNameDonor.Text, txtDonorDob.Text, txtVsId.Text);
                         lbReq.form_a_id = txtID.Text;
                         String re1 = ic.ivfDB.lbReqDB.insertLabRequest(lbReq, txtStfConfirmID.Text);
                         String re2 = ic.ivfDB.lFormaDB.updateReqIdPESATESE(txtID.Text, re1);
@@ -899,7 +905,7 @@ namespace clinic_ivf.gui
                         String dtrid = "";
                         dtrid = cboDoctor.SelectedItem == null ? "" : ((ComboBoxItem)cboDoctor.SelectedItem).Value;
                         reqid = ic.ivfDB.oJlabdDB.selectByStatusSememFreezing(txtVnOld.Text);
-                        lbReq = ic.ivfDB.setLabRequest(txtNameFeMale.Text, txtVnOld.Text, dtrid, cboRemark.Text, txtHnOld.Text, ic.datetoDB(txtDobFeMale.Text), reqid, "185", txtHnMale.Text, txtNameMale.Text, txtHnDonor.Text, txtNameDonor.Text, txtDonorDob.Text, txtVsId.Text);
+                        lbReq = ic.ivfDB.setLabRequest(txtReqIUIId.Text, txtNameFeMale.Text, txtVnOld.Text, dtrid, cboRemark.Text, txtHnOld.Text, ic.datetoDB(txtDobFeMale.Text), reqid, "185", txtHnMale.Text, txtNameMale.Text, txtHnDonor.Text, txtNameDonor.Text, txtDonorDob.Text, txtVsId.Text);
                         lbReq.form_a_id = txtID.Text;
                         String re1 = ic.ivfDB.lbReqDB.insertLabRequest(lbReq, txtStfConfirmID.Text);
                         String re2 = ic.ivfDB.lFormaDB.updateReqIdIUI(txtID.Text, re1);
@@ -1271,6 +1277,12 @@ namespace clinic_ivf.gui
         private void setControl1()
         {
             txtID.Value = lFormA.form_a_id;
+            txtReqSpAId.Value = lFormA.req_id_semem_analysis;
+            txtReqSpFzId.Value = lFormA.req_id_sperm_freezing;
+            txtReqPesaId.Value = lFormA.req_id_pesa_tese;
+            txtReqIUIId.Value = lFormA.req_id_iui;
+            txtReqOpuId.Value = lFormA.req_id_opu;
+
             txtLabFormACode.Value = lFormA.form_a_code;
             txtPttId.Value = lFormA.t_patient_id;
             txtVsId.Value = lFormA.t_visit_id;

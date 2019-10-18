@@ -441,11 +441,11 @@ namespace clinic_ivf.objdb
 
             return orop;
         }
-        public LabRequest setLabRequest(String pttName, String vn, String doctorId, String remark, String hn, String dobfemale, String reqid, String itmcode
+        public LabRequest setLabRequest(String reqid, String pttName, String vn, String doctorId, String remark, String hn, String dobfemale, String reqoldid, String itmcode
             ,String hnmale, String namemale, String hndonor, String namedonor, String dobdornor, String vsid)
         {
             LabRequest lbReq = new LabRequest();
-            lbReq.req_id = "";
+            lbReq.req_id = reqid;
             lbReq.req_code = copDB.genReqDoc();
             lbReq.req_date = System.DateTime.Now.Year.ToString() + "-" + System.DateTime.Now.ToString("MM-dd");
             lbReq.hn_male = hnmale;
@@ -475,7 +475,7 @@ namespace clinic_ivf.objdb
             lbReq.hn_donor = hndonor;
             lbReq.name_donor = namedonor;
             lbReq.doctor_id = doctorId;
-            lbReq.request_id = reqid;
+            lbReq.request_id = reqoldid;
             lbReq.item_id = itmcode;
             lbReq.form_a_id = "";
             lbReq.req_time = System.DateTime.Now.ToString("hh:mm:ss");

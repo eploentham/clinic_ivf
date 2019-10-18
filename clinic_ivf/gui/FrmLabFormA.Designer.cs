@@ -194,6 +194,12 @@
             this.chkEmbryoTranfer = new C1.Win.C1Input.C1CheckBox();
             this.chkFrozenSperm = new C1.Win.C1Input.C1CheckBox();
             this.chkFreshSprem = new C1.Win.C1Input.C1CheckBox();
+            this.txtReqSpAId = new C1.Win.C1Input.C1TextBox();
+            this.txtReqSpFzId = new C1.Win.C1Input.C1TextBox();
+            this.txtReqPesaId = new C1.Win.C1Input.C1TextBox();
+            this.txtReqIUIId = new C1.Win.C1Input.C1TextBox();
+            this.txtReqOpuId = new C1.Win.C1Input.C1TextBox();
+            this.txtReqFetId = new C1.Win.C1Input.C1TextBox();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -300,6 +306,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.chkEmbryoTranfer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkFrozenSperm)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkFreshSprem)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtReqSpAId)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtReqSpFzId)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtReqPesaId)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtReqIUIId)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtReqOpuId)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtReqFetId)).BeginInit();
             this.SuspendLayout();
             // 
             // sB
@@ -968,6 +980,7 @@
             // gbSpermIUI
             // 
             this.gbSpermIUI.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.gbSpermIUI.Controls.Add(this.txtReqIUIId);
             this.gbSpermIUI.Controls.Add(this.chkSpermIUI);
             this.gbSpermIUI.Controls.Add(this.txtIUIDate);
             this.gbSpermIUI.Controls.Add(this.cboRemark);
@@ -1087,6 +1100,7 @@
             // gbSpermPESA
             // 
             this.gbSpermPESA.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.gbSpermPESA.Controls.Add(this.txtReqPesaId);
             this.gbSpermPESA.Controls.Add(this.txtPasaTeseDate);
             this.gbSpermPESA.Controls.Add(this.chkSememPESA);
             this.gbSpermPESA.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
@@ -1168,6 +1182,7 @@
             // gbSpermFreezing
             // 
             this.gbSpermFreezing.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.gbSpermFreezing.Controls.Add(this.txtReqSpFzId);
             this.gbSpermFreezing.Controls.Add(this.pnSpermFreezing);
             this.gbSpermFreezing.Controls.Add(this.chkSpermFreezing);
             this.gbSpermFreezing.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
@@ -1338,6 +1353,7 @@
             // gbSpermAnalysis
             // 
             this.gbSpermAnalysis.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.gbSpermAnalysis.Controls.Add(this.txtReqSpAId);
             this.gbSpermAnalysis.Controls.Add(this.pnSpermAnalysis);
             this.gbSpermAnalysis.Controls.Add(this.chkSememAnalysis);
             this.gbSpermAnalysis.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
@@ -1522,6 +1538,7 @@
             // gbETFET
             // 
             this.gbETFET.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.gbETFET.Controls.Add(this.txtReqFetId);
             this.gbETFET.Controls.Add(this.cboEtRemark);
             this.gbETFET.Controls.Add(this.label25);
             this.gbETFET.Controls.Add(this.label20);
@@ -2252,6 +2269,7 @@
             // gbOPU
             // 
             this.gbOPU.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.gbOPU.Controls.Add(this.txtReqOpuId);
             this.gbOPU.Controls.Add(this.txtPasswordVoidOPU);
             this.gbOPU.Controls.Add(this.chkVoidOPU);
             this.gbOPU.Controls.Add(this.btnVoidOPU);
@@ -3282,6 +3300,90 @@
             this.chkFreshSprem.Value = null;
             this.chkFreshSprem.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
+            // txtReqSpAId
+            // 
+            this.txtReqSpAId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtReqSpAId.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtReqSpAId.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtReqSpAId.Location = new System.Drawing.Point(151, 16);
+            this.txtReqSpAId.Name = "txtReqSpAId";
+            this.txtReqSpAId.Size = new System.Drawing.Size(30, 20);
+            this.txtReqSpAId.TabIndex = 727;
+            this.txtReqSpAId.Tag = null;
+            this.theme1.SetTheme(this.txtReqSpAId, "(default)");
+            this.txtReqSpAId.Visible = false;
+            this.txtReqSpAId.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // txtReqSpFzId
+            // 
+            this.txtReqSpFzId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtReqSpFzId.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtReqSpFzId.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtReqSpFzId.Location = new System.Drawing.Point(858, 16);
+            this.txtReqSpFzId.Name = "txtReqSpFzId";
+            this.txtReqSpFzId.Size = new System.Drawing.Size(30, 20);
+            this.txtReqSpFzId.TabIndex = 729;
+            this.txtReqSpFzId.Tag = null;
+            this.theme1.SetTheme(this.txtReqSpFzId, "(default)");
+            this.txtReqSpFzId.Visible = false;
+            this.txtReqSpFzId.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // txtReqPesaId
+            // 
+            this.txtReqPesaId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtReqPesaId.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtReqPesaId.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtReqPesaId.Location = new System.Drawing.Point(377, 15);
+            this.txtReqPesaId.Name = "txtReqPesaId";
+            this.txtReqPesaId.Size = new System.Drawing.Size(30, 20);
+            this.txtReqPesaId.TabIndex = 734;
+            this.txtReqPesaId.Tag = null;
+            this.theme1.SetTheme(this.txtReqPesaId, "(default)");
+            this.txtReqPesaId.Visible = false;
+            this.txtReqPesaId.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // txtReqIUIId
+            // 
+            this.txtReqIUIId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtReqIUIId.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtReqIUIId.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtReqIUIId.Location = new System.Drawing.Point(930, 15);
+            this.txtReqIUIId.Name = "txtReqIUIId";
+            this.txtReqIUIId.Size = new System.Drawing.Size(30, 20);
+            this.txtReqIUIId.TabIndex = 737;
+            this.txtReqIUIId.Tag = null;
+            this.theme1.SetTheme(this.txtReqIUIId, "(default)");
+            this.txtReqIUIId.Visible = false;
+            this.txtReqIUIId.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // txtReqOpuId
+            // 
+            this.txtReqOpuId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtReqOpuId.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtReqOpuId.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtReqOpuId.Location = new System.Drawing.Point(566, 57);
+            this.txtReqOpuId.Name = "txtReqOpuId";
+            this.txtReqOpuId.Size = new System.Drawing.Size(30, 20);
+            this.txtReqOpuId.TabIndex = 749;
+            this.txtReqOpuId.Tag = null;
+            this.theme1.SetTheme(this.txtReqOpuId, "(default)");
+            this.txtReqOpuId.Visible = false;
+            this.txtReqOpuId.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // txtReqFetId
+            // 
+            this.txtReqFetId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtReqFetId.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtReqFetId.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtReqFetId.Location = new System.Drawing.Point(13, 109);
+            this.txtReqFetId.Name = "txtReqFetId";
+            this.txtReqFetId.Size = new System.Drawing.Size(30, 20);
+            this.txtReqFetId.TabIndex = 757;
+            this.txtReqFetId.Tag = null;
+            this.theme1.SetTheme(this.txtReqFetId, "(default)");
+            this.txtReqFetId.Visible = false;
+            this.txtReqFetId.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
             // FrmLabFormA
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3416,6 +3518,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.chkEmbryoTranfer)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkFrozenSperm)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkFreshSprem)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtReqSpAId)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtReqSpFzId)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtReqPesaId)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtReqIUIId)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtReqOpuId)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtReqFetId)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3589,5 +3697,11 @@
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Label label20;
         private C1.Win.C1Input.C1ComboBox cboEtDay;
+        private C1.Win.C1Input.C1TextBox txtReqPesaId;
+        private C1.Win.C1Input.C1TextBox txtReqSpFzId;
+        private C1.Win.C1Input.C1TextBox txtReqSpAId;
+        private C1.Win.C1Input.C1TextBox txtReqIUIId;
+        private C1.Win.C1Input.C1TextBox txtReqFetId;
+        private C1.Win.C1Input.C1TextBox txtReqOpuId;
     }
 }
