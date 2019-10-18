@@ -1314,6 +1314,12 @@ namespace clinic_ivf.gui
                     rg.UserData = note;
                     //row1[colVsHCG] = imgCorr;
                 }
+                if (!row[ic.ivfDB.pApmDB.pApm.fet_time].ToString().Equals(""))
+                {
+                    CellNote note = new CellNote(" [Time " + row[ic.ivfDB.pApmDB.pApm.fet_time].ToString() + "]");
+                    CellRange rg = grfPtt.GetCellRange(grfPtt.Rows.Count - 1, colVsFET);
+                    rg.UserData = note;
+                }
                 if (int.TryParse(row[ic.ivfDB.pApmDB.pApm.tvs_day].ToString(), out chk))
                 {
                     if (chk == 6)
@@ -1428,6 +1434,12 @@ namespace clinic_ivf.gui
                     CellRange rg = grfPtt.GetCellRange(grfPtt.Rows.Count - 1, colVsHCG);
                     rg.UserData = note;
                     //row1[colVsHCG] = imgCorr;
+                }
+                if (!row[ic.ivfDB.pApmDB.pApm.fet_time].ToString().Equals(""))
+                {
+                    CellNote note = new CellNote(" [Time " + row[ic.ivfDB.pApmDB.pApm.fet_time].ToString() + "]");
+                    CellRange rg = grfPtt.GetCellRange(grfPtt.Rows.Count - 1, colVsFET);
+                    rg.UserData = note;
                 }
                 if (int.TryParse(row[ic.ivfDB.pApmDB.pApm.tvs_day].ToString(), out chk))
                 {

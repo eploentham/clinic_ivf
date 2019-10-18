@@ -442,10 +442,50 @@ namespace clinic_ivf.objdb
             return orop;
         }
         public LabRequest setLabRequest(String reqid, String pttName, String vn, String doctorId, String remark, String hn, String dobfemale, String reqoldid, String itmcode
-            ,String hnmale, String namemale, String hndonor, String namedonor, String dobdornor, String vsid)
+            , String hnmale, String namemale, String hndonor, String namedonor, String dobdornor, String vsid)
         {
             LabRequest lbReq = new LabRequest();
             lbReq.req_id = reqid;
+            lbReq.req_code = copDB.genReqDoc();
+            lbReq.req_date = System.DateTime.Now.Year.ToString() + "-" + System.DateTime.Now.ToString("MM-dd");
+            lbReq.hn_male = hnmale;
+            lbReq.name_male = namemale;
+            lbReq.hn_female = hn;
+            lbReq.name_female = pttName;
+            lbReq.status_req = "1";
+            lbReq.accept_date = "";
+            lbReq.start_date = "";
+            lbReq.result_date = "";
+            lbReq.visit_id = vsid;
+            lbReq.vn = vn;
+            lbReq.active = "1";
+            lbReq.remark = remark;
+            lbReq.date_create = "";
+            lbReq.date_modi = "";
+            lbReq.date_cancel = "";
+            lbReq.user_create = "";
+            lbReq.user_modi = "";
+            lbReq.user_cancel = "";
+            lbReq.dob_female = datetoDB(dobfemale);
+            //lbReq.item_id = "112";      //OPU
+            lbReq.lab_id = "";
+            lbReq.dob_donor = datetoDB(dobdornor);
+            lbReq.dob_female = "";
+            lbReq.dob_male = "";
+            lbReq.hn_donor = hndonor;
+            lbReq.name_donor = namedonor;
+            lbReq.doctor_id = doctorId;
+            lbReq.request_id = reqoldid;
+            lbReq.item_id = itmcode;
+            lbReq.form_a_id = "";
+            lbReq.req_time = System.DateTime.Now.ToString("hh:mm:ss");
+            return lbReq;
+        }
+        public LabRequest setLabRequest(String pttName, String vn, String doctorId, String remark, String hn, String dobfemale, String reqoldid, String itmcode
+            ,String hnmale, String namemale, String hndonor, String namedonor, String dobdornor, String vsid)
+        {
+            LabRequest lbReq = new LabRequest();
+            lbReq.req_id = "";
             lbReq.req_code = copDB.genReqDoc();
             lbReq.req_date = System.DateTime.Now.Year.ToString() + "-" + System.DateTime.Now.ToString("MM-dd");
             lbReq.hn_male = hnmale;

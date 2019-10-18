@@ -101,6 +101,8 @@
             this.ribbonTopToolBar1 = new C1.Win.C1Ribbon.RibbonTopToolBar();
             this.c1SplitterPanel4 = new C1.Win.C1SplitContainer.C1SplitterPanel();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.txtSfLabFormACode = new C1.Win.C1Input.C1TextBox();
+            this.label216 = new System.Windows.Forms.Label();
             this.txtPttIdOld = new C1.Win.C1Input.C1TextBox();
             this.txtPttId = new C1.Win.C1Input.C1TextBox();
             this.btnPrintSf = new C1.Win.C1Input.C1Button();
@@ -294,6 +296,8 @@
             this.ribbonTopToolBar11 = new C1.Win.C1Ribbon.RibbonTopToolBar();
             this.c1SplitterPanel2 = new C1.Win.C1SplitContainer.C1SplitterPanel();
             this.pnSememAnalysis = new System.Windows.Forms.Panel();
+            this.txtLabFormACode = new C1.Win.C1Input.C1TextBox();
+            this.label217 = new System.Windows.Forms.Label();
             this.btnPrintSa = new C1.Win.C1Input.C1Button();
             this.label55 = new System.Windows.Forms.Label();
             this.label53 = new System.Windows.Forms.Label();
@@ -482,6 +486,8 @@
             this.ribbonTopToolBar12 = new C1.Win.C1Ribbon.RibbonTopToolBar();
             this.c1SplitterPanel8 = new C1.Win.C1SplitContainer.C1SplitterPanel();
             this.panel11 = new System.Windows.Forms.Panel();
+            this.txtIuiLabFormACode = new C1.Win.C1Input.C1TextBox();
+            this.label219 = new System.Windows.Forms.Label();
             this.btnPrintIui = new C1.Win.C1Input.C1Button();
             this.txtIuiMotilityPost = new C1.Win.C1Input.C1TextBox();
             this.txtIuiTotalMotilePost = new C1.Win.C1Input.C1TextBox();
@@ -592,6 +598,8 @@
             this.panel8 = new System.Windows.Forms.Panel();
             this.c1SplitterPanel6 = new C1.Win.C1SplitContainer.C1SplitterPanel();
             this.panel9 = new System.Windows.Forms.Panel();
+            this.txtPeLabFormACode = new C1.Win.C1Input.C1TextBox();
+            this.label218 = new System.Windows.Forms.Label();
             this.btnPrintPesa = new C1.Win.C1Input.C1Button();
             this.label139 = new System.Windows.Forms.Label();
             this.label140 = new System.Windows.Forms.Label();
@@ -695,14 +703,10 @@
             this.txtPeHnFeMale = new C1.Win.C1Input.C1TextBox();
             this.tabReport = new C1.Win.C1Command.C1DockingTabPage();
             this.crySperm = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
-            this.txtSfLabFormACode = new C1.Win.C1Input.C1TextBox();
-            this.label216 = new System.Windows.Forms.Label();
-            this.txtLabFormACode = new C1.Win.C1Input.C1TextBox();
-            this.label217 = new System.Windows.Forms.Label();
-            this.txtPeLabFormACode = new C1.Win.C1Input.C1TextBox();
-            this.label218 = new System.Windows.Forms.Label();
-            this.txtIuiLabFormACode = new C1.Win.C1Input.C1TextBox();
-            this.label219 = new System.Windows.Forms.Label();
+            this.label220 = new System.Windows.Forms.Label();
+            this.lbSpFzRemark = new System.Windows.Forms.Label();
+            this.lbSpSaRemark = new System.Windows.Forms.Label();
+            this.label233 = new System.Windows.Forms.Label();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tC)).BeginInit();
@@ -723,6 +727,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.c1Ribbon1)).BeginInit();
             this.c1SplitterPanel4.SuspendLayout();
             this.panel7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSfLabFormACode)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPttIdOld)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPttId)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPrintSf)).BeginInit();
@@ -793,6 +798,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.c1Ribbon2)).BeginInit();
             this.c1SplitterPanel2.SuspendLayout();
             this.pnSememAnalysis.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtLabFormACode)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPrintSa)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1PictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1PictureBox1)).BeginInit();
@@ -860,6 +866,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.c1Ribbon3)).BeginInit();
             this.c1SplitterPanel8.SuspendLayout();
             this.panel11.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtIuiLabFormACode)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPrintIui)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtIuiMotilityPost)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtIuiTotalMotilePost)).BeginInit();
@@ -916,6 +923,7 @@
             this.c1SplitterPanel5.SuspendLayout();
             this.c1SplitterPanel6.SuspendLayout();
             this.panel9.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPeLabFormACode)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPrintPesa)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1PictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1PictureBox6)).BeginInit();
@@ -960,10 +968,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtPeNameFeMale)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPeHnFeMale)).BeginInit();
             this.tabReport.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtSfLabFormACode)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtLabFormACode)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPeLabFormACode)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtIuiLabFormACode)).BeginInit();
             this.SuspendLayout();
             // 
             // sB
@@ -1582,6 +1586,8 @@
             // panel7
             // 
             this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel7.Controls.Add(this.lbSpFzRemark);
+            this.panel7.Controls.Add(this.label220);
             this.panel7.Controls.Add(this.txtSfLabFormACode);
             this.panel7.Controls.Add(this.label216);
             this.panel7.Controls.Add(this.txtPttIdOld);
@@ -1682,6 +1688,32 @@
             this.panel7.Size = new System.Drawing.Size(870, 754);
             this.panel7.TabIndex = 0;
             this.theme1.SetTheme(this.panel7, "(default)");
+            // 
+            // txtSfLabFormACode
+            // 
+            this.txtSfLabFormACode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSfLabFormACode.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtSfLabFormACode.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtSfLabFormACode.Location = new System.Drawing.Point(517, 108);
+            this.txtSfLabFormACode.Name = "txtSfLabFormACode";
+            this.txtSfLabFormACode.Size = new System.Drawing.Size(207, 20);
+            this.txtSfLabFormACode.TabIndex = 871;
+            this.txtSfLabFormACode.Tag = null;
+            this.theme1.SetTheme(this.txtSfLabFormACode, "(default)");
+            this.txtSfLabFormACode.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label216
+            // 
+            this.label216.AutoSize = true;
+            this.label216.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label216.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label216.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label216.Location = new System.Drawing.Point(351, 110);
+            this.label216.Name = "label216";
+            this.label216.Size = new System.Drawing.Size(163, 16);
+            this.label216.TabIndex = 870;
+            this.label216.Text = "Lab Form A Req Number :";
+            this.theme1.SetTheme(this.label216, "(default)");
             // 
             // txtPttIdOld
             // 
@@ -3485,7 +3517,7 @@
             this.txtSfDobMale.EmptyAsNull = true;
             this.txtSfDobMale.GMTOffset = System.TimeSpan.Parse("00:00:00");
             this.txtSfDobMale.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.txtSfDobMale.Location = new System.Drawing.Point(108, 110);
+            this.txtSfDobMale.Location = new System.Drawing.Point(108, 132);
             this.txtSfDobMale.Name = "txtSfDobMale";
             this.txtSfDobMale.Size = new System.Drawing.Size(207, 18);
             this.txtSfDobMale.TabIndex = 766;
@@ -3499,7 +3531,7 @@
             this.label131.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label131.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label131.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label131.Location = new System.Drawing.Point(8, 112);
+            this.label131.Location = new System.Drawing.Point(8, 134);
             this.label131.Name = "label131";
             this.label131.Size = new System.Drawing.Size(79, 16);
             this.label131.TabIndex = 765;
@@ -3512,7 +3544,7 @@
             this.label132.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label132.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label132.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label132.Location = new System.Drawing.Point(8, 90);
+            this.label132.Location = new System.Drawing.Point(8, 112);
             this.label132.Name = "label132";
             this.label132.Size = new System.Drawing.Size(48, 16);
             this.label132.TabIndex = 764;
@@ -3524,7 +3556,7 @@
             this.txtSfNameMale.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSfNameMale.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtSfNameMale.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtSfNameMale.Location = new System.Drawing.Point(108, 88);
+            this.txtSfNameMale.Location = new System.Drawing.Point(108, 110);
             this.txtSfNameMale.Name = "txtSfNameMale";
             this.txtSfNameMale.Size = new System.Drawing.Size(207, 20);
             this.txtSfNameMale.TabIndex = 763;
@@ -3538,7 +3570,7 @@
             this.label133.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label133.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label133.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label133.Location = new System.Drawing.Point(8, 68);
+            this.label133.Location = new System.Drawing.Point(8, 90);
             this.label133.Name = "label133";
             this.label133.Size = new System.Drawing.Size(67, 16);
             this.label133.TabIndex = 762;
@@ -3550,7 +3582,7 @@
             this.txtSfHnMale.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSfHnMale.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtSfHnMale.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtSfHnMale.Location = new System.Drawing.Point(108, 66);
+            this.txtSfHnMale.Location = new System.Drawing.Point(108, 88);
             this.txtSfHnMale.Name = "txtSfHnMale";
             this.txtSfHnMale.Size = new System.Drawing.Size(207, 20);
             this.txtSfHnMale.TabIndex = 761;
@@ -3677,7 +3709,7 @@
             this.c1SplitterPanel1.SizeRatio = 42.265D;
             this.c1SplitterPanel1.TabIndex = 0;
             this.c1SplitterPanel1.Text = "Panel 1";
-            this.c1SplitterPanel1.Width = 635;
+            this.c1SplitterPanel1.Width = 642;
             // 
             // panel6
             // 
@@ -4186,6 +4218,8 @@
             // pnSememAnalysis
             // 
             this.pnSememAnalysis.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnSememAnalysis.Controls.Add(this.lbSpSaRemark);
+            this.pnSememAnalysis.Controls.Add(this.label233);
             this.pnSememAnalysis.Controls.Add(this.txtLabFormACode);
             this.pnSememAnalysis.Controls.Add(this.label217);
             this.pnSememAnalysis.Controls.Add(this.btnPrintSa);
@@ -4284,6 +4318,32 @@
             this.pnSememAnalysis.Size = new System.Drawing.Size(877, 754);
             this.pnSememAnalysis.TabIndex = 0;
             this.theme1.SetTheme(this.pnSememAnalysis, "(default)");
+            // 
+            // txtLabFormACode
+            // 
+            this.txtLabFormACode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtLabFormACode.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtLabFormACode.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtLabFormACode.Location = new System.Drawing.Point(517, 108);
+            this.txtLabFormACode.Name = "txtLabFormACode";
+            this.txtLabFormACode.Size = new System.Drawing.Size(207, 20);
+            this.txtLabFormACode.TabIndex = 873;
+            this.txtLabFormACode.Tag = null;
+            this.theme1.SetTheme(this.txtLabFormACode, "(default)");
+            this.txtLabFormACode.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label217
+            // 
+            this.label217.AutoSize = true;
+            this.label217.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label217.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label217.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label217.Location = new System.Drawing.Point(351, 110);
+            this.label217.Name = "label217";
+            this.label217.Size = new System.Drawing.Size(163, 16);
+            this.label217.TabIndex = 872;
+            this.label217.Text = "Lab Form A Req Number :";
+            this.theme1.SetTheme(this.label217, "(default)");
             // 
             // btnPrintSa
             // 
@@ -6001,7 +6061,7 @@
             this.txtDobMale.EmptyAsNull = true;
             this.txtDobMale.GMTOffset = System.TimeSpan.Parse("00:00:00");
             this.txtDobMale.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.txtDobMale.Location = new System.Drawing.Point(108, 110);
+            this.txtDobMale.Location = new System.Drawing.Point(108, 135);
             this.txtDobMale.Name = "txtDobMale";
             this.txtDobMale.Size = new System.Drawing.Size(207, 18);
             this.txtDobMale.TabIndex = 766;
@@ -6015,7 +6075,7 @@
             this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label6.Location = new System.Drawing.Point(8, 112);
+            this.label6.Location = new System.Drawing.Point(8, 137);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(79, 16);
             this.label6.TabIndex = 765;
@@ -6028,7 +6088,7 @@
             this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label3.Location = new System.Drawing.Point(8, 90);
+            this.label3.Location = new System.Drawing.Point(8, 115);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(48, 16);
             this.label3.TabIndex = 764;
@@ -6040,7 +6100,7 @@
             this.txtNameMale.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtNameMale.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtNameMale.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtNameMale.Location = new System.Drawing.Point(108, 88);
+            this.txtNameMale.Location = new System.Drawing.Point(108, 113);
             this.txtNameMale.Name = "txtNameMale";
             this.txtNameMale.Size = new System.Drawing.Size(207, 20);
             this.txtNameMale.TabIndex = 763;
@@ -6054,7 +6114,7 @@
             this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label5.Location = new System.Drawing.Point(8, 68);
+            this.label5.Location = new System.Drawing.Point(8, 93);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(67, 16);
             this.label5.TabIndex = 762;
@@ -6066,7 +6126,7 @@
             this.txtHnMale.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtHnMale.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtHnMale.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtHnMale.Location = new System.Drawing.Point(108, 66);
+            this.txtHnMale.Location = new System.Drawing.Point(108, 91);
             this.txtHnMale.Name = "txtHnMale";
             this.txtHnMale.Size = new System.Drawing.Size(207, 20);
             this.txtHnMale.TabIndex = 761;
@@ -6193,7 +6253,7 @@
             this.c1SplitterPanel7.SizeRatio = 42.528D;
             this.c1SplitterPanel7.TabIndex = 0;
             this.c1SplitterPanel7.Text = "Panel 1";
-            this.c1SplitterPanel7.Width = 646;
+            this.c1SplitterPanel7.Width = 639;
             // 
             // panel10
             // 
@@ -6227,10 +6287,10 @@
             this.c1TextBox3.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.c1TextBox3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.c1TextBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.c1TextBox3.Location = new System.Drawing.Point(0, 214);
+            this.c1TextBox3.Location = new System.Drawing.Point(0, 211);
             this.c1TextBox3.Multiline = true;
             this.c1TextBox3.Name = "c1TextBox3";
-            this.c1TextBox3.Size = new System.Drawing.Size(639, 540);
+            this.c1TextBox3.Size = new System.Drawing.Size(639, 543);
             this.c1TextBox3.TabIndex = 542;
             this.c1TextBox3.Tag = null;
             this.theme1.SetTheme(this.c1TextBox3, "(default)");
@@ -6247,7 +6307,7 @@
             this.panel12.Controls.Add(this.c1TextBox2);
             this.panel12.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.panel12.Location = new System.Drawing.Point(0, 146);
+            this.panel12.Location = new System.Drawing.Point(0, 143);
             this.panel12.Name = "panel12";
             this.panel12.Size = new System.Drawing.Size(639, 68);
             this.panel12.TabIndex = 3;
@@ -6343,7 +6403,7 @@
             this.c1Ribbon3.QatHolder = this.ribbonQat12;
             this.c1Ribbon3.QatItemsHolder.Add(this.UndoButton2);
             this.c1Ribbon3.QatItemsHolder.Add(this.RedoButton2);
-            this.c1Ribbon3.Size = new System.Drawing.Size(639, 146);
+            this.c1Ribbon3.Size = new System.Drawing.Size(639, 143);
             this.c1Ribbon3.Tabs.Add(this.HomeTab2);
             this.c1Ribbon3.Tabs.Add(this.ViewTab2);
             this.theme1.SetTheme(this.c1Ribbon3, "(default)");
@@ -6801,6 +6861,32 @@
             this.panel11.Size = new System.Drawing.Size(873, 754);
             this.panel11.TabIndex = 0;
             this.theme1.SetTheme(this.panel11, "(default)");
+            // 
+            // txtIuiLabFormACode
+            // 
+            this.txtIuiLabFormACode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtIuiLabFormACode.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtIuiLabFormACode.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtIuiLabFormACode.Location = new System.Drawing.Point(517, 108);
+            this.txtIuiLabFormACode.Name = "txtIuiLabFormACode";
+            this.txtIuiLabFormACode.Size = new System.Drawing.Size(207, 20);
+            this.txtIuiLabFormACode.TabIndex = 875;
+            this.txtIuiLabFormACode.Tag = null;
+            this.theme1.SetTheme(this.txtIuiLabFormACode, "(default)");
+            this.txtIuiLabFormACode.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label219
+            // 
+            this.label219.AutoSize = true;
+            this.label219.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label219.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label219.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label219.Location = new System.Drawing.Point(351, 110);
+            this.label219.Name = "label219";
+            this.label219.Size = new System.Drawing.Size(163, 16);
+            this.label219.TabIndex = 874;
+            this.label219.Text = "Lab Form A Req Number :";
+            this.theme1.SetTheme(this.label219, "(default)");
             // 
             // btnPrintIui
             // 
@@ -8561,6 +8647,32 @@
             this.panel9.TabIndex = 0;
             this.theme1.SetTheme(this.panel9, "(default)");
             // 
+            // txtPeLabFormACode
+            // 
+            this.txtPeLabFormACode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPeLabFormACode.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtPeLabFormACode.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtPeLabFormACode.Location = new System.Drawing.Point(517, 108);
+            this.txtPeLabFormACode.Name = "txtPeLabFormACode";
+            this.txtPeLabFormACode.Size = new System.Drawing.Size(207, 20);
+            this.txtPeLabFormACode.TabIndex = 873;
+            this.txtPeLabFormACode.Tag = null;
+            this.theme1.SetTheme(this.txtPeLabFormACode, "(default)");
+            this.txtPeLabFormACode.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label218
+            // 
+            this.label218.AutoSize = true;
+            this.label218.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label218.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label218.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label218.Location = new System.Drawing.Point(351, 110);
+            this.label218.Name = "label218";
+            this.label218.Size = new System.Drawing.Size(163, 16);
+            this.label218.TabIndex = 872;
+            this.label218.Text = "Lab Form A Req Number :";
+            this.theme1.SetTheme(this.label218, "(default)");
+            // 
             // btnPrintPesa
             // 
             this.btnPrintPesa.Image = global::clinic_ivf.Properties.Resources.print;
@@ -10138,109 +10250,57 @@
             this.crySperm.TabIndex = 2;
             this.theme1.SetTheme(this.crySperm, "(default)");
             // 
-            // txtSfLabFormACode
+            // label220
             // 
-            this.txtSfLabFormACode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtSfLabFormACode.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtSfLabFormACode.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtSfLabFormACode.Location = new System.Drawing.Point(517, 108);
-            this.txtSfLabFormACode.Name = "txtSfLabFormACode";
-            this.txtSfLabFormACode.Size = new System.Drawing.Size(207, 20);
-            this.txtSfLabFormACode.TabIndex = 871;
-            this.txtSfLabFormACode.Tag = null;
-            this.theme1.SetTheme(this.txtSfLabFormACode, "(default)");
-            this.txtSfLabFormACode.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.label220.AutoSize = true;
+            this.label220.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label220.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label220.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label220.Location = new System.Drawing.Point(8, 60);
+            this.label220.Name = "label220";
+            this.label220.Size = new System.Drawing.Size(92, 16);
+            this.label220.TabIndex = 872;
+            this.label220.Text = "nurse remark :";
+            this.theme1.SetTheme(this.label220, "(default)");
             // 
-            // label216
+            // lbSpFzRemark
             // 
-            this.label216.AutoSize = true;
-            this.label216.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label216.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label216.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label216.Location = new System.Drawing.Point(351, 110);
-            this.label216.Name = "label216";
-            this.label216.Size = new System.Drawing.Size(163, 16);
-            this.label216.TabIndex = 870;
-            this.label216.Text = "Lab Form A Req Number :";
-            this.theme1.SetTheme(this.label216, "(default)");
+            this.lbSpFzRemark.AutoSize = true;
+            this.lbSpFzRemark.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.lbSpFzRemark.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbSpFzRemark.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.lbSpFzRemark.Location = new System.Drawing.Point(105, 60);
+            this.lbSpFzRemark.Name = "lbSpFzRemark";
+            this.lbSpFzRemark.Size = new System.Drawing.Size(13, 20);
+            this.lbSpFzRemark.TabIndex = 873;
+            this.lbSpFzRemark.Text = ".";
+            this.theme1.SetTheme(this.lbSpFzRemark, "(default)");
             // 
-            // txtLabFormACode
+            // lbSpSaRemark
             // 
-            this.txtLabFormACode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtLabFormACode.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtLabFormACode.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtLabFormACode.Location = new System.Drawing.Point(517, 108);
-            this.txtLabFormACode.Name = "txtLabFormACode";
-            this.txtLabFormACode.Size = new System.Drawing.Size(207, 20);
-            this.txtLabFormACode.TabIndex = 873;
-            this.txtLabFormACode.Tag = null;
-            this.theme1.SetTheme(this.txtLabFormACode, "(default)");
-            this.txtLabFormACode.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.lbSpSaRemark.AutoSize = true;
+            this.lbSpSaRemark.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.lbSpSaRemark.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbSpSaRemark.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.lbSpSaRemark.Location = new System.Drawing.Point(107, 67);
+            this.lbSpSaRemark.Name = "lbSpSaRemark";
+            this.lbSpSaRemark.Size = new System.Drawing.Size(13, 20);
+            this.lbSpSaRemark.TabIndex = 875;
+            this.lbSpSaRemark.Text = ".";
+            this.theme1.SetTheme(this.lbSpSaRemark, "(default)");
             // 
-            // label217
+            // label233
             // 
-            this.label217.AutoSize = true;
-            this.label217.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label217.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label217.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label217.Location = new System.Drawing.Point(351, 110);
-            this.label217.Name = "label217";
-            this.label217.Size = new System.Drawing.Size(163, 16);
-            this.label217.TabIndex = 872;
-            this.label217.Text = "Lab Form A Req Number :";
-            this.theme1.SetTheme(this.label217, "(default)");
-            // 
-            // txtPeLabFormACode
-            // 
-            this.txtPeLabFormACode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtPeLabFormACode.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtPeLabFormACode.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtPeLabFormACode.Location = new System.Drawing.Point(517, 108);
-            this.txtPeLabFormACode.Name = "txtPeLabFormACode";
-            this.txtPeLabFormACode.Size = new System.Drawing.Size(207, 20);
-            this.txtPeLabFormACode.TabIndex = 873;
-            this.txtPeLabFormACode.Tag = null;
-            this.theme1.SetTheme(this.txtPeLabFormACode, "(default)");
-            this.txtPeLabFormACode.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // label218
-            // 
-            this.label218.AutoSize = true;
-            this.label218.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label218.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label218.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label218.Location = new System.Drawing.Point(351, 110);
-            this.label218.Name = "label218";
-            this.label218.Size = new System.Drawing.Size(163, 16);
-            this.label218.TabIndex = 872;
-            this.label218.Text = "Lab Form A Req Number :";
-            this.theme1.SetTheme(this.label218, "(default)");
-            // 
-            // txtIuiLabFormACode
-            // 
-            this.txtIuiLabFormACode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtIuiLabFormACode.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtIuiLabFormACode.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtIuiLabFormACode.Location = new System.Drawing.Point(517, 108);
-            this.txtIuiLabFormACode.Name = "txtIuiLabFormACode";
-            this.txtIuiLabFormACode.Size = new System.Drawing.Size(207, 20);
-            this.txtIuiLabFormACode.TabIndex = 875;
-            this.txtIuiLabFormACode.Tag = null;
-            this.theme1.SetTheme(this.txtIuiLabFormACode, "(default)");
-            this.txtIuiLabFormACode.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // label219
-            // 
-            this.label219.AutoSize = true;
-            this.label219.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label219.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label219.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label219.Location = new System.Drawing.Point(351, 110);
-            this.label219.Name = "label219";
-            this.label219.Size = new System.Drawing.Size(163, 16);
-            this.label219.TabIndex = 874;
-            this.label219.Text = "Lab Form A Req Number :";
-            this.theme1.SetTheme(this.label219, "(default)");
+            this.label233.AutoSize = true;
+            this.label233.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label233.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label233.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label233.Location = new System.Drawing.Point(10, 67);
+            this.label233.Name = "label233";
+            this.label233.Size = new System.Drawing.Size(92, 16);
+            this.label233.TabIndex = 874;
+            this.label233.Text = "nurse remark :";
+            this.theme1.SetTheme(this.label233, "(default)");
             // 
             // FrmLabSpermAdd
             // 
@@ -10276,6 +10336,7 @@
             this.c1SplitterPanel4.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSfLabFormACode)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPttIdOld)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPttId)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPrintSf)).EndInit();
@@ -10351,6 +10412,7 @@
             this.c1SplitterPanel2.ResumeLayout(false);
             this.pnSememAnalysis.ResumeLayout(false);
             this.pnSememAnalysis.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtLabFormACode)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPrintSa)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1PictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1PictureBox1)).EndInit();
@@ -10423,6 +10485,7 @@
             this.c1SplitterPanel8.ResumeLayout(false);
             this.panel11.ResumeLayout(false);
             this.panel11.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtIuiLabFormACode)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPrintIui)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtIuiMotilityPost)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtIuiTotalMotilePost)).EndInit();
@@ -10481,6 +10544,7 @@
             this.c1SplitterPanel6.ResumeLayout(false);
             this.panel9.ResumeLayout(false);
             this.panel9.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPeLabFormACode)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPrintPesa)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1PictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1PictureBox6)).EndInit();
@@ -10526,10 +10590,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtPeNameFeMale)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPeHnFeMale)).EndInit();
             this.tabReport.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.txtSfLabFormACode)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtLabFormACode)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPeLabFormACode)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtIuiLabFormACode)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -11211,5 +11271,9 @@
         private System.Windows.Forms.Label label218;
         private C1.Win.C1Input.C1TextBox txtIuiLabFormACode;
         private System.Windows.Forms.Label label219;
+        private System.Windows.Forms.Label lbSpFzRemark;
+        private System.Windows.Forms.Label label220;
+        private System.Windows.Forms.Label lbSpSaRemark;
+        private System.Windows.Forms.Label label233;
     }
 }

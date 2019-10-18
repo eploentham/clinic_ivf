@@ -1466,6 +1466,7 @@ namespace clinic_ivf.gui
                     pnEmailAddSubject.Enabled = false;
                 }
             }
+            lbSpSaRemark.Text = lforma.sperm_sa_remark;
         }
         private void setControlSpermFreezing()
         {
@@ -1539,6 +1540,7 @@ namespace clinic_ivf.gui
                     txtEmailBody.Enabled = false;
                 }
             }
+            lbSpFzRemark.Text = lforma.sperm_freezing_remark;
         }
         private void setControlPesa()
         {

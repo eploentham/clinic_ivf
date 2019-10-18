@@ -111,6 +111,8 @@ namespace clinic_ivf.objdb
             lformA.status_sperm_pesa = "status_sperm_pesa";
             lformA.et_day = "et_day";
             lformA.et_remark = "et_remark";
+            lformA.sperm_freezing_remark = "sperm_freezing_remark";
+            lformA.sperm_sa_remark = "sperm_sa_remark";
 
             lformA.pkField = "form_a_id";
             lformA.table = "lab_t_form_a";
@@ -179,6 +181,8 @@ namespace clinic_ivf.objdb
             p.dob_male = p.dob_male == null ? "" : p.dob_male;
             p.et_day = p.et_day == null ? "" : p.et_day;
             p.et_remark = p.et_remark == null ? "" : p.et_remark;
+            p.sperm_freezing_remark = p.sperm_freezing_remark == null ? "" : p.sperm_freezing_remark;
+            p.sperm_sa_remark = p.sperm_sa_remark == null ? "" : p.sperm_sa_remark;
 
             p.y_selection = p.y_selection == null ? "0" : p.y_selection;
             p.x_selection = p.x_selection == null ? "0" : p.x_selection;
@@ -272,14 +276,14 @@ namespace clinic_ivf.objdb
                     "," + lformA.status_assist_hatching + "='" + p.status_assist_hatching + "' " +
                     "," + lformA.hn_male + "='" + p.hn_male + "' " +
                     "," + lformA.hn_female + "='" + p.hn_female + "' " +
-                    "," + lformA.name_male + "='" + p.name_male + "' " +
-                    "," + lformA.name_female + "='" + p.name_female + "' " +
+                    "," + lformA.name_male + "='" + p.name_male.Replace("'", "''") + "' " +
+                    "," + lformA.name_female + "='" + p.name_female.Replace("'", "''") + "' " +
                     "," + lformA.fresh_sperm_collect_time + "='" + p.fresh_sperm_collect_time + "' " +
                     "," + lformA.fresh_sperm_end_time + "='" + p.fresh_sperm_end_time + "' " +
                     "," + lformA.doctor_id + "='" + p.doctor_id + "' " +
                     "," + lformA.form_a_date + "='" + p.form_a_date + "' " +
                     "," + lformA.hn_donor + "='" + p.hn_donor + "' " +
-                    "," + lformA.name_donor + "='" + p.name_donor + "' " +
+                    "," + lformA.name_donor + "='" + p.name_donor.Replace("'", "''") + "' " +
                     "," + lformA.dob_donor + "='" + p.dob_donor + "' " +
                     "," + lformA.dob_female + "='" + p.dob_female + "' " +
                     "," + lformA.dob_male + "='" + p.dob_male + "' " +
@@ -294,11 +298,11 @@ namespace clinic_ivf.objdb
                     "," + lformA.req_id_pesa_tese + "='" + p.req_id_pesa_tese + "' " +
                     "," + lformA.opu_time + "='" + p.opu_time + "' " +
                     "," + lformA.status_opu_active + "='" + p.status_opu_active + "' " +
-                    "," + lformA.opu_wait_remark + "='" + p.opu_wait_remark + "' " +
-                    "," + lformA.opu_remark + "='" + p.opu_remark + "' " +
-                    "," + lformA.fet_remark + "='" + p.fet_remark + "' " +
+                    "," + lformA.opu_wait_remark + "='" + p.opu_wait_remark.Replace("'", "''") + "' " +
+                    "," + lformA.opu_remark + "='" + p.opu_remark.Replace("'", "''") + "' " +
+                    "," + lformA.fet_remark + "='" + p.fet_remark.Replace("'", "''") + "' " +
                     "," + lformA.status_fet_active + "='" + p.status_fet_active + "' " +
-                    "," + lformA.fet_wait_remark + "='" + p.fet_wait_remark + "' " +
+                    "," + lformA.fet_wait_remark + "='" + p.fet_wait_remark.Replace("'", "''") + "' " +
                     "," + lformA.status_wait_confirm_fet_date + "='" + p.status_wait_confirm_fet_date + "' " +
                     "," + lformA.opu_time_modi + "='" + p.opu_time_modi + "' " +
                     "," + lformA.status_opu_time_modi + "='" + p.status_opu_time_modi + "' " +
@@ -311,7 +315,9 @@ namespace clinic_ivf.objdb
                     "," + lformA.status_sperm_iui + "='" + p.status_sperm_iui + "' " +
                     "," + lformA.status_sperm_pesa + "='" + p.status_sperm_pesa + "' " +
                     "," + lformA.et_day + "='" + p.et_day + "' " +
-                    "," + lformA.et_remark + "='" + p.et_remark + "' " +
+                    "," + lformA.et_remark + "='" + p.et_remark.Replace("'", "''") + "' " +
+                    "," + lformA.sperm_freezing_remark + "='" + p.sperm_freezing_remark.Replace("'", "''") + "' " +
+                    "," + lformA.sperm_sa_remark + "='" + p.sperm_sa_remark.Replace("'", "''") + "' " +
                     "";
                 re = conn.ExecuteNonQuery(conn.conn, sql);
             }
@@ -376,14 +382,14 @@ namespace clinic_ivf.objdb
                     "," + lformA.status_assist_hatching + "='" + p.status_assist_hatching + "' " +
                     "," + lformA.hn_male + "='" + p.hn_male + "' " +
                     "," + lformA.hn_female + "='" + p.hn_female + "' " +
-                    "," + lformA.name_male + "='" + p.name_male + "' " +
-                    "," + lformA.name_female + "='" + p.name_female + "' " +
+                    "," + lformA.name_male + "='" + p.name_male.Replace("'", "''") + "' " +
+                    "," + lformA.name_female + "='" + p.name_female.Replace("'", "''") + "' " +
                     "," + lformA.fresh_sperm_collect_time + "='" + p.fresh_sperm_collect_time + "' " +
                     "," + lformA.fresh_sperm_end_time + "='" + p.fresh_sperm_end_time + "' " +
                     "," + lformA.doctor_id + "='" + p.doctor_id + "' " +
                     "," + lformA.form_a_date + "='" + p.form_a_date + "' " +
                     "," + lformA.hn_donor + "='" + p.hn_donor + "' " +
-                    "," + lformA.name_donor + "='" + p.name_donor + "' " +
+                    "," + lformA.name_donor + "='" + p.name_donor.Replace("'", "''") + "' " +
                     "," + lformA.dob_donor + "='" + p.dob_donor + "' " +
                     "," + lformA.dob_female + "='" + p.dob_female + "' " +
                     "," + lformA.dob_male + "='" + p.dob_male + "' " +
@@ -393,9 +399,9 @@ namespace clinic_ivf.objdb
                     "," + lformA.status_wait_confirm_opu_date + "='" + p.status_wait_confirm_opu_date + "' " +
                     "," + lformA.opu_time + "='" + p.opu_time + "' " +
                     "," + lformA.status_opu_active + "='" + p.status_opu_active + "' " +
-                    "," + lformA.opu_wait_remark + "='" + p.opu_wait_remark + "' " +
-                    "," + lformA.opu_remark + "='" + p.opu_remark + "' " +
-                    "," + lformA.fet_remark + "='" + p.fet_remark + "' " +
+                    "," + lformA.opu_wait_remark + "='" + p.opu_wait_remark.Replace("'", "''") + "' " +
+                    "," + lformA.opu_remark + "='" + p.opu_remark.Replace("'", "''") + "' " +
+                    "," + lformA.fet_remark + "='" + p.fet_remark.Replace("'", "''") + "' " +
                     "," + lformA.status_fet_active + "='" + p.status_fet_active + "' " +
                     "," + lformA.fet_wait_remark + "='" + p.fet_wait_remark + "' " +
                     "," + lformA.status_wait_confirm_fet_date + "='" + p.status_wait_confirm_fet_date + "' " +
@@ -408,7 +414,9 @@ namespace clinic_ivf.objdb
                     "," + lformA.status_sperm_pesa + "='" + p.status_sperm_pesa + "' " +
                     "," + lformA.status_sperm_iui + "='" + p.status_sperm_iui + "' " +
                     "," + lformA.et_day + "='" + p.et_day + "' " +
-                    "," + lformA.et_remark + "='" + p.et_remark + "' " +
+                    "," + lformA.et_remark + "='" + p.et_remark.Replace("'", "''") + "' " +
+                    "," + lformA.sperm_freezing_remark + "='" + p.sperm_freezing_remark.Replace("'", "''") + "' " +
+                    "," + lformA.sperm_sa_remark + "='" + p.sperm_sa_remark.Replace("'", "''") + "' " +
                 " Where " + lformA.pkField + " = '" + p.form_a_id + "' "
                 ;
             try
@@ -645,6 +653,46 @@ namespace clinic_ivf.objdb
             }
             return re;
         }
+        public String VoidSpermFz(String id)
+        {
+            String re = "";
+            String sql = "";
+
+            sql = "Update " + lformA.table + " " +
+                //" Set "+lformA.patient_appoint_date_time + "='"+p.patient_appoint_date_time + "' " +
+                "Set " + lformA.status_sperm_freezing + "='3' " +
+                "," + lformA.req_id_semem_analysis + "=0 " +
+                " Where " + lformA.pkField + " = '" + id + "' ";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+            return re;
+        }
+        public String VoidSpermSa(String id)
+        {
+            String re = "";
+            String sql = "";
+
+            sql = "Update " + lformA.table + " " +
+                //" Set "+lformA.patient_appoint_date_time + "='"+p.patient_appoint_date_time + "' " +
+                "Set " + lformA.status_sperm_analysis + "='3' " +
+                "," + lformA.req_id_semem_analysis + "=0 " +
+                " Where " + lformA.pkField + " = '" + id + "' ";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+            return re;
+        }
         public String VoidFET(String id)
         {
             String re = "";
@@ -802,6 +850,70 @@ namespace clinic_ivf.objdb
             {
                 item = new ComboBoxItem();
                 item.Text = row[lformA.remark].ToString();
+                item.Value = i.ToString();
+
+                c.Items.Add(item);
+                i++;
+            }
+            return c;
+        }
+        public DataTable selectDistinctBySpermFreezingRemark()
+        {
+            DataTable dt = new DataTable();
+            String sql = "select distinct lformA.sperm_sa_remark " +
+                "From " + lformA.table + " lformA " +
+                "Where lformA." + lformA.active + "='1' ";
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
+        public C1ComboBox setCboSpermFreezingRemark(C1ComboBox c)
+        {
+            ComboBoxItem item = new ComboBoxItem();
+            DataTable dt = selectDistinctBySpermFreezingRemark();
+            //String aaa = "";
+            ComboBoxItem item1 = new ComboBoxItem();
+            //item1.Text = "";
+            //item1.Value = "";
+            c.Items.Clear();
+            //c.Items.Add(item1);
+            //for (int i = 0; i < dt.Rows.Count; i++)
+            int i = 0;
+            foreach (DataRow row in dt.Rows)
+            {
+                item = new ComboBoxItem();
+                item.Text = row[lformA.et_remark].ToString();
+                item.Value = i.ToString();
+
+                c.Items.Add(item);
+                i++;
+            }
+            return c;
+        }
+        public DataTable selectDistinctBySpermSaRemark()
+        {
+            DataTable dt = new DataTable();
+            String sql = "select distinct lformA.sperm_sa_remark " +
+                "From " + lformA.table + " lformA " +
+                "Where lformA." + lformA.active + "='1' ";
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
+        public C1ComboBox setCboSpermSaRemark(C1ComboBox c)
+        {
+            ComboBoxItem item = new ComboBoxItem();
+            DataTable dt = selectDistinctBySpermSaRemark();
+            //String aaa = "";
+            ComboBoxItem item1 = new ComboBoxItem();
+            //item1.Text = "";
+            //item1.Value = "";
+            c.Items.Clear();
+            //c.Items.Add(item1);
+            //for (int i = 0; i < dt.Rows.Count; i++)
+            int i = 0;
+            foreach (DataRow row in dt.Rows)
+            {
+                item = new ComboBoxItem();
+                item.Text = row[lformA.et_remark].ToString();
                 item.Value = i.ToString();
 
                 c.Items.Add(item);
@@ -999,6 +1111,8 @@ namespace clinic_ivf.objdb
                 vs1.status_sperm_pesa = dt.Rows[0][lformA.status_sperm_pesa].ToString();
                 vs1.et_day = dt.Rows[0][lformA.et_day].ToString();
                 vs1.et_remark = dt.Rows[0][lformA.et_remark].ToString();
+                vs1.sperm_freezing_remark = dt.Rows[0][lformA.sperm_freezing_remark].ToString();
+                vs1.sperm_sa_remark = dt.Rows[0][lformA.sperm_sa_remark].ToString();
             }
             else
             {
@@ -1097,6 +1211,8 @@ namespace clinic_ivf.objdb
             lforma1.status_sperm_pesa = "";
             lforma1.et_day = "";
             lforma1.et_remark = "";
+            lforma1.sperm_sa_remark = "";
+            lforma1.sperm_freezing_remark = "";
             return lforma1;
         }
     }

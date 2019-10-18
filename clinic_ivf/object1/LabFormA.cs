@@ -97,5 +97,7 @@ namespace clinic_ivf.object1
         public String status_sperm_iui { get; set; }
         public String et_day { get; set; }
         public String et_remark { get; set; }
+        public String sperm_sa_remark { get; set; }
+        public String sperm_freezing_remark { get; set; }
     }
 }

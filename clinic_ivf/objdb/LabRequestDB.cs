@@ -635,8 +635,43 @@ namespace clinic_ivf.objdb
                 lbReq1.form_a_id = "";
                 lbReq1.dob_donor = "";
                 lbReq1.req_time = "";
+                //lbReq1.status_req = "";
             }
 
+            return lbReq1;
+        }
+        public LabRequest setLabRequest(LabRequest lbReq1)
+        {
+            lbReq1.req_id = "";
+            lbReq1.req_code = "";
+            lbReq1.req_date = "";
+            lbReq1.hn_male = "";
+            lbReq1.name_male = "";
+            lbReq1.hn_female = "";
+            lbReq1.name_female = "";
+            lbReq1.status_req = "";
+            lbReq1.accept_date = "";
+            lbReq1.start_date = "";
+            lbReq1.result_date = "";
+            lbReq1.visit_id = "";
+            lbReq1.vn = "";
+            lbReq1.active = "";
+            lbReq1.remark = "";
+            lbReq1.date_create = "";
+            lbReq1.date_modi = "";
+            lbReq1.date_cancel = "";
+            lbReq1.user_create = "";
+            lbReq1.user_modi = "";
+            lbReq1.user_cancel = "";
+            lbReq1.item_id = "";
+            lbReq1.accept_staff_id = "";
+            lbReq1.start_staff_id = "";
+            lbReq1.result_staff_id = "";
+            lbReq1.doctor_id = "";
+            lbReq1.request_id = "";
+            lbReq1.form_a_id = "";
+            lbReq1.dob_donor = "";
+            lbReq1.req_time = "";
             return lbReq1;
         }
     }

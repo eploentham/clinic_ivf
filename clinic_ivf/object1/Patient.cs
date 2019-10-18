@@ -134,6 +134,7 @@ namespace clinic_ivf.object1
         public String addr { get; set; }
         public String patient_hn_couple { get; set; }
         public String doctor_id { get; set; }
+        //public Age age = new Age(DateTime.Now);
         public Age age = new Age(DateTime.Now);
         public String patient_hn_1 { get; set; }
         public String patient_hn_2 { get; set; }

@@ -1894,6 +1894,20 @@ namespace clinic_ivf.gui
                     DataRow row11 = dt.NewRow();
                     row11["hn"] = ptt.patient_hn;
                     row11["name"] = ptt.Name;
+                    String age = "";
+                    age = ptt.AgeStringShort();
+                    if (age.Length > 0)
+                    {
+                        String[] txt = age.Split('.');
+                        int age1 = 0;
+                        int.TryParse(txt[0], out age1);
+                        if (age1 > 500)
+                        {
+                            ic.logw.WriteLog("e", "Print ContextMenu_prn_sticker_vn hn " + ptt.patient_hn + " dob " + ptt.patient_birthday + " " + ptt.AgeStringShort());
+                            MessageBox.Show("วัน เดือน ปี เกิด ไม่ถูกต้อง", "");
+                            return;
+                        }
+                    }
                     row11["age"] = "Age " + ptt.AgeStringShort() + " [" + ic.datetoShow(ptt.patient_birthday) + "]";
                     row11["vn"] = ptt.t_patient_id;
                     dt.Rows.Add(row11);
@@ -1916,6 +1930,20 @@ namespace clinic_ivf.gui
                     DataRow row11 = dt.NewRow();
                     row11["hn"] = ptt.patient_hn;
                     row11["name"] = ptt.Name;
+                    String age = "";
+                    age = ptt.AgeStringShort();
+                    if (age.Length > 0)
+                    {
+                        String[] txt = age.Split('.');
+                        int age1 = 0;
+                        int.TryParse(txt[0], out age1);
+                        if (age1 > 500)
+                        {
+                            ic.logw.WriteLog("e", "Print ContextMenu_prn_sticker_vn hn " + ptt.patient_hn+" dob "+ ptt.patient_birthday+" "+ ptt.AgeStringShort());
+                            MessageBox.Show("วัน เดือน ปี เกิด ไม่ถูกต้อง", "");
+                            return;
+                        }
+                    }
                     row11["age"] = "Age " + ptt.AgeStringShort() + " [" + ic.datetoShow(ptt.patient_birthday) + "]";
                     row11["vn"] = vs.visit_vn;
                     dt.Rows.Add(row11);
