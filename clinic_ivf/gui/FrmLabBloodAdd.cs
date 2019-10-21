@@ -33,7 +33,7 @@ namespace clinic_ivf.gui
         Color bg, fc;
         Font ff, ffB;
         Color color;
-        int colRsId = 1, colRsLabName = 2, colRsMethod = 3, colRsResult = 4, colRsInterpret = 5, colRsReactive=6, colRsUnit = 7, colRsNormal = 8, colRsRemark = 9, colRsLabId = 10, colRsReqId = 11, colRsEdit = 12, colRsLotInput = 13;
+        int colRsId = 1, colRsLabName = 2, colRsMethod = 3, colRsResult = 4, colRsInterpret = 5, colRsReactive=6, colRsUnit = 7, colRsNormal = 8, colRsRemark = 9, colRsLabId = 10, colRsReqId = 11, colRsEdit = 12, colRsLotInput = 13, colRsRemarkNurse=14;
 
         C1SuperTooltip stt;
         C1SuperErrorProvider sep;
@@ -729,22 +729,22 @@ namespace clinic_ivf.gui
 
             txtApprovDate.Value = lbRes.date_time_approve;
             txtReportDate.Value = lbRes.date_time_result;
-            if (lbRes.date_time_collect.Equals(""))
-            {
-                txtCollectTime.Value = DateTime.Now.Year+"-"+DateTime.Now.ToString("MM-dd");
-            }
-            else
-            {
-                txtCollectTime.Value = lbRes.date_time_collect;
-            }
-            if (lbRes.date_time_receive.Equals(""))
-            {
-                txtReceiveTime.Value = lbRes.req_date_time;
-            }
-            else
-            {
-                txtReceiveTime.Value = lbRes.date_time_receive;
-            }
+            //if (lbRes.date_time_collect.Equals(""))
+            //{
+            //    txtCollectTime.Value = DateTime.Now.Year+"-"+DateTime.Now.ToString("MM-dd");
+            //}
+            //else
+            //{
+            txtCollectTime.Value = lbRes.date_time_collect;
+            //}
+            //if (lbRes.date_time_receive.Equals(""))
+            //{
+            //    txtReceiveTime.Value = lbRes.req_date_time;
+            //}
+            //else
+            //{
+            txtReceiveTime.Value = lbRes.date_time_receive;
+            //}
             
 
             txtEmailTo.Value = ic.iniC.email_to_sperm_freezing;
@@ -794,12 +794,26 @@ namespace clinic_ivf.gui
             grfProc.AfterRowColChange += GrfProc_AfterRowColChange;
             grfProc.AfterEdit += GrfProc_AfterEdit;
             //FilterRow fr = new FilterRow(grfExpn);
-
+            ContextMenu menuGw = new ContextMenu();
+            menuGw.MenuItems.Add("&ยกเลิก", new EventHandler(ContextMenu_lab_Cancel));
+            grfProc.ContextMenu = menuGw;
             pnProc.Controls.Add(grfProc);
 
             theme1.SetTheme(grfProc, "Office2010Blue");
         }
+        private void ContextMenu_lab_Cancel(object sender, System.EventArgs e)
+        {
+            String reqid = "", resid = "", statusresult = "";
+            //reqid = grfProc[grfProc.Row, colRsLabReqId] != null ? grfProc[grfProc.Row, colRsLabReqId].ToString() : "";
+            resid = grfProc[grfProc.Row, colRsId] != null ? grfProc[grfProc.Row, colRsId].ToString() : "";
+            ic.cStf.staff_id = "";
+            FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+            frm.ShowDialog(this);
+            if (!ic.cStf.staff_id.Equals(""))
+            {
 
+            }
+        }
         private void GrfProc_AfterEdit(object sender, RowColEventArgs e)
         {
             //throw new NotImplementedException();
@@ -930,7 +944,7 @@ namespace clinic_ivf.gui
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             grfProc.Rows.Count = dt.Rows.Count + 1;
             //grfSperm.DataSource = dt;
-            grfProc.Cols.Count = 14;
+            grfProc.Cols.Count = 15;
             CellStyle cs = grfProc.Styles.Add("bool");
             cs.DataType = typeof(bool);
             cs.ImageAlign = ImageAlignEnum.LeftCenter;
@@ -954,6 +968,7 @@ namespace clinic_ivf.gui
             grfProc.Cols[colRsNormal].Width = 100;
             grfProc.Cols[colRsRemark].Width = 200;
             grfProc.Cols[colRsReactive].Width = 150;
+            grfProc.Cols[colRsRemarkNurse].Width = 150;
             //grfProc.Cols[colBlQty].Width = 60;
 
             grfProc.ShowCursor = true;
@@ -968,7 +983,7 @@ namespace clinic_ivf.gui
             grfProc.Cols[colRsNormal].Caption = "Normal";
             grfProc.Cols[colRsRemark].Caption = "Remark";
             grfProc.Cols[colRsReactive].Caption = "Reactive";
-            //grfProc.Cols[colUnit].Caption = "Remark";
+            grfProc.Cols[colRsRemarkNurse].Caption = "Remark Nurse";
 
             //CellRange rg = grfProc.GetCellRange(1, colBlInclude, grfProc.Rows.Count - 1, colBlInclude);
             //rg.Style = cs;
@@ -1031,6 +1046,7 @@ namespace clinic_ivf.gui
                     grfProc[i, colRsRemark] = row[ic.ivfDB.lbresDB.lbRes.remark].ToString();
                     grfProc[i, colRsLabId] = row[ic.ivfDB.oLabiDB.labI.LID].ToString();
                     grfProc[i, colRsReactive] = row[ic.ivfDB.lbresDB.lbRes.reactive_message].ToString();
+                    grfProc[i, colRsRemarkNurse] = row[ic.ivfDB.lbresDB.lbRes.remark_nurse].ToString();
                     grfProc[i, colRsEdit] = "";
                     //grfSgrfProcperm[i, colBlQty] = "1";
                     row[0] = (i - 2);
@@ -1061,6 +1077,7 @@ namespace clinic_ivf.gui
             grfProc.Cols[colRsReactive].AllowEditing = !flagView;
             grfProc.Cols[colRsUnit].AllowEditing = !flagView;
             grfProc.Cols[colRsMethod].AllowEditing = !flagView;
+            grfProc.Cols[colRsRemarkNurse].AllowEditing = false;
             //theme1.SetTheme(grfFinish, ic.theme);
 
         }

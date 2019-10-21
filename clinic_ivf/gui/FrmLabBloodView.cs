@@ -28,7 +28,7 @@ namespace clinic_ivf.gui
         C1SuperTooltip stt;
         C1SuperErrorProvider sep;
 
-        int colReqId = 1, colReqLabName = 2, colReqHn = 3, colReqPttName=4, colReqVnShow = 5, colReqDate = 6, colReqTime=7, colReqVn=8, colReqVsId=9;
+        int colReqId = 1, colReqLabName = 2, colReqHn = 3, colReqPttName=4, colReqVnShow = 5, colReqDate = 6, colReqTime=7, colReqVn=8, colReqVsId=9, colReqRemark=10;
         int colRsId = 1, colRsReqDate=2, colRsLabName = 3, colRsHn=4, colRsPttName=5, colRsMethod = 6, colRsResult = 7, colRsInterpret = 8, colRsUnit = 9, colRsNormal = 10, colRsRemark = 11, colRsLabId = 12, colRsReqId = 13;
 
         Timer timer;
@@ -469,9 +469,13 @@ namespace clinic_ivf.gui
                         lbRes.interpret = "";
                         lbRes.status_result = "1";
                         lbRes.row1 = "0";
-                        lbRes.req_date_time = lbreq.req_date+" "+ lbreq.req_time;
+                        DateTime date1 = new DateTime();
+                        DateTime.TryParse(lbreq.req_time, out date1);
+                        lbRes.req_date_time = date1.Year+"-"+ date1.ToString("MM-dd")+" " + date1.ToString("hh:mm:ss");
                         lbRes.date_time_receive = System.DateTime.Now.Year+"-"+ System.DateTime.Now.ToString("MM-dd hh:mm:ss");
                         lbRes.doctor_id = lbreq.doctor_id;
+                        lbRes.date_time_collect = lbRes.req_date_time;
+                        lbRes.remark_nurse = lbreq.remark;
                         re2 = ic.ivfDB.lbresDB.insertLabResult(lbRes, ic.cStf.staff_id);
                         if (long.TryParse(re2, out chk2))
                         {
@@ -550,7 +554,7 @@ namespace clinic_ivf.gui
             dt = ic.ivfDB.lbReqDB.selectLabBloodByReq1();
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             grfReq.Rows.Count = 1;
-            grfReq.Cols.Count = 10;
+            grfReq.Cols.Count = 11;
             //C1TextBox txt = new C1TextBox();
             //C1ComboBox cboproce = new C1ComboBox();
             //ic.ivfDB.itmDB.setCboItem(cboproce);
@@ -575,6 +579,7 @@ namespace clinic_ivf.gui
             grfReq.Cols[colReqDate].Caption = "Date";
             grfReq.Cols[colReqPttName].Caption = "Name";
             grfReq.Cols[colReqTime].Caption = "Time";
+            grfReq.Cols[colReqRemark].Caption = "Remark";
             Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
             //CellRange rg1 = grfBank.GetCellRange(1, colE, grfBank.Rows.Count, colE);
             //rg1.Style = grfBank.Styles["date"];
@@ -602,7 +607,7 @@ namespace clinic_ivf.gui
                 }
                 row1[colReqTime] = ic.timetoShow(row[ic.ivfDB.lbReqDB.lbReq.date_create].ToString());
                 row1[colReqVsId] = row[ic.ivfDB.lbReqDB.lbReq.visit_id].ToString();
-                //row1[colOPUTimeModi] = row[ic.ivfDB.lFormaDB.lformA.opu_time_modi].ToString();
+                row1[colReqRemark] = row[ic.ivfDB.lbReqDB.lbReq.remark].ToString();
                 //row1[colRqLabName] = row["SName"].ToString();
                 //row1[colRqHnMale] = row["hn_male"].ToString();
                 //row1[colRqNameMale] = row["name_male"].ToString();

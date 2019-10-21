@@ -852,6 +852,22 @@ namespace clinic_ivf.objdb
             sql = "Insert into t_closeday_bill_detail Select * From BillDetail Where closeday_id='"+ cldid + "' ";
             re = conn.ExecuteNonQuery(conn.conn, sql);
         }
+        public void VoidLabReult(String resid, String userId)
+        {
+            long chk = 0;
+            String re = lbresDB.voidLabResult(resid, userId);
+            if(long.TryParse(re, out chk))
+            {
+                chk = 0;
+                String re1 = lbresDB.updateStatusProcess(resid);
+                if (long.TryParse(re1, out chk))
+                {
+                    LabResult res = new LabResult();
+                    res = lbresDB.selectByPk(resid);
+                    String re = lbReqDB.UpdateStatusRequestRequestAgain(res.req_id);
+                }
+            }
+        }
         public void VoidBill(String vn, String userId)
         {
             obilhDB.voidBillByVN(vn, userId);

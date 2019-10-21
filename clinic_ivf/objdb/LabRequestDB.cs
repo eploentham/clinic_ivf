@@ -288,7 +288,7 @@ namespace clinic_ivf.objdb
         public DataTable selectByNurseVn(String vn)
         {
             DataTable dt = new DataTable();
-            String sql = "Select  lreq.*,litem.LName, lbres.*,litem.method_id, litem.lab_unit_id, litem.LName as lab_name " +
+            String sql = "Select  lreq.*,litem.LName, lbres.*,litem.method_id, litem.lab_unit_id, litem.LName as lab_name, lreq.remark as remark_req,lbres.remark as remark_res " +
                 "From lab_t_request lreq " +
                 //"Left Join t_visit vs on lreq.visit_id = vs.t_visit_id  " +
                 "Left Join LabItem litem on lreq.item_id = litem.LID " +
@@ -412,6 +412,18 @@ namespace clinic_ivf.objdb
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
+        public String UpdateStatusRequestRequestAgain(String lbReqId)
+        {
+            DataTable dt = new DataTable();
+            String re = "";
+            String sql = "Update " + lbReq.table + " Set " +
+                "" + lbReq.status_req + "='1' " +
+                //"," + lbReq.start_date + "= now() " +
+                //"," + lbReq.start_staff_id + "='" + userIdAccept + "' " +
+                "Where " + lbReq.pkField + "='" + lbReqId + "'";
+            re = conn.ExecuteNonQuery(conn.conn, sql);
+            return re;
+        }
         public String UpdateStatusRequestAccept(String lbReqId, String userIdAccept)
         {
             DataTable dt = new DataTable();
@@ -516,7 +528,8 @@ namespace clinic_ivf.objdb
                 "," + lbReq.lab_id + " = '" + p.lab_id + "'" +
                 "," + lbReq.request_id + " = '" + p.request_id + "' " +
                 "," + lbReq.form_a_id + " = '" + p.form_a_id + "' " +
-                "," + lbReq.req_time + " = '" + p.req_time + "' " +
+                //"," + lbReq.req_time + " = '" + p.req_time + "' " +
+                "," + lbReq.req_time + " = now() " +
                 "";
             try
             {

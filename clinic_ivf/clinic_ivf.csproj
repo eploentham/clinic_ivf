@@ -7,7 +7,7 @@
     <ProjectGuid>{7D208141-0F7C-4B94-8BBA-D4B4FA8685A4}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>clinic_ivf</RootNamespace>
-    <AssemblyName>clinic_ivf_donor</AssemblyName>
+    <AssemblyName>clinic_ivf_ptt</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -32,7 +32,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Resources\icon-sqr-01.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\Treetog-I-Documents.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AForge, Version=2.2.5.0, Culture=neutral, PublicKeyToken=c1db6ff4eaa06aeb, processorArchitecture=MSIL">
@@ -350,6 +350,12 @@
     </Compile>
     <Compile Include="gui\FrmNurseFormEggSti.Designer.cs">
       <DependentUpon>FrmNurseFormEggSti.cs</DependentUpon>
+    </Compile>
+    <Compile Include="gui\FrmNurseFormPrint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="gui\FrmNurseFormPrint.Designer.cs">
+      <DependentUpon>FrmNurseFormPrint.cs</DependentUpon>
     </Compile>
     <Compile Include="gui\FrmNurseLabNote.cs">
       <SubType>Form</SubType>
@@ -1058,6 +1064,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="gui\FrmNurseFormEggSti.resx">
       <DependentUpon>FrmNurseFormEggSti.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="gui\FrmNurseFormPrint.resx">
+      <DependentUpon>FrmNurseFormPrint.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="gui\FrmNurseLabNote.resx">
       <DependentUpon>FrmNurseLabNote.cs</DependentUpon>

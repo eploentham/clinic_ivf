@@ -801,6 +801,7 @@ namespace clinic_ivf.gui
             addDevice.MenuItems.Add(new MenuItem("Post Operation Note", new EventHandler(ContextMenu_prn_operation_note_grfSearch)));
             addDevice.MenuItems.Add(new MenuItem("Patient Medical History", new EventHandler(ContextMenu_prn_pmh_grfSearch)));
             addDevice.MenuItems.Add(new MenuItem("Print Sticker VN", new EventHandler(ContextMenu_prn_sticker_vn)));
+            addDevice.MenuItems.Add(new MenuItem("Print FORM Condition", new EventHandler(ContextMenu_prn_condition)));
             grfSearch.ContextMenu = menuGw;
 
             Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
@@ -1703,6 +1704,20 @@ namespace clinic_ivf.gui
                 MessageBox.Show(ex.Message, "");
             }
             
+        }
+        private void ContextMenu_prn_condition(object sender, System.EventArgs e)
+        {
+            SetDefaultPrinter(ic.iniC.printerA4);
+
+            String chk = "", name = "", vsid = "", pttId = "", hn = "";
+            vsid = grfSearch[grfSearch.Row, colID] != null ? grfSearch[grfSearch.Row, colID].ToString() : "";
+            pttId = grfSearch[grfSearch.Row, colPttId] != null ? grfSearch[grfSearch.Row, colPttId].ToString() : "";
+            name = grfSearch[grfSearch.Row, colPttName] != null ? grfSearch[grfSearch.Row, colPttName].ToString() : "";
+            hn = grfSearch[grfSearch.Row, colPttHn] != null ? grfSearch[grfSearch.Row, colPttHn].ToString() : "";
+
+            FrmNurseFormPrint frm = new FrmNurseFormPrint(ic, hn, name, vsid);
+            frm.StartPosition = FormStartPosition.CenterScreen;
+            frm.ShowDialog(this);
         }
         private void ContextMenu_prn_operation_note_grfSearch(object sender, System.EventArgs e)
         {

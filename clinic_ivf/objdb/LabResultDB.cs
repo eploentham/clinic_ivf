@@ -56,6 +56,7 @@ namespace clinic_ivf.objdb
             lbRes.reactive_message = "reactive_message";
             lbRes.doctor_id = "doctor_id";
             lbRes.date_time_collect = "date_time_collect";
+            lbRes.remark_nurse = "remark_nurse";
 
             lbRes.table = "lab_t_result";
             lbRes.pkField = "result_id";
@@ -101,6 +102,7 @@ namespace clinic_ivf.objdb
                 itm1.reactive_message = row[lbRes.reactive_message].ToString();
                 itm1.doctor_id = row[lbRes.doctor_id].ToString();
                 itm1.date_time_collect = row[lbRes.date_time_collect].ToString();
+                itm1.remark_nurse = row[lbRes.remark_nurse].ToString();
                 lDgs.Add(itm1);
             }
         }
@@ -353,6 +355,7 @@ namespace clinic_ivf.objdb
             p.date_time_receive = p.date_time_receive == null ? "" : p.date_time_receive;
             p.reactive_message = p.reactive_message == null ? "" : p.reactive_message;
             p.date_time_collect = p.date_time_collect == null ? "" : p.date_time_collect;
+            p.remark_nurse = p.remark_nurse == null ? "" : p.remark_nurse;
 
             p.lis_id = long.TryParse(p.lis_id, out chk) ? chk.ToString() : "0";
             p.req_id = long.TryParse(p.req_id, out chk) ? chk.ToString() : "0";
@@ -405,6 +408,7 @@ namespace clinic_ivf.objdb
                 "," + lbRes.reactive_message + " " + "= '" + p.reactive_message + "'" +
                 "," + lbRes.doctor_id + " " + "= '" + p.doctor_id + "'" +
                 "," + lbRes.date_time_collect + " " + "= '" + p.date_time_collect + "'" +
+                "," + lbRes.remark_nurse + " " + "= '" + p.remark_nurse + "'" +
                 "";
             try
             {
@@ -477,6 +481,7 @@ namespace clinic_ivf.objdb
                 "," + lbRes.reactive_message + " " + "= '" + p.reactive_message + "'" +
                 "," + lbRes.doctor_id + " " + "= '" + p.doctor_id + "'" +
                 "," + lbRes.date_time_collect + " " + "= '" + p.date_time_collect + "'" +
+                "," + lbRes.remark_nurse + " " + "= '" + p.remark_nurse + "'" +
                 "Where " + lbRes.pkField + "='" + p.result_id + "'"
                 ;
 
@@ -518,7 +523,7 @@ namespace clinic_ivf.objdb
                 "," + lbRes.date_time_approve + " = '" + dateapp + "'" +
                 "," + lbRes.date_time_result + " = '" + dateres + "'" +                
                 "," + lbRes.date_time_collect + " = '" + datecollect.Replace("'", "''") + "'" +
-                "," + lbRes.date_time_receive + " = '" + datereceive.Replace("'", "''") + "'" +
+                "," + lbRes.date_time_receive + " = now() " +
                 "Where " + lbRes.pkField + "='" + resid + "'"
                 ;
             try
@@ -552,6 +557,26 @@ namespace clinic_ivf.objdb
                 //"," + lbRes.date_time_receive + " = '" + datereceive.Replace("'", "''") + "'" +
                 "Where " + lbRes.pkField + "='" + resid + "'"
                 ;
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+
+            return re;
+        }
+        public String updateStatusProcess(String resid)
+        {
+            String re = "";
+            String sql = "";
+            int chk = 0;
+            //chkNull(p);
+            sql = "Update " + lbRes.table + " Set " +
+                " " + lbRes.status_result + " = '1'" +
+                "Where " + lbRes.pkField + "='" + resid + "'";
             try
             {
                 re = conn.ExecuteNonQuery(conn.conn, sql);
@@ -643,6 +668,7 @@ namespace clinic_ivf.objdb
                 dgs1.reactive_message = dt.Rows[0][lbRes.reactive_message].ToString();
                 dgs1.doctor_id = dt.Rows[0][lbRes.doctor_id].ToString();
                 dgs1.date_time_collect = dt.Rows[0][lbRes.date_time_collect].ToString();
+                dgs1.remark_nurse = dt.Rows[0][lbRes.remark_nurse].ToString();
             }
             else
             {
@@ -683,6 +709,7 @@ namespace clinic_ivf.objdb
             dgs1.reactive_message = "";
             dgs1.doctor_id = "";
             dgs1.date_time_collect = "";
+            dgs1.remark_nurse = "";
             return dgs1;
         }
     }

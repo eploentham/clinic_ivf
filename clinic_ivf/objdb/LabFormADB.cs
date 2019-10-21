@@ -860,7 +860,7 @@ namespace clinic_ivf.objdb
         public DataTable selectDistinctBySpermFreezingRemark()
         {
             DataTable dt = new DataTable();
-            String sql = "select distinct lformA.sperm_sa_remark " +
+            String sql = "select distinct lformA.sperm_freezing_remark " +
                 "From " + lformA.table + " lformA " +
                 "Where lformA." + lformA.active + "='1' ";
             dt = conn.selectData(conn.conn, sql);
@@ -881,7 +881,7 @@ namespace clinic_ivf.objdb
             foreach (DataRow row in dt.Rows)
             {
                 item = new ComboBoxItem();
-                item.Text = row[lformA.et_remark].ToString();
+                item.Text = row[lformA.sperm_freezing_remark].ToString();
                 item.Value = i.ToString();
 
                 c.Items.Add(item);
@@ -913,7 +913,7 @@ namespace clinic_ivf.objdb
             foreach (DataRow row in dt.Rows)
             {
                 item = new ComboBoxItem();
-                item.Text = row[lformA.et_remark].ToString();
+                item.Text = row[lformA.sperm_sa_remark].ToString();
                 item.Value = i.ToString();
 
                 c.Items.Add(item);

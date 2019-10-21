@@ -64,8 +64,8 @@ namespace clinic_ivf.gui
             ic.ivfDB.lFormaDB.setCboRemark(cboRemark);
             ic.ivfDB.lFormaDB.setCboOPUWaitRemark(cboOPUWaitRemark);
             ic.ivfDB.lFormaDB.setCboEtRemark(cboEtRemark);
-            ic.ivfDB.lFormaDB.setCboEtRemark(cboSpSaRemark);
-            ic.ivfDB.lFormaDB.setCboEtRemark(cboSpFzRemark);
+            ic.ivfDB.lFormaDB.setCboSpermSaRemark(cboSpSaRemark);
+            ic.ivfDB.lFormaDB.setCboSpermFreezingRemark(cboSpFzRemark);
 
             ic.setCboDay(cboFetDay, "");
             ic.setCboDay(cboFet1Day, "");
@@ -171,7 +171,7 @@ namespace clinic_ivf.gui
                 long chk = 0;
                 LabFormA forma = new LabFormA();
                 forma = ic.ivfDB.lFormaDB.selectByPk1(txtID.Text);
-                if (long.TryParse(forma.req_id_fet, out chk))
+                if (long.TryParse(forma.req_id_semem_analysis, out chk))
                 {
                     if (chk > 0)
                     {
@@ -179,7 +179,11 @@ namespace clinic_ivf.gui
                         re = ic.ivfDB.lFormaDB.VoidSpermSa(forma.form_a_id);
                         if (long.TryParse(re, out chk))
                         {
-                            ic.ivfDB.lbReqDB.VoidRequest(forma.req_id_fet, userIdVoid);
+                            String re1 = ic.ivfDB.lbReqDB.VoidRequest(forma.req_id_semem_analysis, userIdVoid);
+                            if (long.TryParse(re1, out chk))
+                            {
+                                lbSpALab.Text = "ยกเลิก Request LAB Sperm SA เรียบร้อย";
+                            }
                         }
                     }
                 }
@@ -196,7 +200,7 @@ namespace clinic_ivf.gui
                 long chk = 0;
                 LabFormA forma = new LabFormA();
                 forma = ic.ivfDB.lFormaDB.selectByPk1(txtID.Text);
-                if (long.TryParse(forma.req_id_fet, out chk))
+                if (long.TryParse(forma.req_id_sperm_freezing, out chk))
                 {
                     if (chk > 0)
                     {
@@ -204,7 +208,11 @@ namespace clinic_ivf.gui
                         re = ic.ivfDB.lFormaDB.VoidSpermFz(forma.form_a_id);
                         if (long.TryParse(re, out chk))
                         {
-                            ic.ivfDB.lbReqDB.VoidRequest(forma.req_id_fet, userIdVoid);
+                            String re1 = ic.ivfDB.lbReqDB.VoidRequest(forma.req_id_sperm_freezing, userIdVoid);
+                            if (long.TryParse(re1, out chk))
+                            {
+                                lbSpFzLab.Text = "ยกเลิก Request LAB Sperm Freezing เรียบร้อย";
+                            }
                         }
                     }
                 }
@@ -217,16 +225,17 @@ namespace clinic_ivf.gui
             if (e.KeyCode == Keys.Enter)
             {
                 userIdVoid = "";
-                userIdVoid = ic.ivfDB.stfDB.selectByPasswordAdmin(txtPasswordVoidFET.Text.Trim());
+                userIdVoid = ic.ivfDB.stfDB.selectByPasswordAdmin(txtPasswordVoidSpSa.Text.Trim());
                 if (userIdVoid.Length > 0)
                 {
-                    txtPasswordVoidFET.Hide();
+                    txtPasswordVoidSpSa.Hide();
+                    sep.Clear();
                     btnVoidSpSa.Show();
                     //stt.Show("<p><b>ต้องการยกเลิก</b></p> <br> รหัสผ่านถูกต้อง", btnVoid);
                 }
                 else
                 {
-                    sep.SetError(txtPasswordVoidFET, "333");
+                    sep.SetError(txtPasswordVoidSpSa, "333");
                 }
             }
         }
@@ -237,16 +246,16 @@ namespace clinic_ivf.gui
             if (e.KeyCode == Keys.Enter)
             {
                 userIdVoid = "";
-                userIdVoid = ic.ivfDB.stfDB.selectByPasswordAdmin(txtPasswordVoidFET.Text.Trim());
+                userIdVoid = ic.ivfDB.stfDB.selectByPasswordAdmin(txtPasswordVoidSpFz.Text.Trim());
                 if (userIdVoid.Length > 0)
                 {
                     txtPasswordVoidSpFz.Hide();
-                    btnVoidFET.Show();
+                    btnVoidSpFz.Show();
                     //stt.Show("<p><b>ต้องการยกเลิก</b></p> <br> รหัสผ่านถูกต้อง", btnVoid);
                 }
                 else
                 {
-                    sep.SetError(txtPasswordVoidFET, "333");
+                    sep.SetError(txtPasswordVoidSpFz, "333");
                 }
             }
         }
@@ -929,7 +938,7 @@ namespace clinic_ivf.gui
             lFormA.et_day = cboEtDay.SelectedItem == null ? "" : ((ComboBoxItem)cboEtDay.SelectedItem).Value;
             lFormA.et_remark = cboEtRemark.Text;
             lFormA.sperm_freezing_remark = cboSpSaRemark.Text;
-            lFormA.sperm_sa_remark = cboSpFzRemark.Text;
+            lFormA.sperm_sa_remark = cboSpSaRemark.Text;
             //lFormA.embryo txtEmbryoTranferTime.Text
         }
         private Boolean saveLabFormA()
@@ -1626,8 +1635,13 @@ namespace clinic_ivf.gui
             }
             else if (reqSpSa.status_req.Equals("1"))
             {
-                lbSpFzLab.Text = "Request LAB";
+                lbSpALab.Text = "Request LAB";
                 chkVoidSpSa.Enabled = true;
+            }
+            else if (reqSpSa.status_req.Equals(""))
+            {
+                lbSpALab.Text = "...";
+                chkVoidSpSa.Enabled = false;
             }
 
             if (reqSpFz.status_req.Equals("2"))
@@ -1649,6 +1663,11 @@ namespace clinic_ivf.gui
             {
                 lbSpFzLab.Text = "Request LAB";
                 chkVoidSpSf.Enabled = true;
+            }
+            else if (reqSpFz.status_req.Equals(""))
+            {
+                lbSpFzLab.Text = "...";
+                chkVoidSpSf.Enabled = false;
             }
 
             if (reqPesa.status_req.Equals("2"))
