@@ -192,7 +192,7 @@ namespace clinic_ivf.objdb
                 "Left Join LabItem on lbRes." + lbRes.lab_id + " = LabItem.LID " +
                 //"Left Join lab_b_unit on LabItem.lab_unit_id = lab_b_unit.lab_unit_id " +
                 //"Left Join lab_b_method on LabItem.method_id = lab_b_method.method_id " +
-                "Where lbRes." + lbRes.status_result + " in ('1','2')  and lbRes.visit_id = '"+vsid+"'" +
+                "Where lbRes." + lbRes.status_result + " in ('1','2')  and lbRes.visit_id = '"+vsid+"' and  lbRes.active = '1' " +
                 "Order By LabItem.sort1, lbRes." + lbRes.req_id;
             dt = conn.selectData(conn.conn, sql);
             return dt;

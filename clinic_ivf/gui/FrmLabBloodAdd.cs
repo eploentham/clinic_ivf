@@ -811,7 +811,8 @@ namespace clinic_ivf.gui
             frm.ShowDialog(this);
             if (!ic.cStf.staff_id.Equals(""))
             {
-
+                ic.ivfDB.VoidLabReult(resid, ic.cStf.staff_id);
+                setGrfProc();
             }
         }
         private void GrfProc_AfterEdit(object sender, RowColEventArgs e)

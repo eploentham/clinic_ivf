@@ -36,9 +36,13 @@ namespace clinic_ivf.gui
         //int colVsTVS = 15, colVsPesa = 16, colVsSpermF = 17, colVsSpermSA=18, colVsOPU = 19, colVsET = 20, colVsFET=21, colVsHCG = 22, colVsSpermOPU = 23, colVsTrans = 24, colVsANC = 25, colVsAnes = 26;
         //int colVSE2 = 27, colVSLh = 28, colVSPrl = 29, colVSFsh = 30, colVsAgent=31, colVsRemark = 32, colVsStatus=33, colConn=34, colStfCreate=35,colStfModi=36, colStfSave=37;
 
+        //int colID = 1, colpttId = 2, colVsTime = 3, colPttHn = 4, colVsCode = 5, colVsPttName = 6, colVsDoctor = 7, colVsSperm = 8, colVsDay6 = 9, colVsDay7 = 10, colVsDay8 = 11, colVsDay9 = 12, colVsDay10 = 13, colVsDay11 = 14;
+        //int colVSE2 = 15, colVSLh = 16, colVsTVS = 17, colVsPesa = 18, colVsSpermF = 19, colVsSpermSA = 20, colVsSpermOPU = 21, colVsOPU = 22, colVsET = 23, colVsFET = 24, colVsHCG = 25, colVsTrans = 26, colVsANC = 27, colVsAnes = 28;
+        //int colVSPrl = 29, colVSFsh = 30, colVsAgent = 31, colVsRemark = 32, colVsStatus = 33, colConn = 34, colStfCreate = 35, colStfModi = 36, colStfSave = 37;
+
         int colID = 1, colpttId = 2, colVsTime = 3, colPttHn = 4, colVsCode = 5, colVsPttName = 6, colVsDoctor = 7, colVsSperm = 8, colVsDay6 = 9, colVsDay7 = 10, colVsDay8 = 11, colVsDay9 = 12, colVsDay10 = 13, colVsDay11 = 14;
-        int colVSE2 = 15, colVSLh = 16, colVsTVS = 17, colVsPesa = 18, colVsSpermF = 19, colVsSpermSA = 20, colVsSpermOPU = 21, colVsOPU = 22, colVsET = 23, colVsFET = 24, colVsHCG = 25, colVsTrans = 26, colVsANC = 27, colVsAnes = 28;
-        int colVSPrl = 29, colVSFsh = 30, colVsAgent = 31, colVsRemark = 32, colVsStatus = 33, colConn = 34, colStfCreate = 35, colStfModi = 36, colStfSave = 37;
+        int colVsTVS = 15, colVsPesa = 16, colVsSpermF = 17, colVsSpermSA = 18, colVsSpermOPU = 19, colVsOPU = 20, colVsET = 21, colVsFET = 22, colVsHCG = 23, colVsTrans = 24, colVsANC = 25, colVsAnes = 26;
+        int colVSE2 = 27, colVSLh = 28, colVSPrl = 29, colVSFsh = 30, colVsAgent = 31, colVsRemark = 32, colVsStatus = 33, colConn = 34, colStfCreate = 35, colStfModi = 36, colStfSave = 37;
 
         int colpApmPttId = 1,colpApmPttName = 2;
 
@@ -1021,7 +1025,7 @@ namespace clinic_ivf.gui
             grfPtt.Cols[colVsDay11].Caption = "Day11";
             grfPtt.Cols[colVsTVS].Caption = "TVS";
             grfPtt.Cols[colVsPesa].Caption = "PESA";
-            grfPtt.Cols[colVsSpermF].Caption = "Sp F";
+            grfPtt.Cols[colVsSpermF].Caption = "Sp.Fz";
             grfPtt.Cols[colVsOPU].Caption = "OPU";
             grfPtt.Cols[colVsET].Caption = "ET";
             grfPtt.Cols[colVsHCG].Caption = "HCG";
@@ -1036,7 +1040,7 @@ namespace clinic_ivf.gui
             grfPtt.Cols[colVSFsh].Caption = "FSH";
             grfPtt.Cols[colVsFET].Caption = "FET";
             grfPtt.Cols[colVsAgent].Caption = "Agent";
-            grfPtt.Cols[colVsSpermSA].Caption = "Sp SA";
+            grfPtt.Cols[colVsSpermSA].Caption = "Sp.SA";
             //grfPtt.Cols[colStfModi].Caption = "FET";
             //grfPtt.Cols[celStfSave].Caption = "FET";
 
@@ -1051,7 +1055,7 @@ namespace clinic_ivf.gui
             CellRange rng5 = grfPtt.GetCellRange(0, colVsTVS, 1, colVsTVS);
             rng5.Data = "TVS";
             CellRange rng6 = grfPtt.GetCellRange(0, colVsSpermF, 1, colVsSpermF);
-            rng6.Data = "Sp F";
+            rng6.Data = "Sp.Fz";
             CellRange rng7 = grfPtt.GetCellRange(0, colVsOPU, 1, colVsOPU);
             rng7.Data = "OPU";
             CellRange rng8 = grfPtt.GetCellRange(0, colVsET, 1, colVsET);
@@ -1083,11 +1087,13 @@ namespace clinic_ivf.gui
             CellRange rng21= grfPtt.GetCellRange(0, colStfSave, 1, colStfSave);
             rng21.Data = "stf save";
             CellRange rng22 = grfPtt.GetCellRange(0, colVsSpermSA, 1, colVsSpermSA);
-            rng22.Data = "Sp SA";
+            rng22.Data = "Sp.SA";
+            CellRange rng23 = grfPtt.GetCellRange(0, colVsPesa, 1, colVsPesa);
+            rng22.Data = "PESA";
 
             grfPtt[1, colVsDoctor] = "Dr.";
             grfPtt[1, colVsSperm] = "Collect";
-            grfPtt[1, colVsSpermF] = "Sp F";
+            grfPtt[1, colVsSpermF] = "Sp.Fz";
             grfPtt[1, colVsDay6] = "Bld/TVS";
             grfPtt[1, colVsDay7] = "Bld/TVS.";
             grfPtt[1, colVsDay8] = "Bld/TVS";
@@ -1102,7 +1108,7 @@ namespace clinic_ivf.gui
             grfPtt[1, colStfCreate] = "stf create";
             grfPtt[1, colStfModi] = "stf modi";
             grfPtt[1, colStfSave] = "stf save";
-            grfPtt[1, colVsSpermSA] = "Sp SA";
+            grfPtt[1, colVsSpermSA] = "TESE";
         }
         private void setGrfPtt(ConnectDB con, DataTable dtApmOld, DataTable dtApm)
         {

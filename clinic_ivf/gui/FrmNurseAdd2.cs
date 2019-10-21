@@ -336,6 +336,7 @@ namespace clinic_ivf.gui
             foreach(Row row in grfLab.Rows)
             {
                 if (row[colRsLabId] == null) continue;
+                if (row[colRsLabStatusShow] == null) continue;
                 if (row[colRsLabStatusShow].ToString().Equals("ส่ง request"))
                 {
                     try
@@ -978,16 +979,22 @@ namespace clinic_ivf.gui
                 }
                 else
                 {       // lab ยังไม่ได้รับ     cancel lab_t_result, lab_t_request
+                    LabRequest req = new LabRequest();
+                    req = ic.ivfDB.lbReqDB.selectByPk1(reqid);
                     statusresult = grfLab[grfLab.Row, colRslabStatusResult] != null ? grfLab[grfLab.Row, colRslabStatusResult].ToString() : "";
-                    if (!statusresult.Equals("2"))
+                    if (!req.status_req.Equals("2"))
                     {
                         //ic.ivfDB.oJlabdDB.deleteByPk(joblabid);
                         ic.ivfDB.lbReqDB.VoidRequest(reqid, ic.cStf.staff_id);
-                        //ic.ivfDB.lbresDB.voidLabResult(resid, ic.cStf.staff_id);
+                        ic.ivfDB.lbresDB.voidLabResult(resid, ic.cStf.staff_id);
+                        setGrfLab();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Lab Accept Request \n โทรแจ้งให้ทาง LAB ยกเลิกให้", "");
                     }
                 }
             }
-            
         }
         private void GrfLab_DoubleClick(object sender, EventArgs e)
         {
@@ -1029,11 +1036,11 @@ namespace clinic_ivf.gui
         private void setGrfLab()
         {
             //grfLab.Rows.Count = 1;
-            if(grfLab !=null) grfLab.Rows.Count = 0;
+            //if(grfLab !=null) grfLab.Rows.Count = 0;
             if (pageLoad) return;
             grfLab.Clear();
             grfLab.DataSource = null;
-            grfLab.Rows.Count = 0;
+            //grfLab.Rows.Count = 0;
             grfLab.Rows.Count = 1;
             grfLab.Cols.Count = 22;
 
@@ -1097,6 +1104,7 @@ namespace clinic_ivf.gui
                 i++;
                 //dtlab.Columns.Add("remark_req", typeof(String));
                 Row row1 = grfLab.Rows.Add();
+                row1[colRsLabId] = "";
                 row1[colRsLabReqId] = "";
                 row1[colRsLabStatusShow] = "ส่ง request";
                 row1[colRslabName] = row["LName"].ToString();
@@ -1153,6 +1161,10 @@ namespace clinic_ivf.gui
                         else if (row[ic.ivfDB.lbresDB.lbRes.status_result].ToString().Equals("2"))
                         {
                             row1[colRsLabStatusShow] = "lab result";
+                        }
+                        else
+                        {
+                            row1[colRsLabStatusShow] = "";
                         }
                     }
                 }

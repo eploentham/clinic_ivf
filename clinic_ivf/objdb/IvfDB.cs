@@ -858,14 +858,15 @@ namespace clinic_ivf.objdb
             String re = lbresDB.voidLabResult(resid, userId);
             if(long.TryParse(re, out chk))
             {
-                chk = 0;
-                String re1 = lbresDB.updateStatusProcess(resid);
-                if (long.TryParse(re1, out chk))
-                {
-                    LabResult res = new LabResult();
+                //    chk = 0;
+                //    String re1 = lbresDB.updateStatusProcess(resid);
+                //    if (long.TryParse(re1, out chk))
+                //    {
+                LabResult res = new LabResult();
                     res = lbresDB.selectByPk(resid);
-                    String re = lbReqDB.UpdateStatusRequestRequestAgain(res.req_id);
-                }
+                //String re2 = lbReqDB.UpdateStatusRequestRequestAgain(res.req_id);
+                String re2 = lbReqDB.VoidRequest(res.req_id, userId);
+                //}
             }
         }
         public void VoidBill(String vn, String userId)
