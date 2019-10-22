@@ -1100,7 +1100,7 @@ namespace clinic_ivf.gui
             grfPtt[1, colVsDay9] = "Bld/TVS.";
             grfPtt[1, colVsDay10] = "Bld/TVS";
             grfPtt[1, colVsDay11] = "Bld/TVS.";
-            grfPtt[1, colVsPesa] = "PESA";
+            //grfPtt[1, colVsPesa] = "PESA";
             grfPtt[1, colVsHCG] = "Scan";
             grfPtt[1, colVsTrans] = "Sperm";
             grfPtt[1, colVsSpermOPU] = "Sp OPU";
@@ -1108,7 +1108,7 @@ namespace clinic_ivf.gui
             grfPtt[1, colStfCreate] = "stf create";
             grfPtt[1, colStfModi] = "stf modi";
             grfPtt[1, colStfSave] = "stf save";
-            grfPtt[1, colVsSpermSA] = "TESE";
+            grfPtt[1, colVsPesa] = "TESE";
         }
         private void setGrfPtt(ConnectDB con, DataTable dtApmOld, DataTable dtApm)
         {
@@ -1503,6 +1503,16 @@ namespace clinic_ivf.gui
 
             grfPtt.Cols[colVsSperm].Visible = false;
             grfPtt.Cols[colVsAnes].Visible = false;
+
+            grfPtt.Cols[colVsDay6].Visible = false;
+            grfPtt.Cols[colVsDay7].Visible = false;
+            grfPtt.Cols[colVsDay8].Visible = false;
+            grfPtt.Cols[colVsDay9].Visible = false;
+            grfPtt.Cols[colVsDay10].Visible = false;
+            grfPtt.Cols[colVsDay11].Visible = false;
+            //grfPtt.Cols[colVsDay11].Visible = false;
+            //grfPtt.Cols[colVsDay11].Visible = false;
+
             if (ic.user.status_admin.Equals("2"))
             {
                 grfPtt.Cols[colStfCreate].Visible = true;

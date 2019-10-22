@@ -91,9 +91,7 @@
             this.chkOPU = new C1.Win.C1Input.C1CheckBox();
             this.chkTvs = new C1.Win.C1Input.C1CheckBox();
             this.chkOther = new C1.Win.C1Input.C1CheckBox();
-            this.chkHCG = new C1.Win.C1Input.C1CheckBox();
             this.chkET = new C1.Win.C1Input.C1CheckBox();
-            this.chkHormoneTest = new C1.Win.C1Input.C1CheckBox();
             this.tabDonor = new C1.Win.C1Command.C1DockingTabPage();
             this.label15 = new System.Windows.Forms.Label();
             this.cboOPUTimeDonor = new C1.Win.C1Input.C1ComboBox();
@@ -124,6 +122,10 @@
             this.tC = new C1.Win.C1Command.C1DockingTab();
             this.tabVisit = new C1.Win.C1Command.C1DockingTabPage();
             this.tabDay = new C1.Win.C1Command.C1DockingTabPage();
+            this.chkHormoneTest = new C1.Win.C1Input.C1CheckBox();
+            this.chkHCG = new C1.Win.C1Input.C1CheckBox();
+            this.c1CheckBox1 = new C1.Win.C1Input.C1CheckBox();
+            this.c1CheckBox2 = new C1.Win.C1Input.C1CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtRemarkpApm)).BeginInit();
@@ -174,9 +176,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.chkOPU)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkTvs)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkOther)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkHCG)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkET)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkHormoneTest)).BeginInit();
             this.tabDonor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cboOPUTimeDonor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboTvsTimeDonor)).BeginInit();
@@ -201,6 +201,10 @@
             this.tC.SuspendLayout();
             this.tabVisit.SuspendLayout();
             this.tabDay.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkHormoneTest)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkHCG)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // theme1
@@ -858,6 +862,8 @@
             // 
             // tabPtt
             // 
+            this.tabPtt.Controls.Add(this.c1CheckBox2);
+            this.tabPtt.Controls.Add(this.c1CheckBox1);
             this.tabPtt.Controls.Add(this.chkSpermSA);
             this.tabPtt.Controls.Add(this.chkSpermOPU);
             this.tabPtt.Controls.Add(this.chkPesa);
@@ -879,9 +885,7 @@
             this.tabPtt.Controls.Add(this.chkOPU);
             this.tabPtt.Controls.Add(this.chkTvs);
             this.tabPtt.Controls.Add(this.chkOther);
-            this.tabPtt.Controls.Add(this.chkHCG);
             this.tabPtt.Controls.Add(this.chkET);
-            this.tabPtt.Controls.Add(this.chkHormoneTest);
             this.tabPtt.Location = new System.Drawing.Point(1, 24);
             this.tabPtt.Name = "tabPtt";
             this.tabPtt.Size = new System.Drawing.Size(678, 118);
@@ -1241,24 +1245,6 @@
             this.chkOther.Value = null;
             this.chkOther.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // chkHCG
-            // 
-            this.chkHCG.BackColor = System.Drawing.Color.Transparent;
-            this.chkHCG.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.chkHCG.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.chkHCG.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.chkHCG.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkHCG.Location = new System.Drawing.Point(217, 5);
-            this.chkHCG.Name = "chkHCG";
-            this.chkHCG.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
-            this.chkHCG.Size = new System.Drawing.Size(97, 24);
-            this.chkHCG.TabIndex = 687;
-            this.chkHCG.Text = "Beta HCG";
-            this.theme1.SetTheme(this.chkHCG, "(default)");
-            this.chkHCG.UseVisualStyleBackColor = true;
-            this.chkHCG.Value = null;
-            this.chkHCG.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
             // chkET
             // 
             this.chkET.BackColor = System.Drawing.Color.Transparent;
@@ -1277,26 +1263,10 @@
             this.chkET.Value = null;
             this.chkET.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // chkHormoneTest
-            // 
-            this.chkHormoneTest.BackColor = System.Drawing.Color.Transparent;
-            this.chkHormoneTest.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.chkHormoneTest.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.chkHormoneTest.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.chkHormoneTest.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkHormoneTest.Location = new System.Drawing.Point(3, 5);
-            this.chkHormoneTest.Name = "chkHormoneTest";
-            this.chkHormoneTest.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
-            this.chkHormoneTest.Size = new System.Drawing.Size(114, 24);
-            this.chkHormoneTest.TabIndex = 685;
-            this.chkHormoneTest.Text = "Hormone Test";
-            this.theme1.SetTheme(this.chkHormoneTest, "(default)");
-            this.chkHormoneTest.UseVisualStyleBackColor = true;
-            this.chkHormoneTest.Value = null;
-            this.chkHormoneTest.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
             // tabDonor
             // 
+            this.tabDonor.Controls.Add(this.chkHCG);
+            this.tabDonor.Controls.Add(this.chkHormoneTest);
             this.tabDonor.Controls.Add(this.label15);
             this.tabDonor.Controls.Add(this.cboOPUTimeDonor);
             this.tabDonor.Controls.Add(this.label16);
@@ -1793,6 +1763,78 @@
             this.tabDay.TabIndex = 1;
             this.tabDay.Text = "Day";
             // 
+            // chkHormoneTest
+            // 
+            this.chkHormoneTest.BackColor = System.Drawing.Color.Transparent;
+            this.chkHormoneTest.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkHormoneTest.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.chkHormoneTest.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chkHormoneTest.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkHormoneTest.Location = new System.Drawing.Point(315, 10);
+            this.chkHormoneTest.Name = "chkHormoneTest";
+            this.chkHormoneTest.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.chkHormoneTest.Size = new System.Drawing.Size(114, 24);
+            this.chkHormoneTest.TabIndex = 690;
+            this.chkHormoneTest.Text = "Hormone Test";
+            this.theme1.SetTheme(this.chkHormoneTest, "(default)");
+            this.chkHormoneTest.UseVisualStyleBackColor = true;
+            this.chkHormoneTest.Value = null;
+            this.chkHormoneTest.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // chkHCG
+            // 
+            this.chkHCG.BackColor = System.Drawing.Color.Transparent;
+            this.chkHCG.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkHCG.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.chkHCG.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chkHCG.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkHCG.Location = new System.Drawing.Point(436, 10);
+            this.chkHCG.Name = "chkHCG";
+            this.chkHCG.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.chkHCG.Size = new System.Drawing.Size(97, 24);
+            this.chkHCG.TabIndex = 691;
+            this.chkHCG.Text = "Beta HCG";
+            this.theme1.SetTheme(this.chkHCG, "(default)");
+            this.chkHCG.UseVisualStyleBackColor = true;
+            this.chkHCG.Value = null;
+            this.chkHCG.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // c1CheckBox1
+            // 
+            this.c1CheckBox1.BackColor = System.Drawing.Color.Transparent;
+            this.c1CheckBox1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.c1CheckBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.c1CheckBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.c1CheckBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.c1CheckBox1.Location = new System.Drawing.Point(217, 5);
+            this.c1CheckBox1.Name = "c1CheckBox1";
+            this.c1CheckBox1.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.c1CheckBox1.Size = new System.Drawing.Size(64, 24);
+            this.c1CheckBox1.TabIndex = 712;
+            this.c1CheckBox1.Text = "D && C";
+            this.theme1.SetTheme(this.c1CheckBox1, "(default)");
+            this.c1CheckBox1.UseVisualStyleBackColor = true;
+            this.c1CheckBox1.Value = null;
+            this.c1CheckBox1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // c1CheckBox2
+            // 
+            this.c1CheckBox2.BackColor = System.Drawing.Color.Transparent;
+            this.c1CheckBox2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.c1CheckBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.c1CheckBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.c1CheckBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.c1CheckBox2.Location = new System.Drawing.Point(287, 5);
+            this.c1CheckBox2.Name = "c1CheckBox2";
+            this.c1CheckBox2.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.c1CheckBox2.Size = new System.Drawing.Size(64, 24);
+            this.c1CheckBox2.TabIndex = 713;
+            this.c1CheckBox2.Text = "PRP";
+            this.theme1.SetTheme(this.c1CheckBox2, "(default)");
+            this.c1CheckBox2.UseVisualStyleBackColor = true;
+            this.c1CheckBox2.Value = null;
+            this.c1CheckBox2.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
             // FrmAppointmentAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1858,9 +1900,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.chkOPU)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkTvs)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkOther)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkHCG)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkET)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkHormoneTest)).EndInit();
             this.tabDonor.ResumeLayout(false);
             this.tabDonor.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cboOPUTimeDonor)).EndInit();
@@ -1886,6 +1926,10 @@
             this.tC.ResumeLayout(false);
             this.tabVisit.ResumeLayout(false);
             this.tabDay.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.chkHormoneTest)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkHCG)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1956,9 +2000,7 @@
         private C1.Win.C1Input.C1CheckBox chkOPU;
         private C1.Win.C1Input.C1CheckBox chkTvs;
         private C1.Win.C1Input.C1CheckBox chkOther;
-        private C1.Win.C1Input.C1CheckBox chkHCG;
         private C1.Win.C1Input.C1CheckBox chkET;
-        private C1.Win.C1Input.C1CheckBox chkHormoneTest;
         private C1.Win.C1Command.C1DockingTabPage tabDonor;
         private C1.Win.C1Input.C1CheckBox chkPrl;
         private C1.Win.C1Input.C1CheckBox chkFsh;
@@ -1989,5 +2031,9 @@
         private C1.Win.C1Input.C1CheckBox chkPesa;
         private C1.Win.C1Input.C1CheckBox chkSpermOPU;
         private C1.Win.C1Input.C1CheckBox chkSpermSA;
+        private C1.Win.C1Input.C1CheckBox chkHCG;
+        private C1.Win.C1Input.C1CheckBox chkHormoneTest;
+        private C1.Win.C1Input.C1CheckBox c1CheckBox2;
+        private C1.Win.C1Input.C1CheckBox c1CheckBox1;
     }
 }
