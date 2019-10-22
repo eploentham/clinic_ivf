@@ -265,6 +265,7 @@ namespace clinic_ivf.gui
             lbLmp.DoubleClick += LbLmp_DoubleClick;
             this.FormClosing += FrmPatientAdd_FormClosing;
             btnRefresh.Click += BtnRefresh_Click;
+            txtDob.ValueChanged += TxtDob_ValueChanged;
 
             setKeyEnter();
 
@@ -284,6 +285,16 @@ namespace clinic_ivf.gui
             picPtt.SizeMode = PictureBoxSizeMode.StretchImage;
             tabFamily.Hide();
             //btnSavePic.Enabled = false;
+        }
+
+        private void TxtDob_ValueChanged(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            Patient ptt1 = new Patient();
+            String txt = "";
+            txt = ((C1DateEdit)sender).Text;
+            ptt1.patient_birthday = txt;
+            txtAge.Value = ptt1.AgeStringShort1();
         }
 
         private void BtnRefresh_Click(object sender, EventArgs e)
@@ -3016,6 +3027,7 @@ namespace clinic_ivf.gui
             txtVisitHn_1.Value = ptt.patient_hn_1;
             txtVisitHn_2.Value = ptt.patient_hn_2;
             txtVisitLMP.Value = ptt.lmp;
+            txtAge.Value = ptt.AgeStringShort1();
             //txtEmail.Value = pttO.Email;
         }
         private void setControlVisit(String vsid)
@@ -3259,6 +3271,7 @@ namespace clinic_ivf.gui
             txtVisitHn_1.Value = ptt.patient_hn_1;
             txtVisitHn_2.Value = ptt.patient_hn_2;
             txtVisitLMP.Value = ptt.lmp;
+            txtAge.Value = ptt.AgeStringShort1();
         }
         private void setControl()
         {

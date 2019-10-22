@@ -1910,7 +1910,8 @@ namespace clinic_ivf.gui
                     row11["hn"] = ptt.patient_hn;
                     row11["name"] = ptt.Name;
                     String age = "";
-                    age = ptt.AgeStringShort();
+                    //age = ptt.AgeStringShort();
+                    age = ptt.AgeStringShort1();
                     if (age.Length > 0)
                     {
                         String[] txt = age.Split('.');

@@ -147,6 +147,7 @@ namespace clinic_ivf.object1
             DateTime dtB;
             if (DateTime.TryParse(patient_birthday, out dtB))
             {
+                //age = new Age(dtB);
                 age = new Age(dtB);
                 re = age.AgeString;
             }
@@ -161,6 +162,20 @@ namespace clinic_ivf.object1
                 age = new Age(dtB);
                 //re = age.AgeString.Replace("Years", "Y").Replace("Year", "Y").Replace("Months", "M").Replace("Month", "M").Replace("Days", "D").Replace("Day", "D");
                 re = age.Years+"."+age.Months+"."+age.Days;
+            }
+            return re;
+        }
+        public String AgeStringShort1()
+        {
+            String re = "";
+            DateTime dtB;
+            if (DateTime.TryParse(patient_birthday, out dtB))
+            {
+                DateTime dtm = new DateTime();
+                DateTime.TryParse(System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd"), out dtm);
+                age = new Age(dtB, dtm);
+                //re = age.AgeString.Replace("Years", "Y").Replace("Year", "Y").Replace("Months", "M").Replace("Month", "M").Replace("Days", "D").Replace("Day", "D");
+                re = age.Years + "." + age.Months + "." + age.Days;
             }
             return re;
         }

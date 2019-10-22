@@ -1088,8 +1088,8 @@ namespace clinic_ivf.gui
             rng21.Data = "stf save";
             CellRange rng22 = grfPtt.GetCellRange(0, colVsSpermSA, 1, colVsSpermSA);
             rng22.Data = "Sp.SA";
-            CellRange rng23 = grfPtt.GetCellRange(0, colVsPesa, 1, colVsPesa);
-            rng22.Data = "PESA";
+            //CellRange rng23 = grfPtt.GetCellRange(0, colVsPesa, 1, colVsPesa);
+            //rng22.Data = "PESA1";
 
             grfPtt[1, colVsDoctor] = "Dr.";
             grfPtt[1, colVsSperm] = "Collect";

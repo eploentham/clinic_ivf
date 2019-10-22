@@ -280,6 +280,7 @@
             this.txtPttO = new C1.Win.C1Input.C1TextBox();
             this.cPdf = new C1.Win.C1Document.C1PdfDocumentSource(this.components);
             this._c1pdf = new C1.C1Pdf.C1PdfDocument();
+            this.txtAge = new C1.Win.C1Input.C1TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitMain)).BeginInit();
             this.splitMain.Panel1.SuspendLayout();
@@ -444,6 +445,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtBP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPulse)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPttO)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtAge)).BeginInit();
             this.SuspendLayout();
             // 
             // theme1
@@ -488,6 +490,7 @@
             // splitContainer2.Panel1
             // 
             this.splitContainer2.Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.splitContainer2.Panel1.Controls.Add(this.txtAge);
             this.splitContainer2.Panel1.Controls.Add(this.btnRefresh);
             this.splitContainer2.Panel1.Controls.Add(this.txtLmp);
             this.splitContainer2.Panel1.Controls.Add(this.lbLmp);
@@ -1875,7 +1878,7 @@
             this.txtDob.ImagePadding = new System.Windows.Forms.Padding(0);
             this.txtDob.Location = new System.Drawing.Point(268, 73);
             this.txtDob.Name = "txtDob";
-            this.txtDob.Size = new System.Drawing.Size(185, 20);
+            this.txtDob.Size = new System.Drawing.Size(126, 20);
             this.txtDob.TabIndex = 555;
             this.txtDob.Tag = null;
             this.theme1.SetTheme(this.txtDob, "(default)");
@@ -4301,6 +4304,21 @@
             this._c1pdf.UseFastTextOut = true;
             this._c1pdf.UseFontShaping = true;
             // 
+            // txtAge
+            // 
+            this.txtAge.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.txtAge.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtAge.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtAge.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtAge.Location = new System.Drawing.Point(400, 73);
+            this.txtAge.Name = "txtAge";
+            this.txtAge.ReadOnly = true;
+            this.txtAge.Size = new System.Drawing.Size(53, 20);
+            this.txtAge.TabIndex = 734;
+            this.txtAge.Tag = null;
+            this.theme1.SetTheme(this.txtAge, "(default)");
+            this.txtAge.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
             // FrmPatientAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -4482,6 +4500,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtBP)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPulse)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPttO)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtAge)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -4744,5 +4763,6 @@
         private C1.Win.C1Input.C1TextBox c1TextBox3;
         private C1.Win.C1Input.C1DateEdit txtLmp;
         private C1.Win.C1Input.C1Button btnRefresh;
+        private C1.Win.C1Input.C1TextBox txtAge;
     }
 }
