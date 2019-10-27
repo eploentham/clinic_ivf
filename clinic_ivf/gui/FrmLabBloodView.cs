@@ -76,13 +76,11 @@ namespace clinic_ivf.gui
             initGrfFinish();
             setGrfFinish();
         }
-
         private void BtnSearchFi_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
             setGrfFinish();
         }
-
         private void TcLabView_TabClick(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
@@ -231,7 +229,7 @@ namespace clinic_ivf.gui
             grfReq.DoubleClick += GrfReq_DoubleClick;
             //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
             ContextMenu menuGw = new ContextMenu();
-            menuGw.MenuItems.Add("รับ request พิมพ์ Sticker", new EventHandler(ContextMenu_edit));
+            menuGw.MenuItems.Add("รับ request พิมพ์ Sticker", new EventHandler(ContextMenu_sticker));
             //menuGw.MenuItems.Add("รับทราบการเปลี่ยนแปลงเวลา", new EventHandler(ContextMenu_Gw_time_modi));
             //menuGw.MenuItems.Add("&ยกเลิก", new EventHandler(ContextMenu_Gw_Cancel));
             grfReq.ContextMenu = menuGw;
@@ -380,6 +378,67 @@ namespace clinic_ivf.gui
             //throw new NotImplementedException();
             if (e.NewRange.r1 < 0) return;
             if (e.NewRange.Data == null) return;
+        }
+        private void ContextMenu_sticker(object sender, System.EventArgs e)
+        {
+            String chk1 = "", name = "", id = "", vsid = "", resid = "", re3="";
+            if (grfReq.Row < 0) return;
+            id = grfReq[grfReq.Row, colReqId] != null ? grfReq[grfReq.Row, colReqId].ToString() : "";
+            vsid = grfReq[grfReq.Row, colReqVsId] != null ? grfReq[grfReq.Row, colReqVsId].ToString() : "";
+            if (id.Length <= 0) return;
+
+            SetDefaultPrinter(ic.iniC.printerSticker);
+            DataTable dt = new DataTable();
+            dt.Columns.Add("hn", typeof(String));
+            dt.Columns.Add("name", typeof(String));
+            dt.Columns.Add("age", typeof(String));
+            dt.Columns.Add("vn", typeof(String));
+
+            LabRequest lbreq = new LabRequest();
+            lbreq = ic.ivfDB.lbReqDB.selectByPk1(id);
+            Visit vs = new Visit();
+            vs = ic.ivfDB.vsDB.selectByPk1(vsid);
+            Patient ptt = new Patient();
+            ptt = ic.ivfDB.pttDB.selectByPk1(vs.t_patient_id);
+            Lis lis = new Lis();
+            lis.lis_id = "";
+            lis.barcode = "";
+            lis.req_id = id;
+            lis.visit_vn = vs.visit_vn;
+                        
+            lis.patient_name = ptt.Name;
+            lis.visit_hn = ptt.patient_hn;
+            
+
+            lis.visit_id = vs.t_visit_id;
+            lis.message_lis = "";
+            lis.active = "";
+            lis.remark = "";
+            lis.date_create = "";
+            lis.date_modi = "";
+            lis.date_cancel = "";
+            lis.user_create = "";
+            lis.user_modi = "";
+            lis.user_cancel = "";
+            lis.statis_lis = "";
+            lis.date_time_receive = "";
+            lis.date_time_finish = "";
+            lis.lab_id = lbreq.lab_id;
+            re3 = ic.ivfDB.lisDB.insertLis(lis, ic.cStf.staff_id);
+            String re = "", re1 = "", re2 = "";
+            long chk = 0, chk2 = 0;
+
+            Lis lis1 = new Lis();
+            lis1 = ic.ivfDB.lisDB.selectByPk(re3);
+            DataRow row11 = dt.NewRow();
+            row11["hn"] = vs.visit_hn;
+            row11["name"] = ptt.Name;
+            row11["age"] = "Age " + ptt.AgeStringShort() + " [" + ic.datetoShow(ptt.patient_birthday) + "]";
+            row11["vn"] = lis1.barcode;
+            dt.Rows.Add(row11);
+            FrmReport frm = new FrmReport(ic);
+            frm.setStickerPatientThemalLIS(dt);
+            frm.ShowDialog(this);
         }
         private void ContextMenu_edit(object sender, System.EventArgs e)
         {

@@ -13,6 +13,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Net.Mail;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -44,6 +45,8 @@ namespace clinic_ivf.gui
         SmtpClient SmtpServer;
         List<LinkedResource> theEmailImage1 = new List<LinkedResource>();
         Boolean flagView = false;
+        [DllImport("winspool.drv", CharSet = CharSet.Auto, SetLastError = true)]
+        public static extern bool SetDefaultPrinter(string Printer);
         public FrmLabBloodAdd(IvfControl ic, String resid)
         {
             InitializeComponent();
@@ -155,6 +158,7 @@ namespace clinic_ivf.gui
         private void BtnPrintInfectious_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
+            SetDefaultPrinter(ic.iniC.printerA4);
             FrmReport frm = new FrmReport(ic);
             DataTable dt = new DataTable();
             dt = ic.ivfDB.lbresDB.selectLabBloodByVsIdInfectious(txtVsId.Text);
@@ -481,6 +485,7 @@ namespace clinic_ivf.gui
             ////frmW.Show();
             //frm.setSpermSf(dt);
             //frm.ShowDialog(this);
+            SetDefaultPrinter(ic.iniC.printerA4);
             String amh = "";
             DataTable dt = new DataTable();
             dt = ic.ivfDB.lbresDB.selectLabBloodByVsIdHormone(txtVsId.Text);
