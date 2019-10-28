@@ -59,6 +59,8 @@
             this.c1Magnify1 = new C1.Win.TouchToolKit.C1Magnify();
             this.c1XLBook1 = new C1.C1Excel.C1XLBook();
             this.c1Report3 = new C1.C1Report.C1Report();
+            this.c1BarCode1 = new C1.Win.BarCode.C1BarCode();
+            this.c1TextBox3 = new C1.Win.C1Input.C1TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.c1SuperErrorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1CommandDock1)).BeginInit();
             this.c1CommandDock1.SuspendLayout();
@@ -75,10 +77,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtReqDate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1Button1)).BeginInit();
             this.c1DockingTabPage6.SuspendLayout();
+            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.c1ThemeController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1Report1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1Report2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1Report3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox3)).BeginInit();
             this.SuspendLayout();
             // 
             // c1SuperTooltip1
@@ -239,9 +243,9 @@
             // 
             // c1TextBox2
             // 
-            this.c1TextBox2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(212)))), ((int)(((byte)(212)))));
+            this.c1TextBox2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
             this.c1TextBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.c1TextBox2.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.c1TextBox2.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(172)))), ((int)(((byte)(172)))), ((int)(((byte)(172)))));
             this.c1TextBox2.Location = new System.Drawing.Point(165, 67);
             this.c1TextBox2.Name = "c1TextBox2";
             this.c1TextBox2.Size = new System.Drawing.Size(100, 18);
@@ -261,7 +265,6 @@
             // txtReqDate
             // 
             this.txtReqDate.AllowSpinLoop = false;
-            this.txtReqDate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.txtReqDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             // 
             // 
@@ -280,7 +283,8 @@
             this.txtReqDate.Calendar.TodayBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(118)))), ((int)(((byte)(135)))));
             this.txtReqDate.Calendar.TrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtReqDate.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            this.txtReqDate.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtReqDate.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(172)))), ((int)(((byte)(172)))), ((int)(((byte)(172)))));
+            this.txtReqDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.txtReqDate.ImagePadding = new System.Windows.Forms.Padding(0);
             this.txtReqDate.Location = new System.Drawing.Point(58, 337);
             this.txtReqDate.Name = "txtReqDate";
@@ -321,8 +325,10 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(118)))), ((int)(((byte)(135)))));
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(87)))));
+            this.panel1.Controls.Add(this.c1TextBox3);
+            this.panel1.Controls.Add(this.c1BarCode1);
+            this.panel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
             this.panel1.Location = new System.Drawing.Point(12, 58);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(597, 258);
@@ -378,6 +384,40 @@
             this.c1Report3.ReportDefinition = resources.GetString("c1Report3.ReportDefinition");
             this.c1Report3.ReportName = "c1Report3";
             // 
+            // c1BarCode1
+            // 
+            this.c1BarCode1.AdditionalNumber = null;
+            this.c1BarCode1.BackColor = System.Drawing.Color.White;
+            this.c1BarCode1.CodeType = C1.BarCode.CodeType.Code_128_B;
+            this.c1BarCode1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.c1BarCode1.ForeColor = System.Drawing.Color.Black;
+            this.c1BarCode1.Location = new System.Drawing.Point(50, 75);
+            this.c1BarCode1.MicroQRCodeOptions.EncodingCodePage = 65001;
+            this.c1BarCode1.Name = "c1BarCode1";
+            this.c1BarCode1.QuietZone.Bottom = 0D;
+            this.c1BarCode1.QuietZone.Left = 0D;
+            this.c1BarCode1.QuietZone.Right = 0D;
+            this.c1BarCode1.QuietZone.Top = 0D;
+            this.c1BarCode1.Size = new System.Drawing.Size(146, 40);
+            this.c1BarCode1.TabIndex = 0;
+            this.c1BarCode1.Text = "c1BarCode1";
+            this.c1BarCode1.TextFixedLength = 0;
+            this.c1BarCode1.WideToNarrowRatio = 2F;
+            // 
+            // c1TextBox3
+            // 
+            this.c1TextBox3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
+            this.c1TextBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.c1TextBox3.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(172)))), ((int)(((byte)(172)))), ((int)(((byte)(172)))));
+            this.c1TextBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.c1TextBox3.Location = new System.Drawing.Point(50, 32);
+            this.c1TextBox3.Name = "c1TextBox3";
+            this.c1TextBox3.Size = new System.Drawing.Size(183, 20);
+            this.c1TextBox3.TabIndex = 1;
+            this.c1TextBox3.Tag = null;
+            this.c1ThemeController1.SetTheme(this.c1TextBox3, "(default)");
+            this.c1TextBox3.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -386,6 +426,7 @@
             this.Controls.Add(this.c1CommandDock1);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.c1SuperErrorProvider1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1CommandDock1)).EndInit();
             this.c1CommandDock1.ResumeLayout(false);
@@ -402,10 +443,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtReqDate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1Button1)).EndInit();
             this.c1DockingTabPage6.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.c1ThemeController1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1Report1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1Report2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1Report3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox3)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -441,6 +485,8 @@
         private System.Windows.Forms.Panel panel1;
         private C1.C1Excel.C1XLBook c1XLBook1;
         private C1.C1Report.C1Report c1Report3;
+        private C1.Win.C1Input.C1TextBox c1TextBox3;
+        private C1.Win.BarCode.C1BarCode c1BarCode1;
     }
 }
 

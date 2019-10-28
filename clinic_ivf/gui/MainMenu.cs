@@ -181,7 +181,8 @@ namespace clinic_ivf.gui
         private void MenuTest_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            Form3 frm = new Form3(ic);
+            //Form3 frm = new Form3(ic);
+            Form1 frm = new Form1();
             frm.ShowDialog(this);
         }
 
