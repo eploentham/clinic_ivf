@@ -332,7 +332,8 @@ namespace clinic_ivf.gui
             ic.labrequestremark = "";
             //FrmNurseLabNote frm = new FrmNurseLabNote(ic);
             //frm.ShowDialog(this);
-
+            Patient ptt1 = new Patient();
+            ptt1 = ic.ivfDB.pttDB.selectByPk1(txtPttId.Text);
             foreach(Row row in grfLab.Rows)
             {
                 if (row[colRsLabId] == null) continue;
@@ -353,11 +354,14 @@ namespace clinic_ivf.gui
                         oldjobd = ic.ivfDB.oJlabdDB.selectByPk1(jlabid);
                         if (ptt.f_sex_id.Equals("1"))
                         {
-                            lbReq = ic.ivfDB.setLabRequest("", txtVnOld.Text, dtrid, remark, "", ic.datetoDB(txtDob.Text), oldjobd.ID, oldjobd.LID, txtHn.Text, txtPttNameE.Text, "", "", "", txtVsId.Text);
+                            
+                            //lbReq = ic.ivfDB.setLabRequest("", txtVnOld.Text, dtrid, remark, "", ic.datetoDB(txtDob.Text), oldjobd.ID, oldjobd.LID, txtHn.Text, txtPttNameE.Text, "", "", "", txtVsId.Text);
+                            lbReq = ic.ivfDB.setLabRequest("", txtVnOld.Text, dtrid, remark, "", ptt1.patient_birthday, oldjobd.ID, oldjobd.LID, txtHn.Text, txtPttNameE.Text, "", "", "", txtVsId.Text);
                         }
                         else if (ptt.f_sex_id.Equals("2"))
                         {
-                            lbReq = ic.ivfDB.setLabRequest(txtPttNameE.Text, txtVnOld.Text, dtrid, remark, txtHn.Text, ic.datetoDB(txtDob.Text), oldjobd.ID, oldjobd.LID, "", "", "", "", "", txtVsId.Text);
+                            //lbReq = ic.ivfDB.setLabRequest(txtPttNameE.Text, txtVnOld.Text, dtrid, remark, txtHn.Text, ic.datetoDB(txtDob.Text), oldjobd.ID, oldjobd.LID, "", "", "", "", "", txtVsId.Text);
+                            lbReq = ic.ivfDB.setLabRequest(txtPttNameE.Text, txtVnOld.Text, dtrid, remark, txtHn.Text, ptt1.patient_birthday, oldjobd.ID, oldjobd.LID, "", "", "", "", "", txtVsId.Text);
                         }
                         long chk = 0;
                         String re = ic.ivfDB.lbReqDB.insertLabRequest(lbReq, ic.userId);
