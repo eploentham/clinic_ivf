@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -55,6 +56,8 @@ namespace clinic_ivf.gui
             DataTable dt = new DataTable();
             String chk = "", printerDefault = "";
             ReportDocument rpt = new ReportDocument();
+            PrinterSettings getprinterName = new PrinterSettings();
+            rpt.PrintOptions.PrinterName = getprinterName.PrinterName;
             if (chkPrnCheckList.Checked)
             {
                 try
@@ -71,7 +74,9 @@ namespace clinic_ivf.gui
                     rpt.SetParameterValue("hn", txtHn.Text);
                     rpt.SetParameterValue("age", txtDob.Text);
                     rpt.SetParameterValue("name1", ptt2.Name);
+                    rpt.PrintOptions.PrinterName = getprinterName.PrinterName;
                     rpt.PrintToPrinter(1, true, 0, 0);
+                    lbPrint1.Text = rpt.PrintOptions.PrinterName;
                 }
                 catch (Exception ex)
                 {
@@ -98,7 +103,10 @@ namespace clinic_ivf.gui
                 rpt.SetParameterValue("doctorname", cboDoctor.Text);
                 rpt.SetParameterValue("doctoranes", cboAnes.Text);
                 rpt.SetParameterValue("operation", cboOperation.Text);
+                rpt.PrintOptions.PrinterName = getprinterName.PrinterName;
                 rpt.PrintToPrinter(1, true, 0, 0);
+                lbPrinter.Text = "chkAuthenSign";
+                lbPrint1.Text = rpt.PrintOptions.PrinterName;
             }
             if (chkOperaNote.Checked)
             {
@@ -111,7 +119,9 @@ namespace clinic_ivf.gui
                 rpt.SetParameterValue("hn", txtHn.Text);
                 rpt.SetParameterValue("name", txtPttNameE.Text);
                 rpt.SetParameterValue("age", txtDob.Text);
+                rpt.PrintOptions.PrinterName = getprinterName.PrinterName;
                 rpt.PrintToPrinter(1, true, 0, 0);
+                lbPrint1.Text = rpt.PrintOptions.PrinterName;
             }
             if (chkOrdFET.Checked)
             {
@@ -128,7 +138,9 @@ namespace clinic_ivf.gui
                 rpt.SetParameterValue("name", txtPttNameE.Text);
                 rpt.SetParameterValue("age", txtDob.Text);
                 rpt.SetParameterValue("date", date1);
+                rpt.PrintOptions.PrinterName = getprinterName.PrinterName;
                 rpt.PrintToPrinter(1, true, 0, 0);
+                lbPrint1.Text = rpt.PrintOptions.PrinterName;
             }
             if (chkOrdOPU.Checked)
             {
@@ -141,7 +153,9 @@ namespace clinic_ivf.gui
                 rpt.SetParameterValue("hn", txtHn.Text);
                 rpt.SetParameterValue("name", txtPttNameE.Text);
                 rpt.SetParameterValue("age", txtDob.Text);
+                rpt.PrintOptions.PrinterName = getprinterName.PrinterName;
                 rpt.PrintToPrinter(1, true, 0, 0);
+                lbPrint1.Text = rpt.PrintOptions.PrinterName;
             }
             if (chkPrnPmh.Checked)
             {
@@ -153,7 +167,9 @@ namespace clinic_ivf.gui
                 rpt.SetParameterValue("line3", ic.cop.addr2);
                 rpt.SetParameterValue("hn", txtHn.Text);
                 rpt.SetParameterValue("name", txtPttNameE.Text);
+                rpt.PrintOptions.PrinterName = getprinterName.PrinterName;
                 rpt.PrintToPrinter(1, true, 0, 0);
+                lbPrint1.Text = rpt.PrintOptions.PrinterName;
             }
             //String date = "";
             //date = DateTime.Now.ToString("dd/MM/") + DateTime.Now.Year;
@@ -164,7 +180,9 @@ namespace clinic_ivf.gui
         }
         private void FrmNurseFormPrint_Load(object sender, EventArgs e)
         {
-
+            SetDefaultPrinter(ic.iniC.printerA4);
+            PrinterSettings getprinterName = new PrinterSettings();
+            lbPrinter.Text = getprinterName.PrinterName;
         }
     }
 }
