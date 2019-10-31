@@ -287,6 +287,8 @@ namespace clinic_ivf.report {
             
             private global::System.Data.DataColumn columnvn;
             
+            private global::System.Data.DataColumn columnpath_barcode;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public sticker_patientDataTable() {
@@ -354,6 +356,14 @@ namespace clinic_ivf.report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn path_barcodeColumn {
+                get {
+                    return this.columnpath_barcode;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -389,13 +399,14 @@ namespace clinic_ivf.report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public sticker_patientRow Addsticker_patientRow(string hn, string name, string age, string vn) {
+            public sticker_patientRow Addsticker_patientRow(string hn, string name, string age, string vn, string path_barcode) {
                 sticker_patientRow rowsticker_patientRow = ((sticker_patientRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         hn,
                         name,
                         age,
-                        vn};
+                        vn,
+                        path_barcode};
                 rowsticker_patientRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowsticker_patientRow);
                 return rowsticker_patientRow;
@@ -422,6 +433,7 @@ namespace clinic_ivf.report {
                 this.columnname = base.Columns["name"];
                 this.columnage = base.Columns["age"];
                 this.columnvn = base.Columns["vn"];
+                this.columnpath_barcode = base.Columns["path_barcode"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -435,6 +447,8 @@ namespace clinic_ivf.report {
                 base.Columns.Add(this.columnage);
                 this.columnvn = new global::System.Data.DataColumn("vn", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnvn);
+                this.columnpath_barcode = new global::System.Data.DataColumn("path_barcode", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnpath_barcode);
                 this.ExtendedProperties.Add("Generator_TablePropName", "_sticker_patient");
                 this.ExtendedProperties.Add("Generator_UserTableName", "sticker_patient");
             }
@@ -643,6 +657,22 @@ namespace clinic_ivf.report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string path_barcode {
+                get {
+                    try {
+                        return ((string)(this[this.tablesticker_patient.path_barcodeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'path_barcode\' in table \'sticker_patient\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablesticker_patient.path_barcodeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IshnNull() {
                 return this.IsNull(this.tablesticker_patient.hnColumn);
             }
@@ -687,6 +717,18 @@ namespace clinic_ivf.report {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetvnNull() {
                 this[this.tablesticker_patient.vnColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Ispath_barcodeNull() {
+                return this.IsNull(this.tablesticker_patient.path_barcodeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Setpath_barcodeNull() {
+                this[this.tablesticker_patient.path_barcodeColumn] = global::System.Convert.DBNull;
             }
         }
         

@@ -1,4 +1,6 @@
-﻿using C1.Win.C1FlexGrid;
+﻿using C1.Win.BarCode;
+using C1.Win.C1FlexGrid;
+using C1.Win.C1Input;
 using C1.Win.C1SuperTooltip;
 using clinic_ivf.control;
 using clinic_ivf.object1;
@@ -7,6 +9,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -393,6 +397,7 @@ namespace clinic_ivf.gui
             dt.Columns.Add("name", typeof(String));
             dt.Columns.Add("age", typeof(String));
             dt.Columns.Add("vn", typeof(String));
+            dt.Columns.Add("path_barcode", typeof(String));
 
             LabRequest lbreq = new LabRequest();
             lbreq = ic.ivfDB.lbReqDB.selectByPk1(id);
@@ -435,7 +440,28 @@ namespace clinic_ivf.gui
             row11["name"] = ptt.Name;
             row11["age"] = "Age " + ptt.AgeStringShort() + " [" + ic.datetoShow(ptt.patient_birthday) + "]";
             row11["vn"] = lis1.barcode;
+            row11["path_barcode"] = System.IO.Directory.GetCurrentDirectory() + "\\report\\" + lis1.barcode + ".jpg";
             dt.Rows.Add(row11);
+
+            if (!Directory.Exists("report"))
+            {
+                Directory.CreateDirectory("report");
+            }
+            if (!File.Exists(System.IO.Directory.GetCurrentDirectory() + "\\report\\" + lis1.barcode + ".jpg"))
+            {
+                File.Delete(System.IO.Directory.GetCurrentDirectory() + "\\report\\" + lis1.barcode + ".jpg");
+            }
+            C1BarCode barc = new C1BarCode();
+            barc.Size = new Size(100, 60);
+            barc.BarHeight = 60;
+            barc.CodeType = C1.BarCode.CodeType.Code_128_B;
+            barc.Text = lis1.barcode;
+            Bitmap bitm = new Bitmap(100,40);
+            //bitm = barc.Image;
+            Image img = barc.Image;
+            //img.Size = new Size(100, 40);
+            img.Save(System.IO.Directory.GetCurrentDirectory() + "\\report\\" + lis1.barcode+".jpg", ImageFormat.Jpeg);
+
             FrmReport frm = new FrmReport(ic);
             frm.setStickerPatientThemalLIS(dt);
             frm.ShowDialog(this);
