@@ -953,6 +953,56 @@ namespace clinic_ivf.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap laboratory_test_lab_medical_biology_research_tube_glass_chemical_12 {
+            get {
+                object obj = ResourceManager.GetObject("laboratory_test_lab_medical_biology_research_tube_glass_chemical_12", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap laboratory_test_lab_medical_biology_research_tube_glass_chemical_24 {
+            get {
+                object obj = ResourceManager.GetObject("laboratory_test_lab_medical_biology_research_tube_glass_chemical_24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap laboratory_test_lab_medical_biology_research_tube_glass_chemical_32 {
+            get {
+                object obj = ResourceManager.GetObject("laboratory_test_lab_medical_biology_research_tube_glass_chemical_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap laboratory_test_lab_medical_biology_research_tube_glass_chemical_48 {
+            get {
+                object obj = ResourceManager.GetObject("laboratory_test_lab_medical_biology_research_tube_glass_chemical_48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap laboratory_test_lab_medical_biology_research_tube_glass_chemical_512 {
+            get {
+                object obj = ResourceManager.GetObject("laboratory_test_lab_medical_biology_research_tube_glass_chemical_512", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap LineSpacing_small {
             get {
                 object obj = ResourceManager.GetObject("LineSpacing_small", resourceCulture);

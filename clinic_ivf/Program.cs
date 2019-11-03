@@ -15,33 +15,57 @@ namespace clinic_ivf
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main()
+        static void Main(string[] args)
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new Form1());
+            IvfControl ic = null;
             try
             {
+                //MessageBox.Show("00000", "");
+                
                 if (File.Exists("log.txt"))
                 {
                     long length = new System.IO.FileInfo("log.txt").Length;
                     if (length >= 1024) length = length / 1024;     // kb
                     if (length >= 1024) length = length / 1024;     // mb
-                    if (length >= 2) File.Delete("log.txt");
+                    //if (length >= 2) File.Delete("log.txt");
+                }
+                //MessageBox.Show("444444", "");
+                if (args.Length > 0)
+                {
+                    ic = new IvfControl(args);
+                    //MessageBox.Show("555555", "");
+                    ic.args = args;
+                }
+                else
+                {
+                    ic = new IvfControl(null);
+                    ic.args = args;
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("error delete log.txt", "");
+                MessageBox.Show("error delete log.txt\n"+ " log.txtlength "+ new FileInfo("log.txt").Length + "\n" + Application.ExecutablePath.ToString()+ "args Length" + args.Length+" args 0 "+ args[0], "");
+            }
+
+            if (ic.args.Length > 0)
+            {
+                MessageBox.Show(Application.ExecutablePath.ToString() + "args Length" + args.Length + " args 0 " + args[0], "");
+                Application.Run(new gui.FrmLabLIS(ic));
+            }
+            else
+            {
+                FrmSplash spl = new FrmSplash();
+                spl.Show();
+                //MessageBox.Show("444", "");
+                //try
+                //{
+                //MessageBox.Show("6666666", "");
+                Application.Run(new gui.MainMenu(ic, spl));
             }
             
-            IvfControl ic = new IvfControl();
-            FrmSplash spl = new FrmSplash();
-            spl.Show();
-            //MessageBox.Show("444", "");
-            //try
-            //{
-            Application.Run(new gui.MainMenu(ic, spl));
             //}
             //catch(Exception ex)
             //{

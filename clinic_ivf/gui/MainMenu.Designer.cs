@@ -78,6 +78,7 @@
             this.menuOrAnes = new System.Windows.Forms.ToolStripMenuItem();
             this.menuSpecialItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuLabItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.memuAccCash = new System.Windows.Forms.ToolStripMenuItem();
             this.menuAgent = new System.Windows.Forms.ToolStripMenuItem();
             this.menuTest = new System.Windows.Forms.ToolStripMenuItem();
             this.stockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -89,7 +90,7 @@
             this.tC1 = new C1.Win.C1Command.C1DockingTab();
             this.PageS = new C1.Win.C1Command.C1DockingTabPage();
             this.theme1 = new C1.Win.C1Themes.C1ThemeController();
-            this.memuAccCash = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuConfig = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tCC1)).BeginInit();
             this.tCC1.SuspendLayout();
@@ -361,7 +362,8 @@
             this.convertPatientDonorToolStripMenuItem,
             this.masterToolStripMenuItem,
             this.menuAgent,
-            this.menuTest});
+            this.menuTest,
+            this.menuConfig});
             this.menuInit.Name = "menuInit";
             this.menuInit.Size = new System.Drawing.Size(106, 20);
             this.menuInit.Text = "กำหนดค่าโปรแกรม";
@@ -432,7 +434,7 @@
             // menuDrug
             // 
             this.menuDrug.Name = "menuDrug";
-            this.menuDrug.Size = new System.Drawing.Size(180, 22);
+            this.menuDrug.Size = new System.Drawing.Size(150, 22);
             this.menuDrug.Text = "แผนก Drug";
             // 
             // แผนกORToolStripMenuItem
@@ -442,7 +444,7 @@
             this.menuOrDiag,
             this.menuOrAnes});
             this.แผนกORToolStripMenuItem.Name = "แผนกORToolStripMenuItem";
-            this.แผนกORToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.แผนกORToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.แผนกORToolStripMenuItem.Text = "แผนก OR";
             // 
             // menuGrpDiag
@@ -466,14 +468,20 @@
             // menuSpecialItem
             // 
             this.menuSpecialItem.Name = "menuSpecialItem";
-            this.menuSpecialItem.Size = new System.Drawing.Size(180, 22);
+            this.menuSpecialItem.Size = new System.Drawing.Size(150, 22);
             this.menuSpecialItem.Text = "SpecialItem";
             // 
             // menuLabItem
             // 
             this.menuLabItem.Name = "menuLabItem";
-            this.menuLabItem.Size = new System.Drawing.Size(180, 22);
+            this.menuLabItem.Size = new System.Drawing.Size(150, 22);
             this.menuLabItem.Text = "LabItem";
+            // 
+            // memuAccCash
+            // 
+            this.memuAccCash.Name = "memuAccCash";
+            this.memuAccCash.Size = new System.Drawing.Size(150, 22);
+            this.memuAccCash.Text = "Account_Cash";
             // 
             // menuAgent
             // 
@@ -565,11 +573,11 @@
             // 
             this.theme1.Theme = "BeigeOne";
             // 
-            // memuAccCash
+            // menuConfig
             // 
-            this.memuAccCash.Name = "memuAccCash";
-            this.memuAccCash.Size = new System.Drawing.Size(180, 22);
-            this.memuAccCash.Text = "Account_Cash";
+            this.menuConfig.Name = "menuConfig";
+            this.menuConfig.Size = new System.Drawing.Size(192, 22);
+            this.menuConfig.Text = "Config Module";
             // 
             // MainMenu
             // 
@@ -658,5 +666,6 @@
         private System.Windows.Forms.ToolStripMenuItem ปรบปรงยอดรายการยาToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem menuLabBlood;
         private System.Windows.Forms.ToolStripMenuItem memuAccCash;
+        private System.Windows.Forms.ToolStripMenuItem menuConfig;
     }
 }
