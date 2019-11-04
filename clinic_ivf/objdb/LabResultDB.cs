@@ -404,7 +404,8 @@ namespace clinic_ivf.objdb
                 "," + lbRes.row1 + " " + "= '" + p.row1 + "'" +
                 "," + lbRes.lot_input + " " + "= '" + p.lot_input + "'" +
                 "," + lbRes.req_date_time + " " + "= '" + p.req_date_time + "'" +
-                "," + lbRes.date_time_receive + " " + "= '" + p.date_time_receive + "'" +
+                //"," + lbRes.date_time_receive + " " + "= '" + p.date_time_receive + "'" +
+                "," + lbRes.date_time_receive + " " + "= now()" +
                 "," + lbRes.reactive_message + " " + "= '" + p.reactive_message + "'" +
                 "," + lbRes.doctor_id + " " + "= '" + p.doctor_id + "'" +
                 "," + lbRes.date_time_collect + " " + "= '" + p.date_time_collect + "'" +

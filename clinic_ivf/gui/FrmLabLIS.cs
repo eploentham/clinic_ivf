@@ -25,6 +25,15 @@ namespace clinic_ivf.gui
             //MessageBox.Show("33333", "");
             menuShow.Click += MenuShow_Click;
             notifyIcon1.MouseDoubleClick += NotifyIcon1_MouseDoubleClick;
+            notifyIcon1.DoubleClick += NotifyIcon1_DoubleClick;
+        }
+
+        private void NotifyIcon1_DoubleClick(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            this.WindowState = FormWindowState.Normal;
+            this.StartPosition = FormStartPosition.CenterScreen;
+            this.Show();
         }
 
         private void NotifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)

@@ -556,14 +556,14 @@ namespace clinic_ivf.gui
                         lbRes.row1 = "0";
                         DateTime date1 = new DateTime();
                         DateTime.TryParse(lbreq.req_time, out date1);
-                        lbRes.req_date_time = date1.Year+"-"+ date1.ToString("MM-dd")+" " + date1.ToString("hh:mm:ss");
-                        lbRes.date_time_receive = System.DateTime.Now.Year+"-"+ System.DateTime.Now.ToString("MM-dd hh:mm:ss");
+                        lbRes.req_date_time = date1.Year+"-"+ date1.ToString("MM-dd")+" " + date1.ToString("HH:mm:ss");
+                        lbRes.date_time_receive = System.DateTime.Now.Year+"-"+ System.DateTime.Now.ToString("MM-dd HH:mm:ss");
                         lbRes.doctor_id = lbreq.doctor_id;
                         lbRes.date_time_collect = lbRes.req_date_time;
                         lbRes.remark_nurse = lbreq.remark;
                         re2 = ic.ivfDB.lbresDB.insertLabResult(lbRes, ic.cStf.staff_id);
                         if (long.TryParse(re2, out chk2))
-                        {
+                         {
                             resid = re2;
                             re = ic.ivfDB.lbReqDB.UpdateStatusRequestAccept(lbreq.req_id, ic.cStf.staff_id);
                             chk = 0;

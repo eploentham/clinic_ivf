@@ -59,6 +59,9 @@
             // 
             // notifyIcon1
             // 
+            this.notifyIcon1.BalloonTipText = "-";
+            this.notifyIcon1.BalloonTipTitle = "-";
+            this.notifyIcon1.ContextMenuStrip = this.contextMenuStrip1;
             this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
             this.notifyIcon1.Text = "notifyIcon1";
             this.notifyIcon1.Visible = true;
@@ -68,9 +71,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.ContextMenuStrip = this.contextMenuStrip1;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmLabLIS";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmLabLIS";
             this.Load += new System.EventHandler(this.FrmLabLIS_Load);
             this.contextMenuStrip1.ResumeLayout(false);
