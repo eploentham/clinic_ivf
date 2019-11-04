@@ -19,6 +19,7 @@ namespace clinic_ivf.gui
         {
             InitializeComponent();
             //MessageBox.Show("11111", "");
+            this.StartPosition = FormStartPosition.CenterScreen;
             initConfig();
             this.Resize += FrmLabLIS_Resize;
             //MessageBox.Show("33333", "");
@@ -27,14 +28,6 @@ namespace clinic_ivf.gui
         }
 
         private void NotifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            //throw new NotImplementedException();
-            this.WindowState = FormWindowState.Normal;
-            this.StartPosition = FormStartPosition.CenterScreen;
-            this.Show();
-        }
-
-        private void NotifyIcon1_DoubleClick(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
             this.WindowState = FormWindowState.Normal;
