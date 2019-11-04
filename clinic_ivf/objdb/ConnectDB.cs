@@ -28,11 +28,12 @@ namespace clinic_ivf.objdb
 
         public ConnectDB(InitConfig initc)
         {
+            //MessageBox.Show("0040 " + initc.hostDB, "");
             conn = new MySqlConnection();
             connIm = new MySqlConnection();
             connEx = new MySqlConnection();
             connNoClose = new MySqlConnection();
-
+            //MessageBox.Show("0041 "+ initc.hostDB, "");
             conn.ConnectionString = "Server=" + initc.hostDB + ";Database=" + initc.nameDB + ";Uid=" + initc.userDB + ";Pwd=" + initc.passDB +
                 ";port = " + initc.portDB + "; Connection Timeout = 300;default command timeout=0; CharSet=utf8;SslMode=none; convert zero datetime=True; ";
             connNoClose.ConnectionString = "Server=" + initc.hostDB + ";Database=" + initc.nameDB + ";Uid=" + initc.userDB + ";Pwd=" + initc.passDB +

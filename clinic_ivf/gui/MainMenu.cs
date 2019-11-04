@@ -112,6 +112,15 @@ namespace clinic_ivf.gui
             menuLabSperm.Click += MenuLabSperm_Click;
             menuLabBlood.Click += MenuLabBlood_Click;
             memuAccCash.Click += MemuAccCash_Click;
+            menuConfig.Click += MenuConfig_Click;
+        }
+
+        private void MenuConfig_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            FrmConfig frm = new FrmConfig(ic, this);
+            frm.FormBorderStyle = FormBorderStyle.None;
+            AddNewTab(frm, menuConfig.Text + " ");
         }
 
         private void MemuAccCash_Click(object sender, EventArgs e)

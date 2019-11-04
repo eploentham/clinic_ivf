@@ -35,7 +35,7 @@ namespace clinic_ivf.control
         public Company cop;
 
         public IvfDB ivfDB;
-        
+        public String[] args;
         public String userId = "";
         public String copID = "", jobID = "", cusID = "", addrID = "", contID = "", cusrID = "", custID = "", stfID = "", deptID = "", posiID = "", drawID = "", email="";
         public String rContactName = "", rContacTel = "", rContID = "", userIderc = "", NumSticker="", labrequestremark="";
@@ -96,16 +96,19 @@ namespace clinic_ivf.control
             ISSUE_NUM,  //12345678901234 //14-Char
             END
         };
-        public IvfControl()
+        public IvfControl(String[] args)
         {
-            initConfig();
+            initConfig(args);
             
         }
-        private void initConfig()
+        private void initConfig(String[] args)
         {
-            String appName = "";
+            this.args = args;
+            String appName = "", appName1 = "";
             appName = System.AppDomain.CurrentDomain.FriendlyName;
             appName = appName.ToLower().Replace(".exe", "");
+            appName1 = appName;
+            //MessageBox.Show("001 "+ appName, "");
             if (System.IO.File.Exists(Environment.CurrentDirectory + "\\" + appName + ".ini"))
             {
                 appName = Environment.CurrentDirectory + "\\" + appName + ".ini";
@@ -113,18 +116,34 @@ namespace clinic_ivf.control
             else
             {
                 appName = Environment.CurrentDirectory + "\\" + Application.ProductName + ".ini";
+                //appName1 = appName;
+                //MessageBox.Show("0012 " + appName, "");
             }
+            //MessageBox.Show("002", "");
             StartupPath = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location);
-            iniF = new IniFile(appName);
+            if (args == null)
+            {
+                //MessageBox.Show("0021", "");
+                iniF = new IniFile(appName);
+            }
+            else
+            {
+                //MessageBox.Show("0022 "+ StartupPath + ".ini", "");
+                iniF = new IniFile(StartupPath + "\\" + appName1 + ".ini");
+            }
+            
             iniC = new InitConfig();
             user = new Staff();
             cStf = new Staff();
             sStf = new Staff();
             cop = new Company();
             logw = new LogWriter();
-
+            //MessageBox.Show("003 " + appName+ "\nStartupPath"+ StartupPath, "");
+            //MessageBox.Show("00411111112", "");
             GetConfig();
+            //MessageBox.Show("004", "");
             conn = new ConnectDB(iniC);
+            //MessageBox.Show("005", "");
             ftpC = new FtpClient(iniC.hostFTP, iniC.userFTP, iniC.passFTP,ftpUsePassive);
 
             //ivfDB = new IvfDB(conn);
@@ -154,7 +173,9 @@ namespace clinic_ivf.control
         }
         public void GetConfig()
         {
-            iniC.hostDB = iniF.getIni("connection","hostDB");           
+            //MessageBox.Show("0031", "");
+            iniC.hostDB = iniF.getIni("connection","hostDB");
+            //MessageBox.Show("0032 "+ iniC.hostDB, "");
             iniC.nameDB = iniF.getIni("connection", "nameDB");
             iniC.userDB = iniF.getIni("connection", "userDB");
             iniC.passDB = iniF.getIni("connection", "passDB");            
@@ -165,7 +186,7 @@ namespace clinic_ivf.control
             iniC.userDBEx = iniF.getIni("connection", "userDBEx");
             iniC.passDBEx = iniF.getIni("connection", "passDBEx");
             iniC.portDBEx = iniF.getIni("connection", "portDBEx");
-
+            //MessageBox.Show("0033 " + iniC.hostDBEx, "");
             iniC.hostFTP = iniF.getIni("ftp", "hostFTP");
             iniC.userFTP = iniF.getIni("ftp", "userFTP");
             iniC.passFTP = iniF.getIni("ftp", "passFTP");
@@ -175,7 +196,7 @@ namespace clinic_ivf.control
 
             iniC.grdViewFontSize = iniF.getIni("app", "grdViewFontSize");
             iniC.grdViewFontName = iniF.getIni("app", "grdViewFontName");
-            
+            //MessageBox.Show("0034 " + iniC.grdViewFontSize, "");
             iniC.txtFocus = iniF.getIni("app", "txtFocus");
             iniC.grfRowColor = iniF.getIni("app", "grfRowColor");
             iniC.statusAppDonor = iniF.getIni("app", "statusAppDonor");
@@ -184,7 +205,7 @@ namespace clinic_ivf.control
             iniC.themeDonor1 = iniF.getIni("app", "themeDonor1");
             iniC.printerSticker = iniF.getIni("app", "printerSticker");
             iniC.timerlabreqaccept = iniF.getIni("app", "timerlabreqaccept");
-
+            //MessageBox.Show("0035 " + iniC.timerlabreqaccept, "");
             iniC.sticker_donor_width = iniF.getIni("sticker_donor", "width");
             iniC.sticker_donor_height = iniF.getIni("sticker_donor", "height");
             iniC.sticker_donor_start_y = iniF.getIni("sticker_donor", "start_y");
@@ -263,6 +284,7 @@ namespace clinic_ivf.control
             int.TryParse(iniC.grdViewFontSize, out grdViewFontSize);
             Decimal.TryParse(iniC.creditCharge, out CreditCharge);
             Boolean.TryParse(iniC.usePassiveFTP, out ftpUsePassive);
+            //MessageBox.Show("00401 " + iniC.hostDB, "");
         }
         public String datetoDB(String dt)
         {
