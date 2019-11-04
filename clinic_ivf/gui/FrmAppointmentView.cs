@@ -898,16 +898,16 @@ namespace clinic_ivf.gui
                 grfPtt.Cols[j].AllowMerging = true;
             }
 
-            C1TextBox txt = new C1TextBox();
+            //C1TextBox txt = new C1TextBox();
             PictureBox img = new PictureBox();
             Image img1;
             //C1ComboBox cboproce = new C1ComboBox();
             //ic.ivfDB.itmDB.setCboItem(cboproce);
-            grfPtt.Cols[colPttHn].Editor = txt;
-            grfPtt.Cols[colVsCode].Editor = txt;
-            grfPtt.Cols[colVsTime].Editor = txt;
-            grfPtt.Cols[colVsPttName].Editor = txt;
-            grfPtt.Cols[colVsDoctor].Editor = txt;
+            //grfPtt.Cols[colPttHn].Editor = txt;
+            //grfPtt.Cols[colVsCode].Editor = txt;
+            //grfPtt.Cols[colVsTime].Editor = txt;
+            //grfPtt.Cols[colVsPttName].Editor = txt;
+            //grfPtt.Cols[colVsDoctor].Editor = txt;
             //grfPtt.Cols[colVsDoctor].ImageAndText = false;
             //grfPtt.Cols[colVsSperm].Editor = txt;
             //grfPtt.Cols[colVsDay6].Editor = txt;
@@ -922,10 +922,10 @@ namespace clinic_ivf.gui
             //grfPtt.Cols[colVsET].Editor = txt;
             //grfPtt.Cols[colVsHCG].Editor = txt;
             //grfPtt.Cols[colVsSpermOPU].Editor = txt;
-            grfPtt.Cols[colVsTrans].Editor = txt;
-            grfPtt.Cols[colVsANC].Editor = txt;
-            grfPtt.Cols[colVsAnes].Editor = txt;
-            grfPtt.Cols[colVsRemark].Editor = txt;
+            //grfPtt.Cols[colVsTrans].Editor = txt;
+            //grfPtt.Cols[colVsANC].Editor = txt;
+            //grfPtt.Cols[colVsAnes].Editor = txt;
+            //grfPtt.Cols[colVsRemark].Editor = txt;
             //grfPtt.Cols[colVsAppn].Editor = txt;
             //Column col = grfPtt.Cols[colVsDoctor];
             //col.DataType = typeof(Image);
@@ -1367,7 +1367,7 @@ namespace clinic_ivf.gui
                 row1[colVsPttName] = row["PatientName"].ToString();
                 row1[colpttId] = row[ic.ivfDB.pApmDB.pApm.t_patient_id].ToString();
                 row1[colPttHn] = row["patient_hn"].ToString();
-                row1[colVsTime] = row[ic.ivfDB.pApmDB.pApm.patient_appointment_time].ToString();
+                row1[colVsTime] = row[ic.ivfDB.pApmDB.pApm.patient_appointment_time].ToString().Trim();
 
                 opu = row[ic.ivfDB.pApmDB.pApm.opu].ToString().Equals("1") ? "OPU " + row[ic.ivfDB.pApmDB.pApm.opu_time] != null ? row[ic.ivfDB.pApmDB.pApm.opu_time].ToString() : "" : "";
 
