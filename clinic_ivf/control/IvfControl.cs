@@ -108,7 +108,8 @@ namespace clinic_ivf.control
             appName = System.AppDomain.CurrentDomain.FriendlyName;
             appName = appName.ToLower().Replace(".exe", "");
             appName1 = appName;
-            //MessageBox.Show("001 "+ appName, "");
+            //MessageBox.Show("001 " + appName, "");
+            //MessageBox.Show("001111 args.Length " + args.Length, "");
             if (System.IO.File.Exists(Environment.CurrentDirectory + "\\" + appName + ".ini"))
             {
                 appName = Environment.CurrentDirectory + "\\" + appName + ".ini";
@@ -128,7 +129,7 @@ namespace clinic_ivf.control
             }
             else
             {
-                //MessageBox.Show("0022 "+ StartupPath + ".ini", "");
+                //MessageBox.Show("0022 " + StartupPath + "\\" + appName1 + ".ini", "");
                 iniF = new IniFile(StartupPath + "\\" + appName1 + ".ini");
             }
             

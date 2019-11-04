@@ -47,13 +47,13 @@ namespace clinic_ivf
             }
             catch (Exception ex)
             {
-                MessageBox.Show("error delete log.txt\n"+ " log.txtlength "+ new FileInfo("log.txt").Length + "\n" + Application.ExecutablePath.ToString()+ "args Length" + args.Length+" args 0 "+ args[0], "");
+                MessageBox.Show("error delete log.txt\n"+ " log.txtlength "+ new FileInfo("log.txt").Length + "\n" + Application.ExecutablePath.ToString()+ " args Length " + args.Length+" args 0 "+ args[0], "");
             }
 
             if (ic.args.Length > 0)
             {
                 //MessageBox.Show(Application.ExecutablePath.ToString() + "args Length" + args.Length + " args 0 " + args[0], "");
-                Application.Run(new gui.FrmLabLIS(ic));
+                Application.Run(new gui.FrmLabLIS());
             }
             else
             {

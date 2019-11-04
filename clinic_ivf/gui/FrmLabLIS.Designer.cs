@@ -33,7 +33,6 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.menuShow = new System.Windows.Forms.ToolStripMenuItem();
             this.menuExit = new System.Windows.Forms.ToolStripMenuItem();
-            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,20 +56,11 @@
             this.menuExit.Size = new System.Drawing.Size(103, 22);
             this.menuExit.Text = "Exit";
             // 
-            // notifyIcon1
-            // 
-            this.notifyIcon1.BalloonTipText = "-";
-            this.notifyIcon1.BalloonTipTitle = "-";
-            this.notifyIcon1.ContextMenuStrip = this.contextMenuStrip1;
-            this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
-            this.notifyIcon1.Text = "notifyIcon1";
-            this.notifyIcon1.Visible = true;
-            // 
             // FrmLabLIS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(978, 609);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmLabLIS";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -85,6 +75,5 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem menuShow;
         private System.Windows.Forms.ToolStripMenuItem menuExit;
-        private System.Windows.Forms.NotifyIcon notifyIcon1;
     }
 }

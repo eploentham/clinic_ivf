@@ -951,6 +951,16 @@ namespace clinic_ivf.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon ivf_lis {
+            get {
+                object obj = ResourceManager.GetObject("ivf_lis", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap laboratory_test_lab_medical_biology_research_tube_glass_chemical_12 {
