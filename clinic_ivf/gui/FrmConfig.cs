@@ -31,6 +31,8 @@ namespace clinic_ivf.gui
         }
         private void initConfig()
         {
+            //lbPath.Value = Application.ExecutablePath.ToString();
+            lbPath.Value = ic.GetCurrentExecutingDirectory();
             btnLabLis.Click += BtnLabLis_Click;
         }
 
@@ -39,7 +41,7 @@ namespace clinic_ivf.gui
             //throw new NotImplementedException();
             String path = "";
             RegistryKey reg = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
-            reg.SetValue("IVF LIS", Application.ExecutablePath.ToString()+" -m lis");
+            reg.SetValue("IVF LIS", lbPath.Text.Trim()+"\\"+txtFilename.Text.Trim()+ ".exe -m lis");
         }
 
         private void FrmConfig_Load(object sender, EventArgs e)

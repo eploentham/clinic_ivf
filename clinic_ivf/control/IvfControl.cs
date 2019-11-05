@@ -160,7 +160,7 @@ namespace clinic_ivf.control
                 theme = iniC.themeApplication;
             }
         }
-        public static string GetCurrentExecutingDirectory(System.Reflection.Assembly assembly)
+        public String GetCurrentExecutingDirectory()
         {
             string filePath = new Uri(System.Reflection.Assembly.GetExecutingAssembly().CodeBase).LocalPath;
             return Path.GetDirectoryName(filePath);
