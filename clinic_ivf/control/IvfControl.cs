@@ -202,6 +202,7 @@ namespace clinic_ivf.control
             iniC.grfRowColor = iniF.getIni("app", "grfRowColor");
             iniC.statusAppDonor = iniF.getIni("app", "statusAppDonor");
             iniC.themeApplication = iniF.getIni("app", "themeApplication");
+            iniC.themeApp = iniF.getIni("app", "themeApp");
             iniC.themeDonor = iniF.getIni("app", "themeDonor");
             iniC.themeDonor1 = iniF.getIni("app", "themeDonor1");
             iniC.printerSticker = iniF.getIni("app", "printerSticker");

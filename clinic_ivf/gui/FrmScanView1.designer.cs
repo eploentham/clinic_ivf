@@ -1,6 +1,6 @@
 ﻿namespace clinic_ivf.gui
 {
-    partial class FrmScanView
+    partial class FrmScanView1
     {
         /// <summary>
         /// Required designer variable.
@@ -33,11 +33,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.chkIPD = new C1.Win.C1Input.C1CheckBox();
             this.txt = new C1.Win.C1Input.C1TextBox();
-            this.btnRefresh = new C1.Win.C1Input.C1Button();
             this.btnOpen = new C1.Win.C1Input.C1Button();
-            this.txtVisitDate = new C1.Win.C1Input.C1DateEdit();
-            this.label6 = new System.Windows.Forms.Label();
-            this.btnVn = new C1.Win.C1Input.C1Button();
             this.label2 = new System.Windows.Forms.Label();
             this.txtVN = new C1.Win.C1Input.C1TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -49,21 +45,25 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.sC1 = new C1.Win.C1SplitContainer.C1SplitContainer();
+            this.scVs = new C1.Win.C1SplitContainer.C1SplitterPanel();
+            this.scScan = new C1.Win.C1SplitContainer.C1SplitterPanel();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sb1)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkIPD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnRefresh)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnOpen)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtVisitDate)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnVn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtVN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboDgs)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtName)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnHn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHn)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.sC1)).BeginInit();
+            this.sC1.SuspendLayout();
+            this.scVs.SuspendLayout();
+            this.scScan.SuspendLayout();
             this.SuspendLayout();
             // 
             // sb1
@@ -71,7 +71,7 @@
             this.sb1.AutoSizeElement = C1.Framework.AutoSizeElement.Width;
             this.sb1.Location = new System.Drawing.Point(0, 647);
             this.sb1.Name = "sb1";
-            this.sb1.Size = new System.Drawing.Size(1100, 22);
+            this.sb1.Size = new System.Drawing.Size(1283, 22);
             this.theme1.SetTheme(this.sb1, "(default)");
             this.sb1.VisualStyle = C1.Win.C1Ribbon.VisualStyle.Custom;
             // 
@@ -80,11 +80,7 @@
             this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(87)))));
             this.groupBox1.Controls.Add(this.chkIPD);
             this.groupBox1.Controls.Add(this.txt);
-            this.groupBox1.Controls.Add(this.btnRefresh);
             this.groupBox1.Controls.Add(this.btnOpen);
-            this.groupBox1.Controls.Add(this.txtVisitDate);
-            this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.btnVn);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.txtVN);
             this.groupBox1.Controls.Add(this.label1);
@@ -97,7 +93,7 @@
             this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1100, 66);
+            this.groupBox1.Size = new System.Drawing.Size(1283, 45);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Patient";
@@ -110,10 +106,10 @@
             this.chkIPD.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.chkIPD.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkIPD.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.chkIPD.Location = new System.Drawing.Point(505, 36);
+            this.chkIPD.Location = new System.Drawing.Point(1065, 12);
             this.chkIPD.Name = "chkIPD";
             this.chkIPD.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
-            this.chkIPD.Size = new System.Drawing.Size(61, 24);
+            this.chkIPD.Size = new System.Drawing.Size(50, 24);
             this.chkIPD.TabIndex = 554;
             this.chkIPD.Text = "IPD";
             this.theme1.SetTheme(this.chkIPD, "(default)");
@@ -127,35 +123,21 @@
             this.txt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txt.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(172)))), ((int)(((byte)(172)))), ((int)(((byte)(172)))));
             this.txt.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txt.Location = new System.Drawing.Point(572, 40);
+            this.txt.Location = new System.Drawing.Point(1121, 13);
             this.txt.Name = "txt";
-            this.txt.Size = new System.Drawing.Size(338, 20);
+            this.txt.Size = new System.Drawing.Size(67, 20);
             this.txt.TabIndex = 551;
             this.txt.Tag = null;
             this.theme1.SetTheme(this.txt, "(default)");
             this.txt.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // btnRefresh
-            // 
-            this.btnRefresh.Image = global::clinic_ivf.Properties.Resources.refresh16;
-            this.btnRefresh.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRefresh.Location = new System.Drawing.Point(437, 36);
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(62, 24);
-            this.btnRefresh.TabIndex = 550;
-            this.btnRefresh.Text = "refresh";
-            this.btnRefresh.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.theme1.SetTheme(this.btnRefresh, "(default)");
-            this.btnRefresh.UseVisualStyleBackColor = true;
-            this.btnRefresh.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
             // btnOpen
             // 
             this.btnOpen.Image = global::clinic_ivf.Properties.Resources.Open_Large;
             this.btnOpen.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnOpen.Location = new System.Drawing.Point(995, 12);
+            this.btnOpen.Location = new System.Drawing.Point(1194, 9);
             this.btnOpen.Name = "btnOpen";
-            this.btnOpen.Size = new System.Drawing.Size(77, 43);
+            this.btnOpen.Size = new System.Drawing.Size(77, 33);
             this.btnOpen.TabIndex = 549;
             this.btnOpen.Text = "Open";
             this.btnOpen.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -163,83 +145,13 @@
             this.btnOpen.UseVisualStyleBackColor = true;
             this.btnOpen.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // txtVisitDate
-            // 
-            this.txtVisitDate.AllowSpinLoop = false;
-            this.txtVisitDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            // 
-            // 
-            // 
-            this.txtVisitDate.Calendar.ArrowColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtVisitDate.Calendar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(87)))));
-            this.txtVisitDate.Calendar.DayNamesColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtVisitDate.Calendar.DayNamesFont = new System.Drawing.Font("Tahoma", 8F);
-            this.txtVisitDate.Calendar.Font = new System.Drawing.Font("Tahoma", 8F);
-            this.txtVisitDate.Calendar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtVisitDate.Calendar.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(162)))), ((int)(((byte)(162)))));
-            this.txtVisitDate.Calendar.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.txtVisitDate.Calendar.TitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(87)))));
-            this.txtVisitDate.Calendar.TitleFont = new System.Drawing.Font("Tahoma", 8F);
-            this.txtVisitDate.Calendar.TitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtVisitDate.Calendar.TodayBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.txtVisitDate.Calendar.TrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(172)))), ((int)(((byte)(172)))), ((int)(((byte)(172)))));
-            this.txtVisitDate.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            this.txtVisitDate.Culture = 1054;
-            this.txtVisitDate.CurrentTimeZone = false;
-            this.txtVisitDate.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(172)))), ((int)(((byte)(172)))), ((int)(((byte)(172)))));
-            this.txtVisitDate.DisplayFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
-            this.txtVisitDate.DisplayFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)((((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.CalendarType)));
-            this.txtVisitDate.EditFormat.CustomFormat = "dd/MM/yyyy";
-            this.txtVisitDate.EditFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
-            this.txtVisitDate.EditFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)(((((C1.Win.C1Input.FormatInfoInheritFlags.NullText | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.CalendarType)));
-            this.txtVisitDate.GMTOffset = System.TimeSpan.Parse("00:00:00");
-            this.txtVisitDate.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.txtVisitDate.Location = new System.Drawing.Point(321, 39);
-            this.txtVisitDate.Name = "txtVisitDate";
-            this.txtVisitDate.Size = new System.Drawing.Size(111, 18);
-            this.txtVisitDate.TabIndex = 548;
-            this.txtVisitDate.Tag = null;
-            this.theme1.SetTheme(this.txtVisitDate, "(default)");
-            this.txtVisitDate.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(87)))));
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.label6.Location = new System.Drawing.Point(242, 40);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(71, 16);
-            this.label6.TabIndex = 547;
-            this.label6.Text = "Visit Date :";
-            this.theme1.SetTheme(this.label6, "(default)");
-            // 
-            // btnVn
-            // 
-            this.btnVn.Location = new System.Drawing.Point(204, 36);
-            this.btnVn.Name = "btnVn";
-            this.btnVn.Size = new System.Drawing.Size(28, 23);
-            this.btnVn.TabIndex = 545;
-            this.btnVn.Text = "...";
-            this.theme1.SetTheme(this.btnVn, "(default)");
-            this.btnVn.UseVisualStyleBackColor = true;
-            this.btnVn.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(87)))));
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.label2.Location = new System.Drawing.Point(10, 39);
+            this.label2.Location = new System.Drawing.Point(914, 15);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(36, 16);
             this.label2.TabIndex = 544;
@@ -252,9 +164,9 @@
             this.txtVN.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtVN.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(172)))), ((int)(((byte)(172)))), ((int)(((byte)(172)))));
             this.txtVN.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtVN.Location = new System.Drawing.Point(48, 37);
+            this.txtVN.Location = new System.Drawing.Point(952, 13);
             this.txtVN.Name = "txtVN";
-            this.txtVN.Size = new System.Drawing.Size(150, 20);
+            this.txtVN.Size = new System.Drawing.Size(107, 20);
             this.txtVN.TabIndex = 543;
             this.txtVN.Tag = null;
             this.theme1.SetTheme(this.txtVN, "(default)");
@@ -350,13 +262,12 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(87)))));
-            this.panel1.Controls.Add(this.panel3);
-            this.panel1.Controls.Add(this.panel2);
+            this.panel1.Controls.Add(this.sC1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.panel1.Location = new System.Drawing.Point(0, 66);
+            this.panel1.Location = new System.Drawing.Point(0, 45);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1100, 581);
+            this.panel1.Size = new System.Drawing.Size(1283, 602);
             this.panel1.TabIndex = 5;
             this.theme1.SetTheme(this.panel1, "(default)");
             // 
@@ -365,50 +276,91 @@
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(87)))));
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.panel3.Location = new System.Drawing.Point(314, 0);
+            this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(786, 581);
+            this.panel3.Size = new System.Drawing.Size(1032, 581);
             this.panel3.TabIndex = 1;
             this.theme1.SetTheme(this.panel3, "(default)");
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(87)))));
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(314, 581);
+            this.panel2.Size = new System.Drawing.Size(240, 581);
             this.panel2.TabIndex = 0;
             this.theme1.SetTheme(this.panel2, "(default)");
             // 
-            // FrmScanView
+            // sC1
+            // 
+            this.sC1.AutoSizeElement = C1.Framework.AutoSizeElement.Both;
+            this.sC1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.sC1.CollapsingCueColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(133)))), ((int)(((byte)(150)))));
+            this.sC1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.sC1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.sC1.HeaderLineWidth = 1;
+            this.sC1.Location = new System.Drawing.Point(0, 0);
+            this.sC1.Name = "sC1";
+            this.sC1.Panels.Add(this.scVs);
+            this.sC1.Panels.Add(this.scScan);
+            this.sC1.Size = new System.Drawing.Size(1283, 602);
+            this.sC1.SplitterMovingColor = System.Drawing.Color.Black;
+            this.sC1.TabIndex = 2;
+            this.theme1.SetTheme(this.sC1, "(default)");
+            // 
+            // scVs
+            // 
+            this.scVs.Collapsible = true;
+            this.scVs.Controls.Add(this.panel2);
+            this.scVs.Dock = C1.Win.C1SplitContainer.PanelDockStyle.Left;
+            this.scVs.Location = new System.Drawing.Point(0, 21);
+            this.scVs.Name = "scVs";
+            this.scVs.Size = new System.Drawing.Size(240, 581);
+            this.scVs.SizeRatio = 19.312D;
+            this.scVs.TabIndex = 0;
+            this.scVs.Text = "Panel 1";
+            this.scVs.Width = 247;
+            // 
+            // scScan
+            // 
+            this.scScan.Controls.Add(this.panel3);
+            this.scScan.Height = 602;
+            this.scScan.Location = new System.Drawing.Point(251, 21);
+            this.scScan.Name = "scScan";
+            this.scScan.Size = new System.Drawing.Size(1032, 581);
+            this.scScan.TabIndex = 1;
+            this.scScan.Text = "Panel 2";
+            // 
+            // FrmScanView1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1100, 669);
+            this.ClientSize = new System.Drawing.Size(1283, 669);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.sb1);
-            this.Name = "FrmScanView";
-            this.Text = "FrmScanView";
-            this.Load += new System.EventHandler(this.FrmScanView_Load);
+            this.Name = "FrmScanView1";
+            this.Text = "FrmScanView1";
+            this.Load += new System.EventHandler(this.FrmScanView1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sb1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkIPD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnRefresh)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnOpen)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtVisitDate)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnVn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtVN)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboDgs)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtName)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnHn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHn)).EndInit();
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.sC1)).EndInit();
+            this.sC1.ResumeLayout(false);
+            this.scVs.ResumeLayout(false);
+            this.scScan.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -419,9 +371,6 @@
         private C1.Win.C1Themes.C1ThemeController theme1;
         private C1.Win.C1Ribbon.C1StatusBar sb1;
         private System.Windows.Forms.GroupBox groupBox1;
-        private C1.Win.C1Input.C1DateEdit txtVisitDate;
-        private System.Windows.Forms.Label label6;
-        private C1.Win.C1Input.C1Button btnVn;
         private System.Windows.Forms.Label label2;
         private C1.Win.C1Input.C1TextBox txtVN;
         private System.Windows.Forms.Label label1;
@@ -431,11 +380,13 @@
         private System.Windows.Forms.Label label4;
         private C1.Win.C1Input.C1TextBox txtHn;
         private C1.Win.C1Input.C1Button btnOpen;
-        private C1.Win.C1Input.C1Button btnRefresh;
         private C1.Win.C1Input.C1TextBox txt;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel2;
         private C1.Win.C1Input.C1CheckBox chkIPD;
+        private C1.Win.C1SplitContainer.C1SplitContainer sC1;
+        private C1.Win.C1SplitContainer.C1SplitterPanel scVs;
+        private C1.Win.C1SplitContainer.C1SplitterPanel scScan;
     }
 }

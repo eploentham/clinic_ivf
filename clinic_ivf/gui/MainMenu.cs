@@ -262,7 +262,7 @@ namespace clinic_ivf.gui
         private void MenuMedicalRecordView_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            FrmScanView frm = new FrmScanView(ic);
+            FrmScanView1 frm = new FrmScanView1(ic);
             frm.FormBorderStyle = FormBorderStyle.None;
             AddNewTab(frm, menuMedicalRecordView.Text + " ");
         }

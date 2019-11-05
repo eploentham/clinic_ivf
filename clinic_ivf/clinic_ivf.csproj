@@ -544,6 +544,12 @@
     <Compile Include="gui\FrmScanView.designer.cs">
       <DependentUpon>FrmScanView.cs</DependentUpon>
     </Compile>
+    <Compile Include="gui\FrmScanView1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="gui\FrmScanView1.designer.cs">
+      <DependentUpon>FrmScanView1.cs</DependentUpon>
+    </Compile>
     <Compile Include="gui\FrmSearchHn.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1179,6 +1185,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="gui\FrmScanView.resx">
       <DependentUpon>FrmScanView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="gui\FrmScanView1.resx">
+      <DependentUpon>FrmScanView1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="gui\FrmSearchHn.resx">
       <DependentUpon>FrmSearchHn.cs</DependentUpon>
