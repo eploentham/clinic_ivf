@@ -410,11 +410,10 @@ namespace clinic_ivf.gui
             lis.barcode = "";
             lis.req_id = id;
             lis.visit_vn = vs.visit_vn;
-                        
+            
             lis.patient_name = ptt.Name;
             lis.visit_hn = ptt.patient_hn;
             
-
             lis.visit_id = vs.t_visit_id;
             lis.message_lis = "";
             lis.active = "";
@@ -452,9 +451,33 @@ namespace clinic_ivf.gui
                 File.Delete(System.IO.Directory.GetCurrentDirectory() + "\\report\\" + lis1.barcode + ".jpg");
             }
             C1BarCode barc = new C1BarCode();
+            if (ic.iniC.lisBarcode.Equals("Code_128_B"))
+            {
+                barc.CodeType = C1.BarCode.CodeType.Code_128_B;
+            }
+            else if (ic.iniC.lisBarcode.Equals("Code_128_A"))
+            {
+                barc.CodeType = C1.BarCode.CodeType.Code_128_A;
+            }
+            else if (ic.iniC.lisBarcode.Equals("Code_128_C"))
+            {
+                barc.CodeType = C1.BarCode.CodeType.Code_128_C;
+            }
+            else if (ic.iniC.lisBarcode.Equals("Code_128auto"))
+            {
+                barc.CodeType = C1.BarCode.CodeType.Code_128auto;
+            }
+            else if (ic.iniC.lisBarcode.Equals("Code_128auto"))
+            {
+                barc.CodeType = C1.BarCode.CodeType.en;
+            }
+            else
+            {
+
+            }
             barc.Size = new Size(100, 60);
             barc.BarHeight = 60;
-            barc.CodeType = C1.BarCode.CodeType.Code_128_B;
+            
             barc.Text = lis1.barcode;
             Bitmap bitm = new Bitmap(100,40);
             //bitm = barc.Image;

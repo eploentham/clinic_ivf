@@ -49,6 +49,10 @@
             this.c1DockingTabPage5 = new C1.Win.C1Command.C1DockingTabPage();
             this.c1DockingTabPage6 = new C1.Win.C1Command.C1DockingTabPage();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.c1Label2 = new C1.Win.C1Input.C1Label();
+            this.c1Label1 = new C1.Win.C1Input.C1Label();
+            this.c1ComboBox1 = new C1.Win.C1Input.C1ComboBox();
+            this.c1Button2 = new C1.Win.C1Input.C1Button();
             this.c1TextBox3 = new C1.Win.C1Input.C1TextBox();
             this.c1BarCode1 = new C1.Win.BarCode.C1BarCode();
             this.c1ThemeController1 = new C1.Win.C1Themes.C1ThemeController();
@@ -78,6 +82,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.c1Button1)).BeginInit();
             this.c1DockingTabPage6.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.c1Label2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1Label1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1ComboBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1Button2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1ThemeController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1Report1)).BeginInit();
@@ -243,9 +251,9 @@
             // 
             // c1TextBox2
             // 
-            this.c1TextBox2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
+            this.c1TextBox2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(212)))), ((int)(((byte)(212)))));
             this.c1TextBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.c1TextBox2.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(172)))), ((int)(((byte)(172)))), ((int)(((byte)(172)))));
+            this.c1TextBox2.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.c1TextBox2.Location = new System.Drawing.Point(165, 67);
             this.c1TextBox2.Name = "c1TextBox2";
             this.c1TextBox2.Size = new System.Drawing.Size(100, 18);
@@ -265,6 +273,7 @@
             // txtReqDate
             // 
             this.txtReqDate.AllowSpinLoop = false;
+            this.txtReqDate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.txtReqDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             // 
             // 
@@ -283,8 +292,7 @@
             this.txtReqDate.Calendar.TodayBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(118)))), ((int)(((byte)(135)))));
             this.txtReqDate.Calendar.TrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtReqDate.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            this.txtReqDate.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(172)))), ((int)(((byte)(172)))), ((int)(((byte)(172)))));
-            this.txtReqDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.txtReqDate.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtReqDate.ImagePadding = new System.Windows.Forms.Padding(0);
             this.txtReqDate.Location = new System.Drawing.Point(58, 337);
             this.txtReqDate.Name = "txtReqDate";
@@ -325,23 +333,87 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(87)))));
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.c1Label2);
+            this.panel1.Controls.Add(this.c1Label1);
+            this.panel1.Controls.Add(this.c1ComboBox1);
+            this.panel1.Controls.Add(this.c1Button2);
             this.panel1.Controls.Add(this.c1TextBox3);
             this.panel1.Controls.Add(this.c1BarCode1);
-            this.panel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.panel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(118)))), ((int)(((byte)(135)))));
             this.panel1.Location = new System.Drawing.Point(12, 58);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(597, 258);
             this.panel1.TabIndex = 0;
             this.c1ThemeController1.SetTheme(this.panel1, "(default)");
             // 
+            // c1Label2
+            // 
+            this.c1Label2.AutoSize = true;
+            this.c1Label2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.c1Label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.c1Label2.Location = new System.Drawing.Point(13, 36);
+            this.c1Label2.Name = "c1Label2";
+            this.c1Label2.Size = new System.Drawing.Size(47, 13);
+            this.c1Label2.TabIndex = 5;
+            this.c1Label2.Tag = null;
+            this.c1ThemeController1.SetTheme(this.c1Label2, "(default)");
+            this.c1Label2.Value = "Barcode";
+            this.c1Label2.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Custom;
+            // 
+            // c1Label1
+            // 
+            this.c1Label1.AutoSize = true;
+            this.c1Label1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.c1Label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.c1Label1.Location = new System.Drawing.Point(298, 36);
+            this.c1Label1.Name = "c1Label1";
+            this.c1Label1.Size = new System.Drawing.Size(74, 13);
+            this.c1Label1.TabIndex = 4;
+            this.c1Label1.Tag = null;
+            this.c1ThemeController1.SetTheme(this.c1Label1, "(default)");
+            this.c1Label1.Value = "Type Barcode";
+            this.c1Label1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Custom;
+            // 
+            // c1ComboBox1
+            // 
+            this.c1ComboBox1.AllowSpinLoop = false;
+            this.c1ComboBox1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(212)))), ((int)(((byte)(212)))));
+            this.c1ComboBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.c1ComboBox1.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.c1ComboBox1.GapHeight = 0;
+            this.c1ComboBox1.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.c1ComboBox1.ItemsDisplayMember = "";
+            this.c1ComboBox1.ItemsValueMember = "";
+            this.c1ComboBox1.Location = new System.Drawing.Point(378, 34);
+            this.c1ComboBox1.Name = "c1ComboBox1";
+            this.c1ComboBox1.Size = new System.Drawing.Size(200, 18);
+            this.c1ComboBox1.Style.DropDownBackColor = System.Drawing.Color.White;
+            this.c1ComboBox1.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
+            this.c1ComboBox1.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.c1ComboBox1.TabIndex = 3;
+            this.c1ComboBox1.Tag = null;
+            this.c1ThemeController1.SetTheme(this.c1ComboBox1, "(default)");
+            this.c1ComboBox1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // c1Button2
+            // 
+            this.c1Button2.Location = new System.Drawing.Point(233, 140);
+            this.c1Button2.Name = "c1Button2";
+            this.c1Button2.Size = new System.Drawing.Size(118, 48);
+            this.c1Button2.TabIndex = 2;
+            this.c1Button2.Text = "c1Button2";
+            this.c1ThemeController1.SetTheme(this.c1Button2, "(default)");
+            this.c1Button2.UseVisualStyleBackColor = true;
+            this.c1Button2.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
             // c1TextBox3
             // 
-            this.c1TextBox3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
+            this.c1TextBox3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(212)))), ((int)(((byte)(212)))));
             this.c1TextBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.c1TextBox3.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(172)))), ((int)(((byte)(172)))), ((int)(((byte)(172)))));
+            this.c1TextBox3.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.c1TextBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.c1TextBox3.Location = new System.Drawing.Point(50, 32);
+            this.c1TextBox3.Location = new System.Drawing.Point(84, 32);
             this.c1TextBox3.Name = "c1TextBox3";
             this.c1TextBox3.Size = new System.Drawing.Size(183, 20);
             this.c1TextBox3.TabIndex = 1;
@@ -356,7 +428,7 @@
             this.c1BarCode1.CodeType = C1.BarCode.CodeType.Code_128_B;
             this.c1BarCode1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.c1BarCode1.ForeColor = System.Drawing.Color.Black;
-            this.c1BarCode1.Location = new System.Drawing.Point(50, 75);
+            this.c1BarCode1.Location = new System.Drawing.Point(84, 72);
             this.c1BarCode1.MicroQRCodeOptions.EncodingCodePage = 65001;
             this.c1BarCode1.Name = "c1BarCode1";
             this.c1BarCode1.QuietZone.Bottom = 0D;
@@ -445,6 +517,10 @@
             this.c1DockingTabPage6.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.c1Label2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1Label1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1ComboBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1Button2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1ThemeController1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1Report1)).EndInit();
@@ -487,6 +563,10 @@
         private C1.C1Report.C1Report c1Report3;
         private C1.Win.C1Input.C1TextBox c1TextBox3;
         private C1.Win.BarCode.C1BarCode c1BarCode1;
+        private C1.Win.C1Input.C1Label c1Label2;
+        private C1.Win.C1Input.C1Label c1Label1;
+        private C1.Win.C1Input.C1ComboBox c1ComboBox1;
+        private C1.Win.C1Input.C1Button c1Button2;
     }
 }
 
