@@ -469,7 +469,7 @@ namespace clinic_ivf.gui
             }
             else if (ic.iniC.lisBarcode.Equals("Code_128auto"))
             {
-                barc.CodeType = C1.BarCode.CodeType.en;
+                //barc.CodeType = C1.BarCode.CodeType.en;
             }
             else
             {

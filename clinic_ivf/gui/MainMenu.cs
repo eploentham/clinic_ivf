@@ -191,7 +191,7 @@ namespace clinic_ivf.gui
         {
             //throw new NotImplementedException();
             //Form3 frm = new Form3(ic);
-            Form1 frm = new Form1();
+            Form1 frm = new Form1(ic);
             frm.ShowDialog(this);
         }
 

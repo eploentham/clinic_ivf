@@ -22,6 +22,7 @@ using C1.Win.C1FlexGrid;
 using C1.C1Excel;
 using System.Collections;
 using System.Diagnostics;
+using C1.Win.BarCode;
 
 namespace clinic_ivf.control
 {
@@ -454,6 +455,35 @@ namespace clinic_ivf.control
                 }
             }
             return re;
+        }
+        public void setCboBarcodeType(C1ComboBox c)
+        {
+            ComboBoxItem item = new ComboBoxItem();
+            
+            item = new ComboBoxItem();
+            item.Value = "";
+            item.Text = "";
+            c.Items.Add(item);
+            C1BarCode barc = new C1BarCode();
+            var codetype = Enum.GetValues(typeof(C1.BarCode.CodeType));
+            //codetype.gett
+            //foreach(C1.BarCode.CodeType name in codetype)
+            //{
+            //    String value1 = "";
+            //    if (name == null) continue;
+            //    //value1 = Enum.get(typeof(C1.BarCode.CodeType), name);
+            //}
+
+            foreach (C1.BarCode.CodeType value1 in  Enum.GetValues(typeof(C1.BarCode.CodeType)))
+            {
+                //if (value1 == null) continue;
+                String name = "";
+                //name = Enum.get(typeof(C1.BarCode.CodeType), value1);
+                item = new ComboBoxItem();
+                item.Value = name.ToString();
+                item.Text = value1.ToString();
+                c.Items.Add(item);
+            }
         }
         public void setCboSpermAppearance(C1ComboBox c)
         {
