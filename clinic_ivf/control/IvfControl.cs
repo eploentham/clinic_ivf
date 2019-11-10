@@ -121,16 +121,16 @@ namespace clinic_ivf.control
                 //appName1 = appName;
                 //MessageBox.Show("0012 " + appName, "");
             }
-            //MessageBox.Show("002", "");
+            MessageBox.Show("002", "");
             StartupPath = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location);
             if (args == null)
             {
-                //MessageBox.Show("0021", "");
+                MessageBox.Show("0021 "+ appName, "");
                 iniF = new IniFile(appName);
             }
             else
             {
-                //MessageBox.Show("0022 " + StartupPath + "\\" + appName1 + ".ini", "");
+                MessageBox.Show("0022 " + StartupPath + "\\" + appName1 + ".ini", "");
                 iniF = new IniFile(StartupPath + "\\" + appName1 + ".ini");
             }
             
@@ -145,7 +145,7 @@ namespace clinic_ivf.control
             GetConfig();
             //MessageBox.Show("004", "");
             conn = new ConnectDB(iniC);
-            //MessageBox.Show("005", "");
+            MessageBox.Show("005", "");
             ftpC = new FtpClient(iniC.hostFTP, iniC.userFTP, iniC.passFTP,ftpUsePassive);
 
             //ivfDB = new IvfDB(conn);
@@ -175,7 +175,7 @@ namespace clinic_ivf.control
         }
         public void GetConfig()
         {
-            //MessageBox.Show("0031", "");
+            MessageBox.Show("0031", "");
             iniC.hostDB = iniF.getIni("connection","hostDB");
             //MessageBox.Show("0032 "+ iniC.hostDB, "");
             iniC.nameDB = iniF.getIni("connection", "nameDB");
@@ -208,7 +208,7 @@ namespace clinic_ivf.control
             iniC.themeDonor1 = iniF.getIni("app", "themeDonor1");
             iniC.printerSticker = iniF.getIni("app", "printerSticker");
             iniC.timerlabreqaccept = iniF.getIni("app", "timerlabreqaccept");
-            //MessageBox.Show("0035 " + iniC.timerlabreqaccept, "");
+            MessageBox.Show("0035 " + iniC.timerlabreqaccept, "");
             iniC.sticker_donor_width = iniF.getIni("sticker_donor", "width");
             iniC.sticker_donor_height = iniF.getIni("sticker_donor", "height");
             iniC.sticker_donor_start_y = iniF.getIni("sticker_donor", "start_y");
@@ -222,7 +222,7 @@ namespace clinic_ivf.control
             iniC.printStickerLeft = iniF.getIni("sticker_donor", "printStickerLeft");
             iniC.printStickerRight = iniF.getIni("sticker_donor", "printStickerRight");
             iniC.printStickerTop = iniF.getIni("sticker_donor", "printStickerTop");
-
+            MessageBox.Show("0036 " + iniC.printStickerTop, "");
             iniC.grfRowRed = iniF.getIni("app", "grfRowRed");
             iniC.grfRowGreen = iniF.getIni("app", "grfRowGreen");
             iniC.grfRowYellow = iniF.getIni("app", "grfRowYellow");
@@ -247,7 +247,7 @@ namespace clinic_ivf.control
             iniC.lisBarcode = iniF.getIni("app", "lisBarcode");
 
             iniC.grdViewFontName = iniC.grdViewFontName.Equals("") ? "Microsoft Sans Serif" : iniC.grdViewFontName;
-
+            MessageBox.Show("0037 " + iniC.lisBarcode, "");
             iniC.sticker_donor_width = iniC.sticker_donor_width.Equals("") ? "120" : iniC.sticker_donor_width;
             iniC.sticker_donor_height = iniC.sticker_donor_height.Equals("") ? "90" : iniC.sticker_donor_height;
             iniC.sticker_donor_start_y = iniC.sticker_donor_start_y.Equals("") ? "60" : iniC.sticker_donor_start_y;
@@ -289,7 +289,7 @@ namespace clinic_ivf.control
             int.TryParse(iniC.grdViewFontSize, out grdViewFontSize);
             Decimal.TryParse(iniC.creditCharge, out CreditCharge);
             Boolean.TryParse(iniC.usePassiveFTP, out ftpUsePassive);
-            //MessageBox.Show("00401 " + iniC.hostDB, "");
+            MessageBox.Show("00401 " + iniC.hostDB, "");
         }
         public String datetoDB(String dt)
         {
