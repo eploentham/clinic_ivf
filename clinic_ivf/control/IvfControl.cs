@@ -23,6 +23,7 @@ using C1.C1Excel;
 using System.Collections;
 using System.Diagnostics;
 using C1.Win.BarCode;
+using System.IO.Ports;
 
 namespace clinic_ivf.control
 {
@@ -121,16 +122,16 @@ namespace clinic_ivf.control
                 //appName1 = appName;
                 //MessageBox.Show("0012 " + appName, "");
             }
-            MessageBox.Show("002", "");
+            //MessageBox.Show("002", "");
             StartupPath = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location);
             if (args == null)
             {
-                MessageBox.Show("0021 "+ appName, "");
+                //MessageBox.Show("0021 "+ appName, "");
                 iniF = new IniFile(appName);
             }
             else
             {
-                MessageBox.Show("0022 " + StartupPath + "\\" + appName1 + ".ini", "");
+                //MessageBox.Show("0022 " + StartupPath + "\\" + appName1 + ".ini", "");
                 iniF = new IniFile(StartupPath + "\\" + appName1 + ".ini");
             }
             
@@ -145,7 +146,7 @@ namespace clinic_ivf.control
             GetConfig();
             //MessageBox.Show("004", "");
             conn = new ConnectDB(iniC);
-            MessageBox.Show("005", "");
+            //MessageBox.Show("005", "");
             ftpC = new FtpClient(iniC.hostFTP, iniC.userFTP, iniC.passFTP,ftpUsePassive);
 
             //ivfDB = new IvfDB(conn);
@@ -175,7 +176,7 @@ namespace clinic_ivf.control
         }
         public void GetConfig()
         {
-            MessageBox.Show("0031", "");
+            //MessageBox.Show("0031", "");
             iniC.hostDB = iniF.getIni("connection","hostDB");
             //MessageBox.Show("0032 "+ iniC.hostDB, "");
             iniC.nameDB = iniF.getIni("connection", "nameDB");
@@ -208,7 +209,7 @@ namespace clinic_ivf.control
             iniC.themeDonor1 = iniF.getIni("app", "themeDonor1");
             iniC.printerSticker = iniF.getIni("app", "printerSticker");
             iniC.timerlabreqaccept = iniF.getIni("app", "timerlabreqaccept");
-            MessageBox.Show("0035 " + iniC.timerlabreqaccept, "");
+            //MessageBox.Show("0035 " + iniC.timerlabreqaccept, "");
             iniC.sticker_donor_width = iniF.getIni("sticker_donor", "width");
             iniC.sticker_donor_height = iniF.getIni("sticker_donor", "height");
             iniC.sticker_donor_start_y = iniF.getIni("sticker_donor", "start_y");
@@ -222,7 +223,7 @@ namespace clinic_ivf.control
             iniC.printStickerLeft = iniF.getIni("sticker_donor", "printStickerLeft");
             iniC.printStickerRight = iniF.getIni("sticker_donor", "printStickerRight");
             iniC.printStickerTop = iniF.getIni("sticker_donor", "printStickerTop");
-            MessageBox.Show("0036 " + iniC.printStickerTop, "");
+            //MessageBox.Show("0036 " + iniC.printStickerTop, "");
             iniC.grfRowRed = iniF.getIni("app", "grfRowRed");
             iniC.grfRowGreen = iniF.getIni("app", "grfRowGreen");
             iniC.grfRowYellow = iniF.getIni("app", "grfRowYellow");
@@ -247,7 +248,7 @@ namespace clinic_ivf.control
             iniC.lisBarcode = iniF.getIni("app", "lisBarcode");
 
             iniC.grdViewFontName = iniC.grdViewFontName.Equals("") ? "Microsoft Sans Serif" : iniC.grdViewFontName;
-            MessageBox.Show("0037 " + iniC.lisBarcode, "");
+            //MessageBox.Show("0037 " + iniC.lisBarcode, "");
             iniC.sticker_donor_width = iniC.sticker_donor_width.Equals("") ? "120" : iniC.sticker_donor_width;
             iniC.sticker_donor_height = iniC.sticker_donor_height.Equals("") ? "90" : iniC.sticker_donor_height;
             iniC.sticker_donor_start_y = iniC.sticker_donor_start_y.Equals("") ? "60" : iniC.sticker_donor_start_y;
@@ -289,7 +290,7 @@ namespace clinic_ivf.control
             int.TryParse(iniC.grdViewFontSize, out grdViewFontSize);
             Decimal.TryParse(iniC.creditCharge, out CreditCharge);
             Boolean.TryParse(iniC.usePassiveFTP, out ftpUsePassive);
-            MessageBox.Show("00401 " + iniC.hostDB, "");
+            //MessageBox.Show("00401 " + iniC.hostDB, "");
         }
         public String datetoDB(String dt)
         {
@@ -1346,6 +1347,79 @@ namespace clinic_ivf.control
 
             // return it
             return xs;
+        }
+        public void setCboPORT(C1ComboBox cbo)
+        {
+            int index = 0;
+            String[] ArrayComPortsNames = SerialPort.GetPortNames();
+            Array.Sort(ArrayComPortsNames);
+            foreach (String port in ArrayComPortsNames)
+            {
+                index += 1;
+                cbo.Items.Add(ArrayComPortsNames[index]);
+            }
+            //do
+            //{
+                
+            //}
+            //while (!((ArrayComPortsNames[index] == ComPortName)
+            //              || (index == ArrayComPortsNames.GetUpperBound(0))));
+            
+
+            //want to get first out
+            //if (index == ArrayComPortsNames.GetUpperBound(0))
+            //{
+            //    ComPortName = ArrayComPortsNames[0];
+            //}
+            cbo.Text = ArrayComPortsNames[0];
+        }
+        public void setCboBAUDRATE(C1ComboBox cbo)
+        {
+            cbo.Items.Add(300);
+            cbo.Items.Add(600);
+            cbo.Items.Add(1200);
+            cbo.Items.Add(2400);
+            cbo.Items.Add(9600);
+            cbo.Items.Add(14400);
+            cbo.Items.Add(19200);
+            cbo.Items.Add(38400);
+            cbo.Items.Add(57600);
+            cbo.Items.Add(115200);
+            cbo.Items.ToString();
+            //get first item print in text
+            cbo.Text = cbo.Items[0].ToString();
+        }
+        public void setCboDATABIT(C1ComboBox cbo)
+        {
+            cbo.Items.Add(7);
+            cbo.Items.Add(8);
+            
+            cbo.Text = cbo.Items[0].ToString();
+        }
+        public void setCboStopBIT(C1ComboBox cbo)
+        {
+            cbo.Items.Add("One");
+            cbo.Items.Add("OnePointFive");
+            cbo.Items.Add("Two");
+            //get the first item print in the text
+            cbo.Text = cbo.Items[0].ToString();
+        }
+        public void setCboParity(C1ComboBox cbo)
+        {
+            cbo.Items.Add("None");
+            cbo.Items.Add("Even");
+            cbo.Items.Add("Mark");
+            cbo.Items.Add("Odd");
+            cbo.Items.Add("Space");
+            cbo.Text = cbo.Items[0].ToString();
+        }
+        public void setCboHandShaking(C1ComboBox cbo)
+        {
+            cbo.Items.Add("None");
+            cbo.Items.Add("XOnXOff");
+            cbo.Items.Add("RequestToSend");
+            cbo.Items.Add("RequestToSendXOnXOff");
+            cbo.Text = cbo.Items[0].ToString();
         }
     }
 }
