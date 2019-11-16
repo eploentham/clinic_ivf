@@ -64,13 +64,13 @@ namespace clinic_ivf
                     File.Delete(System.IO.Directory.GetCurrentDirectory() + "\\report\\barcode.jpg");
                 }
                 c1BarCode1.Text = txtBarcode.Text;
-                Image img = c1BarCode1.Image;
-                img.Save(System.IO.Directory.GetCurrentDirectory() + "\\report\\barcode.jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
+                //Image img = c1BarCode1.Image;
+                //img.Save(System.IO.Directory.GetCurrentDirectory() + "\\report\\barcode.jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
                 //barc.Size = new Size(100, 60);
                 //barc.BarHeight = 60;
-
+                c1BarCode1.Image.Save(System.IO.Directory.GetCurrentDirectory() + "\\report\\barcode.jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
                 //barc.Text = lis1.barcode;
-                Bitmap bitm = new Bitmap(100, 40);
+                //Bitmap bitm = new Bitmap(100, 120);
                 //bitm = barc.Image;
                 //Image img = c1BarCode1.Image;
                 //img.Size = new Size(100, 40);
