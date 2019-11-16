@@ -65,7 +65,6 @@ namespace clinic_ivf.gui
             {
                 MessageBox.Show("error " + ex.Message, "");
             }
-
         }
 
         private void ComPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
