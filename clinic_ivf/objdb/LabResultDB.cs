@@ -524,7 +524,8 @@ namespace clinic_ivf.objdb
                 "," + lbRes.date_time_approve + " = '" + dateapp + "'" +
                 "," + lbRes.date_time_result + " = '" + dateres + "'" +                
                 "," + lbRes.date_time_collect + " = '" + datecollect.Replace("'", "''") + "'" +
-                "," + lbRes.date_time_receive + " = now() " +
+                //"," + lbRes.date_time_receive + " = now() " +
+                "," + lbRes.date_time_receive + " = '"+ datereceive + "'" +
                 "Where " + lbRes.pkField + "='" + resid + "'"
                 ;
             try
