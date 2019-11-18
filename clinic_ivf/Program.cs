@@ -24,7 +24,7 @@ namespace clinic_ivf
             try
             {
                 //MessageBox.Show("00000", "");
-                
+
                 if (File.Exists("log.txt"))
                 {
                     long length = new System.IO.FileInfo("log.txt").Length;

@@ -177,119 +177,128 @@ namespace clinic_ivf.control
         public void GetConfig()
         {
             //MessageBox.Show("0031", "");
-            iniC.hostDB = iniF.getIni("connection","hostDB");
-            //MessageBox.Show("0032 "+ iniC.hostDB, "");
-            iniC.nameDB = iniF.getIni("connection", "nameDB");
-            iniC.userDB = iniF.getIni("connection", "userDB");
-            iniC.passDB = iniF.getIni("connection", "passDB");            
-            iniC.portDB = iniF.getIni("connection", "portDB");
+            try
+            {
+                iniC.hostDB = iniF.getIni("connection", "hostDB");
+                //MessageBox.Show("0032 "+ iniC.hostDB, "");
+                iniC.nameDB = iniF.getIni("connection", "nameDB");
+                iniC.userDB = iniF.getIni("connection", "userDB");
+                iniC.passDB = iniF.getIni("connection", "passDB");
+                iniC.portDB = iniF.getIni("connection", "portDB");
 
-            iniC.hostDBEx = iniF.getIni("connection", "hostDBEx");
-            iniC.nameDBEx = iniF.getIni("connection", "nameDBEx");
-            iniC.userDBEx = iniF.getIni("connection", "userDBEx");
-            iniC.passDBEx = iniF.getIni("connection", "passDBEx");
-            iniC.portDBEx = iniF.getIni("connection", "portDBEx");
-            //MessageBox.Show("0033 " + iniC.hostDBEx, "");
-            iniC.hostFTP = iniF.getIni("ftp", "hostFTP");
-            iniC.userFTP = iniF.getIni("ftp", "userFTP");
-            iniC.passFTP = iniF.getIni("ftp", "passFTP");
-            iniC.portFTP = iniF.getIni("ftp", "portFTP");
-            iniC.folderFTP = iniF.getIni("ftp", "folderFTP");
-            iniC.usePassiveFTP = iniF.getIni("ftp", "usePassiveFTP");
+                iniC.hostDBEx = iniF.getIni("connection", "hostDBEx");
+                iniC.nameDBEx = iniF.getIni("connection", "nameDBEx");
+                iniC.userDBEx = iniF.getIni("connection", "userDBEx");
+                iniC.passDBEx = iniF.getIni("connection", "passDBEx");
+                iniC.portDBEx = iniF.getIni("connection", "portDBEx");
+                //MessageBox.Show("0033 " + iniC.hostDBEx, "");
+                iniC.hostFTP = iniF.getIni("ftp", "hostFTP");
+                iniC.userFTP = iniF.getIni("ftp", "userFTP");
+                iniC.passFTP = iniF.getIni("ftp", "passFTP");
+                iniC.portFTP = iniF.getIni("ftp", "portFTP");
+                iniC.folderFTP = iniF.getIni("ftp", "folderFTP");
+                iniC.usePassiveFTP = iniF.getIni("ftp", "usePassiveFTP");
 
-            iniC.grdViewFontSize = iniF.getIni("app", "grdViewFontSize");
-            iniC.grdViewFontName = iniF.getIni("app", "grdViewFontName");
-            //MessageBox.Show("0034 " + iniC.grdViewFontSize, "");
-            iniC.txtFocus = iniF.getIni("app", "txtFocus");
-            iniC.grfRowColor = iniF.getIni("app", "grfRowColor");
-            iniC.statusAppDonor = iniF.getIni("app", "statusAppDonor");
-            iniC.themeApplication = iniF.getIni("app", "themeApplication");
-            iniC.themeApp = iniF.getIni("app", "themeApp");
-            iniC.themeDonor = iniF.getIni("app", "themeDonor");
-            iniC.themeDonor1 = iniF.getIni("app", "themeDonor1");
-            iniC.printerSticker = iniF.getIni("app", "printerSticker");
-            iniC.timerlabreqaccept = iniF.getIni("app", "timerlabreqaccept");
-            //MessageBox.Show("0035 " + iniC.timerlabreqaccept, "");
-            iniC.sticker_donor_width = iniF.getIni("sticker_donor", "width");
-            iniC.sticker_donor_height = iniF.getIni("sticker_donor", "height");
-            iniC.sticker_donor_start_y = iniF.getIni("sticker_donor", "start_y");
-            iniC.sticker_donor_barcode_height = iniF.getIni("sticker_donor", "barcode_height");
-            iniC.sticker_donor_barcode_gap_x = iniF.getIni("sticker_donor", "barcode_gap_x");
-            iniC.sticker_donor_barcode_gap_y = iniF.getIni("sticker_donor", "barcode_gap_y");
-            iniC.sticker_donor_gap = iniF.getIni("sticker_donor", "gap");
-            iniC.sticker_donor_start_x = iniF.getIni("sticker_donor", "start_x");
-            iniC.status_show_border = iniF.getIni("sticker_donor", "status_show_border");
-            iniC.barcode_width_minus = iniF.getIni("sticker_donor", "barcode_width_minus");
-            iniC.printStickerLeft = iniF.getIni("sticker_donor", "printStickerLeft");
-            iniC.printStickerRight = iniF.getIni("sticker_donor", "printStickerRight");
-            iniC.printStickerTop = iniF.getIni("sticker_donor", "printStickerTop");
-            //MessageBox.Show("0036 " + iniC.printStickerTop, "");
-            iniC.grfRowRed = iniF.getIni("app", "grfRowRed");
-            iniC.grfRowGreen = iniF.getIni("app", "grfRowGreen");
-            iniC.grfRowYellow = iniF.getIni("app", "grfRowYellow");
-            iniC.timerImgScanNew = iniF.getIni("app", "timerImgScanNew");
-            iniC.pathImageScan = iniF.getIni("app", "pathImageScan");
-            iniC.patientaddpanel1weight = iniF.getIni("app", "patientaddpanel1weight");
-            iniC.creditCharge = iniF.getIni("app", "creditCharge");
-            iniC.service_point_id = iniF.getIni("app", "service_point_id");
-            iniC.statusCheckDonor = iniF.getIni("app", "statusCheckDonor");
-            iniC.printerBill = iniF.getIni("app", "printerBill");
-            iniC.printerAppointment = iniF.getIni("app", "printerAppointment");
-            iniC.pathSaveExcelAppointment = iniF.getIni("app", "pathSaveExcelAppointment");
-            iniC.printerA4 = iniF.getIni("app", "printerA4");
+                iniC.grdViewFontSize = iniF.getIni("app", "grdViewFontSize");
+                iniC.grdViewFontName = iniF.getIni("app", "grdViewFontName");
+                //MessageBox.Show("0034 " + iniC.grdViewFontSize, "");
+                iniC.txtFocus = iniF.getIni("app", "txtFocus");
+                iniC.grfRowColor = iniF.getIni("app", "grfRowColor");
+                iniC.statusAppDonor = iniF.getIni("app", "statusAppDonor");
+                iniC.themeApplication = iniF.getIni("app", "themeApplication");
+                iniC.themeApp = iniF.getIni("app", "themeApp");
+                iniC.themeDonor = iniF.getIni("app", "themeDonor");
+                iniC.themeDonor1 = iniF.getIni("app", "themeDonor1");
+                iniC.printerSticker = iniF.getIni("app", "printerSticker");
+                iniC.timerlabreqaccept = iniF.getIni("app", "timerlabreqaccept");
+                //MessageBox.Show("0035 " + iniC.timerlabreqaccept, "");
+                iniC.sticker_donor_width = iniF.getIni("sticker_donor", "width");
+                iniC.sticker_donor_height = iniF.getIni("sticker_donor", "height");
+                iniC.sticker_donor_start_y = iniF.getIni("sticker_donor", "start_y");
+                iniC.sticker_donor_barcode_height = iniF.getIni("sticker_donor", "barcode_height");
+                iniC.sticker_donor_barcode_gap_x = iniF.getIni("sticker_donor", "barcode_gap_x");
+                iniC.sticker_donor_barcode_gap_y = iniF.getIni("sticker_donor", "barcode_gap_y");
+                iniC.sticker_donor_gap = iniF.getIni("sticker_donor", "gap");
+                iniC.sticker_donor_start_x = iniF.getIni("sticker_donor", "start_x");
+                iniC.status_show_border = iniF.getIni("sticker_donor", "status_show_border");
+                iniC.barcode_width_minus = iniF.getIni("sticker_donor", "barcode_width_minus");
+                iniC.printStickerLeft = iniF.getIni("sticker_donor", "printStickerLeft");
+                iniC.printStickerRight = iniF.getIni("sticker_donor", "printStickerRight");
+                iniC.printStickerTop = iniF.getIni("sticker_donor", "printStickerTop");
+                //MessageBox.Show("0036 " + iniC.printStickerTop, "");
+                iniC.grfRowRed = iniF.getIni("app", "grfRowRed");
+                iniC.grfRowGreen = iniF.getIni("app", "grfRowGreen");
+                iniC.grfRowYellow = iniF.getIni("app", "grfRowYellow");
+                iniC.timerImgScanNew = iniF.getIni("app", "timerImgScanNew");
+                iniC.pathImageScan = iniF.getIni("app", "pathImageScan");
+                iniC.patientaddpanel1weight = iniF.getIni("app", "patientaddpanel1weight");
+                iniC.creditCharge = iniF.getIni("app", "creditCharge");
+                iniC.service_point_id = iniF.getIni("app", "service_point_id");
+                iniC.statusCheckDonor = iniF.getIni("app", "statusCheckDonor");
+                iniC.printerBill = iniF.getIni("app", "printerBill");
+                iniC.printerAppointment = iniF.getIni("app", "printerAppointment");
+                iniC.pathSaveExcelAppointment = iniF.getIni("app", "pathSaveExcelAppointment");
+                iniC.printerA4 = iniF.getIni("app", "printerA4");
 
-            iniC.email_form = iniF.getIni("email", "email_form");
-            iniC.email_auth_user = iniF.getIni("email", "email_auth_user");
-            iniC.email_auth_pass = iniF.getIni("email", "email_auth_pass");
-            iniC.email_port = iniF.getIni("email", "email_port");
-            iniC.email_ssl = iniF.getIni("email", "email_ssl");
-            iniC.email_to_sperm_freezing = iniF.getIni("email", "email_to_sperm_freezing");
-            iniC.themeFET = iniF.getIni("app", "themeFET");
-            iniC.lisBarcode = iniF.getIni("app", "lisBarcode");
+                iniC.email_form = iniF.getIni("email", "email_form");
+                iniC.email_auth_user = iniF.getIni("email", "email_auth_user");
+                iniC.email_auth_pass = iniF.getIni("email", "email_auth_pass");
+                iniC.email_port = iniF.getIni("email", "email_port");
+                iniC.email_ssl = iniF.getIni("email", "email_ssl");
+                iniC.email_to_sperm_freezing = iniF.getIni("email", "email_to_sperm_freezing");
+                iniC.themeFET = iniF.getIni("app", "themeFET");
+                iniC.lisBarcode = iniF.getIni("app", "lisBarcode");
 
-            iniC.grdViewFontName = iniC.grdViewFontName.Equals("") ? "Microsoft Sans Serif" : iniC.grdViewFontName;
-            //MessageBox.Show("0037 " + iniC.lisBarcode, "");
-            iniC.sticker_donor_width = iniC.sticker_donor_width.Equals("") ? "120" : iniC.sticker_donor_width;
-            iniC.sticker_donor_height = iniC.sticker_donor_height.Equals("") ? "90" : iniC.sticker_donor_height;
-            iniC.sticker_donor_start_y = iniC.sticker_donor_start_y.Equals("") ? "60" : iniC.sticker_donor_start_y;
-            iniC.sticker_donor_barcode_height = iniC.sticker_donor_barcode_height.Equals("") ? "40" : iniC.sticker_donor_barcode_height;
-            iniC.sticker_donor_barcode_gap_x = iniC.sticker_donor_barcode_gap_x.Equals("") ? "5" : iniC.sticker_donor_barcode_gap_x;
-            iniC.sticker_donor_barcode_gap_y = iniC.sticker_donor_barcode_gap_y.Equals("") ? "30" : iniC.sticker_donor_barcode_gap_y;
-            iniC.sticker_donor_gap = iniC.sticker_donor_gap.Equals("") ? "20" : iniC.sticker_donor_gap;
-            iniC.sticker_donor_start_x = iniC.sticker_donor_start_x.Equals("") ? "52" : iniC.sticker_donor_start_x;
-            iniC.patientaddpanel1weight = iniC.patientaddpanel1weight==null ? "320" : iniC.patientaddpanel1weight.Equals("") ? "300" : iniC.patientaddpanel1weight;
-            iniC.printerSticker = iniC.printerSticker.Equals("") ? "default" : iniC.printerSticker;
-            iniC.status_show_border = iniC.status_show_border.Equals("") ? "0" : iniC.status_show_border;
-            iniC.barcode_width_minus = iniC.barcode_width_minus.Equals("") ? "0" : iniC.barcode_width_minus;
-            iniC.timerlabreqaccept = iniC.timerlabreqaccept.Equals("") ? "120" : iniC.timerlabreqaccept;
+                iniC.grdViewFontName = iniC.grdViewFontName.Equals("") ? "Microsoft Sans Serif" : iniC.grdViewFontName;
+                //MessageBox.Show("0037 " + iniC.lisBarcode, "");
+                iniC.sticker_donor_width = iniC.sticker_donor_width.Equals("") ? "120" : iniC.sticker_donor_width;
+                iniC.sticker_donor_height = iniC.sticker_donor_height.Equals("") ? "90" : iniC.sticker_donor_height;
+                iniC.sticker_donor_start_y = iniC.sticker_donor_start_y.Equals("") ? "60" : iniC.sticker_donor_start_y;
+                iniC.sticker_donor_barcode_height = iniC.sticker_donor_barcode_height.Equals("") ? "40" : iniC.sticker_donor_barcode_height;
+                iniC.sticker_donor_barcode_gap_x = iniC.sticker_donor_barcode_gap_x.Equals("") ? "5" : iniC.sticker_donor_barcode_gap_x;
+                iniC.sticker_donor_barcode_gap_y = iniC.sticker_donor_barcode_gap_y.Equals("") ? "30" : iniC.sticker_donor_barcode_gap_y;
+                iniC.sticker_donor_gap = iniC.sticker_donor_gap.Equals("") ? "20" : iniC.sticker_donor_gap;
+                iniC.sticker_donor_start_x = iniC.sticker_donor_start_x.Equals("") ? "52" : iniC.sticker_donor_start_x;
+                iniC.patientaddpanel1weight = iniC.patientaddpanel1weight == null ? "320" : iniC.patientaddpanel1weight.Equals("") ? "300" : iniC.patientaddpanel1weight;
+                iniC.printerSticker = iniC.printerSticker.Equals("") ? "default" : iniC.printerSticker;
+                iniC.status_show_border = iniC.status_show_border.Equals("") ? "0" : iniC.status_show_border;
+                iniC.barcode_width_minus = iniC.barcode_width_minus.Equals("") ? "0" : iniC.barcode_width_minus;
+                iniC.timerlabreqaccept = iniC.timerlabreqaccept.Equals("") ? "120" : iniC.timerlabreqaccept;
 
-            iniC.hostFTP = iniC.hostFTP ==null ? "" : iniC.hostFTP;
-            iniC.userFTP = iniC.userFTP == null ? "" : iniC.userFTP;
-            iniC.passFTP = iniC.passFTP == null ? "" : iniC.passFTP;
-            iniC.portFTP = iniC.portFTP == null ? "" : iniC.portFTP;
+                iniC.hostFTP = iniC.hostFTP == null ? "" : iniC.hostFTP;
+                iniC.userFTP = iniC.userFTP == null ? "" : iniC.userFTP;
+                iniC.passFTP = iniC.passFTP == null ? "" : iniC.passFTP;
+                iniC.portFTP = iniC.portFTP == null ? "" : iniC.portFTP;
 
-            iniC.themeApplication = iniC.themeApplication == null ? "Office2007Blue" : iniC.themeApplication .Equals("") ? "Office2007Blue" : iniC.themeApplication;
-            iniC.themeDonor = iniC.themeDonor == null ? "Office2007Blue" : iniC.themeDonor.Equals("") ? "Office2007Blue" : iniC.themeDonor;
-            iniC.themeDonor1 = iniC.themeDonor1 == null ? "MacBlue" : iniC.themeDonor1.Equals("") ? "MacBlue" : iniC.themeDonor1;
-            iniC.themeFET = iniC.themeFET == null ? "Office2016Black" : iniC.themeFET.Equals("") ? "Office2016Black" : iniC.themeFET;
-            iniC.lisBarcode = iniC.themeFET == null ? "Code_128_B" : iniC.lisBarcode.Equals("") ? "" : iniC.lisBarcode;
+                iniC.themeApplication = iniC.themeApplication == null ? "Office2007Blue" : iniC.themeApplication.Equals("") ? "Office2007Blue" : iniC.themeApplication;
+                iniC.themeDonor = iniC.themeDonor == null ? "Office2007Blue" : iniC.themeDonor.Equals("") ? "Office2007Blue" : iniC.themeDonor;
+                iniC.themeDonor1 = iniC.themeDonor1 == null ? "MacBlue" : iniC.themeDonor1.Equals("") ? "MacBlue" : iniC.themeDonor1;
+                iniC.themeFET = iniC.themeFET == null ? "Office2016Black" : iniC.themeFET.Equals("") ? "Office2016Black" : iniC.themeFET;
+                iniC.lisBarcode = iniC.themeFET == null ? "Code_128_B" : iniC.lisBarcode.Equals("") ? "" : iniC.lisBarcode;
 
-            iniC.grfRowRed = iniC.grfRowRed == null ? "#FF0266" : iniC.grfRowRed.Equals("") ? "#FF0266" : iniC.grfRowRed;
-            iniC.grfRowGreen = iniC.grfRowGreen == null ? "#7CB342" : iniC.grfRowGreen.Equals("") ? "#7CB342" : iniC.grfRowGreen;
-            iniC.grfRowYellow = iniC.grfRowYellow == null ? "#FFDE03" : iniC.grfRowYellow.Equals("") ? "#FFDE03" : iniC.grfRowYellow;
+                iniC.grfRowRed = iniC.grfRowRed == null ? "#FF0266" : iniC.grfRowRed.Equals("") ? "#FF0266" : iniC.grfRowRed;
+                iniC.grfRowGreen = iniC.grfRowGreen == null ? "#7CB342" : iniC.grfRowGreen.Equals("") ? "#7CB342" : iniC.grfRowGreen;
+                iniC.grfRowYellow = iniC.grfRowYellow == null ? "#FFDE03" : iniC.grfRowYellow.Equals("") ? "#FFDE03" : iniC.grfRowYellow;
 
-            iniC.statusAppDonor = iniC.statusAppDonor == null ? "1" : iniC.statusAppDonor.Equals("") ? "1" : iniC.statusAppDonor;
-            iniC.timerImgScanNew = iniC.timerImgScanNew == null ? "2" : iniC.timerImgScanNew.Equals("") ? "0" : iniC.timerImgScanNew;
-            iniC.pathImageScan = iniC.pathImageScan == null ? "d:\\images" : iniC.pathImageScan.Equals("") ? "d:\\images" : iniC.pathImageScan;
-            iniC.folderFTP = iniC.folderFTP == null ? "images_medical_record" : iniC.folderFTP.Equals("") ? "images_medical_record" : iniC.folderFTP;
-            iniC.creditCharge = iniC.creditCharge == null ? "3" : iniC.creditCharge.Equals("") ? "3" : iniC.creditCharge;
-            iniC.usePassiveFTP = iniC.usePassiveFTP == null ? "false" : iniC.usePassiveFTP.Equals("") ? "false" : iniC.usePassiveFTP;
-            iniC.service_point_id = iniC.service_point_id == null ? "2120000002" : iniC.service_point_id.Equals("") ? "2120000002" : iniC.service_point_id;
-            iniC.statusCheckDonor = iniC.statusCheckDonor == null ? "0" : iniC.statusCheckDonor.Equals("") ? "0" : iniC.statusCheckDonor;
+                iniC.statusAppDonor = iniC.statusAppDonor == null ? "1" : iniC.statusAppDonor.Equals("") ? "1" : iniC.statusAppDonor;
+                iniC.timerImgScanNew = iniC.timerImgScanNew == null ? "2" : iniC.timerImgScanNew.Equals("") ? "0" : iniC.timerImgScanNew;
+                iniC.pathImageScan = iniC.pathImageScan == null ? "d:\\images" : iniC.pathImageScan.Equals("") ? "d:\\images" : iniC.pathImageScan;
+                iniC.folderFTP = iniC.folderFTP == null ? "images_medical_record" : iniC.folderFTP.Equals("") ? "images_medical_record" : iniC.folderFTP;
+                iniC.creditCharge = iniC.creditCharge == null ? "3" : iniC.creditCharge.Equals("") ? "3" : iniC.creditCharge;
+                iniC.usePassiveFTP = iniC.usePassiveFTP == null ? "false" : iniC.usePassiveFTP.Equals("") ? "false" : iniC.usePassiveFTP;
+                iniC.service_point_id = iniC.service_point_id == null ? "2120000002" : iniC.service_point_id.Equals("") ? "2120000002" : iniC.service_point_id;
+                iniC.statusCheckDonor = iniC.statusCheckDonor == null ? "0" : iniC.statusCheckDonor.Equals("") ? "0" : iniC.statusCheckDonor;
 
-            int.TryParse(iniC.grdViewFontSize, out grdViewFontSize);
-            Decimal.TryParse(iniC.creditCharge, out CreditCharge);
-            Boolean.TryParse(iniC.usePassiveFTP, out ftpUsePassive);
+                int.TryParse(iniC.grdViewFontSize, out grdViewFontSize);
+                Decimal.TryParse(iniC.creditCharge, out CreditCharge);
+                Boolean.TryParse(iniC.usePassiveFTP, out ftpUsePassive);
+            }
+            catch(Exception ex)
+            {
+                new LogWriter("e", ex.Message);
+                MessageBox.Show("error "+ex.Message, "");
+            }
+            
             //MessageBox.Show("00401 " + iniC.hostDB, "");
         }
         public String datetoDB(String dt)
@@ -813,6 +822,22 @@ namespace clinic_ivf.control
                 c.Items.Add(item);
             }
 
+            return c;
+        }
+        public C1ComboBox setCboPrinter(C1ComboBox c)
+        {
+            ComboBoxItem item = new ComboBoxItem();
+            item = new ComboBoxItem();
+            item.Text = "";
+            item.Value = "";
+            c.Items.Add(item);
+            foreach (string printer in System.Drawing.Printing.PrinterSettings.InstalledPrinters)
+            {
+                item = new ComboBoxItem();
+                item.Text = printer;
+                item.Value = printer;
+                c.Items.Add(item);
+            }
             return c;
         }
         public void savePicPatienttoServer( String filename, Image pic)

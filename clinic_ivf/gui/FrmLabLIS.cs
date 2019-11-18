@@ -8,6 +8,7 @@ using System.Data;
 using System.Drawing;
 using System.IO.Ports;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -25,6 +26,10 @@ namespace clinic_ivf.gui
         private SerialPinChangedEventHandler SerialPinChangedEventHandler1;
         delegate void SetTextCallback(string text);
         string InputData = String.Empty;
+
+        Boolean statusOpenPort = false;
+
+        
         public FrmLabLIS()
         {
             InitializeComponent();
@@ -49,7 +54,7 @@ namespace clinic_ivf.gui
                 ic.setCboStopBIT(cboSTOPBIT);
                 ic.setCboParity(cboParity);
                 ic.setCboHandShaking(cboHandshake);
-
+                ic.setCboPrinter(cboPrinter);
                 //SerialPinChangedEventHandler1 = new SerialPinChangedEventHandler(PinChanged);
                 ComPort.DataReceived += ComPort_DataReceived;
 
@@ -59,6 +64,7 @@ namespace clinic_ivf.gui
                 notifyIcon1.MouseDoubleClick += NotifyIcon1_MouseDoubleClick;
                 this.FormClosing += FrmLabLIS_FormClosing;
                 BtnConnect.Click += BtnConnect_Click;
+                btnPrnSticker.Click += BtnPrnSticker_Click;
                 //MessageBox.Show("2222", "");
             }
             catch (Exception ex)
@@ -67,16 +73,81 @@ namespace clinic_ivf.gui
             }
         }
 
+        private void BtnPrnSticker_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            string WT1 = txtName.Text.Trim();
+            string B1 = txtBarcode.Text.Trim();
+            byte[] result_unicode = System.Text.Encoding.GetEncoding("utf-16").GetBytes("unicode test");
+            byte[] result_utf8 = System.Text.Encoding.UTF8.GetBytes("TEXT 40,620,\"ARIAL.TTF\",0,12,12,\"utf8 test Wörter auf Deutsch\"");
+
+            //TSCLIB_DLL.about();
+            byte status = TSCLIB_DLL.usbportqueryprinter();//0 = idle, 1 = head open, 16 = pause, following <ESC>!? command of TSPL manual
+            TSCLIB_DLL.openport("TSC TE210");
+            TSCLIB_DLL.sendcommand("SIZE 100 mm, 120 mm");
+            TSCLIB_DLL.sendcommand("SPEED 4");
+            TSCLIB_DLL.sendcommand("DENSITY 12");
+            TSCLIB_DLL.sendcommand("DIRECTION 1");
+            TSCLIB_DLL.sendcommand("SET TEAR ON");
+            TSCLIB_DLL.sendcommand("CODEPAGE UTF-8");
+            TSCLIB_DLL.clearbuffer();
+            //TSCLIB_DLL.downloadpcx("UL.PCX", "UL.PCX");
+            TSCLIB_DLL.windowsfont(40, 490, 48, 0, 0, 0, "Arial", "Windows Font Test");
+            TSCLIB_DLL.windowsfontUnicode(40, 550, 48, 0, 0, 0, "Arial", result_unicode);
+            //TSCLIB_DLL.sendcommand("PUTPCX 40,40,\"UL.PCX\"");
+            TSCLIB_DLL.sendBinaryData(result_utf8, result_utf8.Length);
+            TSCLIB_DLL.barcode("40", "300", "128", "80", "1", "0", "2", "2", B1);
+            TSCLIB_DLL.printerfont("40", "250", "0", "0", "15", "15", WT1);
+            TSCLIB_DLL.printlabel("1", "1");
+            TSCLIB_DLL.closeport();
+        }
+
         private void ComPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             //throw new NotImplementedException();
-
+            InputData = ComPort.ReadExisting();
+            if (InputData != String.Empty)
+            {
+                this.BeginInvoke(new SetTextCallback(SetText), new object[] { InputData });
+            }
         }
-
+        private void SetText(string text)
+        {
+            this.rtbIncoming.Text += text;
+        }
         private void BtnConnect_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
             //SerialPort port = new SerialPort()
+            if (statusOpenPort)
+            {
+                if (ComPort.IsOpen)
+                {
+                    ComPort.Close();
+                }
+                statusOpenPort = false;
+                BtnConnect.Text = "DisConnect";
+            }
+            else
+            {
+                if (!ComPort.IsOpen)
+                {
+                    ComPort.PortName = cboPORT.Text;
+                    ComPort.BaudRate = Convert.ToInt32(cboBAUDRATE.Text);
+                    ComPort.DataBits = Convert.ToInt16(cboDATABIT.Text);
+                    ComPort.StopBits = (StopBits)Enum.Parse(typeof(StopBits), cboSTOPBIT.Text);
+                    ComPort.Handshake = (Handshake)Enum.Parse(typeof(Handshake), cboHandshake.Text);
+                    ComPort.Parity = (Parity)Enum.Parse(typeof(Parity), cboParity.Text);
+                    ComPort.Open();
+                    
+                    BtnConnect.Text = "Connect";
+                }
+                else
+                {
+                    MessageBox.Show("comm port is open", "");
+                }
+                statusOpenPort = true;
+            }
         }
 
         private void FrmLabLIS_FormClosing(object sender, FormClosingEventArgs e)
