@@ -30,10 +30,11 @@ namespace clinic_ivf.gui
         Boolean statusOpenPort = false;
 
         
-        public FrmLabLIS()
+        public FrmLabLIS(IvfControl ic)
         {
             InitializeComponent();
             //MessageBox.Show("FrmLabLIS 11111", "");
+            this.ic = ic;
             initConfig();
             // https://www.codeproject.com/Articles/678025/Serial-Comms-in-Csharp-for-Beginners
         }

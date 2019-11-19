@@ -579,7 +579,8 @@ namespace clinic_ivf.gui
                         lbRes.row1 = "0";
                         DateTime date1 = new DateTime();
                         DateTime.TryParse(lbreq.req_time, out date1);
-                        lbRes.req_date_time = date1.Year+"-"+ date1.ToString("MM-dd")+" " + date1.ToString("HH:mm:ss");
+                        //lbRes.req_date_time = date1.Year+"-"+ date1.ToString("MM-dd")+" " + date1.ToString("HH:mm:ss");
+                        lbRes.req_date_time = lbreq.req_time;
                         lbRes.date_time_receive = System.DateTime.Now.Year+"-"+ System.DateTime.Now.ToString("MM-dd HH:mm:ss");
                         lbRes.doctor_id = lbreq.doctor_id;
                         lbRes.date_time_collect = lbRes.req_date_time;
