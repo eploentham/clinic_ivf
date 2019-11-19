@@ -83,7 +83,7 @@ namespace clinic_ivf.gui
             byte[] result_utf8 = System.Text.Encoding.UTF8.GetBytes("TEXT 40,620,\"ARIAL.TTF\",0,12,12,\"utf8 test Wörter auf Deutsch\"");
 
             //TSCLIB_DLL.about();
-            byte status = TSCLIB_DLL.usbportqueryprinter();//0 = idle, 1 = head open, 16 = pause, following <ESC>!? command of TSPL manual
+            byte status = TSCLIB_DLL.usbportqueryprinter();     //0 = idle, 1 = head open, 16 = pause, following <ESC>!? command of TSPL manual
             TSCLIB_DLL.openport("TSC TE210");
             TSCLIB_DLL.sendcommand("SIZE 100 mm, 120 mm");
             TSCLIB_DLL.sendcommand("SPEED 4");
