@@ -56,6 +56,8 @@ namespace clinic_ivf.gui
                 ic.setCboParity(cboParity);
                 ic.setCboHandShaking(cboHandshake);
                 ic.setCboPrinter(cboPrinter);
+                BtnConnect.Text = "Connect";                
+
                 //SerialPinChangedEventHandler1 = new SerialPinChangedEventHandler(PinChanged);
                 ComPort.DataReceived += ComPort_DataReceived;
 
@@ -126,13 +128,18 @@ namespace clinic_ivf.gui
                 {
                     ComPort.Close();
                 }
-                statusOpenPort = false;
-                BtnConnect.Text = "DisConnect";
+                statusOpenPort = true;
+                BtnConnect.Text = "Connect";
             }
             else
             {
                 if (!ComPort.IsOpen)
                 {
+                    if (cboPORT.Text.Length <= 0)
+                    {
+                        MessageBox.Show("ไม่พบ Comm Port", "");
+                        return;
+                    }
                     ComPort.PortName = cboPORT.Text;
                     ComPort.BaudRate = Convert.ToInt32(cboBAUDRATE.Text);
                     ComPort.DataBits = Convert.ToInt16(cboDATABIT.Text);
@@ -141,13 +148,13 @@ namespace clinic_ivf.gui
                     ComPort.Parity = (Parity)Enum.Parse(typeof(Parity), cboParity.Text);
                     ComPort.Open();
                     
-                    BtnConnect.Text = "Connect";
+                    BtnConnect.Text = "DisConnect";
                 }
                 else
                 {
                     MessageBox.Show("comm port is open", "");
                 }
-                statusOpenPort = true;
+                statusOpenPort = false;
             }
         }
 
