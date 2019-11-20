@@ -187,7 +187,7 @@
             this.c1Label6.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.c1Label6.Location = new System.Drawing.Point(12, 180);
             this.c1Label6.Name = "c1Label6";
-            this.c1Label6.Size = new System.Drawing.Size(73, 13);
+            this.c1Label6.Size = new System.Drawing.Size(51, 13);
             this.c1Label6.TabIndex = 541;
             this.c1Label6.Tag = null;
             this.c1Label6.Value = "Hand Snake :";
@@ -219,7 +219,7 @@
             this.c1Label5.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.c1Label5.Location = new System.Drawing.Point(12, 150);
             this.c1Label5.Name = "c1Label5";
-            this.c1Label5.Size = new System.Drawing.Size(39, 13);
+            this.c1Label5.Size = new System.Drawing.Size(51, 13);
             this.c1Label5.TabIndex = 539;
             this.c1Label5.Tag = null;
             this.c1Label5.Value = "Parity :";
@@ -283,7 +283,7 @@
             this.c1Label3.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.c1Label3.Location = new System.Drawing.Point(12, 120);
             this.c1Label3.Name = "c1Label3";
-            this.c1Label3.Size = new System.Drawing.Size(50, 13);
+            this.c1Label3.Size = new System.Drawing.Size(51, 13);
             this.c1Label3.TabIndex = 535;
             this.c1Label3.Tag = null;
             this.c1Label3.Value = "Stop Bit :";
@@ -315,7 +315,7 @@
             this.c1Label2.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.c1Label2.Location = new System.Drawing.Point(12, 60);
             this.c1Label2.Name = "c1Label2";
-            this.c1Label2.Size = new System.Drawing.Size(64, 13);
+            this.c1Label2.Size = new System.Drawing.Size(51, 13);
             this.c1Label2.TabIndex = 533;
             this.c1Label2.Tag = null;
             this.c1Label2.Value = "Baud Rate :";
@@ -377,7 +377,7 @@
             this.c1Label1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.c1Label1.Location = new System.Drawing.Point(12, 30);
             this.c1Label1.Name = "c1Label1";
-            this.c1Label1.Size = new System.Drawing.Size(64, 13);
+            this.c1Label1.Size = new System.Drawing.Size(51, 13);
             this.c1Label1.TabIndex = 0;
             this.c1Label1.Tag = null;
             this.c1Label1.Value = "Comm Port :";
@@ -430,7 +430,7 @@
             this.c1Label13.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.c1Label13.Location = new System.Drawing.Point(6, 81);
             this.c1Label13.Name = "c1Label13";
-            this.c1Label13.Size = new System.Drawing.Size(41, 13);
+            this.c1Label13.Size = new System.Drawing.Size(57, 13);
             this.c1Label13.TabIndex = 553;
             this.c1Label13.Tag = null;
             this.c1Label13.Value = "Name :";
@@ -438,7 +438,7 @@
             // txtName
             // 
             this.txtName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtName.Location = new System.Drawing.Point(85, 76);
+            this.txtName.Location = new System.Drawing.Point(69, 76);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(229, 20);
             this.txtName.TabIndex = 552;
@@ -450,7 +450,7 @@
             this.c1Label12.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.c1Label12.Location = new System.Drawing.Point(6, 55);
             this.c1Label12.Name = "c1Label12";
-            this.c1Label12.Size = new System.Drawing.Size(53, 13);
+            this.c1Label12.Size = new System.Drawing.Size(57, 13);
             this.c1Label12.TabIndex = 551;
             this.c1Label12.Tag = null;
             this.c1Label12.Value = "Barcode :";
@@ -458,7 +458,7 @@
             // txtBarcode
             // 
             this.txtBarcode.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtBarcode.Location = new System.Drawing.Point(85, 50);
+            this.txtBarcode.Location = new System.Drawing.Point(69, 50);
             this.txtBarcode.Name = "txtBarcode";
             this.txtBarcode.Size = new System.Drawing.Size(139, 20);
             this.txtBarcode.TabIndex = 550;
@@ -475,9 +475,9 @@
             this.cboPrinter.ImagePadding = new System.Windows.Forms.Padding(0);
             this.cboPrinter.ItemsDisplayMember = "";
             this.cboPrinter.ItemsValueMember = "";
-            this.cboPrinter.Location = new System.Drawing.Point(85, 19);
+            this.cboPrinter.Location = new System.Drawing.Point(69, 19);
             this.cboPrinter.Name = "cboPrinter";
-            this.cboPrinter.Size = new System.Drawing.Size(139, 24);
+            this.cboPrinter.Size = new System.Drawing.Size(252, 24);
             this.cboPrinter.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.cboPrinter.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
             this.cboPrinter.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
@@ -491,7 +491,7 @@
             this.c1Label11.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.c1Label11.Location = new System.Drawing.Point(6, 26);
             this.c1Label11.Name = "c1Label11";
-            this.c1Label11.Size = new System.Drawing.Size(43, 13);
+            this.c1Label11.Size = new System.Drawing.Size(57, 13);
             this.c1Label11.TabIndex = 548;
             this.c1Label11.Tag = null;
             this.c1Label11.Value = "Printer :";
@@ -500,7 +500,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(978, 609);
+            this.ClientSize = new System.Drawing.Size(1127, 609);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBox1);

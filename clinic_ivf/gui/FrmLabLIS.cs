@@ -43,19 +43,19 @@ namespace clinic_ivf.gui
             try
             {
                 this.StartPosition = FormStartPosition.CenterScreen;
-                MessageBox.Show("FrmLabLIS 111 ", "");
+                //MessageBox.Show("FrmLabLIS 111 ", "");
                 notifyIcon1 = new NotifyIcon();
-                MessageBox.Show("FrmLabLIS 111.1 ", "");
+                //MessageBox.Show("FrmLabLIS 111.1 ", "");
                 notifyIcon1.Icon = Resources.ivf_lis;
-                MessageBox.Show("FrmLabLIS 111.2 ", "");
+                //MessageBox.Show("FrmLabLIS 111.2 ", "");
                 notifyIcon1.BalloonTipText = "";
                 notifyIcon1.BalloonTipTitle = "LIS";
                 notifyIcon1.Visible = true;
-                MessageBox.Show("FrmLabLIS 111.3 ", "");
+                //MessageBox.Show("FrmLabLIS 111.3 ", "");
                 ic.setCboPORT(cboPORT);
-                MessageBox.Show("333", "");
+                //MessageBox.Show("333", "");
                 ic.setCboBAUDRATE(cboBAUDRATE);
-                MessageBox.Show("444", "");
+                //MessageBox.Show("444", "");
                 ic.setCboDATABIT(cboDATABIT);
                 ic.setCboStopBIT(cboSTOPBIT);
                 ic.setCboParity(cboParity);
@@ -73,7 +73,7 @@ namespace clinic_ivf.gui
                 this.FormClosing += FrmLabLIS_FormClosing;
                 BtnConnect.Click += BtnConnect_Click;
                 btnPrnSticker.Click += BtnPrnSticker_Click;
-                MessageBox.Show("2222", "");
+                //MessageBox.Show("2222", "");
             }
             catch (Exception ex)
             {
