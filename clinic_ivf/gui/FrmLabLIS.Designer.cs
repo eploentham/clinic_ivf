@@ -55,12 +55,12 @@
             this.rtbIncoming = new System.Windows.Forms.RichTextBox();
             this.btnPrnSticker = new C1.Win.C1Input.C1Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.cboPrinter = new C1.Win.C1Input.C1ComboBox();
-            this.c1Label11 = new C1.Win.C1Input.C1Label();
-            this.txtBarcode = new C1.Win.C1Input.C1TextBox();
-            this.c1Label12 = new C1.Win.C1Input.C1Label();
             this.c1Label13 = new C1.Win.C1Input.C1Label();
             this.txtName = new C1.Win.C1Input.C1TextBox();
+            this.c1Label12 = new C1.Win.C1Input.C1Label();
+            this.txtBarcode = new C1.Win.C1Input.C1TextBox();
+            this.cboPrinter = new C1.Win.C1Input.C1ComboBox();
+            this.c1Label11 = new C1.Win.C1Input.C1Label();
             this.contextMenuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.c1Label10)).BeginInit();
@@ -83,12 +83,12 @@
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnPrnSticker)).BeginInit();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cboPrinter)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1Label11)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtBarcode)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1Label12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1Label13)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtName)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1Label12)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtBarcode)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboPrinter)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1Label11)).BeginInit();
             this.SuspendLayout();
             // 
             // contextMenuStrip1
@@ -141,7 +141,7 @@
             // 
             this.c1Label10.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.c1Label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.c1Label10.Location = new System.Drawing.Point(264, 208);
+            this.c1Label10.Location = new System.Drawing.Point(255, 208);
             this.c1Label10.Name = "c1Label10";
             this.c1Label10.Size = new System.Drawing.Size(78, 19);
             this.c1Label10.TabIndex = 545;
@@ -152,7 +152,7 @@
             // 
             this.c1Label9.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.c1Label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.c1Label9.Location = new System.Drawing.Point(182, 208);
+            this.c1Label9.Location = new System.Drawing.Point(173, 208);
             this.c1Label9.Name = "c1Label9";
             this.c1Label9.Size = new System.Drawing.Size(78, 19);
             this.c1Label9.TabIndex = 544;
@@ -163,7 +163,7 @@
             // 
             this.c1Label8.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.c1Label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.c1Label8.Location = new System.Drawing.Point(97, 208);
+            this.c1Label8.Location = new System.Drawing.Point(92, 208);
             this.c1Label8.Name = "c1Label8";
             this.c1Label8.Size = new System.Drawing.Size(78, 19);
             this.c1Label8.TabIndex = 543;
@@ -174,7 +174,7 @@
             // 
             this.c1Label7.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.c1Label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.c1Label7.Location = new System.Drawing.Point(13, 208);
+            this.c1Label7.Location = new System.Drawing.Point(8, 208);
             this.c1Label7.Name = "c1Label7";
             this.c1Label7.Size = new System.Drawing.Size(78, 19);
             this.c1Label7.TabIndex = 542;
@@ -187,9 +187,10 @@
             this.c1Label6.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.c1Label6.Location = new System.Drawing.Point(12, 180);
             this.c1Label6.Name = "c1Label6";
-            this.c1Label6.Size = new System.Drawing.Size(51, 13);
+            this.c1Label6.Size = new System.Drawing.Size(73, 13);
             this.c1Label6.TabIndex = 541;
             this.c1Label6.Tag = null;
+            this.c1Label6.Value = "Hand Snake :";
             // 
             // cboHandshake
             // 
@@ -218,9 +219,10 @@
             this.c1Label5.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.c1Label5.Location = new System.Drawing.Point(12, 150);
             this.c1Label5.Name = "c1Label5";
-            this.c1Label5.Size = new System.Drawing.Size(51, 13);
+            this.c1Label5.Size = new System.Drawing.Size(39, 13);
             this.c1Label5.TabIndex = 539;
             this.c1Label5.Tag = null;
+            this.c1Label5.Value = "Parity :";
             // 
             // cboParity
             // 
@@ -252,6 +254,7 @@
             this.c1Label4.Size = new System.Drawing.Size(51, 13);
             this.c1Label4.TabIndex = 537;
             this.c1Label4.Tag = null;
+            this.c1Label4.Value = "Data Bit :";
             // 
             // cboDATABIT
             // 
@@ -280,9 +283,10 @@
             this.c1Label3.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.c1Label3.Location = new System.Drawing.Point(12, 120);
             this.c1Label3.Name = "c1Label3";
-            this.c1Label3.Size = new System.Drawing.Size(51, 13);
+            this.c1Label3.Size = new System.Drawing.Size(50, 13);
             this.c1Label3.TabIndex = 535;
             this.c1Label3.Tag = null;
+            this.c1Label3.Value = "Stop Bit :";
             // 
             // cboSTOPBIT
             // 
@@ -311,9 +315,10 @@
             this.c1Label2.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.c1Label2.Location = new System.Drawing.Point(12, 60);
             this.c1Label2.Name = "c1Label2";
-            this.c1Label2.Size = new System.Drawing.Size(51, 13);
+            this.c1Label2.Size = new System.Drawing.Size(64, 13);
             this.c1Label2.TabIndex = 533;
             this.c1Label2.Tag = null;
+            this.c1Label2.Value = "Baud Rate :";
             // 
             // cboBAUDRATE
             // 
@@ -372,9 +377,10 @@
             this.c1Label1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.c1Label1.Location = new System.Drawing.Point(12, 30);
             this.c1Label1.Name = "c1Label1";
-            this.c1Label1.Size = new System.Drawing.Size(51, 13);
+            this.c1Label1.Size = new System.Drawing.Size(64, 13);
             this.c1Label1.TabIndex = 0;
             this.c1Label1.Tag = null;
+            this.c1Label1.Value = "Comm Port :";
             // 
             // panel1
             // 
@@ -418,6 +424,46 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "groupBox2";
             // 
+            // c1Label13
+            // 
+            this.c1Label13.AutoSize = true;
+            this.c1Label13.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.c1Label13.Location = new System.Drawing.Point(6, 81);
+            this.c1Label13.Name = "c1Label13";
+            this.c1Label13.Size = new System.Drawing.Size(41, 13);
+            this.c1Label13.TabIndex = 553;
+            this.c1Label13.Tag = null;
+            this.c1Label13.Value = "Name :";
+            // 
+            // txtName
+            // 
+            this.txtName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtName.Location = new System.Drawing.Point(85, 76);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(229, 20);
+            this.txtName.TabIndex = 552;
+            this.txtName.Tag = null;
+            // 
+            // c1Label12
+            // 
+            this.c1Label12.AutoSize = true;
+            this.c1Label12.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.c1Label12.Location = new System.Drawing.Point(6, 55);
+            this.c1Label12.Name = "c1Label12";
+            this.c1Label12.Size = new System.Drawing.Size(53, 13);
+            this.c1Label12.TabIndex = 551;
+            this.c1Label12.Tag = null;
+            this.c1Label12.Value = "Barcode :";
+            // 
+            // txtBarcode
+            // 
+            this.txtBarcode.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtBarcode.Location = new System.Drawing.Point(85, 50);
+            this.txtBarcode.Name = "txtBarcode";
+            this.txtBarcode.Size = new System.Drawing.Size(139, 20);
+            this.txtBarcode.TabIndex = 550;
+            this.txtBarcode.Tag = null;
+            // 
             // cboPrinter
             // 
             this.cboPrinter.AllowSpinLoop = false;
@@ -448,44 +494,7 @@
             this.c1Label11.Size = new System.Drawing.Size(43, 13);
             this.c1Label11.TabIndex = 548;
             this.c1Label11.Tag = null;
-            // 
-            // txtBarcode
-            // 
-            this.txtBarcode.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtBarcode.Location = new System.Drawing.Point(85, 50);
-            this.txtBarcode.Name = "txtBarcode";
-            this.txtBarcode.Size = new System.Drawing.Size(139, 20);
-            this.txtBarcode.TabIndex = 550;
-            this.txtBarcode.Tag = null;
-            // 
-            // c1Label12
-            // 
-            this.c1Label12.AutoSize = true;
-            this.c1Label12.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.c1Label12.Location = new System.Drawing.Point(6, 55);
-            this.c1Label12.Name = "c1Label12";
-            this.c1Label12.Size = new System.Drawing.Size(53, 13);
-            this.c1Label12.TabIndex = 551;
-            this.c1Label12.Tag = null;
-            // 
-            // c1Label13
-            // 
-            this.c1Label13.AutoSize = true;
-            this.c1Label13.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.c1Label13.Location = new System.Drawing.Point(6, 81);
-            this.c1Label13.Name = "c1Label13";
-            this.c1Label13.Size = new System.Drawing.Size(41, 13);
-            this.c1Label13.TabIndex = 553;
-            this.c1Label13.Tag = null;
-            // 
-            // txtName
-            // 
-            this.txtName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtName.Location = new System.Drawing.Point(85, 76);
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(229, 20);
-            this.txtName.TabIndex = 552;
-            this.txtName.Tag = null;
+            this.c1Label11.Value = "Printer :";
             // 
             // FrmLabLIS
             // 
@@ -524,12 +533,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnPrnSticker)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cboPrinter)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1Label11)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtBarcode)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1Label12)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1Label13)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtName)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1Label12)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtBarcode)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboPrinter)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1Label11)).EndInit();
             this.ResumeLayout(false);
 
         }

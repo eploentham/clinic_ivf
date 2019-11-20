@@ -1375,28 +1375,42 @@ namespace clinic_ivf.control
         }
         public void setCboPORT(C1ComboBox cbo)
         {
-            int index = 0;
-            String[] ArrayComPortsNames = SerialPort.GetPortNames();
-            Array.Sort(ArrayComPortsNames);
-            foreach (String port in ArrayComPortsNames)
+            try
             {
-                index += 1;
-                cbo.Items.Add(ArrayComPortsNames[index]);
-            }
-            //do
-            //{
-                
-            //}
-            //while (!((ArrayComPortsNames[index] == ComPortName)
-            //              || (index == ArrayComPortsNames.GetUpperBound(0))));
-            
+                int index = 0;
+                String[] ArrayComPortsNames = SerialPort.GetPortNames();
+                if (ArrayComPortsNames.Length == 0)
+                {
+                    MessageBox.Show("No Comm Port", "");
+                    return;
+                }
+                Array.Sort(ArrayComPortsNames);
+                foreach (String port in ArrayComPortsNames)
+                {
+                    index += 1;
+                    cbo.Items.Add(ArrayComPortsNames[index]);
+                }
+                //do
+                //{
 
-            //want to get first out
-            //if (index == ArrayComPortsNames.GetUpperBound(0))
-            //{
-            //    ComPortName = ArrayComPortsNames[0];
-            //}
-            cbo.Text = ArrayComPortsNames[0];
+                //}
+                //while (!((ArrayComPortsNames[index] == ComPortName)
+                //              || (index == ArrayComPortsNames.GetUpperBound(0))));
+
+
+                //want to get first out
+                //if (index == ArrayComPortsNames.GetUpperBound(0))
+                //{
+                //    ComPortName = ArrayComPortsNames[0];
+                //}
+                //cbo.Text = ArrayComPortsNames[0];
+                cbo.SelectedIndex = 0;
+            }
+            catch(Exception ex)
+            {
+
+            }
+            
         }
         public void setCboBAUDRATE(C1ComboBox cbo)
         {
@@ -1412,22 +1426,24 @@ namespace clinic_ivf.control
             cbo.Items.Add(115200);
             cbo.Items.ToString();
             //get first item print in text
-            cbo.Text = cbo.Items[0].ToString();
+            cbo.SelectedIndex = 0;
+            //cbo.Text = cbo.Items[0].ToString();
         }
         public void setCboDATABIT(C1ComboBox cbo)
         {
             cbo.Items.Add(7);
             cbo.Items.Add(8);
-            
-            cbo.Text = cbo.Items[0].ToString();
+            cbo.SelectedIndex = 0;
+            //cbo.Text = cbo.Items[0].ToString();
         }
         public void setCboStopBIT(C1ComboBox cbo)
         {
             cbo.Items.Add("One");
             cbo.Items.Add("OnePointFive");
             cbo.Items.Add("Two");
+            cbo.SelectedIndex = 0;
             //get the first item print in the text
-            cbo.Text = cbo.Items[0].ToString();
+            //cbo.Text = cbo.Items[0].ToString();
         }
         public void setCboParity(C1ComboBox cbo)
         {
@@ -1436,7 +1452,8 @@ namespace clinic_ivf.control
             cbo.Items.Add("Mark");
             cbo.Items.Add("Odd");
             cbo.Items.Add("Space");
-            cbo.Text = cbo.Items[0].ToString();
+            cbo.SelectedIndex = 0;
+            //cbo.Text = cbo.Items[0].ToString();
         }
         public void setCboHandShaking(C1ComboBox cbo)
         {
@@ -1444,7 +1461,8 @@ namespace clinic_ivf.control
             cbo.Items.Add("XOnXOff");
             cbo.Items.Add("RequestToSend");
             cbo.Items.Add("RequestToSendXOnXOff");
-            cbo.Text = cbo.Items[0].ToString();
+            cbo.SelectedIndex = 0;
+            //cbo.Text = cbo.Items[0].ToString();
         }
     }
 }
