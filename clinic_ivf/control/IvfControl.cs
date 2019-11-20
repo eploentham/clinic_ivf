@@ -1375,33 +1375,42 @@ namespace clinic_ivf.control
         }
         public void setCboPORT(C1ComboBox cbo)
         {
-            int index = 0;
-            String[] ArrayComPortsNames = SerialPort.GetPortNames();
-            if (ArrayComPortsNames.Length==0)
+            try
             {
-                MessageBox.Show("No Comm Port", "");
-                return;
-            }
-            Array.Sort(ArrayComPortsNames);
-            foreach (String port in ArrayComPortsNames)
-            {
-                index += 1;
-                cbo.Items.Add(ArrayComPortsNames[index]);
-            }
-            //do
-            //{
-                
-            //}
-            //while (!((ArrayComPortsNames[index] == ComPortName)
-            //              || (index == ArrayComPortsNames.GetUpperBound(0))));
-            
+                int index = 0;
+                String[] ArrayComPortsNames = SerialPort.GetPortNames();
+                if (ArrayComPortsNames.Length == 0)
+                {
+                    MessageBox.Show("No Comm Port", "");
+                    return;
+                }
+                Array.Sort(ArrayComPortsNames);
+                foreach (String port in ArrayComPortsNames)
+                {
+                    index += 1;
+                    cbo.Items.Add(ArrayComPortsNames[index]);
+                }
+                //do
+                //{
 
-            //want to get first out
-            //if (index == ArrayComPortsNames.GetUpperBound(0))
-            //{
-            //    ComPortName = ArrayComPortsNames[0];
-            //}
-            cbo.Text = ArrayComPortsNames[0];
+                //}
+                //while (!((ArrayComPortsNames[index] == ComPortName)
+                //              || (index == ArrayComPortsNames.GetUpperBound(0))));
+
+
+                //want to get first out
+                //if (index == ArrayComPortsNames.GetUpperBound(0))
+                //{
+                //    ComPortName = ArrayComPortsNames[0];
+                //}
+                //cbo.Text = ArrayComPortsNames[0];
+                cbo.SelectedIndex = 0;
+            }
+            catch(Exception ex)
+            {
+
+            }
+            
         }
         public void setCboBAUDRATE(C1ComboBox cbo)
         {
