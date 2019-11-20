@@ -123,11 +123,11 @@
             this.c1SplitterPanel1.Height = 629;
             this.c1SplitterPanel1.Location = new System.Drawing.Point(0, 21);
             this.c1SplitterPanel1.Name = "c1SplitterPanel1";
-            this.c1SplitterPanel1.Size = new System.Drawing.Size(507, 608);
-            this.c1SplitterPanel1.SizeRatio = 49.855D;
+            this.c1SplitterPanel1.Size = new System.Drawing.Size(483, 608);
+            this.c1SplitterPanel1.SizeRatio = 47.527D;
             this.c1SplitterPanel1.TabIndex = 0;
             this.c1SplitterPanel1.Text = "Panel 1";
-            this.c1SplitterPanel1.Width = 514;
+            this.c1SplitterPanel1.Width = 490;
             // 
             // panel1
             // 
@@ -136,7 +136,7 @@
             this.panel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(507, 608);
+            this.panel1.Size = new System.Drawing.Size(483, 608);
             this.panel1.TabIndex = 6;
             this.theme1.SetTheme(this.panel1, "(default)");
             // 
@@ -144,9 +144,9 @@
             // 
             this.c1SplitterPanel2.Controls.Add(this.panel2);
             this.c1SplitterPanel2.Height = 629;
-            this.c1SplitterPanel2.Location = new System.Drawing.Point(518, 21);
+            this.c1SplitterPanel2.Location = new System.Drawing.Point(494, 21);
             this.c1SplitterPanel2.Name = "c1SplitterPanel2";
-            this.c1SplitterPanel2.Size = new System.Drawing.Size(517, 608);
+            this.c1SplitterPanel2.Size = new System.Drawing.Size(541, 608);
             this.c1SplitterPanel2.TabIndex = 1;
             this.c1SplitterPanel2.Text = "Panel 2";
             // 
@@ -173,7 +173,7 @@
             this.panel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(517, 608);
+            this.panel2.Size = new System.Drawing.Size(541, 608);
             this.panel2.TabIndex = 0;
             this.theme1.SetTheme(this.panel2, "(default)");
             // 
