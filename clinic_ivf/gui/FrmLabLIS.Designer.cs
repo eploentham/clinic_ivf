@@ -52,7 +52,6 @@
             this.BtnConnect = new C1.Win.C1Input.C1Button();
             this.c1Label1 = new C1.Win.C1Input.C1Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.rtbIncoming = new System.Windows.Forms.RichTextBox();
             this.btnPrnSticker = new C1.Win.C1Input.C1Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.c1Label13 = new C1.Win.C1Input.C1Label();
@@ -61,6 +60,11 @@
             this.txtBarcode = new C1.Win.C1Input.C1TextBox();
             this.cboPrinter = new C1.Win.C1Input.C1ComboBox();
             this.c1Label11 = new C1.Win.C1Input.C1Label();
+            this.c1Button1 = new C1.Win.C1Input.C1Button();
+            this.c1Button2 = new C1.Win.C1Input.C1Button();
+            this.btnSend = new C1.Win.C1Input.C1Button();
+            this.rtbIncoming = new System.Windows.Forms.RichTextBox();
+            this.c1TextBox1 = new C1.Win.C1Input.C1TextBox();
             this.contextMenuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.c1Label10)).BeginInit();
@@ -89,6 +93,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtBarcode)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboPrinter)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1Label11)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1Button1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1Button2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSend)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // contextMenuStrip1
@@ -132,7 +140,7 @@
             this.groupBox1.Controls.Add(this.c1Label1);
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(339, 285);
+            this.groupBox1.Size = new System.Drawing.Size(395, 285);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Config";
@@ -385,19 +393,10 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.rtbIncoming);
-            this.panel1.Location = new System.Drawing.Point(345, 7);
+            this.panel1.Location = new System.Drawing.Point(401, 7);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(621, 590);
+            this.panel1.Size = new System.Drawing.Size(765, 590);
             this.panel1.TabIndex = 546;
-            // 
-            // rtbIncoming
-            // 
-            this.rtbIncoming.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rtbIncoming.Location = new System.Drawing.Point(0, 0);
-            this.rtbIncoming.Name = "rtbIncoming";
-            this.rtbIncoming.Size = new System.Drawing.Size(621, 590);
-            this.rtbIncoming.TabIndex = 0;
-            this.rtbIncoming.Text = "";
             // 
             // btnPrnSticker
             // 
@@ -419,7 +418,7 @@
             this.groupBox2.Controls.Add(this.btnPrnSticker);
             this.groupBox2.Location = new System.Drawing.Point(12, 291);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(327, 198);
+            this.groupBox2.Size = new System.Drawing.Size(383, 198);
             this.groupBox2.TabIndex = 548;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "groupBox2";
@@ -470,14 +469,14 @@
             this.cboPrinter.BorderColor = System.Drawing.SystemColors.WindowFrame;
             this.cboPrinter.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.cboPrinter.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.cboPrinter.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboPrinter.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.cboPrinter.GapHeight = 0;
             this.cboPrinter.ImagePadding = new System.Windows.Forms.Padding(0);
             this.cboPrinter.ItemsDisplayMember = "";
             this.cboPrinter.ItemsValueMember = "";
             this.cboPrinter.Location = new System.Drawing.Point(69, 19);
             this.cboPrinter.Name = "cboPrinter";
-            this.cboPrinter.Size = new System.Drawing.Size(252, 24);
+            this.cboPrinter.Size = new System.Drawing.Size(308, 20);
             this.cboPrinter.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.cboPrinter.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
             this.cboPrinter.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
@@ -496,11 +495,61 @@
             this.c1Label11.Tag = null;
             this.c1Label11.Value = "Printer :";
             // 
+            // c1Button1
+            // 
+            this.c1Button1.Location = new System.Drawing.Point(12, 495);
+            this.c1Button1.Name = "c1Button1";
+            this.c1Button1.Size = new System.Drawing.Size(40, 39);
+            this.c1Button1.TabIndex = 549;
+            this.c1Button1.Text = "ENQ";
+            this.c1Button1.UseVisualStyleBackColor = true;
+            // 
+            // c1Button2
+            // 
+            this.c1Button2.Location = new System.Drawing.Point(58, 495);
+            this.c1Button2.Name = "c1Button2";
+            this.c1Button2.Size = new System.Drawing.Size(40, 39);
+            this.c1Button2.TabIndex = 550;
+            this.c1Button2.Text = "ENQ";
+            this.c1Button2.UseVisualStyleBackColor = true;
+            // 
+            // btnSend
+            // 
+            this.btnSend.Location = new System.Drawing.Point(282, 495);
+            this.btnSend.Name = "btnSend";
+            this.btnSend.Size = new System.Drawing.Size(113, 39);
+            this.btnSend.TabIndex = 551;
+            this.btnSend.Text = "Send";
+            this.btnSend.UseVisualStyleBackColor = true;
+            // 
+            // rtbIncoming
+            // 
+            this.rtbIncoming.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rtbIncoming.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.rtbIncoming.Location = new System.Drawing.Point(0, 0);
+            this.rtbIncoming.Name = "rtbIncoming";
+            this.rtbIncoming.Size = new System.Drawing.Size(765, 590);
+            this.rtbIncoming.TabIndex = 0;
+            this.rtbIncoming.Text = "";
+            // 
+            // c1TextBox1
+            // 
+            this.c1TextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.c1TextBox1.Location = new System.Drawing.Point(12, 540);
+            this.c1TextBox1.Name = "c1TextBox1";
+            this.c1TextBox1.Size = new System.Drawing.Size(383, 20);
+            this.c1TextBox1.TabIndex = 553;
+            this.c1TextBox1.Tag = null;
+            // 
             // FrmLabLIS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1127, 609);
+            this.ClientSize = new System.Drawing.Size(1224, 609);
+            this.Controls.Add(this.c1TextBox1);
+            this.Controls.Add(this.btnSend);
+            this.Controls.Add(this.c1Button2);
+            this.Controls.Add(this.c1Button1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBox1);
@@ -539,6 +588,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtBarcode)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboPrinter)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1Label11)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1Button1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1Button2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSend)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -566,7 +619,6 @@
         private C1.Win.C1Input.C1Label c1Label8;
         private C1.Win.C1Input.C1Label c1Label7;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.RichTextBox rtbIncoming;
         private C1.Win.C1Input.C1Button btnPrnSticker;
         private System.Windows.Forms.GroupBox groupBox2;
         private C1.Win.C1Input.C1Label c1Label12;
@@ -575,5 +627,10 @@
         private C1.Win.C1Input.C1Label c1Label11;
         private C1.Win.C1Input.C1Label c1Label13;
         private C1.Win.C1Input.C1TextBox txtName;
+        private System.Windows.Forms.RichTextBox rtbIncoming;
+        private C1.Win.C1Input.C1Button c1Button1;
+        private C1.Win.C1Input.C1Button c1Button2;
+        private C1.Win.C1Input.C1Button btnSend;
+        private C1.Win.C1Input.C1TextBox c1TextBox1;
     }
 }
