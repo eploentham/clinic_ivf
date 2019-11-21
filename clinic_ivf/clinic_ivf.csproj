@@ -719,6 +719,7 @@
     <Compile Include="objdb\StockReturnDB.cs" />
     <Compile Include="objdb\StockReturnDetailDB.cs" />
     <Compile Include="objdb\StockSubNameDB.cs" />
+    <Compile Include="object1\ASCII.cs" />
     <Compile Include="object1\CellNoteManager.cs" />
     <Compile Include="object1\Closeday.cs" />
     <Compile Include="object1\ClosedayDetail.cs" />

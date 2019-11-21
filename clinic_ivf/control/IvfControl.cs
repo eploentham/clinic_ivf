@@ -1426,7 +1426,14 @@ namespace clinic_ivf.control
             cbo.Items.Add(115200);
             cbo.Items.ToString();
             //get first item print in text
-            cbo.SelectedIndex = 0;
+            if (cbo.SelectedIndex >= 4)     // from Recommend
+            {
+                cbo.SelectedIndex = 4;
+            }
+            else
+            {
+                cbo.SelectedIndex = 0;
+            }
             //cbo.Text = cbo.Items[0].ToString();
         }
         public void setCboDATABIT(C1ComboBox cbo)
@@ -1441,7 +1448,15 @@ namespace clinic_ivf.control
             cbo.Items.Add("One");
             cbo.Items.Add("OnePointFive");
             cbo.Items.Add("Two");
-            cbo.SelectedIndex = 0;
+            //cbo.SelectedIndex = 0;
+            if (cbo.SelectedIndex >= 1)     // from Recommend
+            {
+                cbo.SelectedIndex = 0;
+            }
+            else
+            {
+                cbo.SelectedIndex = 0;
+            }
             //get the first item print in the text
             //cbo.Text = cbo.Items[0].ToString();
         }
@@ -1453,6 +1468,7 @@ namespace clinic_ivf.control
             cbo.Items.Add("Odd");
             cbo.Items.Add("Space");
             cbo.SelectedIndex = 0;
+
             //cbo.Text = cbo.Items[0].ToString();
         }
         public void setCboHandShaking(C1ComboBox cbo)
@@ -1461,7 +1477,15 @@ namespace clinic_ivf.control
             cbo.Items.Add("XOnXOff");
             cbo.Items.Add("RequestToSend");
             cbo.Items.Add("RequestToSendXOnXOff");
-            cbo.SelectedIndex = 0;
+            if (cbo.SelectedIndex >= 1)     // from Recommend
+            {
+                cbo.SelectedIndex = 1;
+            }
+            else
+            {
+                cbo.SelectedIndex = 0;
+            }
+            //cbo.SelectedIndex = 0;
             //cbo.Text = cbo.Items[0].ToString();
         }
     }
