@@ -799,9 +799,9 @@ namespace clinic_ivf.objdb
                     chk++;
                 }
                 doc = chk.ToString();
-                doc = "000" + doc;
-                doc = doc.Substring(doc.Length - 3);
-                doc = cop1.prefix_vn_doc + cop1.year + cop1.month + cop1.day + doc;
+                //doc = "000" + doc;
+                //doc = doc.Substring(doc.Length - 3);
+                //doc = cop1.prefix_vn_doc + cop1.year + cop1.month + cop1.day + doc;
             }
             
             return doc;
