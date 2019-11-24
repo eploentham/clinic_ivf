@@ -785,6 +785,19 @@ namespace clinic_ivf.objdb
                     "Where " + cop.pkField + "='" + cop1.comp_id + "'";
                 conn.ExecuteNonQuery(conn.conn, sql);
                 cop1.vn_doc = "000";
+                int chk = 0;
+                if (int.TryParse(cop1.vn_doc, out chk))
+                {
+                    chk++;
+                    doc = "000" + chk;
+                    doc = doc.Substring(doc.Length - 3, 3);
+                    //year = cop1.year_curr;
+
+                    sql = "Update " + cop.table + " Set " +
+                    "" + cop.vn_doc + "=" + chk +
+                    " Where " + cop.pkField + "='" + cop1.comp_id + "'";
+                    conn.ExecuteNonQuery(conn.conn, sql);
+                }
                 doc = cop1.prefix_vn_doc + cop1.year + cop1.month + cop1.day + doc;
             }
             else
@@ -799,11 +812,15 @@ namespace clinic_ivf.objdb
                     chk++;
                 }
                 doc = chk.ToString();
-                //doc = "000" + doc;
-                //doc = doc.Substring(doc.Length - 3);
+                doc = "000" + doc;
+                doc = doc.Substring(doc.Length - 3);
+                sql = "Update " + cop.table + " Set " +
+                    "" + cop.vn_doc + "=" + chk +
+                    " Where " + cop.pkField + "='" + cop1.comp_id + "'";
+                conn.ExecuteNonQuery(conn.conn, sql);
                 //doc = cop1.prefix_vn_doc + cop1.year + cop1.month + cop1.day + doc;
             }
-            
+            //doc = cop1.prefix_vn_doc + cop1.year + cop1.month + cop1.day + doc;
             return doc;
         }
         public String genVNDoc()

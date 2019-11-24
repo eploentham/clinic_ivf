@@ -93,8 +93,8 @@ namespace clinic_ivf.objdb
             catch (Exception ex)
             {
                 sql = ex.Message + " " + ex.InnerException;
+                new LogWriter("e", "Err insert VisitOld " + sql);
             }
-
             return re;
         }
         public String update(VisitOld p, String userId)
@@ -118,6 +118,7 @@ namespace clinic_ivf.objdb
             catch (Exception ex)
             {
                 sql = ex.Message + " " + ex.InnerException;
+                new LogWriter("e", "Err update VisitOld " + sql);
             }
 
             return re;
