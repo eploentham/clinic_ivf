@@ -62,8 +62,8 @@ namespace clinic_ivf.gui
             tabScan.Text = "PageScan";
             tabScan.Name = "Page Scan";
             tcDtr.Controls.Add(tabScan);
-            txtAnDate.Left = txtVisitDate.Left;
-            txtAnDate.Top = txtVisitDate.Top;
+            //txtAnDate.Left = txtVisitDate.Left;
+            //txtAnDate.Top = txtVisitDate.Top;
 
             //bc.ivfDB.dgsDB.setCboBsp(cboDgs, "");
             DateTime dt = DateTime.Now;
@@ -87,11 +87,7 @@ namespace clinic_ivf.gui
             theme1.SetTheme(tcDtr, theme1.Theme);
             foreach (Control con in groupBox1.Controls)
             {
-                if(con is ProgressBar)
-                {
-                    
-                }
-                else
+                if(!(con is ProgressBar))
                 {
                     theme1.SetTheme(con, theme1.Theme);
                 }
@@ -228,14 +224,14 @@ namespace clinic_ivf.gui
                     Boolean chk = false;
                     txtVN.Hide();
                     btnVn.Hide();
-                    label3.Hide();
-                    txtAN.Hide();
-                    txtAnCnt.Hide();
-                    chkIPD.Hide();
+                    //label3.Hide();
+                    //txtAN.Hide();
+                    //txtAnCnt.Hide();
+                    //chkIPD.Hide();
                     label6.Hide();
                     txtVisitDate.Hide();
-                    txtAnDate.Hide();
-                    txtPreNo.Hide();
+                    //txtAnDate.Hide();
+                    //txtPreNo.Hide();
 
                     ProgressBar pB1 = new ProgressBar();
                     pB1.Location = new System.Drawing.Point(113, 36);
@@ -267,33 +263,33 @@ namespace clinic_ivf.gui
                             dsc.doc_group_id = dgss.doc_group_id;
                             dsc.hn = txtHn.Text;
                             dsc.vn = txtVN.Text;
-                            dsc.an = txtAN.Text;
+                            dsc.an = "";
                             dsc.visit_date = ic.datetoDB(txtVisitDate.Text);
                             dsc.host_ftp = ic.iniC.hostFTP;
                             //dsc.image_path = txtHn.Text + "//" + txtHn.Text + "_" + dgssid + "_" + dsc.row_no + "." + ext[ext.Length - 1];
                             dsc.image_path = "";
                             dsc.doc_group_sub_id = dgssid;
-                            dsc.pre_no = txtPreNo.Text;
-                            dsc.an = txtAN.Text;
+                            dsc.pre_no = "";
+                            dsc.an = "";
                             DateTime dt = new DateTime();
 
-                            dsc.an_date = (DateTime.TryParse(txtAnDate.Text, out dt)) ? ic.datetoDB(txtAnDate.Text) : "";
-                            if (dsc.an_date.Equals("1-01-01"))
-                            {
-                                dsc.an_date = "";
-                            }
+                            //dsc.an_date = (DateTime.TryParse(txtAnDate.Text, out dt)) ? ic.datetoDB(txtAnDate.Text) : "";
+                            //if (dsc.an_date.Equals("1-01-01"))
+                            //{
+                            dsc.an_date = "";
+                            //}
                             dsc.folder_ftp = ic.iniC.folderFTP;
-                            dsc.status_ipd = chkIPD.Checked ? "I" : "O";
+                            dsc.status_ipd = "O";
                             String re = ic.ivfDB.dscDB.insertDocScan(dsc, ic.userId);
                             //dsc.image_path = txtHn.Text + "//" + txtHn.Text + "_" + re + ext;
-                            if (chkIPD.Checked)
-                            {
-                                vn = txtAN.Text.Replace("/", "_").Replace("(", "_").Replace(")", "");
-                            }
-                            else
-                            {
-                                vn = txtVN.Text.Replace("/", "_").Replace("(", "_").Replace(")", "");
-                            }
+                            //if (chkIPD.Checked)
+                            //{
+                            //    vn = txtAN.Text.Replace("/", "_").Replace("(", "_").Replace(")", "");
+                            //}
+                            //else
+                            //{
+                            vn = txtVN.Text.Replace("/", "_").Replace("(", "_").Replace(")", "");
+                            //}
                             dsc.image_path = txtHn.Text.Replace("-", "").Replace("/", "") + "_" + vn + "//" + txtHn.Text.Replace("-", "").Replace("/", "") + "_" + vn + "_" + re + ext;
                             String re1 = ic.ivfDB.dscDB.updateImagepath(dsc.image_path, re);
                             FtpClient ftp = new FtpClient(ic.iniC.hostFTP, ic.iniC.userFTP, ic.iniC.passFTP, ic.ftpUsePassive);
@@ -311,10 +307,10 @@ namespace clinic_ivf.gui
                     pB1.Dispose();
                     txtVN.Show();
                     btnVn.Show();
-                    label3.Show();
-                    txtAN.Show();
-                    txtAnCnt.Show();
-                    chkIPD.Show();
+                    //label3.Show();
+                    //txtAN.Show();
+                    //txtAnCnt.Show();
+                    //chkIPD.Show();
                     label6.Show();
                     delFile();
                     grf.Dispose();
@@ -368,18 +364,18 @@ namespace clinic_ivf.gui
             //txtAnDate.Value = ic.sPtt.anDate;
             //chkIPD.Checked = ic.sPtt.statusIPD.Equals("I") ? true : false;
             
-            if (chkIPD.Checked)
-            {
-                txtVisitDate.Hide();
-                txtAnDate.Show();
-                label6.Text = "AN Date :";
-            }
-            else
-            {
+            //if (chkIPD.Checked)
+            //{
+            //    txtVisitDate.Hide();
+            //    txtAnDate.Show();
+            //    label6.Text = "AN Date :";
+            //}
+            //else
+            //{
                 txtVisitDate.Show();
-                txtAnDate.Hide();
+                //txtAnDate.Hide();
                 label6.Text = "Visit Date :";
-            }
+            //}
         }
 
         private void Timer1_Tick(object sender, EventArgs e)
@@ -432,14 +428,14 @@ namespace clinic_ivf.gui
             String err = "";
             txtVN.Hide();
             btnVn.Hide();
-            label3.Hide();
-            txtAN.Hide();
-            txtAnCnt.Hide();
-            chkIPD.Hide();
+            //label3.Hide();
+            //txtAN.Hide();
+            //txtAnCnt.Hide();
+            //chkIPD.Hide();
             label6.Hide();
             txtVisitDate.Hide();
-            txtAnDate.Hide();
-            txtPreNo.Hide();
+            //txtAnDate.Hide();
+            //txtPreNo.Hide();
             err = "01";
             //MessageBox.Show("222", "");
             ProgressBar pB1 = new ProgressBar();
@@ -554,22 +550,22 @@ namespace clinic_ivf.gui
             pB1.Dispose();
             txtVN.Show();
             btnVn.Show();
-            label3.Show();
-            txtAN.Show();
-            txtAnCnt.Show();
-            chkIPD.Show();
+            //label3.Show();
+            //txtAN.Show();
+            //txtAnCnt.Show();
+            //chkIPD.Show();
             label6.Show();
-            if (chkIPD.Checked)
-            {
-                txtVisitDate.Hide();
-                txtAnDate.Show();
-            }
-            else
-            {
+            //if (chkIPD.Checked)
+            //{
+            //    txtVisitDate.Hide();
+            //    txtAnDate.Show();
+            //}
+            //else
+            //{
                 txtVisitDate.Show();
-                txtAnDate.Hide();
-            }
-            txtPreNo.Show();
+            //    txtAnDate.Hide();
+            //}
+            //txtPreNo.Show();
         }
         private void initGrf()
         {
@@ -835,7 +831,7 @@ namespace clinic_ivf.gui
                     dsc.doc_group_id = dgss.doc_group_id;
                     dsc.hn = txtHn.Text;
                     dsc.vn = txtVN.Text;
-                    dsc.an = txtAN.Text;
+                    dsc.an = "";
                     dsc.visit_date = ic.datetoDB(txtVisitDate.Text);
                     //if (!txtVN.Text.Equals(""))
                     //{
@@ -849,16 +845,16 @@ namespace clinic_ivf.gui
                     //dsc.image_path = txtHn.Text + "//" + txtHn.Text + "_" + dgssid + "_" + dsc.row_no + "." + ext[ext.Length - 1];
                     dsc.image_path = "";
                     dsc.doc_group_sub_id = dgssid;
-                    dsc.pre_no = txtPreNo.Text;
-                    dsc.an = txtAN.Text;
+                    dsc.pre_no = "";
+                    dsc.an = "";
                     DateTime dt = new DateTime();
 
-                    dsc.an_date = (DateTime.TryParse(txtAnDate.Text, out dt)) ? ic.datetoDB(txtAnDate.Text) : "";
-                    if (dsc.an_date.Equals("1-01-01"))
-                    {
-                        dsc.an_date = "";
-                    }
-                    dsc.status_ipd = chkIPD.Checked ? "I" : "O";
+                    dsc.an_date = "";
+                    //if (dsc.an_date.Equals("1-01-01"))
+                    //{
+                    //    dsc.an_date = "";
+                    //}
+                    dsc.status_ipd = "O";
                     dsc.folder_ftp = ic.iniC.folderFTP;
                     String re = ic.ivfDB.dscDB.insertDocScan(dsc, ic.userId);
                     dsc.image_path = txtVN.Text + "//" + txtHn.Text.Replace("/","-") + "_"+ txtVN.Text + "_" + re + ext;
