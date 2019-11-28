@@ -110,6 +110,7 @@ namespace clinic_ivf.control
             appName = System.AppDomain.CurrentDomain.FriendlyName;
             appName = appName.ToLower().Replace(".exe", "");
             appName1 = appName;
+
             //MessageBox.Show("001 " + appName, "");
             //MessageBox.Show("001111 args.Length " + args.Length, "");
             if (System.IO.File.Exists(Environment.CurrentDirectory + "\\" + appName + ".ini"))
@@ -248,6 +249,7 @@ namespace clinic_ivf.control
                 iniC.email_to_sperm_freezing = iniF.getIni("email", "email_to_sperm_freezing");
                 iniC.themeFET = iniF.getIni("app", "themeFET");
                 iniC.lisBarcode = iniF.getIni("app", "lisBarcode");
+                iniC.messageDebug = iniF.getIni("app", "messageDebug");
 
                 iniC.grdViewFontName = iniC.grdViewFontName.Equals("") ? "Microsoft Sans Serif" : iniC.grdViewFontName;
                 //MessageBox.Show("0037 " + iniC.lisBarcode, "");
@@ -288,6 +290,7 @@ namespace clinic_ivf.control
                 iniC.usePassiveFTP = iniC.usePassiveFTP == null ? "false" : iniC.usePassiveFTP.Equals("") ? "false" : iniC.usePassiveFTP;
                 iniC.service_point_id = iniC.service_point_id == null ? "2120000002" : iniC.service_point_id.Equals("") ? "2120000002" : iniC.service_point_id;
                 iniC.statusCheckDonor = iniC.statusCheckDonor == null ? "0" : iniC.statusCheckDonor.Equals("") ? "0" : iniC.statusCheckDonor;
+                iniC.messageDebug = iniC.messageDebug == null ? "0" : iniC.messageDebug.Equals("") ? "0" : iniC.messageDebug;
 
                 int.TryParse(iniC.grdViewFontSize, out grdViewFontSize);
                 Decimal.TryParse(iniC.creditCharge, out CreditCharge);
