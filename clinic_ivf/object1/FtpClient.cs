@@ -138,6 +138,7 @@ namespace clinic_ivf.object1
                 /* When in doubt, use these options */
                 ftpRequest.UseBinary = true;
                 ftpRequest.UsePassive = ftpUsePassive;
+                ftpRequest.UsePassive = false;
                 ftpRequest.KeepAlive = true;
                 /* Specify the Type of FTP Request */
                 
@@ -311,7 +312,7 @@ namespace clinic_ivf.object1
                 ftpRequest.Credentials = new NetworkCredential(user, pass);
                 /* When in doubt, use these options */
                 ftpRequest.UseBinary = true;
-                //ftpRequest.UsePassive = true;
+                //ftpRequest.UsePassive = false;
                 ftpRequest.UsePassive = ftpUsePassive;
                 ftpRequest.KeepAlive = true;
                 //ftpRequest.EnableSsl = true;

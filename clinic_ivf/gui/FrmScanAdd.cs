@@ -232,9 +232,9 @@ namespace clinic_ivf.gui
                     txtVisitDate.Hide();
                     //txtAnDate.Hide();
                     //txtPreNo.Hide();
-
+                    setVisible(false);
                     ProgressBar pB1 = new ProgressBar();
-                    pB1.Location = new System.Drawing.Point(113, 36);
+                    pB1.Location = new System.Drawing.Point(70, 28);
                     pB1.Name = "pB1";
                     pB1.Size = new System.Drawing.Size(862, 23);
                     pB1.Left = txtVN.Left;
@@ -295,7 +295,7 @@ namespace clinic_ivf.gui
                             FtpClient ftp = new FtpClient(ic.iniC.hostFTP, ic.iniC.userFTP, ic.iniC.passFTP, ic.ftpUsePassive);
                             //MessageBox.Show("111", "");
                             //ftp.createDirectory(txtHn.Text);
-                            ftp.createDirectory(ic.iniC.folderFTP + "//" + txtHn.Text.Replace("/", "") + "_" + vn);
+                            ftp.createDirectory(ic.iniC.folderFTP + "//" + txtHn.Text.Replace("-", "").Replace("/", "") + "_" + vn);
                             //MessageBox.Show("222", "");
                             ftp.delete(ic.iniC.folderFTP + "//" + dsc.image_path);
                             //MessageBox.Show("333", "");
@@ -317,6 +317,7 @@ namespace clinic_ivf.gui
                     initGrf();
                     setGrf();
                     setImage1(true);
+                    setVisible(true);
                     MessageBox.Show("Upload รูป เวชระเบียน เรียบร้อย", "");
                 }
             }
@@ -423,6 +424,16 @@ namespace clinic_ivf.gui
             }
             
         }
+        private void setVisible(Boolean flag)
+        {
+            txtHn.Visible = flag;
+            txtVN.Visible = flag;
+            txtVisitDate.Visible = flag;
+            label2.Visible = flag;
+            label6.Visible = flag;
+            btnDel.Visible = flag;
+            btnOpen.Visible = flag;
+        }
         private void setImage(String[] file1)
         {
             String err = "";
@@ -434,12 +445,14 @@ namespace clinic_ivf.gui
             //chkIPD.Hide();
             label6.Hide();
             txtVisitDate.Hide();
+            setVisible(false);
+            Application.DoEvents();
             //txtAnDate.Hide();
             //txtPreNo.Hide();
             err = "01";
             //MessageBox.Show("222", "");
             ProgressBar pB1 = new ProgressBar();
-            pB1.Location = new System.Drawing.Point(113, 36);
+            pB1.Location = new System.Drawing.Point(70, 28);
             pB1.Name = "pB1";
             pB1.Size = new System.Drawing.Size(862, 23);
             groupBox1.Controls.Add(pB1);
@@ -470,6 +483,9 @@ namespace clinic_ivf.gui
                         err = "021";
                         if (!ex.Equals("pdf"))
                         {
+                            String ext = "";
+                            ext = Path.GetExtension(file);
+                            if (ext.IndexOf("db") > 0) continue;
                             loadedImage = Image.FromFile(file);
                             //byte[] buff = System.IO.File.ReadAllBytes(file);
                             //System.IO.MemoryStream ms = new System.IO.MemoryStream(buff);
@@ -529,12 +545,16 @@ namespace clinic_ivf.gui
                         err = "023";
                         j++;
                         pB1.Value++;
+                        if(pB1.Value == 47)
+                        {
+                            String aaa = "";
+                        }
                         //resizedImage.Dispose();
                     }
                     catch (Exception ex)
                     {
                         re = ex.Message;
-                        MessageBox.Show("Error" + ex.Message, "err "+err);
+                        MessageBox.Show("Error" + ex.Message +" Lenght "+ file1.Length+" row "+ pB1.Value, "err "+err);
                     }
                 }
             }
@@ -542,6 +562,7 @@ namespace clinic_ivf.gui
             {
                 MessageBox.Show("Error"+ex.Message, "");
             }
+            setVisible(true);
             //MessageBox.Show("555", "");
             grf.AutoSizeCols();
             grf.AutoSizeRows();
