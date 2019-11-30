@@ -60,7 +60,7 @@ namespace clinic_ivf.gui
             bg = txtPttNameE.BackColor;
             fc = txtPttNameE.ForeColor;
             ff = txtPttNameE.Font;
-            ff1 = new FtpClient(ic.iniC.hostFTP, ic.iniC.userFTP, ic.iniC.passFTP,ic.ftpUsePassive);
+            ff1 = new FtpClient(ic.iniC.hostFTP, ic.iniC.userFTP, ic.iniC.passFTP,ic.ftpUsePassive, ic.iniC.pathChar);
 
             stt = new C1SuperTooltip();
             sep = new C1SuperErrorProvider();

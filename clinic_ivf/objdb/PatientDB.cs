@@ -876,6 +876,19 @@ namespace clinic_ivf.objdb
             cop1 = setPatient(dt);
             return cop1;
         }
+        public Patient selectByHnLike1(String pttId)
+        {
+            Patient cop1 = new Patient();
+            DataTable dt = new DataTable();
+            String sql = "select ptt.*,fpp.patient_prefix_description " +
+                "From " + ptt.table + " ptt " +
+                "Left join f_patient_prefix fpp on fpp.f_patient_prefix_id = ptt.f_patient_prefix_id " +
+                "Where ptt." + ptt.patient_hn + " like '%" + pttId + "%' " +
+                "limit 0,1";
+            dt = conn.selectData(conn.conn, sql);
+            cop1 = setPatient(dt);
+            return cop1;
+        }
         public Patient selectByHn(String pttId)
         {
             Patient cop1 = new Patient();

@@ -148,7 +148,7 @@ namespace clinic_ivf.control
             //MessageBox.Show("004", "");
             conn = new ConnectDB(iniC);
             //MessageBox.Show("005", "");
-            ftpC = new FtpClient(iniC.hostFTP, iniC.userFTP, iniC.passFTP,ftpUsePassive);
+            ftpC = new FtpClient(iniC.hostFTP, iniC.userFTP, iniC.passFTP,ftpUsePassive, iniC.pathChar);
 
             //ivfDB = new IvfDB(conn);
 
@@ -199,6 +199,7 @@ namespace clinic_ivf.control
                 iniC.portFTP = iniF.getIni("ftp", "portFTP");
                 iniC.folderFTP = iniF.getIni("ftp", "folderFTP");
                 iniC.usePassiveFTP = iniF.getIni("ftp", "usePassiveFTP");
+                iniC.pathChar = iniF.getIni("ftp", "pathChar");
 
                 iniC.grdViewFontSize = iniF.getIni("app", "grdViewFontSize");
                 iniC.grdViewFontName = iniF.getIni("app", "grdViewFontName");
@@ -291,6 +292,7 @@ namespace clinic_ivf.control
                 iniC.service_point_id = iniC.service_point_id == null ? "2120000002" : iniC.service_point_id.Equals("") ? "2120000002" : iniC.service_point_id;
                 iniC.statusCheckDonor = iniC.statusCheckDonor == null ? "0" : iniC.statusCheckDonor.Equals("") ? "0" : iniC.statusCheckDonor;
                 iniC.messageDebug = iniC.messageDebug == null ? "0" : iniC.messageDebug.Equals("") ? "0" : iniC.messageDebug;
+                iniC.pathChar = iniC.pathChar == null ? "\\" : iniC.pathChar.Equals("") ? "\\" : iniC.pathChar;
 
                 int.TryParse(iniC.grdViewFontSize, out grdViewFontSize);
                 Decimal.TryParse(iniC.creditCharge, out CreditCharge);

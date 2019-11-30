@@ -567,6 +567,21 @@ namespace clinic_ivf.objdb
             cop1 = setPatient(dt);
             return cop1;
         }
+        public PatientOld selectByHnLike1(String pttId)
+        {
+            PatientOld cop1 = new PatientOld();
+            DataTable dt = new DataTable();
+            String sql = "select pttO.*,sfn.SurfixName " +
+                ",CONCAT(IFNULL(sfn.SurfixName,''),' ', pttO." + pttO.PName + ",' ',pttO." + pttO.PSurname + ") as namee  " +
+                ",CONCAT(IFNULL(sfn.SurfixName,''),' ', pttO." + pttO.OName + ",' ',pttO." + pttO.OSurname + ") as namet  " +
+                "From " + pttO.table + " pttO " +
+                "Left Join SurfixName sfn on sfn.SurfixID = pttO.SurfixID " +
+                "Where pttO." + pttO.PIDS + " like '%" + pttId + "%' " +
+                "limit 0,1";
+            dt = conn.selectData(conn.conn, sql);
+            cop1 = setPatient(dt);
+            return cop1;
+        }
         public DataTable selectByOpdCard(String pttId)
         {
             DataTable dt = new DataTable();

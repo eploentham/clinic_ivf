@@ -315,7 +315,6 @@ namespace clinic_ivf.gui
             }
             //grfAddr.DataSource = xC.iniDB.addrDB.selectByTableId1(vn);
         }
-
         private void setGrfCu()
         {
             //grfDept.Rows.Count = 7;
@@ -396,7 +395,10 @@ namespace clinic_ivf.gui
         }
         private void FrmSearchHn_Load(object sender, EventArgs e)
         {
-            
+            if(statussearchtable == StatusSearchTable.VisitSearch)
+            {
+                tC1.SelectedTab = tabSearch;
+            }
         }
     }
 }

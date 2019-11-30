@@ -234,10 +234,10 @@ namespace clinic_ivf.gui
                     //txtPreNo.Hide();
                     setVisible(false);
                     ProgressBar pB1 = new ProgressBar();
-                    pB1.Location = new System.Drawing.Point(70, 28);
+                    pB1.Location = new System.Drawing.Point(15, 15);
                     pB1.Name = "pB1";
                     pB1.Size = new System.Drawing.Size(862, 23);
-                    pB1.Left = txtVN.Left;
+                    //pB1.Left = txtVN.Left;
                     pB1.Show();
                     pB1.Value = 0;
                     pB1.Minimum = 0;
@@ -292,7 +292,7 @@ namespace clinic_ivf.gui
                             //}
                             dsc.image_path = txtHn.Text.Replace("-", "").Replace("/", "") + "_" + vn + "//" + txtHn.Text.Replace("-", "").Replace("/", "") + "_" + vn + "_" + re + ext;
                             String re1 = ic.ivfDB.dscDB.updateImagepath(dsc.image_path, re);
-                            FtpClient ftp = new FtpClient(ic.iniC.hostFTP, ic.iniC.userFTP, ic.iniC.passFTP, ic.ftpUsePassive);
+                            FtpClient ftp = new FtpClient(ic.iniC.hostFTP, ic.iniC.userFTP, ic.iniC.passFTP, ic.ftpUsePassive, ic.iniC.pathChar);
                             //MessageBox.Show("111", "");
                             //ftp.createDirectory(txtHn.Text);
                             ftp.createDirectory(ic.iniC.folderFTP + "//" + txtHn.Text.Replace("-", "").Replace("/", "") + "_" + vn);
@@ -428,11 +428,14 @@ namespace clinic_ivf.gui
         {
             txtHn.Visible = flag;
             txtVN.Visible = flag;
+            txtName.Visible = flag;
             txtVisitDate.Visible = flag;
             label2.Visible = flag;
             label6.Visible = flag;
+            label4.Visible = flag;
             btnDel.Visible = flag;
             btnOpen.Visible = flag;
+            btnHn.Visible = flag;
         }
         private void setImage(String[] file1)
         {
@@ -452,11 +455,11 @@ namespace clinic_ivf.gui
             err = "01";
             //MessageBox.Show("222", "");
             ProgressBar pB1 = new ProgressBar();
-            pB1.Location = new System.Drawing.Point(70, 28);
+            pB1.Location = new System.Drawing.Point(15, 15);
             pB1.Name = "pB1";
             pB1.Size = new System.Drawing.Size(862, 23);
             groupBox1.Controls.Add(pB1);
-            pB1.Left = txtVN.Left;
+            //pB1.Left = txtVN.Left;
             pB1.Show();
             int i = 1, j = 1, row = grf.Rows.Count;
             grf.Rows.Add();
@@ -880,7 +883,7 @@ namespace clinic_ivf.gui
                     String re = ic.ivfDB.dscDB.insertDocScan(dsc, ic.userId);
                     dsc.image_path = txtVN.Text + "//" + txtHn.Text.Replace("/","-") + "_"+ txtVN.Text + "_" + re + ext;
                     String re1 = ic.ivfDB.dscDB.updateImagepath(dsc.image_path, re);
-                    FtpClient ftp = new FtpClient(ic.iniC.hostFTP, ic.iniC.userFTP, ic.iniC.passFTP, ic.ftpUsePassive);
+                    FtpClient ftp = new FtpClient(ic.iniC.hostFTP, ic.iniC.userFTP, ic.iniC.passFTP, ic.ftpUsePassive, ic.iniC.pathChar);
                     //MessageBox.Show("111", "");
                     ftp.createDirectory(ic.iniC.folderFTP+"//"+ txtVN.Text);
                     //MessageBox.Show("222", "");

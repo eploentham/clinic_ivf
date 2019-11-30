@@ -18,11 +18,22 @@ namespace clinic_ivf.object1
         Stream ftpStream = null;
         int bufferSize = 2048;
         Boolean ftpUsePassive = false;
+        String pathChar = "";
         /* Construct Object */
+        /*
+         * 62-11-30     0014        FTP ของ QNAP
+         */
+        public FtpClient(string hostIP, string userName, string password, Boolean ftpUsePassive, String pathChar)    //+0014
+        {
+            host = hostIP; user = userName; pass = password;
+            this.ftpUsePassive = ftpUsePassive;
+            this.pathChar = pathChar;
+        }
         public FtpClient(string hostIP, string userName, string password, Boolean ftpUsePassive)
         {
             host = hostIP; user = userName; pass = password;
             this.ftpUsePassive = ftpUsePassive;
+            this.pathChar = "/";
         }
 
         /* Download File */
@@ -32,7 +43,8 @@ namespace clinic_ivf.object1
             try
             {
                 /* Create an FTP Request */
-                ftpRequest = (FtpWebRequest)FtpWebRequest.Create(host + "/" + remoteFile);
+                ftpRequest = (FtpWebRequest)FtpWebRequest.Create(host + pathChar + remoteFile);     //+0014
+                //ftpRequest = (FtpWebRequest)FtpWebRequest.Create(host + "/" + remoteFile);     //-0014
                 /* Log in to the FTP Server with the User Name and Password Provided */
                 ftpRequest.Credentials = new NetworkCredential(user, pass);
                 /* When in doubt, use these options */
@@ -81,7 +93,8 @@ namespace clinic_ivf.object1
             try
             {
                 /* Create an FTP Request */
-                ftpRequest = (FtpWebRequest)FtpWebRequest.Create(host1 + "/" + remoteFile);
+                ftpRequest = (FtpWebRequest)FtpWebRequest.Create(host1 + pathChar + remoteFile);     //+0014
+                //ftpRequest = (FtpWebRequest)FtpWebRequest.Create(host1 + "/" + remoteFile);     //-0014
                 /* Log in to the FTP Server with the User Name and Password Provided */
                 ftpRequest.Credentials = new NetworkCredential(user, pass);
                 /* When in doubt, use these options */
@@ -132,7 +145,8 @@ namespace clinic_ivf.object1
             try
             {
                 /* Create an FTP Request */
-                ftpRequest = (FtpWebRequest)FtpWebRequest.Create(host + "/" + remoteFile);
+                ftpRequest = (FtpWebRequest)FtpWebRequest.Create(host + pathChar + remoteFile);     //+0014
+                //ftpRequest = (FtpWebRequest)FtpWebRequest.Create(host + "/" + remoteFile);     //-0014
                 /* Log in to the FTP Server with the User Name and Password Provided */
                 ftpRequest.Credentials = new NetworkCredential(user, pass);
                 /* When in doubt, use these options */
@@ -179,7 +193,8 @@ namespace clinic_ivf.object1
             try
             {
                 /* Create an FTP Request */
-                ftpRequest = (FtpWebRequest)FtpWebRequest.Create(host + "/" + remoteFile);
+                ftpRequest = (FtpWebRequest)FtpWebRequest.Create(host + pathChar + remoteFile);     //+0014
+                //ftpRequest = (FtpWebRequest)FtpWebRequest.Create(host + "/" + remoteFile);     //-0014
                 /* Log in to the FTP Server with the User Name and Password Provided */
                 ftpRequest.Credentials = new NetworkCredential(user, pass);
                 /* When in doubt, use these options */
@@ -230,7 +245,8 @@ namespace clinic_ivf.object1
             try
             {
                 /* Create an FTP Request */
-                ftpRequest = (FtpWebRequest)WebRequest.Create(host + "/" + deleteFile);
+                ftpRequest = (FtpWebRequest)WebRequest.Create(host + pathChar + deleteFile);     //+0014
+                //ftpRequest = (FtpWebRequest)WebRequest.Create(host + "/" + deleteFile);     //-0014
                 /* Log in to the FTP Server with the User Name and Password Provided */
                 ftpRequest.Credentials = new NetworkCredential(user, pass);
                 /* When in doubt, use these options */
@@ -254,7 +270,8 @@ namespace clinic_ivf.object1
             try
             {
                 /* Create an FTP Request */
-                ftpRequest = (FtpWebRequest)WebRequest.Create(host + "/" + deleteFile);
+                ftpRequest = (FtpWebRequest)WebRequest.Create(host + pathChar + deleteFile);     //+0014
+                //ftpRequest = (FtpWebRequest)WebRequest.Create(host + "/" + deleteFile);     //-0014
                 /* Log in to the FTP Server with the User Name and Password Provided */
                 ftpRequest.Credentials = new NetworkCredential(user, pass);
                 /* When in doubt, use these options */
@@ -278,7 +295,8 @@ namespace clinic_ivf.object1
             try
             {
                 /* Create an FTP Request */
-                ftpRequest = (FtpWebRequest)WebRequest.Create(host + "/" + currentFileNameAndPath);
+                ftpRequest = (FtpWebRequest)WebRequest.Create(host + pathChar + currentFileNameAndPath);     //+0014
+                //ftpRequest = (FtpWebRequest)WebRequest.Create(host + "/" + currentFileNameAndPath);     //-0014
                 /* Log in to the FTP Server with the User Name and Password Provided */
                 ftpRequest.Credentials = new NetworkCredential(user, pass);
                 /* When in doubt, use these options */
@@ -305,8 +323,9 @@ namespace clinic_ivf.object1
             try
             {
                 /* Create an FTP Request */
-                //ftpRequest = (FtpWebRequest)WebRequest.Create(host + "/" + newDirectory+"/");
-                ftpRequest = (FtpWebRequest)WebRequest.Create(host + "/" + newDirectory);
+                ftpRequest = (FtpWebRequest)WebRequest.Create(host + pathChar + newDirectory+"/");     //+0014
+                //ftpRequest = (FtpWebRequest)WebRequest.Create(host + "/" + newDirectory + "/");     //-0014
+                //ftpRequest = (FtpWebRequest)WebRequest.Create(host + "//" + newDirectory);
                 //ftpRequest = (FtpWebRequest)WebRequest.Create(host + "/images/");
                 /* Log in to the FTP Server with the User Name and Password Provided */
                 ftpRequest.Credentials = new NetworkCredential(user, pass);
@@ -338,7 +357,8 @@ namespace clinic_ivf.object1
             try
             {
                 /* Create an FTP Request */
-                ftpRequest = (FtpWebRequest)FtpWebRequest.Create(host + "/" + fileName);
+                ftpRequest = (FtpWebRequest)FtpWebRequest.Create(host + pathChar + fileName);     //+0014
+                //ftpRequest = (FtpWebRequest)FtpWebRequest.Create(host + "/" + fileName);     //-0014
                 /* Log in to the FTP Server with the User Name and Password Provided */
                 ftpRequest.Credentials = new NetworkCredential(user, pass);
                 /* When in doubt, use these options */
@@ -377,7 +397,8 @@ namespace clinic_ivf.object1
             try
             {
                 /* Create an FTP Request */
-                ftpRequest = (FtpWebRequest)FtpWebRequest.Create(host + "/" + fileName);
+                ftpRequest = (FtpWebRequest)FtpWebRequest.Create(host + pathChar + fileName);     //+0014
+                //ftpRequest = (FtpWebRequest)FtpWebRequest.Create(host + "/" + fileName);     //-0014
                 /* Log in to the FTP Server with the User Name and Password Provided */
                 ftpRequest.Credentials = new NetworkCredential(user, pass);
                 /* When in doubt, use these options */
@@ -416,7 +437,8 @@ namespace clinic_ivf.object1
             try
             {
                 /* Create an FTP Request */
-                ftpRequest = (FtpWebRequest)FtpWebRequest.Create(host + "/" + directory);
+                ftpRequest = (FtpWebRequest)FtpWebRequest.Create(host + pathChar + directory);     //+0014
+                //ftpRequest = (FtpWebRequest)FtpWebRequest.Create(host + "/" + directory);     //-0014
                 /* Log in to the FTP Server with the User Name and Password Provided */
                 ftpRequest.Credentials = new NetworkCredential(user, pass);
                 /* When in doubt, use these options */
@@ -456,7 +478,8 @@ namespace clinic_ivf.object1
             try
             {
                 /* Create an FTP Request */
-                ftpRequest = (FtpWebRequest)FtpWebRequest.Create(host + "/" + directory);
+                ftpRequest = (FtpWebRequest)FtpWebRequest.Create(host + pathChar + directory);     //+0014
+                //ftpRequest = (FtpWebRequest)FtpWebRequest.Create(host + "/" + directory);     //-0014
                 /* Log in to the FTP Server with the User Name and Password Provided */
                 ftpRequest.Credentials = new NetworkCredential(user, pass);
                 /* When in doubt, use these options */

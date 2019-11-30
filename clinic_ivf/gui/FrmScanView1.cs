@@ -506,8 +506,19 @@ namespace clinic_ivf.gui
             //throw new NotImplementedException();
             if(e.KeyCode == Keys.Enter)
             {
-                ptt = ic.ivfDB.pttDB.selectByHn(txtHn.Text.Trim());
+                if (ic.cop.comp_name_e.IndexOf("World Wide IVF") >= 0)
+                {
+                    PatientOld ptto = new PatientOld();
+                    ptto = ic.ivfDB.pttOldDB.selectByHnLike1(txtHn.Text.Trim());
+                    ptt.Name = ptto.FullName;
+                    ptt.patient_hn = ptto.PIDS;
+                }
+                else
+                {
+                    ptt = ic.ivfDB.pttDB.selectByHnLike1(txtHn.Text.Trim());
+                }
                 txtName.Value = ptt.Name;
+                txtHn.Value = ptt.patient_hn;
                 setGrfVs();
             }
         }
@@ -714,7 +725,7 @@ namespace clinic_ivf.gui
                     //MemoryStream stream;
                     //Image loadedImage, resizedImage;
 
-                    FtpClient ftp = new FtpClient(ic.iniC.hostFTP, ic.iniC.userFTP, ic.iniC.passFTP, ic.ftpUsePassive);
+                    FtpClient ftp = new FtpClient(ic.iniC.hostFTP, ic.iniC.userFTP, ic.iniC.passFTP, ic.ftpUsePassive, ic.iniC.pathChar);
                     Boolean findTrue = false;
                     int colcnt = 0, rowrun = -1;
                     foreach (DataRow row1 in dt.Rows)
@@ -933,7 +944,14 @@ namespace clinic_ivf.gui
 
             DataTable dt = new DataTable();
             //MessageBox.Show("hn "+hn, "");
-            dt = ic.ivfDB.vsDB.selectByHN(txtHn.Text);
+            if (ic.cop.comp_name_e.IndexOf("World Wide IVF") >= 0)
+            {
+                dt = ic.ivfDB.ovsDB.selectByHN(txtHn.Text);
+            }
+            else
+            {
+                dt = ic.ivfDB.vsDB.selectByHN(txtHn.Text);
+            }
             int i = 1, j = 1, row = grfVs.Rows.Count;
             //txtVN.Value = dt.Rows.Count;
             //txtName.Value = "";
@@ -965,7 +983,9 @@ namespace clinic_ivf.gui
             //    menuGw.MenuItems.Add("&เลือกประเภทเอกสาร และUpload Image [" + dgs.doc_group_name + "]", new EventHandler(ContextMenu_upload));
             //}
             //grfVs.ContextMenu = menuGw;
-            //grfVs.Cols[colVsVsDate].Visible = false;
+            grfVs.Cols[colVsVsDate].AllowEditing = false;
+            grfVs.Cols[colVsVn].AllowEditing = false;
+            grfVs.Cols[colVsStatus].AllowEditing = false;
             //grfVs.Cols[colImagePath].Visible = false;
             //row1[colVSE2] = row[ic.ivfDB.pApmDB.pApm.e2].ToString().Equals("1") ? imgCorr : imgTran;
             //grfVs.AutoSizeCols();
