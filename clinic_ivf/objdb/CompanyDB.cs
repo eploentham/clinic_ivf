@@ -781,7 +781,6 @@ namespace clinic_ivf.objdb
                 cop1.day = cop1.day.Substring(cop1.day.Length - 2, 2);
                 sql = "Update " + cop.table + " Set " +
                     " " + cop.day_curr + "='" + cop1.day + "' " +
-
                     "Where " + cop.pkField + "='" + cop1.comp_id + "'";
                 conn.ExecuteNonQuery(conn.conn, sql);
                 cop1.vn_doc = "000";
@@ -815,7 +814,7 @@ namespace clinic_ivf.objdb
                 //doc = "000" + doc;
                 String doc1 = doc.Substring(doc.Length - 3);
                 sql = "Update " + cop.table + " Set " +
-                    "" + cop.vn_doc + "=" + chk +
+                    "" + cop.vn_doc + "=" + doc1 +
                     " Where " + cop.pkField + "='" + cop1.comp_id + "'";
                 conn.ExecuteNonQuery(conn.conn, sql);
                 //doc = cop1.prefix_vn_doc + cop1.year + cop1.month + cop1.day + doc;
