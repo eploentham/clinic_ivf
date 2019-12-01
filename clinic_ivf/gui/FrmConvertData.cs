@@ -36,6 +36,46 @@ namespace clinic_ivf.gui
 
             btnConvertDonor.Click += BtnConvertDonor_Click;
             btnTestConnection.Click += BtnTestConnection_Click;
+            btnConvertVisit.Click += BtnConvertVisit_Click;
+        }
+
+        private void BtnConvertVisit_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            ConnectDB connS;
+            pB1.Show();
+            pB1.Minimum = 0;
+            connS = new ConnectDB(ic.iniC);
+            connS.conn.ConnectionString = "Server=" + txtShost.Text + ";Database=" + txtSdatabase.Text + ";Uid=" + txtSuser.Text + ";Pwd=" + txtSpassword.Text +
+                ";port = " + txtSport.Text + "; Connection Timeout = 300;default command timeout=0; CharSet=utf8;SslMode=none;";
+
+            DataTable dtS = new DataTable();
+            String sql = "";
+            sql = "Select * " +
+                "From Visit ";
+
+            dtS = connS.selectData(connS.conn, sql);
+            if (dtS.Rows.Count > 0)
+            {
+                pB1.Maximum = dtS.Rows.Count + 1;
+                //sql = "Delete From t_patient Where status_convert = '1' ";
+                //connS.ExecuteNonQuery(ic.conn.conn, sql);
+                foreach (DataRow row in dtS.Rows)
+                {
+                    Visit vs = new Visit();
+                    vs.t_visit_id = "";
+                    vs.visit_vn = row["VN"].ToString();
+                    vs.visit_hn = row["PIDS"].ToString();
+                    vs.visit_begin_visit_time = row["VDate"].ToString();
+                    vs.f_visit_type_id = "1";
+                    vs.b_service_point_id = "2120000002";
+
+                    ic.ivfDB.vsDB.insertVisit(vs, "");
+                    
+                    pB1.Value++;
+                }
+            }
+            pB1.Hide();
         }
 
         private void BtnTestConnection_Click(object sender, EventArgs e)
@@ -72,12 +112,8 @@ namespace clinic_ivf.gui
 
             DataTable dtS = new DataTable();
             String sql = "";
-            sql = "Select row_id, regisdate, idcard, hn, yot, name, surname, dbirth, age, phone, sex, status" +
-                ", lastupdate, officer, blood, beActive, pg, tcname, agen, hnmale, namemale, hnfemale, namefemale, doctor, pttype " +
-                ", namefemale " +
-                "From opcard " +
-                "Where status_convert = '0' " +
-                "Order By regisdate ";
+            sql = "Select * " +
+                "From Patient " ;
 
             dtS = connS.selectData(connS.conn,sql);
             if (dtS.Rows.Count > 0)
@@ -86,6 +122,63 @@ namespace clinic_ivf.gui
                 //sql = "Delete From t_patient Where status_convert = '1' ";
                 //connS.ExecuteNonQuery(ic.conn.conn, sql);
                 foreach(DataRow row in dtS.Rows)
+                {
+                    Patient ptt = new Patient();
+                    ptt.t_patient_id = "";
+                    ptt.patient_hn = row["PIDS"].ToString();
+                    ptt.patient_firstname_e = row["PName"].ToString();
+                    ptt.patient_lastname_e = row["PSurname"].ToString();
+                    ptt.patient_birthday = row["DateofBirth"].ToString();
+                    ptt.mobile1 = "";
+                    ptt.f_sex_id = row["SexID"].ToString();
+                    ptt.agent = row["agentID"].ToString();
+                    ptt.patient_type = row["PatientTypeID"].ToString();
+                    ptt.patient_group ="";
+                    ptt.patient_private_doctor = "";
+                    ptt.status_convert = "1";
+                    ptt.remark = "";
+                    ptt.passport = row["IDNumber"].ToString();
+                    ptt.f_patient_prefix_id = row["SurfixID"].ToString();
+                    ptt.f_patient_nation_id = row["Nationality"].ToString();
+                    ptt.patient_tambon = row["District"].ToString();
+                    ptt.patient_changwat = row["Province"].ToString();
+                    ptt.status_convert = "1";
+                    ptt.contact_namet = row["EmergencyPersonalContact"].ToString();
+                    
+                    ic.ivfDB.pttDB.insertPatient(ptt, "");
+                    //sql = "Update opcard Set status_convert = '1' Where row_id = '"+row["row_id"].ToString()+"'";
+                    //connS.ExecuteNonQuery(connS.conn, sql);
+                    pB1.Value++;
+                }
+                
+            }
+            pB1.Hide();
+        }
+        private void convertPtt()
+        {
+            ConnectDB connS;
+            pB1.Show();
+            pB1.Minimum = 0;
+            connS = new ConnectDB(ic.iniC);
+            connS.conn.ConnectionString = "Server=" + txtShost.Text + ";Database=" + txtSdatabase.Text + ";Uid=" + txtSuser.Text + ";Pwd=" + txtSpassword.Text +
+                ";port = " + txtSport.Text + "; Connection Timeout = 300;default command timeout=0; CharSet=utf8;SslMode=none;";
+
+            DataTable dtS = new DataTable();
+            String sql = "";
+            sql = "Select row_id, regisdate, idcard, hn, yot, name, surname, dbirth, age, phone, sex, status" +
+                ", lastupdate, officer, blood, beActive, pg, tcname, agen, hnmale, namemale, hnfemale, namefemale, doctor, pttype " +
+                ", namefemale " +
+                "From opcard " +
+                "Where status_convert = '0' " +
+                "Order By regisdate ";
+
+            dtS = connS.selectData(connS.conn, sql);
+            if (dtS.Rows.Count > 0)
+            {
+                pB1.Maximum = dtS.Rows.Count + 1;
+                //sql = "Delete From t_patient Where status_convert = '1' ";
+                //connS.ExecuteNonQuery(ic.conn.conn, sql);
+                foreach (DataRow row in dtS.Rows)
                 {
                     Patient ptt = new Patient();
                     ptt.t_patient_id = "";
@@ -104,15 +197,14 @@ namespace clinic_ivf.gui
                     ptt.pid = row["idcard"].ToString();
                     ptt.f_patient_prefix_id = ic.getC1Combo(cboPrefix, row["yot"].ToString());
                     ic.ivfDB.pttDB.insertPatient(ptt, "");
-                    sql = "Update opcard Set status_convert = '1' Where row_id = '"+row["row_id"].ToString()+"'";
+                    sql = "Update opcard Set status_convert = '1' Where row_id = '" + row["row_id"].ToString() + "'";
                     connS.ExecuteNonQuery(connS.conn, sql);
                     pB1.Value++;
                 }
-                
+
             }
             pB1.Hide();
         }
-
         private void FrmConvertData_Load(object sender, EventArgs e)
         {
 

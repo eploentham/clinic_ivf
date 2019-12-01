@@ -2703,7 +2703,7 @@ namespace clinic_ivf.gui
             grfVs.Clear();
             grfVs.Rows.Count = 1;
             grfVs.Cols.Count = 12;
-            DataTable dt = ic.ivfDB.vsDB.selectByHN1(search);
+            DataTable dt = ic.ivfDB.vsDB.selectByHN(search);
 
             grfVs.Rows.Count = dt.Rows.Count + 1;
             //grfCu.Rows.Count = 41;

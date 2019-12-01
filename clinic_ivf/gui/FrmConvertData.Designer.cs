@@ -44,6 +44,7 @@
             this.btnTestConnection = new C1.Win.C1Input.C1Button();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.cboPrefix = new C1.Win.C1Input.C1ComboBox();
+            this.btnConvertVisit = new C1.Win.C1Input.C1Button();
             ((System.ComponentModel.ISupportInitialize)(this.txtShost)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSdatabase)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSuser)).BeginInit();
@@ -52,6 +53,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnConvertDonor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnTestConnection)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboPrefix)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnConvertVisit)).BeginInit();
             this.SuspendLayout();
             // 
             // label15
@@ -199,7 +201,7 @@
             this.btnConvertDonor.Name = "btnConvertDonor";
             this.btnConvertDonor.Size = new System.Drawing.Size(184, 39);
             this.btnConvertDonor.TabIndex = 598;
-            this.btnConvertDonor.Text = "convert donor";
+            this.btnConvertDonor.Text = "convert patient";
             this.btnConvertDonor.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnConvertDonor.UseVisualStyleBackColor = true;
             this.btnConvertDonor.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
@@ -253,11 +255,25 @@
             this.cboPrefix.Tag = null;
             this.cboPrefix.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
+            // btnConvertVisit
+            // 
+            this.btnConvertVisit.Image = global::clinic_ivf.Properties.Resources.download_database24;
+            this.btnConvertVisit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnConvertVisit.Location = new System.Drawing.Point(99, 312);
+            this.btnConvertVisit.Name = "btnConvertVisit";
+            this.btnConvertVisit.Size = new System.Drawing.Size(184, 39);
+            this.btnConvertVisit.TabIndex = 603;
+            this.btnConvertVisit.Text = "convert visit";
+            this.btnConvertVisit.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnConvertVisit.UseVisualStyleBackColor = true;
+            this.btnConvertVisit.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
             // FrmConvertData
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1002, 575);
+            this.Controls.Add(this.btnConvertVisit);
             this.Controls.Add(this.cboPrefix);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.btnTestConnection);
@@ -285,6 +301,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnConvertDonor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnTestConnection)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboPrefix)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnConvertVisit)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -308,5 +325,6 @@
         private C1.Win.C1Input.C1Button btnTestConnection;
         private System.Windows.Forms.ListBox listBox1;
         private C1.Win.C1Input.C1ComboBox cboPrefix;
+        private C1.Win.C1Input.C1Button btnConvertVisit;
     }
 }
