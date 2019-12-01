@@ -892,7 +892,7 @@ namespace clinic_ivf.objdb
             //String date = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd");
             String sql = "select vs.t_visit_id as id,vs.visit_vn as VN, vs.visit_hn as PIDS, CONCAT(IFNULL(fpp.patient_prefix_description,''),' ', ptt.patient_firstname_e ,' ',ptt.patient_lastname_e)  as PName" +
                 ", vs.visit_begin_visit_time as VDate, vs.visit_begin_visit_time as VStartTime, vs.visit_financial_discharge_time as VEndTime, '' as VName, bsp.service_point_description as VSID" +
-                ", vs.t_patient_id as PID, ptt.patient_birthday as dob, vs.status_nurse, vs.status_cashier, vs.status_lab " +
+                ", vs.t_patient_id as PID, ptt.patient_birthday as dob, vs.status_nurse, vs.status_cashier, vs.status_lab, vs.nurse_finish_date_time, vs.f_visit_status_id, vs.cashier_finish_date_time " +
                 "From " + vs.table + " vs " +
                 "Left Join t_patient ptt on  ptt.t_patient_id = vs." + vs.t_patient_id + " " +
                 "Left join f_patient_prefix fpp on fpp.f_patient_prefix_id = ptt.f_patient_prefix_id " +
