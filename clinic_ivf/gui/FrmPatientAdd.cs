@@ -3479,6 +3479,7 @@ namespace clinic_ivf.gui
             ptt.patient_hn_1 = txtHn_1.Text;
             ptt.patient_hn_2 = txtHn_2.Text;
             ptt.lmp = ic.datetoDB(txtLmp.Text);
+            
             //ptt.diagnosis_doc = txtDiagDoc.Text;
             //String[] name = txtEmerContact.Text.Split(' ');
             //if (name.Length > 0)

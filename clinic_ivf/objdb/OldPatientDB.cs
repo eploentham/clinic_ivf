@@ -422,8 +422,9 @@ namespace clinic_ivf.objdb
             pttO1.OName = "";
             pttO1.OSurname = "";
             pttO1.PatientTypeID = ptt.patient_type;
-            pttO1.PaymentID = ptt.b_contract_plans_id;
-            
+            //pttO1.PaymentID = ptt.b_contract_plans_id;
+            pttO1.PaymentID = "1";
+
             pttO1.PID = ptt.t_patient_id_old.Equals("-1") ? "" : ptt.t_patient_id_old;
             pttO1.PIDS = ptt.patient_hn;
             

@@ -400,7 +400,7 @@ namespace clinic_ivf.gui
                 dt.Rows[0]["date_report"] = date1;
                 dt.Rows[0]["date_approve"] = date2;
 
-                rpt.Load("lab_sperm_sf.rpt");
+                rpt.Load("lab_sperm_sa.rpt");
 
                 rpt.SetDataSource(dt);
                 rpt.SetParameterValue("line1", ic.cop.comp_name_t);

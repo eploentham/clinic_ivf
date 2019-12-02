@@ -101,6 +101,8 @@
             this.ribbonTopToolBar1 = new C1.Win.C1Ribbon.RibbonTopToolBar();
             this.c1SplitterPanel4 = new C1.Win.C1SplitContainer.C1SplitterPanel();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.lbSpFzRemark = new System.Windows.Forms.Label();
+            this.label220 = new System.Windows.Forms.Label();
             this.txtSfLabFormACode = new C1.Win.C1Input.C1TextBox();
             this.label216 = new System.Windows.Forms.Label();
             this.txtPttIdOld = new C1.Win.C1Input.C1TextBox();
@@ -296,6 +298,8 @@
             this.ribbonTopToolBar11 = new C1.Win.C1Ribbon.RibbonTopToolBar();
             this.c1SplitterPanel2 = new C1.Win.C1SplitContainer.C1SplitterPanel();
             this.pnSememAnalysis = new System.Windows.Forms.Panel();
+            this.lbSpSaRemark = new System.Windows.Forms.Label();
+            this.label233 = new System.Windows.Forms.Label();
             this.txtLabFormACode = new C1.Win.C1Input.C1TextBox();
             this.label217 = new System.Windows.Forms.Label();
             this.btnPrintSa = new C1.Win.C1Input.C1Button();
@@ -703,10 +707,6 @@
             this.txtPeHnFeMale = new C1.Win.C1Input.C1TextBox();
             this.tabReport = new C1.Win.C1Command.C1DockingTabPage();
             this.crySperm = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
-            this.label220 = new System.Windows.Forms.Label();
-            this.lbSpFzRemark = new System.Windows.Forms.Label();
-            this.lbSpSaRemark = new System.Windows.Forms.Label();
-            this.label233 = new System.Windows.Forms.Label();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tC)).BeginInit();
@@ -1688,6 +1688,32 @@
             this.panel7.Size = new System.Drawing.Size(870, 754);
             this.panel7.TabIndex = 0;
             this.theme1.SetTheme(this.panel7, "(default)");
+            // 
+            // lbSpFzRemark
+            // 
+            this.lbSpFzRemark.AutoSize = true;
+            this.lbSpFzRemark.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.lbSpFzRemark.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbSpFzRemark.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.lbSpFzRemark.Location = new System.Drawing.Point(105, 60);
+            this.lbSpFzRemark.Name = "lbSpFzRemark";
+            this.lbSpFzRemark.Size = new System.Drawing.Size(13, 20);
+            this.lbSpFzRemark.TabIndex = 873;
+            this.lbSpFzRemark.Text = ".";
+            this.theme1.SetTheme(this.lbSpFzRemark, "(default)");
+            // 
+            // label220
+            // 
+            this.label220.AutoSize = true;
+            this.label220.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label220.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label220.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label220.Location = new System.Drawing.Point(8, 60);
+            this.label220.Name = "label220";
+            this.label220.Size = new System.Drawing.Size(92, 16);
+            this.label220.TabIndex = 872;
+            this.label220.Text = "nurse remark :";
+            this.theme1.SetTheme(this.label220, "(default)");
             // 
             // txtSfLabFormACode
             // 
@@ -4318,6 +4344,32 @@
             this.pnSememAnalysis.Size = new System.Drawing.Size(877, 754);
             this.pnSememAnalysis.TabIndex = 0;
             this.theme1.SetTheme(this.pnSememAnalysis, "(default)");
+            // 
+            // lbSpSaRemark
+            // 
+            this.lbSpSaRemark.AutoSize = true;
+            this.lbSpSaRemark.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.lbSpSaRemark.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbSpSaRemark.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.lbSpSaRemark.Location = new System.Drawing.Point(107, 67);
+            this.lbSpSaRemark.Name = "lbSpSaRemark";
+            this.lbSpSaRemark.Size = new System.Drawing.Size(13, 20);
+            this.lbSpSaRemark.TabIndex = 875;
+            this.lbSpSaRemark.Text = ".";
+            this.theme1.SetTheme(this.lbSpSaRemark, "(default)");
+            // 
+            // label233
+            // 
+            this.label233.AutoSize = true;
+            this.label233.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label233.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label233.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label233.Location = new System.Drawing.Point(10, 67);
+            this.label233.Name = "label233";
+            this.label233.Size = new System.Drawing.Size(92, 16);
+            this.label233.TabIndex = 874;
+            this.label233.Text = "nurse remark :";
+            this.theme1.SetTheme(this.label233, "(default)");
             // 
             // txtLabFormACode
             // 
@@ -10249,58 +10301,6 @@
             this.crySperm.Size = new System.Drawing.Size(1523, 775);
             this.crySperm.TabIndex = 2;
             this.theme1.SetTheme(this.crySperm, "(default)");
-            // 
-            // label220
-            // 
-            this.label220.AutoSize = true;
-            this.label220.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label220.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label220.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label220.Location = new System.Drawing.Point(8, 60);
-            this.label220.Name = "label220";
-            this.label220.Size = new System.Drawing.Size(92, 16);
-            this.label220.TabIndex = 872;
-            this.label220.Text = "nurse remark :";
-            this.theme1.SetTheme(this.label220, "(default)");
-            // 
-            // lbSpFzRemark
-            // 
-            this.lbSpFzRemark.AutoSize = true;
-            this.lbSpFzRemark.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.lbSpFzRemark.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbSpFzRemark.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.lbSpFzRemark.Location = new System.Drawing.Point(105, 60);
-            this.lbSpFzRemark.Name = "lbSpFzRemark";
-            this.lbSpFzRemark.Size = new System.Drawing.Size(13, 20);
-            this.lbSpFzRemark.TabIndex = 873;
-            this.lbSpFzRemark.Text = ".";
-            this.theme1.SetTheme(this.lbSpFzRemark, "(default)");
-            // 
-            // lbSpSaRemark
-            // 
-            this.lbSpSaRemark.AutoSize = true;
-            this.lbSpSaRemark.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.lbSpSaRemark.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbSpSaRemark.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.lbSpSaRemark.Location = new System.Drawing.Point(107, 67);
-            this.lbSpSaRemark.Name = "lbSpSaRemark";
-            this.lbSpSaRemark.Size = new System.Drawing.Size(13, 20);
-            this.lbSpSaRemark.TabIndex = 875;
-            this.lbSpSaRemark.Text = ".";
-            this.theme1.SetTheme(this.lbSpSaRemark, "(default)");
-            // 
-            // label233
-            // 
-            this.label233.AutoSize = true;
-            this.label233.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label233.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label233.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label233.Location = new System.Drawing.Point(10, 67);
-            this.label233.Name = "label233";
-            this.label233.Size = new System.Drawing.Size(92, 16);
-            this.label233.TabIndex = 874;
-            this.label233.Text = "nurse remark :";
-            this.theme1.SetTheme(this.label233, "(default)");
             // 
             // FrmLabSpermAdd
             // 
