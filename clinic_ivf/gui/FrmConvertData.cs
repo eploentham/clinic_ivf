@@ -37,8 +37,107 @@ namespace clinic_ivf.gui
             btnConvertDonor.Click += BtnConvertDonor_Click;
             btnTestConnection.Click += BtnTestConnection_Click;
             btnConvertVisit.Click += BtnConvertVisit_Click;
+            btnConvertApm.Click += BtnConvertApm_Click;
         }
 
+        private void BtnConvertApm_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            ConnectDB connS;
+            pB1.Show();
+            pB1.Minimum = 0;
+            connS = new ConnectDB(ic.iniC);
+            connS.conn.ConnectionString = "Server=" + txtShost.Text + ";Database=" + txtSdatabase.Text + ";Uid=" + txtSuser.Text + ";Pwd=" + txtSpassword.Text +
+                ";port = " + txtSport.Text + "; Connection Timeout = 300;default command timeout=0; CharSet=utf8;SslMode=none;";
+
+            DataTable dtPtt = new DataTable();
+            String sql = "";
+            sql = "Select * " +
+                "From t_patient ";
+            dtPtt = connS.selectData(connS.conn, sql);
+            DataTable dtVs = new DataTable();
+            sql = "Select * " +
+                "From t_patient ";
+            dtVs = connS.selectData(connS.conn, sql);
+
+            DataTable dtApm = new DataTable();
+            sql = "Select ID, PID, PIDS, AppTime, DATE_FORMAT(AppDate, '%Y-%m-%d') as AppDate, Doctor, Status, PatientName, MobilePhoneNo, PName, PSurname,  HormoneTest, TVS, OPU, OPUTime, OPURemark, ET_FET, ET_FET_Time, BetaHCG, Other, OtherRemark, Comment  " +
+                "From Appointment ";
+            //sql = "Select ID, PID, PIDS, AppTime, Doctor, Status, PatientName, MobilePhoneNo, PName, PSurname,  HormoneTest, TVS, OPU, OPUTime, OPURemark, ET_FET, ET_FET_Time, BetaHCG, Other, OtherRemark, Comment  " +
+            //    "From Appointment ";
+            dtApm = connS.selectData(connS.conn, sql);
+
+            if (dtApm.Rows.Count > 0)
+            {
+                pB1.Maximum = dtApm.Rows.Count + 1;
+                //sql = "Delete From t_patient Where status_convert = '1' ";
+                //connS.ExecuteNonQuery(ic.conn.conn, sql);
+                foreach (DataRow row in dtApm.Rows)
+                {
+                    String time = "", pttid="", dtr="";
+                    time = "0"+row["AppTime"].ToString();
+                    if (time.Length >= 5)
+                    {
+                        time = time.Substring(time.Length - 5);
+                    }
+
+                    DataRow[] resPtt = dtPtt.Select("patient_hn = '" + row["PIDS"].ToString() + "'");
+                    if (resPtt.Length > 0)
+                    {
+                        try
+                        {
+                            pttid = resPtt[0]["PIDS"].ToString();
+                        }
+                        catch(Exception ex)
+                        {
+
+                        }
+                    }
+                    //DataRow[] resVs = dtVs.Select("PIDS = '" + row["PIDS"].ToString() + "'");
+                    //if (resPtt.Length > 0)
+                    //{
+                    //    pttid = resPtt[0]["PIDS"].ToString();
+                    //}
+                    //Patient ptt = new Patient();
+                    //ptt = ic.ivfDB.pttDB.selectByHn(row["PIDS"].ToString());
+
+                    PatientAppointment pApm = new PatientAppointment();
+                    pApm.t_patient_appointment_id = "";
+                    pApm.t_patient_id = pttid;
+                    pApm.patient_appoint_date_time = ic.datetoDB(row["AppDate"].ToString());
+                    pApm.patient_appointment_date = ic.datetoDB(row["AppDate"].ToString());
+                    pApm.patient_appointment_time = time;
+                    pApm.patient_appointment = row["Comment"].ToString();
+                    pApm.patient_appointment_doctor = row["Doctor"].ToString().Trim().Equals("DR. Thitikorn") ? "1" : row["Doctor"].ToString().Trim().Equals("DR. Thitikorn Wanichkul") ? "1" : 
+                        row["Doctor"].ToString().Trim().Equals("Thitikorn") ? "1" : row["Doctor"].ToString().Trim().Equals("DR. Wisut") ? "2" : row["Doctor"].ToString().Trim().Equals("DR. Visut Suvithayasiri") ? "2" :
+                        row["Doctor"].ToString().Trim().Equals("DR. Sakchai") ? "5" : row["Doctor"].ToString().Trim().Equals("DR. Niwat") ? "3" : row["Doctor"].ToString().Trim().Equals("DR. Niwar") ? "3" : "0";
+                    pApm.patient_appointment_servicepoint = "2120000002";
+                    pApm.patient_appointment_notice = row["Comment"].ToString();
+                    pApm.t_visit_id = "";
+                    pApm.patient_appointment_vn = "";
+                    pApm.remark = row["OtherRemark"].ToString();
+                    pApm.opu_remark = row["OPURemark"].ToString();
+                    pApm.opu_time = row["OPUTime"].ToString();
+                    pApm.opu = row["OPU"].ToString();
+                    pApm.hormone_test = row["HormoneTest"].ToString();
+                    pApm.tvs = row["TVS"].ToString();
+                    //pApm.et = row["HormoneTest"].ToString();
+                    pApm.fet = row["ET_FET"].ToString();
+                    pApm.fet_time = row["ET_FET_Time"].ToString();
+                    pApm.beta_hgc = row["BetaHCG"].ToString();
+                    pApm.other = row["Other"].ToString();
+                    pApm.other_remark = row["OtherRemark"].ToString();
+                    pApm.status_convert = "1";
+                    pApm.active = row["Status"].ToString().Equals("1") ? "1" : "3";
+                    pApm.patient_hn = row["PIDS"].ToString();
+                    ic.ivfDB.pApmDB.insertPatientAppointment(pApm, "");
+
+                    pB1.Value++;
+                }
+            }
+            pB1.Hide();
+        }
+        
         private void BtnConvertVisit_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();

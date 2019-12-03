@@ -45,6 +45,7 @@
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.cboPrefix = new C1.Win.C1Input.C1ComboBox();
             this.btnConvertVisit = new C1.Win.C1Input.C1Button();
+            this.btnConvertApm = new C1.Win.C1Input.C1Button();
             ((System.ComponentModel.ISupportInitialize)(this.txtShost)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSdatabase)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSuser)).BeginInit();
@@ -54,6 +55,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnTestConnection)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboPrefix)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnConvertVisit)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnConvertApm)).BeginInit();
             this.SuspendLayout();
             // 
             // label15
@@ -268,11 +270,25 @@
             this.btnConvertVisit.UseVisualStyleBackColor = true;
             this.btnConvertVisit.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
+            // btnConvertApm
+            // 
+            this.btnConvertApm.Image = global::clinic_ivf.Properties.Resources.download_database24;
+            this.btnConvertApm.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnConvertApm.Location = new System.Drawing.Point(99, 370);
+            this.btnConvertApm.Name = "btnConvertApm";
+            this.btnConvertApm.Size = new System.Drawing.Size(184, 39);
+            this.btnConvertApm.TabIndex = 604;
+            this.btnConvertApm.Text = "convert appointment";
+            this.btnConvertApm.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnConvertApm.UseVisualStyleBackColor = true;
+            this.btnConvertApm.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
             // FrmConvertData
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1002, 575);
+            this.Controls.Add(this.btnConvertApm);
             this.Controls.Add(this.btnConvertVisit);
             this.Controls.Add(this.cboPrefix);
             this.Controls.Add(this.listBox1);
@@ -302,6 +318,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnTestConnection)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboPrefix)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnConvertVisit)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnConvertApm)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -326,5 +343,6 @@
         private System.Windows.Forms.ListBox listBox1;
         private C1.Win.C1Input.C1ComboBox cboPrefix;
         private C1.Win.C1Input.C1Button btnConvertVisit;
+        private C1.Win.C1Input.C1Button btnConvertApm;
     }
 }

@@ -93,6 +93,8 @@ namespace clinic_ivf.objdb
             pApm.pesa = "pesa";
             pApm.sperm_sa = "sperm_sa";
             pApm.opu_remark = "opu_remark";
+            pApm.status_convert = "status_convert";
+            pApm.patient_hn = "patient_hn";
 
             pApm.pkField = "t_patient_appointment_id";
             pApm.table = "t_patient_appointment";
@@ -138,6 +140,8 @@ namespace clinic_ivf.objdb
             p.fet_time = p.fet_time == null ? "" : p.fet_time;
             p.et_time = p.et_time == null ? "" : p.et_time;
             p.opu_remark = p.opu_remark == null ? "" : p.opu_remark;
+            p.status_convert = p.status_convert == null ? "" : p.status_convert;
+            p.patient_hn = p.patient_hn == null ? "" : p.patient_hn;
 
             p.remark = p.remark == null ? "" : p.remark;
             p.e2 = p.e2 == null ? "0" : p.e2;
@@ -179,7 +183,7 @@ namespace clinic_ivf.objdb
         {
             String re = "";
             String sql = "";
-            p.active = "1";
+            //p.active = "1";
             //p.ssdata_id = "";
             int chk = 0;
             //p.date_create = "";
@@ -210,7 +214,7 @@ namespace clinic_ivf.objdb
                 pApm.fet_time + "," + pApm.hormone_test + "," + pApm.other + "," +
                 pApm.beta_hgc + "," + pApm.other_remark + "," + pApm.sperm_collect + "," +
                 pApm.appoitment_id_old + "," + pApm.sperm_freezing + "," + pApm.sperm_opu + "," +
-                pApm.pesa + "," + pApm.sperm_sa + "," + pApm.opu_remark + " " +
+                pApm.pesa + "," + pApm.sperm_sa + "," + pApm.opu_remark + "," + pApm.status_convert + "," + pApm.patient_hn + " " +
                 ") " +
                 "Values ('" + p.patient_appoint_date_time + "','" + p.patient_appointment_time.Replace("'", "''") + "','" + p.patient_appointment.Replace("'", "''") + "'," +
                 "'" + p.patient_appointment_doctor.Replace("'", "''") + "','" + p.patient_appointment_notice.Replace("'", "''") + "','" + p.patient_appointment_staff.Replace("'", "''") + "'," +
@@ -234,7 +238,7 @@ namespace clinic_ivf.objdb
                 "'" + p.fet_time + "','" + p.hormone_test + "','" + p.other + "'," +
                 "'" + p.beta_hgc + "','" + p.other_remark.Replace("'", "''") + "','" + p.sperm_collect.Replace("'", "''") + "'," +
                 "'" + p.appoitment_id_old + "','" + p.sperm_freezing.Replace("'", "''") + "','" + p.sperm_opu.Replace("'", "''") + "'," +
-                "'" + p.pesa + "','" + p.sperm_sa + "','" + p.opu_remark.Replace("'", "''") + "' " +
+                "'" + p.pesa + "','" + p.sperm_sa + "','" + p.opu_remark.Replace("'", "''") + "','" + p.status_convert.Replace("'", "''") + "','" + p.patient_hn.Replace("'", "''") + "' " +
                 ")";
 
                 re = conn.ExecuteNonQuery(conn.conn, sql);
