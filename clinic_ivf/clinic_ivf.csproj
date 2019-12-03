@@ -2130,6 +2130,7 @@
     <Content Include="RDNIDlib.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\front_desk_icon_127279.ico" />
     <Content Include="TSCLIB.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

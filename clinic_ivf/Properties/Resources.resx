@@ -808,4 +808,7 @@
   <data name="ivf_lis" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\ivf_lis.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="front_desk_icon_127279" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\front_desk_icon_127279.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

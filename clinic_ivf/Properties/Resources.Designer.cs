@@ -781,6 +781,16 @@ namespace clinic_ivf.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon front_desk_icon_127279 {
+            get {
+                object obj = ResourceManager.GetObject("front_desk_icon_127279", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap GoToNext_small {
