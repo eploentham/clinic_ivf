@@ -16,6 +16,8 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Drawing.Printing;
+using System.Runtime.InteropServices;
 
 namespace clinic_ivf.gui
 {
@@ -48,6 +50,7 @@ namespace clinic_ivf.gui
         String dsc_id = "", hn="";
         //Timer timer1;
         Patient ptt;
+        Stream streamPrint;
         [STAThread]
         private void txtStatus(String msg)
         {
@@ -56,6 +59,8 @@ namespace clinic_ivf.gui
                 txt.Value = msg;
             }));
         }
+        [DllImport("winspool.drv", CharSet = CharSet.Auto, SetLastError = true)]
+        public static extern bool SetDefaultPrinter(string Printer);
         public FrmScanView1(IvfControl bc)
         {
             InitializeComponent();
@@ -208,86 +213,7 @@ namespace clinic_ivf.gui
             tabScan.Controls.Add(grfScan);
             //setPicStaffNote();
             theme1.SetTheme(tcDtr, theme1.Theme);
-            //int i = 0;
-            //String idOld = "";
-            //if (bc.bcDB.dgssDB.lDgss.Count <= 0) bc.bcDB.dgssDB.getlBsp();
-            //foreach (DocGroupSubScan dgss in bc.bcDB.dgssDB.lDgss)
-            //{
-            //    String dgsid = "";
-            //    dgsid = bc.bcDB.dgssDB.getDgsIdDgss(dgss.doc_group_sub_name);
-            //    if (!dgsid.Equals(idOld))
-            //    {
-            //        idOld = dgsid;
-            //        String name = "";
-            //        name = bc.bcDB.dgsDB.getNameDgs(dgss.doc_group_id);
-            //        C1DockingTabPage tabPage = new C1DockingTabPage();
-            //        tabPage.Location = new System.Drawing.Point(1, 24);
-            //        tabPage.Size = new System.Drawing.Size(667, 175);
-
-            //        tabPage.TabIndex = 0;
-            //        tabPage.Text = " " + name + "  ";
-            //        tabPage.Name = dgsid;
-            //        tcDtr.Controls.Add(tabPage);
-            //        i++;
-            //        C1DockingTab tabDtr1 = new C1DockingTab();
-            //        tabDtr1.Dock = System.Windows.Forms.DockStyle.Fill;
-            //        tabDtr1.Location = new System.Drawing.Point(0, 266);
-            //        tabDtr1.Name = "c1DockingTab1";
-            //        tabDtr1.Size = new System.Drawing.Size(669, 200);
-            //        tabDtr1.TabIndex = 0;
-            //        tabDtr1.TabsSpacing = 5;
-            //        tabPage.Controls.Add(tabDtr1);
-            //        theme1.SetTheme(tabDtr1, "Office2010Red");
-            //        foreach (DocGroupSubScan dgsss in bc.bcDB.dgssDB.lDgss)
-            //        {
-            //            if (dgsss.doc_group_id.Equals(dgss.doc_group_id))
-            //            {
-            //                //addDevice.MenuItems.Add(new MenuItem(dgsss.doc_group_sub_name, new EventHandler(ContextMenu_upload)));
-
-            //                C1DockingTabPage tabPage2 = new C1DockingTabPage();
-            //                tabPage2.Location = new System.Drawing.Point(1, 24);
-            //                tabPage2.Size = new System.Drawing.Size(667, 175);
-            //                tabPage2.TabIndex = 0;
-            //                tabPage2.Text = " " + dgsss.doc_group_sub_name + "  ";
-            //                tabPage2.Name = "tab" + dgsss.doc_group_sub_id;
-            //                tabDtr1.Controls.Add(tabPage2);
-            //                C1FlexGrid grf = new C1FlexGrid();
-            //                grf.Font = fEdit;
-            //                grf.Dock = System.Windows.Forms.DockStyle.Fill;
-            //                grf.Location = new System.Drawing.Point(0, 0);
-            //                grf.Rows[0].Visible = false;
-            //                grf.Cols[0].Visible = false;
-            //                grf.Rows.Count = 1;
-            //                grf.Name = dgsss.doc_group_sub_id;
-            //                grf.Cols.Count = 5;
-            //                Column colpic1 = grf.Cols[colPic1];
-            //                colpic1.DataType = typeof(Image);
-            //                Column colpic2 = grf.Cols[colPic2];
-            //                colpic2.DataType = typeof(String);
-            //                Column colpic3 = grf.Cols[colPic3];
-            //                colpic3.DataType = typeof(Image);
-            //                Column colpic4 = grf.Cols[colPic4];
-            //                colpic4.DataType = typeof(Image);
-            //                grf.Cols[colPic1].Width = 310;
-            //                grf.Cols[colPic2].Width = 310;
-            //                grf.Cols[colPic3].Width = 310;
-            //                grf.Cols[colPic4].Width = 310;
-            //                grf.ShowCursor = true;
-            //                grf.Cols[colPic2].Visible = false;
-            //                grf.Cols[colPic3].Visible = true;
-            //                grf.Cols[colPic4].Visible = false;
-            //                grf.Cols[colPic1].AllowEditing = false;
-            //                grf.Cols[colPic3].AllowEditing = false;
-            //                grf.DoubleClick += Grf_DoubleClick;
-            //                tabPage2.Controls.Add(grf);
-            //            }
-            //        }
-            //    }
-            //    else
-            //    {
-
-            //    }
-            //}
+            
         }
 
         private void TcDtr_TabClick(object sender, EventArgs e)
@@ -704,6 +630,10 @@ namespace clinic_ivf.gui
             /* ดึง scan
              * เดียวค่อยกลับมาเขียนต่อ
             */
+            ContextMenu menuGw = new ContextMenu();
+            menuGw.MenuItems.Add("ต้องการ Print ภาพนี้", new EventHandler(ContextMenu_grfscan__print));
+            //menuGw.MenuItems.Add("ต้องการ ลบข้อมูลนี้", new EventHandler(ContextMenu_Delete));
+            grfScan.ContextMenu = menuGw;
             DataTable dt = new DataTable();
             dt = ic.ivfDB.dscDB.selectByVn(txtHn.Text, vn);
             grfScan.Rows.Count = 0;
@@ -869,43 +799,125 @@ namespace clinic_ivf.gui
             //grf1.AutoSizeRows();
             panel2.Enabled = true;
         }
-        private void clearGrf()
+        private void ContextMenu_grfscan__print(object sender, System.EventArgs e)
         {
-            foreach (Control con in panel3.Controls)
+            String id = "";
+            if (grfScan.Col <= 0) return;
+            if (grfScan.Row < 0) return;
+            if (grfScan.Col == 1)
             {
-                if (con is C1DockingTab)
+                id = grfScan[grfScan.Row, colPic2].ToString();
+            }
+            else
+            {
+                id = grfScan[grfScan.Row, colPic4].ToString();
+            }
+            dsc_id = id;
+            MemoryStream strm = null;
+            foreach (listStream lstrmm in lStream)
+            {
+                if (lstrmm.id.Equals(id))
                 {
-                    foreach (Control cond in con.Controls)
-                    {
-                        if (cond is C1DockingTabPage)
-                        {
-                            foreach (Control cong in cond.Controls)
-                            {
-                                if (cong is C1DockingTab)
-                                {
-                                    foreach (Control congd in cong.Controls)
-                                    {
-                                        if (congd is C1DockingTabPage)
-                                        {
-                                            foreach (Control congd1 in congd.Controls)
-                                            {
-                                                if (congd1 is C1FlexGrid)
-                                                {
-                                                    C1FlexGrid grf1;
-                                                    grf1 = (C1FlexGrid)congd1;
-                                                    //grf1.Clear();
-                                                    grf1.Rows.Count = 0;
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
+                    strm = lstrmm.stream;
+                    streamPrint = lstrmm.stream;
+                    break;
                 }
             }
+            setGrfScanToPrint();
+            //MessageBox.Show("row "+ grfScan.Row+"\n"+"col "+grfScan.Col+"\n ", "");
+
         }
+        private void setGrfScanToPrint()
+        {
+            SetDefaultPrinter(ic.iniC.printerA4);
+            System.Threading.Thread.Sleep(500);
+
+            PrintDocument pd = new PrintDocument();
+            pd.PrintPage += Pd_PrintPageA4;
+            //here to select the printer attached to user PC
+            PrintDialog printDialog1 = new PrintDialog();
+            printDialog1.Document = pd;
+            DialogResult result = printDialog1.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                pd.Print();//this will trigger the Print Event handeler PrintPage
+            }
+        }
+        private void Pd_PrintPageA4(object sender, PrintPageEventArgs e)
+        {
+            //throw new NotImplementedException();
+            try
+            {
+
+                System.Drawing.Image img = Image.FromStream(streamPrint);
+
+                float newWidth = img.Width * 100 / img.HorizontalResolution;
+                float newHeight = img.Height * 100 / img.VerticalResolution;
+
+                float widthFactor = newWidth / e.MarginBounds.Width;
+                float heightFactor = newHeight / e.MarginBounds.Height;
+
+                if (widthFactor > 1 | heightFactor > 1)
+                {
+                    if (widthFactor > heightFactor)
+                    {
+                        widthFactor = 1;
+                        newWidth = newWidth / widthFactor;
+                        newHeight = newHeight / widthFactor;
+                        //newWidth = newWidth / 1.2;
+                        //newHeight = newHeight / 1.2;
+                    }
+                    else
+                    {
+                        newWidth = newWidth / heightFactor;
+                        newHeight = newHeight / heightFactor;
+                    }
+                }
+                e.Graphics.DrawImage(img, 0, 0, (int)newWidth, (int)newHeight);
+                //}
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+        //private void clearGrf()
+        //{
+        //    foreach (Control con in panel3.Controls)
+        //    {
+        //        if (con is C1DockingTab)
+        //        {
+        //            foreach (Control cond in con.Controls)
+        //            {
+        //                if (cond is C1DockingTabPage)
+        //                {
+        //                    foreach (Control cong in cond.Controls)
+        //                    {
+        //                        if (cong is C1DockingTab)
+        //                        {
+        //                            foreach (Control congd in cong.Controls)
+        //                            {
+        //                                if (congd is C1DockingTabPage)
+        //                                {
+        //                                    foreach (Control congd1 in congd.Controls)
+        //                                    {
+        //                                        if (congd1 is C1FlexGrid)
+        //                                        {
+        //                                            C1FlexGrid grf1;
+        //                                            grf1 = (C1FlexGrid)congd1;
+        //                                            //grf1.Clear();
+        //                                            grf1.Rows.Count = 0;
+        //                                        }
+        //                                    }
+        //                                }
+        //                            }
+        //                        }
+        //                    }
+        //                }
+        //            }
+        //        }
+        //    }
+        //}
 
         private void setGrfVs()
         {
