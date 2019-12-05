@@ -1296,8 +1296,10 @@ namespace clinic_ivf.gui
             //int.TryParse(txtSpermVol.Text, out vol);
             motile = (motility * cnt) / 100;
             total = motile * vol;
-            txtSpermMoti.Value = motile.ToString().Replace(".0","");
-            txtSpermMotiTotal.Value = total.ToString().Replace(".0", "");
+            //txtSpermMoti.Value = motile.ToString().Replace(".0","");
+            //txtSpermMotiTotal.Value = total.ToString().Replace(".0", "");
+            txtSpermMoti.Value = Math.Round(motile, 0);
+            txtSpermMotiTotal.Value = Math.Round(total, 0);
         }
         private Boolean chkNoofOPU()
         {
