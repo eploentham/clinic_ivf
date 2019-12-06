@@ -379,7 +379,7 @@ namespace clinic_ivf.report {
             
             private global::System.Data.DataColumn columnembryo_dev_0_14;
             
-            private global::System.Data.DataColumn columnembryo_dev_0_15_;
+            private global::System.Data.DataColumn columnembryo_dev_0_15;
             
             private global::System.Data.DataColumn columnembryo_dev_0_16;
             
@@ -1018,9 +1018,9 @@ namespace clinic_ivf.report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn embryo_dev_0_15_Column {
+            public global::System.Data.DataColumn embryo_dev_0_15Column {
                 get {
-                    return this.columnembryo_dev_0_15_;
+                    return this.columnembryo_dev_0_15;
                 }
             }
             
@@ -1920,7 +1920,7 @@ namespace clinic_ivf.report {
                         string embryo_dev_0_12, 
                         string embryo_dev_0_13, 
                         string embryo_dev_0_14, 
-                        string embryo_dev_0_15_, 
+                        string embryo_dev_0_15, 
                         string embryo_dev_0_16, 
                         string embryo_dev_0_17, 
                         string embryo_dev_0_18, 
@@ -2074,7 +2074,7 @@ namespace clinic_ivf.report {
                         embryo_dev_0_12,
                         embryo_dev_0_13,
                         embryo_dev_0_14,
-                        embryo_dev_0_15_,
+                        embryo_dev_0_15,
                         embryo_dev_0_16,
                         embryo_dev_0_17,
                         embryo_dev_0_18,
@@ -2248,7 +2248,7 @@ namespace clinic_ivf.report {
                 this.columnembryo_dev_0_12 = base.Columns["embryo_dev_0_12"];
                 this.columnembryo_dev_0_13 = base.Columns["embryo_dev_0_13"];
                 this.columnembryo_dev_0_14 = base.Columns["embryo_dev_0_14"];
-                this.columnembryo_dev_0_15_ = base.Columns["embryo_dev_0_15 "];
+                this.columnembryo_dev_0_15 = base.Columns["embryo_dev_0_15"];
                 this.columnembryo_dev_0_16 = base.Columns["embryo_dev_0_16"];
                 this.columnembryo_dev_0_17 = base.Columns["embryo_dev_0_17"];
                 this.columnembryo_dev_0_18 = base.Columns["embryo_dev_0_18"];
@@ -2455,8 +2455,8 @@ namespace clinic_ivf.report {
                 base.Columns.Add(this.columnembryo_dev_0_13);
                 this.columnembryo_dev_0_14 = new global::System.Data.DataColumn("embryo_dev_0_14", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnembryo_dev_0_14);
-                this.columnembryo_dev_0_15_ = new global::System.Data.DataColumn("embryo_dev_0_15 ", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnembryo_dev_0_15_);
+                this.columnembryo_dev_0_15 = new global::System.Data.DataColumn("embryo_dev_0_15", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnembryo_dev_0_15);
                 this.columnembryo_dev_0_16 = new global::System.Data.DataColumn("embryo_dev_0_16", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnembryo_dev_0_16);
                 this.columnembryo_dev_0_17 = new global::System.Data.DataColumn("embryo_dev_0_17", typeof(string), null, global::System.Data.MappingType.Element);
@@ -2708,7 +2708,7 @@ namespace clinic_ivf.report {
                 this.columnembryo_dev_0_12.Caption = "DataColumn1";
                 this.columnembryo_dev_0_13.Caption = "DataColumn1";
                 this.columnembryo_dev_0_14.Caption = "DataColumn1";
-                this.columnembryo_dev_0_15_.Caption = "DataColumn1";
+                this.columnembryo_dev_0_15.Caption = "DataColumn1";
                 this.columnembryo_dev_0_16.Caption = "DataColumn1";
                 this.columnembryo_dev_0_17.Caption = "DataColumn1";
                 this.columnembryo_dev_0_18.Caption = "DataColumn1";
@@ -3713,17 +3713,17 @@ namespace clinic_ivf.report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string embryo_dev_0_15_ {
+            public string embryo_dev_0_15 {
                 get {
                     try {
-                        return ((string)(this[this.tablelab_opu.embryo_dev_0_15_Column]));
+                        return ((string)(this[this.tablelab_opu.embryo_dev_0_15Column]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'embryo_dev_0_15 \' in table \'lab_opu\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'embryo_dev_0_15\' in table \'lab_opu\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tablelab_opu.embryo_dev_0_15_Column] = value;
+                    this[this.tablelab_opu.embryo_dev_0_15Column] = value;
                 }
             }
             
@@ -5954,14 +5954,14 @@ namespace clinic_ivf.report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool Isembryo_dev_0_15_Null() {
-                return this.IsNull(this.tablelab_opu.embryo_dev_0_15_Column);
+            public bool Isembryo_dev_0_15Null() {
+                return this.IsNull(this.tablelab_opu.embryo_dev_0_15Column);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void Setembryo_dev_0_15_Null() {
-                this[this.tablelab_opu.embryo_dev_0_15_Column] = global::System.Convert.DBNull;
+            public void Setembryo_dev_0_15Null() {
+                this[this.tablelab_opu.embryo_dev_0_15Column] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

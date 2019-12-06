@@ -1636,7 +1636,7 @@
             this.chkSpermFrozen.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
             this.chkSpermFrozen.Size = new System.Drawing.Size(104, 24);
             this.chkSpermFrozen.TabIndex = 524;
-            this.chkSpermFrozen.Text = "Frozen sperm";
+            this.chkSpermFrozen.Text = "Frozen Sperm";
             this.theme1.SetTheme(this.chkSpermFrozen, "(default)");
             this.chkSpermFrozen.UseVisualStyleBackColor = true;
             this.chkSpermFrozen.Value = null;
@@ -1654,7 +1654,7 @@
             this.chkSpermFresh.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
             this.chkSpermFresh.Size = new System.Drawing.Size(104, 24);
             this.chkSpermFresh.TabIndex = 523;
-            this.chkSpermFresh.Text = "Fresh sperm";
+            this.chkSpermFresh.Text = "Fresh Sperm";
             this.theme1.SetTheme(this.chkSpermFresh, "(default)");
             this.chkSpermFresh.UseVisualStyleBackColor = true;
             this.chkSpermFresh.Value = null;

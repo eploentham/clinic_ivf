@@ -606,6 +606,10 @@ namespace clinic_ivf.control
             item.Text = "3";
             c.Items.Add(item);
             item = new ComboBoxItem();
+            item.Value = "4";
+            item.Text = "4";
+            c.Items.Add(item);
+            item = new ComboBoxItem();
             item.Value = "5";
             item.Text = "5";
             c.Items.Add(item);
