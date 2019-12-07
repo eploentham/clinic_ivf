@@ -208,6 +208,10 @@ namespace clinic_ivf.gui
                     dtDay5 = ic.ivfDB.opuEmDevDB.selectByOpuFetId_Day(txtID.Text, objdb.LabOpuEmbryoDevDB.Day1.Day5, noday61.ToString());
                     if(dtDay5.Rows.Count > 0)
                     {
+                        if (dtDay5.Rows[0][ic.ivfDB.opuEmDevDB.opuEmDev.path_pic].ToString().Equals(""))
+                        {
+                            continue;
+                        }
                         filename = dtDay5.Rows[0][ic.ivfDB.opuEmDevDB.opuEmDev.path_pic].ToString();
                         remotefile = filename.Replace("day5", "day6");
                         re = ic.ivfDB.opuEmDevDB.updatePathPic(id, noday6, remotefile, ic.cStf.staff_id);
@@ -224,7 +228,6 @@ namespace clinic_ivf.gui
                             ic.ftpC.upload(remotefile, ms);
                         }
                     }
-                    
                 }
             }
             catch(Exception ex)
@@ -1471,12 +1474,13 @@ namespace clinic_ivf.gui
         private void BtnSaveImg6_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            if (MessageBox.Show("ต้องการ บันทึกช้อมูล Day 6 Embryo Development  ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-            {
-                ic.cStf.staff_id = "";
+            //if (MessageBox.Show("ต้องการ บันทึกช้อมูล Day 6 Embryo Development  ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+            //{
+            //ic.cStf.staff_id = "";
+            //FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+            //frm.ShowDialog(this);
                 Boolean chkSave = false;
-                FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
-                frm.ShowDialog(this);
+                ic.cStf.staff_id = ic.userId;
                 if (!ic.cStf.staff_id.Equals(""))
                 {
                     String re = "";
@@ -1526,7 +1530,7 @@ namespace clinic_ivf.gui
                     }
                     frmW.Dispose();
                 }
-            }
+            //}
         }
 
         private void BtnDay5ImgRef_Click(object sender, EventArgs e)
@@ -1539,12 +1543,13 @@ namespace clinic_ivf.gui
         private void BtnSaveImg5_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            if (MessageBox.Show("ต้องการ บันทึกช้อมูล Day 5 Embryo Development  ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-            {
-                ic.cStf.staff_id = "";
+            //if (MessageBox.Show("ต้องการ บันทึกช้อมูล Day 5 Embryo Development  ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+            //{
                 Boolean chkSave = false;
-                FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
-                frm.ShowDialog(this);
+                //ic.cStf.staff_id = "";
+                //FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+                //frm.ShowDialog(this);
+                ic.cStf.staff_id = ic.userId;
                 if (!ic.cStf.staff_id.Equals(""))
                 {
                     String re = "";
@@ -1593,18 +1598,19 @@ namespace clinic_ivf.gui
                     }
                     frmW.Dispose();
                 }
-            }
+            //}
         }
 
         private void BtnSaveImg3_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            if (MessageBox.Show("ต้องการ บันทึกช้อมูล Day 3 Embryo Development  ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-            {
-                ic.cStf.staff_id = "";
+            //if (MessageBox.Show("ต้องการ บันทึกช้อมูล Day 3 Embryo Development  ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+            //{
                 Boolean chkSave = false;
-                FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
-                frm.ShowDialog(this);
+                //ic.cStf.staff_id = "";
+                //FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+                //frm.ShowDialog(this);
+                ic.cStf.staff_id = ic.userId;
                 if (!ic.cStf.staff_id.Equals(""))
                 {
                     String re = "";
@@ -1655,7 +1661,7 @@ namespace clinic_ivf.gui
                     }
                     frmW.Dispose();
                 }
-            }
+            //}
         }
 
         private void BtnDay3ImgRef_Click(object sender, EventArgs e)
@@ -1788,12 +1794,13 @@ namespace clinic_ivf.gui
         private void BtnSaveImg2_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            if (MessageBox.Show("ต้องการ บันทึกช้อมูล Day 2 Embryo Development  ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-            {
-                ic.cStf.staff_id = "";
+            //if (MessageBox.Show("ต้องการ บันทึกช้อมูล Day 2 Embryo Development  ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+            //{
                 Boolean chkSave = false;
-                FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
-                frm.ShowDialog(this);
+                //ic.cStf.staff_id = "";
+                //FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+                //frm.ShowDialog(this);
+                ic.cStf.staff_id = ic.userId;
                 if (!ic.cStf.staff_id.Equals(""))
                 {
                     String re = "";
@@ -1842,17 +1849,30 @@ namespace clinic_ivf.gui
                     }
                     frmW.Dispose();
                 }
-            }
+            //}
         }
 
         private void TabDay2_DoubleClick(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            if (flagDay2Img)
+            //if (flagDay2Img)
+            //{
+            //    MessageBox.Show("ได้เคยนำเข้าแล้ว กรุณานำเข้าที่ละรายการ", ""); day copy image day 5  st#
+            //    return;
+            //}
+            if (grfDay2Img == null)
             {
-                MessageBox.Show("ได้เคยนำเข้าแล้ว กรุณานำเข้าที่ละรายการ", "");
+                MessageBox.Show("ยังไม่ได้เลือก ลำดับ row", "");
                 return;
             }
+            if (grfDay2Img.Row <=0 )
+            {
+                MessageBox.Show("ลำดับ row ไม่ถูกต้อง", "");
+                return;
+            }
+            int row = 0;
+            row = grfDay2Img.Row - 1;
+
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Filter = "Images (*.BMP;*.JPG;*.Jepg;*.Png;*.GIF)|*.BMP;*.JPG;*.Jepg;*.Png;*.GIF|Pdf Files|*.pdf|All files (*.*)|*.*";
             ofd.Multiselect = true;
@@ -1876,12 +1896,14 @@ namespace clinic_ivf.gui
                 //cc.Image
                 Column col = grfDay2Img.Cols[colDay2ImgPic];
                 col.DataType = typeof(Image);
-                int ii = 0;
+                //int ii = 0;
+                int ii = row;
                 foreach (String file in ofd.FileNames)
                 {
                     // Create a PictureBox.
                     try
                     {
+                        if (ii > grfDay2Img.Rows.Count) break;
                         Image loadedImage, resizedImage;
                         String ext = Path.GetExtension(file);
                         String ex = "";
@@ -2320,10 +2342,11 @@ namespace clinic_ivf.gui
             //throw new NotImplementedException();
             //if (MessageBox.Show("ต้องการ บันทึกช้อมูล Day 2 Embryo Development  ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
             //{
-            ic.cStf.staff_id = "";
+            //ic.cStf.staff_id = "";
+            //FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+            //frm.ShowDialog(this);
             Boolean chkSave = false;
-            FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
-            frm.ShowDialog(this);
+            ic.cStf.staff_id = ic.userId;
             if (!ic.cStf.staff_id.Equals(""))
             {
                 chkSave = saveDay2();
@@ -2348,9 +2371,10 @@ namespace clinic_ivf.gui
             //throw new NotImplementedException();
             //if (MessageBox.Show("ต้องการ บันทึกช้อมูล Embryo for Freezing Day1 ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
             //{
-            ic.cStf.staff_id = "";
-            FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
-            frm.ShowDialog(this);
+            //ic.cStf.staff_id = "";
+            //FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+            //frm.ShowDialog(this);
+            ic.cStf.staff_id = ic.userId;
             if (!ic.cStf.staff_id.Equals(""))
             {
                 setOPUEmbryoFreezDay1();
@@ -2373,9 +2397,10 @@ namespace clinic_ivf.gui
             //throw new NotImplementedException();
             //if (MessageBox.Show("ต้องการ บันทึกช้อมูล Embryo for Freezing Day0 ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
             //{
-            ic.cStf.staff_id = "";
-            FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
-            frm.ShowDialog(this);
+            //ic.cStf.staff_id = "";
+            //FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+            //frm.ShowDialog(this);
+            ic.cStf.staff_id = ic.userId;
             if (!ic.cStf.staff_id.Equals(""))
             {
                 setOPUEmbryoFreezDay0();
@@ -2398,9 +2423,10 @@ namespace clinic_ivf.gui
             //throw new NotImplementedException();
             //if (MessageBox.Show("ต้องการ บันทึกช้อมูล Embryo for ET ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
             //{
-            ic.cStf.staff_id = "";
-            FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
-            frm.ShowDialog(this);
+            //ic.cStf.staff_id = "";
+            //FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+            //frm.ShowDialog(this);
+            ic.cStf.staff_id = ic.userId;
             if (!ic.cStf.staff_id.Equals(""))
             {
                 setOPUEmbryeEt();
@@ -2423,9 +2449,10 @@ namespace clinic_ivf.gui
             //throw new NotImplementedException();
             //if (MessageBox.Show("ต้องการ บันทึกช้อมูล Sperm Preparation ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
             //{
-            ic.cStf.staff_id = "";
-            FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
-            frm.ShowDialog(this);
+            //ic.cStf.staff_id = "";
+            //FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+            //frm.ShowDialog(this);
+            ic.cStf.staff_id = ic.userId;
             if (!ic.cStf.staff_id.Equals(""))
             {
                 setOPUSperm();
@@ -2448,10 +2475,11 @@ namespace clinic_ivf.gui
             //throw new NotImplementedException();
             //if (MessageBox.Show("ต้องการ บันทึกช้อมูล Fertilization ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
             //{
-            ic.cStf.staff_id = "";
+            //ic.cStf.staff_id = "";
+            //FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+            //frm.ShowDialog(this);
             calFertili();
-            FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
-            frm.ShowDialog(this);
+            ic.cStf.staff_id = ic.userId;
             if (!ic.cStf.staff_id.Equals(""))
             {
                 setOPUFertilization();
@@ -2474,9 +2502,10 @@ namespace clinic_ivf.gui
             //throw new NotImplementedException();
             //if (MessageBox.Show("ต้องการ บันทึกช้อมูล Maturation ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
             //{
-            ic.cStf.staff_id = "";
-            FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
-            frm.ShowDialog(this);
+            //ic.cStf.staff_id = "";
+            //FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+            //frm.ShowDialog(this);
+            ic.cStf.staff_id = ic.userId;
             if (!ic.cStf.staff_id.Equals(""))
             {
                 setOPUMatura();

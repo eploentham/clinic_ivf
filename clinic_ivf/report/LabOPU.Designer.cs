@@ -343,7 +343,7 @@ namespace clinic_ivf.report {
             
             private global::System.Data.DataColumn columnsperm_fresh_sperm;
             
-            private global::System.Data.DataColumn columnsprem_frozen_sperm;
+            private global::System.Data.DataColumn columnsperm_frozen_sperm;
             
             private global::System.Data.DataColumn columnembryo_dev_0_name;
             
@@ -874,9 +874,9 @@ namespace clinic_ivf.report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn sprem_frozen_spermColumn {
+            public global::System.Data.DataColumn sperm_frozen_spermColumn {
                 get {
-                    return this.columnsprem_frozen_sperm;
+                    return this.columnsperm_frozen_sperm;
                 }
             }
             
@@ -1902,7 +1902,7 @@ namespace clinic_ivf.report {
                         string sperm_motile_total, 
                         string sperm_motility, 
                         string sperm_fresh_sperm, 
-                        string sprem_frozen_sperm, 
+                        string sperm_frozen_sperm, 
                         string embryo_dev_0_name, 
                         string embryo_dev_0_date, 
                         string embryo_dev_0_embryologist, 
@@ -2056,7 +2056,7 @@ namespace clinic_ivf.report {
                         sperm_motile_total,
                         sperm_motility,
                         sperm_fresh_sperm,
-                        sprem_frozen_sperm,
+                        sperm_frozen_sperm,
                         embryo_dev_0_name,
                         embryo_dev_0_date,
                         embryo_dev_0_embryologist,
@@ -2230,7 +2230,7 @@ namespace clinic_ivf.report {
                 this.columnsperm_motile_total = base.Columns["sperm_motile_total"];
                 this.columnsperm_motility = base.Columns["sperm_motility"];
                 this.columnsperm_fresh_sperm = base.Columns["sperm_fresh_sperm"];
-                this.columnsprem_frozen_sperm = base.Columns["sprem_frozen_sperm"];
+                this.columnsperm_frozen_sperm = base.Columns["sperm_frozen_sperm"];
                 this.columnembryo_dev_0_name = base.Columns["embryo_dev_0_name"];
                 this.columnembryo_dev_0_date = base.Columns["embryo_dev_0_date"];
                 this.columnembryo_dev_0_embryologist = base.Columns["embryo_dev_0_embryologist"];
@@ -2419,8 +2419,8 @@ namespace clinic_ivf.report {
                 base.Columns.Add(this.columnsperm_motility);
                 this.columnsperm_fresh_sperm = new global::System.Data.DataColumn("sperm_fresh_sperm", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnsperm_fresh_sperm);
-                this.columnsprem_frozen_sperm = new global::System.Data.DataColumn("sprem_frozen_sperm", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnsprem_frozen_sperm);
+                this.columnsperm_frozen_sperm = new global::System.Data.DataColumn("sperm_frozen_sperm", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnsperm_frozen_sperm);
                 this.columnembryo_dev_0_name = new global::System.Data.DataColumn("embryo_dev_0_name", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnembryo_dev_0_name);
                 this.columnembryo_dev_0_date = new global::System.Data.DataColumn("embryo_dev_0_date", typeof(string), null, global::System.Data.MappingType.Element);
@@ -2690,7 +2690,7 @@ namespace clinic_ivf.report {
                 this.columnsperm_motile_total.Caption = "DataColumn1";
                 this.columnsperm_motility.Caption = "DataColumn1";
                 this.columnsperm_fresh_sperm.Caption = "DataColumn1";
-                this.columnsprem_frozen_sperm.Caption = "DataColumn1";
+                this.columnsperm_frozen_sperm.Caption = "DataColumn1";
                 this.columnembryo_dev_0_name.Caption = "DataColumn1";
                 this.columnembryo_dev_0_date.Caption = "DataColumn1";
                 this.columnembryo_dev_0_embryologist.Caption = "DataColumn1";
@@ -3425,17 +3425,17 @@ namespace clinic_ivf.report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string sprem_frozen_sperm {
+            public string sperm_frozen_sperm {
                 get {
                     try {
-                        return ((string)(this[this.tablelab_opu.sprem_frozen_spermColumn]));
+                        return ((string)(this[this.tablelab_opu.sperm_frozen_spermColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'sprem_frozen_sperm\' in table \'lab_opu\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'sperm_frozen_sperm\' in table \'lab_opu\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tablelab_opu.sprem_frozen_spermColumn] = value;
+                    this[this.tablelab_opu.sperm_frozen_spermColumn] = value;
                 }
             }
             
@@ -5738,14 +5738,14 @@ namespace clinic_ivf.report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool Issprem_frozen_spermNull() {
-                return this.IsNull(this.tablelab_opu.sprem_frozen_spermColumn);
+            public bool Issperm_frozen_spermNull() {
+                return this.IsNull(this.tablelab_opu.sperm_frozen_spermColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void Setsprem_frozen_spermNull() {
-                this[this.tablelab_opu.sprem_frozen_spermColumn] = global::System.Convert.DBNull;
+            public void Setsperm_frozen_spermNull() {
+                this[this.tablelab_opu.sperm_frozen_spermColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

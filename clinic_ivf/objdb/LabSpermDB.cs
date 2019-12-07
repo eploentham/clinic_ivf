@@ -105,6 +105,7 @@ namespace clinic_ivf.objdb
             lsperm.morphology_tail_defect1 = "morphology_tail_defect1";
             lsperm.staff_id_finish = "staff_id_finish";
             lsperm.date_finish = "date_finish";
+            lsperm.appearance_text = "appearance_text";
 
             lsperm.pkField = "sperm_id";
             lsperm.table = "lab_t_sperm";
@@ -198,6 +199,7 @@ namespace clinic_ivf.objdb
             p.morphology_neck_defect1 = p.morphology_neck_defect1 == null ? "" : p.morphology_neck_defect1;
             p.morphology_tail_defect1 = p.morphology_tail_defect1 == null ? "" : p.morphology_tail_defect1;
             p.date_finish = p.date_finish == null ? "" : p.date_finish;
+            p.appearance_text = p.appearance_text == null ? "" : p.appearance_text;
 
             p.doctor_id = long.TryParse(p.doctor_id, out chk) ? chk.ToString() : "0";
             p.req_id = long.TryParse(p.req_id, out chk) ? chk.ToString() : "0";
@@ -420,6 +422,7 @@ namespace clinic_ivf.objdb
                     "," + lsperm.morphology_tail_defect1 + "='" + p.morphology_tail_defect1.Replace("'", "''") + "'" +
                     "," + lsperm.staff_id_finish + "='" + p.staff_id_finish + "'" +
                     "," + lsperm.date_finish + "=''" +
+                    "," + lsperm.appearance_text + "='" + p.appearance_text.Replace("'", "''") + "'" +
                     "";
                 re = conn.ExecuteNonQuery(conn.conn, sql);
             }
@@ -516,6 +519,7 @@ namespace clinic_ivf.objdb
                     "," + lsperm.morphology_head_defect1 + "='" + p.morphology_head_defect1.Replace("'", "''") + "'" +
                     "," + lsperm.morphology_neck_defect1 + "='" + p.morphology_neck_defect1.Replace("'", "''") + "'" +
                     "," + lsperm.morphology_tail_defect1 + "='" + p.morphology_tail_defect1.Replace("'", "''") + "'" +
+                    "," + lsperm.appearance_text + "='" + p.appearance_text.Replace("'", "''") + "'" +
                 " Where " + lsperm.pkField + " = '" + p.sperm_id + "' "
                 ;
             try
@@ -658,6 +662,9 @@ namespace clinic_ivf.objdb
                 vs1.morphology_head_defect1 = dt.Rows[0][lsperm.morphology_head_defect1].ToString();
                 vs1.morphology_neck_defect1 = dt.Rows[0][lsperm.morphology_neck_defect1].ToString();
                 vs1.morphology_tail_defect1 = dt.Rows[0][lsperm.morphology_tail_defect1].ToString();
+                vs1.staff_id_finish = dt.Rows[0][lsperm.staff_id_finish].ToString();
+                vs1.date_finish = dt.Rows[0][lsperm.date_finish].ToString();
+                vs1.appearance_text = dt.Rows[0][lsperm.appearance_text].ToString();
             }
             else
             {
@@ -750,6 +757,9 @@ namespace clinic_ivf.objdb
             lforma1.morphology_head_defect1 = "";
             lforma1.morphology_neck_defect1 = "";
             lforma1.morphology_tail_defect1 = "";
+            lforma1.staff_id_finish = "";
+            lforma1.date_finish = "";
+            lforma1.appearance_text = "";
             return lforma1;
         }
     }
