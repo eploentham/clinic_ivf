@@ -3769,10 +3769,10 @@
             this.txtEmailBody.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtEmailBody.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtEmailBody.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtEmailBody.Location = new System.Drawing.Point(0, 214);
+            this.txtEmailBody.Location = new System.Drawing.Point(0, 211);
             this.txtEmailBody.Multiline = true;
             this.txtEmailBody.Name = "txtEmailBody";
-            this.txtEmailBody.Size = new System.Drawing.Size(635, 540);
+            this.txtEmailBody.Size = new System.Drawing.Size(635, 543);
             this.txtEmailBody.TabIndex = 542;
             this.txtEmailBody.Tag = null;
             this.theme1.SetTheme(this.txtEmailBody, "(default)");
@@ -3789,7 +3789,7 @@
             this.panel5.Controls.Add(this.txtEmailTo);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.panel5.Location = new System.Drawing.Point(0, 146);
+            this.panel5.Location = new System.Drawing.Point(0, 143);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(635, 68);
             this.panel5.TabIndex = 2;
@@ -3885,7 +3885,7 @@
             this.c1Ribbon2.QatHolder = this.ribbonQat11;
             this.c1Ribbon2.QatItemsHolder.Add(this.UndoButton1);
             this.c1Ribbon2.QatItemsHolder.Add(this.RedoButton1);
-            this.c1Ribbon2.Size = new System.Drawing.Size(635, 146);
+            this.c1Ribbon2.Size = new System.Drawing.Size(635, 143);
             this.c1Ribbon2.Tabs.Add(this.HomeTab1);
             this.c1Ribbon2.Tabs.Add(this.ViewTab1);
             this.theme1.SetTheme(this.c1Ribbon2, "(default)");

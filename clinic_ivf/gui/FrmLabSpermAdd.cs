@@ -1133,9 +1133,10 @@ namespace clinic_ivf.gui
             String appearance = "", appearancetext = "";
             appearance = dt.Rows[0]["appearance"].ToString();
             appearancetext = dt.Rows[0]["appearance_text"].ToString();
-            if (appearance.Equals("000") && appearancetext.Length > 0)
+            if (appearancetext.Length > 0)
             {
-                dt.Rows[0]["appearance"] = appearancetext;
+                //dt.Rows[0]["appearance"] = appearancetext;
+                dt.Rows[0]["doc_type_name_app"] = appearancetext;
             }
             frm.setSpermSa(dt);
             frm.ShowDialog(this);
@@ -1160,9 +1161,10 @@ namespace clinic_ivf.gui
             String appearance = "", appearancetext="";
             appearance = dt.Rows[0]["appearance"].ToString();
             appearancetext = dt.Rows[0]["appearance_text"].ToString();
-            if (appearance.Equals("000") && appearancetext.Length>0)
+            if (appearancetext.Length>0)
             {
-                dt.Rows[0]["appearance"] = appearancetext;
+                //dt.Rows[0]["appearance"] = appearancetext;
+                dt.Rows[0]["doc_type_name_app"] = appearancetext;
             }
             //FrmWaiting frmW = new FrmWaiting();
             //frmW.Show();
@@ -1561,7 +1563,7 @@ namespace clinic_ivf.gui
             lbSpFzRemark.Text = lforma.sperm_freezing_remark;
             if (lsperm.appearance_text.Length > 0)
             {
-                cboSfAppearance.Text = lsperm.appearance_text;
+                cboSfAppearance.Value = lsperm.appearance_text;
             }
         }
         private void setControlPesa()
