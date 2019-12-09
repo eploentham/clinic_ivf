@@ -2675,7 +2675,7 @@
             this.txtDay2Date.ImagePadding = new System.Windows.Forms.Padding(0);
             this.txtDay2Date.Location = new System.Drawing.Point(75, 49);
             this.txtDay2Date.Name = "txtDay2Date";
-            this.txtDay2Date.Size = new System.Drawing.Size(151, 18);
+            this.txtDay2Date.Size = new System.Drawing.Size(118, 18);
             this.txtDay2Date.TabIndex = 545;
             this.txtDay2Date.Tag = null;
             this.theme1.SetTheme(this.txtDay2Date, "(default)");
@@ -2937,7 +2937,7 @@
             this.txtDay3Date.ImagePadding = new System.Windows.Forms.Padding(0);
             this.txtDay3Date.Location = new System.Drawing.Point(72, 49);
             this.txtDay3Date.Name = "txtDay3Date";
-            this.txtDay3Date.Size = new System.Drawing.Size(151, 18);
+            this.txtDay3Date.Size = new System.Drawing.Size(118, 18);
             this.txtDay3Date.TabIndex = 547;
             this.txtDay3Date.Tag = null;
             this.theme1.SetTheme(this.txtDay3Date, "(default)");
@@ -3199,7 +3199,7 @@
             this.txtDay5Date.ImagePadding = new System.Windows.Forms.Padding(0);
             this.txtDay5Date.Location = new System.Drawing.Point(71, 47);
             this.txtDay5Date.Name = "txtDay5Date";
-            this.txtDay5Date.Size = new System.Drawing.Size(151, 18);
+            this.txtDay5Date.Size = new System.Drawing.Size(118, 18);
             this.txtDay5Date.TabIndex = 549;
             this.txtDay5Date.Tag = null;
             this.theme1.SetTheme(this.txtDay5Date, "(default)");
@@ -3420,7 +3420,7 @@
             this.txtDay6Date.ImagePadding = new System.Windows.Forms.Padding(0);
             this.txtDay6Date.Location = new System.Drawing.Point(74, 51);
             this.txtDay6Date.Name = "txtDay6Date";
-            this.txtDay6Date.Size = new System.Drawing.Size(149, 18);
+            this.txtDay6Date.Size = new System.Drawing.Size(118, 18);
             this.txtDay6Date.TabIndex = 553;
             this.txtDay6Date.Tag = null;
             this.theme1.SetTheme(this.txtDay6Date, "(default)");

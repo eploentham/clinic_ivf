@@ -1130,6 +1130,14 @@ namespace clinic_ivf.gui
 
             datemale = ic.datetoShow(dt.Rows[0]["dob_male"]);
             dt.Rows[0]["dob_male"] = datemale;
+            String appearance = "", appearancetext = "";
+            appearance = dt.Rows[0]["appearance"].ToString();
+            appearancetext = dt.Rows[0]["appearance_text"].ToString();
+            if (appearancetext.Length > 0)
+            {
+                //dt.Rows[0]["appearance"] = appearancetext;
+                dt.Rows[0]["doc_type_name_app"] = appearancetext;
+            }
             frm.setSpermSa(dt);
             frm.ShowDialog(this);
         }
@@ -1150,6 +1158,14 @@ namespace clinic_ivf.gui
 
             datemale = ic.datetoShow(dt.Rows[0]["dob_male"]);
             dt.Rows[0]["dob_male"] = datemale;
+            String appearance = "", appearancetext="";
+            appearance = dt.Rows[0]["appearance"].ToString();
+            appearancetext = dt.Rows[0]["appearance_text"].ToString();
+            if (appearancetext.Length>0)
+            {
+                //dt.Rows[0]["appearance"] = appearancetext;
+                dt.Rows[0]["doc_type_name_app"] = appearancetext;
+            }
             //FrmWaiting frmW = new FrmWaiting();
             //frmW.Show();
             frm.setSpermSf(dt);
@@ -1467,6 +1483,10 @@ namespace clinic_ivf.gui
                 }
             }
             lbSpSaRemark.Text = lforma.sperm_sa_remark;
+            if (lsperm.appearance_text.Length > 0)
+            {
+                cboAppearance.Text = lsperm.appearance_text;
+            }
         }
         private void setControlSpermFreezing()
         {
@@ -1541,6 +1561,10 @@ namespace clinic_ivf.gui
                 }
             }
             lbSpFzRemark.Text = lforma.sperm_freezing_remark;
+            if (lsperm.appearance_text.Length > 0)
+            {
+                cboSfAppearance.Value = lsperm.appearance_text;
+            }
         }
         private void setControlPesa()
         {
@@ -1700,6 +1724,7 @@ namespace clinic_ivf.gui
             lsperm.date_approve = ic.datetoDB(txtApproveDate.Text);
             lsperm.date_report = ic.datetoDB(txtReportDate.Text);
             lsperm.remark = cboSfRemark.Text;
+            lsperm.appearance_text = cboAppearance.Text.Trim();
         }
         private void setSpermFreezing()
         {
@@ -1758,6 +1783,7 @@ namespace clinic_ivf.gui
             //lsperm.no_of_vail = cboSfNoofVail.SelectedItem == null ? "0" : ((ComboBoxItem)cboSfNoofVail.SelectedItem).Value;
             lsperm.wbc = bbb;
             lsperm.no_of_vail = aaa;
+            lsperm.appearance_text = cboSfAppearance.Text.Trim();
         }
         private void setSpermPesa()
         {

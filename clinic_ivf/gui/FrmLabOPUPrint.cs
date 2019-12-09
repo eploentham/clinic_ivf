@@ -355,7 +355,14 @@ namespace clinic_ivf.gui
                             row["no1_pathpic"] = System.IO.Directory.GetCurrentDirectory() + "\\" + filename1;
                             //st = row["no1_desc2"].ToString();
                             st = row["no1_desc3"].ToString();
-                            row["no1_desc2"] = "st# " + st;
+                            if (st.Length >= 1)
+                            {
+                                row["no1_desc2"] = "st# " + st;
+                            }
+                            else
+                            {
+                                row["no1_desc2"] = "";
+                            }
                             row["no1_desc3"] = row["no1_desc4"].ToString();
                             //}footer11
                         }
