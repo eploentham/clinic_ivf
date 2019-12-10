@@ -94,7 +94,7 @@ namespace clinic_ivf.objdb
             pApm.sperm_sa = "sperm_sa";
             pApm.opu_remark = "opu_remark";
             pApm.status_convert = "status_convert";
-            pApm.patient_hn = "patient_hn";
+            pApm.patient_hn_papm = "patient_hn_papm";
 
             pApm.pkField = "t_patient_appointment_id";
             pApm.table = "t_patient_appointment";
@@ -141,7 +141,7 @@ namespace clinic_ivf.objdb
             p.et_time = p.et_time == null ? "" : p.et_time;
             p.opu_remark = p.opu_remark == null ? "" : p.opu_remark;
             p.status_convert = p.status_convert == null ? "" : p.status_convert;
-            p.patient_hn = p.patient_hn == null ? "" : p.patient_hn;
+            p.patient_hn_papm = p.patient_hn_papm == null ? "" : p.patient_hn_papm;
 
             p.remark = p.remark == null ? "" : p.remark;
             p.e2 = p.e2 == null ? "0" : p.e2;
@@ -214,7 +214,7 @@ namespace clinic_ivf.objdb
                 pApm.fet_time + "," + pApm.hormone_test + "," + pApm.other + "," +
                 pApm.beta_hgc + "," + pApm.other_remark + "," + pApm.sperm_collect + "," +
                 pApm.appoitment_id_old + "," + pApm.sperm_freezing + "," + pApm.sperm_opu + "," +
-                pApm.pesa + "," + pApm.sperm_sa + "," + pApm.opu_remark + "," + pApm.status_convert + "," + pApm.patient_hn + " " +
+                pApm.pesa + "," + pApm.sperm_sa + "," + pApm.opu_remark + "," + pApm.status_convert + "," + pApm.patient_hn_papm + " " +
                 ") " +
                 "Values ('" + p.patient_appoint_date_time + "','" + p.patient_appointment_time.Replace("'", "''") + "','" + p.patient_appointment.Replace("'", "''") + "'," +
                 "'" + p.patient_appointment_doctor.Replace("'", "''") + "','" + p.patient_appointment_notice.Replace("'", "''") + "','" + p.patient_appointment_staff.Replace("'", "''") + "'," +
@@ -238,7 +238,7 @@ namespace clinic_ivf.objdb
                 "'" + p.fet_time + "','" + p.hormone_test + "','" + p.other + "'," +
                 "'" + p.beta_hgc + "','" + p.other_remark.Replace("'", "''") + "','" + p.sperm_collect.Replace("'", "''") + "'," +
                 "'" + p.appoitment_id_old + "','" + p.sperm_freezing.Replace("'", "''") + "','" + p.sperm_opu.Replace("'", "''") + "'," +
-                "'" + p.pesa + "','" + p.sperm_sa + "','" + p.opu_remark.Replace("'", "''") + "','" + p.status_convert.Replace("'", "''") + "','" + p.patient_hn.Replace("'", "''") + "' " +
+                "'" + p.pesa + "','" + p.sperm_sa + "','" + p.opu_remark.Replace("'", "''") + "','" + p.status_convert.Replace("'", "''") + "','" + p.patient_hn_papm.Replace("'", "''") + "' " +
                 ")";
 
                 re = conn.ExecuteNonQuery(conn.conn, sql);
@@ -498,7 +498,7 @@ namespace clinic_ivf.objdb
             dateEnd = !date2.Equals("") ? date2 : date1;
 
             String sql = "select pApm.*,  bsp.service_point_description,dtr.Name  as dtr_name,CONCAT(IFNULL(fpp.patient_prefix_description,'') , ' ' , ptt.patient_firstname_e ,' ',ptt.patient_lastname_e) as PatientName" +
-                ", ptt.patient_hn as patient_hn_1, agt.AgentName " +
+                ", ptt.patient_hn, agt.AgentName " +
                 "From " + pApm.table + " pApm " +
                 "Left Join b_service_point bsp on bsp.b_service_point_id = pApm.patient_appointment_servicepoint " +
                 "Left Join Doctor  dtr on pApm.patient_appointment_doctor = dtr.ID " +

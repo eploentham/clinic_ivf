@@ -466,7 +466,7 @@
             this.sB1});
             this.sB.Location = new System.Drawing.Point(0, 890);
             this.sB.Name = "sB";
-            this.sB.Size = new System.Drawing.Size(1857, 22);
+            this.sB.Size = new System.Drawing.Size(1924, 22);
             this.sB.TabIndex = 10;
             this.sB.Text = "statusStrip1";
             // 
@@ -487,7 +487,7 @@
             this.c1CommandDock2.Dock = System.Windows.Forms.DockStyle.Right;
             this.c1CommandDock2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.c1CommandDock2.Id = 3;
-            this.c1CommandDock2.Location = new System.Drawing.Point(1700, 0);
+            this.c1CommandDock2.Location = new System.Drawing.Point(1767, 0);
             this.c1CommandDock2.Name = "c1CommandDock2";
             this.c1CommandDock2.Size = new System.Drawing.Size(157, 890);
             this.theme1.SetTheme(this.c1CommandDock2, "(default)");
@@ -792,7 +792,7 @@
             this.panel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1700, 890);
+            this.panel1.Size = new System.Drawing.Size(1767, 890);
             this.panel1.TabIndex = 13;
             this.theme1.SetTheme(this.panel1, "(default)");
             // 
@@ -804,7 +804,7 @@
             this.panel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.panel2.Location = new System.Drawing.Point(0, 105);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1700, 785);
+            this.panel2.Size = new System.Drawing.Size(1767, 785);
             this.panel2.TabIndex = 2;
             this.theme1.SetTheme(this.panel2, "(default)");
             // 
@@ -832,8 +832,8 @@
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
             this.splitContainer1.Panel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.theme1.SetTheme(this.splitContainer1.Panel2, "(default)");
-            this.splitContainer1.Size = new System.Drawing.Size(1700, 785);
-            this.splitContainer1.SplitterDistance = 514;
+            this.splitContainer1.Size = new System.Drawing.Size(1767, 785);
+            this.splitContainer1.SplitterDistance = 534;
             this.splitContainer1.TabIndex = 0;
             this.theme1.SetTheme(this.splitContainer1, "(default)");
             // 
@@ -846,7 +846,7 @@
             this.groupBox5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.groupBox5.Location = new System.Drawing.Point(0, 567);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(514, 218);
+            this.groupBox5.Size = new System.Drawing.Size(534, 218);
             this.groupBox5.TabIndex = 517;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Embryo Freezing";
@@ -874,7 +874,7 @@
             this.groupBox8.Controls.Add(this.txtEmbryoFreezNoOg1);
             this.groupBox8.Dock = System.Windows.Forms.DockStyle.Right;
             this.groupBox8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.groupBox8.Location = new System.Drawing.Point(244, 16);
+            this.groupBox8.Location = new System.Drawing.Point(264, 16);
             this.groupBox8.Name = "groupBox8";
             this.groupBox8.Size = new System.Drawing.Size(267, 199);
             this.groupBox8.TabIndex = 540;
@@ -1526,7 +1526,7 @@
             this.groupBox4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.groupBox4.Location = new System.Drawing.Point(0, 372);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(514, 195);
+            this.groupBox4.Size = new System.Drawing.Size(534, 195);
             this.groupBox4.TabIndex = 516;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Sperm preparation";
@@ -1898,7 +1898,7 @@
             this.groupBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.groupBox3.Location = new System.Drawing.Point(0, 200);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(514, 172);
+            this.groupBox3.Size = new System.Drawing.Size(534, 172);
             this.groupBox3.TabIndex = 515;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Fertilization";
@@ -2173,7 +2173,7 @@
             this.groupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.groupBox2.Location = new System.Drawing.Point(0, 0);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(514, 200);
+            this.groupBox2.Size = new System.Drawing.Size(534, 200);
             this.groupBox2.TabIndex = 514;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Maturation";
@@ -2485,7 +2485,7 @@
             this.splitContainer2.Panel2.Controls.Add(this.groupBox7);
             this.splitContainer2.Panel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.theme1.SetTheme(this.splitContainer2.Panel2, "(default)");
-            this.splitContainer2.Size = new System.Drawing.Size(1182, 785);
+            this.splitContainer2.Size = new System.Drawing.Size(1229, 785);
             this.splitContainer2.SplitterDistance = 648;
             this.splitContainer2.TabIndex = 0;
             this.theme1.SetTheme(this.splitContainer2, "(default)");
@@ -2511,8 +2511,8 @@
             this.splitContainer3.Panel2.Controls.Add(this.splitContainer4);
             this.splitContainer3.Panel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.theme1.SetTheme(this.splitContainer3.Panel2, "(default)");
-            this.splitContainer3.Size = new System.Drawing.Size(1182, 648);
-            this.splitContainer3.SplitterDistance = 297;
+            this.splitContainer3.Size = new System.Drawing.Size(1229, 648);
+            this.splitContainer3.SplitterDistance = 308;
             this.splitContainer3.TabIndex = 0;
             this.theme1.SetTheme(this.splitContainer3, "(default)");
             // 
@@ -2525,7 +2525,7 @@
             this.gbDay2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.gbDay2.Location = new System.Drawing.Point(0, 0);
             this.gbDay2.Name = "gbDay2";
-            this.gbDay2.Size = new System.Drawing.Size(297, 648);
+            this.gbDay2.Size = new System.Drawing.Size(308, 648);
             this.gbDay2.TabIndex = 3;
             this.gbDay2.TabStop = false;
             this.gbDay2.Text = "Day 2 Embryo Development ";
@@ -2538,7 +2538,7 @@
             this.pn2Grf.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.pn2Grf.Location = new System.Drawing.Point(3, 16);
             this.pn2Grf.Name = "pn2Grf";
-            this.pn2Grf.Size = new System.Drawing.Size(291, 532);
+            this.pn2Grf.Size = new System.Drawing.Size(302, 532);
             this.pn2Grf.TabIndex = 1;
             this.theme1.SetTheme(this.pn2Grf, "(default)");
             // 
@@ -2558,7 +2558,7 @@
             this.pn2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.pn2.Location = new System.Drawing.Point(3, 548);
             this.pn2.Name = "pn2";
-            this.pn2.Size = new System.Drawing.Size(291, 97);
+            this.pn2.Size = new System.Drawing.Size(302, 97);
             this.pn2.TabIndex = 0;
             this.theme1.SetTheme(this.pn2, "(default)");
             // 
@@ -2758,8 +2758,8 @@
             this.splitContainer4.Panel2.Controls.Add(this.splitContainer5);
             this.splitContainer4.Panel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.theme1.SetTheme(this.splitContainer4.Panel2, "(default)");
-            this.splitContainer4.Size = new System.Drawing.Size(881, 648);
-            this.splitContainer4.SplitterDistance = 303;
+            this.splitContainer4.Size = new System.Drawing.Size(917, 648);
+            this.splitContainer4.SplitterDistance = 315;
             this.splitContainer4.TabIndex = 0;
             this.theme1.SetTheme(this.splitContainer4, "(default)");
             // 
@@ -2772,7 +2772,7 @@
             this.gbDay3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.gbDay3.Location = new System.Drawing.Point(0, 0);
             this.gbDay3.Name = "gbDay3";
-            this.gbDay3.Size = new System.Drawing.Size(303, 648);
+            this.gbDay3.Size = new System.Drawing.Size(315, 648);
             this.gbDay3.TabIndex = 4;
             this.gbDay3.TabStop = false;
             this.gbDay3.Text = "Day 3 Embryo Development ";
@@ -2785,7 +2785,7 @@
             this.pn3Grf.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.pn3Grf.Location = new System.Drawing.Point(3, 16);
             this.pn3Grf.Name = "pn3Grf";
-            this.pn3Grf.Size = new System.Drawing.Size(297, 532);
+            this.pn3Grf.Size = new System.Drawing.Size(309, 532);
             this.pn3Grf.TabIndex = 1;
             this.theme1.SetTheme(this.pn3Grf, "(default)");
             // 
@@ -2806,7 +2806,7 @@
             this.pn3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.pn3.Location = new System.Drawing.Point(3, 548);
             this.pn3.Name = "pn3";
-            this.pn3.Size = new System.Drawing.Size(297, 97);
+            this.pn3.Size = new System.Drawing.Size(309, 97);
             this.pn3.TabIndex = 0;
             this.theme1.SetTheme(this.pn3, "(default)");
             // 
@@ -3020,8 +3020,8 @@
             this.splitContainer5.Panel2.Controls.Add(this.gbDay6);
             this.splitContainer5.Panel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.theme1.SetTheme(this.splitContainer5.Panel2, "(default)");
-            this.splitContainer5.Size = new System.Drawing.Size(574, 648);
-            this.splitContainer5.SplitterDistance = 294;
+            this.splitContainer5.Size = new System.Drawing.Size(598, 648);
+            this.splitContainer5.SplitterDistance = 306;
             this.splitContainer5.TabIndex = 0;
             this.theme1.SetTheme(this.splitContainer5, "(default)");
             // 
@@ -3034,7 +3034,7 @@
             this.gbDay5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.gbDay5.Location = new System.Drawing.Point(0, 0);
             this.gbDay5.Name = "gbDay5";
-            this.gbDay5.Size = new System.Drawing.Size(294, 648);
+            this.gbDay5.Size = new System.Drawing.Size(306, 648);
             this.gbDay5.TabIndex = 5;
             this.gbDay5.TabStop = false;
             this.gbDay5.Text = "Day 5 Embryo Development ";
@@ -3047,7 +3047,7 @@
             this.pn5Grf.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.pn5Grf.Location = new System.Drawing.Point(3, 16);
             this.pn5Grf.Name = "pn5Grf";
-            this.pn5Grf.Size = new System.Drawing.Size(288, 532);
+            this.pn5Grf.Size = new System.Drawing.Size(300, 532);
             this.pn5Grf.TabIndex = 1;
             this.theme1.SetTheme(this.pn5Grf, "(default)");
             // 
@@ -3068,7 +3068,7 @@
             this.pn5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.pn5.Location = new System.Drawing.Point(3, 548);
             this.pn5.Name = "pn5";
-            this.pn5.Size = new System.Drawing.Size(288, 97);
+            this.pn5.Size = new System.Drawing.Size(300, 97);
             this.pn5.TabIndex = 0;
             this.theme1.SetTheme(this.pn5, "(default)");
             // 
@@ -3270,7 +3270,7 @@
             this.gbDay6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.gbDay6.Location = new System.Drawing.Point(0, 0);
             this.gbDay6.Name = "gbDay6";
-            this.gbDay6.Size = new System.Drawing.Size(276, 648);
+            this.gbDay6.Size = new System.Drawing.Size(288, 648);
             this.gbDay6.TabIndex = 6;
             this.gbDay6.TabStop = false;
             this.gbDay6.Text = "Day 6 Embryo Development ";
@@ -3283,7 +3283,7 @@
             this.pn6Grf.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.pn6Grf.Location = new System.Drawing.Point(3, 16);
             this.pn6Grf.Name = "pn6Grf";
-            this.pn6Grf.Size = new System.Drawing.Size(270, 532);
+            this.pn6Grf.Size = new System.Drawing.Size(282, 532);
             this.pn6Grf.TabIndex = 1;
             this.theme1.SetTheme(this.pn6Grf, "(default)");
             // 
@@ -3303,7 +3303,7 @@
             this.pn6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.pn6.Location = new System.Drawing.Point(3, 548);
             this.pn6.Name = "pn6";
-            this.pn6.Size = new System.Drawing.Size(270, 97);
+            this.pn6.Size = new System.Drawing.Size(282, 97);
             this.pn6.TabIndex = 0;
             this.theme1.SetTheme(this.pn6, "(default)");
             // 
@@ -3525,7 +3525,7 @@
             this.groupBox7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.groupBox7.Location = new System.Drawing.Point(0, 0);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(1182, 133);
+            this.groupBox7.Size = new System.Drawing.Size(1229, 133);
             this.groupBox7.TabIndex = 3;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Embryo for ET";
@@ -4108,7 +4108,7 @@
             this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1700, 105);
+            this.groupBox1.Size = new System.Drawing.Size(1767, 105);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Patient";
@@ -4809,7 +4809,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1857, 912);
+            this.ClientSize = new System.Drawing.Size(1924, 912);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.c1CommandDock2);
             this.Controls.Add(this.sB);

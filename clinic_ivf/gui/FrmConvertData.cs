@@ -129,7 +129,7 @@ namespace clinic_ivf.gui
                     pApm.other_remark = row["OtherRemark"].ToString();
                     pApm.status_convert = "1";
                     pApm.active = row["Status"].ToString().Equals("1") ? "1" : "3";
-                    pApm.patient_hn = row["PIDS"].ToString();
+                    pApm.patient_hn_papm = row["PIDS"].ToString();
                     ic.ivfDB.pApmDB.insertPatientAppointment(pApm, "");
 
                     pB1.Value++;
