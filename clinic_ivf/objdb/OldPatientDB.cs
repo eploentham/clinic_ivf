@@ -258,6 +258,7 @@ namespace clinic_ivf.objdb
             catch (Exception ex)
             {
                 sql = ex.Message + " " + ex.InnerException;
+                new LogWriter("e", "insert err Message " + ex.Message + " InnerException " + ex.InnerException);
             }
             return re;
         }
@@ -326,6 +327,7 @@ namespace clinic_ivf.objdb
             catch (Exception ex)
             {
                 sql = ex.Message + " " + ex.InnerException;
+                new LogWriter("e", "insert err Message " + ex.Message + " InnerException " + ex.InnerException);
             }
             return re;
         }
@@ -425,7 +427,7 @@ namespace clinic_ivf.objdb
             //pttO1.PaymentID = ptt.b_contract_plans_id;
             pttO1.PaymentID = "1";
 
-            pttO1.PID = ptt.t_patient_id_old.Equals("-1") ? "" : ptt.t_patient_id_old;
+            pttO1.PID = ptt.t_patient_id_old.Equals("-1") ? "" : ptt.t_patient_id_old.Equals("0") ? "" : ptt.t_patient_id_old;
             pttO1.PIDS = ptt.patient_hn;
             
             pttO1.PName = ptt.patient_firstname_e;

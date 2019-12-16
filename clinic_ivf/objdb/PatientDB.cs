@@ -417,6 +417,7 @@ namespace clinic_ivf.objdb
             catch (Exception ex)
             {
                 sql = ex.Message + " " + ex.InnerException;
+                new LogWriter("e", "insert err Message " + ex.Message + " InnerException " + ex.InnerException);
             }
             return re;
         }
@@ -533,6 +534,7 @@ namespace clinic_ivf.objdb
             catch (Exception ex)
             {
                 sql = ex.Message + " " + ex.InnerException;
+                new LogWriter("e", "insert err Message " + ex.Message + " InnerException " + ex.InnerException);
             }
             return re;
         }
