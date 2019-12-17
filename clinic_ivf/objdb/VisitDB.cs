@@ -882,7 +882,7 @@ namespace clinic_ivf.objdb
                 "Left join f_patient_prefix fpp on fpp.f_patient_prefix_id = ptt.f_patient_prefix_id " +
                 "Left Join b_service_point bsp on bsp.b_service_point_id = vs.b_service_point_id " +
                 " " +
-                "Where vs." + vs.t_patient_id + " ='" + pttid + "' and vs.f_visit_status_id in ('1','2','3') " +
+                "Where vs." + vs.t_patient_id + " ='" + pttid + "' and vs.f_visit_status_id in ('1','2','4') " +
                 "Order By vs." + vs.t_visit_id;
             dt = conn.selectData(conn.conn, sql);
 
@@ -900,7 +900,7 @@ namespace clinic_ivf.objdb
                 "Left join f_patient_prefix fpp on fpp.f_patient_prefix_id = ptt.f_patient_prefix_id " +
                 "Left Join b_service_point bsp on bsp.b_service_point_id = vs.b_service_point_id " +
                 " " +
-                "Where vs." + vs.visit_hn + " ='" + hn + "' and vs.f_visit_status_id in ('1','2') " +
+                "Where vs." + vs.visit_hn + " ='" + hn + "' and vs.f_visit_status_id in ('1','2','4') " +
                 "Order By vs."+vs.t_visit_id;
             dt = conn.selectData(conn.conn, sql);
 
@@ -918,7 +918,7 @@ namespace clinic_ivf.objdb
                 "Left join f_patient_prefix fpp on fpp.f_patient_prefix_id = ptt.f_patient_prefix_id " +
                 "Left Join b_service_point bsp on bsp.b_service_point_id = vs.b_service_point_id " +
                 " " +
-                "Where vs." + vs.visit_hn + " ='" + hn + "' /*and vs.f_visit_status_id in ('1','2')*/ " +
+                "Where vs." + vs.visit_hn + " ='" + hn + "' and vs.f_visit_status_id in ('1','2','4') " +
                 "Order By vs." + vs.t_visit_id;
             dt = conn.selectData(conn.conn, sql);
 
