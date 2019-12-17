@@ -201,6 +201,8 @@
             this.chkApmOther = new C1.Win.C1Input.C1CheckBox();
             this.chkApmEt = new C1.Win.C1Input.C1CheckBox();
             this.tabApmDonor = new C1.Win.C1Command.C1DockingTabPage();
+            this.chkApmHCG = new C1.Win.C1Input.C1CheckBox();
+            this.chkApmHormoneTest = new C1.Win.C1Input.C1CheckBox();
             this.label105 = new System.Windows.Forms.Label();
             this.cboApmOPUTimeDonor = new C1.Win.C1Input.C1ComboBox();
             this.label106 = new System.Windows.Forms.Label();
@@ -724,8 +726,6 @@
             this.c1SplitterPanel4 = new C1.Win.C1SplitContainer.C1SplitterPanel();
             this.c1SplitterPanel5 = new C1.Win.C1SplitContainer.C1SplitterPanel();
             this.cPdf = new C1.Win.C1Document.C1PdfDocumentSource(this.components);
-            this.chkApmHormoneTest = new C1.Win.C1Input.C1CheckBox();
-            this.chkApmHCG = new C1.Win.C1Input.C1CheckBox();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sC)).BeginInit();
@@ -858,6 +858,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.chkApmOther)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkApmEt)).BeginInit();
             this.tabApmDonor.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkApmHCG)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkApmHormoneTest)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboApmOPUTimeDonor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboApmTvsTimeDonor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtApmTvsDayDonor)).BeginInit();
@@ -1135,8 +1137,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnSave)).BeginInit();
             this.c1SplitterPanel4.SuspendLayout();
             this.c1SplitterPanel5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chkApmHormoneTest)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkApmHCG)).BeginInit();
             this.SuspendLayout();
             // 
             // sB
@@ -3685,6 +3685,42 @@
             this.tabApmDonor.Size = new System.Drawing.Size(678, 118);
             this.tabApmDonor.TabIndex = 1;
             this.tabApmDonor.Text = "Other";
+            // 
+            // chkApmHCG
+            // 
+            this.chkApmHCG.BackColor = System.Drawing.Color.Transparent;
+            this.chkApmHCG.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkApmHCG.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.chkApmHCG.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chkApmHCG.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkApmHCG.Location = new System.Drawing.Point(441, 10);
+            this.chkApmHCG.Name = "chkApmHCG";
+            this.chkApmHCG.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.chkApmHCG.Size = new System.Drawing.Size(97, 24);
+            this.chkApmHCG.TabIndex = 691;
+            this.chkApmHCG.Text = "Beta HCG";
+            this.theme1.SetTheme(this.chkApmHCG, "(default)");
+            this.chkApmHCG.UseVisualStyleBackColor = true;
+            this.chkApmHCG.Value = null;
+            this.chkApmHCG.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // chkApmHormoneTest
+            // 
+            this.chkApmHormoneTest.BackColor = System.Drawing.Color.Transparent;
+            this.chkApmHormoneTest.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkApmHormoneTest.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.chkApmHormoneTest.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chkApmHormoneTest.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkApmHormoneTest.Location = new System.Drawing.Point(330, 10);
+            this.chkApmHormoneTest.Name = "chkApmHormoneTest";
+            this.chkApmHormoneTest.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.chkApmHormoneTest.Size = new System.Drawing.Size(114, 24);
+            this.chkApmHormoneTest.TabIndex = 690;
+            this.chkApmHormoneTest.Text = "Hormone Test";
+            this.theme1.SetTheme(this.chkApmHormoneTest, "(default)");
+            this.chkApmHormoneTest.UseVisualStyleBackColor = true;
+            this.chkApmHormoneTest.Value = null;
+            this.chkApmHormoneTest.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // label105
             // 
@@ -11320,42 +11356,6 @@
             this.c1SplitterPanel5.TabIndex = 1;
             this.c1SplitterPanel5.Text = "Panel 2";
             // 
-            // chkApmHormoneTest
-            // 
-            this.chkApmHormoneTest.BackColor = System.Drawing.Color.Transparent;
-            this.chkApmHormoneTest.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.chkApmHormoneTest.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.chkApmHormoneTest.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.chkApmHormoneTest.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkApmHormoneTest.Location = new System.Drawing.Point(330, 10);
-            this.chkApmHormoneTest.Name = "chkApmHormoneTest";
-            this.chkApmHormoneTest.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
-            this.chkApmHormoneTest.Size = new System.Drawing.Size(114, 24);
-            this.chkApmHormoneTest.TabIndex = 690;
-            this.chkApmHormoneTest.Text = "Hormone Test";
-            this.theme1.SetTheme(this.chkApmHormoneTest, "(default)");
-            this.chkApmHormoneTest.UseVisualStyleBackColor = true;
-            this.chkApmHormoneTest.Value = null;
-            this.chkApmHormoneTest.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // chkApmHCG
-            // 
-            this.chkApmHCG.BackColor = System.Drawing.Color.Transparent;
-            this.chkApmHCG.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.chkApmHCG.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.chkApmHCG.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.chkApmHCG.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkApmHCG.Location = new System.Drawing.Point(441, 10);
-            this.chkApmHCG.Name = "chkApmHCG";
-            this.chkApmHCG.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
-            this.chkApmHCG.Size = new System.Drawing.Size(97, 24);
-            this.chkApmHCG.TabIndex = 691;
-            this.chkApmHCG.Text = "Beta HCG";
-            this.theme1.SetTheme(this.chkApmHCG, "(default)");
-            this.chkApmHCG.UseVisualStyleBackColor = true;
-            this.chkApmHCG.Value = null;
-            this.chkApmHCG.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
             // FrmNurseAdd2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -11507,6 +11507,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.chkApmEt)).EndInit();
             this.tabApmDonor.ResumeLayout(false);
             this.tabApmDonor.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkApmHCG)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkApmHormoneTest)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboApmOPUTimeDonor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboApmTvsTimeDonor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtApmTvsDayDonor)).EndInit();
@@ -11835,8 +11837,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnSave)).EndInit();
             this.c1SplitterPanel4.ResumeLayout(false);
             this.c1SplitterPanel5.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.chkApmHormoneTest)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkApmHCG)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
