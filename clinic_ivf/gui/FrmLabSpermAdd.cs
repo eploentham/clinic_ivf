@@ -399,6 +399,14 @@ namespace clinic_ivf.gui
                 date2 = ic.datetimetoShow(dt.Rows[0]["date_approve"]);
                 dt.Rows[0]["date_report"] = date1;
                 dt.Rows[0]["date_approve"] = date2;
+                String appearance = "", appearancetext = "";
+                appearance = dt.Rows[0]["appearance"].ToString();
+                appearancetext = dt.Rows[0]["appearance_text"].ToString();
+                if (appearancetext.Length > 0)
+                {
+                    //dt.Rows[0]["appearance"] = appearancetext;
+                    dt.Rows[0]["doc_type_name_app"] = appearancetext;
+                }
 
                 rpt.Load("lab_sperm_sa.rpt");
 
@@ -454,6 +462,14 @@ namespace clinic_ivf.gui
                 date2 = ic.datetimetoShow(dt.Rows[0]["date_approve"]);
                 dt.Rows[0]["date_report"] = date1;
                 dt.Rows[0]["date_approve"] = date2;
+                String appearance = "", appearancetext = "";
+                appearance = dt.Rows[0]["appearance"].ToString();
+                appearancetext = dt.Rows[0]["appearance_text"].ToString();
+                if (appearancetext.Length > 0)
+                {
+                    //dt.Rows[0]["appearance"] = appearancetext;
+                    dt.Rows[0]["doc_type_name_app"] = appearancetext;
+                }
 
                 rpt.Load("lab_sperm_sf.rpt");
 
