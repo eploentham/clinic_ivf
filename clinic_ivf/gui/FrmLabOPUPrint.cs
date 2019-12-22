@@ -161,7 +161,6 @@ namespace clinic_ivf.gui
             {
                 //printFETEmbryoDev();
             }
-
         }
         private void printFETEmbryoDev()
         {

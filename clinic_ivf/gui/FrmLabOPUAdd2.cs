@@ -301,8 +301,8 @@ namespace clinic_ivf.gui
         private void BtnResultDay5_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            if (MessageBox.Show("ต้องการ ส่งผล LAB OPU Day 5 ให้ทางพยาบาล  ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-            {
+            //if (MessageBox.Show("ต้องการ ส่งผล LAB OPU Day 5 ให้ทางพยาบาล  ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+            //{
                 ic.cStf.staff_id = "";
                 Boolean chkSave = false;
                 FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
@@ -323,14 +323,14 @@ namespace clinic_ivf.gui
                         }
                     }
                 }
-            }
+            //}
         }
 
         private void BtnResultDay3_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            if (MessageBox.Show("ต้องการ ส่งผล LAB OPU Day 3 ให้ทางพยาบาล  ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-            {
+            //if (MessageBox.Show("ต้องการ ส่งผล LAB OPU Day 3 ให้ทางพยาบาล  ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+            //{
                 ic.cStf.staff_id = "";
                 Boolean chkSave = false;
                 FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
@@ -351,14 +351,14 @@ namespace clinic_ivf.gui
                         }
                     }
                 }
-            }
+            //}
         }
 
         private void BtnResultDay1_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            if (MessageBox.Show("ต้องการ ส่งผล LAB OPU Day 1 ให้ทางพยาบาล  ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-            {
+            //if (MessageBox.Show("ต้องการ ส่งผล LAB OPU Day 1 ให้ทางพยาบาล  ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+            //{
                 ic.cStf.staff_id = "";
                 Boolean chkSave = false;
                 FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
@@ -379,7 +379,7 @@ namespace clinic_ivf.gui
                         }
                     }
                 }
-            }
+            //}
         }
 
         private void BtnApproveResult_Click(object sender, EventArgs e)
@@ -986,12 +986,19 @@ namespace clinic_ivf.gui
 
         private void TabDay6_DoubleClick(object sender, EventArgs e)
         {
+            if (grfDay6Img == null)
+            {
+                MessageBox.Show("ยังไม่ได้เลือก ลำดับ row", "");
+                return;
+            }
             //throw new NotImplementedException();
             if (flagDay6Img)
             {
                 MessageBox.Show("ได้เคยนำเข้าแล้ว กรุณานำเข้าที่ละรายการ", "");
                 return;
             }
+            int row = 0;
+            row = grfDay6Img.Row - 1;
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Filter = "Images (*.BMP;*.JPG;*.Jepg;*.Png;*.GIF)|*.BMP;*.JPG;*.Jepg;*.Png;*.GIF|Pdf Files|*.pdf|All files (*.*)|*.*";
             ofd.Multiselect = true;
@@ -1015,7 +1022,8 @@ namespace clinic_ivf.gui
                 //cc.Image
                 Column col = grfDay6Img.Cols[colDay2ImgPic];
                 col.DataType = typeof(Image);
-                int ii = 0;
+                //int ii = 0;
+                int ii = row;
                 foreach (String file in ofd.FileNames)
                 {
                     // Create a PictureBox.
@@ -1101,11 +1109,18 @@ namespace clinic_ivf.gui
         private void TabDay5_DoubleClick(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
+            if (grfDay5Img == null)
+            {
+                MessageBox.Show("ยังไม่ได้เลือก ลำดับ row", "");
+                return;
+            }
             if (flagDay5Img)
             {
                 MessageBox.Show("ได้เคยนำเข้าแล้ว กรุณานำเข้าที่ละรายการ", "");
                 return;
             }
+            int row = 0;
+            row = grfDay5Img.Row - 1;
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Filter = "Images (*.BMP;*.JPG;*.Jepg;*.Png;*.GIF)|*.BMP;*.JPG;*.Jepg;*.Png;*.GIF|Pdf Files|*.pdf|All files (*.*)|*.*";
             ofd.Multiselect = true;
@@ -1129,7 +1144,8 @@ namespace clinic_ivf.gui
                 //cc.Image
                 Column col = grfDay5Img.Cols[colDay2ImgPic];
                 col.DataType = typeof(Image);
-                int ii = 0;
+                //int ii = 0;
+                int ii = row;
                 foreach (String file in ofd.FileNames)
                 {
                     // Create a PictureBox.
@@ -1674,11 +1690,18 @@ namespace clinic_ivf.gui
         private void TabDay3_DoubleClick(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
+            if (grfDay3Img == null)
+            {
+                MessageBox.Show("ยังไม่ได้เลือก ลำดับ row", "");
+                return;
+            }
             if (flagDay3Img)
             {
                 MessageBox.Show("ได้เคยนำเข้าแล้ว กรุณานำเข้าที่ละรายการ", "");
                 return;
             }
+            int row = 0;
+            row = grfDay3Img.Row - 1;
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Filter = "Images (*.BMP;*.JPG;*.Jepg;*.Png;*.GIF)|*.BMP;*.JPG;*.Jepg;*.Png;*.GIF|Pdf Files|*.pdf|All files (*.*)|*.*";
             ofd.Multiselect = true;
@@ -1699,7 +1722,7 @@ namespace clinic_ivf.gui
                 //cc.Image
                 Column col = grfDay3Img.Cols[colDay2ImgPic];
                 col.DataType = typeof(Image);
-                int ii = 0;
+                int ii = row;
                 foreach (String file in ofd.FileNames)
                 {
                     // Create a PictureBox.
@@ -3209,8 +3232,8 @@ namespace clinic_ivf.gui
                 return;
             }
 
-            if (MessageBox.Show("ต้องการ Upload image to server ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-            {
+            //if (MessageBox.Show("ต้องการ Upload image to server ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+            //{
                 OpenFileDialog ofd = new OpenFileDialog();
                 ofd.Filter = "Images (*.BMP;*.JPG;*.Jepg;*.Png;*.GIF)|*.BMP;*.JPG;*.Jepg;*.Png;*.GIF|Pdf Files|*.pdf|All files (*.*)|*.*";
                 ofd.Multiselect = false;
@@ -3246,15 +3269,15 @@ namespace clinic_ivf.gui
                         }
                     }
                 }
-            }
+            //}
         }
         private void ContextMenu_grfday2_save(object sender, System.EventArgs e)
         {
             String id = grfDay2Img[grfDay2Img.Row, colDay2ImgId].ToString();
             String desc = grfDay2Img[grfDay2Img.Row, colDay2ImgDesc0].ToString();
             String num = grfDay2Img[grfDay2Img.Row, colDay2ImgNun].ToString();
-            if (MessageBox.Show("ต้องการ บันทึกช้อมูล \n Number " + num + " description " + desc, "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-            {
+            //if (MessageBox.Show("ต้องการ บันทึกช้อมูล \n Number " + num + " description " + desc, "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+            //{
                 ic.cStf.staff_id = "";
                 FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
                 frm.ShowDialog(this);
@@ -3262,7 +3285,7 @@ namespace clinic_ivf.gui
                 {
                     String re = ic.ivfDB.opuEmDevDB.updateNumDesc(id, num, desc, ic.user.staff_id);
                 }
-            }
+            //}
         }
         private void ContextMenu_grfday2_Cancel(object sender, System.EventArgs e)
         {
@@ -3463,8 +3486,8 @@ namespace clinic_ivf.gui
                 return;
             }
 
-            if (MessageBox.Show("ต้องการ Upload image to server ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-            {
+            //if (MessageBox.Show("ต้องการ Upload image to server ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+            //{
                 OpenFileDialog ofd = new OpenFileDialog();
                 ofd.Filter = "Images (*.BMP;*.JPG;*.Jepg;*.Png;*.GIF)|*.BMP;*.JPG;*.Jepg;*.Png;*.GIF|Pdf Files|*.pdf|All files (*.*)|*.*";
                 ofd.Multiselect = false;
@@ -3500,15 +3523,15 @@ namespace clinic_ivf.gui
                         }
                     }
                 }
-            }
+            //}
         }
         private void ContextMenu_grfday3_save(object sender, System.EventArgs e)
         {
             String id = grfDay3Img[grfDay3Img.Row, colDay2ImgId].ToString();
             String desc = grfDay3Img[grfDay3Img.Row, colDay2ImgDesc0].ToString();
             String num = grfDay3Img[grfDay3Img.Row, colDay2ImgNun].ToString();
-            if (MessageBox.Show("ต้องการ บันทึกช้อมูล \n Number " + num + " description " + desc, "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-            {
+            //if (MessageBox.Show("ต้องการ บันทึกช้อมูล \n Number " + num + " description " + desc, "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+            //{
                 ic.cStf.staff_id = "";
                 FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
                 frm.ShowDialog(this);
@@ -3516,7 +3539,7 @@ namespace clinic_ivf.gui
                 {
                     String re = ic.ivfDB.opuEmDevDB.updateNumDesc(id, num, desc, ic.user.staff_id);
                 }
-            }
+            //}
         }
         private void ContextMenu_grfday3_Cancel(object sender, System.EventArgs e)
         {
@@ -3716,8 +3739,8 @@ namespace clinic_ivf.gui
                 return;
             }
 
-            if (MessageBox.Show("ต้องการ Upload image to server ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-            {
+            //if (MessageBox.Show("ต้องการ Upload image to server ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+            //{
                 OpenFileDialog ofd = new OpenFileDialog();
                 ofd.Filter = "Images (*.BMP;*.JPG;*.Jepg;*.Png;*.GIF)|*.BMP;*.JPG;*.Jepg;*.Png;*.GIF|Pdf Files|*.pdf|All files (*.*)|*.*";
                 ofd.Multiselect = false;
@@ -3753,15 +3776,15 @@ namespace clinic_ivf.gui
                         }
                     }
                 }
-            }
+            //}
         }
         private void ContextMenu_grfday5_save(object sender, System.EventArgs e)
         {
             String id = grfDay5Img[grfDay5Img.Row, colDay2ImgId].ToString();
             String desc = grfDay5Img[grfDay5Img.Row, colDay2ImgDesc0].ToString();
             String num = grfDay5Img[grfDay5Img.Row, colDay2ImgNun].ToString();
-            if (MessageBox.Show("ต้องการ บันทึกช้อมูล \n Number " + num + " description " + desc, "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-            {
+            //if (MessageBox.Show("ต้องการ บันทึกช้อมูล \n Number " + num + " description " + desc, "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+            //{
                 ic.cStf.staff_id = "";
                 FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
                 frm.ShowDialog(this);
@@ -3769,7 +3792,7 @@ namespace clinic_ivf.gui
                 {
                     String re = ic.ivfDB.opuEmDevDB.updateNumDesc(id, num, desc, ic.user.staff_id);
                 }
-            }
+            //}
         }
         private void ContextMenu_grfday5_Cancel(object sender, System.EventArgs e)
         {
@@ -3969,8 +3992,8 @@ namespace clinic_ivf.gui
                 return;
             }
 
-            if (MessageBox.Show("ต้องการ Upload image to server ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-            {
+            //if (MessageBox.Show("ต้องการ Upload image to server ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+            //{
                 OpenFileDialog ofd = new OpenFileDialog();
                 ofd.Filter = "Images (*.BMP;*.JPG;*.Jepg;*.Png;*.GIF)|*.BMP;*.JPG;*.Jepg;*.Png;*.GIF|Pdf Files|*.pdf|All files (*.*)|*.*";
                 ofd.Multiselect = false;
@@ -4008,15 +4031,15 @@ namespace clinic_ivf.gui
                         }
                     }
                 }
-            }
+            //}
         }
         private void ContextMenu_grfday6_save(object sender, System.EventArgs e)
         {
             String id = grfDay6Img[grfDay6Img.Row, colDay2ImgId].ToString();
             String desc = grfDay6Img[grfDay6Img.Row, colDay2ImgDesc0].ToString();
             String num = grfDay6Img[grfDay6Img.Row, colDay2ImgNun].ToString();
-            if (MessageBox.Show("ต้องการ บันทึกช้อมูล \n Number " + num + " description " + desc, "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-            {
+            //if (MessageBox.Show("ต้องการ บันทึกช้อมูล \n Number " + num + " description " + desc, "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+            //{
                 ic.cStf.staff_id = "";
                 FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
                 frm.ShowDialog(this);
@@ -4024,7 +4047,7 @@ namespace clinic_ivf.gui
                 {
                     String re = ic.ivfDB.opuEmDevDB.updateNumDesc(id, num, desc, ic.user.staff_id);
                 }
-            }
+            //}
         }
         private void ContextMenu_grfday6_Cancel(object sender, System.EventArgs e)
         {
