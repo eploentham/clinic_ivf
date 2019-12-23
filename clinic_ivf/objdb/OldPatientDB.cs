@@ -400,7 +400,8 @@ namespace clinic_ivf.objdb
             pttO1.District = "";
             pttO1.Email = ptt.email;
             pttO1.EmergencyPersonAddress = "";
-            pttO1.EmergencyPersonalContact = ptt.patient_contact_firstname+" "+ptt.patient_contact_lastname;
+            //pttO1.EmergencyPersonalContact = ptt.patient_contact_firstname+" "+ptt.patient_contact_lastname;
+            pttO1.EmergencyPersonalContact = ptt.patient_contact_firstname + " " + ptt.patient_contact_lastname;
             pttO1.EPAddress = "";
             pttO1.EPDistrict = "";
             pttO1.EPEmail = "";
