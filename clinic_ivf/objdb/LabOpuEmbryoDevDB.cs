@@ -408,6 +408,29 @@ namespace clinic_ivf.objdb
 
             return re;
         }
+        public String updateDesc3Desc4(String id, String desc3, String desc4, String userid)
+        {
+            String re = "";
+            String sql = "";
+            int chk = 0;
+            sql = "Update " + opuEmDev.table + " Set " +
+                " " + opuEmDev.desc3 + " = '" + desc3.Replace("'", "''") + "'" +
+                //"," + opuEmDev.path_pic + " = '" + filename + "'" +
+                "," + opuEmDev.desc4 + " = '" + desc4.Replace("'", "''") + "'" +
+                "," + opuEmDev.user_modi + " = '" + userid + "'" +
+                "," + opuEmDev.date_modi + " = now() " +
+                "Where " + opuEmDev.pkField + "='" + id + "'";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+
+            return re;
+        }
         public String updateNumDesc(String id, String num, String desc3, String userid)
         {
             String re = "";

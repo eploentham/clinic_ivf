@@ -1593,7 +1593,7 @@ namespace clinic_ivf.gui
                                     {
                                         filename = txtOpuCode.Text + "_day5_" + no + "." + ext[ext.Length - 1];
                                         //re = ic.ivfDB.opuEmDevDB.updatePathPic(id, no, ic.iniC.folderFTP + "/" + txtOpuCode.Text + "/" + filename, desc, desc1, ic.cStf.staff_id);       // -0012
-                                        re = ic.ivfDB.opuEmDevDB.updatePathPic(id, no, ic.iniC.folderFTP + "/" + txtOpuCode.Text + "/" + filename, desc, desc1, ic.cStf.staff_id);       // +0012
+                                        re = ic.ivfDB.opuEmDevDB.updatePathPicNoPic(id, no, desc, desc1, ic.cStf.staff_id);       // +0012
                                         long chk = 0;
                                         if (long.TryParse(re, out chk))
                                         {
