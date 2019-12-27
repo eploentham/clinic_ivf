@@ -871,6 +871,7 @@ namespace clinic_ivf.gui
                     {
                         LabOpu opu1 = ic.ivfDB.setOPU(reqId, formaid);
                         String re1 = ic.ivfDB.opuDB.insert(opu1, ic.cStf.staff_id);
+                        //ic.ivfDB.
                         if (long.TryParse(re1, out chk1))
                         {
                             //FrmLabOPUAdd frm = new FrmLabOPUAdd(ic, "", re1);

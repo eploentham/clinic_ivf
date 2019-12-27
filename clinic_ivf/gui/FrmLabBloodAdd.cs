@@ -500,7 +500,7 @@ namespace clinic_ivf.gui
                     //amh = "0";
                 }
             }
-                lbEmail.Text = "เตรียม Email";
+            lbEmail.Text = "เตรียม Email";
             FrmWaiting frmW = new FrmWaiting();
             frmW.Show();
             String filename = "", datetick = "";

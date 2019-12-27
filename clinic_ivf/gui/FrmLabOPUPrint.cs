@@ -11,6 +11,8 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net.Mail;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -33,9 +35,12 @@ namespace clinic_ivf.gui
         Color color;
         public enum opuReport {OPUReport, OPUEmbryoDevReport, FETReport, FETEmbryoDevReport };
         opuReport opureport;
+        List<LinkedResource> theEmailImage1 = new List<LinkedResource>();
+        SmtpClient SmtpServer;
         String aaa = "₀₁₂₃₄₅₆₇₈₉";
 
-        
+        [DllImport("winspool.drv", CharSet = CharSet.Auto, SetLastError = true)]
+        public static extern bool SetDefaultPrinter(string Printer);
         public FrmLabOPUPrint(IvfControl ic, String opuid, opuReport opureport)
         {
             InitializeComponent();
@@ -62,6 +67,7 @@ namespace clinic_ivf.gui
             
             ic.setCboDayEmbryoDev(cboEmbryoDev1, "");
             ic.setCboDayEmbryoDev(cboEmbryoDev2, "");
+            SmtpServer = new SmtpClient("smtp.gmail.com");
 
             if (opureport == opuReport.OPUEmbryoDevReport)
             {
@@ -86,9 +92,79 @@ namespace clinic_ivf.gui
 
             btnPrint.Click += BtnPrint_Click;
             btnExport.Click += BtnExport_Click;
+            btnSendEmail.Click += BtnSendEmail_Click;
             chkEmbryoDev20.CheckedChanged += ChkEmbryoDev20_CheckedChanged;
         }
 
+        private void BtnSendEmail_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            SetDefaultPrinter(ic.iniC.printerA4);
+            lbEmail.Text = "เตรียม Email";
+            FrmWaiting frmW = new FrmWaiting();
+            frmW.Show();
+            String filename = "", datetick = "";
+            DataTable dt = new DataTable();
+            if (!Directory.Exists("report"))
+            {
+                Directory.CreateDirectory("report");
+            }
+            datetick = DateTime.Now.Ticks.ToString();
+            filename = "report\\lab_opu_" + datetick + ".pdf";
+            lbEmail.Text = "เตรียม Report";
+            if (opureport == opuReport.OPUReport)
+            {
+                dt = printOPUReport("");
+            }
+            else if (opureport == opuReport.OPUEmbryoDevReport)
+            {
+                printOPUEmbryoDev();
+            }
+            if (!setEmailOPU(dt))
+            {
+                return;
+            }
+            frmW.Dispose();
+            lbEmail.Text = "เริ่มส่ง Email";
+            MailMessage mail = new MailMessage();
+            
+            txtEmailSubject.Value = "Routine LAB Result HN " + txtHnFeMale.Text + " Name " + txtNameFeMale.Text + " OPD Code " + txtOpuCode.Text + " Date " + System.DateTime.Now.ToString("dd/MM/") + System.DateTime.Now.Year;
+            
+            mail.From = new MailAddress(txtEmailTo.Text);
+            mail.To.Add(txtEmailTo.Text);
+            mail.Subject = txtEmailSubject.Text;
+            mail.Body = txtBody.Text;
+
+            mail.IsBodyHtml = true;
+            if (File.Exists(filename))
+            {
+                System.Net.Mail.Attachment attachment;
+                attachment = new System.Net.Mail.Attachment(filename);
+                mail.Attachments.Add(attachment);
+            }
+
+            AlternateView htmlView = AlternateView.CreateAlternateViewFromString(txtBody.Text, null, "text/html");
+            mail.AlternateViews.Add(htmlView);
+
+            foreach (LinkedResource linkimg in theEmailImage1)
+            {
+                htmlView.LinkedResources.Add(linkimg);
+            }
+
+            SmtpServer.Port = 587;
+            SmtpServer.Credentials = new System.Net.NetworkCredential(ic.iniC.email_auth_user, ic.iniC.email_auth_pass);
+
+            SmtpServer.EnableSsl = true;
+            SmtpServer.Send(mail);
+            lbEmail.Text = "ส่ง Email เรียบร้อย";
+        }
+        private Boolean setEmailOPU(DataTable dt)
+        {
+            if (dt == null) return false;
+            Boolean chk = true;
+
+            return chk;
+        }
         private void BtnExport_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
@@ -151,7 +227,7 @@ namespace clinic_ivf.gui
             //throw new NotImplementedException();
             if (opureport == opuReport.OPUReport)
             {
-                printOPUReport();
+                printOPUReport("print");
             }
             else if (opureport == opuReport.OPUEmbryoDevReport)
             {
@@ -254,36 +330,50 @@ namespace clinic_ivf.gui
             //}
             //frm.ShowDialog(this);
         }
-        private void printOPUReport()
+        private DataTable printOPUReport(String flagPrint)
         {
             DataTable dt = new DataTable();
             FrmReport frm = new FrmReport(ic);
             dt = ic.ivfDB.setOPUReport(txtID.Text, cboEmbryoDev1.Text, cboEmbryoDev2.Text, chkEmbryoDev20.Checked);
-            if (dt == null) return;
+            if (dt == null) return null;
             if (chkEmbryoFreez2Col.Checked)
             {
-                if (chkEmbryoDev20.Checked)
+                if (flagPrint.Equals("print"))
                 {
-                    frm.setOPUReport(dt, FrmReport.flagEmbryoDev.twocolumn, FrmReport.flagEmbryoDevMore20.More20);
-                }
-                else
-                {
-                    frm.setOPUReport(dt, FrmReport.flagEmbryoDev.twocolumn, FrmReport.flagEmbryoDevMore20.Days2);
+                    if (chkEmbryoDev20.Checked)
+                    {
+                        frm.setOPUReport(dt, FrmReport.flagEmbryoDev.twocolumn, FrmReport.flagEmbryoDevMore20.More20);
+                    }
+                    else
+                    {
+                        frm.setOPUReport(dt, FrmReport.flagEmbryoDev.twocolumn, FrmReport.flagEmbryoDevMore20.Days2);
+                    }
                 }
             }
             else
             {
-                if (chkEmbryoDev20.Checked)
+                if (flagPrint.Equals("print"))
                 {
-                    frm.setOPUReport(dt, FrmReport.flagEmbryoDev.onecolumn, FrmReport.flagEmbryoDevMore20.More20);
-                }
-                else
-                {
-                    frm.setOPUReport(dt, FrmReport.flagEmbryoDev.onecolumn, FrmReport.flagEmbryoDevMore20.Days2);
+                    if (chkEmbryoDev20.Checked)
+                    {
+                        frm.setOPUReport(dt, FrmReport.flagEmbryoDev.onecolumn, FrmReport.flagEmbryoDevMore20.More20);
+                    }
+                    else
+                    {
+                        frm.setOPUReport(dt, FrmReport.flagEmbryoDev.onecolumn, FrmReport.flagEmbryoDevMore20.Days2);
+                    }
                 }
             }
             //dt.AcceptChanges();
-            frm.ShowDialog(this);
+            if (flagPrint.Equals("print"))
+            {
+                frm.ShowDialog(this);
+            }
+            else
+            {
+                frm.Dispose();
+            }
+            return dt;
             //frm.setOPUReport(dt);
         }
         private void printOPUEmbryoDev()
@@ -371,6 +461,10 @@ namespace clinic_ivf.gui
                         row["footer14"] = opu.remark_day6;
                         row["footer15"] = "";
                         row["footer16"] = "";
+                        if(day.Equals("6"))
+                        {
+                            row["footer5"] = opu.remark_1;
+                        }
                         i++;
                         frmW.pB.Value = i;
                     }
@@ -404,6 +498,18 @@ namespace clinic_ivf.gui
                 txtNameFeMale.Value = opu.name_female;
                 txtNameMale.Value = opu.name_male;
                 txtOpuCode.Value = opu.opu_code;
+                txtEmailTo.Value = ic.iniC.email_to_sperm_freezing;
+                txtEmailSubject.Value = "Result LAB OPU HN " + txtHnFeMale.Text + " Name " + txtNameFeMale.Text + " OPU Code " + txtOpuCode.Text + " ";
+                
+                chkSendEmail.Checked = opu.status_opu.Equals("2") ? true : false;
+                if (chkSendEmail.Checked)
+                {
+                    pnEmail.Visible = true;
+                }
+                else
+                {
+                    pnEmail.Visible = false;
+                }
             }
             else
             {

@@ -992,9 +992,14 @@ namespace clinic_ivf.gui
                 return;
             }
             //throw new NotImplementedException();
-            if (flagDay6Img)
+            //if (flagDay6Img)
+            //{
+            //    MessageBox.Show("ได้เคยนำเข้าแล้ว กรุณานำเข้าที่ละรายการ", "");
+            //    return;
+            //}
+            if (grfDay6Img.Row <= 0)
             {
-                MessageBox.Show("ได้เคยนำเข้าแล้ว กรุณานำเข้าที่ละรายการ", "");
+                MessageBox.Show("ลำดับ row ไม่ถูกต้อง", "");
                 return;
             }
             int row = 0;
@@ -1114,9 +1119,14 @@ namespace clinic_ivf.gui
                 MessageBox.Show("ยังไม่ได้เลือก ลำดับ row", "");
                 return;
             }
-            if (flagDay5Img)
+            //if (flagDay5Img)
+            //{
+            //    MessageBox.Show("ได้เคยนำเข้าแล้ว กรุณานำเข้าที่ละรายการ", "");
+            //    return;
+            //}
+            if (grfDay5Img.Row <= 0)
             {
-                MessageBox.Show("ได้เคยนำเข้าแล้ว กรุณานำเข้าที่ละรายการ", "");
+                MessageBox.Show("ลำดับ row ไม่ถูกต้อง", "");
                 return;
             }
             int row = 0;
@@ -1695,9 +1705,14 @@ namespace clinic_ivf.gui
                 MessageBox.Show("ยังไม่ได้เลือก ลำดับ row", "");
                 return;
             }
-            if (flagDay3Img)
+            //if (flagDay3Img)
+            //{
+            //    MessageBox.Show("ได้เคยนำเข้าแล้ว กรุณานำเข้าที่ละรายการ", "");
+            //    return;
+            //}
+            if (grfDay3Img.Row <= 0)
             {
-                MessageBox.Show("ได้เคยนำเข้าแล้ว กรุณานำเข้าที่ละรายการ", "");
+                MessageBox.Show("ลำดับ row ไม่ถูกต้อง", "");
                 return;
             }
             int row = 0;
@@ -4053,17 +4068,17 @@ namespace clinic_ivf.gui
         {
             //if (MessageBox.Show("ต้องการ ยกเลิก ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
             //{
-                String id = grfDay6Img[grfDay6Img.Row, colDay2ImgId].ToString();
+            String id = grfDay6Img[grfDay6Img.Row, colDay2ImgId].ToString();
                 //ic.cStf.staff_id = "";
                 //FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
                 //frm.ShowDialog(this);
                 //if (!ic.cStf.staff_id.Equals(""))
                 //{
-                    String pathfile = grfDay6Img[grfDay6Img.Row, colDay2PathPic].ToString();
-                    String re = ic.ivfDB.opuEmDevDB.updatePathPic(id, "", "", "", ic.user.staff_id);
-                    ic.delPicOPUtoServer(txtOpuCode.Text, pathfile);
-                    grfDay6Img[grfDay6Img.Row, colDay2PathPic] = "";
-                    grfDay6Img[grfDay6Img.Row, colDay2ImgPic] = null;
+            String pathfile = grfDay6Img[grfDay6Img.Row, colDay2PathPic].ToString();
+            String re = ic.ivfDB.opuEmDevDB.updatePathPic(id, "", "", "", ic.user.staff_id);
+            ic.delPicOPUtoServer(txtOpuCode.Text, pathfile);
+            grfDay6Img[grfDay6Img.Row, colDay2PathPic] = "";
+            grfDay6Img[grfDay6Img.Row, colDay2ImgPic] = null;
             //    }
             //}
         }
