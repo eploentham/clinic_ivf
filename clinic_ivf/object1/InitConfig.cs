@@ -20,7 +20,7 @@ namespace clinic_ivf.object1
         public String themeDonor = "",themeDonor1 = "", printStickerLeft="", printStickerRight = "", printStickerTop = "", printerSticker="", printerBill="", printerAppointment="", printerA4="";
         public String timerlabreqaccept = "", timerImgScanNew="", creditCharge="", service_point_id="", statusCheckDonor="",pathSaveExcelAppointment="";
 
-        public String email_form = "", email_auth_user = "", email_auth_pass = "", email_port = "", email_ssl = "", email_to_sperm_freezing="";
+        public String email_form = "", email_auth_user = "", email_auth_pass = "", email_port = "", email_ssl = "", email_to_sperm_freezing="", email_to_lab_opu="", email_form_lab_opu="", email_auth_user_lab_opu="", email_auth_pass_lab_opu="";
         public String themeFET = "", themeApp = "";
         public String lisBarcode = "", messageDebug="";
     }

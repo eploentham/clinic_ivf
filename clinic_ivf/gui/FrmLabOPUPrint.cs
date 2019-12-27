@@ -16,6 +16,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static clinic_ivf.gui.FrmReport;
 
 namespace clinic_ivf.gui
 {
@@ -95,14 +96,11 @@ namespace clinic_ivf.gui
             btnSendEmail.Click += BtnSendEmail_Click;
             chkEmbryoDev20.CheckedChanged += ChkEmbryoDev20_CheckedChanged;
         }
-
         private void BtnSendEmail_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
             SetDefaultPrinter(ic.iniC.printerA4);
             lbEmail.Text = "เตรียม Email";
-            FrmWaiting frmW = new FrmWaiting();
-            frmW.Show();
             String filename = "", datetick = "";
             DataTable dt = new DataTable();
             if (!Directory.Exists("report"))
@@ -114,23 +112,42 @@ namespace clinic_ivf.gui
             lbEmail.Text = "เตรียม Report";
             if (opureport == opuReport.OPUReport)
             {
+                FrmWaiting frmW = new FrmWaiting();
+                frmW.Show();
                 dt = printOPUReport("");
+                frmW.Dispose();
             }
             else if (opureport == opuReport.OPUEmbryoDevReport)
             {
-                printOPUEmbryoDev();
+                dt = printOPUEmbryoDev("");
             }
-            if (!setEmailOPU(dt))
+            if (chkEmbryoFreez2Col.Checked && chkEmbryoDev20.Checked)
             {
+                if (!setEmailOPU(dt, FrmReport.flagEmbryoDev.twocolumn, FrmReport.flagEmbryoDevMore20.More20, filename)) return;
+            } 
+            else if (chkEmbryoFreez2Col.Checked && !chkEmbryoDev20.Checked)
+            {
+                if (!setEmailOPU(dt, FrmReport.flagEmbryoDev.twocolumn, FrmReport.flagEmbryoDevMore20.Days2, filename)) return;
+            }
+            else if (!chkEmbryoFreez2Col.Checked && !chkEmbryoDev20.Checked)
+            {
+                if (!setEmailOPU(dt, FrmReport.flagEmbryoDev.onecolumn, FrmReport.flagEmbryoDevMore20.More20, filename)) return;
+            }
+            else if (!chkEmbryoFreez2Col.Checked && chkEmbryoDev20.Checked)
+            {
+                if (!setEmailOPU(dt, FrmReport.flagEmbryoDev.onecolumn, FrmReport.flagEmbryoDevMore20.Days2, filename)) return;
+            }
+            if (!File.Exists(filename))
+            {
+                lbEmail.Text = "ไม่พบ Attach File";
                 return;
             }
-            frmW.Dispose();
             lbEmail.Text = "เริ่มส่ง Email";
             MailMessage mail = new MailMessage();
             
             txtEmailSubject.Value = "Routine LAB Result HN " + txtHnFeMale.Text + " Name " + txtNameFeMale.Text + " OPD Code " + txtOpuCode.Text + " Date " + System.DateTime.Now.ToString("dd/MM/") + System.DateTime.Now.Year;
             
-            mail.From = new MailAddress(txtEmailTo.Text);
+            mail.From = new MailAddress(ic.iniC.email_form_lab_opu);
             mail.To.Add(txtEmailTo.Text);
             mail.Subject = txtEmailSubject.Text;
             mail.Body = txtBody.Text;
@@ -152,17 +169,88 @@ namespace clinic_ivf.gui
             }
 
             SmtpServer.Port = 587;
-            SmtpServer.Credentials = new System.Net.NetworkCredential(ic.iniC.email_auth_user, ic.iniC.email_auth_pass);
+            SmtpServer.Credentials = new System.Net.NetworkCredential(ic.iniC.email_auth_user_lab_opu, ic.iniC.email_auth_pass_lab_opu);
 
             SmtpServer.EnableSsl = true;
             SmtpServer.Send(mail);
             lbEmail.Text = "ส่ง Email เรียบร้อย";
         }
-        private Boolean setEmailOPU(DataTable dt)
+        private Boolean setEmailOPU(DataTable dt, flagEmbryoDev flagembryodev, flagEmbryoDevMore20 flagembryodevmore20, String filename)
         {
             if (dt == null) return false;
             Boolean chk = true;
-
+            CrystalReportViewer cryLab;
+            cryLab = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
+            ReportDocument rpt = new ReportDocument();
+            try
+            {
+                lbEmail.Text = "สร้าง Report";
+                String date1 = dt.Rows[0]["date_time_result"].ToString();
+                String date2 = dt.Rows[0]["date_time_approve"].ToString();
+                date1 = ic.datetimetoShow(dt.Rows[0]["date_time_result"]);
+                date2 = ic.datetimetoShow(dt.Rows[0]["date_time_approve"]);
+                dt.Rows[0]["date_time_result"] = date1;
+                dt.Rows[0]["date_time_approve"] = date2;
+                if (flagembryodev == flagEmbryoDev.onecolumn)
+                {
+                    if (flagembryodevmore20 == flagEmbryoDevMore20.Days2)
+                    {
+                        rpt.Load("lab_opu.rpt");
+                    }
+                    else
+                    {
+                        rpt.Load("lab_opu_more_20.rpt");
+                    }
+                }
+                else
+                {
+                    if (flagembryodevmore20 == flagEmbryoDevMore20.Days2)
+                    {
+                        rpt.Load("lab_opu_freeze_2_column.rpt");
+                    }
+                    else
+                    {
+                        rpt.Load("lab_opu_freeze_2_column_more_20.rpt");
+                    }
+                }
+                rpt.SetDataSource(dt);
+                rpt.SetParameterValue("line1", ic.cop.comp_name_t);
+                rpt.SetParameterValue("line2", "โทรศัพท์ " + ic.cop.tele);
+                rpt.SetParameterValue("report_name", " Summary of OPU Report");
+                rpt.SetDataSource(dt);
+                
+                this.cryLab.ReportSource = rpt;
+                this.cryLab.Refresh();
+                lbEmail.Text = "สร้าง Report เรียบร้อย";
+                if (File.Exists(filename))
+                {
+                    File.Delete(filename);
+                    System.Threading.Thread.Sleep(200);
+                }
+                Application.DoEvents();
+                ExportOptions CrExportOptions;
+                DiskFileDestinationOptions CrDiskFileDestinationOptions = new DiskFileDestinationOptions();
+                PdfRtfWordFormatOptions CrFormatTypeOptions = new PdfRtfWordFormatOptions();
+                CrDiskFileDestinationOptions.DiskFileName = filename;
+                CrExportOptions = rpt.ExportOptions;
+                {
+                    CrExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
+                    CrExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
+                    CrExportOptions.DestinationOptions = CrDiskFileDestinationOptions;
+                    CrExportOptions.FormatOptions = CrFormatTypeOptions;
+                }
+                lbEmail.Text = "Export Report";
+                rpt.Export();
+                System.Threading.Thread.Sleep(200);
+                Application.DoEvents();
+            }
+            catch (Exception ex)
+            {
+                chk = false;
+                //chk = ex.Message.ToString();
+                new LogWriter("e", "FrmLabOPUPrint setEmailOPU " + ex.Message);
+                MessageBox.Show("error " + ex.Message, "");
+            }
             return chk;
         }
         private void BtnExport_Click(object sender, EventArgs e)
@@ -231,7 +319,7 @@ namespace clinic_ivf.gui
             }
             else if (opureport == opuReport.OPUEmbryoDevReport)
             {
-                printOPUEmbryoDev();
+                printOPUEmbryoDev("print");
             }
             else if (opureport == opuReport.FETEmbryoDevReport)
             {
@@ -376,7 +464,7 @@ namespace clinic_ivf.gui
             return dt;
             //frm.setOPUReport(dt);
         }
-        private void printOPUEmbryoDev()
+        private DataTable printOPUEmbryoDev(String flagPrint)
         {
             FrmReport frm = new FrmReport(ic);
             DataTable dt = new DataTable();
@@ -485,7 +573,15 @@ namespace clinic_ivf.gui
             {
                 frmW.Dispose();
             }
-            frm.ShowDialog(this);
+            if (flagPrint.Equals("print"))
+            {
+                frm.ShowDialog(this);
+            }
+            else
+            {
+                frm.Dispose();
+            }
+            return dt;
         }
         private void setControl()
         {
@@ -498,7 +594,7 @@ namespace clinic_ivf.gui
                 txtNameFeMale.Value = opu.name_female;
                 txtNameMale.Value = opu.name_male;
                 txtOpuCode.Value = opu.opu_code;
-                txtEmailTo.Value = ic.iniC.email_to_sperm_freezing;
+                txtEmailTo.Value = ic.iniC.email_to_lab_opu;
                 txtEmailSubject.Value = "Result LAB OPU HN " + txtHnFeMale.Text + " Name " + txtNameFeMale.Text + " OPU Code " + txtOpuCode.Text + " ";
                 
                 chkSendEmail.Checked = opu.status_opu.Equals("2") ? true : false;

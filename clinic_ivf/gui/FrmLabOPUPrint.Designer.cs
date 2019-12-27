@@ -31,6 +31,10 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.chkSendEmail = new C1.Win.C1Input.C1CheckBox();
             this.pnEmail = new System.Windows.Forms.Panel();
+            this.pnReport = new System.Windows.Forms.Panel();
+            this.cryLab = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtBody = new C1.Win.C1Input.C1TextBox();
             this.btnSendEmail = new C1.Win.C1Input.C1Button();
             this.lbEmail = new System.Windows.Forms.Label();
             this.label212 = new System.Windows.Forms.Label();
@@ -62,13 +66,11 @@
             this.theme1 = new C1.Win.C1Themes.C1ThemeController();
             this.sB = new System.Windows.Forms.StatusStrip();
             this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.txtBody = new C1.Win.C1Input.C1TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.pnReport = new System.Windows.Forms.Panel();
-            this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkSendEmail)).BeginInit();
             this.pnEmail.SuspendLayout();
+            this.pnReport.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtBody)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSendEmail)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEmailSubject)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnAgentEmail)).BeginInit();
@@ -89,8 +91,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtHnFeMale)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             this.sB.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtBody)).BeginInit();
-            this.pnReport.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -157,6 +157,58 @@
             this.pnEmail.Size = new System.Drawing.Size(423, 117);
             this.pnEmail.TabIndex = 552;
             this.theme1.SetTheme(this.pnEmail, "(default)");
+            // 
+            // pnReport
+            // 
+            this.pnReport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnReport.Controls.Add(this.cryLab);
+            this.pnReport.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.pnReport.Location = new System.Drawing.Point(170, 77);
+            this.pnReport.Name = "pnReport";
+            this.pnReport.Size = new System.Drawing.Size(66, 37);
+            this.pnReport.TabIndex = 11;
+            this.theme1.SetTheme(this.pnReport, "(default)");
+            this.pnReport.Visible = false;
+            // 
+            // cryLab
+            // 
+            this.cryLab.ActiveViewIndex = -1;
+            this.cryLab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.cryLab.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cryLab.Cursor = System.Windows.Forms.Cursors.Default;
+            this.cryLab.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.cryLab.Location = new System.Drawing.Point(8, 8);
+            this.cryLab.Name = "cryLab";
+            this.cryLab.Size = new System.Drawing.Size(45, 17);
+            this.cryLab.TabIndex = 1;
+            this.theme1.SetTheme(this.cryLab, "(default)");
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label6.Location = new System.Drawing.Point(5, 55);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(46, 16);
+            this.label6.TabIndex = 548;
+            this.label6.Text = "Body :";
+            this.theme1.SetTheme(this.label6, "(default)");
+            // 
+            // txtBody
+            // 
+            this.txtBody.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtBody.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtBody.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtBody.Location = new System.Drawing.Point(70, 53);
+            this.txtBody.Name = "txtBody";
+            this.txtBody.Size = new System.Drawing.Size(350, 20);
+            this.txtBody.TabIndex = 547;
+            this.txtBody.Tag = null;
+            this.theme1.SetTheme(this.txtBody, "(default)");
+            this.txtBody.Value = "Result OPU";
+            this.txtBody.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // btnSendEmail
             // 
@@ -557,56 +609,6 @@
             this.sB1.Size = new System.Drawing.Size(118, 17);
             this.sB1.Text = "toolStripStatusLabel1";
             // 
-            // txtBody
-            // 
-            this.txtBody.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtBody.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtBody.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtBody.Location = new System.Drawing.Point(70, 53);
-            this.txtBody.Name = "txtBody";
-            this.txtBody.Size = new System.Drawing.Size(350, 20);
-            this.txtBody.TabIndex = 547;
-            this.txtBody.Tag = null;
-            this.theme1.SetTheme(this.txtBody, "(default)");
-            this.txtBody.Value = "Result OPU";
-            this.txtBody.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label6.Location = new System.Drawing.Point(5, 55);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(46, 16);
-            this.label6.TabIndex = 548;
-            this.label6.Text = "Body :";
-            this.theme1.SetTheme(this.label6, "(default)");
-            // 
-            // pnReport
-            // 
-            this.pnReport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.pnReport.Controls.Add(this.crystalReportViewer1);
-            this.pnReport.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.pnReport.Location = new System.Drawing.Point(170, 77);
-            this.pnReport.Name = "pnReport";
-            this.pnReport.Size = new System.Drawing.Size(66, 37);
-            this.pnReport.TabIndex = 11;
-            this.theme1.SetTheme(this.pnReport, "(default)");
-            this.pnReport.Visible = false;
-            // 
-            // crystalReportViewer1
-            // 
-            this.crystalReportViewer1.ActiveViewIndex = -1;
-            this.crystalReportViewer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.crystalReportViewer1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.crystalReportViewer1.Location = new System.Drawing.Point(8, 8);
-            this.crystalReportViewer1.Name = "crystalReportViewer1";
-            this.crystalReportViewer1.Size = new System.Drawing.Size(45, 17);
-            this.crystalReportViewer1.TabIndex = 1;
-            this.theme1.SetTheme(this.crystalReportViewer1, "(default)");
-            // 
             // FrmLabOPUPrint
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -623,6 +625,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.chkSendEmail)).EndInit();
             this.pnEmail.ResumeLayout(false);
             this.pnEmail.PerformLayout();
+            this.pnReport.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.txtBody)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSendEmail)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEmailSubject)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnAgentEmail)).EndInit();
@@ -645,8 +649,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).EndInit();
             this.sB.ResumeLayout(false);
             this.sB.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtBody)).EndInit();
-            this.pnReport.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -691,6 +693,6 @@
         private System.Windows.Forms.Label label6;
         private C1.Win.C1Input.C1TextBox txtBody;
         private System.Windows.Forms.Panel pnReport;
-        private CrystalDecisions.Windows.Forms.CrystalReportViewer crystalReportViewer1;
+        private CrystalDecisions.Windows.Forms.CrystalReportViewer cryLab;
     }
 }

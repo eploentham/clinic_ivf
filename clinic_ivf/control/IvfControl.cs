@@ -251,6 +251,10 @@ namespace clinic_ivf.control
                 iniC.themeFET = iniF.getIni("app", "themeFET");
                 iniC.lisBarcode = iniF.getIni("app", "lisBarcode");
                 iniC.messageDebug = iniF.getIni("app", "messageDebug");
+                iniC.email_to_lab_opu = iniF.getIni("email", "email_to_lab_opu");
+                iniC.email_form_lab_opu = iniF.getIni("email", "email_form_lab_opu");
+                iniC.email_auth_user_lab_opu = iniF.getIni("email", "email_auth_user_lab_opu");
+                iniC.email_auth_pass_lab_opu = iniF.getIni("email", "email_auth_pass_lab_opu");
 
                 iniC.grdViewFontName = iniC.grdViewFontName.Equals("") ? "Microsoft Sans Serif" : iniC.grdViewFontName;
                 //MessageBox.Show("0037 " + iniC.lisBarcode, "");

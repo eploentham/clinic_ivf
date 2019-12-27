@@ -445,6 +445,7 @@ namespace clinic_ivf.gui
                 {
                     File.Delete(filename);
                     System.Threading.Thread.Sleep(200);
+                    Application.DoEvents();
                 }
 
                 ExportOptions CrExportOptions;
@@ -460,6 +461,8 @@ namespace clinic_ivf.gui
                 }
                 lbEmail.Text = "Export Report";
                 rpt.Export();
+                System.Threading.Thread.Sleep(200);
+                Application.DoEvents();
             }
             catch (Exception ex)
             {
@@ -516,6 +519,11 @@ namespace clinic_ivf.gui
                 return;
             }
             frmW.Dispose();
+            if (!File.Exists(filename))
+            {
+                lbEmail.Text = "ไม่พบ Attach File";
+                return;
+            }
             lbEmail.Text = "เริ่มส่ง Email";
             MailMessage mail = new MailMessage();
             if (amh.Equals("1"))
