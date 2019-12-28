@@ -30,5 +30,6 @@ namespace clinic_ivf.object1
         public String embryo_dev_date { get; set; }
         public String desc4 { get; set; }
         public String desc5 { get; set; }
+        public String status_biopsy_ngs { get; set; }
     }
 }

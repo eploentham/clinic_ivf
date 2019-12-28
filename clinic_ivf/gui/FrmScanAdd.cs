@@ -212,7 +212,7 @@ namespace clinic_ivf.gui
             
             if (Directory.Exists(ic.iniC.pathImageScan))
             {
-                if (MessageBox.Show("ต้องการ ลบข้อมูล รูป scan ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+                if (MessageBox.Show("ต้องการ Upload ข้อมูล รูป scan ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
                 {
                     //DirectoryInfo dir = new DirectoryInfo(ic.iniC.pathImageScan);
                     //foreach (FileInfo fi in dir.GetFiles())
@@ -420,6 +420,7 @@ namespace clinic_ivf.gui
             if (dr == System.Windows.Forms.DialogResult.OK)
             {
                 String[] file1 = ofd.FileNames;
+                setGrf();
                 setImage(file1);
             }
             

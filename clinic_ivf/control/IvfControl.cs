@@ -817,10 +817,17 @@ namespace clinic_ivf.control
             item.Text = "";
             item.Value = "";
             c.Items.Add(item);
-            for (int i = 5; i <= 18; i++)
+            for (int i = 5; i <= 22; i++)
             {
                 String val = "", txt = "";
                 val = i.ToString("00")+":00";
+                txt = val;
+                item = new ComboBoxItem();
+                item.Text = val;
+                item.Value = txt;
+                c.Items.Add(item);
+
+                val = i.ToString("00") + ":15";
                 txt = val;
                 item = new ComboBoxItem();
                 item.Text = val;

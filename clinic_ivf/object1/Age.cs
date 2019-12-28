@@ -22,6 +22,10 @@ namespace clinic_ivf.object1
 
         public Age(DateTime Bday, DateTime Cday)
         {
+            if (Bday.Year > 2100)
+            {
+                return;
+            }
             this.Count(Bday, Cday);
         }
 

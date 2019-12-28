@@ -45,6 +45,7 @@ namespace clinic_ivf.objdb
             opuEmDev.embryo_dev_date = "embryo_dev_date";
             opuEmDev.desc4 = "desc4";
             opuEmDev.desc5 = "desc5";
+            opuEmDev.status_biopsy_ngs = "status_biopsy_ngs";
 
             opuEmDev.table = "lab_t_opu_embryo_dev";
             opuEmDev.pkField = "opu_embryo_dev_id";
@@ -77,6 +78,7 @@ namespace clinic_ivf.objdb
             p.embryo_dev_date = p.embryo_dev_date == null ? "" : p.embryo_dev_date;
             p.desc4 = p.desc4 == null ? "" : p.desc4;
             p.desc5 = p.desc5 == null ? "" : p.desc5;
+            p.status_biopsy_ngs = p.status_biopsy_ngs == null ? "" : p.status_biopsy_ngs;
 
             //p.user_cancel = p.user_cancel == null ? "" : p.user_cancel;
         }
@@ -108,6 +110,7 @@ namespace clinic_ivf.objdb
                 "," + opuEmDev.embryo_dev_date + "='" + p.embryo_dev_date + "'" +
                 "," + opuEmDev.desc4 + "='" + p.desc4.Replace("'", "''") + "'" +
                 "," + opuEmDev.desc5 + "='" + p.desc5.Replace("'", "''") + "'" +
+                "," + opuEmDev.status_biopsy_ngs + "='" + p.status_biopsy_ngs.Replace("'", "''") + "'" +
                 " " +
                
                 "";
@@ -142,6 +145,7 @@ namespace clinic_ivf.objdb
                 "," + opuEmDev.embryo_dev_date + "='" + p.embryo_dev_date + "'" +
                 "," + opuEmDev.desc4 + "='" + p.desc4.Replace("'", "''") + "'" +
                 "," + opuEmDev.desc5 + "='" + p.desc5.Replace("'", "''") + "'" +
+                "," + opuEmDev.status_biopsy_ngs + "='" + p.status_biopsy_ngs.Replace("'", "''") + "'" +
                 "Where " + opuEmDev.pkField + "='" + p.opu_embryo_dev_id + "'"
                 ;
 
@@ -315,7 +319,7 @@ namespace clinic_ivf.objdb
 
             return re;
         }
-        public String updatePathPicNoPic(String id, String num, String desc3, String desc4, String desc5, String userid)
+        public String updatePathPicNoPic(String id, String num, String desc3, String desc4, String desc5, String userid, String statusBio)
         {
             String re = "";
             String sql = "";
@@ -326,6 +330,7 @@ namespace clinic_ivf.objdb
                 "," + opuEmDev.desc4 + " = '" + desc4.Replace("'", "''") + "'" +
                 "," + opuEmDev.user_modi + " = '" + userid + "'" +
                 "," + opuEmDev.date_modi + " = now() " +
+                "," + opuEmDev.status_biopsy_ngs + " = '" + statusBio + "'" +
                 "Where " + opuEmDev.pkField + "='" + id + "'";
             try
             {
@@ -338,7 +343,7 @@ namespace clinic_ivf.objdb
 
             return re;
         }
-        public String updatePathPicNoPic(String id, String num, String desc3, String desc4, String userid)
+        public String updatePathPicNoPic(String id, String num, String desc3, String desc4, String userid, String statusBio)
         {
             String re = "";
             String sql = "";
@@ -349,6 +354,7 @@ namespace clinic_ivf.objdb
                 "," + opuEmDev.desc4 + " = '" + desc4.Replace("'", "''") + "'" +
                 "," + opuEmDev.user_modi + " = '" + userid + "'" +
                 "," + opuEmDev.date_modi + " = now() " +
+                "," + opuEmDev.status_biopsy_ngs + " = '" + statusBio + "'" +
                 "Where " + opuEmDev.pkField + "='" + id + "'";
             try
             {
@@ -584,7 +590,7 @@ namespace clinic_ivf.objdb
                 ", opuEmDev.desc2 as no1_desc2, opuEmDev.desc3 as no1_desc3, opu.opu_id, opu.opu_code, 'Number of transfer' as footer1" +
                 ", 'Number of Freeze' as footer2,'Number of Discard' as footer3, opu.remark as footer4,'' as footer5, 'st# = straw number' as footer6 " +
                 ", opu.embryo_for_et_number_of_transfer, opu.embryo_for_et_number_of_freeze,opu.embryo_for_et_number_of_discard, opuEmDev.desc4 as no1_desc4, opuEmDev.opu_embryo_dev_no, opuEmDev.desc0" +
-                ", opuEmDev.embryo_dev_date, opuEmDev.day, opuEmDev.desc1, opu.remark1 as footer7 " +
+                ", opuEmDev.embryo_dev_date, opuEmDev.day, opuEmDev.desc1, opu.remark_1 as footer7 " +
                 "From " + opuEmDev.table + " opuEmDev " +
                 "Left Join lab_t_opu opu on opu.opu_id = opuEmDev.opu_fet_id " +
                 "Left Join lab_b_procedure proce on proce.proce_id = opu.proce_id " +
