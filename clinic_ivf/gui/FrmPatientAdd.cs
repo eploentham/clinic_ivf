@@ -716,6 +716,7 @@ namespace clinic_ivf.gui
                     {
                         String re4 = ic.ivfDB.ovsDB.insertVisitOld(vsOld, txtStfConfirmID.Text, "edit");
                     }
+                    re1 = ic.ivfDB.pttDB.updatePatientRecordDateTime(txtID.Text);
                 }
                 else
                 {
@@ -749,7 +750,7 @@ namespace clinic_ivf.gui
                         //re = ic.ivfDB.vsOldDB.updateVEndTimeNull(vsOld.VN);
                         re1 = ic.ivfDB.vsDB.insertVisit(vs, txtStfConfirmID.Text);
                     }
-                    
+                    re1 = ic.ivfDB.pttDB.updatePatientRecordDateTime(txtID.Text);
                 }
                 long chk = 0;
                 if (long.TryParse(re, out chk))
