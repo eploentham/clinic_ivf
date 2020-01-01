@@ -47,7 +47,7 @@ namespace clinic_ivf.objdb
 
             p.PIDS = p.PIDS == null ? "" : p.PIDS;
             p.DUName = p.DUName == null ? "" : p.DUName;
-            p.Comment = p.Comment == null ? "" : p.Comment;
+            p.Comment = p.Comment == null ? "NULL" : p.Comment;
             p.TUsage = p.TUsage == null ? "" : p.TUsage;
             p.EUsage = p.EUsage == null ? "" : p.EUsage;
 
