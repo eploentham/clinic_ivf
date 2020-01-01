@@ -90,6 +90,7 @@ namespace clinic_ivf.gui
         string documentName, filePathNamePg;
         string documentPath;
         RichTextBoxStreamType documentFileType;
+        FrmNurseView frmNurView;
         Boolean flagImg = false, pageLoad=false;
         [STAThread]
         private void richTextBox1SetText(String txt)
@@ -101,7 +102,7 @@ namespace clinic_ivf.gui
         }
         [DllImport("winspool.drv", CharSet = CharSet.Auto, SetLastError = true)]
         public static extern bool SetDefaultPrinter(string Printer);
-        public FrmNurseAdd2(IvfControl ic, MainMenu m, String pttid, String vn, String flagedit, String pid)
+        public FrmNurseAdd2(IvfControl ic, MainMenu m, FrmNurseView frmNurseView, String pttid, String vn, String flagedit, String pid)
         {
             InitializeComponent();
             menu = m;
@@ -110,6 +111,7 @@ namespace clinic_ivf.gui
             this.pttId = pttid;
             this.pid = pid;
             this.flagedit = flagedit;
+            this.frmNurView = frmNurseView;
             initConfig();
         }
         private void initConfig()
@@ -246,6 +248,7 @@ namespace clinic_ivf.gui
             tCHistory.DoubleClick += TCHistory_DoubleClick;
             
             cboLabVs.SelectedIndexChanged += CboLabVs_SelectedIndexChanged;
+            this.Disposed += FrmNurseAdd2_Disposed;
 
             setControl(vn);
             ChkDenyAllergy_CheckedChanged(null, null);
@@ -324,6 +327,12 @@ namespace clinic_ivf.gui
             //setGrfPtt("");
             initProgressNote();
             pageLoad = false;
+        }
+
+        private void FrmNurseAdd2_Disposed(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            frmNurView.Dispose();
         }
 
         private void BtnLabReq_Click(object sender, EventArgs e)
@@ -3497,6 +3506,8 @@ namespace clinic_ivf.gui
                     ovs = ic.ivfDB.ovsDB.selectByPk1(txtVnOld.Text);
                     if (ovs.VSID.Equals("160"))
                     {
+                        frmNurView.setGrfQuePublic();
+                        frmNurView.setGrfFinishPublic();
                         menu.removeTab(tab);
                         //return;
                     }
@@ -6317,8 +6328,9 @@ namespace clinic_ivf.gui
                             }
                             catch (Exception ex)
                             {
-                                Console.WriteLine(ex.ToString());
-                                MessageBox.Show("setGrfImgPatient 1 " + ex.Message + "\n " + aaa, "host " + ic.iniC.hostFTP + " user " + user + " pas  " + pass);
+                                new LogWriter("e", "setGrfImgPatient 1 " + ex.Message + "\n " + host + "/" + aaa);
+                                //Console.WriteLine(ex.ToString());
+                                //MessageBox.Show("setGrfImgPatient 1 " + ex.Message + "\n " + aaa, "host " + ic.iniC.hostFTP + " user " + user + " pas  " + pass);
                             }
                             if (statusdoc.Equals("1"))
                             {
@@ -6330,8 +6342,9 @@ namespace clinic_ivf.gui
                         }
                         catch (Exception ex)
                         {
-                            Console.WriteLine(ex.ToString());
-                            MessageBox.Show("setGrfImgPatient 2 " + ex.Message + "\n " + aaa, "host " + ic.iniC.hostFTP + " user " + user + " pas  " + pass);
+                            new LogWriter("e", "setGrfImgPatient 2 " + ex.Message + "\n " + host + "/" + aaa);
+                            //Console.WriteLine(ex.ToString());
+                            //MessageBox.Show("setGrfImgPatient 2 " + ex.Message + "\n " + aaa, "host " + ic.iniC.hostFTP + " user " + user + " pas  " + pass);
                         }
                         //grfImg.Cols[colImg].ImageAndText = true;
                         if (loadedImage != null)
@@ -6804,8 +6817,9 @@ namespace clinic_ivf.gui
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine(ex.ToString());
-                        MessageBox.Show("setGrfPg 1 " + ex.Message + "\n " , "host " + ic.iniC.hostFTP + " user " + user + " pas  " + pass);
+                        new LogWriter("e", "setGrfPg 1 " + ex.Message + "\n " + host + "/" + ic.iniC.folderFTP + "/" + txtIdOld.Text);
+                        //Console.WriteLine(ex.ToString());
+                        //MessageBox.Show("setGrfPg 1 " + ex.Message + "\n " , "host " + ic.iniC.hostFTP + " user " + user + " pas  " + pass);
                     }
                     finally
                     {
@@ -6823,8 +6837,9 @@ namespace clinic_ivf.gui
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.ToString());
-                    MessageBox.Show("setGrfPg 2 " + ex.Message + "\n ", "host " + ic.iniC.hostFTP + " user " + user + " pas  " + pass);
+                    new LogWriter("e", "setGrfPg 2 " + ex.Message + "\n " + host + "/" + ic.iniC.folderFTP + "/" + txtIdOld.Text);
+                    //Console.WriteLine(ex.ToString());
+                    //MessageBox.Show("setGrfPg 2 " + ex.Message + "\n ", "host " + ic.iniC.hostFTP + " user " + user + " pas  " + pass);
                 }
             });
             pump.Start();

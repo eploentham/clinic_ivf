@@ -2434,7 +2434,7 @@ namespace clinic_ivf.gui
         }
         private void openNurseAdd(String pttId, String vn, String name, String flagview, String pid)
         {
-            FrmNurseAdd2 frm = new FrmNurseAdd2(ic, menu, pttId, vn, flagview, pid);
+            FrmNurseAdd2 frm = new FrmNurseAdd2(ic, menu, this, pttId, vn, flagview, pid);
             String txt = "";
             if (!name.Equals(""))
             {

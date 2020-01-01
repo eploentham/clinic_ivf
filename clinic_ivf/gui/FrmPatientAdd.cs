@@ -2482,8 +2482,9 @@ namespace clinic_ivf.gui
                             }
                             catch (Exception ex)
                             {
-                                Console.WriteLine(ex.ToString());
-                                MessageBox.Show("setGrfImg 1 " + ex.Message+"\n "+ aaa, "host "+ ic.iniC.hostFTP+ " user "+user + " pas  " + pass);
+                                new LogWriter("e", "setGrfImg 1 " + ex.Message + "\n " + host + "/" + aaa);
+                                //Console.WriteLine(ex.ToString());
+                                //MessageBox.Show("setGrfImg 1 " + ex.Message+"\n "+ aaa, "host "+ ic.iniC.hostFTP+ " user "+user + " pas  " + pass);
                             }
                             if (statusdoc.Equals("1"))
                             {
@@ -2495,8 +2496,9 @@ namespace clinic_ivf.gui
                         }
                         catch (Exception ex)
                         {
-                            Console.WriteLine(ex.ToString());
-                            MessageBox.Show("setGrfImg 2 " + ex.Message + "\n " + aaa, "host " + ic.iniC.hostFTP + " user " + user + " pas  " + pass);
+                            new LogWriter("e", "setGrfImg 2 " + ex.Message + "\n " + host + "/" + aaa);
+                            //Console.WriteLine(ex.ToString());
+                            //MessageBox.Show("setGrfImg 2 " + ex.Message + "\n " + aaa, "host " + ic.iniC.hostFTP + " user " + user + " pas  " + pass);
                         }
                         //grfImg.Cols[colImg].ImageAndText = true;
                         if (loadedImage != null)
