@@ -50,6 +50,7 @@ namespace clinic_ivf.objdb
             p.Comment = p.Comment == null ? "NULL" : p.Comment;
             p.TUsage = p.TUsage == null ? "" : p.TUsage;
             p.EUsage = p.EUsage == null ? "" : p.EUsage;
+            p.Comment = p.Comment.Equals("")? "NULL" : p.Comment;
 
             p.ID = long.TryParse(p.ID, out chk) ? chk.ToString() : "0";
             p.VN = long.TryParse(p.VN, out chk) ? chk.ToString() : "0";

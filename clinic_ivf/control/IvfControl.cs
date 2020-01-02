@@ -149,7 +149,7 @@ namespace clinic_ivf.control
             conn = new ConnectDB(iniC);
             //MessageBox.Show("005", "");
             ftpC = new FtpClient(iniC.hostFTP, iniC.userFTP, iniC.passFTP,ftpUsePassive, iniC.pathChar);
-
+            
             //ivfDB = new IvfDB(conn);
 
             sVsOld = new VisitOld();
@@ -808,6 +808,20 @@ namespace clinic_ivf.control
             {
                 c.SelectedText = selected;
             }
+            return c;
+        }
+        public C1ComboBox setCboNurseReport(C1ComboBox c)
+        {
+            ComboBoxItem item = new ComboBoxItem();
+            item = new ComboBoxItem();
+            item.Text = "";
+            item.Value = "";
+            c.Items.Add(item);
+
+            item = new ComboBoxItem();
+            item.Text = "List คนไข้ประจำวัน";
+            item.Value = "rptnur001";
+            c.Items.Add(item);
             return c;
         }
         public C1ComboBox setCboApmTime(C1ComboBox c)

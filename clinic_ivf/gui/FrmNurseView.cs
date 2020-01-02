@@ -33,7 +33,7 @@ namespace clinic_ivf.gui
         int colRID = 1, colRVN = 2, colRPttHn = 3, colRPttName = 4, colRVsDate = 5, colRPttId = 6;
         int colLID = 1, colLVNShow = 2, colLPttHnFemale = 3, colLPttNameFemale = 4, colLPttHnMale = 5, colLPttNameMale = 6, colLlabname = 7, colLStatus = 8, colLLGID=9;
 
-        C1FlexGrid grfQue, grfDiag, grfFinish, grfSearch, grfLab;
+        C1FlexGrid grfQue, grfDiag, grfFinish, grfSearch, grfLab, grfRpt;
         C1SuperTooltip stt;
         C1SuperErrorProvider sep;
         Timer timer;
@@ -83,8 +83,10 @@ namespace clinic_ivf.gui
             chkAll.CheckedChanged += ChkAll_CheckedChanged;
             cboVisitBsp.SelectedItemChanged += CboVisitBsp_SelectedItemChanged;
             btnLabResultSearch.Click += BtnLabResultSearch_Click;
+            btnRptOk.Click += BtnRptOk_Click;
 
             ic.ivfDB.bspDB.setCboBsp(cboVisitBsp, ic.iniC.service_point_id);
+            ic.setCboNurseReport(cboRpt);
 
             initGrfQue();
             setGrfQue();
@@ -95,6 +97,7 @@ namespace clinic_ivf.gui
             initGrfSearch();
             initGrfLab();
             setGrfLab("");
+            initGrfRpt();
 
             int timerlab = 0;
             int.TryParse(ic.iniC.timerlabreqaccept, out timerlab);
@@ -103,6 +106,12 @@ namespace clinic_ivf.gui
             timer.Tick += Timer_Tick;
             timer.Enabled = true;
             pageLoad = false;
+        }
+
+        private void BtnRptOk_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            setGrfRpt();
         }
 
         private void BtnLabResultSearch_Click(object sender, EventArgs e)
@@ -1056,7 +1065,40 @@ namespace clinic_ivf.gui
             //throw new NotImplementedException();
 
         }
+        private void initGrfRpt()
+        {
+            grfRpt = new C1FlexGrid();
+            grfRpt.Font = fEdit;
+            grfRpt.Dock = System.Windows.Forms.DockStyle.Fill;
+            grfRpt.Location = new System.Drawing.Point(0, 0);
+            grfRpt.Rows.Count = 1;
+            //FilterRow fr = new FilterRow(grfExpn);
 
+            //grfLab.AfterRowColChange += GrfLab_AfterRowColChange;
+            //grfLab.DoubleClick += GrfLab_DoubleClick;
+            //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
+            ContextMenu menuGw = new ContextMenu();
+            //menuGw.MenuItems.Add("&แก้ไข รายการเบิก", new EventHandler(ContextMenu_edit));
+            //menuGw.MenuItems.Add("&แก้ไข", new EventHandler(ContextMenu_Gw_Edit));
+            //menuGw.MenuItems.Add("&ยกเลิก", new EventHandler(ContextMenu_Gw_Cancel));
+            grfRpt.ContextMenu = menuGw;
+            pnRpt.Controls.Add(grfRpt);
+
+            theme1.SetTheme(grfRpt, "Office2007Blue");
+
+            theme1.SetTheme(pnRpt, "Office2007Blue");
+            //theme1.SetTheme(tabFinish, "Office2010Blue");
+
+        }
+        private void setGrfRpt()
+        {
+            String rpt = "";
+            rpt = cboRpt.SelectedItem != null ? ((ComboBoxItem)cboRpt.SelectedItem).Value : "";
+            if (!rpt.Equals(""))
+            {
+                MessageBox.Show("ไม่พบ ชื่อ Report", "");
+            }
+        }
         private void initGrfQue()
         {
             grfQue = new C1FlexGrid();
