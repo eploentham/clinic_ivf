@@ -1031,7 +1031,7 @@ namespace clinic_ivf.objdb
                 "Left join b_staff stf on vs.doctor_id = stf.staff_id " +
                 "Left join f_patient_prefix fpp_stf on fpp_stf.f_patient_prefix_id = stf.prefix_id " +
                 "Left Join Agent agt on ptt.agent = agt.AgentID " +
-                "Where vs." + vs.visit_begin_visit_time + " >= '" + date1 + " 00:00:00' and vs." + vs.visit_begin_visit_time + " <=  '" + date1 + " 00:00:00' " +
+                "Where vs." + vs.visit_begin_visit_time + " >= '" + date1 + " 00:00:00' and vs." + vs.visit_begin_visit_time + " <=  '" + date2 + " 23:59:59' " +
                 "Order By vs.visit_vn  ";
             dt = conn.selectData(conn.conn, sql);
 

@@ -117,6 +117,7 @@ namespace clinic_ivf.gui
             SaveFileDialog dlg = new SaveFileDialog();
             dlg.DefaultExt = "xls";
             dlg.FileName = "*.xls";
+            dlg.Filter = "Excel Files | *.xls";
             if (dlg.ShowDialog() != DialogResult.OK)
                 return;
 
@@ -1111,22 +1112,39 @@ namespace clinic_ivf.gui
         {
             String rpt = "", dateStart="", dateEnd="";
             rpt = cboRpt.SelectedItem != null ? ((ComboBoxItem)cboRpt.SelectedItem).Value : "";
-            if (!rpt.Equals(""))
+            if (rpt.Equals(""))
             {
                 MessageBox.Show("ไม่พบ ชื่อ Report", "");
             }
             dateStart = ic.datetoDB(txtRptDateStart.Text);
             dateEnd = ic.datetoDB(txtRptDateEnd.Text);
             grfRpt.Clear();
+            grfRpt.Cols.Count = 19;
             DataTable dt = new DataTable();
             dt = ic.ivfDB.vsDB.selectByRpt(dateStart, dateEnd);
+            Column colOPU = grfRpt.Cols[colRptOPU];
+            colOPU.DataType = typeof(Image);
+            Column colFET = grfRpt.Cols[colRptFET];
+            colFET.DataType = typeof(Image);
+            Column colAna = grfRpt.Cols[colRptSpermAna];
+            colAna.DataType = typeof(Image);
+            Column colFreez = grfRpt.Cols[colRptSpermFreezing];
+            colFreez.DataType = typeof(Image);
+            Column colIUI = grfRpt.Cols[colRptSpermIUI];
+            colIUI.DataType = typeof(Image);
+            Column colPESA = grfRpt.Cols[colRptSpermPESA];
+            colPESA.DataType = typeof(Image);
+            //Column colCashier = grfRpt.Cols[colRptOPU];
+            //colCashier.DataType = typeof(Image);
+
+            grfRpt.Rows.Count = 0;
             grfRpt.Rows.Count = dt.Rows.Count + 1;
-            grfRpt.Cols.Count = 19;
+            
             grfRpt.Cols[colRptVnShow].Width = 80;
-            grfRpt.Cols[colRptHn].Width = 80;
-            grfRpt.Cols[colRptPttName].Width = 80;
-            grfRpt.Cols[colRptVsDate].Width = 80;
-            grfRpt.Cols[colRptDOB].Width = 80;
+            grfRpt.Cols[colRptHn].Width = 120;
+            grfRpt.Cols[colRptPttName].Width = 280;
+            grfRpt.Cols[colRptVsDate].Width = 100;
+            grfRpt.Cols[colRptDOB].Width = 100;
             grfRpt.Cols[colRptFormACode].Width = 80;
             grfRpt.Cols[colRptOPU].Width = 80;
             grfRpt.Cols[colRptFET].Width = 80;
@@ -1181,6 +1199,7 @@ namespace clinic_ivf.gui
                     grfRpt[i, colRptName_2] = row["name_2"].ToString();
                     grfRpt[i, colRptDtr] = row["dtr_name"].ToString();
                     grfRpt[i, colRptAgent] = row["AgentName"].ToString();
+                    i++;
                 }
                 catch(Exception ex)
                 {
@@ -1205,7 +1224,7 @@ namespace clinic_ivf.gui
             grfRpt.Cols[colRptName_2].AllowEditing = false;
             grfRpt.Cols[colRptDtr].AllowEditing = false;
             grfRpt.Cols[colRptAgent].AllowEditing = false;
-
+            grfRpt.AutoSizeRows();
             //grfRpt.Cols[colVNshow].AllowEditing = false;
         }
         private void initGrfQue()
