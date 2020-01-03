@@ -802,6 +802,13 @@ namespace clinic_ivf.gui
             //throw new NotImplementedException();
             DataTable dt = new DataTable();
             dt = ic.ivfDB.pttOldDB.selectByOpdCard(txtIdOld.Text);
+            if (dt.Rows.Count > 0)
+            {
+                dt.Rows[0]["RelationshipName"] = cboName1Rl.Text;
+                dt.Rows[0]["address1"] = cboAmpr.Text+" "+ cboDist.Text + " " + cboProv.Text + " " + cboCou.Text;
+            }
+            
+
             PatientOld pttO = new PatientOld();
             pttO = ic.ivfDB.pttOldDB.selectByPk1(txtIdOld.Text);
             FrmReport frm = new FrmReport(ic);

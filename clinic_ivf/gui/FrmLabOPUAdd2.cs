@@ -1317,7 +1317,7 @@ namespace clinic_ivf.gui
             }
             else
             {
-                txtSpermTotalCnt.Value = total;
+                txtSpermTotalCnt.Value = Decimal.ToInt32(total);
             }
         }
         private void calMotile()
@@ -3113,7 +3113,9 @@ namespace clinic_ivf.gui
             //grfDay2Img.Cols[colDay2PathPic].Editor = txt;
             //grfDay2Img.Cols[colDay2ImgBtn].Editor = btn;
             grfDay2Img.Cols[colDay2ImgPic].Editor = img;
-            grfDay2Img.Cols[colDay2StatusBio].Editor = img;
+            //grfDay2Img.Cols[colDay2StatusBio].Editor = img;
+            Column colCashier = grfDay2Img.Cols[colDay2StatusBio];
+            colCashier.DataType = typeof(Image);
 
             grfDay2Img.Cols[colDay2ImgId].Width = 250;
             grfDay2Img.Cols[colDay2ImgPic].Width = 100;
@@ -3212,7 +3214,8 @@ namespace clinic_ivf.gui
             }
             grfDay2Img.Cols[colDay2ImgId].Visible = false;
             grfDay2Img.Cols[colDay2PathPic].Visible = false;
-            //grfDay2Img.Cols[colDay2ImgPic].AllowEditing = false;
+            grfDay2Img.Cols[colDay2ImgPic].AllowEditing = false;
+            grfDay2Img.Cols[colDay2StatusBio].AllowEditing = false;
             grfDay2Img.AutoSizeCols();
             grfDay2Img.AutoSizeRows();
             theme1.SetTheme(grfDay2Img, "Office2016Colorful");
@@ -3381,7 +3384,9 @@ namespace clinic_ivf.gui
             //grfDay3Img.Cols[colDay2PathPic].Editor = txt;
             //grfDay2Img.Cols[colDay2ImgBtn].Editor = btn;
             grfDay3Img.Cols[colDay2ImgPic].Editor = img;
-            grfDay3Img.Cols[colDay2StatusBio].Editor = img;
+            //grfDay3Img.Cols[colDay2StatusBio].Editor = img;
+            Column colCashier = grfDay3Img.Cols[colDay2StatusBio];
+            colCashier.DataType = typeof(Image);
 
             grfDay3Img.Cols[colDay2ImgId].Width = 250;
             grfDay3Img.Cols[colDay2ImgPic].Width = 100;
@@ -3481,7 +3486,8 @@ namespace clinic_ivf.gui
             }
             grfDay3Img.Cols[colDay2ImgId].Visible = false;
             grfDay3Img.Cols[colDay2PathPic].Visible = false;
-            //grfDay2Img.Cols[colDay2ImgPic].AllowEditing = false;
+            grfDay3Img.Cols[colDay2ImgPic].AllowEditing = false;
+            grfDay3Img.Cols[colDay2StatusBio].AllowEditing = false;
             grfDay3Img.AutoSizeCols();
             grfDay3Img.AutoSizeRows();
             theme1.SetTheme(grfDay3Img, "Office2016Colorful");
@@ -3928,7 +3934,9 @@ namespace clinic_ivf.gui
             //grfDay6Img.Cols[colDay2PathPic].Editor = txt;
             //grfDay2Img.Cols[colDay2ImgBtn].Editor = btn;
             grfDay6Img.Cols[colDay2ImgPic].Editor = img;
-            grfDay6Img.Cols[colDay2StatusBio].Editor = img;
+            //grfDay6Img.Cols[colDay2StatusBio].Editor = img;
+            Column colCashier = grfDay6Img.Cols[colDay2StatusBio];
+            colCashier.DataType = typeof(Image);
 
             grfDay6Img.Cols[colDay2ImgId].Width = 250;
             grfDay6Img.Cols[colDay2ImgPic].Width = 100;
@@ -3946,6 +3954,7 @@ namespace clinic_ivf.gui
             grfDay6Img.Cols[colDay2StatusBio].Caption = "Biopsy";
 
             grfDay6Img.Cols[colDay2ImgPic].ImageAndText = false;
+            grfDay6Img.Cols[colDay2StatusBio].ImageAndText = false;
 
             Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
             grfDay6Img.AllowMerging = C1.Win.C1FlexGrid.AllowMergingEnum.RestrictRows;
@@ -4029,7 +4038,8 @@ namespace clinic_ivf.gui
             }
             grfDay6Img.Cols[colDay2ImgId].Visible = false;
             grfDay6Img.Cols[colDay2PathPic].Visible = false;
-            //grfDay2Img.Cols[colDay2ImgPic].AllowEditing = false;
+            grfDay6Img.Cols[colDay2ImgPic].AllowEditing = false;
+            grfDay6Img.Cols[colDay2StatusBio].AllowEditing = false;
             grfDay6Img.AutoSizeCols();
             grfDay6Img.AutoSizeRows();
             theme1.SetTheme(grfDay6Img, "Office2016Colorful");

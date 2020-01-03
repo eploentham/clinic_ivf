@@ -401,7 +401,10 @@ namespace clinic_ivf.objdb
             pttO1.Email = ptt.email;
             pttO1.EmergencyPersonAddress = "";
             //pttO1.EmergencyPersonalContact = ptt.patient_contact_firstname+" "+ptt.patient_contact_lastname;
-            pttO1.EmergencyPersonalContact = ptt.patient_contact_firstname + " " + ptt.patient_contact_lastname;
+            String prefix = "";
+            prefix = fpfDB.getList(ptt.patient_contact_f_patient_prefix_id);
+            //prefix = prefix.Equals("Mrs.") ? "1" : prefix.Equals("Miss") ? "2" : prefix.Equals("Mr.") ? "3" : prefix.Equals("Girl") ? "4" : prefix.Equals("Boy") ? "5" : "";
+            pttO1.EmergencyPersonalContact = prefix+ " " + ptt.patient_contact_firstname + " " + ptt.patient_contact_lastname;
             pttO1.EPAddress = "";
             pttO1.EPDistrict = "";
             pttO1.EPEmail = "";
