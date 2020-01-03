@@ -32,6 +32,7 @@ namespace clinic_ivf.gui
         int colSID = 1, colSVN = 2, colSPttHn = 3, colSPttName = 4, colSVsDate = 5, colSVsTime = 6, colSVsEtime = 7, colSStatus = 8, colSPttId = 9;
         int colRID = 1, colRVN = 2, colRPttHn = 3, colRPttName = 4, colRVsDate = 5, colRPttId = 6;
         int colLID = 1, colLVNShow = 2, colLPttHnFemale = 3, colLPttNameFemale = 4, colLPttHnMale = 5, colLPttNameMale = 6, colLlabname = 7, colLStatus = 8, colLLGID=9;
+        int colRptId = 1, colRptVnShow = 2, colRptVn = 3, colRptHn = 4, colRptPttName = 5, colRptVsDate = 6, colRptDOB = 7, colRptFormACode = 8, colRptOPU = 9, colRptFET = 10, colRptSpermAna = 11, colRptSpermFreezing = 12, colRptSpermIUI = 13, colRptSpermPESA = 14, colRptName_1 = 15, colRptName_2 = 16, colRptDtr = 17, colRptAgent = 18;
 
         C1FlexGrid grfQue, grfDiag, grfFinish, grfSearch, grfLab, grfRpt;
         C1SuperTooltip stt;
@@ -40,7 +41,7 @@ namespace clinic_ivf.gui
         String printerOld = "";
 
         Boolean pageLoad = false;
-        Image imgCorr, imgTran;
+        Image imgCorr, imgTran, imgFinish;
         [DllImport("winspool.drv", CharSet = CharSet.Auto, SetLastError = true)]
         public static extern bool SetDefaultPrinter(string Printer);
         public FrmNurseView(IvfControl ic, MainMenu m)
@@ -66,6 +67,7 @@ namespace clinic_ivf.gui
             ff = txtSearch.Font;
             imgCorr = Resources.red_checkmark_png_16;
             imgTran = Resources.red_checkmark_png_51;
+            imgFinish = Resources.OK_24;
 
             stt = new C1SuperTooltip();
             sep = new C1SuperErrorProvider();
@@ -84,6 +86,7 @@ namespace clinic_ivf.gui
             cboVisitBsp.SelectedItemChanged += CboVisitBsp_SelectedItemChanged;
             btnLabResultSearch.Click += BtnLabResultSearch_Click;
             btnRptOk.Click += BtnRptOk_Click;
+            btnExcel.Click += BtnExcel_Click;
 
             ic.ivfDB.bspDB.setCboBsp(cboVisitBsp, ic.iniC.service_point_id);
             ic.setCboNurseReport(cboRpt);
@@ -106,6 +109,20 @@ namespace clinic_ivf.gui
             timer.Tick += Timer_Tick;
             timer.Enabled = true;
             pageLoad = false;
+        }
+
+        private void BtnExcel_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            SaveFileDialog dlg = new SaveFileDialog();
+            dlg.DefaultExt = "xls";
+            dlg.FileName = "*.xls";
+            if (dlg.ShowDialog() != DialogResult.OK)
+                return;
+
+            // save grid as sheet in the book
+            FileFlags flags = FileFlags.None;
+            grfRpt.SaveGrid(dlg.FileName, FileFormatEnum.Excel, flags);
         }
 
         private void BtnRptOk_Click(object sender, EventArgs e)
@@ -1092,12 +1109,104 @@ namespace clinic_ivf.gui
         }
         private void setGrfRpt()
         {
-            String rpt = "";
+            String rpt = "", dateStart="", dateEnd="";
             rpt = cboRpt.SelectedItem != null ? ((ComboBoxItem)cboRpt.SelectedItem).Value : "";
             if (!rpt.Equals(""))
             {
                 MessageBox.Show("ไม่พบ ชื่อ Report", "");
             }
+            dateStart = ic.datetoDB(txtRptDateStart.Text);
+            dateEnd = ic.datetoDB(txtRptDateEnd.Text);
+            grfRpt.Clear();
+            DataTable dt = new DataTable();
+            dt = ic.ivfDB.vsDB.selectByRpt(dateStart, dateEnd);
+            grfRpt.Rows.Count = dt.Rows.Count + 1;
+            grfRpt.Cols.Count = 19;
+            grfRpt.Cols[colRptVnShow].Width = 80;
+            grfRpt.Cols[colRptHn].Width = 80;
+            grfRpt.Cols[colRptPttName].Width = 80;
+            grfRpt.Cols[colRptVsDate].Width = 80;
+            grfRpt.Cols[colRptDOB].Width = 80;
+            grfRpt.Cols[colRptFormACode].Width = 80;
+            grfRpt.Cols[colRptOPU].Width = 80;
+            grfRpt.Cols[colRptFET].Width = 80;
+            grfRpt.Cols[colRptSpermAna].Width = 80;
+            grfRpt.Cols[colRptSpermFreezing].Width = 80;
+            grfRpt.Cols[colRptSpermIUI].Width = 80;
+            grfRpt.Cols[colRptSpermPESA].Width = 80;
+            grfRpt.Cols[colRptName_1].Width = 80;
+            grfRpt.Cols[colRptName_2].Width = 80;
+            grfRpt.Cols[colRptDtr].Width = 80;
+            grfRpt.Cols[colRptAgent].Width = 80;
+            //grfRpt.Cols[colVNshow].Width = 80;
+
+            grfRpt.Cols[colRptVnShow].Caption = "VN";
+            grfRpt.Cols[colRptHn].Caption = "HN";
+            grfRpt.Cols[colRptPttName].Caption = "Patient Name";
+            grfRpt.Cols[colRptVsDate].Caption = "Date";
+            grfRpt.Cols[colRptDOB].Caption = "DOB";
+            grfRpt.Cols[colRptFormACode].Caption = "code";
+            grfRpt.Cols[colRptOPU].Caption = "OPU";
+            grfRpt.Cols[colRptFET].Caption = "FET";
+            grfRpt.Cols[colRptSpermAna].Caption = "Sperm.A";
+            grfRpt.Cols[colRptSpermFreezing].Caption = "Sperm.F";
+            grfRpt.Cols[colRptSpermIUI].Caption = "Sperm.IUI";
+            grfRpt.Cols[colRptSpermPESA].Caption = "Sperm.PESA";
+            grfRpt.Cols[colRptName_1].Caption = "Name_1";
+            grfRpt.Cols[colRptName_2].Caption = "Name_2";
+            grfRpt.Cols[colRptDtr].Caption = "Doctor";
+            grfRpt.Cols[colRptAgent].Caption = "Agent";
+
+            int i = 1;
+            foreach (DataRow row in dt.Rows)
+            {
+                try
+                {
+                    grfRpt[i, 0] = i;
+                    grfRpt[i, colRptId] = row["t_visit_id"].ToString();
+                    grfRpt[i, colRptVn] = row["visit_vn"].ToString();
+                    grfRpt[i, colRptVnShow] = ic.showVN(row["visit_vn"].ToString());
+                    grfRpt[i, colRptHn] = row["visit_hn"].ToString();
+                    grfRpt[i, colRptPttName] = row["ptt_name"].ToString();
+                    grfRpt[i, colRptVsDate] = ic.datetoShow(row["visit_begin_visit_time"].ToString());
+                    grfRpt[i, colRptDOB] = ic.datetoShow(row["patient_birthday"].ToString());
+                    grfRpt[i, colRptFormACode] = row["form_a_code"].ToString();
+                    grfRpt[i, colRptOPU] = row["status_opu_active"].ToString().Equals("1") ? imgFinish : imgTran;
+                    grfRpt[i, colRptFET] = row["status_fet_active"].ToString().Equals("1") ? imgFinish : imgTran;
+                    grfRpt[i, colRptSpermAna] = row["status_sperm_analysis"].ToString().Equals("1") ? imgFinish : imgTran;
+                    grfRpt[i, colRptSpermFreezing] = row["status_sperm_freezing"].ToString().Equals("1") ? imgFinish : imgTran;
+                    grfRpt[i, colRptSpermIUI] = row["status_sperm_iui"].ToString().Equals("1") ? imgFinish : imgTran;
+                    grfRpt[i, colRptSpermPESA] = row["status_sperm_pesa"].ToString().Equals("1") ? imgFinish : imgTran;
+                    grfRpt[i, colRptName_1] = row["name_1"].ToString();
+                    grfRpt[i, colRptName_2] = row["name_2"].ToString();
+                    grfRpt[i, colRptDtr] = row["dtr_name"].ToString();
+                    grfRpt[i, colRptAgent] = row["AgentName"].ToString();
+                }
+                catch(Exception ex)
+                {
+
+                }
+            }
+            grfRpt.Cols[colRptId].Visible = false;
+            grfRpt.Cols[colRptVn].Visible = false;
+            grfRpt.Cols[colRptVnShow].AllowEditing = false;
+            grfRpt.Cols[colRptHn].AllowEditing = false;
+            grfRpt.Cols[colRptPttName].AllowEditing = false;
+            grfRpt.Cols[colRptVsDate].AllowEditing = false;
+            grfRpt.Cols[colRptDOB].AllowEditing = false;
+            grfRpt.Cols[colRptFormACode].AllowEditing = false;
+            grfRpt.Cols[colRptOPU].AllowEditing = false;
+            grfRpt.Cols[colRptFET].AllowEditing = false;
+            grfRpt.Cols[colRptSpermAna].AllowEditing = false;
+            grfRpt.Cols[colRptSpermFreezing].AllowEditing = false;
+            grfRpt.Cols[colRptSpermIUI].AllowEditing = false;
+            grfRpt.Cols[colRptSpermPESA].AllowEditing = false;
+            grfRpt.Cols[colRptName_1].AllowEditing = false;
+            grfRpt.Cols[colRptName_2].AllowEditing = false;
+            grfRpt.Cols[colRptDtr].AllowEditing = false;
+            grfRpt.Cols[colRptAgent].AllowEditing = false;
+
+            //grfRpt.Cols[colVNshow].AllowEditing = false;
         }
         private void initGrfQue()
         {

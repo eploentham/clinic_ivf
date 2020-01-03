@@ -62,6 +62,7 @@
             this.tabReport = new C1.Win.C1Command.C1DockingTabPage();
             this.pnRpt = new System.Windows.Forms.Panel();
             this.pnRptHeader = new System.Windows.Forms.Panel();
+            this.btnRptOk = new C1.Win.C1Input.C1Button();
             this.btnExcel = new C1.Win.C1Input.C1Button();
             this.btnPrint = new C1.Win.C1Input.C1Button();
             this.label6 = new System.Windows.Forms.Label();
@@ -72,7 +73,6 @@
             this.txtRptDateStart = new C1.Win.C1Input.C1DateEdit();
             this.sB = new System.Windows.Forms.StatusStrip();
             this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.btnRptOk = new C1.Win.C1Input.C1Button();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tC)).BeginInit();
@@ -97,13 +97,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtSearch)).BeginInit();
             this.tabReport.SuspendLayout();
             this.pnRptHeader.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnRptOk)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnExcel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPrint)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboRpt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtRptDateEnd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtRptDateStart)).BeginInit();
             this.sB.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnRptOk)).BeginInit();
             this.SuspendLayout();
             // 
             // theme1
@@ -636,6 +636,18 @@
             this.pnRptHeader.TabIndex = 0;
             this.theme1.SetTheme(this.pnRptHeader, "(default)");
             // 
+            // btnRptOk
+            // 
+            this.btnRptOk.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRptOk.Location = new System.Drawing.Point(791, 8);
+            this.btnRptOk.Name = "btnRptOk";
+            this.btnRptOk.Size = new System.Drawing.Size(31, 25);
+            this.btnRptOk.TabIndex = 744;
+            this.btnRptOk.Text = "...";
+            this.theme1.SetTheme(this.btnRptOk, "(default)");
+            this.btnRptOk.UseVisualStyleBackColor = true;
+            this.btnRptOk.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
             // btnExcel
             // 
             this.btnExcel.Image = global::clinic_ivf.Properties.Resources.excel_24;
@@ -848,18 +860,6 @@
             this.sB1.Size = new System.Drawing.Size(118, 17);
             this.sB1.Text = "toolStripStatusLabel1";
             // 
-            // btnRptOk
-            // 
-            this.btnRptOk.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRptOk.Location = new System.Drawing.Point(791, 8);
-            this.btnRptOk.Name = "btnRptOk";
-            this.btnRptOk.Size = new System.Drawing.Size(31, 25);
-            this.btnRptOk.TabIndex = 744;
-            this.btnRptOk.Text = "...";
-            this.theme1.SetTheme(this.btnRptOk, "(default)");
-            this.btnRptOk.UseVisualStyleBackColor = true;
-            this.btnRptOk.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
             // FrmNurseView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -898,6 +898,7 @@
             this.tabReport.ResumeLayout(false);
             this.pnRptHeader.ResumeLayout(false);
             this.pnRptHeader.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnRptOk)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnExcel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPrint)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboRpt)).EndInit();
@@ -905,7 +906,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtRptDateStart)).EndInit();
             this.sB.ResumeLayout(false);
             this.sB.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnRptOk)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
