@@ -3362,6 +3362,21 @@ namespace clinic_ivf.gui
                 {
                     grfDay2Img[row, colDay2StatusBio] = imgFinish;
                 }
+                setGrfDay2ImgFreezing();
+            }
+        }
+        private void setGrfDay2ImgFreezing()
+        {
+            int i = 1;
+            foreach (Row row in grfDay2Img.Rows)
+            {
+                if (row[colDay2ImgDesc0].ToString().Equals("st#")) continue;
+                row[colDay2ImgDesc0] = "";
+                if (row[colDay2StatusBio] == imgFinish)
+                {
+                    row[colDay2ImgDesc0] = i;
+                    i++;
+                }
             }
         }
         private void setGrfDay3Img()
@@ -3634,6 +3649,22 @@ namespace clinic_ivf.gui
                 else
                 {
                     grfDay3Img[row, colDay2StatusBio] = imgFinish;
+                }
+                setGrfDay3ImgFreezing();
+            }
+        }
+        private void setGrfDay3ImgFreezing()
+        {
+            int i = 1;
+            foreach (Row row in grfDay3Img.Rows)
+            {
+                if (row[colDay2ImgDesc0].ToString().Equals("st#")) continue;
+                row[colDay2ImgDesc0] = "";
+                if (row[colDay2StatusBio] == imgFinish)
+                {
+                    row[colDay2ImgDesc0] = i;
+                    //row[colDay2ImgDesc1] = "day3";
+                    i++;
                 }
             }
         }
@@ -3911,7 +3942,28 @@ namespace clinic_ivf.gui
                 {
                     grfDay5Img[row, colDay2StatusBio] = imgFinish;
                 }
+                setGrfDay5ImgFreezing();
                 grfDay5Img.Refresh();
+            }
+        }
+        private void setGrfDay5ImgFreezing()
+        {
+            int i = 1;
+            //foreach (Row row in grfDay5Img.Rows)
+            //{
+            //    if (row[colDay2ImgDesc0].ToString().Equals("st#")) continue;
+            //    row[colDay2ImgDesc0] = "";
+            //}
+            foreach (Row row in grfDay5Img.Rows)
+            {
+                if (row[colDay2ImgDesc0].ToString().Equals("st#")) continue;
+                row[colDay2ImgDesc0] = "";
+                if (row[colDay2StatusBio] == imgFinish)
+                {
+                    row[colDay2ImgDesc0] = i;
+                    row[colDay2ImgDesc1] = "day5";
+                    i++;
+                }
             }
         }
         private void setGrfDay6Img()
@@ -4187,6 +4239,22 @@ namespace clinic_ivf.gui
                 else
                 {
                     grfDay6Img[row, colDay2StatusBio] = imgFinish;
+                }
+                setGrfDay6ImgFreezing();
+            }
+        }
+        private void setGrfDay6ImgFreezing()
+        {
+            int i = 1;            
+            foreach (Row row in grfDay6Img.Rows)
+            {
+                if (row[colDay2ImgDesc0].ToString().Equals("st#")) continue;
+                row[colDay2ImgDesc0] = "";
+                if (row[colDay2StatusBio] == imgFinish)
+                {
+                    row[colDay2ImgDesc0] = i;
+                    row[colDay2ImgDesc1] = "day6";
+                    i++;
                 }
             }
         }
