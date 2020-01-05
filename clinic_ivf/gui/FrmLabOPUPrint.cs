@@ -95,11 +95,13 @@ namespace clinic_ivf.gui
             btnExport.Click += BtnExport_Click;
             btnSendEmail.Click += BtnSendEmail_Click;
             chkEmbryoDev20.CheckedChanged += ChkEmbryoDev20_CheckedChanged;
+            lbEmail.Hide();
         }
         private void BtnSendEmail_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
             SetDefaultPrinter(ic.iniC.printerA4);
+            lbEmail.Show();
             lbEmail.Text = "เตรียม Email";
             String filename = "", datetick = "";
             DataTable dt = new DataTable();
@@ -124,7 +126,7 @@ namespace clinic_ivf.gui
             if (chkEmbryoFreez2Col.Checked && chkEmbryoDev20.Checked)
             {
                 if (!setEmailOPU(dt, FrmReport.flagEmbryoDev.twocolumn, FrmReport.flagEmbryoDevMore20.More20, filename)) return;
-            } 
+            }
             else if (chkEmbryoFreez2Col.Checked && !chkEmbryoDev20.Checked)
             {
                 if (!setEmailOPU(dt, FrmReport.flagEmbryoDev.twocolumn, FrmReport.flagEmbryoDevMore20.Days2, filename)) return;
@@ -185,10 +187,16 @@ namespace clinic_ivf.gui
             try
             {
                 lbEmail.Text = "สร้าง Report";
-                String date1 = dt.Rows[0]["date_time_result"].ToString();
-                String date2 = dt.Rows[0]["date_time_approve"].ToString();
-                date1 = ic.datetimetoShow(dt.Rows[0]["date_time_result"]);
-                date2 = ic.datetimetoShow(dt.Rows[0]["date_time_approve"]);
+                dt.Columns.Add("date_time_result", typeof(String));
+                dt.Columns.Add("date_time_approve", typeof(String));
+                String date1 = "", date2 = "", reqid="";
+                //String date1 = dt.Rows[0]["date_time_result"].ToString();
+                //String date2 = dt.Rows[0]["date_time_approve"].ToString();
+                LabRequest lreq = new LabRequest();
+                lreq = ic.ivfDB.lbReqDB.selectByPk1(opu.req_id);
+                
+                date1 = ic.datetimetoShow(lreq.result_date);
+                date2 = ic.datetimetoShow(lreq.start_date);
                 dt.Rows[0]["date_time_result"] = date1;
                 dt.Rows[0]["date_time_approve"] = date2;
                 if (flagembryodev == flagEmbryoDev.onecolumn)
@@ -217,7 +225,7 @@ namespace clinic_ivf.gui
                 rpt.SetParameterValue("line1", ic.cop.comp_name_t);
                 rpt.SetParameterValue("line2", "โทรศัพท์ " + ic.cop.tele);
                 rpt.SetParameterValue("report_name", " Summary of OPU Report");
-                rpt.SetDataSource(dt);
+                //rpt.SetDataSource(dt);
                 
                 this.cryLab.ReportSource = rpt;
                 this.cryLab.Refresh();

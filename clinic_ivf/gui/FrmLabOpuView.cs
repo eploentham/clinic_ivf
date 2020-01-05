@@ -74,6 +74,7 @@ namespace clinic_ivf.gui
             //btnNew.Click += BtnNew_Click;
             //btnSearchA.Click += BtnSearchA_Click;
             txtSearch.KeyUp += TxtSearch_KeyUp;
+            btnSearchF.Click += BtnSearchF_Click;
             //btnOPU.Click += BtnOPU_Click;
             //btnFet.Click += BtnFet_Click;
 
@@ -84,6 +85,12 @@ namespace clinic_ivf.gui
             setGrfProc("");
             setGrfFinish();
             initGrfSearch();
+        }
+
+        private void BtnSearchF_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            setGrfFinish();
         }
 
         private void BtnFet_Click(object sender, EventArgs e)
@@ -696,7 +703,14 @@ namespace clinic_ivf.gui
         private void GrfFinish_DoubleClick(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-
+            String chk = "", name = "", id = "";
+            id = grfFinish[grfFinish.Row, colPcId] != null ? grfFinish[grfFinish.Row, colPcId].ToString() : "";
+            chk = grfFinish[grfFinish.Row, colPcOpuNum] != null ? grfFinish[grfFinish.Row, colPcOpuNum].ToString() : "";
+            Cursor curOld;
+            curOld = this.Cursor;
+            this.Cursor = Cursors.WaitCursor;
+            openLabOPUAdd(id, name);
+            this.Cursor = curOld;
         }
 
         private void GrfFinish_AfterRowColChange(object sender, RangeEventArgs e)
@@ -720,7 +734,7 @@ namespace clinic_ivf.gui
             }
             else
             {
-                grfFinish.Rows.Count = dt.Rows.Count + 1;
+                grfFinish.Rows.Count = dt.Rows.Count + 2;
             }
             grfFinish.Cols.Count = 10;
             //C1TextBox txt = new C1TextBox();
@@ -765,11 +779,11 @@ namespace clinic_ivf.gui
                 //grfProc.Cols[col + 1].Caption = dt.Columns[col].ColumnName;
                 grfFinish.Cols[col + 1].Name = dt.Columns[col].ColumnName;
             }
-            int i = 0;
+            int i = 2;
             foreach (DataRow row in dt.Rows)
             {
-                i++;
-                if (i == 1) continue;
+                
+                //if (i == 1) continue;
                 //Row row1 = grfProc.Rows.Add();
                 grfFinish[i, colPcId] = row[ic.ivfDB.opuDB.opu.opu_id].ToString();
                 grfFinish[i, colPcOpuNum] = row[ic.ivfDB.opuDB.opu.opu_code].ToString();
@@ -784,6 +798,7 @@ namespace clinic_ivf.gui
                 //row1[colOpuId] = "";
                 //row1[colDtrName] = row["dtr_name"].ToString();
                 grfFinish[i, 0] = (i - 1);
+                i++;
 
             }
             grfFinish.Cols[colRqId].Visible = false;

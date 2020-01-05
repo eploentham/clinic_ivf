@@ -127,7 +127,7 @@
             this.chkSendEmail.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.chkSendEmail.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkSendEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkSendEmail.Location = new System.Drawing.Point(122, 198);
+            this.chkSendEmail.Location = new System.Drawing.Point(13, 198);
             this.chkSendEmail.Name = "chkSendEmail";
             this.chkSendEmail.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
             this.chkSendEmail.Size = new System.Drawing.Size(180, 24);
@@ -152,9 +152,9 @@
             this.pnEmail.Controls.Add(this.label213);
             this.pnEmail.Controls.Add(this.txtEmailTo);
             this.pnEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.pnEmail.Location = new System.Drawing.Point(119, 228);
+            this.pnEmail.Location = new System.Drawing.Point(10, 228);
             this.pnEmail.Name = "pnEmail";
-            this.pnEmail.Size = new System.Drawing.Size(423, 117);
+            this.pnEmail.Size = new System.Drawing.Size(529, 117);
             this.pnEmail.TabIndex = 552;
             this.theme1.SetTheme(this.pnEmail, "(default)");
             // 
@@ -203,7 +203,7 @@
             this.txtBody.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.txtBody.Location = new System.Drawing.Point(70, 53);
             this.txtBody.Name = "txtBody";
-            this.txtBody.Size = new System.Drawing.Size(350, 20);
+            this.txtBody.Size = new System.Drawing.Size(456, 20);
             this.txtBody.TabIndex = 547;
             this.txtBody.Tag = null;
             this.theme1.SetTheme(this.txtBody, "(default)");
@@ -214,7 +214,7 @@
             // 
             this.btnSendEmail.Image = global::clinic_ivf.Properties.Resources.Email_icon_24;
             this.btnSendEmail.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSendEmail.Location = new System.Drawing.Point(279, 72);
+            this.btnSendEmail.Location = new System.Drawing.Point(279, 80);
             this.btnSendEmail.Name = "btnSendEmail";
             this.btnSendEmail.Size = new System.Drawing.Size(141, 34);
             this.btnSendEmail.TabIndex = 546;
@@ -257,7 +257,7 @@
             this.txtEmailSubject.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.txtEmailSubject.Location = new System.Drawing.Point(70, 27);
             this.txtEmailSubject.Name = "txtEmailSubject";
-            this.txtEmailSubject.Size = new System.Drawing.Size(350, 20);
+            this.txtEmailSubject.Size = new System.Drawing.Size(456, 20);
             this.txtEmailSubject.TabIndex = 543;
             this.txtEmailSubject.Tag = null;
             this.theme1.SetTheme(this.txtEmailSubject, "(default)");
@@ -306,7 +306,7 @@
             // 
             this.btnExport.Image = global::clinic_ivf.Properties.Resources.ExportPdf_large;
             this.btnExport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExport.Location = new System.Drawing.Point(11, 210);
+            this.btnExport.Location = new System.Drawing.Point(545, 272);
             this.btnExport.Name = "btnExport";
             this.btnExport.Size = new System.Drawing.Size(102, 39);
             this.btnExport.TabIndex = 551;

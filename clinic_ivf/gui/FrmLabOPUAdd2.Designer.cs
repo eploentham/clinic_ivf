@@ -4305,6 +4305,7 @@
             this.txtDatePicEmbryo.TabIndex = 543;
             this.txtDatePicEmbryo.Tag = null;
             this.theme1.SetTheme(this.txtDatePicEmbryo, "(default)");
+            this.txtDatePicEmbryo.Visible = false;
             this.txtDatePicEmbryo.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // label71
@@ -4319,6 +4320,7 @@
             this.label71.TabIndex = 542;
             this.label71.Text = "Date pic Embryo :";
             this.theme1.SetTheme(this.label71, "(default)");
+            this.label71.Visible = false;
             // 
             // btnPrintOpuEmbryoDev
             // 
