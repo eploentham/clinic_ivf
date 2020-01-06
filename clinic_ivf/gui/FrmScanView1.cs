@@ -432,7 +432,7 @@ namespace clinic_ivf.gui
             //throw new NotImplementedException();
             if(e.KeyCode == Keys.Enter)
             {
-                if (ic.cop.comp_name_e.IndexOf("World Wide IVF") >= 0)
+                if (ic.cop.comp_name_e.IndexOf("World Wide IVF") >= 0 || ic.cop.comp_name_e.IndexOf("IVF Worldwide Co., Ltd.") >= 0)
                 {
                     PatientOld ptto = new PatientOld();
                     ptto = ic.ivfDB.pttOldDB.selectByHnLike1(txtHn.Text.Trim());
@@ -956,7 +956,7 @@ namespace clinic_ivf.gui
 
             DataTable dt = new DataTable();
             //MessageBox.Show("hn "+hn, "");
-            if (ic.cop.comp_name_e.IndexOf("World Wide IVF") >= 0)
+            if (ic.cop.comp_name_e.IndexOf("World Wide IVF") >= 0 || ic.cop.comp_name_e.IndexOf("IVF Worldwide Co., Ltd.") >= 0)
             {
                 dt = ic.ivfDB.ovsDB.selectByHN(txtHn.Text);
             }
