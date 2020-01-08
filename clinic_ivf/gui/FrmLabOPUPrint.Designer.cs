@@ -66,6 +66,7 @@
             this.theme1 = new C1.Win.C1Themes.C1ThemeController();
             this.sB = new System.Windows.Forms.StatusStrip();
             this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.cryLabEmbryo = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkSendEmail)).BeginInit();
             this.pnEmail.SuspendLayout();
@@ -161,6 +162,7 @@
             // pnReport
             // 
             this.pnReport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnReport.Controls.Add(this.cryLabEmbryo);
             this.pnReport.Controls.Add(this.cryLab);
             this.pnReport.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.pnReport.Location = new System.Drawing.Point(170, 77);
@@ -177,7 +179,7 @@
             this.cryLab.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.cryLab.Cursor = System.Windows.Forms.Cursors.Default;
             this.cryLab.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.cryLab.Location = new System.Drawing.Point(8, 8);
+            this.cryLab.Location = new System.Drawing.Point(8, 4);
             this.cryLab.Name = "cryLab";
             this.cryLab.Size = new System.Drawing.Size(45, 17);
             this.cryLab.TabIndex = 1;
@@ -609,6 +611,19 @@
             this.sB1.Size = new System.Drawing.Size(118, 17);
             this.sB1.Text = "toolStripStatusLabel1";
             // 
+            // cryLabEmbryo
+            // 
+            this.cryLabEmbryo.ActiveViewIndex = -1;
+            this.cryLabEmbryo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.cryLabEmbryo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cryLabEmbryo.Cursor = System.Windows.Forms.Cursors.Default;
+            this.cryLabEmbryo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.cryLabEmbryo.Location = new System.Drawing.Point(14, 18);
+            this.cryLabEmbryo.Name = "cryLabEmbryo";
+            this.cryLabEmbryo.Size = new System.Drawing.Size(45, 17);
+            this.cryLabEmbryo.TabIndex = 2;
+            this.theme1.SetTheme(this.cryLabEmbryo, "(default)");
+            // 
             // FrmLabOPUPrint
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -694,5 +709,6 @@
         private C1.Win.C1Input.C1TextBox txtBody;
         private System.Windows.Forms.Panel pnReport;
         private CrystalDecisions.Windows.Forms.CrystalReportViewer cryLab;
+        private CrystalDecisions.Windows.Forms.CrystalReportViewer cryLabEmbryo;
     }
 }

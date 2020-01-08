@@ -804,10 +804,13 @@ namespace clinic_ivf.gui
             dt = ic.ivfDB.pttOldDB.selectByOpdCard(txtIdOld.Text);
             if (dt.Rows.Count > 0)
             {
+                String date = "";
                 dt.Rows[0]["RelationshipName"] = cboName1Rl.Text;
                 dt.Rows[0]["address1"] = cboAmpr.Text+" "+ cboDist.Text + " " + cboProv.Text + " " + cboCou.Text;
+                date = txtDob.Text;
+                dt.Columns.Add("dob", typeof(String));
+                dt.Rows[0]["dob"] = date;
             }
-            
 
             PatientOld pttO = new PatientOld();
             pttO = ic.ivfDB.pttOldDB.selectByPk1(txtIdOld.Text);

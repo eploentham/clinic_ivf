@@ -84,7 +84,6 @@ namespace clinic_ivf.gui
                 chkEmbryoDev20.Hide();
                 label7.Hide();
                 cboEmbryoDev2.Hide();
-
             }
             else
             {
@@ -96,6 +95,9 @@ namespace clinic_ivf.gui
             btnSendEmail.Click += BtnSendEmail_Click;
             chkEmbryoDev20.CheckedChanged += ChkEmbryoDev20_CheckedChanged;
             lbEmail.Hide();
+            cryLab.Hide();
+            cryLabEmbryo.Hide();
+            pnReport.Hide();
         }
         private void BtnSendEmail_Click(object sender, EventArgs e)
         {
@@ -103,21 +105,25 @@ namespace clinic_ivf.gui
             SetDefaultPrinter(ic.iniC.printerA4);
             lbEmail.Show();
             lbEmail.Text = "เตรียม Email";
-            String filename = "", datetick = "";
+            String filename = "", datetick = "", filenameEmbryo = "";
             DataTable dt = new DataTable();
+            DataTable dtEmbryo = new DataTable();
             if (!Directory.Exists("report"))
             {
                 Directory.CreateDirectory("report");
             }
             datetick = DateTime.Now.Ticks.ToString();
             filename = "report\\lab_opu_" + datetick + ".pdf";
+            filenameEmbryo = "report\\lab_opu_embryo_" + datetick + ".pdf";
             lbEmail.Text = "เตรียม Report";
+            
             if (opureport == opuReport.OPUReport)
             {
                 FrmWaiting frmW = new FrmWaiting();
                 frmW.Show();
                 dt = printOPUReport("");
                 frmW.Dispose();
+                dtEmbryo = printOPUEmbryoDev("");
             }
             else if (opureport == opuReport.OPUEmbryoDevReport)
             {
@@ -139,6 +145,8 @@ namespace clinic_ivf.gui
             {
                 if (!setEmailOPU(dt, FrmReport.flagEmbryoDev.onecolumn, FrmReport.flagEmbryoDevMore20.Days2, filename)) return;
             }
+            
+
             if (!File.Exists(filename))
             {
                 lbEmail.Text = "ไม่พบ Attach File";
@@ -159,6 +167,12 @@ namespace clinic_ivf.gui
             {
                 System.Net.Mail.Attachment attachment;
                 attachment = new System.Net.Mail.Attachment(filename);
+                mail.Attachments.Add(attachment);
+            }
+            if (File.Exists(filenameEmbryo))
+            {
+                System.Net.Mail.Attachment attachment;
+                attachment = new System.Net.Mail.Attachment(filenameEmbryo);
                 mail.Attachments.Add(attachment);
             }
 

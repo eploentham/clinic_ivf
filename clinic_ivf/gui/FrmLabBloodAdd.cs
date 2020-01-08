@@ -184,7 +184,7 @@ namespace clinic_ivf.gui
                 collectdate = row[ic.ivfDB.lbresDB.lbRes.req_date_time].ToString();
                 receivedate = row[ic.ivfDB.lbresDB.lbRes.date_time_receive].ToString();
                 row["patient_hn"] = txtHn.Text;
-                row["patient_name"] = txtPttNameE.Text;
+                row["patient_name"] = txtPttNameE.Text.ToUpper();
                 row["patient_dob"] = txtDob.Text;
                 row["patient_sex"] = txtSex.Text;
                 row["sign_reporter"] = System.IO.Directory.GetCurrentDirectory() + "\\" + reporter + ".jpg";
@@ -247,7 +247,7 @@ namespace clinic_ivf.gui
                     //amh = "0";
                 }
                 row["patient_hn"] = txtHn.Text;
-                row["patient_name"] = txtPttNameE.Text;
+                row["patient_name"] = txtPttNameE.Text.ToUpper();
                 row["patient_dob"] = txtDob.Text;
                 row["patient_sex"] = txtSex.Text;
                 row["sign_reporter"] = System.IO.Directory.GetCurrentDirectory() + "\\" + reporter + ".jpg";
@@ -370,7 +370,7 @@ namespace clinic_ivf.gui
                     //amh = "0";
                 }
                 row["patient_hn"] = txtHn.Text;
-                row["patient_name"] = txtPttNameE.Text;
+                row["patient_name"] = txtPttNameE.Text.ToUpper();
                 row["patient_dob"] = txtDob.Text;
                 row["patient_sex"] = txtSex.Text;
                 row["sign_reporter"] = System.IO.Directory.GetCurrentDirectory() + "\\" + reporter + ".jpg";
@@ -601,7 +601,7 @@ namespace clinic_ivf.gui
                     //amh = "0";
                 }
                 row["patient_hn"] = txtHn.Text;
-                row["patient_name"] = txtPttNameE.Text;
+                row["patient_name"] = txtPttNameE.Text.ToUpper();
                 row["patient_dob"] = txtDob.Text;
                 row["patient_sex"] = txtSex.Text;
                 row["sign_reporter"] = System.IO.Directory.GetCurrentDirectory() + "\\" + reporter + ".jpg";

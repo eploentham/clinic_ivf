@@ -12,7 +12,7 @@
   <xs:element name="OPDcardOLD" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="OPDcardOLD" msprop:Generator_UserDSName="OPDcardOLD">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="OPDcard" msprop:Generator_TableClassName="OPDcardDataTable" msprop:Generator_TableVarName="tableOPDcard" msprop:Generator_RowChangedName="OPDcardRowChanged" msprop:Generator_TablePropName="OPDcard" msprop:Generator_RowDeletingName="OPDcardRowDeleting" msprop:Generator_RowChangingName="OPDcardRowChanging" msprop:Generator_RowEvHandlerName="OPDcardRowChangeEventHandler" msprop:Generator_RowDeletedName="OPDcardRowDeleted" msprop:Generator_RowClassName="OPDcardRow" msprop:Generator_UserTableName="OPDcard" msprop:Generator_RowEvArgName="OPDcardRowChangeEvent">
+        <xs:element name="OPDcard" msprop:Generator_TableClassName="OPDcardDataTable" msprop:Generator_TableVarName="tableOPDcard" msprop:Generator_TablePropName="OPDcard" msprop:Generator_RowDeletingName="OPDcardRowDeleting" msprop:Generator_RowChangingName="OPDcardRowChanging" msprop:Generator_RowEvHandlerName="OPDcardRowChangeEventHandler" msprop:Generator_RowDeletedName="OPDcardRowDeleted" msprop:Generator_UserTableName="OPDcard" msprop:Generator_RowChangedName="OPDcardRowChanged" msprop:Generator_RowEvArgName="OPDcardRowChangeEvent" msprop:Generator_RowClassName="OPDcardRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="PID" msdata:Caption="DataColumn1" msprop:Generator_ColumnVarNameInTable="columnPID" msprop:Generator_ColumnPropNameInRow="PID" msprop:Generator_ColumnPropNameInTable="PIDColumn" msprop:Generator_UserColumnName="PID" type="xs:string" minOccurs="0" />
@@ -73,6 +73,7 @@
               <xs:element name="MaritalName" msprop:Generator_ColumnVarNameInTable="columnMaritalName" msprop:Generator_ColumnPropNameInRow="MaritalName" msprop:Generator_ColumnPropNameInTable="MaritalNameColumn" msprop:Generator_UserColumnName="MaritalName" type="xs:string" minOccurs="0" />
               <xs:element name="address1" msprop:Generator_ColumnVarNameInTable="columnaddress1" msprop:Generator_ColumnPropNameInRow="address1" msprop:Generator_ColumnPropNameInTable="address1Column" msprop:Generator_UserColumnName="address1" type="xs:string" minOccurs="0" />
               <xs:element name="ep_address1" msprop:Generator_ColumnVarNameInTable="columnep_address1" msprop:Generator_ColumnPropNameInRow="ep_address1" msprop:Generator_ColumnPropNameInTable="ep_address1Column" msprop:Generator_UserColumnName="ep_address1" type="xs:string" minOccurs="0" />
+              <xs:element name="dob" msprop:Generator_ColumnVarNameInTable="columndob" msprop:Generator_ColumnPropNameInRow="dob" msprop:Generator_ColumnPropNameInTable="dobColumn" msprop:Generator_UserColumnName="dob" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

@@ -201,7 +201,7 @@ namespace clinic_ivf.gui
                 dtDay6 = ic.ivfDB.opuEmDevDB.selectByOpuFetId_Day(txtID.Text, objdb.LabOpuEmbryoDevDB.Day1.Day6);
                 foreach (Row row in grfDay6Img.Rows)
                 {
-                    String id = "", filename = "", re = "", noday6 = "", remotefile = "";
+                    String id = "", filename = "", re = "", noday6 = "", remotefile = "", re1="";
                     id = row[colDay2ImgId] != null ? row[colDay2ImgId].ToString() : "";
                     
                     noday6 = row[colDay2ImgNun] != null ? row[colDay2ImgNun].ToString() : "";
@@ -216,9 +216,14 @@ namespace clinic_ivf.gui
                         {
                             continue;
                         }
+                        String statusBio = row[colDay2StatusBio] == imgFinish ? "1" : "0";
+                        String desc1 = row[colDay2ImgDesc1] != null ? row[colDay2ImgDesc1].ToString() : "";
+                        String desc = row[colDay2ImgDesc0] != null ? row[colDay2ImgDesc0].ToString() : "";
+                        String no = row[colDay2ImgNun] != null ? row[colDay2ImgNun].ToString() : "";
                         filename = dtDay5.Rows[0][ic.ivfDB.opuEmDevDB.opuEmDev.path_pic].ToString();
                         remotefile = filename.Replace("day5", "day6");
                         re = ic.ivfDB.opuEmDevDB.updatePathPic(id, noday6, remotefile, ic.cStf.staff_id);
+                        re1 = ic.ivfDB.opuEmDevDB.updatePathPicNoPic(id, no, desc, desc1, ic.cStf.staff_id, statusBio);       // +0012
                         long chk = 0;
                         if (long.TryParse(re, out chk))
                         {
