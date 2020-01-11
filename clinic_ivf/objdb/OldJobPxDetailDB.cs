@@ -35,6 +35,7 @@ namespace clinic_ivf.objdb
             oJpxd.TUsage = "TUsage";
             oJpxd.EUsage = "EUsage";
             oJpxd.row1 = "row1";
+            oJpxd.price1 = "price1";
 
             oJpxd.table = "JobPxDetail";
             oJpxd.pkField = "ID";
@@ -62,7 +63,7 @@ namespace clinic_ivf.objdb
             p.row1 = long.TryParse(p.row1, out chk) ? chk.ToString() : "0";
 
             p.Price = decimal.TryParse(p.Price, out chk1) ? chk1.ToString() : "0";
-            //p.PIDS = decimal.TryParse(p.PIDS, out chk1) ? chk.ToString() : "0";
+            p.price1 = decimal.TryParse(p.price1, out chk1) ? chk1.ToString() : "0";
         }
         public String insert(JobPxDetail p, String userId)
         {
@@ -89,6 +90,7 @@ namespace clinic_ivf.objdb
                 "," + oJpxd.TUsage + "= '" + p.TUsage.Replace("'", "''") + "'" +
                 "," + oJpxd.EUsage + "= '" + p.EUsage.Replace("'", "''") + "'" +
                 "," + oJpxd.row1 + "= '" + p.row1 + "'" +
+                "," + oJpxd.price1 + "= '" + p.price1 + "'" +
                 "";
             try
             {

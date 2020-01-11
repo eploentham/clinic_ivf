@@ -27,5 +27,6 @@ namespace clinic_ivf.object1
         public String row1 { get; set; }
         public String qty { get; set; }
         public String bill_group_id { get; set; }
+        public String price1 { get; set; }
     }
 }

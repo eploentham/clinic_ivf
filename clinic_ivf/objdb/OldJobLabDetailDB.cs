@@ -65,6 +65,7 @@ namespace clinic_ivf.objdb
             jlabD.status_order_group = "status_order_group";
             jlabD.lab_order_id = "lab_order_id";
             jlabD.req_id = "req_id";
+            jlabD.price1 = "price1";
 
             jlabD.table = "JobLabDetail";
             jlabD.pkField = "ID";
@@ -121,7 +122,7 @@ namespace clinic_ivf.objdb
             p.req_id = long.TryParse(p.req_id, out chk) ? chk.ToString() : "0";
 
             p.Price = decimal.TryParse(p.Price, out chk1) ? chk1.ToString() : "0";
-            //p.PIDS = decimal.TryParse(p.PIDS, out chk1) ? chk.ToString() : "0";
+            p.price1 = decimal.TryParse(p.price1, out chk1) ? chk1.ToString() : "0";
         }
         public String insert(OldJobLabDetail p, String userId)
         {
@@ -177,6 +178,7 @@ namespace clinic_ivf.objdb
                 "," + jlabD.status_amt + "= '" + p.status_amt.Replace("'", "''") + "'" +
                 "," + jlabD.status_order_group + "= '" + p.status_order_group.Replace("'", "''") + "'" +
                 "," + jlabD.lab_order_id + "= '" + p.lab_order_id + "'" +
+                "," + jlabD.price1 + "= '" + p.price1 + "'" +
                 "";
             try
             {
@@ -429,6 +431,7 @@ namespace clinic_ivf.objdb
                 lbReq1.status_order_group = dt.Rows[0][jlabD.status_order_group].ToString();
                 lbReq1.lab_order_id = dt.Rows[0][jlabD.lab_order_id].ToString();
                 lbReq1.req_id = dt.Rows[0][jlabD.req_id].ToString();
+                lbReq1.price1 = dt.Rows[0][jlabD.price1].ToString();
             }
             else
             {
@@ -476,6 +479,7 @@ namespace clinic_ivf.objdb
                 lbReq1.status_order_group = "";
                 lbReq1.lab_order_id = "";
                 lbReq1.req_id = "";
+                lbReq1.price1 = "";
             }
 
             return lbReq1;

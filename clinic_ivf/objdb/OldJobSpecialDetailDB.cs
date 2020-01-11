@@ -40,6 +40,7 @@ namespace clinic_ivf.objdb
             ojsd.row1 = "row1";
             ojsd.qty = "qty";
             ojsd.bill_group_id = "bill_group_id";
+            ojsd.price1 = "price1";
 
             ojsd.table = "JobSpecialDetail";
             ojsd.pkField = "ID";
@@ -70,7 +71,7 @@ namespace clinic_ivf.objdb
             p.bill_group_id = long.TryParse(p.bill_group_id, out chk) ? chk.ToString() : "0";
 
             p.Price = decimal.TryParse(p.Price, out chk1) ? chk1.ToString() : "0";
-            //p.PIDS = decimal.TryParse(p.PIDS, out chk1) ? chk.ToString() : "0";
+            p.price1 = decimal.TryParse(p.price1, out chk1) ? chk1.ToString() : "0";
         }
         public String insert(OldJobSpecialDetail p, String userId)
         {
@@ -102,6 +103,7 @@ namespace clinic_ivf.objdb
                 "," + ojsd.row1 + "= '" + p.row1.Replace("'", "''") + "'" +
                 "," + ojsd.qty + "= '" + p.qty + "'" +
                 "," + ojsd.bill_group_id + "= '" + p.bill_group_id + "'" +
+                "," + ojsd.price1 + "= '" + p.price1 + "'" +
                 "";
             try
             {

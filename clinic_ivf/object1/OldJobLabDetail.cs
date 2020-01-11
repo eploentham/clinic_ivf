@@ -46,5 +46,6 @@ namespace clinic_ivf.object1
         public String status_order_group { get; set; }
         public String lab_order_id { get; set; }
         public String req_id { get; set; }
+        public String price1 { get; set; }
     }
 }

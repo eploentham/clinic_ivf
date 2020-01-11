@@ -241,6 +241,7 @@ namespace clinic_ivf.control
                 iniC.printerAppointment = iniF.getIni("app", "printerAppointment");
                 iniC.pathSaveExcelAppointment = iniF.getIni("app", "pathSaveExcelAppointment");
                 iniC.printerA4 = iniF.getIni("app", "printerA4");
+                iniC.statusCashierOldProgram = iniF.getIni("app", "statusCashierOldProgram");
 
                 iniC.email_form = iniF.getIni("email", "email_form");
                 iniC.email_auth_user = iniF.getIni("email", "email_auth_user");
@@ -297,6 +298,7 @@ namespace clinic_ivf.control
                 iniC.statusCheckDonor = iniC.statusCheckDonor == null ? "0" : iniC.statusCheckDonor.Equals("") ? "0" : iniC.statusCheckDonor;
                 iniC.messageDebug = iniC.messageDebug == null ? "0" : iniC.messageDebug.Equals("") ? "0" : iniC.messageDebug;
                 iniC.pathChar = iniC.pathChar == null ? "\\" : iniC.pathChar.Equals("") ? "\\" : iniC.pathChar;
+                iniC.statusCashierOldProgram = iniC.statusCashierOldProgram == null ? "0" : iniC.statusCashierOldProgram.Equals("") ? "0" : iniC.statusCashierOldProgram;
 
                 int.TryParse(iniC.grdViewFontSize, out grdViewFontSize);
                 Decimal.TryParse(iniC.creditCharge, out CreditCharge);

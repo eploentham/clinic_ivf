@@ -22,5 +22,6 @@ namespace clinic_ivf.object1
         public String TUsage { get; set; }
         public String EUsage { get; set; }
         public String row1 { get; set; }
+        public String price1 { get; set; }
     }
 }

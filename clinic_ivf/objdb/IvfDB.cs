@@ -11,6 +11,9 @@ using System.Windows.Forms;
 
 namespace clinic_ivf.objdb
 {
+    /*
+     * 63-01-11         0015        ลงโปรแกรมที่ ww แล้ว การเงิน คิดเงินผิด
+     * */
     public class IvfDB
     {
         ConnectDB conn;
@@ -740,6 +743,44 @@ namespace clinic_ivf.objdb
             oJpxd.QTY = qty;
             oJpxd.Extra = extra;
             oJpxd.Price = ostkD.Price;
+            oJpxd.price1 = ostkD.Price;
+            oJpxd.Status = "1";
+            oJpxd.PID = pid;
+            oJpxd.PIDS = pids;
+            oJpxd.DUName = ostkD.DUName;
+            oJpxd.Comment = "";
+            oJpxd.TUsage = usage;
+            oJpxd.EUsage = ostkD.EUsage;
+            oJpxd.row1 = row1;
+            oJpxdDB.insert(oJpxd, "");
+        }
+        public void PxAdd(String duid, String qty, String pid, String pids, String vn, String extra, String row1, String usage, String flagOld)
+        {       //      0015
+            JobPxDetail oJpxd = new JobPxDetail();
+            OldStockDrug ostkD = new OldStockDrug();
+            Decimal price1 = 0, qty1 = 0;
+            ostkD = oStkdDB.selectByPk1(duid);
+
+            Decimal.TryParse(ostkD.Price, out price1);
+            Decimal.TryParse(qty, out qty1);
+
+            oJpxd.VN = vn;
+            oJpxd.DUID = duid;
+            oJpxd.QTY = qty;
+            oJpxd.Extra = extra;
+            if (flagOld.Equals("old"))
+            {
+                decimal qty11 = 0, price11 = 0;
+                Decimal.TryParse(qty, out qty11);
+                Decimal.TryParse(ostkD.Price, out qty11);
+                oJpxd.Price = (qty11 * price11).ToString();
+                oJpxd.price1 = ostkD.Price;
+            }
+            else
+            {
+                oJpxd.Price = ostkD.Price;
+            }
+            
             oJpxd.Status = "1";
             oJpxd.PID = pid;
             oJpxd.PIDS = pids;
@@ -787,6 +828,56 @@ namespace clinic_ivf.objdb
             
             oJlabdDB.insert(jlabD, "");
         }
+        public void LabAdd(String lid, String qty, String pid, String pids, String vn, String extra, String sp1v, String sp2v, String sp3v, String sp4v, String sp5v, String sp6v, String sp7v, String row1
+            , String lidordergrp, String status_amt, String status_order_group, String flagOld)
+        {
+            OldJobLabDetail jlabD = new OldJobLabDetail();
+            OldLabItem olab = new OldLabItem();
+            olab = oLabiDB.selectByPk1(lid);
+            jlabD.ID = "";
+            jlabD.VN = vn;
+            jlabD.LID = lid;
+            jlabD.Extra = extra;
+            if (flagOld.Equals("old"))
+            {
+                decimal qty11 = 0, price11 = 0;
+                Decimal.TryParse(qty, out qty11);
+                Decimal.TryParse(jlabD.Price, out qty11);
+                jlabD.Price = (qty11 * price11).ToString();
+                jlabD.price1 = jlabD.Price;
+            }
+            else
+            {
+                jlabD.Price = jlabD.Price;
+            }
+            //jlabD.Price = olab.Price;
+            jlabD.Status = "1";
+            jlabD.PID = pid;
+            jlabD.PIDS = pids;
+            jlabD.LName = olab.LName;
+            jlabD.SP1V = sp1v;
+            jlabD.SP2V = sp2v;
+            jlabD.SP3V = sp3v;
+            jlabD.SP4V = sp4v;
+            jlabD.SP5V = sp5v;
+            jlabD.SP6V = sp6v;
+            jlabD.SP7V = sp7v;
+            jlabD.SubItem = "";
+            jlabD.FileName = "";
+            jlabD.Worker1 = olab.WorkerGroup1;
+            jlabD.Worker2 = olab.WorkerGroup2;
+            jlabD.Worker3 = olab.WorkerGroup3;
+            jlabD.Worker4 = olab.WorkerGroup4;
+            jlabD.LGID = olab.LGID;
+            jlabD.QTY = qty.Replace(".00", "");
+            jlabD.row1 = row1;
+            jlabD.status_show_qty = olab.status_show_qty;
+            jlabD.status_amt = status_amt;
+            jlabD.status_order_group = status_order_group;
+            jlabD.lab_order_id = lidordergrp;
+
+            oJlabdDB.insert(jlabD, "");
+        }
         public void SpecialAdd(String sid, String qty, String pid, String pids, String vn, String extra, String w1uid, String w2uid, String w3uid, String w4uid, String row1)
         {
             OldJobSpecialDetail ojsd = new OldJobSpecialDetail();
@@ -798,6 +889,44 @@ namespace clinic_ivf.objdb
             ojsd.SName = ojs.SName;
             ojsd.Extra = extra;
             ojsd.Price = ojs.Price;
+            ojsd.Status = "1";
+            ojsd.PID = pid;
+            ojsd.PIDS = pids;
+            ojsd.W1UID = w1uid;
+            ojsd.W2UID = w2uid;
+            ojsd.W3UID = w3uid;
+            ojsd.W4UID = w4uid;
+            ojsd.FileName = "";
+            ojsd.status_req_accept = "0";
+            ojsd.req_id = "";
+            ojsd.row1 = row1;
+            ojsd.qty = qty;
+            ojsd.bill_group_id = ojs.BillGroupID;
+            ojsdDB.insert(ojsd, "");
+        }
+        public void SpecialAdd(String sid, String qty, String pid, String pids, String vn, String extra, String w1uid, String w2uid, String w3uid, String w4uid, String row1, String flagOld)
+        {
+            OldJobSpecialDetail ojsd = new OldJobSpecialDetail();
+            OldSpecialItem ojs = new OldSpecialItem();
+            ojs = oSItmDB.selectByPk1(sid);
+            ojsd.ID = "";
+            ojsd.VN = vn;
+            ojsd.SID = sid;
+            ojsd.SName = ojs.SName;
+            ojsd.Extra = extra;
+            if (flagOld.Equals("old"))
+            {
+                decimal qty11 = 0, price11 = 0;
+                Decimal.TryParse(qty, out qty11);
+                Decimal.TryParse(ojsd.Price, out qty11);
+                ojsd.Price = (qty11 * price11).ToString();
+                ojsd.price1 = ojsd.Price;
+            }
+            else
+            {
+                ojsd.Price = ojsd.Price;
+            }
+            //ojsd.Price = ojs.Price;
             ojsd.Status = "1";
             ojsd.PID = pid;
             ojsd.PIDS = pids;
