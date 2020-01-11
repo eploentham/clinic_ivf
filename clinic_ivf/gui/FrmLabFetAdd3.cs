@@ -1678,9 +1678,9 @@ namespace clinic_ivf.gui
                         mediathawing = row["media_thawing"] != null ? row["media_thawing"].ToString() : "";
                         stateoffree = row["freeze_stage_of_freeze_name"] != null ? row["freeze_stage_of_freeze_name"].ToString() : "";
                         doctor = row["embryo_for_et_doctor"] != null ? row["embryo_for_et_doctor"].ToString() : "";
-                        dobfemale = ic.datetoShow(txtDobFeMale.Text);
-                        dobmale = ic.datetoShow(txtDobMale.Text);
-                        datefet = ic.datetoShow(txtDatePicEmbryo.Text);
+                        dobfemale = ic.datetoShow(txtDobFeMale.Text).Replace("-", "/");
+                        dobmale = ic.datetoShow(txtDobMale.Text).Replace("-", "/");
+                        datefet = ic.datetoShow(row[ic.ivfDB.fetDB.fet.fet_date]).Replace("-", "/");
                         etname = ic.ivfDB.stfDB.getStaffNameBylStf(etname);
                         rptname = ic.ivfDB.stfDB.getStaffNameBylStf(rptname);
                         appvname = ic.ivfDB.stfDB.getStaffNameBylStf(appvname);
@@ -1695,7 +1695,7 @@ namespace clinic_ivf.gui
                         //date = ic.datetoShow(date);
                         row["dob_female"] = dobfemale;
                         row["dob_male"] = dobmale;
-                        row["fet_date"] = ic.datetoShow(datefet);
+                        row["fet_date"] = datefet;
                         row["embryo_for_et_embryologist_name_rpt"] = rptname;
                         row["embryo_for_et_embryologist_name_apv"] = appvname;
                         row["embryo_for_et_embryologist_name"] = etname;
@@ -1703,21 +1703,21 @@ namespace clinic_ivf.gui
                         row["media_thawing"] = mediathawing;
                         row["freeze_stage_of_freeze"] = stateoffree;
                         no1 = "Day " + txtEmbryoForEtDay.Text + row["no1"].ToString();
-                        row["embryo_for_et_date"] = ic.datetoShow(row["embryo_for_et_date"]);
+                        row["embryo_for_et_date"] = ic.datetoShow(row["embryo_for_et_date"]).Replace("-", "/");
                         //row["no1"] = no1;
                         if (!row[ic.ivfDB.fetDB.fet.freeze_date1].ToString().Equals(""))
                         {
                             String date11 = "";
                             date11 = row[ic.ivfDB.fetDB.fet.freeze_date1].ToString();
-                            row[ic.ivfDB.fetDB.fet.freeze_date] = ic.datetoShow(row[ic.ivfDB.fetDB.fet.freeze_date] != null ? row[ic.ivfDB.fetDB.fet.freeze_date] : "") +","+ ic.datetoShow(date11);
+                            row[ic.ivfDB.fetDB.fet.freeze_date] = ic.datetoShow(row[ic.ivfDB.fetDB.fet.freeze_date] != null ? row[ic.ivfDB.fetDB.fet.freeze_date] : "").Replace("-", "/") + ","+ ic.datetoShow(date11).Replace("-", "/");
                         }
                         else
                         {
-                            row[ic.ivfDB.fetDB.fet.freeze_date] = ic.datetoShow(row[ic.ivfDB.fetDB.fet.freeze_date] != null ? row[ic.ivfDB.fetDB.fet.freeze_date] : "");
+                            row[ic.ivfDB.fetDB.fet.freeze_date] = ic.datetoShow(row[ic.ivfDB.fetDB.fet.freeze_date] != null ? row[ic.ivfDB.fetDB.fet.freeze_date] : "").Replace("-", "/");
                         }
                         
-                        row[ic.ivfDB.fetDB.fet.thaw_date] = ic.datetoShow(row[ic.ivfDB.fetDB.fet.thaw_date] != null ? row[ic.ivfDB.fetDB.fet.thaw_date] : "");
-                        row[ic.ivfDB.fetDB.fet.media_date] = ic.datetoShow(row[ic.ivfDB.fetDB.fet.media_date] != null ? row[ic.ivfDB.fetDB.fet.media_date] : "");
+                        row[ic.ivfDB.fetDB.fet.thaw_date] = ic.datetoShow(row[ic.ivfDB.fetDB.fet.thaw_date] != null ? row[ic.ivfDB.fetDB.fet.thaw_date] : "").Replace("-","/");
+                        row[ic.ivfDB.fetDB.fet.media_date] = ic.datetoShow(row[ic.ivfDB.fetDB.fet.media_date] != null ? row[ic.ivfDB.fetDB.fet.media_date] : "").Replace("-", "/");
                         if (!path_pic.Equals(""))
                         {
                             MemoryStream stream = ic.ftpC.download(path_pic);
@@ -1765,9 +1765,9 @@ namespace clinic_ivf.gui
                         i++;
                         frmW.pB.Value = i;
                     }
-                    String date1 = "";
-                    date1 = ic.datetoShow(dtEmbr.Rows[0][ic.ivfDB.fetDB.fet.fet_date].ToString());
-                    dtEmbr.Rows[0][ic.ivfDB.fetDB.fet.fet_date] = date1.Replace("-", "/");
+                    //String date1 = "";
+                    //date1 = ic.datetoShow(dtEmbr.Rows[0][ic.ivfDB.fetDB.fet.fet_date].ToString());
+                    //dtEmbr.Rows[0][ic.ivfDB.fetDB.fet.fet_date] = date1.Replace("-", "/");
                 }
 
                 frm.setFETEmbryoDevReport(dtEmbr);
@@ -2524,10 +2524,13 @@ namespace clinic_ivf.gui
             grfDay2Img.ShowCursor = true;
 
             grfDay2Img.Cols[colDay2ImgNun].Caption = "No";
-            grfDay2Img.Cols[colDay2ImgDesc0].Caption = "Desc3";
+            //grfDay2Img.Cols[colDay2ImgDesc0].Caption = "Desc3";
+            grfDay2Img.Cols[colDay2ImgDesc0].Caption = "ST#";
             grfDay2Img.Cols[colDay2PathPic].Caption = "pathpic";
-            grfDay2Img.Cols[colDay2ImgDesc1].Caption = "Desc4";
-            grfDay2Img.Cols[colDay2ImgDesc2].Caption = "Desc5";
+            //grfDay2Img.Cols[colDay2ImgDesc1].Caption = "Desc4";
+            grfDay2Img.Cols[colDay2ImgDesc1].Caption = "Bx Result";
+            //grfDay2Img.Cols[colDay2ImgDesc2].Caption = "Desc5";
+            grfDay2Img.Cols[colDay2ImgDesc2].Caption = "Day";
 
             grfDay2Img.Cols[colDay2ImgPic].ImageAndText = false;
 

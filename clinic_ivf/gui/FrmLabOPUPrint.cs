@@ -617,8 +617,9 @@ namespace clinic_ivf.gui
                 txtNameMale.Value = opu.name_male;
                 txtOpuCode.Value = opu.opu_code;
                 txtEmailTo.Value = ic.iniC.email_to_lab_opu;
-                txtEmailSubject.Value = "Result LAB OPU HN " + txtHnFeMale.Text + " Name " + txtNameFeMale.Text + " OPU Code " + txtOpuCode.Text + " ";
-                
+                //txtEmailSubject.Value = "Result LAB OPU HN " + txtHnFeMale.Text + " Name " + txtNameFeMale.Text + " OPU Code " + txtOpuCode.Text + " ";
+                txtEmailSubject.Value = "Result LAB OPU " + DateTime.Now.ToString("dd/mm/") + DateTime.Now.Year + "Name " + txtNameMale.Text + " Name " + txtNameFeMale.Text + " OPU Code " + txtOpuCode.Text + " ";
+
                 chkSendEmail.Checked = opu.status_opu.Equals("2") ? true : false;
                 if (chkSendEmail.Checked)
                 {

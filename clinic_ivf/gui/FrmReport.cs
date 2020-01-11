@@ -740,9 +740,14 @@ namespace clinic_ivf.gui
             try
             {
                 err = "00" + ic.iniC.statusAppDonor;
-
-                rpt.Load("Appointment_Patient.rpt");
-
+                if (ic.cop.comp_name_e.IndexOf("World Wide IVF") >= 0 || ic.cop.comp_name_e.IndexOf("IVF Worldwide Co., Ltd.") >= 0)
+                {
+                    rpt.Load("Appointment_Patient_ww.rpt");
+                }
+                else
+                {
+                    rpt.Load("Appointment_Patient.rpt");
+                }
                 err = "01";
                 rpt.SetDataSource(dt);
                 err = "02";
@@ -932,7 +937,7 @@ namespace clinic_ivf.gui
                 rpt.SetDataSource(dt);
                 rpt.SetParameterValue("line1", ic.cop.comp_name_t);
                 rpt.SetParameterValue("line2", "โทรศัพท์ " + ic.cop.tele);
-                rpt.SetParameterValue("report_name", " Embryo development");
+                rpt.SetParameterValue("report_name", " Summary of FET ");
                 //rpt.SetParameterValue("date1", "" + date1);
                 this.crystalReportViewer1.ReportSource = rpt;
                 this.crystalReportViewer1.Refresh();
