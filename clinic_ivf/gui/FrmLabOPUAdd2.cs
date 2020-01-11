@@ -147,13 +147,7 @@ namespace clinic_ivf.gui
             txtEmbryoFreezNoStraw1.KeyUp += TxtEmbryoFreezNoOg0_KeyUp;
             txtEmbryoForEtNO.KeyUp += TxtEmbryoForEtNO_KeyUp;
             setKeyPress();
-
-            btnHnSearch.Click += BtnHnSearch_Click;
-            btnDonorSearch.Click += BtnDonorSearch_Click;
-            btnApproveResult.Click += BtnApproveResult_Click;
-            btnResultDay1.Click += BtnResultDay1_Click;
-            btnResultDay3.Click += BtnResultDay3_Click;
-            btnResultDay5.Click += BtnResultDay5_Click;
+            
             btnResultDay1.MouseMove += BtnResultDay1_MouseMove;
             btnResultDay3.MouseMove += BtnResultDay3_MouseMove;
             btnResultDay5.MouseMove += BtnResultDay5_MouseMove;
@@ -899,6 +893,13 @@ namespace clinic_ivf.gui
             btnDay6ImgRef.Click += BtnDay6ImgRef_Click;
             btnPrintOpuEmbryoDev.Click += BtnPrintOpuEmbryoDev_Click;
             btnVoidEmbryo.Click += BtnVoidEmbryo_Click;
+
+            btnHnSearch.Click += BtnHnSearch_Click;
+            btnDonorSearch.Click += BtnDonorSearch_Click;
+            btnApproveResult.Click += BtnApproveResult_Click;
+            btnResultDay1.Click += BtnResultDay1_Click;
+            btnResultDay3.Click += BtnResultDay3_Click;
+            btnResultDay5.Click += BtnResultDay5_Click;
         }
 
         private void BtnVoidEmbryo_Click(object sender, EventArgs e)

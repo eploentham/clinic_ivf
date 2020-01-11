@@ -12,6 +12,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.Mail;
 using System.Security;
 using System.Text;
 using System.Threading;
@@ -48,7 +49,8 @@ namespace clinic_ivf.gui
         Boolean flagDay2Img = false, flagDay3Img = false, flagDay5Img = false, flagDay6Img = false;
         Boolean grf2Focus = false, grf3Focus = false, grf5Focus = false, grf6Focus = false;
         private bool prefixSeen;
-
+        SmtpClient SmtpServer;
+        List<LinkedResource> theEmailImage1 = new List<LinkedResource>();
         public FrmLabFetAdd3(IvfControl ic, String reqid, String fetid)
         {
             InitializeComponent();
@@ -78,6 +80,7 @@ namespace clinic_ivf.gui
             sep = new C1SuperErrorProvider();
             fet = new LabFet();
             lbReq = new LabRequest();
+            SmtpServer = new SmtpClient("smtp.gmail.com");
 
             ic.ivfDB.proceDB.setCboLabProce(cboOpuProce, objdb.LabProcedureDB.StatusLab.FETProcedure);
             ic.ivfDB.dtrOldDB.setCboDoctor(cboDoctor, "");
@@ -779,8 +782,8 @@ namespace clinic_ivf.gui
             
             btnSaveDay2.Click += BtnSaveDay2_Click;
             btnSaveDay3.Click += BtnSaveDay3_Click;
-            //btnSaveDay5.Click += BtnSaveDay5_Click;
-            //btnSaveDay6.Click += BtnSaveDay6_Click;
+            btnSendEmail.Click += BtnSendEmail_Click;
+            btnApproveResult.Click += BtnApproveResult_Click;
             //btnPrint.Click += BtnPrint_Click;
             //tC1.DoubleClick += TC1_DoubleClick;
             //tabDay2.DoubleClick += TabDay2_DoubleClick;
@@ -799,6 +802,101 @@ namespace clinic_ivf.gui
             //btnDay6ImgRef.Click += BtnDay6ImgRef_Click;
             btnPrintOpuEmbryoDev.Click += BtnPrintOpuEmbryoDev_Click;
             gbDayImg.DoubleClick += GbDayImg_DoubleClick;
+        }
+
+        private void BtnApproveResult_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (MessageBox.Show("ต้องการ ส่งผล LAB FET ให้ทางพยาบาล  ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+            {
+                ic.cStf.staff_id = "";
+                Boolean chkSave = false;
+                FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+                frm.ShowDialog(this);
+                if (!ic.cStf.staff_id.Equals(""))
+                {
+                    long chk1 = 0;
+                    String re = ic.ivfDB.fetDB.updateStatusFETApproveResult(txtID.Text, ic.user.staff_id);
+                    if (long.TryParse(re, out chk1))
+                    {
+                        LabRequest req = new LabRequest();
+                        req = ic.ivfDB.lbReqDB.selectByPk1(fet.req_id);
+                        String re1 = ic.ivfDB.lbReqDB.UpdateStatusRequestResult(req.req_id, ic.cStf.staff_id);
+                        if (long.TryParse(re1, out chk1))
+                        {
+                            MessageBox.Show("ส่งผล LAB FET ให้ทางพยาบาล เรียบร้อย ", "");       //clinic_ivf.Properties.Resources.Female_user_accept_24
+                            btnApproveResult.Image = Resources.Female_user_accept_24;
+                        }
+                    }
+                }
+            }
+        }
+
+        private void BtnSendEmail_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            pnReport.Hide();
+            //SetDefaultPrinter(ic.iniC.printerA4);
+            lbEmail.Show();
+            lbEmail.Text = "เตรียม Email";
+            String filename = "", datetick = "", filenameEmbryo = "";
+            DataTable dt = new DataTable();
+            DataTable dtEmbryo = new DataTable();
+            if (!Directory.Exists("report"))
+            {
+                Directory.CreateDirectory("report");
+            }
+            datetick = DateTime.Now.Ticks.ToString();
+            filename = "report\\lab_fet_" + datetick + ".pdf";
+            //filenameEmbryo = "report\\lab_fet_embryo_" + datetick + ".pdf";
+            lbEmail.Text = "เตรียม Report";
+            Application.DoEvents();
+            
+            FrmWaiting frmW = new FrmWaiting();
+            frmW.Show();
+            dtEmbryo = printFETEmbryoDev("");
+            frmW.Dispose();
+            //dtEmbryo = printOPUEmbryoDev("");
+            
+            //setEmailOPUPicEmbryo(dtEmbryo, filenameEmbryo);
+
+            if (!File.Exists(filename))
+            {
+                lbEmail.Text = "ไม่พบ Attach File";
+                return;
+            }
+            lbEmail.Text = "เริ่มส่ง Email";
+            MailMessage mail = new MailMessage();
+
+            txtEmailSubject.Value = "Routine LAB Result HN " + txtHnFeMale.Text + " Name " + txtNameFeMale.Text + " FET Code " + txtFetCode.Text + " Date " + System.DateTime.Now.ToString("dd/MM/") + System.DateTime.Now.Year;
+
+            mail.From = new MailAddress(ic.iniC.email_form_lab_opu);
+            mail.To.Add(txtEmailTo.Text);
+            mail.Subject = txtEmailSubject.Text;
+            mail.Body = txtBody.Text;
+
+            mail.IsBodyHtml = true;
+            if (File.Exists(filename))
+            {
+                System.Net.Mail.Attachment attachment;
+                attachment = new System.Net.Mail.Attachment(filename);
+                mail.Attachments.Add(attachment);
+            }
+
+            AlternateView htmlView = AlternateView.CreateAlternateViewFromString(txtBody.Text, null, "text/html");
+            mail.AlternateViews.Add(htmlView);
+
+            foreach (LinkedResource linkimg in theEmailImage1)
+            {
+                htmlView.LinkedResources.Add(linkimg);
+            }
+
+            SmtpServer.Port = 587;
+            SmtpServer.Credentials = new System.Net.NetworkCredential(ic.iniC.email_auth_user_lab_opu, ic.iniC.email_auth_pass_lab_opu);
+
+            SmtpServer.EnableSsl = true;
+            SmtpServer.Send(mail);
+            lbEmail.Text = "ส่ง Email เรียบร้อย";
         }
 
         private void GbDayImg_DoubleClick(object sender, EventArgs e)
@@ -829,7 +927,7 @@ namespace clinic_ivf.gui
             //throw new NotImplementedException();
             //FrmLabOPUPrint frm = new FrmLabOPUPrint(ic, txtID.Text, FrmLabOPUPrint.opuReport.FETEmbryoDevReport);
             //frm.ShowDialog(this);
-            printFETEmbryoDev();
+            printFETEmbryoDev("print");
         }
         private void BtnDay5ImgRef_Click(object sender, EventArgs e)
         {
@@ -1447,7 +1545,7 @@ namespace clinic_ivf.gui
             grfDay2Img.AutoSizeCols();
             grfDay2Img.AutoSizeRows();
         }
-        private void printFETEmbryoDev()
+        private DataTable printFETEmbryoDev(String flagPrint)
         {
             FrmReport frm = new FrmReport(ic);
             DataTable dtEmbr = new DataTable();
@@ -1769,9 +1867,10 @@ namespace clinic_ivf.gui
                     //date1 = ic.datetoShow(dtEmbr.Rows[0][ic.ivfDB.fetDB.fet.fet_date].ToString());
                     //dtEmbr.Rows[0][ic.ivfDB.fetDB.fet.fet_date] = date1.Replace("-", "/");
                 }
-
-                frm.setFETEmbryoDevReport(dtEmbr);
-
+                if (flagPrint.Equals("print"))
+                {
+                    frm.setFETEmbryoDevReport(dtEmbr);
+                }
             }
             catch (Exception ex)
             {
@@ -1781,7 +1880,15 @@ namespace clinic_ivf.gui
             {
                 frmW.Dispose();
             }
-            frm.ShowDialog(this);
+            if (flagPrint.Equals("print"))
+            {
+                frm.ShowDialog(this);
+            }
+            else
+            {
+                frm.Dispose();
+            }
+            return dtEmbr;
         }
         private void BtnSaveImg2_Click(object sender, EventArgs e)
         {

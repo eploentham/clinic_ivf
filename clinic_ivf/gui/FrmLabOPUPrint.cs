@@ -68,6 +68,7 @@ namespace clinic_ivf.gui
             
             ic.setCboDayEmbryoDev(cboEmbryoDev1, "");
             ic.setCboDayEmbryoDev(cboEmbryoDev2, "");
+            ic.setCboDayEmbryoDev(cboEmbryoDev3, "");
             SmtpServer = new SmtpClient("smtp.gmail.com");
 
             if (opureport == opuReport.OPUEmbryoDevReport)
@@ -102,6 +103,7 @@ namespace clinic_ivf.gui
         private void BtnSendEmail_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
+            pnReport.Hide();
             SetDefaultPrinter(ic.iniC.printerA4);
             lbEmail.Show();
             lbEmail.Text = "เตรียม Email";
@@ -116,7 +118,7 @@ namespace clinic_ivf.gui
             filename = "report\\lab_opu_" + datetick + ".pdf";
             filenameEmbryo = "report\\lab_opu_embryo_" + datetick + ".pdf";
             lbEmail.Text = "เตรียม Report";
-            
+            Application.DoEvents();
             if (opureport == opuReport.OPUReport)
             {
                 FrmWaiting frmW = new FrmWaiting();
@@ -145,7 +147,7 @@ namespace clinic_ivf.gui
             {
                 if (!setEmailOPU(dt, FrmReport.flagEmbryoDev.onecolumn, FrmReport.flagEmbryoDevMore20.Days2, filename)) return;
             }
-            
+            setEmailOPUPicEmbryo(dtEmbryo, filenameEmbryo);
 
             if (!File.Exists(filename))
             {
@@ -262,6 +264,7 @@ namespace clinic_ivf.gui
                     CrExportOptions.FormatOptions = CrFormatTypeOptions;
                 }
                 lbEmail.Text = "Export Report";
+                Application.DoEvents();
                 rpt.Export();
                 System.Threading.Thread.Sleep(200);
                 Application.DoEvents();
@@ -271,6 +274,73 @@ namespace clinic_ivf.gui
                 chk = false;
                 //chk = ex.Message.ToString();
                 new LogWriter("e", "FrmLabOPUPrint setEmailOPU " + ex.Message);
+                MessageBox.Show("error " + ex.Message, "");
+            }
+            return chk;
+        }
+        private Boolean setEmailOPUPicEmbryo(DataTable dt, String filename)
+        {
+            if (dt == null) return false;
+            Boolean chk = true;
+            CrystalReportViewer cryLab;
+            cryLab = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
+            ReportDocument rpt = new ReportDocument();
+            try
+            {
+                lbEmail.Text = "สร้าง Report";
+                Application.DoEvents();
+                dt.Columns.Add("date_time_result", typeof(String));
+                dt.Columns.Add("date_time_approve", typeof(String));
+                String date1 = "", date2 = "", reqid = "";
+                //String date1 = dt.Rows[0]["date_time_result"].ToString();
+                //String date2 = dt.Rows[0]["date_time_approve"].ToString();
+                LabRequest lreq = new LabRequest();
+                lreq = ic.ivfDB.lbReqDB.selectByPk1(opu.req_id);
+
+                date1 = ic.datetimetoShow(lreq.result_date);
+                date2 = ic.datetimetoShow(lreq.start_date);
+                dt.Rows[0]["date_time_result"] = date1;
+                dt.Rows[0]["date_time_approve"] = date2;
+
+                rpt.Load("lab_opu_embryo_dev.rpt");
+                rpt.SetDataSource(dt);
+                rpt.SetParameterValue("line1", ic.cop.comp_name_t);
+                rpt.SetParameterValue("line2", "โทรศัพท์ " + ic.cop.tele);
+                rpt.SetParameterValue("report_name", " Embryo development");
+
+                this.cryLab.ReportSource = rpt;
+                this.cryLab.Refresh();
+                lbEmail.Text = "สร้าง Report เรียบร้อย";
+                Application.DoEvents();
+                if (File.Exists(filename))
+                {
+                    File.Delete(filename);
+                    System.Threading.Thread.Sleep(200);
+                    Application.DoEvents();
+                }
+                Application.DoEvents();
+                ExportOptions CrExportOptions;
+                DiskFileDestinationOptions CrDiskFileDestinationOptions = new DiskFileDestinationOptions();
+                PdfRtfWordFormatOptions CrFormatTypeOptions = new PdfRtfWordFormatOptions();
+                CrDiskFileDestinationOptions.DiskFileName = filename;
+                CrExportOptions = rpt.ExportOptions;
+                {
+                    CrExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
+                    CrExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
+                    CrExportOptions.DestinationOptions = CrDiskFileDestinationOptions;
+                    CrExportOptions.FormatOptions = CrFormatTypeOptions;
+                }
+                lbEmail.Text = "Export Report";
+                Application.DoEvents();
+                rpt.Export();
+                System.Threading.Thread.Sleep(200);
+                Application.DoEvents();
+            }
+            catch (Exception ex)
+            {
+                chk = false;
+                //chk = ex.Message.ToString();
+                new LogWriter("e", "FrmLabOPUPrint setEmailOPUPicEmbryo " + ex.Message);
                 MessageBox.Show("error " + ex.Message, "");
             }
             return chk;
@@ -499,7 +569,27 @@ namespace clinic_ivf.gui
                 String day = "";
                 LabOpu opu = new LabOpu();
                 opu = ic.ivfDB.opuDB.selectByPk1(txtID.Text);
-                day = cboEmbryoDev1.SelectedItem == null ? "" : ((ComboBoxItem)cboEmbryoDev1.SelectedItem).Value;
+                if (flagPrint.Equals("print"))
+                {
+                    day = cboEmbryoDev1.SelectedItem == null ? "" : ((ComboBoxItem)cboEmbryoDev1.SelectedItem).Value;
+                }
+                else
+                {
+                    day = cboEmbryoDev3.SelectedItem == null ? "" : ((ComboBoxItem)cboEmbryoDev3.SelectedItem).Value;
+                }
+                if (!day.Equals("2"))
+                {
+                    if (!day.Equals("3"))
+                    {
+                        if (!day.Equals("5"))
+                        {
+                            if (!day.Equals("6"))
+                            {
+                                MessageBox.Show("ไม่พบ day ของ ส่ง email Embryo Development", "");
+                            }
+                        }
+                    }
+                }
                 if (day.Equals("2"))
                 {
                     dt = ic.ivfDB.opuEmDevDB.selectByOpuFetId_DayPrint(txtID.Text, objdb.LabOpuEmbryoDevDB.Day1.Day2);

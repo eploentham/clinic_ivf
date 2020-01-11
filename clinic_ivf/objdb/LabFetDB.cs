@@ -594,6 +594,29 @@ namespace clinic_ivf.objdb
 
             return re;
         }
+        public String updateStatusFETApproveResult(String opuid, String userId)
+        {
+            String re = "";
+            String sql = "";
+            int chk = 0;
+
+            //chkNull(p);
+            sql = "Update " + fet.table + " Set " +
+                " " + fet.status_fet + " = '2'" +
+                "," + fet.approve_result_staff_id + " = '" + userId + "'" +
+                "Where " + fet.pkField + "='" + opuid + "'"
+                ;
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+
+            return re;
+        }
         public String VoidLabFET(String fetid, String userid)
         {
             String re = "";
