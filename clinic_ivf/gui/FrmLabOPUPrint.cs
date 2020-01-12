@@ -141,11 +141,11 @@ namespace clinic_ivf.gui
             }
             else if (!chkEmbryoFreez2Col.Checked && !chkEmbryoDev20.Checked)
             {
-                if (!setEmailOPU(dt, FrmReport.flagEmbryoDev.onecolumn, FrmReport.flagEmbryoDevMore20.More20, filename)) return;
+                if (!setEmailOPU(dt, FrmReport.flagEmbryoDev.onecolumn, FrmReport.flagEmbryoDevMore20.Days2, filename)) return;
             }
             else if (!chkEmbryoFreez2Col.Checked && chkEmbryoDev20.Checked)
             {
-                if (!setEmailOPU(dt, FrmReport.flagEmbryoDev.onecolumn, FrmReport.flagEmbryoDevMore20.Days2, filename)) return;
+                if (!setEmailOPU(dt, FrmReport.flagEmbryoDev.onecolumn, FrmReport.flagEmbryoDevMore20.More20, filename)) return;
             }
             setEmailOPUPicEmbryo(dtEmbryo, filenameEmbryo);
 

@@ -1009,6 +1009,7 @@
             this.btnSaveEmbryoFreezDay1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.theme1.SetTheme(this.btnSaveEmbryoFreezDay1, "(default)");
             this.btnSaveEmbryoFreezDay1.UseVisualStyleBackColor = true;
+            this.btnSaveEmbryoFreezDay1.Visible = false;
             this.btnSaveEmbryoFreezDay1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // txtEmbryoFreezDate1
@@ -1331,6 +1332,7 @@
             this.btnSaveEmbryoFreezDay0.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.theme1.SetTheme(this.btnSaveEmbryoFreezDay0, "(default)");
             this.btnSaveEmbryoFreezDay0.UseVisualStyleBackColor = true;
+            this.btnSaveEmbryoFreezDay0.Visible = false;
             this.btnSaveEmbryoFreezDay0.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // txtEmbryoFreezDate0
@@ -1544,6 +1546,7 @@
             this.btnSaveSperm.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.theme1.SetTheme(this.btnSaveSperm, "(default)");
             this.btnSaveSperm.UseVisualStyleBackColor = true;
+            this.btnSaveSperm.Visible = false;
             this.btnSaveSperm.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // label38
@@ -1930,6 +1933,7 @@
             this.btnSaveFertili.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.theme1.SetTheme(this.btnSaveFertili, "(default)");
             this.btnSaveFertili.UseVisualStyleBackColor = true;
+            this.btnSaveFertili.Visible = false;
             this.btnSaveFertili.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // txtFertiliDead
@@ -2204,6 +2208,7 @@
             this.btnSaveMatura.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.theme1.SetTheme(this.btnSaveMatura, "(default)");
             this.btnSaveMatura.UseVisualStyleBackColor = true;
+            this.btnSaveMatura.Visible = false;
             this.btnSaveMatura.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // txtMaturaDead
@@ -3678,6 +3683,7 @@
             this.btnSaveEmbryoEt.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.theme1.SetTheme(this.btnSaveEmbryoEt, "(default)");
             this.btnSaveEmbryoEt.UseVisualStyleBackColor = true;
+            this.btnSaveEmbryoEt.Visible = false;
             this.btnSaveEmbryoEt.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // cboEmbryologistAppv
