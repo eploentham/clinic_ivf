@@ -367,7 +367,7 @@ namespace clinic_ivf.gui
             //theme1.SetTheme(splitContainer2, ic.iniC.themeFET);
             //theme1.SetTheme(splitContainer3, ic.iniC.themeFET);
             //theme1.SetTheme(splitContainer4, ic.iniC.themeFET);
-            //theme1.SetTheme(splitContainer5, ic.iniC.themeFET);
+            theme1.SetTheme(groupBox6, ic.iniC.themeFET);
 
             foreach (Control ctl in groupBox1.Controls)
             {
@@ -413,10 +413,10 @@ namespace clinic_ivf.gui
             {
                 theme1.SetTheme(ctl, ic.iniC.themeFET);
             }
-            //foreach (Control ctl in panel4.Controls)
-            //{
-            //    theme1.SetTheme(ctl, ic.iniC.themeFET);
-            //}
+            foreach (Control ctl in groupBox6.Controls)
+            {
+                theme1.SetTheme(ctl, ic.iniC.themeFET);
+            }
             //foreach (Control ctl in panel5.Controls)
             //{
             //    theme1.SetTheme(ctl, ic.iniC.themeFET);
@@ -1958,7 +1958,7 @@ namespace clinic_ivf.gui
                                 {
                                     filename = txtFetCode.Text + "_day"+ embryopicday + "_" + no + "." + ext[ext.Length - 1];
                                     //re = ic.ivfDB.opuEmDevDB.updatePathPic(id, no, ic.iniC.folderFTP + "/" + txtFetCode.Text + "/" + filename, desc, desc1, ic.cStf.staff_id);       // -0012
-                                    re = ic.ivfDB.opuEmDevDB.updatePathPicNoPic(id, no, desc, desc1, desc5, ic.cStf.staff_id);       // +0012
+                                    re = ic.ivfDB.opuEmDevDB.updatePathPicNoPic(id, no, desc, desc1, desc5, ic.cStf.staff_id,"");       // +0012
                                     long chk = 0;
                                     if (long.TryParse(re, out chk))
                                     {
