@@ -1516,33 +1516,41 @@ namespace clinic_ivf.gui
             int i = 1;
             foreach (DataRow row in dt.Rows)
             {
-                grfQue[i, 0] = i;
-                grfQue[i, colID] = row["id"].ToString();
-                grfQue[i, colVNshow] = ic.showVN(row["VN"].ToString());
-                grfQue[i, colVn] = row["VN"].ToString();
-                grfQue[i, colPttHn] = row["PIDS"].ToString();
-                grfQue[i, colPttName] = row["PName"].ToString();
-                grfQue[i, colVsDate] = ic.datetoShow(row["VDate"]);
-                grfQue[i, colVsTime] = row["VStartTime"].ToString();
-                grfQue[i, colVsEtime] = row["VEndTime"].ToString();
-                grfQue[i, colStatus] = row["VName"].ToString();
-                grfQue[i, colPttId] = row["t_patient_id"].ToString();
-                grfQue[i, colDtr] = row["dtrname"].ToString();
-                grfQue[i, colPttHn1] = row["patient_hn_1"].ToString();
-                grfQue[i, colPttName1] = row["name_1"].ToString();
-                grfQue[i, colPttHn2] = row["patient_hn_2"].ToString();
-                grfQue[i, colPttName2] = row["name_2"].ToString();
-                grfQue[i, colPID] = row["PID"].ToString();
-                grfQue[i, colVsAgent] = row["AgentName"].ToString();
-                if (!row[ic.ivfDB.ovsDB.vsold.form_a_id].ToString().Equals("0"))
+                try
                 {
-                    CellNote note = new CellNote("ส่ง Lab Request Foam A");
-                    CellRange rg = grfQue.GetCellRange(i, colVNshow);
-                    rg.UserData = note;
+                    grfQue[i, 0] = i;
+                    grfQue[i, colID] = row["id"].ToString();
+                    grfQue[i, colVNshow] = ic.showVN(row["VN"].ToString());
+                    grfQue[i, colVn] = row["VN"].ToString();
+                    grfQue[i, colPttHn] = row["PIDS"].ToString();
+                    grfQue[i, colPttName] = row["PName"].ToString();
+                    grfQue[i, colVsDate] = ic.datetoShow(row["VDate"]);
+                    grfQue[i, colVsTime] = row["VStartTime"].ToString();
+                    grfQue[i, colVsEtime] = row["VEndTime"].ToString();
+                    grfQue[i, colStatus] = row["VName"].ToString();
+                    grfQue[i, colPttId] = row["t_patient_id"].ToString();
+                    grfQue[i, colDtr] = row["dtrname"].ToString();
+                    grfQue[i, colPttHn1] = row["patient_hn_1"].ToString();
+                    grfQue[i, colPttName1] = row["name_1"].ToString();
+                    grfQue[i, colPttHn2] = row["patient_hn_2"].ToString();
+                    grfQue[i, colPttName2] = row["name_2"].ToString();
+                    grfQue[i, colPID] = row["PID"].ToString();
+                    grfQue[i, colVsAgent] = row["AgentName"].ToString();
+                    if (!row[ic.ivfDB.ovsDB.vsold.form_a_id].ToString().Equals("0"))
+                    {
+                        CellNote note = new CellNote("ส่ง Lab Request Foam A");
+                        CellRange rg = grfQue.GetCellRange(i, colVNshow);
+                        rg.UserData = note;
+                    }
+                    //if (i % 2 == 0)
+                    //    grfPtt.Rows[i].StyleNew.BackColor = color;
+                    i++;
                 }
-                //if (i % 2 == 0)
-                //    grfPtt.Rows[i].StyleNew.BackColor = color;
-                i++;
+                catch(Exception ex)
+                {
+                    new LogWriter("e", "FrmNurseView SetGrfQue " + ex.Message + " InnerException " + ex.InnerException);
+                }
+                
             }
             CellNoteManager mgr = new CellNoteManager(grfQue);
             grfQue.Cols[colID].Visible = false;

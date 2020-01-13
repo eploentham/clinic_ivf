@@ -728,6 +728,43 @@ namespace clinic_ivf.objdb
             //}
 
         }
+        public void PxSetAdd(String duid, String pid, String pids, String vn, String extra, String row1, String qty, String usaget, String usagee, String duname, String price, String flagOld)
+        {
+            JobPxDetail oJpxd = new JobPxDetail();
+            //OldStockDrug ostkD = new OldStockDrug();
+            Decimal price1 = 0, qty1 = 0;
+            Decimal.TryParse(price, out price1);
+            Decimal.TryParse(qty, out qty1);
+            //ostkD = oStkdDB.selectByPk1(duid);
+            oJpxd.VN = vn;
+            oJpxd.DUID = duid;
+            oJpxd.QTY = qty;
+            oJpxd.Extra = extra;
+            //oJpxd.Price = price;
+            if (flagOld.Equals("old"))
+            {
+                decimal qty11 = 0, price11 = 0;
+                Decimal.TryParse(qty, out qty11);
+                Decimal.TryParse(oJpxd.Price, out price11);
+                oJpxd.Price = (qty11 * price11).ToString();
+                oJpxd.price1 = oJpxd.Price;
+            }
+            else
+            {
+                oJpxd.Price = oJpxd.Price;
+            }
+            oJpxd.Status = "1";
+            oJpxd.PID = pid;
+            oJpxd.PIDS = pids;
+            oJpxd.DUName = duname;
+            oJpxd.Comment = "";
+            oJpxd.TUsage = usaget;
+            oJpxd.EUsage = usagee;
+            oJpxd.row1 = row1;
+            oJpxdDB.insert(oJpxd, "");
+            //}
+
+        }
         public void PxAdd(String duid, String qty, String pid, String pids, String vn, String extra, String row1, String usage)
         {
             JobPxDetail oJpxd = new JobPxDetail();
@@ -772,7 +809,7 @@ namespace clinic_ivf.objdb
             {
                 decimal qty11 = 0, price11 = 0;
                 Decimal.TryParse(qty, out qty11);
-                Decimal.TryParse(ostkD.Price, out qty11);
+                Decimal.TryParse(ostkD.Price, out price11);
                 oJpxd.Price = (qty11 * price11).ToString();
                 oJpxd.price1 = ostkD.Price;
             }
@@ -842,7 +879,7 @@ namespace clinic_ivf.objdb
             {
                 decimal qty11 = 0, price11 = 0;
                 Decimal.TryParse(qty, out qty11);
-                Decimal.TryParse(jlabD.Price, out qty11);
+                Decimal.TryParse(jlabD.Price, out price11);
                 jlabD.Price = (qty11 * price11).ToString();
                 jlabD.price1 = jlabD.Price;
             }
@@ -918,7 +955,7 @@ namespace clinic_ivf.objdb
             {
                 decimal qty11 = 0, price11 = 0;
                 Decimal.TryParse(qty, out qty11);
-                Decimal.TryParse(ojsd.Price, out qty11);
+                Decimal.TryParse(ojsd.Price, out price11);
                 ojsd.Price = (qty11 * price11).ToString();
                 ojsd.price1 = ojsd.Price;
             }

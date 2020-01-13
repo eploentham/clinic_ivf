@@ -937,7 +937,7 @@ namespace clinic_ivf.gui
                 rpt.SetDataSource(dt);
                 rpt.SetParameterValue("line1", ic.cop.comp_name_t);
                 rpt.SetParameterValue("line2", "โทรศัพท์ " + ic.cop.tele);
-                rpt.SetParameterValue("report_name", " Summary of FET ");
+                rpt.SetParameterValue("report_name", " Summary of FET Report");
                 //rpt.SetParameterValue("date1", "" + date1);
                 this.crystalReportViewer1.ReportSource = rpt;
                 this.crystalReportViewer1.Refresh();

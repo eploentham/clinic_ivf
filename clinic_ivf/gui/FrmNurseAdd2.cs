@@ -76,7 +76,7 @@ namespace clinic_ivf.gui
         int colOrderSP4V = 13, colOrderSP5V = 14, colOrderSP6V = 15, colOrderSP7V = 16, colOrderSubItem = 17;
         int colOrderFileName = 18, colOrderWorder1 = 19, colOrderWorker2 = 20, colOrderWorker3 = 21, colOrderWorkder4 = 22;
         int colOrderWorker5 = 23, colOrderLGID = 24, colOrderQTY = 25, colOrderActive = 26;
-        int colOrdid = 1, colOrdDate=2, colOrdlpid = 3, colOrdName = 4, colOrdPrice = 5, colOrdQty = 6, colOrdstatus = 7, colOrdrow1 = 8, colOrditmid = 9, colOrdInclude = 10, colOrdAmt = 11, colOrdUsE = 12, colOrdUsT = 13, colOrdOrderId=14, colOrdStatusAmt=15, colOrdStatusOrdGrp=16;
+        int colOrdid = 1, colOrdDate=2, colOrdlpid = 3, colOrdName = 4, colOrdPrice = 5, colOrdPrice1=6, colOrdQty = 7, colOrdstatus = 8, colOrdrow1 = 9, colOrditmid = 10, colOrdInclude = 11, colOrdAmt = 12, colOrdUsE = 13, colOrdUsT = 14, colOrdOrderId=15, colOrdStatusAmt=16, colOrdStatusOrdGrp=17;
         int rowOrder = 0, spHeight = 150;
         int colEggDay = 1, colEggDate = 2, colEggE2 = 3, colEggLH = 4, colEggFSH = 5, colEggProlactin = 6, colEggRt1 = 7, colEggRt2 = 8, colEggLt1 = 9, colEggLt2 = 10, colEggEndo = 11, colEggMedi = 12, colEggId = 13, colEggEdit = 14, colEggMedi2 = 15;
         
@@ -3841,7 +3841,7 @@ namespace clinic_ivf.gui
             view.Sort = "date, row1 ASC";
             DataTable sortedDate = view.ToTable();
             //grfOrder.DataSource = dtAll;
-            grfHisDrug.Cols.Count = 17;
+            grfHisDrug.Cols.Count = 18;
             //C1TextBox txt = new C1TextBox();
             //C1CheckBox chk = new C1CheckBox();
             //chk.Text = "Include Package";
@@ -4478,6 +4478,7 @@ namespace clinic_ivf.gui
             dtAll.Columns.Add("lab_order_id", typeof(String));
             dtAll.Columns.Add("status_amt", typeof(String));
             dtAll.Columns.Add("status_order_group", typeof(String));
+            dtAll.Columns.Add("price1", typeof(String));
             int i = 0;
             foreach (DataRow row in dtbl.Rows)
             {
@@ -4494,6 +4495,7 @@ namespace clinic_ivf.gui
                 row1["lab_order_id"] = row["lab_order_id"];
                 row1["status_amt"] = row["status_amt"];
                 row1["status_order_group"] = row["status_order_group"];
+                row1["price1"] = row["price1"];
                 if (row["LGID"].ToString().Equals("1"))
                 {
                     row1["status"] = "bloodlab";
@@ -4533,6 +4535,7 @@ namespace clinic_ivf.gui
                 row1["lab_order_id"] = "0";
                 row1["status_amt"] = "1";
                 row1["status_order_group"] = "0";
+                row1["price1"] = row["price1"];
                 dtAll.Rows.InsertAt(row1, i);
                 i++;
             }
@@ -4552,6 +4555,7 @@ namespace clinic_ivf.gui
                 row1["lab_order_id"] = "0";
                 row1["status_amt"] = "1";
                 row1["status_order_group"] = "0";
+                row1["price1"] = row["price1"];
                 dtAll.Rows.InsertAt(row1, i);
                 i++;
 
@@ -4616,7 +4620,7 @@ namespace clinic_ivf.gui
             view.Sort = "row1 ASC";
             DataTable sortedDate = view.ToTable();
             //grfOrder.DataSource = dtAll;
-            grfOrder.Cols.Count = 17;
+            grfOrder.Cols.Count = 18;
             //C1TextBox txt = new C1TextBox();
             //C1CheckBox chk = new C1CheckBox();
             //chk.Text = "Include Package";
@@ -4638,6 +4642,7 @@ namespace clinic_ivf.gui
 
             grfOrder.Cols[colOrdName].Caption = "Name";
             grfOrder.Cols[colOrdPrice].Caption = "Price";
+            grfOrder.Cols[colOrdPrice1].Caption = "Price";
             grfOrder.Cols[colOrdQty].Caption = "QTY";
             grfOrder.Cols[colOrdInclude].Caption = "Include Package";
             grfOrder.Cols[colOrdUsT].Caption = "Usage";
@@ -4654,7 +4659,7 @@ namespace clinic_ivf.gui
             {
                 try
                 {
-                    Decimal price = 0, qty = 0;
+                    Decimal price = 0, qty = 0, price1=0;
                     Row row1 = grfOrder.Rows.Add();
                     row1[colOrdid] = row["id"].ToString();
                     row1[colOrdlpid] = row["lgid"].ToString();
@@ -4667,27 +4672,49 @@ namespace clinic_ivf.gui
                     row1[colOrdInclude] = row["extra"].ToString().Equals("1") ? "Extra" : "Include";
 
                     Decimal.TryParse(row["price"].ToString(), out price);
+                    Decimal.TryParse(row["price1"].ToString(), out price1);
                     Decimal.TryParse(row["qty"].ToString(), out qty);
                     row1[colOrdPrice] = price.ToString("#,###.00");
+                    row1[colOrdPrice1] = price1.ToString("#,###.00");
                     row1[colOrdQty] = qty.ToString("#,###.00");
                     row1[colOrdAmt] = (price * qty).ToString("#,###.00");
                     if (row["status_amt"].ToString().Equals("1"))
                     {
                         if (row["extra"].ToString().Equals("1"))
                         {
-                            ext += (price * qty);
+                            if (ic.iniC.statusCashierOldProgram.Equals("1"))
+                            {
+                                ext += price;
+                            }
+                            else
+                            {
+                                ext += (price1 * qty);
+                            }
                         }
                         else
                         {
                             if (row["status"].ToString().Equals("package"))
                             {
-                                inc += (price * qty);
+                                if (ic.iniC.statusCashierOldProgram.Equals("1"))
+                                {
+                                    inc += price;
+                                }
+                                else
+                                {
+                                    inc += (price1 * qty);
+                                }
                             }
                         }
                     }
-                    
-                    row1[colOrdAmt] = (price * qty).ToString("#,###.00");
-                    row1[colOrdAmt] = (price * qty).ToString("#,###.00");
+
+                    if (ic.iniC.statusCashierOldProgram.Equals("1"))
+                    {
+                        row1[colOrdAmt] = price.ToString("#,###.00");
+                    }
+                    else
+                    {
+                        row1[colOrdAmt] = (price1 * qty).ToString("#,###.00");
+                    }
                     row1[colOrdOrderId] = row["lab_order_id"].ToString();
                     row1[colOrdStatusAmt] = row["status_amt"].ToString();
                     row1[colOrdStatusOrdGrp] = row["status_order_group"].ToString();
@@ -4708,7 +4735,16 @@ namespace clinic_ivf.gui
             grfOrder.Cols[colOrdid].Visible = false;
             //grfOrder.Cols[colOrdstatus].Visible = false;
             grfOrder.Cols[colOrditmid].Visible = false;
-
+            if (ic.iniC.statusCashierOldProgram.Equals("1"))
+            {
+                grfOrder.Cols[colOrdPrice].Visible = false;
+                grfOrder.Cols[colOrdPrice1].Visible = true;
+            }
+            else
+            {
+                grfOrder.Cols[colOrdPrice].Visible = true;
+                grfOrder.Cols[colOrdPrice1].Visible = false;
+            }
             grfOrder.Cols[colOrdUsE].Visible = false;
             grfOrder.Cols[colOrdDate].Visible = false;
             //grfOrder.Cols[colOrderPIDS].Visible = false;
@@ -5298,7 +5334,7 @@ namespace clinic_ivf.gui
             {
                 if (ic.iniC.statusCashierOldProgram.Equals("1"))
                 {
-                    ic.ivfDB.PxAdd(drugid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", grfOrder.Rows.Count.ToString(), usage, "opd");
+                    ic.ivfDB.PxAdd(drugid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", grfOrder.Rows.Count.ToString(), usage, "old");
                 }
                 else
                 {

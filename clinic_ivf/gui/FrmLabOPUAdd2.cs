@@ -193,8 +193,10 @@ namespace clinic_ivf.gui
                 DataTable dtDay5 = new DataTable();
                 DataTable dtDay6 = new DataTable();
                 dtDay6 = ic.ivfDB.opuEmDevDB.selectByOpuFetId_Day(txtID.Text, objdb.LabOpuEmbryoDevDB.Day1.Day6);
+                int i = -1;
                 foreach (Row row in grfDay6Img.Rows)
                 {
+                    i++;
                     String id = "", filename = "", re = "", noday6 = "", remotefile = "", re1="";
                     id = row[colDay2ImgId] != null ? row[colDay2ImgId].ToString() : "";
                     
@@ -210,24 +212,26 @@ namespace clinic_ivf.gui
                         {
                             continue;
                         }
-                        String statusBio = row[colDay2StatusBio] == imgFinish ? "1" : "0";
-                        String desc1 = row[colDay2ImgDesc1] != null ? row[colDay2ImgDesc1].ToString() : "";
-                        String desc = row[colDay2ImgDesc0] != null ? row[colDay2ImgDesc0].ToString() : "";
-                        String no = row[colDay2ImgNun] != null ? row[colDay2ImgNun].ToString() : "";
+                        //String statusBio = row[colDay2StatusBio] == imgFinish ? "1" : "0";
+                        //String desc1 = row[colDay2ImgDesc1] != null ? row[colDay2ImgDesc1].ToString() : "";
+                        //String desc = row[colDay2ImgDesc0] != null ? row[colDay2ImgDesc0].ToString() : "";
+                        //String no = row[colDay2ImgNun] != null ? row[colDay2ImgNun].ToString() : "";
+                        String statusBio = dtDay5.Rows[0][ic.ivfDB.opuEmDevDB.opuEmDev.status_biopsy_ngs].ToString();
+                        String desc1 = dtDay5.Rows[0][ic.ivfDB.opuEmDevDB.opuEmDev.desc4].ToString();
+                        String desc = dtDay5.Rows[0][ic.ivfDB.opuEmDevDB.opuEmDev.desc3].ToString();
+                        String no = "";
                         filename = dtDay5.Rows[0][ic.ivfDB.opuEmDevDB.opuEmDev.path_pic].ToString();
                         remotefile = filename.Replace("day5", "day6");
                         re = ic.ivfDB.opuEmDevDB.updatePathPic(id, noday6, remotefile, ic.cStf.staff_id);
-                        re1 = ic.ivfDB.opuEmDevDB.updatePathPicNoPic(id, no, desc, desc1, ic.cStf.staff_id, statusBio);       // +0012
+                        re1 = ic.ivfDB.opuEmDevDB.updatePathPicNoPic(id, "", desc, desc1, ic.cStf.staff_id, statusBio);       // +0012
                         long chk = 0;
                         if (long.TryParse(re, out chk))
                         {
                             //ic.savePicOPUtoServer(txtOpuCode.Text, filename, pathfile);
-
                             MemoryStream ms = null;
                             ms = ic.ftpC.download(ic.iniC.hostFTP, filename);
                             if (ms.Length <= 0) return;
                             ms.Seek(0, SeekOrigin.Begin);
-                            
                             ic.ftpC.upload(remotefile, ms);
                         }
                     }
@@ -4241,10 +4245,12 @@ namespace clinic_ivf.gui
                 if(grfDay6Img[row,colDay2StatusBio] == imgFinish)
                 {
                     grfDay6Img[row, colDay2StatusBio] = imgTran;
+                    grfDay6Img[row, colDay2ImgDesc1] = "";
                 }
                 else
                 {
                     grfDay6Img[row, colDay2StatusBio] = imgFinish;
+                    grfDay6Img[row, colDay2ImgDesc1] = "day6";
                 }
                 setGrfDay6ImgFreezing();
             }
@@ -4259,7 +4265,7 @@ namespace clinic_ivf.gui
                 if (row[colDay2StatusBio] == imgFinish)
                 {
                     row[colDay2ImgDesc0] = i;
-                    row[colDay2ImgDesc1] = "day6";
+                    //row[colDay2ImgDesc1] = "day6";
                     i++;
                 }
             }
@@ -4510,6 +4516,7 @@ namespace clinic_ivf.gui
             grfDay5.ChangeEdit += GrfDay5_ChangeEdit;
             grfDay5.KeyDown += GrfDay5_KeyDown;
             grfDay5.GotFocus += GrfDay5_GotFocus;
+            grfDay5.DoubleClick += GrfDay5_DoubleClick;
             //grfExpnC.CellButtonClick += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellButtonClick);
             //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
             ContextMenu menuGw = new ContextMenu();
@@ -4523,6 +4530,23 @@ namespace clinic_ivf.gui
             //theme1.SetTheme(grfDay6, "Office2016DarkGray");
         }
 
+        private void GrfDay5_DoubleClick(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (grfDay5 == null) return;
+            if (grfDay5.Col <= 0) return;
+            if (grfDay5.Row <= 0) return;
+
+            if (grfDay5.Col == colDay5ID)
+            {
+                grfDay6[grfDay5.Row, colDay6Num] = grfDay5[grfDay5.Row, colDay5Num];
+                grfDay6[grfDay5.Row, colDay6Desc] = grfDay5[grfDay5.Row, colDay5Desc];
+                grfDay6[grfDay5.Row, colDay6Desc1] = grfDay5[grfDay5.Row, colDay5Desc1];
+                grfDay6[grfDay5.Row, colDay6Desc2] = grfDay5[grfDay5.Row, colDay5Desc2];
+                grfDay6[grfDay5.Row, colDay6Edit] = "1";
+                grfDay6.Rows[grfDay5.Row].StyleNew.BackColor = color;
+            }
+        }
         private void GrfDay5_GotFocus(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
@@ -4717,7 +4741,8 @@ namespace clinic_ivf.gui
             dt = ic.ivfDB.opuEmDevDB.selectByOpuFetId_Day(txtID.Text, objdb.LabOpuEmbryoDevDB.Day1.Day5);
             grfDay5.Rows.Count = 1;
             grfDay5.Cols.Count = 7;
-            C1TextBox txt = new C1TextBox();
+            //Button btn = new Button();
+            //C1TextBox txt = new C1TextBox();
             C1ComboBox cboday5 = new C1ComboBox();
             C1ComboBox cboday3desc1 = new C1ComboBox();
             cboday5.AutoCompleteMode = AutoCompleteMode.Suggest;
@@ -4726,16 +4751,18 @@ namespace clinic_ivf.gui
             cboday3desc1.AutoCompleteSource = AutoCompleteSource.ListItems;
             ic.ivfDB.fdtDB.setCboOPUStageDay5(cboday5, "");
             ic.ivfDB.fdtDB.setCboOPUStageDay5Desc1(cboday3desc1, "");
-            grfDay5.Cols[colDay5ID].Editor = txt;
-            grfDay5.Cols[colDay5Num].Editor = txt;
+            //grfDay5.Cols[colDay5ID].Editor = txt;
+            //grfDay5.Cols[colDay5Num].Editor = txt;
             grfDay5.Cols[colDay5Desc].Editor = cboday5;
             grfDay5.Cols[colDay5Desc1].Editor = cboday3desc1;
-            grfDay5.Cols[colDay5Desc2].Editor = txt;
+            //grfDay5.Cols[colDay5Desc2].Editor = txt;
+            //grfDay5.Cols[colDay5Copy].Editor = btn;
 
             grfDay5.Cols[colDay5Num].Width = 40;
             grfDay5.Cols[colDay5Desc].Width = 100;
             grfDay5.Cols[colDay5Desc1].Width = 70;
             grfDay5.Cols[colDay5Desc2].Width = 70;
+            //grfDay5.Cols[colDay5Copy].Width = 30;
 
             grfDay5.ShowCursor = true;
             //grdFlex.Cols[colID].Caption = "no";
@@ -4897,6 +4924,7 @@ namespace clinic_ivf.gui
             //    txtDobDonor.Hide();
             //    btnDonorSearch.Hide();
             //}
+            sB1.Text = "Date " + ic.cop.day + "-" + ic.cop.month + "-" + ic.cop.year + " Server " + ic.iniC.hostDB + " FTP " + ic.iniC.hostFTP + "/" + ic.iniC.folderFTP;
         }
     }
 }

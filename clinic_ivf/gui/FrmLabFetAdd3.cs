@@ -4,6 +4,9 @@ using C1.Win.C1SuperTooltip;
 using clinic_ivf.control;
 using clinic_ivf.object1;
 using clinic_ivf.Properties;
+using CrystalDecisions.CrystalReports.Engine;
+using CrystalDecisions.Shared;
+using CrystalDecisions.Windows.Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -146,7 +149,8 @@ namespace clinic_ivf.gui
             initGrf();
             setControl();
             setGrf();
-
+            lbEmail.Text = "";
+            
         }
         private void setControlFirstTime(Boolean flag)
         {
@@ -667,6 +671,8 @@ namespace clinic_ivf.gui
                         setControlFirstTime(false);
                     }
                     setControl1();
+                    txtEmailTo.Value = ic.iniC.email_to_lab_fet;
+                    txtEmailSubject.Value = "Result LAB FET " + DateTime.Now.ToString("dd/MM/") + DateTime.Now.Year + "Name " + txtNameMale.Text + " Name " + txtNameFeMale.Text + " FET Code " + txtFetCode.Text + " ";
                 }
                 else
                 {
@@ -677,6 +683,10 @@ namespace clinic_ivf.gui
                     txtNameFeMale.Value = lbReq.name_female;
                     txtNameMale.Value = lbReq.name_male;
                     txtLabReqCode.Value = lbReq.req_code;
+
+                    txtEmailTo.Value = ic.iniC.email_to_lab_fet;
+                    txtEmailSubject.Value = "Result LAB FET " + DateTime.Now.ToString("dd/MM/") + DateTime.Now.Year + "Name " + txtNameMale.Text + " Name " + txtNameFeMale.Text + " FET Code " + txtFetCode.Text + " ";
+
                     setControlFirstTime(false);
                 }
             }
@@ -839,7 +849,7 @@ namespace clinic_ivf.gui
             //SetDefaultPrinter(ic.iniC.printerA4);
             lbEmail.Show();
             lbEmail.Text = "เตรียม Email";
-            String filename = "", datetick = "", filenameEmbryo = "";
+            String filename = "", datetick = "";
             DataTable dt = new DataTable();
             DataTable dtEmbryo = new DataTable();
             if (!Directory.Exists("report"))
@@ -857,8 +867,8 @@ namespace clinic_ivf.gui
             dtEmbryo = printFETEmbryoDev("");
             frmW.Dispose();
             //dtEmbryo = printOPUEmbryoDev("");
-            
-            //setEmailOPUPicEmbryo(dtEmbryo, filenameEmbryo);
+
+            setEmailFETPicEmbryo(dtEmbryo, filename);
 
             if (!File.Exists(filename))
             {
@@ -898,7 +908,73 @@ namespace clinic_ivf.gui
             SmtpServer.Send(mail);
             lbEmail.Text = "ส่ง Email เรียบร้อย";
         }
+        private Boolean setEmailFETPicEmbryo(DataTable dt, String filename)
+        {
+            if (dt == null) return false;
+            Boolean chk = true;
+            CrystalReportViewer cryLab;
+            cryLab = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
+            ReportDocument rpt = new ReportDocument();
+            try
+            {
+                lbEmail.Text = "สร้าง Report";
+                Application.DoEvents();
+                dt.Columns.Add("date_time_result", typeof(String));
+                dt.Columns.Add("date_time_approve", typeof(String));
+                String date1 = "", date2 = "", reqid = "";
+                //String date1 = dt.Rows[0]["date_time_result"].ToString();
+                //String date2 = dt.Rows[0]["date_time_approve"].ToString();
+                LabRequest lreq = new LabRequest();
+                lreq = ic.ivfDB.lbReqDB.selectByPk1(fet.req_id);
 
+                date1 = ic.datetimetoShow(lreq.result_date);
+                date2 = ic.datetimetoShow(lreq.start_date);
+                dt.Rows[0]["date_time_result"] = date1;
+                dt.Rows[0]["date_time_approve"] = date2;
+
+                rpt.Load("lab_fet_embryo_dev.rpt");
+                rpt.SetDataSource(dt);
+                rpt.SetParameterValue("line1", ic.cop.comp_name_t);
+                rpt.SetParameterValue("line2", "โทรศัพท์ " + ic.cop.tele);
+                rpt.SetParameterValue("report_name", " Summary of FET Report");
+
+                this.cryLab.ReportSource = rpt;
+                this.cryLab.Refresh();
+                lbEmail.Text = "สร้าง Report เรียบร้อย";
+                Application.DoEvents();
+                if (File.Exists(filename))
+                {
+                    File.Delete(filename);
+                    System.Threading.Thread.Sleep(200);
+                    Application.DoEvents();
+                }
+                Application.DoEvents();
+                ExportOptions CrExportOptions;
+                DiskFileDestinationOptions CrDiskFileDestinationOptions = new DiskFileDestinationOptions();
+                PdfRtfWordFormatOptions CrFormatTypeOptions = new PdfRtfWordFormatOptions();
+                CrDiskFileDestinationOptions.DiskFileName = filename;
+                CrExportOptions = rpt.ExportOptions;
+                {
+                    CrExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
+                    CrExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
+                    CrExportOptions.DestinationOptions = CrDiskFileDestinationOptions;
+                    CrExportOptions.FormatOptions = CrFormatTypeOptions;
+                }
+                lbEmail.Text = "Export Report";
+                Application.DoEvents();
+                rpt.Export();
+                System.Threading.Thread.Sleep(200);
+                Application.DoEvents();
+            }
+            catch (Exception ex)
+            {
+                chk = false;
+                //chk = ex.Message.ToString();
+                new LogWriter("e", "FrmLabFetAdd3 setEmailFETPicEmbryo " + ex.Message);
+                MessageBox.Show("error " + ex.Message, "");
+            }
+            return chk;
+        }
         private void GbDayImg_DoubleClick(object sender, EventArgs e)
         {
             //throw new NotImplementedException();

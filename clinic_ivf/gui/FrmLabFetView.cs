@@ -46,8 +46,8 @@ namespace clinic_ivf.gui
         {
             fEdit = new Font(ic.iniC.grdViewFontName, ic.grdViewFontSize, FontStyle.Regular);
             fEditB = new Font(ic.iniC.grdViewFontName, ic.grdViewFontSize, FontStyle.Bold);
-            txtDateEnd.Value = System.DateTime.Now;
-            txtDateStart.Value = System.DateTime.Now;
+            //txtDateEnd.Value = System.DateTime.Now;
+            //txtDateStart.Value = System.DateTime.Now;
             txtFiDateEnd.Value = System.DateTime.Now;
             txtFiDateStart.Value = System.DateTime.Now;
             //C1ThemeController.ApplicationTheme = ic.iniC.themeApplication;
@@ -70,11 +70,11 @@ namespace clinic_ivf.gui
             timer.Tick += Timer_Tick;
             timer.Enabled = true;
 
-            btnNew.Click += BtnNew_Click;
-            btnSearchA.Click += BtnSearchA_Click;
+            //btnNew.Click += BtnNew_Click;
+            //btnSearchA.Click += BtnSearchA_Click;
             txtSearch.KeyUp += TxtSearch_KeyUp;
-            btnOPU.Click += BtnOPU_Click;
-            btnFet.Click += BtnFet_Click;
+            //btnOPU.Click += BtnOPU_Click;
+            //btnFet.Click += BtnFet_Click;
 
             initGrfReq();
             initGrfProc();
@@ -259,24 +259,24 @@ namespace clinic_ivf.gui
             DataTable dt = new DataTable();
             DateTime datestart, dateend;
             String datestart1 = "", dateend1 = "";
-            if (DateTime.TryParse(txtDateStart.Text, out datestart))
-            {
-                datestart1 = datestart.ToString("yyyy-MM-dd");
-            }
-            else
-            {
-                datestart1 = ic.datetoDB(txtDateStart.Text);
-            }
-            if (DateTime.TryParse(txtDateEnd.Text, out datestart))
-            {
-                dateend1 = datestart.ToString("yyyy-MM-dd");
-            }
-            else
-            {
-                dateend1 = ic.datetoDB(txtDateEnd.Text);
-            }
+            //if (DateTime.TryParse(txtDateStart.Text, out datestart))
+            //{
+            //    datestart1 = datestart.ToString("yyyy-MM-dd");
+            //}
+            //else
+            //{
+            //    datestart1 = ic.datetoDB(txtDateStart.Text);
+            //}
+            //if (DateTime.TryParse(txtDateEnd.Text, out datestart))
+            //{
+            //    dateend1 = datestart.ToString("yyyy-MM-dd");
+            //}
+            //else
+            //{
+            //    dateend1 = ic.datetoDB(txtDateEnd.Text);
+            //}
             //dt = ic.ivfDB.lbReqDB.selectByStatusReqAccept();
-            dt = ic.ivfDB.lbReqDB.selectByStatusUnAccept3FET(datestart1, dateend1);
+            dt = ic.ivfDB.lbReqDB.selectByStatusUnAccept4FET();
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             grfReq.Rows.Count = 1;
             grfReq.Cols.Count = 18;
@@ -842,7 +842,7 @@ namespace clinic_ivf.gui
             tcLabView.SelectedTab = tabLabAccept;
             if (ic.iniC.statusCheckDonor.Equals("0"))
             {
-                c1SplitButton1.Hide();
+                //c1SplitButton1.Hide();
             }
         }
     }

@@ -69,6 +69,19 @@
             this.txtHnFeMale = new C1.Win.C1Input.C1TextBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.pnReport = new System.Windows.Forms.Panel();
+            this.cryLabEmbryo = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
+            this.cryLab = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
+            this.btnSendEmail = new C1.Win.C1Input.C1Button();
+            this.lbEmail = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.txtBody = new C1.Win.C1Input.C1TextBox();
+            this.label212 = new System.Windows.Forms.Label();
+            this.txtEmailSubject = new C1.Win.C1Input.C1TextBox();
+            this.btnAgentEmail = new C1.Win.C1Input.C1Button();
+            this.label213 = new System.Windows.Forms.Label();
+            this.txtEmailTo = new C1.Win.C1Input.C1TextBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.cboMediaThawing = new C1.Win.C1Input.C1ComboBox();
             this.txtMediaExp = new C1.Win.C1Input.C1DateEdit();
@@ -114,6 +127,7 @@
             this.label18 = new System.Windows.Forms.Label();
             this.cboEmbryoPicDay1 = new C1.Win.C1Input.C1ComboBox();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.btnApproveResult = new C1.Win.C1Input.C1Button();
             this.cboEmbryoForEtCatheter = new C1.Win.C1Input.C1ComboBox();
             this.cboEtRemark = new C1.Win.C1Input.C1ComboBox();
             this.label27 = new System.Windows.Forms.Label();
@@ -166,20 +180,6 @@
             this.txtDay2Date = new C1.Win.C1Input.C1DateEdit();
             this.sB = new System.Windows.Forms.StatusStrip();
             this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.btnAgentEmail = new C1.Win.C1Input.C1Button();
-            this.label213 = new System.Windows.Forms.Label();
-            this.txtEmailTo = new C1.Win.C1Input.C1TextBox();
-            this.label212 = new System.Windows.Forms.Label();
-            this.txtEmailSubject = new C1.Win.C1Input.C1TextBox();
-            this.label29 = new System.Windows.Forms.Label();
-            this.txtBody = new C1.Win.C1Input.C1TextBox();
-            this.btnSendEmail = new C1.Win.C1Input.C1Button();
-            this.lbEmail = new System.Windows.Forms.Label();
-            this.pnReport = new System.Windows.Forms.Panel();
-            this.cryLabEmbryo = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
-            this.cryLab = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
-            this.btnApproveResult = new C1.Win.C1Input.C1Button();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnDay2ImgRef)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboEmbryoPicDay)).BeginInit();
@@ -210,6 +210,13 @@
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox6.SuspendLayout();
+            this.pnReport.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSendEmail)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtBody)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtEmailSubject)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnAgentEmail)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtEmailTo)).BeginInit();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cboMediaThawing)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMediaExp)).BeginInit();
@@ -237,6 +244,7 @@
             this.pn3GrfH.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cboEmbryoPicDay1)).BeginInit();
             this.groupBox7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnApproveResult)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboEmbryoForEtCatheter)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboEtRemark)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboRemark2)).BeginInit();
@@ -264,14 +272,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.cboCheckedDay2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDay2Date)).BeginInit();
             this.sB.SuspendLayout();
-            this.groupBox6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnAgentEmail)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtEmailTo)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtEmailSubject)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtBody)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnSendEmail)).BeginInit();
-            this.pnReport.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnApproveResult)).BeginInit();
             this.SuspendLayout();
             // 
             // theme1
@@ -1007,6 +1007,187 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Embryo Thawing";
             this.theme1.SetTheme(this.groupBox2, "(default)");
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox6.Controls.Add(this.pnReport);
+            this.groupBox6.Controls.Add(this.btnSendEmail);
+            this.groupBox6.Controls.Add(this.lbEmail);
+            this.groupBox6.Controls.Add(this.label29);
+            this.groupBox6.Controls.Add(this.txtBody);
+            this.groupBox6.Controls.Add(this.label212);
+            this.groupBox6.Controls.Add(this.txtEmailSubject);
+            this.groupBox6.Controls.Add(this.btnAgentEmail);
+            this.groupBox6.Controls.Add(this.label213);
+            this.groupBox6.Controls.Add(this.txtEmailTo);
+            this.groupBox6.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.groupBox6.Location = new System.Drawing.Point(3, 382);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(342, 138);
+            this.groupBox6.TabIndex = 545;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Send Emai";
+            this.theme1.SetTheme(this.groupBox6, "(default)");
+            // 
+            // pnReport
+            // 
+            this.pnReport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnReport.Controls.Add(this.cryLabEmbryo);
+            this.pnReport.Controls.Add(this.cryLab);
+            this.pnReport.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.pnReport.Location = new System.Drawing.Point(126, 92);
+            this.pnReport.Name = "pnReport";
+            this.pnReport.Size = new System.Drawing.Size(66, 37);
+            this.pnReport.TabIndex = 553;
+            this.theme1.SetTheme(this.pnReport, "(default)");
+            this.pnReport.Visible = false;
+            // 
+            // cryLabEmbryo
+            // 
+            this.cryLabEmbryo.ActiveViewIndex = -1;
+            this.cryLabEmbryo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.cryLabEmbryo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cryLabEmbryo.Cursor = System.Windows.Forms.Cursors.Default;
+            this.cryLabEmbryo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.cryLabEmbryo.Location = new System.Drawing.Point(14, 18);
+            this.cryLabEmbryo.Name = "cryLabEmbryo";
+            this.cryLabEmbryo.Size = new System.Drawing.Size(45, 17);
+            this.cryLabEmbryo.TabIndex = 2;
+            this.theme1.SetTheme(this.cryLabEmbryo, "(default)");
+            // 
+            // cryLab
+            // 
+            this.cryLab.ActiveViewIndex = -1;
+            this.cryLab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.cryLab.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cryLab.Cursor = System.Windows.Forms.Cursors.Default;
+            this.cryLab.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.cryLab.Location = new System.Drawing.Point(8, 4);
+            this.cryLab.Name = "cryLab";
+            this.cryLab.Size = new System.Drawing.Size(45, 17);
+            this.cryLab.TabIndex = 1;
+            this.theme1.SetTheme(this.cryLab, "(default)");
+            // 
+            // btnSendEmail
+            // 
+            this.btnSendEmail.Image = global::clinic_ivf.Properties.Resources.Email_icon_24;
+            this.btnSendEmail.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSendEmail.Location = new System.Drawing.Point(195, 95);
+            this.btnSendEmail.Name = "btnSendEmail";
+            this.btnSendEmail.Size = new System.Drawing.Size(141, 34);
+            this.btnSendEmail.TabIndex = 552;
+            this.btnSendEmail.Text = "Send Email";
+            this.btnSendEmail.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnSendEmail, "(default)");
+            this.btnSendEmail.UseVisualStyleBackColor = true;
+            this.btnSendEmail.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // lbEmail
+            // 
+            this.lbEmail.AutoSize = true;
+            this.lbEmail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.lbEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.lbEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.lbEmail.Location = new System.Drawing.Point(4, 98);
+            this.lbEmail.Name = "lbEmail";
+            this.lbEmail.Size = new System.Drawing.Size(60, 24);
+            this.lbEmail.TabIndex = 551;
+            this.lbEmail.Text = "label7";
+            this.theme1.SetTheme(this.lbEmail, "(default)");
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label29.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label29.Location = new System.Drawing.Point(5, 72);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(46, 16);
+            this.label29.TabIndex = 550;
+            this.label29.Text = "Body :";
+            this.theme1.SetTheme(this.label29, "(default)");
+            // 
+            // txtBody
+            // 
+            this.txtBody.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtBody.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtBody.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtBody.Location = new System.Drawing.Point(70, 70);
+            this.txtBody.Name = "txtBody";
+            this.txtBody.Size = new System.Drawing.Size(266, 20);
+            this.txtBody.TabIndex = 549;
+            this.txtBody.Tag = null;
+            this.theme1.SetTheme(this.txtBody, "(default)");
+            this.txtBody.Value = "Result FET";
+            this.txtBody.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label212
+            // 
+            this.label212.AutoSize = true;
+            this.label212.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label212.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label212.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label212.Location = new System.Drawing.Point(5, 47);
+            this.label212.Name = "label212";
+            this.label212.Size = new System.Drawing.Size(59, 16);
+            this.label212.TabIndex = 547;
+            this.label212.Text = "Subject :";
+            this.theme1.SetTheme(this.label212, "(default)");
+            // 
+            // txtEmailSubject
+            // 
+            this.txtEmailSubject.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtEmailSubject.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtEmailSubject.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtEmailSubject.Location = new System.Drawing.Point(70, 45);
+            this.txtEmailSubject.Name = "txtEmailSubject";
+            this.txtEmailSubject.Size = new System.Drawing.Size(266, 20);
+            this.txtEmailSubject.TabIndex = 546;
+            this.txtEmailSubject.Tag = null;
+            this.theme1.SetTheme(this.txtEmailSubject, "(default)");
+            this.txtEmailSubject.Value = "Result OPU";
+            this.txtEmailSubject.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // btnAgentEmail
+            // 
+            this.btnAgentEmail.Location = new System.Drawing.Point(246, 19);
+            this.btnAgentEmail.Name = "btnAgentEmail";
+            this.btnAgentEmail.Size = new System.Drawing.Size(28, 23);
+            this.btnAgentEmail.TabIndex = 545;
+            this.btnAgentEmail.Text = "...";
+            this.theme1.SetTheme(this.btnAgentEmail, "(default)");
+            this.btnAgentEmail.UseVisualStyleBackColor = true;
+            this.btnAgentEmail.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label213
+            // 
+            this.label213.AutoSize = true;
+            this.label213.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label213.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label213.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label213.Location = new System.Drawing.Point(9, 22);
+            this.label213.Name = "label213";
+            this.label213.Size = new System.Drawing.Size(31, 16);
+            this.label213.TabIndex = 544;
+            this.label213.Text = "To :";
+            this.theme1.SetTheme(this.label213, "(default)");
+            // 
+            // txtEmailTo
+            // 
+            this.txtEmailTo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtEmailTo.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtEmailTo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtEmailTo.Location = new System.Drawing.Point(46, 19);
+            this.txtEmailTo.Name = "txtEmailTo";
+            this.txtEmailTo.Size = new System.Drawing.Size(194, 20);
+            this.txtEmailTo.TabIndex = 543;
+            this.txtEmailTo.Tag = null;
+            this.theme1.SetTheme(this.txtEmailTo, "(default)");
+            this.txtEmailTo.Value = "eploentham@outlook.co.th";
+            this.txtEmailTo.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // groupBox5
             // 
@@ -1888,6 +2069,20 @@
             this.groupBox7.Text = "Embryo for ET";
             this.theme1.SetTheme(this.groupBox7, "(default)");
             // 
+            // btnApproveResult
+            // 
+            this.btnApproveResult.Image = global::clinic_ivf.Properties.Resources.Female_user_add_24;
+            this.btnApproveResult.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnApproveResult.Location = new System.Drawing.Point(7, 544);
+            this.btnApproveResult.Name = "btnApproveResult";
+            this.btnApproveResult.Size = new System.Drawing.Size(128, 39);
+            this.btnApproveResult.TabIndex = 560;
+            this.btnApproveResult.Text = "Finish";
+            this.btnApproveResult.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnApproveResult, "(default)");
+            this.btnApproveResult.UseVisualStyleBackColor = true;
+            this.btnApproveResult.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
             // cboEmbryoForEtCatheter
             // 
             this.cboEmbryoForEtCatheter.AllowSpinLoop = false;
@@ -2733,201 +2928,6 @@
             this.sB1.Size = new System.Drawing.Size(118, 17);
             this.sB1.Text = "toolStripStatusLabel1";
             // 
-            // groupBox6
-            // 
-            this.groupBox6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.groupBox6.Controls.Add(this.pnReport);
-            this.groupBox6.Controls.Add(this.btnSendEmail);
-            this.groupBox6.Controls.Add(this.lbEmail);
-            this.groupBox6.Controls.Add(this.label29);
-            this.groupBox6.Controls.Add(this.txtBody);
-            this.groupBox6.Controls.Add(this.label212);
-            this.groupBox6.Controls.Add(this.txtEmailSubject);
-            this.groupBox6.Controls.Add(this.btnAgentEmail);
-            this.groupBox6.Controls.Add(this.label213);
-            this.groupBox6.Controls.Add(this.txtEmailTo);
-            this.groupBox6.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.groupBox6.Location = new System.Drawing.Point(3, 382);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(342, 138);
-            this.groupBox6.TabIndex = 545;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "Send Emai";
-            this.theme1.SetTheme(this.groupBox6, "(default)");
-            // 
-            // btnAgentEmail
-            // 
-            this.btnAgentEmail.Location = new System.Drawing.Point(246, 19);
-            this.btnAgentEmail.Name = "btnAgentEmail";
-            this.btnAgentEmail.Size = new System.Drawing.Size(28, 23);
-            this.btnAgentEmail.TabIndex = 545;
-            this.btnAgentEmail.Text = "...";
-            this.theme1.SetTheme(this.btnAgentEmail, "(default)");
-            this.btnAgentEmail.UseVisualStyleBackColor = true;
-            this.btnAgentEmail.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // label213
-            // 
-            this.label213.AutoSize = true;
-            this.label213.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label213.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label213.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label213.Location = new System.Drawing.Point(9, 22);
-            this.label213.Name = "label213";
-            this.label213.Size = new System.Drawing.Size(31, 16);
-            this.label213.TabIndex = 544;
-            this.label213.Text = "To :";
-            this.theme1.SetTheme(this.label213, "(default)");
-            // 
-            // txtEmailTo
-            // 
-            this.txtEmailTo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtEmailTo.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtEmailTo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtEmailTo.Location = new System.Drawing.Point(46, 19);
-            this.txtEmailTo.Name = "txtEmailTo";
-            this.txtEmailTo.Size = new System.Drawing.Size(194, 20);
-            this.txtEmailTo.TabIndex = 543;
-            this.txtEmailTo.Tag = null;
-            this.theme1.SetTheme(this.txtEmailTo, "(default)");
-            this.txtEmailTo.Value = "eploentham@outlook.co.th";
-            this.txtEmailTo.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // label212
-            // 
-            this.label212.AutoSize = true;
-            this.label212.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label212.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label212.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label212.Location = new System.Drawing.Point(5, 47);
-            this.label212.Name = "label212";
-            this.label212.Size = new System.Drawing.Size(59, 16);
-            this.label212.TabIndex = 547;
-            this.label212.Text = "Subject :";
-            this.theme1.SetTheme(this.label212, "(default)");
-            // 
-            // txtEmailSubject
-            // 
-            this.txtEmailSubject.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtEmailSubject.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtEmailSubject.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtEmailSubject.Location = new System.Drawing.Point(70, 45);
-            this.txtEmailSubject.Name = "txtEmailSubject";
-            this.txtEmailSubject.Size = new System.Drawing.Size(266, 20);
-            this.txtEmailSubject.TabIndex = 546;
-            this.txtEmailSubject.Tag = null;
-            this.theme1.SetTheme(this.txtEmailSubject, "(default)");
-            this.txtEmailSubject.Value = "Result OPU";
-            this.txtEmailSubject.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // label29
-            // 
-            this.label29.AutoSize = true;
-            this.label29.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label29.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label29.Location = new System.Drawing.Point(5, 72);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(46, 16);
-            this.label29.TabIndex = 550;
-            this.label29.Text = "Body :";
-            this.theme1.SetTheme(this.label29, "(default)");
-            // 
-            // txtBody
-            // 
-            this.txtBody.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtBody.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtBody.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtBody.Location = new System.Drawing.Point(70, 70);
-            this.txtBody.Name = "txtBody";
-            this.txtBody.Size = new System.Drawing.Size(266, 20);
-            this.txtBody.TabIndex = 549;
-            this.txtBody.Tag = null;
-            this.theme1.SetTheme(this.txtBody, "(default)");
-            this.txtBody.Value = "Result OPU";
-            this.txtBody.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // btnSendEmail
-            // 
-            this.btnSendEmail.Image = global::clinic_ivf.Properties.Resources.Email_icon_24;
-            this.btnSendEmail.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSendEmail.Location = new System.Drawing.Point(195, 95);
-            this.btnSendEmail.Name = "btnSendEmail";
-            this.btnSendEmail.Size = new System.Drawing.Size(141, 34);
-            this.btnSendEmail.TabIndex = 552;
-            this.btnSendEmail.Text = "Send Email";
-            this.btnSendEmail.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.theme1.SetTheme(this.btnSendEmail, "(default)");
-            this.btnSendEmail.UseVisualStyleBackColor = true;
-            this.btnSendEmail.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // lbEmail
-            // 
-            this.lbEmail.AutoSize = true;
-            this.lbEmail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.lbEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.lbEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.lbEmail.Location = new System.Drawing.Point(4, 98);
-            this.lbEmail.Name = "lbEmail";
-            this.lbEmail.Size = new System.Drawing.Size(60, 24);
-            this.lbEmail.TabIndex = 551;
-            this.lbEmail.Text = "label7";
-            this.theme1.SetTheme(this.lbEmail, "(default)");
-            // 
-            // pnReport
-            // 
-            this.pnReport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.pnReport.Controls.Add(this.cryLabEmbryo);
-            this.pnReport.Controls.Add(this.cryLab);
-            this.pnReport.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.pnReport.Location = new System.Drawing.Point(126, 92);
-            this.pnReport.Name = "pnReport";
-            this.pnReport.Size = new System.Drawing.Size(66, 37);
-            this.pnReport.TabIndex = 553;
-            this.theme1.SetTheme(this.pnReport, "(default)");
-            this.pnReport.Visible = false;
-            // 
-            // cryLabEmbryo
-            // 
-            this.cryLabEmbryo.ActiveViewIndex = -1;
-            this.cryLabEmbryo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.cryLabEmbryo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.cryLabEmbryo.Cursor = System.Windows.Forms.Cursors.Default;
-            this.cryLabEmbryo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.cryLabEmbryo.Location = new System.Drawing.Point(14, 18);
-            this.cryLabEmbryo.Name = "cryLabEmbryo";
-            this.cryLabEmbryo.Size = new System.Drawing.Size(45, 17);
-            this.cryLabEmbryo.TabIndex = 2;
-            this.theme1.SetTheme(this.cryLabEmbryo, "(default)");
-            // 
-            // cryLab
-            // 
-            this.cryLab.ActiveViewIndex = -1;
-            this.cryLab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.cryLab.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.cryLab.Cursor = System.Windows.Forms.Cursors.Default;
-            this.cryLab.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.cryLab.Location = new System.Drawing.Point(8, 4);
-            this.cryLab.Name = "cryLab";
-            this.cryLab.Size = new System.Drawing.Size(45, 17);
-            this.cryLab.TabIndex = 1;
-            this.theme1.SetTheme(this.cryLab, "(default)");
-            // 
-            // btnApproveResult
-            // 
-            this.btnApproveResult.Image = global::clinic_ivf.Properties.Resources.Female_user_add_24;
-            this.btnApproveResult.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnApproveResult.Location = new System.Drawing.Point(7, 544);
-            this.btnApproveResult.Name = "btnApproveResult";
-            this.btnApproveResult.Size = new System.Drawing.Size(128, 39);
-            this.btnApproveResult.TabIndex = 560;
-            this.btnApproveResult.Text = "Finish";
-            this.btnApproveResult.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.theme1.SetTheme(this.btnApproveResult, "(default)");
-            this.btnApproveResult.UseVisualStyleBackColor = true;
-            this.btnApproveResult.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
             // FrmLabFetAdd3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2970,6 +2970,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
+            this.pnReport.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.btnSendEmail)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtBody)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtEmailSubject)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnAgentEmail)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtEmailTo)).EndInit();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cboMediaThawing)).EndInit();
@@ -3003,6 +3011,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.cboEmbryoPicDay1)).EndInit();
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnApproveResult)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboEmbryoForEtCatheter)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboEtRemark)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboRemark2)).EndInit();
@@ -3033,15 +3042,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtDay2Date)).EndInit();
             this.sB.ResumeLayout(false);
             this.sB.PerformLayout();
-            this.groupBox6.ResumeLayout(false);
-            this.groupBox6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnAgentEmail)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtEmailTo)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtEmailSubject)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtBody)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnSendEmail)).EndInit();
-            this.pnReport.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.btnApproveResult)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

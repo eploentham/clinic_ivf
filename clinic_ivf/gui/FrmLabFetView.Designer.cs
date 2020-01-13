@@ -33,14 +33,6 @@
             this.tabLabAccept = new C1.Win.C1Command.C1DockingTabPage();
             this.panel1 = new System.Windows.Forms.Panel();
             this.gB = new System.Windows.Forms.GroupBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txtDateStart = new C1.Win.C1Input.C1DateEdit();
-            this.txtHn = new C1.Win.C1Input.C1TextBox();
-            this.btnSearchA = new C1.Win.C1Input.C1Button();
-            this.txtDateEnd = new C1.Win.C1Input.C1DateEdit();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.btnNew = new C1.Win.C1Input.C1Button();
             this.tabProcess = new C1.Win.C1Command.C1DockingTabPage();
             this.panel2 = new System.Windows.Forms.Panel();
             this.tabLabFinish = new C1.Win.C1Command.C1DockingTabPage();
@@ -61,20 +53,13 @@
             this.txtSearch = new C1.Win.C1Input.C1TextBox();
             this.sB = new System.Windows.Forms.StatusStrip();
             this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.c1SplitButton1 = new C1.Win.C1Input.C1SplitButton();
-            this.btnOPU = new C1.Win.C1Input.DropDownItem();
-            this.btnFet = new C1.Win.C1Input.DropDownItem();
+            this.txtHn = new C1.Win.C1Input.C1TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tcLabView)).BeginInit();
             this.tcLabView.SuspendLayout();
             this.tabLabAccept.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtDateStart)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtHn)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnSearchA)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtDateEnd)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnNew)).BeginInit();
+            this.gB.SuspendLayout();
             this.tabProcess.SuspendLayout();
             this.tabLabFinish.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -88,7 +73,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnSearch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSearch)).BeginInit();
             this.sB.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.c1SplitButton1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtHn)).BeginInit();
             this.SuspendLayout();
             // 
             // theme1
@@ -129,7 +114,6 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.panel1.Controls.Add(this.gB);
-            this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -141,189 +125,16 @@
             // gB
             // 
             this.gB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.gB.Controls.Add(this.txtHn);
             this.gB.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gB.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.gB.Location = new System.Drawing.Point(0, 47);
+            this.gB.Location = new System.Drawing.Point(0, 0);
             this.gB.Name = "gB";
-            this.gB.Size = new System.Drawing.Size(1080, 627);
+            this.gB.Size = new System.Drawing.Size(1080, 674);
             this.gB.TabIndex = 1;
             this.gB.TabStop = false;
             this.gB.Text = "groupBox2";
             this.theme1.SetTheme(this.gB, "(default)");
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.groupBox1.Controls.Add(this.c1SplitButton1);
-            this.groupBox1.Controls.Add(this.txtDateStart);
-            this.groupBox1.Controls.Add(this.txtHn);
-            this.groupBox1.Controls.Add(this.btnSearchA);
-            this.groupBox1.Controls.Add(this.txtDateEnd);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.label11);
-            this.groupBox1.Controls.Add(this.btnNew);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.groupBox1.Location = new System.Drawing.Point(0, 0);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1080, 47);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Search";
-            this.theme1.SetTheme(this.groupBox1, "(default)");
-            // 
-            // txtDateStart
-            // 
-            this.txtDateStart.AllowSpinLoop = false;
-            this.txtDateStart.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            // 
-            // 
-            // 
-            this.txtDateStart.Calendar.ArrowColor = System.Drawing.Color.Black;
-            this.txtDateStart.Calendar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.txtDateStart.Calendar.DayNamesFont = new System.Drawing.Font("Tahoma", 8F);
-            this.txtDateStart.Calendar.Font = new System.Drawing.Font("Tahoma", 8F);
-            this.txtDateStart.Calendar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.txtDateStart.Calendar.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(71)))), ((int)(((byte)(47)))));
-            this.txtDateStart.Calendar.SelectionForeColor = System.Drawing.Color.White;
-            this.txtDateStart.Calendar.TitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.txtDateStart.Calendar.TitleFont = new System.Drawing.Font("Tahoma", 8F);
-            this.txtDateStart.Calendar.TitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.txtDateStart.Calendar.TodayBorderColor = System.Drawing.Color.White;
-            this.txtDateStart.Calendar.TrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtDateStart.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            this.txtDateStart.Culture = 1054;
-            this.txtDateStart.CurrentTimeZone = false;
-            this.txtDateStart.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtDateStart.DisplayFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
-            this.txtDateStart.DisplayFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
-            this.txtDateStart.DisplayFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)(((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
-            this.txtDateStart.EditFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
-            this.txtDateStart.EditFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
-            this.txtDateStart.EditFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)(((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
-            this.txtDateStart.GMTOffset = System.TimeSpan.Parse("00:00:00");
-            this.txtDateStart.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.txtDateStart.Location = new System.Drawing.Point(90, 17);
-            this.txtDateStart.Name = "txtDateStart";
-            this.txtDateStart.Size = new System.Drawing.Size(129, 18);
-            this.txtDateStart.TabIndex = 523;
-            this.txtDateStart.Tag = null;
-            this.theme1.SetTheme(this.txtDateStart, "(default)");
-            this.txtDateStart.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // txtHn
-            // 
-            this.txtHn.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtHn.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtHn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtHn.Location = new System.Drawing.Point(519, 18);
-            this.txtHn.Name = "txtHn";
-            this.txtHn.Size = new System.Drawing.Size(29, 20);
-            this.txtHn.TabIndex = 522;
-            this.txtHn.Tag = null;
-            this.theme1.SetTheme(this.txtHn, "(default)");
-            this.txtHn.Visible = false;
-            this.txtHn.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // btnSearchA
-            // 
-            this.btnSearchA.Location = new System.Drawing.Point(471, 15);
-            this.btnSearchA.Name = "btnSearchA";
-            this.btnSearchA.Size = new System.Drawing.Size(28, 23);
-            this.btnSearchA.TabIndex = 517;
-            this.btnSearchA.Text = "...";
-            this.theme1.SetTheme(this.btnSearchA, "(default)");
-            this.btnSearchA.UseVisualStyleBackColor = true;
-            this.btnSearchA.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // txtDateEnd
-            // 
-            this.txtDateEnd.AllowSpinLoop = false;
-            this.txtDateEnd.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            // 
-            // 
-            // 
-            this.txtDateEnd.Calendar.ArrowColor = System.Drawing.Color.Black;
-            this.txtDateEnd.Calendar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.txtDateEnd.Calendar.DayNamesFont = new System.Drawing.Font("Tahoma", 8F);
-            this.txtDateEnd.Calendar.Font = new System.Drawing.Font("Tahoma", 8F);
-            this.txtDateEnd.Calendar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.txtDateEnd.Calendar.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(71)))), ((int)(((byte)(47)))));
-            this.txtDateEnd.Calendar.SelectionForeColor = System.Drawing.Color.White;
-            this.txtDateEnd.Calendar.TitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.txtDateEnd.Calendar.TitleFont = new System.Drawing.Font("Tahoma", 8F);
-            this.txtDateEnd.Calendar.TitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.txtDateEnd.Calendar.TodayBorderColor = System.Drawing.Color.White;
-            this.txtDateEnd.Calendar.TrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtDateEnd.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            this.txtDateEnd.Culture = 1054;
-            this.txtDateEnd.CurrentTimeZone = false;
-            this.txtDateEnd.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtDateEnd.DisplayFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
-            this.txtDateEnd.DisplayFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
-            this.txtDateEnd.DisplayFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)(((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
-            this.txtDateEnd.EditFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
-            this.txtDateEnd.EditFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
-            this.txtDateEnd.EditFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)(((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
-            this.txtDateEnd.EmptyAsNull = true;
-            this.txtDateEnd.GMTOffset = System.TimeSpan.Parse("00:00:00");
-            this.txtDateEnd.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.txtDateEnd.Location = new System.Drawing.Point(323, 17);
-            this.txtDateEnd.Name = "txtDateEnd";
-            this.txtDateEnd.Size = new System.Drawing.Size(129, 18);
-            this.txtDateEnd.TabIndex = 514;
-            this.txtDateEnd.Tag = null;
-            this.theme1.SetTheme(this.txtDateEnd, "(default)");
-            this.txtDateEnd.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label1.Location = new System.Drawing.Point(247, 18);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(70, 16);
-            this.label1.TabIndex = 513;
-            this.label1.Text = "Date End :";
-            this.theme1.SetTheme(this.label1, "(default)");
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label11.Location = new System.Drawing.Point(11, 18);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(73, 16);
-            this.label11.TabIndex = 511;
-            this.label11.Text = "Date Start :";
-            this.theme1.SetTheme(this.label11, "(default)");
-            // 
-            // btnNew
-            // 
-            this.btnNew.Location = new System.Drawing.Point(960, 10);
-            this.btnNew.Name = "btnNew";
-            this.btnNew.Size = new System.Drawing.Size(86, 31);
-            this.btnNew.TabIndex = 0;
-            this.btnNew.Text = "ป้อนใหม่";
-            this.theme1.SetTheme(this.btnNew, "(default)");
-            this.btnNew.UseVisualStyleBackColor = true;
-            this.btnNew.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // tabProcess
             // 
@@ -630,26 +441,19 @@
             this.sB1.Size = new System.Drawing.Size(118, 17);
             this.sB1.Text = "toolStripStatusLabel1";
             // 
-            // c1SplitButton1
+            // txtHn
             // 
-            this.c1SplitButton1.Items.Add(this.btnOPU);
-            this.c1SplitButton1.Items.Add(this.btnFet);
-            this.c1SplitButton1.Location = new System.Drawing.Point(577, 15);
-            this.c1SplitButton1.Name = "c1SplitButton1";
-            this.c1SplitButton1.Size = new System.Drawing.Size(115, 23);
-            this.c1SplitButton1.TabIndex = 524;
-            this.c1SplitButton1.Text = "ป้อน LAB";
-            this.theme1.SetTheme(this.c1SplitButton1, "(default)");
-            this.c1SplitButton1.UseVisualStyleBackColor = true;
-            this.c1SplitButton1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // btnOPU
-            // 
-            this.btnOPU.Text = "OPU";
-            // 
-            // btnFet
-            // 
-            this.btnFet.Text = "FET";
+            this.txtHn.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtHn.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtHn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtHn.Location = new System.Drawing.Point(515, 19);
+            this.txtHn.Name = "txtHn";
+            this.txtHn.Size = new System.Drawing.Size(30, 20);
+            this.txtHn.TabIndex = 538;
+            this.txtHn.Tag = null;
+            this.theme1.SetTheme(this.txtHn, "(default)");
+            this.txtHn.Visible = false;
+            this.txtHn.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // FrmLabFetView
             // 
@@ -666,13 +470,7 @@
             this.tcLabView.ResumeLayout(false);
             this.tabLabAccept.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtDateStart)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtHn)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnSearchA)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtDateEnd)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnNew)).EndInit();
+            this.gB.ResumeLayout(false);
             this.tabProcess.ResumeLayout(false);
             this.tabLabFinish.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
@@ -689,7 +487,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtSearch)).EndInit();
             this.sB.ResumeLayout(false);
             this.sB.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.c1SplitButton1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtHn)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -704,13 +502,6 @@
         private C1.Win.C1Command.C1DockingTabPage tabLabAccept;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.GroupBox gB;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private C1.Win.C1Input.C1TextBox txtHn;
-        private C1.Win.C1Input.C1Button btnSearchA;
-        private C1.Win.C1Input.C1DateEdit txtDateEnd;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label11;
-        private C1.Win.C1Input.C1Button btnNew;
         private C1.Win.C1Command.C1DockingTabPage tabProcess;
         private System.Windows.Forms.Panel panel2;
         private C1.Win.C1Command.C1DockingTabPage tabLabFinish;
@@ -729,9 +520,6 @@
         private C1.Win.C1Input.C1Button btnSearch;
         private System.Windows.Forms.Label label4;
         private C1.Win.C1Input.C1TextBox txtSearch;
-        private C1.Win.C1Input.C1DateEdit txtDateStart;
-        private C1.Win.C1Input.C1SplitButton c1SplitButton1;
-        private C1.Win.C1Input.DropDownItem btnOPU;
-        private C1.Win.C1Input.DropDownItem btnFet;
+        private C1.Win.C1Input.C1TextBox txtHn;
     }
 }
