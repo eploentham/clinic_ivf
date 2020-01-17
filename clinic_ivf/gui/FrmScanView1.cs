@@ -192,7 +192,7 @@ namespace clinic_ivf.gui
             Column colpic3 = grfScan.Cols[colPic3];
             colpic3.DataType = typeof(Image);
             Column colpic4 = grfScan.Cols[colPic4];
-            colpic4.DataType = typeof(Image);
+            colpic4.DataType = typeof(String);
             grfScan.Cols[colPic1].Width = 310;
             grfScan.Cols[colPic2].Width = 310;
             grfScan.Cols[colPic3].Width = 310;
@@ -632,7 +632,7 @@ namespace clinic_ivf.gui
             */
             ContextMenu menuGw = new ContextMenu();
             menuGw.MenuItems.Add("ต้องการ Print ภาพนี้", new EventHandler(ContextMenu_grfscan__print));
-            //menuGw.MenuItems.Add("ต้องการ ลบข้อมูลนี้", new EventHandler(ContextMenu_Delete));
+            menuGw.MenuItems.Add("ต้องการ Print ภาพทั้งหมด", new EventHandler(ContextMenu_grfscan_print_all));
             grfScan.ContextMenu = menuGw;
             DataTable dt = new DataTable();
             dt = ic.ivfDB.dscDB.selectByVn(txtHn.Text, vn);
@@ -738,6 +738,7 @@ namespace clinic_ivf.gui
                                 rowd[colPic3] = resizedImage;
                                 err = "061";
                                 rowd[colPic4] = id;
+                                //grfScan[grfScan.Row, colPic4] = id;
                                 err = "071";
                             }
                             else
@@ -823,11 +824,47 @@ namespace clinic_ivf.gui
                     break;
                 }
             }
-            setGrfScanToPrint();
+            setGrfScanToPrint(false);
             //MessageBox.Show("row "+ grfScan.Row+"\n"+"col "+grfScan.Col+"\n ", "");
 
         }
-        private void setGrfScanToPrint()
+        private void ContextMenu_grfscan_print_all(object sender, System.EventArgs e)
+        {
+            //FrmWaiting frmW = new FrmWaiting();
+            //frmW.StartPosition = FormStartPosition.CenterScreen;
+            //frmW.ShowDialog(this);
+
+            int i = 0;
+            foreach (Row row in grfScan.Rows)
+            {
+                String id = "";
+                if (i == 0)
+                {
+                    id = row[colPic2].ToString();
+                    i = 1;
+                }
+                else
+                {
+                    id = row[colPic4].ToString();
+                    i = 0;
+                }
+                dsc_id = id;
+                MemoryStream strm = null;
+                foreach (listStream lstrmm in lStream)
+                {
+                    if (lstrmm.id.Equals(id))
+                    {
+                        strm = lstrmm.stream;
+                        streamPrint = lstrmm.stream;
+                        break;
+                    }
+                }
+                setGrfScanToPrint(false);
+            }
+
+            //frmW.Dispose();
+        }
+        private void setGrfScanToPrint(Boolean dialogPrint)
         {
             SetDefaultPrinter(ic.iniC.printerA4);
             System.Threading.Thread.Sleep(500);
@@ -837,11 +874,19 @@ namespace clinic_ivf.gui
             //here to select the printer attached to user PC
             PrintDialog printDialog1 = new PrintDialog();
             printDialog1.Document = pd;
-            DialogResult result = printDialog1.ShowDialog();
-            if (result == DialogResult.OK)
+            if (dialogPrint)
             {
-                pd.Print();//this will trigger the Print Event handeler PrintPage
+                DialogResult result = printDialog1.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    pd.Print();//this will trigger the Print Event handeler PrintPage
+                }
             }
+            else
+            {
+                pd.Print();
+            }
+            
         }
         private void Pd_PrintPageA4(object sender, PrintPageEventArgs e)
         {
