@@ -4611,6 +4611,7 @@ namespace clinic_ivf.gui
                     row1["lab_order_id"] = "0";
                     row1["status_amt"] = "1";
                     row1["status_order_group"] = "0";
+                    row1["price1"] = pay;
                     dtAll.Rows.InsertAt(row1, i);
                     i++;
                 }
@@ -5846,11 +5847,25 @@ namespace clinic_ivf.gui
             qty = grfEmbryo[grfEmbryo.Row, colBlQty] != null ? grfEmbryo[grfEmbryo.Row, colBlQty].ToString() : "1";
             if (include.Equals("1"))
             {
-                ic.ivfDB.LabAdd(labid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(),"0","1","0");
+                if (ic.iniC.statusCashierOldProgram.Equals("1"))
+                {
+                    ic.ivfDB.LabAdd(labid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), "0", "1", "0","old");
+                }
+                else
+                {
+                    ic.ivfDB.LabAdd(labid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), "0", "1", "0");
+                }
             }
             else
             {
-                ic.ivfDB.LabAdd(labid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "1", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), "0", "1", "0");
+                if (ic.iniC.statusCashierOldProgram.Equals("1"))
+                {
+                    ic.ivfDB.LabAdd(labid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "1", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), "0", "1", "0","old");
+                }
+                else
+                {
+                    ic.ivfDB.LabAdd(labid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "1", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), "0", "1", "0");
+                }
             }
             setGrfOrder(txtVnOld.Text);
         }

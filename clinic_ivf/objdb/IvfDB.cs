@@ -879,13 +879,13 @@ namespace clinic_ivf.objdb
             {
                 decimal qty11 = 0, price11 = 0;
                 Decimal.TryParse(qty, out qty11);
-                Decimal.TryParse(jlabD.Price, out price11);
+                Decimal.TryParse(olab.Price, out price11);
                 jlabD.Price = (qty11 * price11).ToString();
                 jlabD.price1 = jlabD.Price;
             }
             else
             {
-                jlabD.Price = jlabD.Price;
+                jlabD.Price = olab.Price;
             }
             //jlabD.Price = olab.Price;
             jlabD.Status = "1";
@@ -955,13 +955,13 @@ namespace clinic_ivf.objdb
             {
                 decimal qty11 = 0, price11 = 0;
                 Decimal.TryParse(qty, out qty11);
-                Decimal.TryParse(ojsd.Price, out price11);
+                Decimal.TryParse(ojs.Price, out price11);
                 ojsd.Price = (qty11 * price11).ToString();
                 ojsd.price1 = ojsd.Price;
             }
             else
             {
-                ojsd.Price = ojsd.Price;
+                ojsd.Price = ojs.Price;
             }
             //ojsd.Price = ojs.Price;
             ojsd.Status = "1";
