@@ -881,7 +881,7 @@ namespace clinic_ivf.objdb
                 Decimal.TryParse(qty, out qty11);
                 Decimal.TryParse(olab.Price, out price11);
                 jlabD.Price = (qty11 * price11).ToString();
-                jlabD.price1 = jlabD.Price;
+                jlabD.price1 = olab.Price;
             }
             else
             {
@@ -957,7 +957,7 @@ namespace clinic_ivf.objdb
                 Decimal.TryParse(qty, out qty11);
                 Decimal.TryParse(ojs.Price, out price11);
                 ojsd.Price = (qty11 * price11).ToString();
-                ojsd.price1 = ojsd.Price;
+                ojsd.price1 = ojs.Price;
             }
             else
             {

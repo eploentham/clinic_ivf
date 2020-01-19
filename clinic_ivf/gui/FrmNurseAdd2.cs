@@ -4642,8 +4642,17 @@ namespace clinic_ivf.gui
             //grfDept.Cols[colCode].Caption = "รหัส";
 
             grfOrder.Cols[colOrdName].Caption = "Name";
-            grfOrder.Cols[colOrdPrice].Caption = "Price";
-            grfOrder.Cols[colOrdPrice1].Caption = "Price";
+            if (ic.iniC.statusCashierOldProgram.Equals("1"))
+            {
+                grfOrder.Cols[colOrdPrice].Caption = "SumPrice";
+                grfOrder.Cols[colOrdPrice1].Caption = "Price1";
+            }
+            else
+            {
+                grfOrder.Cols[colOrdPrice].Caption = "Price";
+                grfOrder.Cols[colOrdPrice1].Caption = "Price1";
+            }
+            //grfOrder.Cols[colOrdPrice1].Caption = "Price";
             grfOrder.Cols[colOrdQty].Caption = "QTY";
             grfOrder.Cols[colOrdInclude].Caption = "Include Package";
             grfOrder.Cols[colOrdUsT].Caption = "Usage";
@@ -5341,7 +5350,6 @@ namespace clinic_ivf.gui
                 {
                     ic.ivfDB.PxAdd(drugid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", grfOrder.Rows.Count.ToString(), usage);
                 }
-                    
             }
             else
             {
@@ -5353,9 +5361,7 @@ namespace clinic_ivf.gui
                 {
                     ic.ivfDB.PxAdd(drugid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "1", grfOrder.Rows.Count.ToString(), usage);
                 }
-                    
             }
-
             setGrfOrder(txtVnOld.Text);
         }
         private void ContextMenu_order_rx(object sender, System.EventArgs e)
@@ -5400,7 +5406,15 @@ namespace clinic_ivf.gui
             }
             grfRx.Cols[colRxName].Caption = "Name";
             grfRx.Cols[colRxInclude].Caption = "Include";
-            grfRx.Cols[colRxPrice].Caption = "Price";
+            //if (ic.iniC.statusCashierOldProgram.Equals("1"))
+            //{
+            //    grfRx.Cols[colRxPrice].Caption = "SumPrice";
+            //}
+            //else
+            //{
+                grfRx.Cols[colRxPrice].Caption = "Price";
+            //}
+                
             grfRx.Cols[colRxQty].Caption = "QTY";
             grfRx.Cols[colRxRemark].Caption = "Remark";
             grfRx.Cols[colRxUsE].Caption = "Usage English";
@@ -5544,7 +5558,14 @@ namespace clinic_ivf.gui
             }
             grfSpecial.Cols[colBlName].Caption = "Name";
             grfSpecial.Cols[colBlInclude].Caption = "Include";
-            grfSpecial.Cols[colBlPrice].Caption = "Price";
+            //if (ic.iniC.statusCashierOldProgram.Equals("1"))
+            //{
+            //    grfSpecial.Cols[colBlPrice].Caption = "SumPrice";
+            //}
+            //else
+            //{
+                grfSpecial.Cols[colBlPrice].Caption = "Price";
+            //}
             grfSpecial.Cols[colBlRemark].Caption = "Remark";
             grfSpecial.Cols[colBlQty].Caption = "QTY";
             int i = 0;
@@ -6070,7 +6091,14 @@ namespace clinic_ivf.gui
             grfSperm.Cols[colBlName].Caption = "Name";
             grfSperm.Cols[colBlInclude].Caption = "Include";
             grfSperm.Cols[colBlQty].Caption = "QTY";
-            grfSperm.Cols[colBlPrice].Caption = "Price";
+            //if (ic.iniC.statusCashierOldProgram.Equals("1"))
+            //{
+            //    grfSperm.Cols[colBlPrice].Caption = "SumPrice";
+            //}
+            //else
+            //{
+                grfSperm.Cols[colBlPrice].Caption = "Price";
+            //}
             grfSperm.Cols[colBlRemark].Caption = "Remark";
 
             CellRange rg = grfSperm.GetCellRange(1, colBlInclude, grfSperm.Rows.Count - 1, colBlInclude);

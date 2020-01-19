@@ -86,7 +86,7 @@ namespace clinic_ivf.gui
         private void TxtHnMale_KeyUp(object sender, KeyEventArgs e)
         {
             //throw new NotImplementedException();
-            if(txtHnMale.Text.Length >= 3)
+            if(txtHnMale.Text.Length >= 4)
             {
                 setGrfHn(txtHnMale.Text);
             }
