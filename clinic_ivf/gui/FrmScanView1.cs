@@ -893,7 +893,6 @@ namespace clinic_ivf.gui
             //throw new NotImplementedException();
             try
             {
-
                 System.Drawing.Image img = Image.FromStream(streamPrint);
 
                 float newWidth = img.Width * 100 / img.HorizontalResolution;
