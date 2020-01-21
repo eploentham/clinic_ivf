@@ -628,12 +628,26 @@ namespace clinic_ivf.objdb
             //opu.dob_female = lbreq.dob_female;
             return opu;
         }
+        public void calIncludeExtraPricePxOldProgram(String vn)
+        {
+            String include = "", extra = "";
+            include = oJpxdDB.selectSumIncludePriceCashierOldProgramByVN(vn);
+            extra = oJpxdDB.selectSumExtraPriceCashierOldProgramByVN(vn);
+            oJpxDB.updateIncludePriceFormDetail(include, extra, vn);
+        }
         public void calIncludeExtraPricePx(String vn)
         {
             String include = "", extra = "";
             include = oJpxdDB.selectSumIncludePriceByVN(vn);
             extra = oJpxdDB.selectSumExtraPriceByVN(vn);
             oJpxDB.updateIncludePriceFormDetail(include, extra, vn);
+        }
+        public void calIncludeExtraPricelabOldProgram(String vn)
+        {
+            String include = "", extra = "";
+            include = oJlabdDB.selectSumIncludePriceByVNOldProgram(vn);
+            extra = oJlabdDB.selectSumExtraPriceByVNOldProgram(vn);
+            oJlabDB.updateIncludePriceFormDetail(include, extra, vn);
         }
         public void calIncludeExtraPricelab(String vn)
         {
@@ -649,6 +663,13 @@ namespace clinic_ivf.objdb
             extra = ojsdDB.selectSumExtraPriceByVN(vn);
             oJsDB.updateIncludePriceFormDetail(include, extra, vn);
         }
+        public void calIncludeExtraPriceSpecialOldProgram(String vn)
+        {
+            String include = "", extra = "";
+            include = ojsdDB.selectSumIncludePriceByVNOldProgram(vn);
+            extra = ojsdDB.selectSumExtraPriceByVNOldProgram(vn);
+            oJsDB.updateIncludePriceFormDetail(include, extra, vn);
+        }
         public void nurseFinish(String vn, String userid)
         {
             //    $this->px->cal_px($VN);
@@ -662,6 +683,22 @@ namespace clinic_ivf.objdb
             calIncludeExtraPricePx(vn);
             calIncludeExtraPricelab(vn);
             calIncludeExtraPriceSpecial(vn);
+            vsDB.updateCloseStatusNurseByVN(vn, userid);
+            ovsDB.updateStatusNurseFinish(vn);
+        }
+        public void nurseFinishCashierOldProgram(String vn, String userid)
+        {
+            //    $this->px->cal_px($VN);
+            //$this->lab->cal_lab($VN);
+            //$this->special->cal_spc($VN);
+            //$this->visit->send_to_account($VN);
+
+            //          $this->db->query('update Visit set LVSID=VSID Where VN="'.$VN.'"');
+            //$this->db->query('update Visit set VSID="160" Where VN="'.$VN.'"');
+
+            calIncludeExtraPricePxOldProgram(vn);
+            calIncludeExtraPricelabOldProgram(vn);
+            calIncludeExtraPriceSpecialOldProgram(vn);
             vsDB.updateCloseStatusNurseByVN(vn, userid);
             ovsDB.updateStatusNurseFinish(vn);
         }
