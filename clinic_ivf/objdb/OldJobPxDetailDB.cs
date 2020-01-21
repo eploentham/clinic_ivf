@@ -185,11 +185,41 @@ namespace clinic_ivf.objdb
             }
             return re;
         }
+        public String selectSumIncludePriceCashierOldProgramByVN(String copId)
+        {
+            String re = "0";
+            DataTable dt = new DataTable();
+            String sql = "select sum(oJpxd." + oJpxd.Price + ") as Include_Pkg_Price " +
+                "From " + oJpxd.table + " oJpxd " +
+                "Where oJpxd." + oJpxd.VN + " ='" + copId + "' and Extra='0' "
+                ;
+            dt = conn.selectData(conn.conn, sql);
+            if (dt.Rows.Count > 0)
+            {
+                re = dt.Rows[0]["Include_Pkg_Price"] != null ? dt.Rows[0]["Include_Pkg_Price"].ToString() : "0";
+            }
+            return re;
+        }
         public String selectSumExtraPriceByVN(String copId)
         {
             String re = "0";
             DataTable dt = new DataTable();
             String sql = "select sum(oJpxd." + oJpxd.Price + "*" + oJpxd.QTY + ") as Extra_Pkg_Price " +
+                "From " + oJpxd.table + " oJpxd " +
+                "Where oJpxd." + oJpxd.VN + " ='" + copId + "' and Extra='1' "
+                ;
+            dt = conn.selectData(conn.conn, sql);
+            if (dt.Rows.Count > 0)
+            {
+                re = dt.Rows[0]["Extra_Pkg_Price"] != null ? dt.Rows[0]["Extra_Pkg_Price"].ToString() : "0";
+            }
+            return re;
+        }
+        public String selectSumExtraPriceCashierOldProgramByVN(String copId)
+        {
+            String re = "0";
+            DataTable dt = new DataTable();
+            String sql = "select sum(oJpxd." + oJpxd.Price + ") as Extra_Pkg_Price " +
                 "From " + oJpxd.table + " oJpxd " +
                 "Where oJpxd." + oJpxd.VN + " ='" + copId + "' and Extra='1' "
                 ;

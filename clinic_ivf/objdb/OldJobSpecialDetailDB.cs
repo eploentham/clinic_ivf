@@ -187,6 +187,21 @@ namespace clinic_ivf.objdb
         {
             String re = "0";
             DataTable dt = new DataTable();
+            String sql = "select sum(ojsd." + ojsd.Price + "*" + ojsd.qty + ") as Include_Pkg_Price " +
+                "From " + ojsd.table + " ojsd " +
+                "Where ojsd." + ojsd.VN + " ='" + copId + "' and Extra='0' "
+                ;
+            dt = conn.selectData(conn.conn, sql);
+            if (dt.Rows.Count > 0)
+            {
+                re = dt.Rows[0]["Include_Pkg_Price"] != null ? dt.Rows[0]["Include_Pkg_Price"].ToString() : "0";
+            }
+            return re;
+        }
+        public String selectSumIncludePriceByVNOldProgram(String copId)
+        {
+            String re = "0";
+            DataTable dt = new DataTable();
             String sql = "select sum(ojsd." + ojsd.Price + ") as Include_Pkg_Price " +
                 "From " + ojsd.table + " ojsd " +
                 "Where ojsd." + ojsd.VN + " ='" + copId + "' and Extra='0' "
@@ -199,6 +214,21 @@ namespace clinic_ivf.objdb
             return re;
         }
         public String selectSumExtraPriceByVN(String copId)
+        {
+            String re = "0";
+            DataTable dt = new DataTable();
+            String sql = "select sum(ojsd." + ojsd.Price + "*" + ojsd.qty + ") as Extra_Pkg_Price " +
+                "From " + ojsd.table + " ojsd " +
+                "Where ojsd." + ojsd.VN + " ='" + copId + "' and Extra='1' "
+                ;
+            dt = conn.selectData(conn.conn, sql);
+            if (dt.Rows.Count > 0)
+            {
+                re = dt.Rows[0]["Extra_Pkg_Price"] != null ? dt.Rows[0]["Extra_Pkg_Price"].ToString() : "0";
+            }
+            return re;
+        }
+        public String selectSumExtraPriceByVNOldProgram(String copId)
         {
             String re = "0";
             DataTable dt = new DataTable();

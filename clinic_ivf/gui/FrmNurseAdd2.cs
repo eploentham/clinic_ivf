@@ -3501,7 +3501,14 @@ namespace clinic_ivf.gui
                 frm.ShowDialog(this);
                 if (!ic.cStf.staff_id.Equals(""))
                 {
-                    ic.ivfDB.nurseFinish(txtVnOld.Text, ic.cStf.staff_id);
+                    if (ic.iniC.statusCashierOldProgram.Equals("1"))
+                    {
+                        ic.ivfDB.nurseFinishCashierOldProgram(txtVnOld.Text, ic.cStf.staff_id);
+                    }
+                    else
+                    {
+                        ic.ivfDB.nurseFinish(txtVnOld.Text, ic.cStf.staff_id);
+                    }
                     VisitOld ovs = new VisitOld();
                     ovs = ic.ivfDB.ovsDB.selectByPk1(txtVnOld.Text);
                     if (ovs.VSID.Equals("160"))
