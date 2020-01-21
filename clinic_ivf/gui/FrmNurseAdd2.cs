@@ -395,6 +395,8 @@ namespace clinic_ivf.gui
         private void BtnPrnLabReq_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
+            //PrinterSettings settings = new PrinterSettings();
+            //printerOld = settings.PrinterName;
             SetDefaultPrinter(ic.iniC.printerAppointment);      //A5
             FrmReport frm = new FrmReport(ic);
             DataTable dt = new DataTable();

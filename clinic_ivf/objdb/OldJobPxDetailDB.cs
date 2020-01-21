@@ -170,13 +170,13 @@ namespace clinic_ivf.objdb
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
-        public String selectSumIncludePriceByVN(String copId)
+        public String selectSumIncludePriceByVN(String vn)
         {
             String re = "0";
             DataTable dt = new DataTable();
             String sql = "select sum(oJpxd."+oJpxd.Price + "*" + oJpxd.QTY + ") as Include_Pkg_Price " +
                 "From " + oJpxd.table + " oJpxd " +
-                "Where oJpxd." + oJpxd.VN + " ='" + copId + "' and Extra='0' " 
+                "Where oJpxd." + oJpxd.VN + " ='" + vn + "' and Extra='0' " 
                 ;
             dt = conn.selectData(conn.conn, sql);
             if (dt.Rows.Count > 0)
@@ -185,13 +185,13 @@ namespace clinic_ivf.objdb
             }
             return re;
         }
-        public String selectSumExtraPriceByVN(String copId)
+        public String selectSumExtraPriceByVN(String vn)
         {
             String re = "0";
             DataTable dt = new DataTable();
             String sql = "select sum(oJpxd." + oJpxd.Price + "*" + oJpxd.QTY + ") as Extra_Pkg_Price " +
                 "From " + oJpxd.table + " oJpxd " +
-                "Where oJpxd." + oJpxd.VN + " ='" + copId + "' and Extra='1' "
+                "Where oJpxd." + oJpxd.VN + " ='" + vn + "' and Extra='1' "
                 ;
             dt = conn.selectData(conn.conn, sql);
             if (dt.Rows.Count > 0)
