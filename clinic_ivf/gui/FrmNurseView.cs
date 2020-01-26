@@ -14,8 +14,10 @@ using System.Drawing.Printing;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
+//using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Timer = System.Windows.Forms.Timer;
 
 namespace clinic_ivf.gui
 {
@@ -38,7 +40,7 @@ namespace clinic_ivf.gui
         C1SuperTooltip stt;
         C1SuperErrorProvider sep;
         Timer timer;
-        String printerOld = "";
+        String printerOld = "",txtSb1="";
 
         Boolean pageLoad = false;
         Image imgCorr, imgTran, imgFinish;
@@ -2075,6 +2077,8 @@ namespace clinic_ivf.gui
                 PrinterSettings settings = new PrinterSettings();
                 printerOld = settings.PrinterName;
                 SetDefaultPrinter(ic.iniC.printerSticker);
+                sB1.Text = txtSb1+" PrinterSticker " + ic.iniC.printerSticker;
+                ic.logw.WriteLog("d", "PrinterSticker " + ic.iniC.printerSticker);
                 if (chkPrnSticker.Checked)
                 {
                     Patient ptt = new Patient();
@@ -2107,7 +2111,9 @@ namespace clinic_ivf.gui
                     dt.Rows.Add(row11);
                     FrmReport frm = new FrmReport(ic);
                     frm.setStickerPatientThemal(dt);
+                    ic.logw.WriteLog("d", "PrinterSticker before dialog " + ic.iniC.printerSticker);
                     frm.ShowDialog(this);
+                    ic.logw.WriteLog("d", "PrinterSticker after dialog " + ic.iniC.printerSticker);
                 }
                 else
                 {
@@ -2143,10 +2149,14 @@ namespace clinic_ivf.gui
                     dt.Rows.Add(row11);
                     FrmReport frm = new FrmReport(ic);
                     frm.setStickerPatientThemal(dt);
+                    ic.logw.WriteLog("d", "PrinterSticker before dialog " + ic.iniC.printerSticker);
                     frm.ShowDialog(this);
+                    ic.logw.WriteLog("d", "PrinterSticker after dialog " + ic.iniC.printerSticker);
                 }
-                
-                SetDefaultPrinter(printerOld);
+                //Thread.Sleep(1000);
+                Application.DoEvents();
+                ic.logw.WriteLog("d", "PrinterSticker2 " + ic.iniC.printerSticker);
+                //  SetDefaultPrinter(printerOld);
             }
             catch (Exception ex)
             {
@@ -2641,7 +2651,8 @@ namespace clinic_ivf.gui
         {
             tC.SelectedTab = tabWaiting;
             chkAll.Checked = true;
-            sB1.Text = "Date " + ic.cop.day + "-" + ic.cop.month + "-" + ic.cop.year + " Server " + ic.iniC.hostDB + "/" + ic.iniC.nameDB + " FTP " + ic.iniC.hostFTP + "/" + ic.iniC.folderFTP;
+            txtSb1 = "Date " + ic.cop.day + "-" + ic.cop.month + "-" + ic.cop.year + " Server " + ic.iniC.hostDB + "/" + ic.iniC.nameDB + " FTP " + ic.iniC.hostFTP + "/" + ic.iniC.folderFTP;
+            sB1.Text = txtSb1;
         }
     }
 }

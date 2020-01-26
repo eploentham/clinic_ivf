@@ -34,6 +34,8 @@ namespace clinic_ivf.gui
 {
     /*
      * 62-07-06     0006        LMP	คำนวณไม่ถูก
+     * 63-01-11     0015        ลงโปรแกรมที่ ww แล้ว การเงิน คิดเงินผิด
+     * 63-01-26     0016        ลงโปรแกรมที่ ww แล้ว การเงิน Package ที่พยาบาลป้อนไม่ขึ้น
      */
     public partial class FrmNurseAdd2 : Form
     {
@@ -3503,14 +3505,16 @@ namespace clinic_ivf.gui
                 frm.ShowDialog(this);
                 if (!ic.cStf.staff_id.Equals(""))
                 {
-                    if (ic.iniC.statusCashierOldProgram.Equals("1"))
-                    {
-                        ic.ivfDB.nurseFinishCashierOldProgram(txtVnOld.Text, ic.cStf.staff_id);
-                    }
-                    else
-                    {
-                        ic.ivfDB.nurseFinish(txtVnOld.Text, ic.cStf.staff_id);
-                    }
+                    //      0015
+                    //ic.ivfDB.nurseFinish(txtVnOld.Text, ic.cStf.staff_id);        // -0015
+                    if (ic.iniC.statusCashierOldProgram.Equals("1"))        // +0015
+                    {        // +0015
+                        ic.ivfDB.nurseFinishCashierOldProgram(txtVnOld.Text, ic.cStf.staff_id);        // +0015
+                    }        // +0015
+                    else        // +0015
+                    {        // +0015
+                        ic.ivfDB.nurseFinish(txtVnOld.Text, ic.cStf.staff_id);        // +0015
+                    }        // +0015
                     VisitOld ovs = new VisitOld();
                     ovs = ic.ivfDB.ovsDB.selectByPk1(txtVnOld.Text);
                     if (ovs.VSID.Equals("160"))
@@ -3598,7 +3602,8 @@ namespace clinic_ivf.gui
             opkgs.Price = txtPrice.Text;
             opkgs.Date = "";
             opkgs.PaymentTimes = times;
-            opkgs.Status = "1";
+            //opkgs.Status = "1";       //  -0016
+            opkgs.Status = "2";       //  +0016
             opkgs.Payment1 = txtPayment1.Text;
             opkgs.Payment2 = txtPayment2.Text;
             opkgs.Payment3 = txtPayment3.Text;
