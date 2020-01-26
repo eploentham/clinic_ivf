@@ -73,7 +73,7 @@ namespace clinic_ivf.objdb
             return re;
         }
         
-        public C1ComboBox setCboSex(C1ComboBox c, String selected)
+        public C1ComboBox setCboPackageSellThru(C1ComboBox c, String selected)
         {
             ComboBoxItem item = new ComboBoxItem();
             //DataTable dt = selectC1();
@@ -99,6 +99,7 @@ namespace clinic_ivf.objdb
                 }
                 i++;
             }
+            if (c.Items.Count > 0) c.SelectedIndex = 0;
             return c;
         }
     }

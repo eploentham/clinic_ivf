@@ -153,7 +153,7 @@ namespace clinic_ivf.gui
             ic.setCboLangSticker(cboLangSticker);
 
             ic.ivfDB.bspDB.setCboBsp(cboApmBsp, "");
-            ic.ivfDB.opkgstDB.setCboSex(cboSellThruID, "");
+            ic.ivfDB.opkgstDB.setCboPackageSellThru(cboSellThruID, "");
             ic.ivfDB.dtrOldDB.setCboDoctor(cboDoctor, "");
             ic.ivfDB.dtrOldDB.setCboDoctor(cboEggStiDtr, "");
             ic.ivfDB.pttDB.setCboAllergy(cboAllergyDesc);
@@ -3563,6 +3563,7 @@ namespace clinic_ivf.gui
             ////              }
             ////          }
             ////      }
+            
             String times = "";
             Decimal price = 0;
             if (Decimal.TryParse(txtPayment1.Text, out price))
@@ -3597,6 +3598,11 @@ namespace clinic_ivf.gui
             opkgs.PCKSID = "";
             opkgs.PID = txtIdOld.Text;
             opkgs.SellThruID = cboSellThruID.SelectedItem == null ? "" : ((ComboBoxItem)cboSellThruID.SelectedItem).Value;
+            if ((opkgs.SellThruID.Length <= 0) || opkgs.SellThruID.Equals("000"))
+            {
+                MessageBox.Show("กรุณาเลือก Patient Comes Through", "");
+                return;
+            }
             opkgs.PCKID = txtPkgId.Text;
             opkgs.PackageName = txtPkgName.Text;
             opkgs.Price = txtPrice.Text;
