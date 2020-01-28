@@ -99,7 +99,7 @@ namespace clinic_ivf.objdb
                 }
                 i++;
             }
-            if (c.Items.Count > 0) c.SelectedIndex = 0;
+            if (c.Items.Count > 1) c.SelectedIndex = 1;
             return c;
         }
     }
