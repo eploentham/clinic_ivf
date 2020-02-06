@@ -707,6 +707,8 @@
             this.txtPeHnFeMale = new C1.Win.C1Input.C1TextBox();
             this.tabReport = new C1.Win.C1Command.C1DockingTabPage();
             this.crySperm = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
+            this.lbEmail = new System.Windows.Forms.Label();
+            this.lbSfEmail = new System.Windows.Forms.Label();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tC)).BeginInit();
@@ -1065,7 +1067,7 @@
             this.c1SplitterPanel3.SizeRatio = 42.729D;
             this.c1SplitterPanel3.TabIndex = 0;
             this.c1SplitterPanel3.Text = "Panel 1";
-            this.c1SplitterPanel3.Width = 649;
+            this.c1SplitterPanel3.Width = 642;
             // 
             // pnSfLeft
             // 
@@ -1123,6 +1125,7 @@
             // pnEmailAddSubject
             // 
             this.pnEmailAddSubject.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnEmailAddSubject.Controls.Add(this.lbEmail);
             this.pnEmailAddSubject.Controls.Add(this.btnSfSendEmail);
             this.pnEmailAddSubject.Controls.Add(this.btnSfAgentEmail);
             this.pnEmailAddSubject.Controls.Add(this.label210);
@@ -3735,7 +3738,7 @@
             this.c1SplitterPanel1.SizeRatio = 42.265D;
             this.c1SplitterPanel1.TabIndex = 0;
             this.c1SplitterPanel1.Text = "Panel 1";
-            this.c1SplitterPanel1.Width = 635;
+            this.c1SplitterPanel1.Width = 642;
             // 
             // panel6
             // 
@@ -3781,6 +3784,7 @@
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel5.Controls.Add(this.lbSfEmail);
             this.panel5.Controls.Add(this.btnSendEmail);
             this.panel5.Controls.Add(this.btnAgentEmail);
             this.panel5.Controls.Add(this.label212);
@@ -10302,6 +10306,32 @@
             this.crySperm.TabIndex = 2;
             this.theme1.SetTheme(this.crySperm, "(default)");
             // 
+            // lbEmail
+            // 
+            this.lbEmail.AutoSize = true;
+            this.lbEmail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.lbEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.lbEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.lbEmail.Location = new System.Drawing.Point(391, 10);
+            this.lbEmail.Name = "lbEmail";
+            this.lbEmail.Size = new System.Drawing.Size(60, 24);
+            this.lbEmail.TabIndex = 546;
+            this.lbEmail.Text = "label7";
+            this.theme1.SetTheme(this.lbEmail, "(default)");
+            // 
+            // lbSfEmail
+            // 
+            this.lbSfEmail.AutoSize = true;
+            this.lbSfEmail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.lbSfEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.lbSfEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.lbSfEmail.Location = new System.Drawing.Point(391, 8);
+            this.lbSfEmail.Name = "lbSfEmail";
+            this.lbSfEmail.Size = new System.Drawing.Size(60, 24);
+            this.lbSfEmail.TabIndex = 547;
+            this.lbSfEmail.Text = "label7";
+            this.theme1.SetTheme(this.lbSfEmail, "(default)");
+            // 
             // FrmLabSpermAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -11275,5 +11305,7 @@
         private System.Windows.Forms.Label label220;
         private System.Windows.Forms.Label lbSpSaRemark;
         private System.Windows.Forms.Label label233;
+        private System.Windows.Forms.Label lbEmail;
+        private System.Windows.Forms.Label lbSfEmail;
     }
 }

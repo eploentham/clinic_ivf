@@ -964,11 +964,11 @@ namespace clinic_ivf.gui
                 MessageBox.Show("กรุณาเลือก Fresh Sperm", "");
                 //return;
             }
-            ic.cStf.staff_id = "";
-            FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
-            frm.ShowDialog(this);
-            if (!ic.cStf.staff_id.Equals(""))
-            {
+            //ic.cStf.staff_id = "";
+            //FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+            //frm.ShowDialog(this);
+            //if (!ic.cStf.staff_id.Equals(""))
+            //{
                 txtUserReq.Value = ic.cStf.staff_fname_e + " " + ic.cStf.staff_lname_e;
                 txtStfConfirmID.Value = ic.cStf.staff_id;
                 btnSave.Text = "Confirm";
@@ -1171,12 +1171,12 @@ namespace clinic_ivf.gui
                     btnSave.Image = Resources.accept_database24;
                     System.Threading.Thread.Sleep(500);
                 }
-            }
-            else
-            {
-                btnSave.Text = "Save";
-                btnSave.Image = Resources.download_database24;
-            }
+            //}
+            //else
+            //{
+            //    btnSave.Text = "Save";
+            //    btnSave.Image = Resources.download_database24;
+            //}
             return true;
         }
         private void BtnSave_Click(object sender, EventArgs e)

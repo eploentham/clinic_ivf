@@ -208,6 +208,8 @@ namespace clinic_ivf.gui
             lsperm = new LabSperm();
             lbReq = new LabRequest();
             lforma = new LabFormA();
+            lbEmail.Hide();
+            lbSfEmail.Hide();
 
             setControl();
             setTheme();
@@ -282,6 +284,9 @@ namespace clinic_ivf.gui
             //throw new NotImplementedException();
             FrmWaiting frmW = new FrmWaiting();
             frmW.Show();
+            lbEmail.Show();
+            lbSfEmail.Text = "เตรียม Email";
+            Application.DoEvents();
             String filename = "", datetick = "";
             if (!Directory.Exists("report"))
             {
@@ -289,6 +294,8 @@ namespace clinic_ivf.gui
             }
             datetick = DateTime.Now.Ticks.ToString();
             filename = "report\\sperm_analysis_" + datetick + ".pdf";
+            lbSfEmail.Text = "เตรียม Email Report";
+            Application.DoEvents();
             if (!setReportSpermAnalysis(filename))
             {
                 return;
@@ -309,7 +316,8 @@ namespace clinic_ivf.gui
                 attachment = new System.Net.Mail.Attachment(filename);
                 mail.Attachments.Add(attachment);
             }
-
+            lbSfEmail.Text = "เตรียม Email Attach File";
+            Application.DoEvents();
             AlternateView htmlView = AlternateView.CreateAlternateViewFromString(body, null, "text/html");
             mail.AlternateViews.Add(htmlView);
 
@@ -317,12 +325,15 @@ namespace clinic_ivf.gui
             {
                 htmlView.LinkedResources.Add(linkimg);
             }
-
+            lbSfEmail.Text = "Send Email";
+            Application.DoEvents();
             SmtpServer.Port = 587;
             SmtpServer.Credentials = new System.Net.NetworkCredential(ic.iniC.email_auth_user, ic.iniC.email_auth_pass);
 
             SmtpServer.EnableSsl = true;
             SmtpServer.Send(mail);
+            lbSfEmail.Text = "ส่ง Email เรียบร้อย";
+            Application.DoEvents();
         }
 
         private void TxtPh_KeyUp(object sender, KeyEventArgs e)
@@ -515,6 +526,9 @@ namespace clinic_ivf.gui
             //throw new NotImplementedException();
             FrmWaiting frmW = new FrmWaiting();
             frmW.Show();
+            lbSfEmail.Show();
+            lbSfEmail.Text = "เตรียม Email";
+            Application.DoEvents();
             String filename = "", datetick="";
             if (!Directory.Exists("report"))
             {
@@ -522,6 +536,8 @@ namespace clinic_ivf.gui
             }
             datetick = DateTime.Now.Ticks.ToString();
             filename = "report\\sperm_freezing_"+ datetick + ".pdf";
+            lbSfEmail.Text = "เตรียม Email Report";
+            Application.DoEvents();
             if (!setReportSpermFreezing(filename))
             {
                 return;
@@ -542,7 +558,8 @@ namespace clinic_ivf.gui
                 attachment = new System.Net.Mail.Attachment(filename);
                 mail.Attachments.Add(attachment);
             }
-
+            lbSfEmail.Text = "เตรียม Email Attach File";
+            Application.DoEvents();
             AlternateView htmlView = AlternateView.CreateAlternateViewFromString(body, null, "text/html");
             mail.AlternateViews.Add(htmlView);
 
@@ -550,12 +567,15 @@ namespace clinic_ivf.gui
             {
                 htmlView.LinkedResources.Add(linkimg);
             }
-
+            lbSfEmail.Text = "Send Email";
+            Application.DoEvents();
             SmtpServer.Port = 587;
             SmtpServer.Credentials = new System.Net.NetworkCredential(ic.iniC.email_auth_user, ic.iniC.email_auth_pass);
 
             SmtpServer.EnableSsl = true;
             SmtpServer.Send(mail);
+            lbSfEmail.Text = "ส่ง Email เรียบร้อย";
+            Application.DoEvents();
         }
 
         private void TxtViability_KeyUp(object sender, KeyEventArgs e)
@@ -1739,7 +1759,7 @@ namespace clinic_ivf.gui
             lsperm.staff_id_approve = cboEmbryologistAppv.SelectedItem == null ? "0" : ((ComboBoxItem)cboEmbryologistAppv.SelectedItem).Value;
             lsperm.date_approve = ic.datetoDB(txtApproveDate.Text);
             lsperm.date_report = ic.datetoDB(txtReportDate.Text);
-            lsperm.remark = cboSfRemark.Text;
+            lsperm.remark = cboRemark.Text;
             lsperm.appearance_text = cboAppearance.Text.Trim();
         }
         private void setSpermFreezing()
