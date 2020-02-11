@@ -99,5 +99,6 @@ namespace clinic_ivf.object1
         public String et_remark { get; set; }
         public String sperm_sa_remark { get; set; }
         public String sperm_freezing_remark { get; set; }
+        public String status_no_ngs { get; set; }
     }
 }

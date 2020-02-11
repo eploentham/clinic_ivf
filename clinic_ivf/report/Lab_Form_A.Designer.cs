@@ -393,6 +393,8 @@ namespace clinic_ivf.report {
             
             private global::System.Data.DataColumn columnstatus_wait_confirm_day1;
             
+            private global::System.Data.DataColumn columnstatus_no_ngs;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public lab_form_aDataTable() {
@@ -884,6 +886,14 @@ namespace clinic_ivf.report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn status_no_ngsColumn {
+                get {
+                    return this.columnstatus_no_ngs;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -976,7 +986,8 @@ namespace clinic_ivf.report {
                         string embryo_freezing_day1, 
                         string et_day, 
                         string et_remark, 
-                        string status_wait_confirm_day1) {
+                        string status_wait_confirm_day1, 
+                        string status_no_ngs) {
                 lab_form_aRow rowlab_form_aRow = ((lab_form_aRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         form_a_id,
@@ -1035,7 +1046,8 @@ namespace clinic_ivf.report {
                         embryo_freezing_day1,
                         et_day,
                         et_remark,
-                        status_wait_confirm_day1};
+                        status_wait_confirm_day1,
+                        status_no_ngs};
                 rowlab_form_aRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowlab_form_aRow);
                 return rowlab_form_aRow;
@@ -1115,6 +1127,7 @@ namespace clinic_ivf.report {
                 this.columnet_day = base.Columns["et_day"];
                 this.columnet_remark = base.Columns["et_remark"];
                 this.columnstatus_wait_confirm_day1 = base.Columns["status_wait_confirm_day1"];
+                this.columnstatus_no_ngs = base.Columns["status_no_ngs"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1234,6 +1247,8 @@ namespace clinic_ivf.report {
                 base.Columns.Add(this.columnet_remark);
                 this.columnstatus_wait_confirm_day1 = new global::System.Data.DataColumn("status_wait_confirm_day1", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnstatus_wait_confirm_day1);
+                this.columnstatus_no_ngs = new global::System.Data.DataColumn("status_no_ngs", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnstatus_no_ngs);
                 this.columnform_a_id.Caption = "DataColumn1";
                 this.columnhn_female.Caption = "DataColumn1";
                 this.columnname_female.Caption = "DataColumn1";
@@ -2330,6 +2345,22 @@ namespace clinic_ivf.report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string status_no_ngs {
+                get {
+                    try {
+                        return ((string)(this[this.tablelab_form_a.status_no_ngsColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'status_no_ngs\' in table \'lab_form_a\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablelab_form_a.status_no_ngsColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool Isform_a_idNull() {
                 return this.IsNull(this.tablelab_form_a.form_a_idColumn);
             }
@@ -3010,6 +3041,18 @@ namespace clinic_ivf.report {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void Setstatus_wait_confirm_day1Null() {
                 this[this.tablelab_form_a.status_wait_confirm_day1Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Isstatus_no_ngsNull() {
+                return this.IsNull(this.tablelab_form_a.status_no_ngsColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Setstatus_no_ngsNull() {
+                this[this.tablelab_form_a.status_no_ngsColumn] = global::System.Convert.DBNull;
             }
         }
         

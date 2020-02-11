@@ -528,11 +528,11 @@ namespace clinic_ivf.gui
             MailMessage mail = new MailMessage();
             if (amh.Equals("1"))
             {
-                txtEmailSubject.Value = "Routine LAB Result HN " + txtHn.Text + " Name " + txtPttNameE.Text + " [VN " + txtVnShow.Text + "] Hormone & AMH Report Date " + System.DateTime.Now.ToString("dd/MM/") + System.DateTime.Now.Year;
+                txtEmailSubject.Value = "Routine LAB Result HN " + txtHn.Text.ToUpper() + " Name " + txtPttNameE.Text + " [VN " + txtVnShow.Text + "] Hormone & AMH Report Date " + System.DateTime.Now.ToString("dd/MM/") + System.DateTime.Now.Year;
             }
             else
             {
-                txtEmailSubject.Value = "Routine LAB Result HN " + txtHn.Text + " Name " + txtPttNameE.Text + " [VN " + txtVnShow.Text + "] Hormone Report Date " + System.DateTime.Now.ToString("dd/MM/") + System.DateTime.Now.Year;
+                txtEmailSubject.Value = "Routine LAB Result HN " + txtHn.Text.ToUpper() + " Name " + txtPttNameE.Text + " [VN " + txtVnShow.Text + "] Hormone Report Date " + System.DateTime.Now.ToString("dd/MM/") + System.DateTime.Now.Year;
             }
             
             mail.From = new MailAddress(txtEmailTo.Text);
@@ -622,11 +622,11 @@ namespace clinic_ivf.gui
             String date1 = "";
             if (ptt.f_sex_id.Equals("2") && (!ptt.patient_hn_1.Equals("") && !ptt.patient_hn_2.Equals("")))     // เป็น female และ เป็น donor  ไม่ต้องพิมพ์ หัว บริษัท
             {
-                frm.setLabBloodReportHormone(dt, txtHn.Text, txtPttNameE.Text, txtDob.Text, txtSex.Text, reportername, approvedname, txtReportDate.Text, txtApprovDate.Text, "1", amh, ic.datetimetoShow(collectdate), ic.datetimetoShow(receivedate));
+                frm.setLabBloodReportHormone(dt, txtHn.Text, txtPttNameE.Text.ToUpper(), txtDob.Text, txtSex.Text, reportername, approvedname, txtReportDate.Text, txtApprovDate.Text, "1", amh, ic.datetimetoShow(collectdate), ic.datetimetoShow(receivedate));
             }
             else
             {
-                frm.setLabBloodReportHormone(dt, txtHn.Text, txtPttNameE.Text, txtDob.Text, txtSex.Text, reportername, approvedname, txtReportDate.Text, txtApprovDate.Text,"", amh, ic.datetimetoShow(collectdate), ic.datetimetoShow(receivedate));
+                frm.setLabBloodReportHormone(dt, txtHn.Text, txtPttNameE.Text.ToUpper(), txtDob.Text, txtSex.Text, reportername, approvedname, txtReportDate.Text, txtApprovDate.Text,"", amh, ic.datetimetoShow(collectdate), ic.datetimetoShow(receivedate));
             }
             
             frm.ShowDialog(this);
@@ -732,7 +732,7 @@ namespace clinic_ivf.gui
 
             txtVnShow.Value = ic.showVN(vs.visit_vn);
             txtHn.Value = ptt.patient_hn;
-            txtPttNameE.Value = ptt.Name;
+            txtPttNameE.Value = ptt.Name.ToUpper();
             txtDob.Value = ic.datetoShow(ptt.patient_birthday) + " [" + ptt.AgeStringShort() + "]";
             txtSex.Value = ptt.f_sex_id.Equals("1") ? "Male" : "Female";
 

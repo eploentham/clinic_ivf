@@ -12,7 +12,7 @@
   <xs:element name="Lab_Form_A" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="Lab_Form_A" msprop:Generator_UserDSName="Lab_Form_A">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="lab_form_a" msprop:Generator_TableClassName="lab_form_aDataTable" msprop:Generator_TableVarName="tablelab_form_a" msprop:Generator_TablePropName="lab_form_a" msprop:Generator_RowDeletingName="lab_form_aRowDeleting" msprop:Generator_RowChangingName="lab_form_aRowChanging" msprop:Generator_RowEvHandlerName="lab_form_aRowChangeEventHandler" msprop:Generator_RowDeletedName="lab_form_aRowDeleted" msprop:Generator_UserTableName="lab_form_a" msprop:Generator_RowChangedName="lab_form_aRowChanged" msprop:Generator_RowEvArgName="lab_form_aRowChangeEvent" msprop:Generator_RowClassName="lab_form_aRow">
+        <xs:element name="lab_form_a" msprop:Generator_TableClassName="lab_form_aDataTable" msprop:Generator_TableVarName="tablelab_form_a" msprop:Generator_RowChangedName="lab_form_aRowChanged" msprop:Generator_TablePropName="lab_form_a" msprop:Generator_RowDeletingName="lab_form_aRowDeleting" msprop:Generator_RowChangingName="lab_form_aRowChanging" msprop:Generator_RowEvHandlerName="lab_form_aRowChangeEventHandler" msprop:Generator_RowDeletedName="lab_form_aRowDeleted" msprop:Generator_RowClassName="lab_form_aRow" msprop:Generator_UserTableName="lab_form_a" msprop:Generator_RowEvArgName="lab_form_aRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="form_a_id" msdata:Caption="DataColumn1" msprop:Generator_ColumnVarNameInTable="columnform_a_id" msprop:Generator_ColumnPropNameInRow="form_a_id" msprop:Generator_ColumnPropNameInTable="form_a_idColumn" msprop:Generator_UserColumnName="form_a_id" type="xs:string" minOccurs="0" />
@@ -72,6 +72,7 @@
               <xs:element name="et_day" msprop:Generator_ColumnVarNameInTable="columnet_day" msprop:Generator_ColumnPropNameInRow="et_day" msprop:Generator_ColumnPropNameInTable="et_dayColumn" msprop:Generator_UserColumnName="et_day" type="xs:string" minOccurs="0" />
               <xs:element name="et_remark" msprop:Generator_ColumnVarNameInTable="columnet_remark" msprop:Generator_ColumnPropNameInRow="et_remark" msprop:Generator_ColumnPropNameInTable="et_remarkColumn" msprop:Generator_UserColumnName="et_remark" type="xs:string" minOccurs="0" />
               <xs:element name="status_wait_confirm_day1" msprop:Generator_ColumnVarNameInTable="columnstatus_wait_confirm_day1" msprop:Generator_ColumnPropNameInRow="status_wait_confirm_day1" msprop:Generator_ColumnPropNameInTable="status_wait_confirm_day1Column" msprop:Generator_UserColumnName="status_wait_confirm_day1" type="xs:string" minOccurs="0" />
+              <xs:element name="status_no_ngs" msprop:Generator_ColumnVarNameInTable="columnstatus_no_ngs" msprop:Generator_ColumnPropNameInRow="status_no_ngs" msprop:Generator_ColumnPropNameInTable="status_no_ngsColumn" msprop:Generator_UserColumnName="status_no_ngs" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
