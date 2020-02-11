@@ -113,6 +113,7 @@ namespace clinic_ivf.objdb
             lformA.et_remark = "et_remark";
             lformA.sperm_freezing_remark = "sperm_freezing_remark";
             lformA.sperm_sa_remark = "sperm_sa_remark";
+            lformA.status_no_ngs = "status_no_ngs";
 
             lformA.pkField = "form_a_id";
             lformA.table = "lab_t_form_a";
@@ -203,6 +204,7 @@ namespace clinic_ivf.objdb
             p.frozen_sperm_date = p.frozen_sperm_date == null ? "" : p.frozen_sperm_date;
             p.status_sperm_pesa = p.status_sperm_pesa == null ? "0" : p.status_sperm_pesa;
             p.status_sperm_iui = p.status_sperm_iui == null ? "0" : p.status_sperm_iui;
+            p.status_no_ngs = p.status_no_ngs == null ? "0" : p.status_no_ngs;
 
             p.t_patient_id = long.TryParse(p.t_patient_id, out chk) ? chk.ToString() : "0";
             p.t_visit_id = long.TryParse(p.t_visit_id, out chk) ? chk.ToString() : "0";
@@ -318,6 +320,7 @@ namespace clinic_ivf.objdb
                     "," + lformA.et_remark + "='" + p.et_remark.Replace("'", "''") + "' " +
                     "," + lformA.sperm_freezing_remark + "='" + p.sperm_freezing_remark.Replace("'", "''") + "' " +
                     "," + lformA.sperm_sa_remark + "='" + p.sperm_sa_remark.Replace("'", "''") + "' " +
+                    "," + lformA.status_no_ngs + "='" + p.status_no_ngs.Replace("'", "''") + "' " +
                     "";
                 re = conn.ExecuteNonQuery(conn.conn, sql);
             }
@@ -417,6 +420,7 @@ namespace clinic_ivf.objdb
                     "," + lformA.et_remark + "='" + p.et_remark.Replace("'", "''") + "' " +
                     "," + lformA.sperm_freezing_remark + "='" + p.sperm_freezing_remark.Replace("'", "''") + "' " +
                     "," + lformA.sperm_sa_remark + "='" + p.sperm_sa_remark.Replace("'", "''") + "' " +
+                    "," + lformA.status_no_ngs + "='" + p.status_no_ngs.Replace("'", "''") + "' " +
                 " Where " + lformA.pkField + " = '" + p.form_a_id + "' "
                 ;
             try
@@ -1113,6 +1117,7 @@ namespace clinic_ivf.objdb
                 vs1.et_remark = dt.Rows[0][lformA.et_remark].ToString();
                 vs1.sperm_freezing_remark = dt.Rows[0][lformA.sperm_freezing_remark].ToString();
                 vs1.sperm_sa_remark = dt.Rows[0][lformA.sperm_sa_remark].ToString();
+                vs1.status_no_ngs = dt.Rows[0][lformA.status_no_ngs].ToString();
             }
             else
             {
@@ -1213,6 +1218,7 @@ namespace clinic_ivf.objdb
             lforma1.et_remark = "";
             lforma1.sperm_sa_remark = "";
             lforma1.sperm_freezing_remark = "";
+            lforma1.status_no_ngs = "";
             return lforma1;
         }
     }

@@ -158,7 +158,7 @@ namespace clinic_ivf.objdb
             String sql = "select lbReq.*, LabItem.LName " +
                 "From " + lbReq.table + " lbReq " +
                 "Left Join LabItem on lbReq."+ lbReq.item_id+" = LabItem.LID " +
-                "Where lbReq." + lbReq.status_req + " ='1' and LabItem.LGID='1' " +
+                "Where lbReq." + lbReq.status_req + " ='1' and LabItem.LGID='1'  and lbReq.active = '1'  " +
                 "Order By lbReq."+lbReq.req_id;
             dt = conn.selectData(conn.conn, sql);
             return dt;

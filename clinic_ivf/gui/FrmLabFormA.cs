@@ -631,6 +631,8 @@ namespace clinic_ivf.gui
             dt.Rows[0][ic.ivfDB.lFormaDB.lformA.sperm_analysis_date_end] = date1.Replace("-", "/");
             date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.fet_no_date_freezing].ToString());
             dt.Rows[0][ic.ivfDB.lFormaDB.lformA.fet_no_date_freezing] = date1.Replace("-", "/");
+            date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.frozen_sperm_date].ToString());
+            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.frozen_sperm_date] = date1.Replace("-", "/");
             if (dt.Rows[0]["status_wait_confirm_opu_date"].ToString().Equals("1"))
             {
                 txt1 = "รอ confirm วัน เวลา OPU จากทาง พยาบาล";
@@ -640,7 +642,6 @@ namespace clinic_ivf.gui
             frm.setLabFormAOPUReport(dt);
             frm.ShowDialog(this);
         }
-
         private void ChkFrozenSperm_CheckStateChanged(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
@@ -801,14 +802,17 @@ namespace clinic_ivf.gui
             else
             {
                 dt.Rows[0][ic.ivfDB.lFormaDB.lformA.pasa_tese_date] = "";
-            }
-            
+            }//frozen_sperm_date
+
             date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.sperm_analysis_date_start].ToString());
             dt.Rows[0][ic.ivfDB.lFormaDB.lformA.sperm_analysis_date_start] = date1.Replace("-", "/");
             date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.sperm_analysis_date_end].ToString());
             dt.Rows[0][ic.ivfDB.lFormaDB.lformA.sperm_analysis_date_end] = date1.Replace("-","/");
             date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.fet_no_date_freezing].ToString());
             dt.Rows[0][ic.ivfDB.lFormaDB.lformA.fet_no_date_freezing] = date1.Replace("-", "/");
+            date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.frozen_sperm_date].ToString());
+            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.frozen_sperm_date] = date1.Replace("-", "/");
+
             if (dt.Rows[0]["status_wait_confirm_opu_date"].ToString().Equals("1"))
             {
                 txt1 = "รอ confirm วัน เวลา OPU จากทาง พยาบาล";
@@ -939,6 +943,7 @@ namespace clinic_ivf.gui
             lFormA.et_remark = cboEtRemark.Text;
             lFormA.sperm_freezing_remark = cboSpSaRemark.Text;
             lFormA.sperm_sa_remark = cboSpSaRemark.Text;
+            lFormA.status_no_ngs = chkNoNgs.Checked ? "1" : "0";
             //lFormA.embryo txtEmbryoTranferTime.Text
         }
         private Boolean saveLabFormA()
@@ -1684,6 +1689,7 @@ namespace clinic_ivf.gui
             }
             cboSpSaRemark.Value = lFormA.sperm_sa_remark;
             cboSpFzRemark.Value = lFormA.sperm_freezing_remark;
+            chkNoNgs.Checked = lFormA.status_no_ngs.Equals("1") ? true : false;
         }
         private void FrmLabOPUReq_Load(object sender, EventArgs e)
         {

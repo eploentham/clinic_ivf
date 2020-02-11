@@ -810,7 +810,7 @@ namespace clinic_ivf.gui
                 rpt.SetDataSource(dt);
                 err = "02";
                 rpt.SetParameterValue("line1", ic.cop.comp_name_t);
-                rpt.SetParameterValue("line2", "โทรศัพท์ " + ic.cop.tele);
+                rpt.SetParameterValue("line2", ic.cop.comp_address_e + " " + ic.cop.tele);
                 rpt.SetParameterValue("report_name", " Laboratory Request Form OPU");
                 err = "03";
                 //rpt.SetParameterValue("age1", "" + age);
@@ -838,7 +838,7 @@ namespace clinic_ivf.gui
                 rpt.SetDataSource(dt);
                 err = "02";
                 rpt.SetParameterValue("line1", ic.cop.comp_name_t);
-                rpt.SetParameterValue("line2", "โทรศัพท์ " + ic.cop.tele);
+                rpt.SetParameterValue("line2", ic.cop.comp_address_e + " " + ic.cop.tele);
                 rpt.SetParameterValue("report_name", " Laboratory Request Form ");
                 err = "03";
                 //rpt.SetParameterValue("age1", "" + age);

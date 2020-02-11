@@ -222,7 +222,7 @@ namespace clinic_ivf.objdb
                 "Left Join lab_b_unit on LabItem.lab_unit_id = lab_b_unit.lab_unit_id " +
                 "Left Join lab_b_method on LabItem.method_id = lab_b_method.method_id " +
                 "Left Join Doctor dtr on dtr.ID = lbRes.doctor_id " +
-                "Where lbRes." + lbRes.status_result + " ='2'  and lbRes.visit_id = '" + vsid + "' and LabItem.lab_group_id = '2550000000' " +
+                "Where lbRes." + lbRes.status_result + " ='2'  and lbRes.visit_id = '" + vsid + "' and LabItem.lab_group_id = '2550000000'  and lbRes.active = '1' " +
                 "Order By LabItem.sort1, lbRes." + lbRes.req_id;
             dt = conn.selectData(conn.conn, sql);
             return dt;
@@ -238,7 +238,7 @@ namespace clinic_ivf.objdb
                 "Left Join lab_b_unit on LabItem.lab_unit_id = lab_b_unit.lab_unit_id " +
                 "Left Join lab_b_method on LabItem.method_id = lab_b_method.method_id " +
                 "Left Join Doctor dtr on dtr.ID = lbRes.doctor_id " +
-                "Where lbRes." + lbRes.status_result + " ='2'  and lbRes.visit_id = '" + vsid + "' and LabItem.lab_group_id = '2550000001' " +
+                "Where lbRes." + lbRes.status_result + " ='2'  and lbRes.visit_id = '" + vsid + "' and LabItem.lab_group_id = '2550000001' and lbRes.active = '1' " +
                 "Order By LabItem.sort1, lbRes." + lbRes.req_id;
             dt = conn.selectData(conn.conn, sql);
             return dt;
@@ -270,7 +270,7 @@ namespace clinic_ivf.objdb
                 "Left Join t_visit vs on lbRes.visit_id = vs.t_visit_id " +
                 "Left Join t_patient ptt on vs.t_patient_id = ptt.t_patient_id " +
                 "Left join f_patient_prefix fpp on fpp.f_patient_prefix_id = ptt.f_patient_prefix_id " +
-                "Where lbRes." + lbRes.status_result + " ='2' and LabItem.LGID='1' and vs.visit_begin_visit_time >= '" + datestart+ " 00:00:00' and vs.visit_begin_visit_time <= '" + dateend+" 23:59:59' " +
+                "Where lbRes." + lbRes.status_result + " ='2' and LabItem.LGID='1' and vs.visit_begin_visit_time >= '" + datestart+ " 00:00:00' and vs.visit_begin_visit_time <= '" + dateend+ " 23:59:59' and lbRes.active = '1'  " +
                 "Order By lbRes." + lbRes.req_id;
             dt = conn.selectData(conn.conn, sql);
             return dt;
@@ -285,7 +285,7 @@ namespace clinic_ivf.objdb
                 "Left Join t_visit vs on lbRes.visit_id = vs.t_visit_id " +
                 "Left Join t_patient ptt on vs.t_patient_id = ptt.t_patient_id " +
                 "Left join f_patient_prefix fpp on fpp.f_patient_prefix_id = ptt.f_patient_prefix_id " +
-                "Where lbRes." + lbRes.status_result + " ='1' and LabItem.LGID='1' " +
+                "Where lbRes." + lbRes.status_result + " ='1' and LabItem.LGID='1'  and lbRes.active = '1'  " +
                 "Order By lbRes." + lbRes.req_id;
             dt = conn.selectData(conn.conn, sql);
             return dt;
