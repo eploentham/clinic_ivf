@@ -1528,5 +1528,22 @@ namespace clinic_ivf.control
             //cbo.SelectedIndex = 0;
             //cbo.Text = cbo.Items[0].ToString();
         }
+        public void setCboBItemType(C1ComboBox cbo)
+        {
+            cbo.Items.Add("LAB");
+            cbo.Items.Add("Special");
+            cbo.Items.Add("Drug");
+            cbo.SelectedIndex = 0;
+
+            //cbo.Text = cbo.Items[0].ToString();
+        }
+        public Size MeasureString(Control c, string text)
+        {
+            return TextRenderer.MeasureText(text, c.Font, new Size(int.MaxValue, int.MaxValue), TextFormatFlags.SingleLine | TextFormatFlags.NoClipping | TextFormatFlags.PreserveGraphicsClipping);
+        }
+        public Size MeasureString(Control c)
+        {
+            return TextRenderer.MeasureText(c.Text, c.Font, new Size(int.MaxValue, int.MaxValue), TextFormatFlags.SingleLine | TextFormatFlags.NoClipping | TextFormatFlags.PreserveGraphicsClipping);
+        }
     }
 }

@@ -3188,7 +3188,6 @@ namespace clinic_ivf.gui
                 pttid = vsOld.PID;
             }
 
-
             //PatientOld pttO = new PatientOld();
             pttO = ic.ivfDB.pttOldDB.selectByPk1(ptt.t_patient_id_old);     //      + 0004
             txtIdOld.Value = pttO.PID;      //      + 0004

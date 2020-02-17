@@ -50,5 +50,6 @@ namespace clinic_ivf.object1
         public String lis_max_value { get; set; }
         public String status_send_request { get; set; }
         public String sort1 { get; set; }
+        public String item_code { get; set; }
     }
 }

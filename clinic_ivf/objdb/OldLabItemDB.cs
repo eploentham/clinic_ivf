@@ -67,14 +67,35 @@ namespace clinic_ivf.objdb
             labI.lis_min_value = "lis_min_value";
             labI.status_send_request = "status_send_request";
             labI.sort1 = "sort1";
+            labI.item_code = "item_code";
 
             labI.table = "LabItem";
             labI.pkField = "LID";
         }
+        public DataTable selectAllEx()
+        {
+            DataTable dt = new DataTable();
+            String sql = "select labI." + labI.LID + " as id,labI." + labI.LName + " as name," + labI.item_code + " as code " +
+                "From " + labI.table + " labI " +
+                "Where " + labI.active + " ='1' ";
+            dt = conn.selectData(conn.connEx, sql);
+            return dt;
+        }
+        public DataTable selectAll2()
+        {
+            DataTable dt = new DataTable();
+            String sql = "select labI." + labI.LID + " as id,labI." + labI.LName + " as name," + labI.item_code + " as code " +
+                "From " + labI.table + " labI " +
+                "Left Join LabItemGroup labg on labI." + labI.LGID + "=labg.LGID " +
+                "Where labI." + labI.active + " ='1' " +
+                "Order By " + labI.LName;
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
         public DataTable selectAll()
         {
             DataTable dt = new DataTable();
-            String sql = "select * " +
+            String sql = "select labI."+ labI.LID+","+ labI.item_code+","+ labI.LName+" " +
                 "From " + labI.table + " labI " +
                 "Where " + labI.active + " ='1' ";
             dt = conn.selectData(conn.conn, sql);
@@ -83,7 +104,7 @@ namespace clinic_ivf.objdb
         public DataTable selectAll1()
         {
             DataTable dt = new DataTable();
-            String sql = "select labI."+ labI.LID+ ",labI." + labI .LName+","+ labI .Price+", labg.LGName "+
+            String sql = "select labI.* "+
                 "From " + labI.table + " labI " +
                 "Left Join LabItemGroup labg on labI."+labI.LGID+"=labg.LGID " +
                 "Where labI." + labI.active + " ='1' " +
@@ -414,6 +435,44 @@ namespace clinic_ivf.objdb
 
             return re;
         }
+        public String updateCode(String id, String code, String userId)
+        {
+            String re = "", sql = "";
+            sql = "Update " + labI.table + " Set " +
+                " " + labI.item_code + " = '" + code + "'" +
+                "," + labI.user_modi + "= '" + userId + "'" +
+                "," + labI.date_modi + "= now()" +
+                "Where " + labI.pkField + "='" + id + "'";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+
+            return re;
+        }
+        public String updateCodeEx(String id, String code, String userId)
+        {
+            String re = "", sql = "";
+            sql = "Update " + labI.table + " Set " +
+                " " + labI.item_code + " = '" + code + "'" +
+                "," + labI.user_modi + "= '" + userId + "'" +
+                "," + labI.date_modi + "= now()" +
+                "Where " + labI.pkField + "='" + id + "'";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.connEx, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+
+            return re;
+        }
         public String insertLabItem(OldLabItem p, String userId)
         {
             String re = "";
@@ -501,6 +560,7 @@ namespace clinic_ivf.objdb
                 vsold1.lis_min_value = dt.Rows[0][labI.lis_min_value].ToString();
                 vsold1.status_send_request = dt.Rows[0][labI.status_send_request].ToString();
                 vsold1.sort1 = dt.Rows[0][labI.sort1].ToString();
+                vsold1.item_code = dt.Rows[0][labI.item_code].ToString();
             }
             else
             {
@@ -552,6 +612,7 @@ namespace clinic_ivf.objdb
             stf1.lis_max_value = "";
             stf1.status_send_request = "";
             stf1.sort1 = "";
+            stf1.item_code = "";
             return stf1;
         }
     }
