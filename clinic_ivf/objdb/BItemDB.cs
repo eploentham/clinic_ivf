@@ -174,7 +174,7 @@ namespace clinic_ivf.objdb
                 "From " + itm.table + " cop " +
                 " " +
                 "Where cop." + itm.active + " ='1' ";
-            dt = conn.selectData(conn.connEx, sql);
+            dt = conn.selectData(conn.conn, sql);
             if (dt.Rows.Count > 0)
             {
                 re = dt.Rows[0]["cnt"].ToString();

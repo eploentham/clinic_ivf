@@ -1406,3 +1406,29 @@ ADD COLUMN `item_link_id` BIGINT NULL AFTER `item_master_id`;
 ALTER TABLE `ivf_101_donor`.`b_item` 
 ADD COLUMN `item_master_id` BIGINT NULL AFTER `status_item`,
 ADD COLUMN `item_link_id` BIGINT NULL AFTER `item_master_id`;
+
+
+ALTER TABLE `ivf`.`labitem` 
+ADD COLUMN `date_create` VARCHAR(45) NULL AFTER `item_code`,
+ADD COLUMN `date_modi` VARCHAR(45) NULL AFTER `date_create`,
+ADD COLUMN `date_cancel` VARCHAR(45) NULL AFTER `date_modi`,
+ADD COLUMN `user_create` VARCHAR(45) NULL AFTER `date_cancel`,
+ADD COLUMN `user_modi` VARCHAR(45) NULL AFTER `user_create`,
+ADD COLUMN `user_cancel` VARCHAR(45) NULL AFTER `user_modi`;
+
+ALTER TABLE `ivf`.`specialitem` 
+ADD COLUMN `date_create` VARCHAR(45) NULL AFTER `status_discount`,
+ADD COLUMN `date_modi` VARCHAR(45) NULL AFTER `date_create`,
+ADD COLUMN `date_cancel` VARCHAR(45) NULL AFTER `date_modi`,
+ADD COLUMN `user_create` VARCHAR(45) NULL AFTER `date_cancel`,
+ADD COLUMN `user_modi` VARCHAR(45) NULL AFTER `user_create`,
+ADD COLUMN `user_cancel` VARCHAR(45) NULL AFTER `user_modi`;
+
+ALTER TABLE `ivf`.`stockdrug` 
+ADD COLUMN `date_create` VARCHAR(45) NULL AFTER `order_amount_sub_3`,
+ADD COLUMN `date_modi` VARCHAR(45) NULL AFTER `date_create`,
+ADD COLUMN `date_cancel` VARCHAR(45) NULL AFTER `date_modi`,
+ADD COLUMN `user_create` VARCHAR(45) NULL AFTER `date_cancel`,
+ADD COLUMN `user_modi` VARCHAR(45) NULL AFTER `user_create`,
+ADD COLUMN `user_cancel` VARCHAR(45) NULL AFTER `user_modi`;
+

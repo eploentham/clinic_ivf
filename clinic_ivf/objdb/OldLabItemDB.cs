@@ -68,6 +68,12 @@ namespace clinic_ivf.objdb
             labI.status_send_request = "status_send_request";
             labI.sort1 = "sort1";
             labI.item_code = "item_code";
+            labI.date_cancel = "date_cancel";
+            labI.date_create = "date_create";
+            labI.date_modi = "date_modi";
+            labI.user_cancel = "user_cancel";
+            labI.user_create = "user_create";
+            labI.user_modi = "user_modi";
 
             labI.table = "LabItem";
             labI.pkField = "LID";
@@ -441,7 +447,7 @@ namespace clinic_ivf.objdb
             sql = "Update " + labI.table + " Set " +
                 " " + labI.item_code + " = '" + code + "'" +
                 "," + labI.user_modi + "= '" + userId + "'" +
-                "," + labI.date_modi + "= now()" +
+                "," + labI.date_modi + "= now() " +
                 "Where " + labI.pkField + "='" + id + "'";
             try
             {
@@ -460,7 +466,7 @@ namespace clinic_ivf.objdb
             sql = "Update " + labI.table + " Set " +
                 " " + labI.item_code + " = '" + code + "'" +
                 "," + labI.user_modi + "= '" + userId + "'" +
-                "," + labI.date_modi + "= now()" +
+                "," + labI.date_modi + "= now() " +
                 "Where " + labI.pkField + "='" + id + "'";
             try
             {

@@ -51,6 +51,12 @@ namespace clinic_ivf.objdb
             ostkD.order_point_sub_3 = "order_point_sub_3";
             ostkD.order_amount_sub_3 = "order_amount_sub_3";
             ostkD.item_code = "item_code";
+            ostkD.date_cancel = "date_cancel";
+            ostkD.date_create = "date_create";
+            ostkD.date_modi = "date_modi";
+            ostkD.user_cancel = "user_cancel";
+            ostkD.user_create = "user_create";
+            ostkD.user_modi = "user_modi";
 
             ostkD.table = "StockDrug";
             ostkD.pkField = "DUID";

@@ -34,6 +34,12 @@ namespace clinic_ivf.objdb
             sitm.BillGroupID= "BillGroupID";
             sitm.active = "active";
             sitm.item_code = "item_code";
+            sitm.date_cancel = "date_cancel";
+            sitm.date_create = "date_create";
+            sitm.date_modi = "date_modi";
+            sitm.user_cancel = "user_cancel";
+            sitm.user_create = "user_create";
+            sitm.user_modi = "user_modi";
 
             sitm.table = "SpecialItem";
             sitm.pkField = "SID";

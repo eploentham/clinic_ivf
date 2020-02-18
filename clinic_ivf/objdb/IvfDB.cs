@@ -2243,6 +2243,7 @@ namespace clinic_ivf.objdb
             if (itemcode == null) return "";
             String re = "", code = "", codeH = "", re1="",re2="";
             long chk = 0;
+            int chk1 = 0;
             if (flagtype.Length <= 0)
             {
                 return "";
@@ -2259,7 +2260,9 @@ namespace clinic_ivf.objdb
             {
                 codeH = "DU";
             }
-            code = "0000" + itmDB.selectCount();
+            int.TryParse(itmDB.selectCount(), out chk1);
+            chk1++;
+            code = "0000" + chk1.ToString();
             if (code.Length > 4)
             {
                 code = code.Substring(code.Length - 4);
@@ -2283,6 +2286,8 @@ namespace clinic_ivf.objdb
             {
                 item.status_item = "3";
             }
+            item.item_master_id = pttitemid;
+            item.item_link_id = linkitemid;
             if (itemcode.Length <= 0)
             {
                 re = itmDB.insert(item, userid);
@@ -2308,7 +2313,6 @@ namespace clinic_ivf.objdb
                     re1 = oStkdDB.updateCode(pttitemid, code, userid);
                     re2 = oStkdDB.updateCodeEx(linkitemid, code, userid);
                 }
-
             }
             return re;
         }
