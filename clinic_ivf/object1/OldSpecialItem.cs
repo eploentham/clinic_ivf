@@ -17,6 +17,7 @@ namespace clinic_ivf.object1
         public String W4GID { get; set; }
         public String isActive { get; set; }
         public String BillGroupID { get; set; }
+        public String item_code { get; set; }
 
     }
 }

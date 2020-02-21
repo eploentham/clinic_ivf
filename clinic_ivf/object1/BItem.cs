@@ -26,5 +26,8 @@ namespace clinic_ivf.object1
         public String user_create { get; set; }
         public String user_modi { get; set; }
         public String user_cancel { get; set; }
+        public String status_item { get; set; }
+        public String item_master_id { get; set; }
+        public String item_link_id { get; set; }
     }
 }

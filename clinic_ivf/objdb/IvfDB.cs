@@ -2238,5 +2238,83 @@ namespace clinic_ivf.objdb
             }
             return re;
         }
+        public String genItem(String itemid,String itemcode, String pttitemid, String pttitemname, String linkitemid, String flagtype, String userid)
+        {
+            if (itemcode == null) return "";
+            String re = "", code = "", codeH = "", re1="",re2="";
+            long chk = 0;
+            int chk1 = 0;
+            if (flagtype.Length <= 0)
+            {
+                return "";
+            }
+            if (flagtype.Equals("LAB"))
+            {
+                codeH = "LB";
+            }
+            else if (flagtype.Equals("Special"))
+            {
+                codeH = "SE";
+            }
+            else if (flagtype.Equals("Drug"))
+            {
+                codeH = "DU";
+            }
+            int.TryParse(itmDB.selectCount(), out chk1);
+            chk1++;
+            code = "0000" + chk1.ToString();
+            if (code.Length > 4)
+            {
+                code = code.Substring(code.Length - 4);
+            }
+            code = codeH + code;
+            BItem item = new BItem();
+            item.item_id = "";
+            item.item_code = code;
+            item.item_common_name = pttitemname;
+            item.item_name_e = pttitemname;
+            item.item_name_t = pttitemname;
+            if (flagtype.Equals("LAB"))
+            {
+                item.status_item = "1";
+            }
+            else if (flagtype.Equals("Special"))
+            {
+                item.status_item = "2";
+            }
+            else if (flagtype.Equals("Drug"))
+            {
+                item.status_item = "3";
+            }
+            item.item_master_id = pttitemid;
+            item.item_link_id = linkitemid;
+            if (itemcode.Length <= 0)
+            {
+                re = itmDB.insert(item, userid);
+            }
+            else
+            {
+                re = itmDB.updateCodeLinkMaster(itemid, code, pttitemid, linkitemid, userid);
+            }
+            if (long.TryParse(re, out chk))
+            {
+                if (flagtype.Equals("LAB"))
+                {
+                    re1 = oLabiDB.updateCode(pttitemid, code, userid);
+                    re2 = oLabiDB.updateCodeEx(linkitemid, code, userid);
+                }
+                else if (flagtype.Equals("Special"))
+                {
+                    re1 = oSItmDB.updateCode(pttitemid, code, userid);
+                    re2 = oSItmDB.updateCodeEx(linkitemid, code, userid);
+                }
+                else if (flagtype.Equals("Drug"))
+                {
+                    re1 = oStkdDB.updateCode(pttitemid, code, userid);
+                    re2 = oStkdDB.updateCodeEx(linkitemid, code, userid);
+                }
+            }
+            return re;
+        }
     }
 }

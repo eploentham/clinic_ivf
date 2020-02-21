@@ -223,6 +223,12 @@
     <Compile Include="gui\FrmDoctorView.Designer.cs">
       <DependentUpon>FrmDoctorView.cs</DependentUpon>
     </Compile>
+    <Compile Include="gui\FrmItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="gui\FrmItem.Designer.cs">
+      <DependentUpon>FrmItem.cs</DependentUpon>
+    </Compile>
     <Compile Include="gui\FrmLabBloodAdd.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1029,6 +1035,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="gui\FrmDoctorView.resx">
       <DependentUpon>FrmDoctorView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="gui\FrmItem.resx">
+      <DependentUpon>FrmItem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="gui\FrmLabBloodAdd.resx">
       <DependentUpon>FrmLabBloodAdd.cs</DependentUpon>

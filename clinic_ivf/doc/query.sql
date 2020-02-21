@@ -1354,3 +1354,81 @@ ADD COLUMN `month_curr_cashier` VARCHAR(45) NULL AFTER `receipt_cover_doc`;
 
 
 ALTER TABLE ivf_101.lab_t_result AUTO_INCREMENT = 2490000000;
+
+63-02-15
+
+ALTER TABLE `ivf_101_donor`.`b_item` 
+CHANGE COLUMN `item_id` `item_id` BIGINT NOT NULL ,
+CHANGE COLUMN `item_sub_group_id` `item_sub_group_id` BIGINT NULL DEFAULT NULL ,
+CHANGE COLUMN `item_billing_subgroop_id` `item_billing_subgroop_id` BIGINT NULL DEFAULT NULL ;
+
+ALTER TABLE `ivf_101`.`b_item` 
+CHANGE COLUMN `item_id` `item_id` BIGINT NOT NULL ,
+CHANGE COLUMN `item_sub_group_id` `item_sub_group_id` BIGINT NULL DEFAULT NULL ,
+CHANGE COLUMN `item_billing_subgroop_id` `item_billing_subgroop_id` BIGINT NULL DEFAULT NULL ;
+
+ALTER TABLE `ivf_101_donor`.`LabItem` 
+ADD COLUMN `item_code` VARCHAR(45) NULL AFTER `sort1`;
+
+ALTER TABLE `ivf_101`.`LabItem` 
+ADD COLUMN `item_code` VARCHAR(45) NULL AFTER `sort1`;
+
+ALTER TABLE `ivf_101_donor`.`SpecialItem` 
+ADD COLUMN `item_code` VARCHAR(45) NULL AFTER `status_discount`;
+
+ALTER TABLE `ivf_101`.`SpecialItem` 
+ADD COLUMN `item_code` VARCHAR(45) NULL AFTER `status_discount`;
+
+ALTER TABLE `ivf_101_donor`.`StockDrug` 
+ADD COLUMN `item_code` VARCHAR(45) NULL AFTER `drug_description`;
+
+ALTER TABLE `ivf_101`.`StockDrug` 
+ADD COLUMN `item_code` VARCHAR(45) NULL AFTER `drug_description`;
+
+ALTER TABLE `ivf_101`.`specialitem` 
+ADD COLUMN `item_code` VARCHAR(45) NULL AFTER `BillGroupID`;
+
+ALTER TABLE `ivf_101_donor`.`specialitem` 
+ADD COLUMN `item_code` VARCHAR(45) NULL AFTER `BillGroupID`;
+
+ALTER TABLE `ivf_101_donor`.`b_item` 
+ADD COLUMN `status_item` VARCHAR(45) NULL COMMENT '0=default;1=lab; 2=special;3=drug' AFTER `user_cancel`;
+
+ALTER TABLE `ivf_101`.`b_item` 
+ADD COLUMN `status_item` VARCHAR(45) NULL COMMENT '0=default;1=lab; 2=special;3=drug' AFTER `user_cancel`;
+
+ALTER TABLE ivf_101.b_item AUTO_INCREMENT = 2070000000;
+
+ALTER TABLE `ivf_101`.`b_item` 
+ADD COLUMN `item_master_id` BIGINT NULL AFTER `status_item`,
+ADD COLUMN `item_link_id` BIGINT NULL AFTER `item_master_id`;
+
+ALTER TABLE `ivf_101_donor`.`b_item` 
+ADD COLUMN `item_master_id` BIGINT NULL AFTER `status_item`,
+ADD COLUMN `item_link_id` BIGINT NULL AFTER `item_master_id`;
+
+
+ALTER TABLE `ivf`.`labitem` 
+ADD COLUMN `date_create` VARCHAR(45) NULL AFTER `item_code`,
+ADD COLUMN `date_modi` VARCHAR(45) NULL AFTER `date_create`,
+ADD COLUMN `date_cancel` VARCHAR(45) NULL AFTER `date_modi`,
+ADD COLUMN `user_create` VARCHAR(45) NULL AFTER `date_cancel`,
+ADD COLUMN `user_modi` VARCHAR(45) NULL AFTER `user_create`,
+ADD COLUMN `user_cancel` VARCHAR(45) NULL AFTER `user_modi`;
+
+ALTER TABLE `ivf`.`specialitem` 
+ADD COLUMN `date_create` VARCHAR(45) NULL AFTER `status_discount`,
+ADD COLUMN `date_modi` VARCHAR(45) NULL AFTER `date_create`,
+ADD COLUMN `date_cancel` VARCHAR(45) NULL AFTER `date_modi`,
+ADD COLUMN `user_create` VARCHAR(45) NULL AFTER `date_cancel`,
+ADD COLUMN `user_modi` VARCHAR(45) NULL AFTER `user_create`,
+ADD COLUMN `user_cancel` VARCHAR(45) NULL AFTER `user_modi`;
+
+ALTER TABLE `ivf`.`stockdrug` 
+ADD COLUMN `date_create` VARCHAR(45) NULL AFTER `order_amount_sub_3`,
+ADD COLUMN `date_modi` VARCHAR(45) NULL AFTER `date_create`,
+ADD COLUMN `date_cancel` VARCHAR(45) NULL AFTER `date_modi`,
+ADD COLUMN `user_create` VARCHAR(45) NULL AFTER `date_cancel`,
+ADD COLUMN `user_modi` VARCHAR(45) NULL AFTER `user_create`,
+ADD COLUMN `user_cancel` VARCHAR(45) NULL AFTER `user_modi`;
+

@@ -33,6 +33,13 @@ namespace clinic_ivf.objdb
             sitm.isActive= "isActive";
             sitm.BillGroupID= "BillGroupID";
             sitm.active = "active";
+            sitm.item_code = "item_code";
+            sitm.date_cancel = "date_cancel";
+            sitm.date_create = "date_create";
+            sitm.date_modi = "date_modi";
+            sitm.user_cancel = "user_cancel";
+            sitm.user_create = "user_create";
+            sitm.user_modi = "user_modi";
 
             sitm.table = "SpecialItem";
             sitm.pkField = "SID";
@@ -180,6 +187,44 @@ namespace clinic_ivf.objdb
 
             return re;
         }
+        public String updateCode(String id, String code, String userId)
+        {
+            String re = "", sql = "";
+            sql = "Update " + sitm.table + " Set " +
+                " " + sitm.item_code + " = '" + code + "'" +
+                "," + sitm.user_modi + "= '" + userId + "'" +
+                "," + sitm.date_modi + "= now()" +
+                "Where " + sitm.pkField + "='" + id + "'";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+
+            return re;
+        }
+        public String updateCodeEx(String id, String code, String userId)
+        {
+            String re = "", sql = "";
+            sql = "Update " + sitm.table + " Set " +
+                " " + sitm.item_code + " = '" + code + "'" +
+                "," + sitm.user_modi + "= '" + userId + "'" +
+                "," + sitm.date_modi + "= now()" +
+                "Where " + sitm.pkField + "='" + id + "'";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.connEx, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+
+            return re;
+        }
         public String insertSpecialItem(OldSpecialItem p, String userId)
         {
             String re = "";
@@ -219,6 +264,26 @@ namespace clinic_ivf.objdb
                 "From " + sitm.table + " sitm " +
                 "Where sitm."+sitm.active+" = '1'  ";
             dt = conn.selectData(conn.conn, sql);
+
+            return dt;
+        }
+        public DataTable selectAll2()
+        {
+            DataTable dt = new DataTable();
+            String sql = "select sitm."+sitm.SID+" as id,"+sitm.item_code+" as code,"+sitm.SName+" as name " +
+                "From " + sitm.table + " sitm " +
+                "Where sitm." + sitm.active + " = '1'  ";
+            dt = conn.selectData(conn.conn, sql);
+
+            return dt;
+        }
+        public DataTable selectAllEx()
+        {
+            DataTable dt = new DataTable();
+            String sql = "select sitm." + sitm.SID + " as id," + sitm.item_code + " as code," + sitm.SName + " as name " +
+                "From " + sitm.table + " sitm " +
+                "Where sitm." + sitm.active + " = '1'  ";
+            dt = conn.selectData(conn.connEx, sql);
 
             return dt;
         }
@@ -290,6 +355,7 @@ namespace clinic_ivf.objdb
                 sitm1.isActive = dt.Rows[0][sitm.isActive].ToString();
                 sitm1.BillGroupID = dt.Rows[0][sitm.BillGroupID].ToString();
                 sitm1.active = dt.Rows[0][sitm.active].ToString();
+                sitm1.item_code = dt.Rows[0][sitm.item_code].ToString();
             }
             else
             {
@@ -309,7 +375,7 @@ namespace clinic_ivf.objdb
             stf1.isActive = "";
             stf1.BillGroupID = "";
             stf1.active = "";
-
+            stf1.item_code = "";
             return stf1;
         }
     }

@@ -50,6 +50,13 @@ namespace clinic_ivf.objdb
             ostkD.on_hand_sub_3 = "on_hand_sub_3";
             ostkD.order_point_sub_3 = "order_point_sub_3";
             ostkD.order_amount_sub_3 = "order_amount_sub_3";
+            ostkD.item_code = "item_code";
+            ostkD.date_cancel = "date_cancel";
+            ostkD.date_create = "date_create";
+            ostkD.date_modi = "date_modi";
+            ostkD.user_cancel = "user_cancel";
+            ostkD.user_create = "user_create";
+            ostkD.user_modi = "user_modi";
 
             ostkD.table = "StockDrug";
             ostkD.pkField = "DUID";
@@ -193,6 +200,54 @@ namespace clinic_ivf.objdb
 
             return re;
         }
+        public String updateCode(String id, String code, String userId)
+        {
+            String re = "";
+            String sql = "";
+            //chkNull(p);
+
+            sql = "Update " + ostkD.table + " Set " +
+                " " + ostkD.item_code + " = '" + code + "'" +
+                "," + ostkD.user_modi + "= '" + userId + "'" +
+                "," + ostkD.date_modi + "= now() " +
+                
+                "Where " + ostkD.pkField + "='" + id + "'";
+
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+
+            return re;
+        }
+        public String updateCodeEx(String id, String code, String userId)
+        {
+            String re = "";
+            String sql = "";
+            //chkNull(p);
+
+            sql = "Update " + ostkD.table + " Set " +
+                " " + ostkD.item_code + " = '" + code + "'" +
+                "," + ostkD.user_modi + "= '" + userId + "'" +
+                "," + ostkD.date_modi + "= now() " +
+
+                "Where " + ostkD.pkField + "='" + id + "'";
+
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.connEx, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+
+            return re;
+        }
         public String insertStockDrug(OldStockDrug p, String userId)
         {
             String re = "";
@@ -224,6 +279,24 @@ namespace clinic_ivf.objdb
                 "From " + ostkD.table + " ostkD " +
                 "Where ostkD." + ostkD.active + " ='1' ";
             dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
+        public DataTable selectAll2()
+        {
+            DataTable dt = new DataTable();
+            String sql = "select ostkD."+ostkD.DUID+" as id,"+ostkD.item_code+" as code,"+ostkD.DUName+" as name " +
+                "From " + ostkD.table + " ostkD " +
+                "Where ostkD." + ostkD.active + " ='1' ";
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
+        public DataTable selectAllEx()
+        {
+            DataTable dt = new DataTable();
+            String sql = "select ostkD." + ostkD.DUID + " as id," + ostkD.item_code + " as code," + ostkD.DUName + " as name " +
+                "From " + ostkD.table + " ostkD " +
+                "Where ostkD." + ostkD.active + " ='1' ";
+            dt = conn.selectData(conn.connEx, sql);
             return dt;
         }
         public DataTable selectAll1()
@@ -399,7 +472,7 @@ namespace clinic_ivf.objdb
                 ostkd1.QTY = dt.Rows[0][ostkD.QTY].ToString();
                 ostkd1.PendingQTY = dt.Rows[0][ostkD.PendingQTY].ToString();
                 ostkd1.Price = dt.Rows[0][ostkD.Price].ToString();
-                
+                ostkd1.item_code = dt.Rows[0][ostkD.item_code].ToString();
             }
             else
             {
@@ -418,7 +491,8 @@ namespace clinic_ivf.objdb
             stf1.QTY = "";
             stf1.PendingQTY = "";
             stf1.Price = "";
-            
+            stf1.item_code = "";
+
             return stf1;
         }
     }
