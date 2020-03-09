@@ -133,6 +133,7 @@
             this.c1DockingTab1.Location = new System.Drawing.Point(0, 0);
             this.c1DockingTab1.Name = "c1DockingTab1";
             this.c1DockingTab1.SelectedIndex = 5;
+            this.c1DockingTab1.SelectedTabBold = true;
             this.c1DockingTab1.ShowCaption = true;
             this.c1DockingTab1.Size = new System.Drawing.Size(800, 450);
             this.c1DockingTab1.TabIndex = 0;

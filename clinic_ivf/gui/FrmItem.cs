@@ -24,7 +24,7 @@ namespace clinic_ivf.gui
 
         C1SuperTooltip stt;
         C1SuperErrorProvider sep;
-        C1DockingTab tC1 ;
+        C1DockingTab tC1;
         C1DockingTabPage tabItem, tabDrug, tabSpecial, tabLab ;
         Panel pnItem;
         Label lbCboname, lbItemName, lbItem, lbCapPtt, lbCapLink, lbItemCode, lbLinkCode, lbMessage;
