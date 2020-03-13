@@ -101,6 +101,8 @@ namespace clinic_ivf.objdb
             cop.prefix_receipt_cover_doc = "prefix_receipt_cover_doc";
             cop.receipt_cover_doc = "receipt_cover_doc";
             cop.month_curr_cashier = "month_curr_cashier";
+            cop.receipt1_doc = "receipt1_doc";
+            cop.prefix_receipt1_doc = "prefix_receipt1_doc";
 
             cop.table = "b_company";
             cop.pkField = "comp_id";
@@ -148,6 +150,7 @@ namespace clinic_ivf.objdb
             p.current_date = p.current_date == null ? "" : p.current_date;
             p.prefix_form_a_doc = p.prefix_form_a_doc == null ? "" : p.prefix_form_a_doc;
             p.prefix_receipt_cover_doc = p.prefix_receipt_cover_doc == null ? "" : p.prefix_receipt_cover_doc;
+            p.prefix_receipt1_doc = p.prefix_receipt1_doc == null ? "" : p.prefix_receipt1_doc;
 
             p.amount_reserve = Decimal.TryParse(p.amount_reserve, out chk1) ? chk1.ToString() : "0";
             p.billing_doc = int.TryParse(p.billing_doc, out chk) ? chk.ToString() : "0";
@@ -157,6 +160,7 @@ namespace clinic_ivf.objdb
             p.req_doc = int.TryParse(p.req_doc, out chk) ? chk.ToString() : "0";
             p.form_a_doc = int.TryParse(p.form_a_doc, out chk) ? chk.ToString() : "0";
             p.receipt_cover_doc = int.TryParse(p.receipt_cover_doc, out chk) ? chk.ToString() : "0";
+            p.receipt1_doc = int.TryParse(p.receipt1_doc, out chk) ? chk.ToString() : "0";
         }
         public String insert(Company p, String userId)
         {
@@ -1074,6 +1078,8 @@ namespace clinic_ivf.objdb
                 cop1.prefix_receipt_cover_doc = dt.Rows[0][cop.prefix_receipt_cover_doc].ToString();
                 cop1.receipt_cover_doc = dt.Rows[0][cop.receipt_cover_doc].ToString();
                 cop1.month_curr_cashier = dt.Rows[0][cop.month_curr_cashier].ToString();
+                cop1.receipt1_doc = dt.Rows[0][cop.receipt1_doc].ToString();
+                cop1.prefix_receipt1_doc = dt.Rows[0][cop.prefix_receipt1_doc].ToString();
             }
             else
             {
@@ -1158,6 +1164,8 @@ namespace clinic_ivf.objdb
                 cop1.prefix_receipt_cover_doc = "";
                 cop1.receipt_cover_doc = "";
                 cop1.month_curr_cashier = "";
+                cop1.receipt1_doc = "";
+                cop1.prefix_receipt1_doc = "";
             }
 
             return cop1;
