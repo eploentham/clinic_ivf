@@ -1432,3 +1432,8 @@ ADD COLUMN `user_create` VARCHAR(45) NULL AFTER `date_cancel`,
 ADD COLUMN `user_modi` VARCHAR(45) NULL AFTER `user_create`,
 ADD COLUMN `user_cancel` VARCHAR(45) NULL AFTER `user_modi`;
 
+
+63-03-14
+ALTER TABLE `ivf`.`b_company` 
+ADD COLUMN `receipt1_doc` INT NULL AFTER `month_curr_cashier`,
+ADD COLUMN `prefix_receipt1_doc` VARCHAR(45) NULL AFTER `receipt1_doc`;
