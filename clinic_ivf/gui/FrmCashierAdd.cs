@@ -116,18 +116,23 @@ namespace clinic_ivf.gui
         private void BtnPrnReceipt_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            String cashid1 = "", creditid1="";
+            printReceipt("");
+
+        }
+        private void printReceipt(String flagExtra)
+        {
+            String cashid1 = "", creditid1 = "";
             cashid1 = cboAccCash.SelectedItem == null ? "" : ((ComboBoxItem)cboAccCash.SelectedItem).Value;
             creditid1 = cboAccCredit.SelectedItem == null ? "" : ((ComboBoxItem)cboAccCredit.SelectedItem).Value;
-            if(cashid1.Length == 0 && creditid1.Length == 0)
+            if (cashid1.Length == 0 && creditid1.Length == 0)
             {
                 MessageBox.Show("ยังไม่ได้เลือก ประเภทบัญชี", "");
                 return;
             }
 
-            Decimal totalcredit = 0, totalcash=0, total=0, discount=0;
+            Decimal totalcredit = 0, totalcash = 0, total = 0, discount = 0;
             Decimal.TryParse(txtTotalCredit.Text.Replace(",", ""), out totalcredit);
-            Decimal.TryParse(txtTotalCash.Text.Replace(",", ""), out totalcash);        
+            Decimal.TryParse(txtTotalCash.Text.Replace(",", ""), out totalcash);
 
             if (cashid1.Equals("") && totalcash > 0)
             {
@@ -173,7 +178,7 @@ namespace clinic_ivf.gui
                 String creditid = cboAccCredit.SelectedItem == null ? "" : ((ComboBoxItem)cboAccCredit.SelectedItem).Value;
                 //ic.ivfDB.obilhDB.updateReceiptNo(txtVn.Text, billNo, txtTotalCash.Text.Replace(",",""), txtTotalCredit.Text.Replace(",", ""), txtCreditCardNumber.Text, cashid, creditid);
                 ic.ivfDB.obilhDB.updateReceiptNoByBillId(txtBillId.Text, billNo, txtTotalCash.Text.Replace(",", ""), txtTotalCredit.Text.Replace(",", "")
-                    , txtCreditCardNumber.Text, cashid, creditid, total.ToString(), discount.ToString(),txtPayName.Text);
+                    , txtCreditCardNumber.Text, cashid, creditid, total.ToString(), discount.ToString(), txtPayName.Text);
 
                 //OldBillheader obill = new OldBillheader();
                 String billno2 = ic.ivfDB.obilhDB.selectBillNoByVN(txtVn.Text);
@@ -287,10 +292,9 @@ namespace clinic_ivf.gui
             month = ic.cop.month;
             year = ic.cop.year;
             FrmReport frm = new FrmReport(ic);
-            frm.setPrintBill(dtprn, txtHn.Text, txtPttNameE.Text, amt2, amt.ToString("#,###.00"), billNo, day + "/" + month + "/" + year, payby,"ใบเสร็จ/Receipt", sumprice.ToString("#,###.00"));
+            frm.setPrintBill(dtprn, txtHn.Text, txtPttNameE.Text, amt2, amt.ToString("#,###.00"), billNo, day + "/" + month + "/" + year, payby, "ใบเสร็จ/Receipt", sumprice.ToString("#,###.00"));
             frm.ShowDialog(this);
         }
-
         private void ChkDiscountPer_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();

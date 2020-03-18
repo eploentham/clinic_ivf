@@ -490,15 +490,41 @@ namespace clinic_ivf.gui
             //grfVs.row
             //grfExpnC.CellButtonClick += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellButtonClick);
             //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
-
+            //ContextMenu menuGw = new ContextMenu();
             //menuGw.MenuItems.Add("&แก้ไข รายการเบิก", new EventHandler(ContextMenu_edit));
             //menuGw.MenuItems.Add("&แก้ไข", new EventHandler(ContextMenu_Gw_Edit));
             //menuGw.MenuItems.Add("&ยกเลิก", new EventHandler(ContextMenu_Gw_Cancel));
-
+            //grfVs.ContextMenu = menuGw;
             panel2.Controls.Add(grfVs);
 
             theme1.SetTheme(grfVs, "ExpressionDark");
 
+        }
+        private void ContextMenu_Gw_Cancel(object sender, System.EventArgs e)
+        {
+            String id = "";
+            if (grfScan.Col <= 0) return;
+            if (grfScan.Row < 0) return;
+            if (grfScan.Col == 1)
+            {
+                id = grfScan[grfScan.Row, colPic2].ToString();
+            }
+            else
+            {
+                id = grfScan[grfScan.Row, colPic4].ToString();
+            }
+            if (MessageBox.Show("ต้องการ ลบข้อมูลนี้ "+ id+" - "+ grfVs.Row, "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+            {
+                int chk = 0;
+                String re = ic.ivfDB.dscDB.voidDocScan(id, "");
+                if (int.TryParse(re, out chk))
+                {
+                    frmImg.Dispose();
+                    setGrfScan(grfVs.Row);
+                    grfScan.Rows.Count = 0;
+                    //clearGrf();
+                }
+            }
         }
         private void setStaffNote(String vsDate, String preno)
         {
@@ -633,6 +659,7 @@ namespace clinic_ivf.gui
             ContextMenu menuGw = new ContextMenu();
             menuGw.MenuItems.Add("ต้องการ Print ภาพนี้", new EventHandler(ContextMenu_grfscan__print));
             menuGw.MenuItems.Add("ต้องการ Print ภาพทั้งหมด", new EventHandler(ContextMenu_grfscan_print_all));
+            menuGw.MenuItems.Add("ต้องการ ยกเลิก ภาพนี้", new EventHandler(ContextMenu_Gw_Cancel));
             grfScan.ContextMenu = menuGw;
             DataTable dt = new DataTable();
             dt = ic.ivfDB.dscDB.selectByVn(txtHn.Text, vn);
