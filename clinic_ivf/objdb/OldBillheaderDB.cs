@@ -62,6 +62,7 @@ namespace clinic_ivf.objdb
             obillh.cash = "cash";
             obillh.credit = "credit";
             obillh.closeday_id = "closeday_id";
+            obillh.receipt1_no = "receipt1_no";
 
             obillh.table = "BillHeader";
             obillh.pkField = "VN";
@@ -479,6 +480,23 @@ namespace clinic_ivf.objdb
             }
             return re;
         }
-        
+        public String updateReceipt1NoByBillId(String billid, String billno)
+        {
+            String re = "", sql = "";
+            long chk = 0;            
+
+            sql = "Update " + obillh.table + " set " +
+                "" + obillh.receipt_no + "='" + billno + "' " +
+                "Where " + obillh.bill_id + "='" + billid + "' ";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+            return re;
+        }
     }
 }

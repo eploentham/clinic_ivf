@@ -449,7 +449,7 @@ namespace clinic_ivf.objdb
             doc = cop1.prefix_billing_doc + cop1.year + cop1.month + doc;
             return doc;
         }
-        public String genReceiptDoc(ref String year1, ref String month, ref String day)
+        public String genReceiptDoc(ref String year1, ref String month, ref String day, String flag)
         {
             String doc = "", year = "", sql = "";
             Company cop1 = new Company();
@@ -480,18 +480,37 @@ namespace clinic_ivf.objdb
             }
 
             int chk = 0;
-            if (int.TryParse(cop1.receipt_doc, out chk))
+            if (flag.Equals("2"))
             {
-                chk++;
-                doc = "00000" + chk;
-                doc = doc.Substring(doc.Length - 5, 5);
-                year = cop1.year_curr;
+                if (int.TryParse(cop1.receipt1_doc, out chk))
+                {
+                    chk++;
+                    doc = "00000" + chk;
+                    doc = doc.Substring(doc.Length - 5, 5);
+                    year = cop1.year_curr;
 
-                sql = "Update " + cop.table + " Set " +
-                "" + cop.receipt_doc + "=" + chk +
-                " Where " + cop.pkField + "='" + cop1.comp_id + "'";
-                conn.ExecuteNonQuery(conn.conn, sql);
+                    sql = "Update " + cop.table + " Set " +
+                    "" + cop.receipt1_doc + "=" + chk +
+                    " Where " + cop.pkField + "='" + cop1.comp_id + "'";
+                    conn.ExecuteNonQuery(conn.conn, sql);
+                }
             }
+            else
+            {
+                if (int.TryParse(cop1.receipt_doc, out chk))
+                {
+                    chk++;
+                    doc = "00000" + chk;
+                    doc = doc.Substring(doc.Length - 5, 5);
+                    year = cop1.year_curr;
+
+                    sql = "Update " + cop.table + " Set " +
+                    "" + cop.receipt_doc + "=" + chk +
+                    " Where " + cop.pkField + "='" + cop1.comp_id + "'";
+                    conn.ExecuteNonQuery(conn.conn, sql);
+                }
+            }
+            
             try
             {
                 int.TryParse(cop1.year, out chk);
@@ -503,7 +522,15 @@ namespace clinic_ivf.objdb
             {
 
             }
-            doc = cop1.prefix_receipt_doc + cop1.year + cop1.month + doc;
+            if (flag.Equals("2"))
+            {
+                doc = cop1.prefix_receipt1_doc + cop1.year + cop1.month + doc;
+            }
+            else
+            {
+                doc = cop1.prefix_receipt_doc + cop1.year + cop1.month + doc;
+            }
+                
             return doc;
         }
         public String genBillingCoverDoc()

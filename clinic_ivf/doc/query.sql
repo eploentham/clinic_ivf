@@ -1437,3 +1437,6 @@ ADD COLUMN `user_cancel` VARCHAR(45) NULL AFTER `user_modi`;
 ALTER TABLE `ivf`.`b_company` 
 ADD COLUMN `receipt1_doc` INT NULL AFTER `month_curr_cashier`,
 ADD COLUMN `prefix_receipt1_doc` VARCHAR(45) NULL AFTER `receipt1_doc`;
+
+ALTER TABLE `ivf_101`.`billheader` 
+ADD COLUMN `receipt1_no` VARCHAR(45) NULL AFTER `closeday_id`;
