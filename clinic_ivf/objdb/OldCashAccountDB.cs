@@ -234,12 +234,14 @@ namespace clinic_ivf.objdb
                 dept1.CashID = dt.Rows[0][oca.CashID].ToString();
                 dept1.CashName = dt.Rows[0][oca.CashName].ToString();
                 dept1.remark = dt.Rows[0][oca.remark].ToString();
+                dept1.IntLock = dt.Rows[0][oca.IntLock].ToString();
             }
             else
             {
                 dept1.CashID = "";
                 dept1.CashName = "";
                 dept1.remark = "";
+                dept1.IntLock = "";
             }
 
             return dept1;
