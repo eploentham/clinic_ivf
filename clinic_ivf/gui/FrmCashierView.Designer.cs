@@ -99,16 +99,16 @@
             this.pnReportItem = new System.Windows.Forms.Panel();
             this.c1SplitterPanel4 = new C1.Win.C1SplitContainer.C1SplitterPanel();
             this.pnReportCri = new System.Windows.Forms.Panel();
+            this.pnReportCri001 = new System.Windows.Forms.Panel();
+            this.label16 = new System.Windows.Forms.Label();
+            this.btnRptOk = new C1.Win.C1Input.C1Button();
+            this.txtRptDateStart = new C1.Win.C1Input.C1DateEdit();
+            this.btnExcel = new C1.Win.C1Input.C1Button();
+            this.txtRptDateEnd = new C1.Win.C1Input.C1DateEdit();
+            this.btnPrint = new C1.Win.C1Input.C1Button();
+            this.label18 = new System.Windows.Forms.Label();
             this.c1SplitterPanel2 = new C1.Win.C1SplitContainer.C1SplitterPanel();
             this.pnReportView = new System.Windows.Forms.Panel();
-            this.label16 = new System.Windows.Forms.Label();
-            this.txtRptDateStart = new C1.Win.C1Input.C1DateEdit();
-            this.label18 = new System.Windows.Forms.Label();
-            this.txtRptDateEnd = new C1.Win.C1Input.C1DateEdit();
-            this.btnRptOk = new C1.Win.C1Input.C1Button();
-            this.btnExcel = new C1.Win.C1Input.C1Button();
-            this.btnPrint = new C1.Win.C1Input.C1Button();
-            this.pnReportCri001 = new System.Windows.Forms.Panel();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tC)).BeginInit();
@@ -162,13 +162,13 @@
             this.c1SplitterPanel3.SuspendLayout();
             this.c1SplitterPanel4.SuspendLayout();
             this.pnReportCri.SuspendLayout();
-            this.c1SplitterPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtRptDateStart)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtRptDateEnd)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnRptOk)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnExcel)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnPrint)).BeginInit();
             this.pnReportCri001.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnRptOk)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtRptDateStart)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnExcel)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtRptDateEnd)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnPrint)).BeginInit();
+            this.c1SplitterPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // sB
@@ -1139,7 +1139,7 @@
             this.c1SplitterPanel1.SizeRatio = 27.341D;
             this.c1SplitterPanel1.TabIndex = 0;
             this.c1SplitterPanel1.Text = "Panel 1";
-            this.c1SplitterPanel1.Width = 292;
+            this.c1SplitterPanel1.Width = 285;
             // 
             // c1SplitContainer2
             // 
@@ -1167,7 +1167,7 @@
             // 
             this.c1SplitterPanel3.Collapsible = true;
             this.c1SplitterPanel3.Controls.Add(this.pnReportItem);
-            this.c1SplitterPanel3.Height = 336;
+            this.c1SplitterPanel3.Height = 329;
             this.c1SplitterPanel3.Location = new System.Drawing.Point(0, 21);
             this.c1SplitterPanel3.Name = "c1SplitterPanel3";
             this.c1SplitterPanel3.Size = new System.Drawing.Size(285, 308);
@@ -1207,26 +1207,22 @@
             this.pnReportCri.TabIndex = 0;
             this.theme1.SetTheme(this.pnReportCri, "(default)");
             // 
-            // c1SplitterPanel2
+            // pnReportCri001
             // 
-            this.c1SplitterPanel2.Controls.Add(this.pnReportView);
-            this.c1SplitterPanel2.Height = 697;
-            this.c1SplitterPanel2.Location = new System.Drawing.Point(296, 21);
-            this.c1SplitterPanel2.Name = "c1SplitterPanel2";
-            this.c1SplitterPanel2.Size = new System.Drawing.Size(776, 676);
-            this.c1SplitterPanel2.TabIndex = 1;
-            this.c1SplitterPanel2.Text = "Panel 2";
-            // 
-            // pnReportView
-            // 
-            this.pnReportView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.pnReportView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnReportView.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.pnReportView.Location = new System.Drawing.Point(0, 0);
-            this.pnReportView.Name = "pnReportView";
-            this.pnReportView.Size = new System.Drawing.Size(776, 676);
-            this.pnReportView.TabIndex = 0;
-            this.theme1.SetTheme(this.pnReportView, "(default)");
+            this.pnReportCri001.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnReportCri001.Controls.Add(this.label16);
+            this.pnReportCri001.Controls.Add(this.btnRptOk);
+            this.pnReportCri001.Controls.Add(this.txtRptDateStart);
+            this.pnReportCri001.Controls.Add(this.btnExcel);
+            this.pnReportCri001.Controls.Add(this.txtRptDateEnd);
+            this.pnReportCri001.Controls.Add(this.btnPrint);
+            this.pnReportCri001.Controls.Add(this.label18);
+            this.pnReportCri001.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.pnReportCri001.Location = new System.Drawing.Point(3, 3);
+            this.pnReportCri001.Name = "pnReportCri001";
+            this.pnReportCri001.Size = new System.Drawing.Size(271, 140);
+            this.pnReportCri001.TabIndex = 748;
+            this.theme1.SetTheme(this.pnReportCri001, "(default)");
             // 
             // label16
             // 
@@ -1240,6 +1236,18 @@
             this.label16.TabIndex = 739;
             this.label16.Text = "Date Start :";
             this.theme1.SetTheme(this.label16, "(default)");
+            // 
+            // btnRptOk
+            // 
+            this.btnRptOk.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRptOk.Location = new System.Drawing.Point(228, 41);
+            this.btnRptOk.Name = "btnRptOk";
+            this.btnRptOk.Size = new System.Drawing.Size(31, 25);
+            this.btnRptOk.TabIndex = 747;
+            this.btnRptOk.Text = "...";
+            this.theme1.SetTheme(this.btnRptOk, "(default)");
+            this.btnRptOk.UseVisualStyleBackColor = true;
+            this.btnRptOk.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // txtRptDateStart
             // 
@@ -1295,18 +1303,19 @@
             this.theme1.SetTheme(this.txtRptDateStart, "(default)");
             this.txtRptDateStart.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // label18
+            // btnExcel
             // 
-            this.label18.AutoSize = true;
-            this.label18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label18.Location = new System.Drawing.Point(6, 45);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(70, 16);
-            this.label18.TabIndex = 741;
-            this.label18.Text = "Date End :";
-            this.theme1.SetTheme(this.label18, "(default)");
+            this.btnExcel.Image = global::clinic_ivf.Properties.Resources.excel_24;
+            this.btnExcel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnExcel.Location = new System.Drawing.Point(154, 79);
+            this.btnExcel.Name = "btnExcel";
+            this.btnExcel.Size = new System.Drawing.Size(67, 33);
+            this.btnExcel.TabIndex = 746;
+            this.btnExcel.Text = "Excel";
+            this.btnExcel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnExcel, "(default)");
+            this.btnExcel.UseVisualStyleBackColor = true;
+            this.btnExcel.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // txtRptDateEnd
             // 
@@ -1363,32 +1372,6 @@
             this.theme1.SetTheme(this.txtRptDateEnd, "(default)");
             this.txtRptDateEnd.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // btnRptOk
-            // 
-            this.btnRptOk.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRptOk.Location = new System.Drawing.Point(228, 41);
-            this.btnRptOk.Name = "btnRptOk";
-            this.btnRptOk.Size = new System.Drawing.Size(31, 25);
-            this.btnRptOk.TabIndex = 747;
-            this.btnRptOk.Text = "...";
-            this.theme1.SetTheme(this.btnRptOk, "(default)");
-            this.btnRptOk.UseVisualStyleBackColor = true;
-            this.btnRptOk.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // btnExcel
-            // 
-            this.btnExcel.Image = global::clinic_ivf.Properties.Resources.excel_24;
-            this.btnExcel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExcel.Location = new System.Drawing.Point(154, 79);
-            this.btnExcel.Name = "btnExcel";
-            this.btnExcel.Size = new System.Drawing.Size(67, 33);
-            this.btnExcel.TabIndex = 746;
-            this.btnExcel.Text = "Excel";
-            this.btnExcel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.theme1.SetTheme(this.btnExcel, "(default)");
-            this.btnExcel.UseVisualStyleBackColor = true;
-            this.btnExcel.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
             // btnPrint
             // 
             this.btnPrint.Image = global::clinic_ivf.Properties.Resources.printer_orange24;
@@ -1403,22 +1386,39 @@
             this.btnPrint.UseVisualStyleBackColor = true;
             this.btnPrint.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // pnReportCri001
+            // label18
             // 
-            this.pnReportCri001.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.pnReportCri001.Controls.Add(this.label16);
-            this.pnReportCri001.Controls.Add(this.btnRptOk);
-            this.pnReportCri001.Controls.Add(this.txtRptDateStart);
-            this.pnReportCri001.Controls.Add(this.btnExcel);
-            this.pnReportCri001.Controls.Add(this.txtRptDateEnd);
-            this.pnReportCri001.Controls.Add(this.btnPrint);
-            this.pnReportCri001.Controls.Add(this.label18);
-            this.pnReportCri001.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.pnReportCri001.Location = new System.Drawing.Point(3, 3);
-            this.pnReportCri001.Name = "pnReportCri001";
-            this.pnReportCri001.Size = new System.Drawing.Size(271, 140);
-            this.pnReportCri001.TabIndex = 748;
-            this.theme1.SetTheme(this.pnReportCri001, "(default)");
+            this.label18.AutoSize = true;
+            this.label18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label18.Location = new System.Drawing.Point(6, 45);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(70, 16);
+            this.label18.TabIndex = 741;
+            this.label18.Text = "Date End :";
+            this.theme1.SetTheme(this.label18, "(default)");
+            // 
+            // c1SplitterPanel2
+            // 
+            this.c1SplitterPanel2.Controls.Add(this.pnReportView);
+            this.c1SplitterPanel2.Height = 697;
+            this.c1SplitterPanel2.Location = new System.Drawing.Point(296, 21);
+            this.c1SplitterPanel2.Name = "c1SplitterPanel2";
+            this.c1SplitterPanel2.Size = new System.Drawing.Size(776, 676);
+            this.c1SplitterPanel2.TabIndex = 1;
+            this.c1SplitterPanel2.Text = "Panel 2";
+            // 
+            // pnReportView
+            // 
+            this.pnReportView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnReportView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnReportView.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.pnReportView.Location = new System.Drawing.Point(0, 0);
+            this.pnReportView.Name = "pnReportView";
+            this.pnReportView.Size = new System.Drawing.Size(776, 676);
+            this.pnReportView.TabIndex = 0;
+            this.theme1.SetTheme(this.pnReportView, "(default)");
             // 
             // FrmCashierView
             // 
@@ -1487,14 +1487,14 @@
             this.c1SplitterPanel3.ResumeLayout(false);
             this.c1SplitterPanel4.ResumeLayout(false);
             this.pnReportCri.ResumeLayout(false);
-            this.c1SplitterPanel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.txtRptDateStart)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtRptDateEnd)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnRptOk)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnExcel)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnPrint)).EndInit();
             this.pnReportCri001.ResumeLayout(false);
             this.pnReportCri001.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnRptOk)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtRptDateStart)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnExcel)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtRptDateEnd)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnPrint)).EndInit();
+            this.c1SplitterPanel2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -373,6 +373,9 @@
     <Compile Include="gui\FrmLabSpermView.Designer.cs">
       <DependentUpon>FrmLabSpermView.cs</DependentUpon>
     </Compile>
+    <Compile Include="gui\FrmMiscView.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="gui\FrmNurseAdd2.cs">
       <SubType>Form</SubType>
     </Compile>
