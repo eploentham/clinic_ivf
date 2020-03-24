@@ -130,15 +130,15 @@ namespace clinic_ivf.gui
             {
                 OldCashAccount oca = new OldCashAccount();
                 oca = ic.ivfDB.ocaDB.selectByPk1(cashid1);
-                flag = oca.IntLock.Equals("2") ? "2":"1";
+                flag = oca.IntLock.Equals("1") ? "2":"1";
             }
             else
             {
                 OldCreditCardAccount ocr = new OldCreditCardAccount();
                 ocr = ic.ivfDB.ocrDB.selectByPk1(cashid1);
-                flag = ocr.IntLock.Equals("2") ? "2" : "1";
+                flag = ocr.IntLock.Equals("1") ? "2" : "1";
             }
-            if (flag.Equals("2"))
+            if (flag.Equals("1"))
             {
                 printReceipt("");
                 printReceipt("2");
@@ -200,8 +200,11 @@ namespace clinic_ivf.gui
             String receiptno = "", billnoex1 = "";
             receiptno = ic.ivfDB.obilhDB.selectReceiptNoByVN(ovs.VN);
             //billnoex1 = ic.ivfDB.obilhDB.selectBillNoExByVN(ovs.VN);
+            new LogWriter("e", "printReceipt receiptno " + receiptno);
+            if (flagExtra.Equals("2")) receiptno = "";      //พิมพ์ ใบเสร็จ 2 ชุด
             if (receiptno.Length <= 0)
             {
+                new LogWriter("e", "printReceipt flagExtra "+ flagExtra);
                 billNo = ic.ivfDB.copDB.genReceiptDoc(ref year, ref month, ref day, flagExtra);
                 billExtNo = ic.ivfDB.copDB.genReceiptExtDoc();
                 String cashid = cboAccCash.SelectedItem == null ? "" : ((ComboBoxItem)cboAccCash.SelectedItem).Value;
@@ -329,8 +332,8 @@ namespace clinic_ivf.gui
             month = ic.cop.month;
             year = ic.cop.year;
             FrmReport frm = new FrmReport(ic);
-            frm.setPrintBill(dtprn, txtHn.Text, txtPttNameE.Text, amt2, amt.ToString("#,###.00"), billNo, day + "/" + month + "/" + year, payby, "ใบเสร็จ/Receipt", sumprice.ToString("#,###.00"));
-            frm.ShowDialog(this);
+            frm.setPrintBill(dtprn, txtHn.Text, txtPttNameE.Text, amt2, amt.ToString("#,###.00"), billNo, day + "/" + month + "/" + year, payby, "ใบเสร็จ/Receipt", sumprice.ToString("#,###.00"), flagExtra);
+            frm.Show(this);
         }
         private void ChkDiscountPer_Click(object sender, EventArgs e)
         {
@@ -716,7 +719,7 @@ namespace clinic_ivf.gui
             month = ic.cop.month;
             year = ic.cop.year;
             FrmReport frm = new FrmReport(ic);
-            frm.setPrintBill(dtprn, txtHn.Text, txtPttNameE.Text, amt2, amt.ToString("#,###.00"), billNo, day+"/"+month+"/"+year, payby,"ใบแจ้งหนี้/Bill", sumprice.ToString("#,###.00"));
+            frm.setPrintBill(dtprn, txtHn.Text, txtPttNameE.Text, amt2, amt.ToString("#,###.00"), billNo, day+"/"+month+"/"+year, payby,"ใบแจ้งหนี้/Bill", sumprice.ToString("#,###.00"),"");
             frm.ShowDialog(this);
             
         }
@@ -1143,8 +1146,8 @@ namespace clinic_ivf.gui
         {
             String date = "";
             date = DateTime.Now.Year + "-" + DateTime.Now.ToString("MM-dd");
-            menu.Text = ic.iniC.statusAppDonor.Equals("1") ? "โปรแกรมClinic IVF Donor " + "สวัสดี คุณ " + ic.user.staff_fname_t + " " + ic.user.staff_lname_t + " Update 2019-06-27 "
-                : "โปรแกรมClinic IVF " + "สวัสดี คุณ " + ic.user.staff_fname_t + " " + ic.user.staff_lname_t + " Update 2019-06-27 format date " + date
+            menu.Text = ic.iniC.statusAppDonor.Equals("1") ? "โปรแกรมClinic IVF Donor " + "สวัสดี คุณ " + ic.user.staff_fname_t + " " + ic.user.staff_lname_t + " Update 2020-03-24 "
+                : "โปรแกรมClinic IVF " + "สวัสดี คุณ " + ic.user.staff_fname_t + " " + ic.user.staff_lname_t + " Update 2020-03-24 format date " + date
                 + " [" + ic.ivfDB.copDB.cop.day + "-" + ic.ivfDB.copDB.cop.month + "-" + ic.ivfDB.copDB.cop.year + "]";
             //sB1.Text = "Date " + ic.cop.day + "-" + ic.cop.month + "-" + ic.cop.year + " Server " + ic.iniC.hostDB + " FTP " + ic.iniC.hostFTP;
             sB1.Text = "Date " + ic.cop.day + "-" + ic.cop.month + "-" + ic.cop.year + " Server " + ic.iniC.hostDB + " FTP " + ic.iniC.hostFTP + "/" + ic.iniC.folderFTP;

@@ -234,12 +234,14 @@ namespace clinic_ivf.objdb
                 dept1.CreditCardID = dt.Rows[0][occa.CreditCardID].ToString();
                 dept1.CreditCardName = dt.Rows[0][occa.CreditCardName].ToString();
                 dept1.remark = dt.Rows[0][occa.remark].ToString();
+                dept1.IntLock = dt.Rows[0][occa.IntLock].ToString();
             }
             else
             {
                 dept1.CreditCardID = "";
                 dept1.CreditCardName = "";
                 dept1.remark = "";
+                dept1.IntLock = "";
             }
 
             return dept1;

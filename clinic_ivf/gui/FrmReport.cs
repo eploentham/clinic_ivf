@@ -663,13 +663,21 @@ namespace clinic_ivf.gui
                 MessageBox.Show("error " + ex.Message, "");
             }
         }
-        public void setPrintBill(DataTable dt, String hn, String name, String thai_baht, String amount, String bill_no, String bill_date, String payby, String billname, String sumprice)
+        public void setPrintBill(DataTable dt, String hn, String name, String thai_baht, String amount, String bill_no, String bill_date, String payby, String billname, String sumprice, String flag)
         {
             String chk = "", printerDefault = "";
             ReportDocument rpt = new ReportDocument();
             try
             {
-                rpt.Load("print_bill.rpt");
+                if (flag.Equals("2"))
+                {
+                    rpt.Load("print_bill_a.rpt");
+                }
+                else
+                {
+                    rpt.Load("print_bill.rpt");
+                }
+                
                 rpt.SetDataSource(dt);
                 rpt.SetParameterValue("line1", ic.cop.comp_name_t);
                 rpt.SetParameterValue("line2", ic.cop.addr1);
