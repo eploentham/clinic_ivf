@@ -114,6 +114,15 @@ namespace clinic_ivf.gui
             memuAccCash.Click += MemuAccCash_Click;
             menuConfig.Click += MenuConfig_Click;
             menuItemMas.Click += MenuItemMas_Click;
+            menuMiscView.Click += MenuMiscView_Click;
+        }
+
+        private void MenuMiscView_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            FrmMiscView frm = new FrmMiscView(ic, this);
+            frm.FormBorderStyle = FormBorderStyle.None;
+            AddNewTab(frm, menuMiscView.Text + " ");
         }
 
         private void MenuItemMas_Click(object sender, EventArgs e)
