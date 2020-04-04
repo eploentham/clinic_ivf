@@ -2197,7 +2197,7 @@
             this.c1SplitterPanel1.Size = new System.Drawing.Size(783, 644);
             this.c1SplitterPanel1.TabIndex = 0;
             this.c1SplitterPanel1.Text = "Panel 1";
-            this.c1SplitterPanel1.Width = 790;
+            this.c1SplitterPanel1.Width = 783;
             // 
             // panel8
             // 
