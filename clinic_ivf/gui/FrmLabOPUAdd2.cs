@@ -39,7 +39,7 @@ namespace clinic_ivf.gui
         int colDay5ID = 1, colDay5Num = 2, colDay5Desc = 3, colDay5Desc1 = 4, colDay5Desc2 = 5, colDay5Edit = 6;
         int colDay6ID = 1, colDay6Num = 2, colDay6Desc = 3, colDay6Desc1 = 4, colDay6Desc2 = 5, colDay6Edit = 6;
 
-        int colDay2ImgId = 1, colDay2ImgPic = 3, colDay2ImgNun = 2, colDay2ImgDesc0 = 4, colDay2PathPic = 5, colDay2ImgDesc1 = 6;
+        int colDay2ImgId = 1, colDay2ImgPic = 3, colDay2ImgNun = 2, colDay2ImgDesc0 = 4, colDay2PathPic = 5, colDay2ImgDesc1 = 6, colDay2ImgEdit=8;
 
         C1FlexGrid grfDay2, grfDay3, grfDay5, grfDay6, grfDay2Img, grfDay3Img, grfDay5Img, grfDay6Img;
         C1SuperTooltip stt;
@@ -1538,8 +1538,10 @@ namespace clinic_ivf.gui
                         String no = row[colDay2ImgNun] != null ? row[colDay2ImgNun].ToString() : "";
                         String desc1 = row[colDay2ImgDesc1] != null ? row[colDay2ImgDesc1].ToString() : "";
                         String statusBio = row[colDay2StatusBio] == imgFinish ? "1" : "0";
+                        String statusEdit = row[colDay2ImgEdit] != null ? row[colDay2ImgEdit].ToString() : "";
                         i++;
                         if (i == 1) continue;
+                        if (statusEdit.Length <= 0) continue;
                         if (!id.Equals(""))
                         {
                             if (no.Length > 0)
@@ -1591,56 +1593,58 @@ namespace clinic_ivf.gui
                 //ic.cStf.staff_id = "";
                 //FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
                 //frm.ShowDialog(this);
-                ic.cStf.staff_id = ic.userId;
-                if (!ic.cStf.staff_id.Equals(""))
+            ic.cStf.staff_id = ic.userId;
+            if (!ic.cStf.staff_id.Equals(""))
+            {
+                String re = "";
+                int i = 0;
+                FrmWaiting frmW = new FrmWaiting();
+                frmW.Show();
+                foreach (Row row in grfDay5Img.Rows)
                 {
-                    String re = "";
-                    int i = 0;
-                    FrmWaiting frmW = new FrmWaiting();
-                    frmW.Show();
-                    foreach (Row row in grfDay5Img.Rows)
+                    try
                     {
-                        try
-                        {
-                            String id = row[colDay2ImgId] != null ? row[colDay2ImgId].ToString() : "";
-                            String path = row[colDay2PathPic] != null ? row[colDay2PathPic].ToString() : "";
-                            String desc = row[colDay2ImgDesc0] != null ? row[colDay2ImgDesc0].ToString() : "";
-                            String no = row[colDay2ImgNun] != null ? row[colDay2ImgNun].ToString() : "";
-                            String desc1 = row[colDay2ImgDesc1] != null ? row[colDay2ImgDesc1].ToString() : "";
+                        String id = row[colDay2ImgId] != null ? row[colDay2ImgId].ToString() : "";
+                        String path = row[colDay2PathPic] != null ? row[colDay2PathPic].ToString() : "";
+                        String desc = row[colDay2ImgDesc0] != null ? row[colDay2ImgDesc0].ToString() : "";
+                        String no = row[colDay2ImgNun] != null ? row[colDay2ImgNun].ToString() : "";
+                        String desc1 = row[colDay2ImgDesc1] != null ? row[colDay2ImgDesc1].ToString() : "";
                         String statusBio = row[colDay2StatusBio] == imgFinish ? "1" : "0";
+                        String statusEdit = row[colDay2ImgEdit] != null ? row[colDay2ImgEdit].ToString() : "";
                         i++;
-                            if (i == 1) continue;
-                            if (!id.Equals(""))
+                        if (i == 1) continue;
+                        if (statusEdit.Length <= 0) continue;
+                        if (!id.Equals(""))
+                        {
+                            if (no.Length > 0)
                             {
-                                if (no.Length > 0)
+                                String filename = "";
+                                String[] ext = path.Split('.');
+                                if (ext.Length > 1)
                                 {
-                                    String filename = "";
-                                    String[] ext = path.Split('.');
-                                    if (ext.Length > 1)
+                                    filename = txtOpuCode.Text + "_day5_" + no + "." + ext[ext.Length - 1];
+                                    //re = ic.ivfDB.opuEmDevDB.updatePathPic(id, no, ic.iniC.folderFTP + "/" + txtOpuCode.Text + "/" + filename, desc, desc1, ic.cStf.staff_id);       // -0012
+                                    re = ic.ivfDB.opuEmDevDB.updatePathPicNoPic(id, no, desc, desc1, ic.cStf.staff_id, statusBio);       // +0012
+                                    long chk = 0;
+                                    if (long.TryParse(re, out chk))
                                     {
-                                        filename = txtOpuCode.Text + "_day5_" + no + "." + ext[ext.Length - 1];
-                                        //re = ic.ivfDB.opuEmDevDB.updatePathPic(id, no, ic.iniC.folderFTP + "/" + txtOpuCode.Text + "/" + filename, desc, desc1, ic.cStf.staff_id);       // -0012
-                                        re = ic.ivfDB.opuEmDevDB.updatePathPicNoPic(id, no, desc, desc1, ic.cStf.staff_id, statusBio);       // +0012
-                                        long chk = 0;
-                                        if (long.TryParse(re, out chk))
-                                        {
-                                            //if (File.Exists(path))       // -0012
-                                            //    ic.savePicOPUtoServer(txtOpuCode.Text, filename, path);       // -0012
-                                            grfDay5Img.Rows[i - 1].StyleNew.BackColor = color;
-                                        }
+                                        //if (File.Exists(path))       // -0012
+                                        //    ic.savePicOPUtoServer(txtOpuCode.Text, filename, path);       // -0012
+                                        grfDay5Img.Rows[i - 1].StyleNew.BackColor = color;
                                     }
                                 }
                             }
-                            frmW.pB.Value = i;
                         }
-                        catch (Exception ex)
-                        {
-                            frmW.lb.Text = ex.Message;
-                        }
-                        //i++;
+                        frmW.pB.Value = i;
                     }
-                    frmW.Dispose();
+                    catch (Exception ex)
+                    {
+                        frmW.lb.Text = ex.Message;
+                    }
+                    //i++;
                 }
+                frmW.Dispose();
+            }
             //}
         }
 
@@ -1670,8 +1674,10 @@ namespace clinic_ivf.gui
                         String no = row[colDay2ImgNun] != null ? row[colDay2ImgNun].ToString() : "";
                         String desc1 = row[colDay2ImgDesc1] != null ? row[colDay2ImgDesc1].ToString() : "";
                         String statusBio = row[colDay2StatusBio] == imgFinish ? "1" : "0";
+                        String statusEdit = row[colDay2ImgEdit] != null ? row[colDay2ImgEdit].ToString() : "";
                         i++;
                         if (i == 1) continue;
+                        if (statusEdit.Length <= 0) continue;
                         if (!id.Equals(""))
                         {
                             if (no.Length > 0)
@@ -1873,8 +1879,10 @@ namespace clinic_ivf.gui
                         String no = row[colDay2ImgNun] != null ? row[colDay2ImgNun].ToString() : "";
                         String desc1 = row[colDay2ImgDesc1] != null ? row[colDay2ImgDesc1].ToString() : "";
                         String statusBio = row[colDay2StatusBio] == imgFinish ? "1" : "0";
+                        String statusEdit = row[colDay2ImgEdit] != null ? row[colDay2ImgEdit].ToString() : "";
                         i++;
                         if (i == 1) continue;
+                        if (statusEdit.Length<=0) continue;
                         if (!id.Equals(""))
                         {
                             if (no.Length > 0)
@@ -3061,6 +3069,7 @@ namespace clinic_ivf.gui
             long chk1 = 0;
             if (long.TryParse(re, out chk1))
             {
+                Boolean chkSave = false;
                 setOPUEmbryeEt();
                 String re1 = ic.ivfDB.opuDB.updateEmbryoEt(opu, ic.user.staff_id);
                 sB1.Text = "Save ET";
@@ -3085,16 +3094,23 @@ namespace clinic_ivf.gui
                 String re6 = ic.ivfDB.opuDB.updateSperm(opu, ic.user.staff_id);
                 sB1.Text = "Save Sperm";
                 Application.DoEvents();
-                saveDay2();
-                sB1.Text = "Save Da2";
+                chkSave = saveDay2() ? setGrfDay2() : false;
+                BtnSaveImg2_Click(null, null);
+                sB1.Text = "Save Day2";
                 Application.DoEvents();
-                saveDay3();
+                chkSave = false;
+                chkSave = saveDay3() ? setGrfDay3() : false;
+                BtnSaveImg3_Click(null, null);
                 sB1.Text = "Save Day3";
                 Application.DoEvents();
-                saveDay5();
+                chkSave = false;
+                chkSave = saveDay5() ? setGrfDay5() : false;
+                BtnSaveImg5_Click(null, null);
                 sB1.Text = "Save Day5";
                 Application.DoEvents();
-                saveDay6();
+                chkSave = false;
+                chkSave = saveDay6() ? setGrfDay6() : false;
+                BtnSaveImg6_Click(null, null);
                 sB1.Text = "Save OPU success";
                 btnSave.Image = Resources.accept_database24;
             }
@@ -3108,7 +3124,7 @@ namespace clinic_ivf.gui
             grfDay2Img.Clear();
             grfDay2Img.DataSource = null;
             grfDay2Img.Rows.Count = 1;
-            grfDay2Img.Cols.Count = 8;
+            grfDay2Img.Cols.Count = 9;
             DataTable dt = new DataTable();
             dt = ic.ivfDB.opuEmDevDB.selectByOpuFetId_Day(txtID.Text, objdb.LabOpuEmbryoDevDB.Day1.Day2);
 
@@ -3225,6 +3241,7 @@ namespace clinic_ivf.gui
             }
             grfDay2Img.Cols[colDay2ImgId].Visible = false;
             grfDay2Img.Cols[colDay2PathPic].Visible = false;
+            grfDay2Img.Cols[colDay2ImgEdit].Visible = false;
             grfDay2Img.Cols[colDay2ImgPic].AllowEditing = false;
             grfDay2Img.Cols[colDay2StatusBio].AllowEditing = false;
             grfDay2Img.AutoSizeCols();
@@ -3244,7 +3261,7 @@ namespace clinic_ivf.gui
 
             grfDay2Img.DoubleClick += GrfDay2Img_DoubleClick;
             grfDay2Img.KeyUp += GrfDay2Img_KeyUp;
-            //grfDay2.CellChanged += GrfDay2_CellChanged;
+            grfDay2Img.ChangeEdit += GrfDay2Img_ChangeEdit;
             ContextMenu menuGw = new ContextMenu();
             menuGw.MenuItems.Add("&Upload image", new EventHandler(ContextMenu_grfday2_upload));
             menuGw.MenuItems.Add("&Save description", new EventHandler(ContextMenu_grfday2_save));
@@ -3253,6 +3270,13 @@ namespace clinic_ivf.gui
             pnGrf2Img.Controls.Add(grfDay2Img);
 
             theme1.SetTheme(grfDay2Img, "Office2010Blue");
+        }
+
+        private void GrfDay2Img_ChangeEdit(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            grfDay2Img[grfDay2Img.Row, colDay2ImgEdit] = "1";
+            grfDay2Img.Rows[grfDay2Img.Row].StyleNew.BackColor = color;
         }
 
         private void GrfDay2Img_KeyUp(object sender, KeyEventArgs e)
@@ -3372,6 +3396,8 @@ namespace clinic_ivf.gui
                 {
                     grfDay2Img[row, colDay2StatusBio] = imgFinish;
                 }
+                grfDay2Img[grfDay2Img.Row, colDay2ImgEdit] = "1";
+                grfDay2Img.Rows[grfDay2Img.Row].StyleNew.BackColor = color;
                 setGrfDay2ImgFreezing();
             }
         }
@@ -3389,12 +3415,12 @@ namespace clinic_ivf.gui
                 }
             }
         }
-        private void setGrfDay3Img()
+        private Boolean setGrfDay3Img()
         {
             grfDay3Img.Clear();
             grfDay3Img.DataSource = null;
             grfDay3Img.Rows.Count = 1;
-            grfDay3Img.Cols.Count = 8;
+            grfDay3Img.Cols.Count = 9;
             DataTable dt = new DataTable();
             dt = ic.ivfDB.opuEmDevDB.selectByOpuFetId_Day(txtID.Text, objdb.LabOpuEmbryoDevDB.Day1.Day3);
 
@@ -3512,12 +3538,15 @@ namespace clinic_ivf.gui
             }
             grfDay3Img.Cols[colDay2ImgId].Visible = false;
             grfDay3Img.Cols[colDay2PathPic].Visible = false;
+            grfDay3Img.Cols[colDay2ImgEdit].Visible = false;
             grfDay3Img.Cols[colDay2ImgPic].AllowEditing = false;
             grfDay3Img.Cols[colDay2StatusBio].AllowEditing = false;
             grfDay3Img.AutoSizeCols();
             grfDay3Img.AutoSizeRows();
             theme1.SetTheme(grfDay3Img, "Office2016Colorful");
             grfDay3Img.Refresh();
+
+            return true;
         }
 
         private void initGrfDay3Img()
@@ -3531,7 +3560,7 @@ namespace clinic_ivf.gui
 
             grfDay3Img.DoubleClick += GrfDay3Img_DoubleClick;
             grfDay3Img.KeyUp += GrfDay3Img_KeyUp;
-            //grfDay2.ChangeEdit += GrfDay2_ChangeEdit;
+            grfDay3Img.ChangeEdit += GrfDay3Img_ChangeEdit;
             //grfDay2.CellChanged += GrfDay2_CellChanged;
             ContextMenu menuGw = new ContextMenu();
             menuGw.MenuItems.Add("&Upload image", new EventHandler(ContextMenu_grfday3_upload));
@@ -3541,6 +3570,13 @@ namespace clinic_ivf.gui
             pnGrf3Img.Controls.Add(grfDay3Img);
 
             theme1.SetTheme(grfDay3Img, "Office2010Blue");
+        }
+
+        private void GrfDay3Img_ChangeEdit(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            grfDay3Img[grfDay3Img.Row, colDay2ImgEdit] = "1";
+            grfDay3Img.Rows[grfDay3Img.Row].StyleNew.BackColor = color;
         }
 
         private void GrfDay3Img_KeyUp(object sender, KeyEventArgs e)
@@ -3660,6 +3696,8 @@ namespace clinic_ivf.gui
                 {
                     grfDay3Img[row, colDay2StatusBio] = imgFinish;
                 }
+                grfDay3Img[grfDay3Img.Row, colDay2ImgEdit] = "1";
+                grfDay3Img.Rows[grfDay3Img.Row].StyleNew.BackColor = color;
                 setGrfDay3ImgFreezing();
             }
         }
@@ -3683,7 +3721,7 @@ namespace clinic_ivf.gui
             grfDay5Img.Clear();
             grfDay5Img.DataSource = null;
             grfDay5Img.Rows.Count = 1;
-            grfDay5Img.Cols.Count = 8;
+            grfDay5Img.Cols.Count = 9;
             DataTable dt = new DataTable();
             dt = ic.ivfDB.opuEmDevDB.selectByOpuFetId_Day(txtID.Text, objdb.LabOpuEmbryoDevDB.Day1.Day5);
 
@@ -3805,6 +3843,7 @@ namespace clinic_ivf.gui
             }
             grfDay5Img.Cols[colDay2ImgId].Visible = false;
             grfDay5Img.Cols[colDay2PathPic].Visible = false;
+            grfDay5Img.Cols[colDay2ImgEdit].Visible = false;
             grfDay5Img.Cols[colDay2ImgPic].AllowEditing = false;
             grfDay5Img.Cols[colDay2StatusBio].AllowEditing = false;
             grfDay5Img.AutoSizeCols();
@@ -3824,7 +3863,7 @@ namespace clinic_ivf.gui
 
             grfDay5Img.DoubleClick += GrfDay5Img_DoubleClick;
             grfDay5Img.KeyUp += GrfDay5Img_KeyUp;
-            //grfDay2.CellChanged += GrfDay2_CellChanged;
+            grfDay5Img.ChangeEdit += GrfDay5Img_ChangeEdit;
             ContextMenu menuGw = new ContextMenu();
             menuGw.MenuItems.Add("&Upload image", new EventHandler(ContextMenu_grfday5_upload));
             menuGw.MenuItems.Add("&Save description", new EventHandler(ContextMenu_grfday5_save));
@@ -3833,6 +3872,13 @@ namespace clinic_ivf.gui
             pnGrf5Img.Controls.Add(grfDay5Img);
 
             theme1.SetTheme(grfDay5Img, "Office2010Blue");
+        }
+
+        private void GrfDay5Img_ChangeEdit(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            grfDay5Img[grfDay5Img.Row, colDay2ImgEdit] = "1";
+            grfDay5Img.Rows[grfDay5Img.Row].StyleNew.BackColor = color;
         }
 
         private void GrfDay5Img_KeyUp(object sender, KeyEventArgs e)
@@ -3952,6 +3998,8 @@ namespace clinic_ivf.gui
                 {
                     grfDay5Img[row, colDay2StatusBio] = imgFinish;
                 }
+                grfDay5Img[grfDay5Img.Row, colDay2ImgEdit] = "1";
+                grfDay5Img.Rows[grfDay5Img.Row].StyleNew.BackColor = color;
                 setGrfDay5ImgFreezing();
                 grfDay5Img.Refresh();
             }
@@ -3981,7 +4029,7 @@ namespace clinic_ivf.gui
             grfDay6Img.Clear();
             grfDay6Img.DataSource = null;
             grfDay6Img.Rows.Count = 1;
-            grfDay6Img.Cols.Count = 8;
+            grfDay6Img.Cols.Count = 9;
             DataTable dt = new DataTable();
             dt = ic.ivfDB.opuEmDevDB.selectByOpuFetId_Day(txtID.Text, objdb.LabOpuEmbryoDevDB.Day1.Day6);
 
@@ -4101,6 +4149,7 @@ namespace clinic_ivf.gui
             }
             grfDay6Img.Cols[colDay2ImgId].Visible = false;
             grfDay6Img.Cols[colDay2PathPic].Visible = false;
+            grfDay6Img.Cols[colDay2ImgEdit].Visible = false;
             grfDay6Img.Cols[colDay2ImgPic].AllowEditing = false;
             grfDay6Img.Cols[colDay2StatusBio].AllowEditing = false;
             grfDay6Img.AutoSizeCols();
@@ -4120,7 +4169,7 @@ namespace clinic_ivf.gui
 
             grfDay6Img.DoubleClick += GrfDay6Img_DoubleClick;
             grfDay6Img.KeyUp += GrfDay6Img_KeyUp;
-            //grfDay2.CellChanged += GrfDay2_CellChanged;
+            grfDay6Img.ChangeEdit += GrfDay6Img_ChangeEdit;
             ContextMenu menuGw = new ContextMenu();
             menuGw.MenuItems.Add("&Upload image", new EventHandler(ContextMenu_grfday6_upload));
             menuGw.MenuItems.Add("&Save description", new EventHandler(ContextMenu_grfday6_save));
@@ -4129,6 +4178,13 @@ namespace clinic_ivf.gui
             pnGrf6Img.Controls.Add(grfDay6Img);
 
             theme1.SetTheme(grfDay6Img, "Office2010Blue");
+        }
+
+        private void GrfDay6Img_ChangeEdit(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();grfDay6Img[grfDay6Img.Row, colDay2ImgEdit] = "1";
+            grfDay6Img[grfDay6Img.Row, colDay2ImgEdit] = "1";
+            grfDay6Img.Rows[grfDay6Img.Row].StyleNew.BackColor = color;
         }
 
         private void GrfDay6Img_KeyUp(object sender, KeyEventArgs e)
@@ -4252,6 +4308,8 @@ namespace clinic_ivf.gui
                     grfDay6Img[row, colDay2StatusBio] = imgFinish;
                     grfDay6Img[row, colDay2ImgDesc1] = "day6";
                 }
+                grfDay6Img[grfDay6Img.Row, colDay2ImgEdit] = "1";
+                grfDay6Img.Rows[grfDay6Img.Row].StyleNew.BackColor = color;
                 setGrfDay6ImgFreezing();
             }
         }
@@ -4543,7 +4601,7 @@ namespace clinic_ivf.gui
                 grfDay6[grfDay5.Row, colDay6Desc] = grfDay5[grfDay5.Row, colDay5Desc];
                 grfDay6[grfDay5.Row, colDay6Desc1] = grfDay5[grfDay5.Row, colDay5Desc1];
                 grfDay6[grfDay5.Row, colDay6Desc2] = grfDay5[grfDay5.Row, colDay5Desc2];
-                grfDay6[grfDay5.Row, colDay6Edit] = "1";
+                //grfDay6[grfDay5.Row, colDay6Edit] = "1";
                 grfDay6.Rows[grfDay5.Row].StyleNew.BackColor = color;
             }
         }
@@ -4594,7 +4652,7 @@ namespace clinic_ivf.gui
             }
         }
 
-        private void setGrfDay2()
+        private Boolean setGrfDay2()
         {
             //grfDept.Rows.Count = 7;
             grfDay2.Clear();
@@ -4663,8 +4721,9 @@ namespace clinic_ivf.gui
             ic.setC1Combo(cboCheckedDay2, checkId);
             txtDay2Date.Value = dateday2;
             grfDay2.AutoClipboard = true;
+            return true;
         }
-        private void setGrfDay3()
+        private Boolean setGrfDay3()
         {
             //grfDept.Rows.Count = 7;
             grfDay3.Clear();
@@ -4731,8 +4790,10 @@ namespace clinic_ivf.gui
             ic.setC1Combo(cboCheckedDay3, checkId);
             txtDay3Date.Value = dateday;
             grfDay3.AutoClipboard = true;
+
+            return true;
         }
-        private void setGrfDay5()
+        private Boolean setGrfDay5()
         {
             //grfDept.Rows.Count = 7;
             grfDay5.Clear();
@@ -4803,8 +4864,10 @@ namespace clinic_ivf.gui
             ic.setC1Combo(cboCheckedDay5, checkId);
             txtDay5Date.Value = dateday;
             grfDay5.AutoClipboard = true;
+
+            return true;
         }
-        private void setGrfDay6()
+        private Boolean setGrfDay6()
         {
             //grfDept.Rows.Count = 7;
             grfDay6.Clear();
@@ -4873,6 +4936,8 @@ namespace clinic_ivf.gui
             ic.setC1Combo(cboCheckedDay6, checkId);
             txtDay6Date.Value = dateday;
             grfDay6.AutoClipboard = true;
+
+            return true;
         }
         private void AddTipsToToolStrip(ToolStrip toolStrip)
         {
