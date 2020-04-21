@@ -779,7 +779,7 @@ namespace clinic_ivf.gui
                 //grfProc.Cols[col + 1].Caption = dt.Columns[col].ColumnName;
                 grfFinish.Cols[col + 1].Name = dt.Columns[col].ColumnName;
             }
-            int i = 2;
+            int i = 1;
             foreach (DataRow row in dt.Rows)
             {
                 
