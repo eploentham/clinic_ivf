@@ -1321,14 +1321,15 @@ namespace clinic_ivf.gui
             //int.TryParse(txtSpermVol.Text, out vol);
             total = vol * cnt;
             int chk = 0;
-            if(int.TryParse(total.ToString(), out chk))
-            {
-                txtSpermTotalCnt.Value = chk;
-            }
-            else
-            {
-                txtSpermTotalCnt.Value = Decimal.ToInt32(total);
-            }
+            //if(int.TryParse(total.ToString(), out chk))
+            //{
+            //    txtSpermTotalCnt.Value = chk;
+            //}
+            //else
+            //{
+            //    txtSpermTotalCnt.Value = Decimal.ToInt32(total);
+            //}
+            txtSpermTotalCnt.Value = Math.Round(total,2);
         }
         private void calMotile()
         {
@@ -1341,8 +1342,8 @@ namespace clinic_ivf.gui
             total = motile * vol;
             //txtSpermMoti.Value = motile.ToString().Replace(".0","");
             //txtSpermMotiTotal.Value = total.ToString().Replace(".0", "");
-            txtSpermMoti.Value = Math.Round(motile, 0);
-            txtSpermMotiTotal.Value = Math.Round(total, 0);
+            txtSpermMoti.Value = Math.Round(motile, 2);
+            txtSpermMotiTotal.Value = Math.Round(total, 2);
         }
         private Boolean chkNoofOPU()
         {
@@ -3246,6 +3247,13 @@ namespace clinic_ivf.gui
             grfDay2Img.Cols[colDay2StatusBio].AllowEditing = false;
             grfDay2Img.AutoSizeCols();
             grfDay2Img.AutoSizeRows();
+            grfDay2Img.Cols[colDay2StatusBio].AllowSorting = false;
+            grfDay2Img.Cols[colDay2ImgNun].AllowSorting = false;
+            grfDay2Img.Cols[colDay2ImgDesc0].AllowSorting = false;
+            grfDay2Img.Cols[colDay2PathPic].AllowSorting = false;
+            grfDay2Img.Cols[colDay2ImgDesc1].AllowSorting = false;
+            grfDay2Img.Cols[colDay2StatusBio].AllowSorting = false;
+            grfDay2Img.Cols[colDay2ImgDesc1].AllowSorting = false;
             theme1.SetTheme(grfDay2Img, "Office2016Colorful");
             grfDay2Img.Refresh();
         }
@@ -3398,7 +3406,7 @@ namespace clinic_ivf.gui
                 }
                 grfDay2Img[grfDay2Img.Row, colDay2ImgEdit] = "1";
                 grfDay2Img.Rows[grfDay2Img.Row].StyleNew.BackColor = color;
-                setGrfDay2ImgFreezing();
+                //setGrfDay2ImgFreezing();
             }
         }
         private void setGrfDay2ImgFreezing()
@@ -3543,6 +3551,12 @@ namespace clinic_ivf.gui
             grfDay3Img.Cols[colDay2StatusBio].AllowEditing = false;
             grfDay3Img.AutoSizeCols();
             grfDay3Img.AutoSizeRows();
+            grfDay3Img.Cols[colDay2StatusBio].AllowSorting = false;
+            grfDay3Img.Cols[colDay2ImgNun].AllowSorting = false;
+            grfDay3Img.Cols[colDay2ImgDesc0].AllowSorting = false;
+            grfDay3Img.Cols[colDay2PathPic].AllowSorting = false;
+            grfDay3Img.Cols[colDay2ImgDesc1].AllowSorting = false;
+            grfDay3Img.Cols[colDay2StatusBio].AllowSorting = false;
             theme1.SetTheme(grfDay3Img, "Office2016Colorful");
             grfDay3Img.Refresh();
 
@@ -3698,7 +3712,7 @@ namespace clinic_ivf.gui
                 }
                 grfDay3Img[grfDay3Img.Row, colDay2ImgEdit] = "1";
                 grfDay3Img.Rows[grfDay3Img.Row].StyleNew.BackColor = color;
-                setGrfDay3ImgFreezing();
+                //setGrfDay3ImgFreezing();
             }
         }
         private void setGrfDay3ImgFreezing()
@@ -3848,6 +3862,12 @@ namespace clinic_ivf.gui
             grfDay5Img.Cols[colDay2StatusBio].AllowEditing = false;
             grfDay5Img.AutoSizeCols();
             grfDay5Img.AutoSizeRows();
+            grfDay5Img.Cols[colDay2StatusBio].AllowSorting = false;
+            grfDay5Img.Cols[colDay2ImgNun].AllowSorting = false;
+            grfDay5Img.Cols[colDay2ImgDesc0].AllowSorting = false;
+            grfDay5Img.Cols[colDay2PathPic].AllowSorting = false;
+            grfDay5Img.Cols[colDay2ImgDesc1].AllowSorting = false;
+            grfDay5Img.Cols[colDay2StatusBio].AllowSorting = false;
             theme1.SetTheme(grfDay5Img, "Office2016Colorful");
             grfDay5Img.Refresh();
         }
@@ -3993,15 +4013,24 @@ namespace clinic_ivf.gui
                 if (grfDay5Img[row, colDay2StatusBio] == imgFinish)
                 {
                     grfDay5Img[row, colDay2StatusBio] = imgTran;
+                    grfDay5Img[row, colDay2ImgDesc1] = "";
+                    grfDay6Img[row, colDay2StatusBio] = imgTran;
+                    grfDay6Img[row, colDay2ImgDesc1] = "";
                 }
                 else
                 {
                     grfDay5Img[row, colDay2StatusBio] = imgFinish;
+                    grfDay5Img[row, colDay2ImgDesc1] = "day5";
+                    grfDay6Img[row, colDay2StatusBio] = imgFinish;
+                    grfDay6Img[row, colDay2ImgDesc1] = "day5";
                 }
                 grfDay5Img[grfDay5Img.Row, colDay2ImgEdit] = "1";
                 grfDay5Img.Rows[grfDay5Img.Row].StyleNew.BackColor = color;
-                setGrfDay5ImgFreezing();
-                grfDay5Img.Refresh();
+                grfDay6Img[grfDay6Img.Row, colDay2ImgEdit] = "1";
+                grfDay6Img[grfDay6Img.Row, colDay2ImgDesc1] = grfDay5Img[grfDay5Img.Row, colDay2ImgDesc1];
+                grfDay6Img.Rows[grfDay6Img.Row].StyleNew.BackColor = color;
+                //setGrfDay5ImgFreezing();
+                //grfDay5Img.Refresh();
             }
         }
         private void setGrfDay5ImgFreezing()
@@ -4154,6 +4183,12 @@ namespace clinic_ivf.gui
             grfDay6Img.Cols[colDay2StatusBio].AllowEditing = false;
             grfDay6Img.AutoSizeCols();
             grfDay6Img.AutoSizeRows();
+            grfDay6Img.Cols[colDay2StatusBio].AllowSorting = false;
+            grfDay6Img.Cols[colDay2ImgNun].AllowSorting = false;
+            grfDay6Img.Cols[colDay2ImgDesc0].AllowSorting = false;
+            grfDay6Img.Cols[colDay2PathPic].AllowSorting = false;
+            grfDay6Img.Cols[colDay2ImgDesc1].AllowSorting = false;
+            grfDay6Img.Cols[colDay2StatusBio].AllowSorting = false;
             theme1.SetTheme(grfDay6Img, "Office2016Colorful");
             grfDay6Img.Refresh();
         }
@@ -4310,7 +4345,7 @@ namespace clinic_ivf.gui
                 }
                 grfDay6Img[grfDay6Img.Row, colDay2ImgEdit] = "1";
                 grfDay6Img.Rows[grfDay6Img.Row].StyleNew.BackColor = color;
-                setGrfDay6ImgFreezing();
+                //setGrfDay6ImgFreezing();
             }
         }
         private void setGrfDay6ImgFreezing()
@@ -4717,6 +4752,10 @@ namespace clinic_ivf.gui
             grfDay2.Cols[colDay2ID].Visible = false;
             grfDay2.Cols[colDay2Num].Visible = false;
             grfDay2.Cols[colDay2Edit].Visible = false;
+            grfDay2.Cols[colDay2Num].AllowSorting = false;
+            grfDay2.Cols[colDay2Desc].AllowSorting = false;
+            grfDay2.Cols[colDay2Desc1].AllowSorting = false;
+            grfDay2.Cols[colDay2Desc2].AllowSorting = false;
             ic.setC1Combo(cboEmbryologistDay2, staffId);
             ic.setC1Combo(cboCheckedDay2, checkId);
             txtDay2Date.Value = dateday2;
@@ -4786,6 +4825,10 @@ namespace clinic_ivf.gui
             grfDay3.Cols[colDay3ID].Visible = false;
             grfDay3.Cols[colDay3Num].Visible = false;
             grfDay3.Cols[colDay3Edit].Visible = false;
+            grfDay3.Cols[colDay3Num].AllowSorting = false;
+            grfDay3.Cols[colDay3Desc].AllowSorting = false;
+            grfDay3.Cols[colDay3Desc1].AllowSorting = false;
+            grfDay3.Cols[colDay3Desc2].AllowSorting = false;
             ic.setC1Combo(cboEmbryologistDay3, staffId);
             ic.setC1Combo(cboCheckedDay3, checkId);
             txtDay3Date.Value = dateday;
@@ -4860,6 +4903,10 @@ namespace clinic_ivf.gui
             grfDay5.Cols[colDay5ID].Visible = false;
             grfDay5.Cols[colDay5Num].Visible = false;
             grfDay5.Cols[colDay5Edit].Visible = false;
+            grfDay5.Cols[colDay6Num].AllowSorting = false;
+            grfDay5.Cols[colDay5Desc].AllowSorting = false;
+            grfDay5.Cols[colDay5Desc1].AllowSorting = false;
+            grfDay5.Cols[colDay5Desc2].AllowSorting = false;
             ic.setC1Combo(cboEmbryologistDay5, staffId);
             ic.setC1Combo(cboCheckedDay5, checkId);
             txtDay5Date.Value = dateday;
@@ -4932,6 +4979,10 @@ namespace clinic_ivf.gui
             grfDay6.Cols[colDay2ID].Visible = false;
             grfDay6.Cols[colDay2Num].Visible = false;
             grfDay6.Cols[colDay6Edit].Visible = false;
+            grfDay6.Cols[colDay6Num].AllowSorting = false;
+            grfDay6.Cols[colDay6Desc].AllowSorting = false;
+            grfDay6.Cols[colDay6Desc1].AllowSorting = false;
+            grfDay6.Cols[colDay6Desc2].AllowSorting = false;
             ic.setC1Combo(cboEmbryologistDay6, staffId);
             ic.setC1Combo(cboCheckedDay6, checkId);
             txtDay6Date.Value = dateday;

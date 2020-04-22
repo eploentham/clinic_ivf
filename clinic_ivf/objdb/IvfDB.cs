@@ -2103,8 +2103,15 @@ namespace clinic_ivf.objdb
             //    dt.Rows[0][col] = j + ". " + row["desc0"].ToString() + " " + row["desc1"].ToString() + " " + row["desc2"].ToString();
             //    j++;
             //}
-            dt.Rows[0]["embryo_dev_0_staff_name"] = stfDB.getStaffNameBylStf(stfid);
-            dt.Rows[0]["embryo_dev_0_checked_name"] = stfDB.getStaffNameBylStf(checkedid);
+            String stf0 = "", chk0="";
+            stf0 = stfDB.getStaffNameBylStf(stfid);
+            chk0 = stfDB.getStaffNameBylStf(checkedid);
+            String[] stf01 = stf0.Split(' ');
+            String[] chk01 = chk0.Split(' ');            
+            stf0 = (stf01.Length > 0) ? stf01[0] + " " + stf01[1].Substring(0, 1) + "." : stf0;
+            chk0 = (chk01.Length > 0) ? chk01[0] + " " + chk01[1].Substring(0, 1) + "." : chk0;
+            dt.Rows[0]["embryo_dev_0_staff_name"] = stf0;
+            dt.Rows[0]["embryo_dev_0_checked_name"] = chk0;
             etName = dt.Rows[0]["embryo_for_et_embryologist_id"].ToString();
             dt.Columns.Remove("embryo_for_et_embryologist_id");
             dt.Columns.Add("embryo_for_et_embryologist_id", typeof(String));
@@ -2136,8 +2143,15 @@ namespace clinic_ivf.objdb
             }
             if (!day2.Equals(""))
             {
-                dt.Rows[0]["embryo_dev_1_staff_name"] = stfDB.getStaffNameBylStf(stfid);
-                dt.Rows[0]["embryo_dev_1_checked_name"] = stfDB.getStaffNameBylStf(checkedid);
+                String stf1 = "", chk1 = "";
+                stf1 = stfDB.getStaffNameBylStf(stfid);
+                chk1 = stfDB.getStaffNameBylStf(checkedid);
+                String[] stf11 = stf1.Split(' ');
+                String[] chk11 = chk1.Split(' ');
+                stf1 = (stf11.Length > 0) ? stf11[0] + " " + stf11[1].Substring(0, 1) + "." : stf1;
+                chk1 = (chk11.Length > 0) ? chk11[0] + " " + chk11[1].Substring(0, 1) + "." : chk1;
+                dt.Rows[0]["embryo_dev_1_staff_name"] = stf1;
+                dt.Rows[0]["embryo_dev_1_checked_name"] = chk1;
             }
 
             dt.Rows[0]["embryo_for_et_doctor"] = dt.Rows[0]["embryo_for_et_doctor"].ToString().Equals("") ? "-" : dtrOldDB.getlDtrNameByID(dt.Rows[0]["embryo_for_et_doctor"].ToString());
@@ -2220,7 +2234,15 @@ namespace clinic_ivf.objdb
                 remarkday2 = "Remark Day3: " + remarkday3;
                 remarkday3 = "Remark Day6: " + remarkday6;
             }
-            
+            String stf2 = "", chk2 = "";
+            stf2 = dt.Rows[0]["embryo_for_et_embryologist_name_rpt"].ToString();
+            chk2 = dt.Rows[0]["embryo_for_et_embryologist_name_apv"].ToString();
+            String[] stf22 = stf2.Split(' ');
+            String[] chk22 = chk2.Split(' ');
+            stf2 = (stf22.Length > 1) ? stf22[1] + " " + stf22[2].Substring(0, 1) + "." : stf2;
+            chk2 = (chk22.Length > 1) ? chk22[1] + " " + chk22[2].Substring(0, 1) + "." : chk2;
+            dt.Rows[0]["embryo_for_et_embryologist_name_rpt"] = stf2;
+            dt.Rows[0]["embryo_for_et_embryologist_name_apv"] = chk2;
             return dt;
         }
         public String datetoShow(Object dt)

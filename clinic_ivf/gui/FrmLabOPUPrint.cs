@@ -156,9 +156,10 @@ namespace clinic_ivf.gui
             }
             lbEmail.Text = "เริ่มส่ง Email";
             MailMessage mail = new MailMessage();
-            
-            txtEmailSubject.Value = "Routine LAB Result HN " + txtHnFeMale.Text + " Name " + txtNameFeMale.Text + " OPD Code " + txtOpuCode.Text + " Date " + System.DateTime.Now.ToString("dd/MM/") + System.DateTime.Now.Year;
-            
+
+            //txtEmailSubject.Value = "Routine LAB Result HN " + txtHnFeMale.Text + " Name " + txtNameFeMale.Text + " OPD Code " + txtOpuCode.Text + " Date " + System.DateTime.Now.ToString("dd/MM/") + System.DateTime.Now.Year;
+            //txtEmailSubject.Value = "OPU Date "  + System.DateTime.Now.ToString("dd/MM/") + System.DateTime.Now.Year;
+
             mail.From = new MailAddress(ic.iniC.email_form_lab_opu);
             mail.To.Add(txtEmailTo.Text);
             mail.Subject = txtEmailSubject.Text;
@@ -708,7 +709,7 @@ namespace clinic_ivf.gui
                 txtOpuCode.Value = opu.opu_code;
                 txtEmailTo.Value = ic.iniC.email_to_lab_opu;
                 //txtEmailSubject.Value = "Result LAB OPU HN " + txtHnFeMale.Text + " Name " + txtNameFeMale.Text + " OPU Code " + txtOpuCode.Text + " ";
-                txtEmailSubject.Value = "Result LAB OPU " + DateTime.Now.ToString("dd/MM/") + DateTime.Now.Year + "Name " + txtNameMale.Text + " Name " + txtNameFeMale.Text + " OPU Code " + txtOpuCode.Text + " ";
+                txtEmailSubject.Value = "OPU Date " + DateTime.Now.ToString("dd/MM/") + DateTime.Now.Year + " " + txtNameMale.Text + " " + txtNameFeMale.Text ;
 
                 chkSendEmail.Checked = opu.status_opu.Equals("2") ? true : false;
                 if (chkSendEmail.Checked)
