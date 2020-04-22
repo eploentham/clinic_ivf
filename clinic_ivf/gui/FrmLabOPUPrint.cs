@@ -186,10 +186,10 @@ namespace clinic_ivf.gui
                 htmlView.LinkedResources.Add(linkimg);
             }
 
-            SmtpServer.Port = 587;
+            SmtpServer.Port = int.Parse(ic.iniC.email_port);
             SmtpServer.Credentials = new System.Net.NetworkCredential(ic.iniC.email_auth_user_lab_opu, ic.iniC.email_auth_pass_lab_opu);
-
-            SmtpServer.EnableSsl = true;
+            //SmtpServer.UseDefaultCredentials = true;
+            SmtpServer.EnableSsl = Boolean.Parse(ic.iniC.email_ssl);
             SmtpServer.Send(mail);
             lbEmail.Text = "ส่ง Email เรียบร้อย";
         }
