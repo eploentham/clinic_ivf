@@ -1698,7 +1698,7 @@ namespace clinic_ivf.gui
                             {
                                 rowembryo["embryo_dev_0_01"] = no+". "+desc0 + " "+desc1;
                                 rowembryo["embryo_dev_0_date"] = "Date Time: " + ic.datetoShow(date);
-                                rowembryo["embryo_dev_0_name"] = "Embryo Devlopment Day " + name;
+                                rowembryo["embryo_dev_0_name"] = "Embryo Development Day (" + name+")";
                                 rowembryo["embryo_dev_1_name"] = "Day " + fet.embryo_pic_day;
                             }
                         }
@@ -1709,7 +1709,7 @@ namespace clinic_ivf.gui
                             {
                                 rowembryo["embryo_dev_0_02"] = no + ". " + desc0 + " " + desc1;
                                 rowembryo["embryo_dev_0_date"] = "Date Time: " + ic.datetoShow(date);
-                                rowembryo["embryo_dev_0_name"] = "Embryo Devlopment Day " + name;
+                                rowembryo["embryo_dev_0_name"] = "Embryo Development Day (" + name+")";
                                 rowembryo["embryo_dev_1_name"] = "Day " + fet.embryo_pic_day;
                             }
                         }
@@ -1720,7 +1720,7 @@ namespace clinic_ivf.gui
                             {
                                 rowembryo["embryo_dev_0_03"] = no + ". " + desc0 + " " + desc1;
                                 rowembryo["embryo_dev_0_date"] = "Date Time: " + ic.datetoShow(date);
-                                rowembryo["embryo_dev_0_name"] = "Embryo Devlopment Day " + name;
+                                rowembryo["embryo_dev_0_name"] = "Embryo Development Day (" + name+")";
                                 rowembryo["embryo_dev_1_name"] = "Day " + fet.embryo_pic_day;
                             }
                         }
@@ -1731,7 +1731,7 @@ namespace clinic_ivf.gui
                             {
                                 rowembryo["embryo_dev_0_04"] = no + ". " + desc0 + " " + desc1;
                                 rowembryo["embryo_dev_0_date"] = "Date Time: " + ic.datetoShow(date);
-                                rowembryo["embryo_dev_0_name"] = "Embryo Devlopment Day " + name;
+                                rowembryo["embryo_dev_0_name"] = "Embryo Development Day (" + name+")";
                                 rowembryo["embryo_dev_1_name"] = "Day " + fet.embryo_pic_day;
                             }
                         }
@@ -1742,7 +1742,7 @@ namespace clinic_ivf.gui
                             {
                                 rowembryo["embryo_dev_0_05"] = no + ". " + desc0 + " " + desc1; ;
                                 rowembryo["embryo_dev_0_date"] = "Date Time: " + ic.datetoShow(date);
-                                rowembryo["embryo_dev_0_name"] = "Embryo Devlopment Day " + name;
+                                rowembryo["embryo_dev_0_name"] = "Embryo Development Day (" + name+")";
                                 rowembryo["embryo_dev_1_name"] = "Day " + fet.embryo_pic_day;
                             }
                         }
