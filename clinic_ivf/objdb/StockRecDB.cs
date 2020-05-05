@@ -239,7 +239,7 @@ namespace clinic_ivf.objdb
 
             return re;
         }
-        public String insertDocScan(StockRec p, String userId)
+        public String insertStockRec(StockRec p, String userId)
         {
             String re = "";
 

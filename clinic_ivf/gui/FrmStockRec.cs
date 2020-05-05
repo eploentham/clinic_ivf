@@ -1,4 +1,5 @@
 ﻿using C1.Win.C1FlexGrid;
+using C1.Win.C1Input;
 using C1.Win.C1SuperTooltip;
 using clinic_ivf.control;
 using clinic_ivf.object1;
@@ -54,7 +55,7 @@ namespace clinic_ivf.gui
             ic.ivfDB.stknDB.setCboStockSubName(cboStkSubName);
             cboStkSubName.SelectedIndex = 0;
             initGrfStk();
-
+            setGrfStockRec("");
             sB1.Text = "";
             pageLoad = false;
         }
@@ -65,7 +66,7 @@ namespace clinic_ivf.gui
             if (MessageBox.Show("ต้องการ บันทึกช้อมูล ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
             {
                 //setStockDrug();
-                String re = ic.ivfDB.stkrDB.insertDocScan(stkr, ic.user.staff_id);
+                String re = ic.ivfDB.stkrDB.insertStockRec(stkr, ic.user.staff_id);
                 int chk = 0;
                 if (int.TryParse(re, out chk))
                 {
@@ -98,6 +99,7 @@ namespace clinic_ivf.gui
             //FilterRow2 fr = new FilterRow2(grfBloodLab);
 
             grfStk.DoubleClick += GrfStk_DoubleClick;
+            grfStk.ComboCloseUp += GrfStk_ComboCloseUp;
             //grfExpnC.CellButtonClick += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellButtonClick);
             //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
             ContextMenu menuGw = new ContextMenu();
@@ -115,6 +117,12 @@ namespace clinic_ivf.gui
 
         }
 
+        private void GrfStk_ComboCloseUp(object sender, RowColEventArgs e)
+        {
+            //throw new NotImplementedException();
+            MessageBox.Show("11", "");
+        }
+
         private void GrfStk_DoubleClick(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
@@ -123,14 +131,13 @@ namespace clinic_ivf.gui
         private void setGrfStockRec(String id)
         {
             //grfDept.Rows.Count = 7;
-
-            grfStk.DataSource = ic.ivfDB.stkrdDB.selectByVn(id);
-            grfStk.Cols.Count = 5;
-
+                        
+            grfStk.Cols.Count = 9;
+            grfStk.Rows.Count = 2;
             grfStk.Cols[colId].Width = 80;
 
             grfStk.Cols[colPrice].Width = 80;
-            grfStk.Cols[colName].Width = 440;
+            grfStk.Cols[colName].Width = 300;
             grfStk.Cols[colQty].Width = 80;
             grfStk.Cols[colUnit].Width = 80;
             grfStk.Cols[colLotNo].Width = 100;
@@ -149,13 +156,23 @@ namespace clinic_ivf.gui
             grfStk.Cols[colLotNo].Caption = "LotNo";
             grfStk.Cols[colExpDate].Caption = "Expire Date";
             grfStk.Cols[colAmt].Caption = "รวมราคา";
+            C1ComboBox cbo = new C1ComboBox();
+            cbo = ic.ivfDB.oStkdDB.setCboStockDrug();
+            cbo.DropDownClosed += Cbo_DropDownClosed;
+            //cs.DataType = typeof(ComboBox);
+            grfStk.Cols[colName].Editor = cbo;
+            //grfStk.Cols[colName].Style = cs;
             //for (int col = 0; col < dt.Columns.Count; ++col)
             //{
             //    grfDrug.Cols[col + 1].DataType = dt.Columns[col].DataType;
             //    grfDrug.Cols[col + 1].Caption = dt.Columns[col].ColumnName;
             //    grfDrug.Cols[col + 1].Name = dt.Columns[col].ColumnName;
             //}
-            for (int i = 1; i < grfStk.Rows.Count; i++)
+            if (id.Length <= 0) return;
+            DataTable dt = new DataTable();
+            dt = ic.ivfDB.stkrdDB.selectByRecId(id);
+            grfStk.Rows.Count = dt.Rows.Count+1;
+            for (int i = 1; i < dt.Rows.Count; i++)
             {
                 //Decimal price = 0;
                 //Decimal.TryParse(grfPkg.Rows[i][colPrice].ToString(), out price);
@@ -170,6 +187,22 @@ namespace clinic_ivf.gui
             //grfAgn.Cols[colS].Visible = false;
             //grfAgn.Cols[colRemark].Visible = false;
         }
+
+        private void Cbo_DropDownClosed(object sender, DropDownClosedEventArgs e)
+        {
+            //throw new NotImplementedException();
+            //MessageBox.Show("22", "");
+            String id = "";
+            ComboBoxItem item = new ComboBoxItem();
+            item = (ComboBoxItem)((C1ComboBox)sender).SelectedItem;
+            if (item == null) return;
+            grfStk.Rows[grfStk.Row][colId] = item.Value;
+            grfStk.ColSel = colQty;
+            //if (grfStk.Rows.Count == grfStk.Row+1) grfStk.Rows.Add();
+            //item = (ComboBoxItem)item1;
+            //item = (ComboBoxItem)item1;
+        }
+
         private void FrmStockRec_Load(object sender, EventArgs e)
         {
 

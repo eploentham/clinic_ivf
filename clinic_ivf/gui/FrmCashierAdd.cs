@@ -135,7 +135,7 @@ namespace clinic_ivf.gui
             else
             {
                 OldCreditCardAccount ocr = new OldCreditCardAccount();
-                ocr = ic.ivfDB.ocrDB.selectByPk1(cashid1);
+                ocr = ic.ivfDB.ocrDB.selectByPk1(creditid1);
                 flag = ocr.IntLock.Equals("1") ? "2" : "1";
             }
             if (flag.Equals("1"))
@@ -204,9 +204,12 @@ namespace clinic_ivf.gui
             if (flagExtra.Equals("2")) receiptno = "";      //พิมพ์ ใบเสร็จ 2 ชุด
             if (receiptno.Length <= 0)
             {
-                new LogWriter("e", "printReceipt flagExtra "+ flagExtra);
-                billNo = ic.ivfDB.copDB.genReceiptDoc(ref year, ref month, ref day, flagExtra);
-                billExtNo = ic.ivfDB.copDB.genReceiptExtDoc();
+                //new LogWriter("e", "printReceipt flagExtra "+ flagExtra);
+                if(flagExtra.Length > 0)
+                {
+                    billExtNo = ic.ivfDB.copDB.genReceiptExtDoc();
+                }
+                billNo = ic.ivfDB.copDB.genReceiptDoc(ref year, ref month, ref day, flagExtra);                
                 String cashid = cboAccCash.SelectedItem == null ? "" : ((ComboBoxItem)cboAccCash.SelectedItem).Value;
                 String creditid = cboAccCredit.SelectedItem == null ? "" : ((ComboBoxItem)cboAccCredit.SelectedItem).Value;
                 //ic.ivfDB.obilhDB.updateReceiptNo(txtVn.Text, billNo, txtTotalCash.Text.Replace(",",""), txtTotalCredit.Text.Replace(",", ""), txtCreditCardNumber.Text, cashid, creditid);
@@ -909,7 +912,6 @@ namespace clinic_ivf.gui
         private void ContextMenu_send_back(object sender, System.EventArgs e)
         {
             String chk = "", name = "", id = "";
-
             
         }
         private void setGrfBillD()

@@ -435,8 +435,9 @@ namespace clinic_ivf.objdb
             }
             return c;
         }
-        public C1ComboBox setCboStockDrug(C1ComboBox c)
+        public C1ComboBox setCboStockDrug()
         {
+            C1ComboBox c = new C1ComboBox();
             ComboBoxItem item = new ComboBoxItem();
             DataTable dt = selectAll();
             //String aaa = "";

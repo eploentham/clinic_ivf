@@ -72,7 +72,7 @@ namespace clinic_ivf.objdb
                 "From " + stkn.table + " dsc " +
                 //"Left Join f_patient_prefix pfx On stf.prefix_id = pfx.f_patient_prefix_id " +
                 " Where dsc." + stkn.active + " ='1' " +
-                "Order By stock_sub_name ";
+                "Order By sort1 ";
             dt = conn.selectData(conn.conn, sql);
 
             return dt;

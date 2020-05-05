@@ -127,7 +127,7 @@ namespace clinic_ivf.objdb
 
             return dt;
         }
-        public DataTable selectByVn(String recid)
+        public DataTable selectByRecId(String recid)
         {
             StockRecDetail cop1 = new StockRecDetail();
             DataTable dt = new DataTable();

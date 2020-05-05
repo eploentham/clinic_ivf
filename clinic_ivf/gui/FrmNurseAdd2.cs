@@ -5373,14 +5373,14 @@ namespace clinic_ivf.gui
             }
             else
             {
-                if (ic.iniC.statusCashierOldProgram.Equals("1"))
-                {
-                    ic.ivfDB.PxAdd(drugid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "1", grfOrder.Rows.Count.ToString(), usage, "old");
-                }
-                else
-                {
+                //if (ic.iniC.statusCashierOldProgram.Equals("1"))      // 63-05-05
+                //{
+                //    ic.ivfDB.PxAdd(drugid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "1", grfOrder.Rows.Count.ToString(), usage, "old");
+                //}
+                //else
+                //{
                     ic.ivfDB.PxAdd(drugid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "1", grfOrder.Rows.Count.ToString(), usage);
-                }
+                //}
             }
             setGrfOrder(txtVnOld.Text);
         }
