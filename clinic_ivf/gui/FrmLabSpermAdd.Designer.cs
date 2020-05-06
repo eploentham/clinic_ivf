@@ -42,6 +42,7 @@
             this.pnSfLeftEmail = new System.Windows.Forms.Panel();
             this.txtSfEmailBody = new C1.Win.C1Input.C1TextBox();
             this.pnEmailAddSubject = new System.Windows.Forms.Panel();
+            this.lbEmail = new System.Windows.Forms.Label();
             this.btnSfSendEmail = new C1.Win.C1Input.C1Button();
             this.btnSfAgentEmail = new C1.Win.C1Input.C1Button();
             this.label210 = new System.Windows.Forms.Label();
@@ -239,6 +240,7 @@
             this.pnEmailView = new System.Windows.Forms.Panel();
             this.txtEmailBody = new C1.Win.C1Input.C1TextBox();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.lbSfEmail = new System.Windows.Forms.Label();
             this.btnSendEmail = new C1.Win.C1Input.C1Button();
             this.btnAgentEmail = new C1.Win.C1Input.C1Button();
             this.label212 = new System.Windows.Forms.Label();
@@ -707,8 +709,6 @@
             this.txtPeHnFeMale = new C1.Win.C1Input.C1TextBox();
             this.tabReport = new C1.Win.C1Command.C1DockingTabPage();
             this.crySperm = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
-            this.lbEmail = new System.Windows.Forms.Label();
-            this.lbSfEmail = new System.Windows.Forms.Label();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tC)).BeginInit();
@@ -1139,6 +1139,19 @@
             this.pnEmailAddSubject.Size = new System.Drawing.Size(642, 68);
             this.pnEmailAddSubject.TabIndex = 1;
             this.theme1.SetTheme(this.pnEmailAddSubject, "(default)");
+            // 
+            // lbEmail
+            // 
+            this.lbEmail.AutoSize = true;
+            this.lbEmail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.lbEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.lbEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.lbEmail.Location = new System.Drawing.Point(391, 10);
+            this.lbEmail.Name = "lbEmail";
+            this.lbEmail.Size = new System.Drawing.Size(60, 24);
+            this.lbEmail.TabIndex = 546;
+            this.lbEmail.Text = "label7";
+            this.theme1.SetTheme(this.lbEmail, "(default)");
             // 
             // btnSfSendEmail
             // 
@@ -3159,7 +3172,6 @@
             // txtSfCount
             // 
             this.txtSfCount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtSfCount.DataType = typeof(short);
             this.txtSfCount.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtSfCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.txtSfCount.Location = new System.Drawing.Point(141, 398);
@@ -3186,7 +3198,6 @@
             // txtSfVolume
             // 
             this.txtSfVolume.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtSfVolume.DataType = typeof(decimal);
             this.txtSfVolume.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtSfVolume.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.txtSfVolume.Location = new System.Drawing.Point(141, 375);
@@ -3798,6 +3809,19 @@
             this.panel5.Size = new System.Drawing.Size(635, 68);
             this.panel5.TabIndex = 2;
             this.theme1.SetTheme(this.panel5, "(default)");
+            // 
+            // lbSfEmail
+            // 
+            this.lbSfEmail.AutoSize = true;
+            this.lbSfEmail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.lbSfEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.lbSfEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.lbSfEmail.Location = new System.Drawing.Point(391, 8);
+            this.lbSfEmail.Name = "lbSfEmail";
+            this.lbSfEmail.Size = new System.Drawing.Size(60, 24);
+            this.lbSfEmail.TabIndex = 547;
+            this.lbSfEmail.Text = "label7";
+            this.theme1.SetTheme(this.lbSfEmail, "(default)");
             // 
             // btnSendEmail
             // 
@@ -5730,7 +5754,6 @@
             // txtCount
             // 
             this.txtCount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtCount.DataType = typeof(short);
             this.txtCount.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.txtCount.Location = new System.Drawing.Point(141, 398);
@@ -5757,7 +5780,6 @@
             // txtVolume
             // 
             this.txtVolume.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtVolume.DataType = typeof(short);
             this.txtVolume.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtVolume.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.txtVolume.Location = new System.Drawing.Point(141, 375);
@@ -10305,32 +10327,6 @@
             this.crySperm.Size = new System.Drawing.Size(1523, 775);
             this.crySperm.TabIndex = 2;
             this.theme1.SetTheme(this.crySperm, "(default)");
-            // 
-            // lbEmail
-            // 
-            this.lbEmail.AutoSize = true;
-            this.lbEmail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.lbEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.lbEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.lbEmail.Location = new System.Drawing.Point(391, 10);
-            this.lbEmail.Name = "lbEmail";
-            this.lbEmail.Size = new System.Drawing.Size(60, 24);
-            this.lbEmail.TabIndex = 546;
-            this.lbEmail.Text = "label7";
-            this.theme1.SetTheme(this.lbEmail, "(default)");
-            // 
-            // lbSfEmail
-            // 
-            this.lbSfEmail.AutoSize = true;
-            this.lbSfEmail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.lbSfEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.lbSfEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.lbSfEmail.Location = new System.Drawing.Point(391, 8);
-            this.lbSfEmail.Name = "lbSfEmail";
-            this.lbSfEmail.Size = new System.Drawing.Size(60, 24);
-            this.lbSfEmail.TabIndex = 547;
-            this.lbSfEmail.Text = "label7";
-            this.theme1.SetTheme(this.lbSfEmail, "(default)");
             // 
             // FrmLabSpermAdd
             // 

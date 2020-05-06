@@ -126,6 +126,17 @@ namespace clinic_ivf.objdb
 
             return dt;
         }
+        public DataTable selectSpermAnalysisLiquefaction()
+        {
+            DataTable dt = new DataTable();
+            String sql = "select fdt.*  " +
+                "From " + fdt.table + " fdt " +
+                " " +
+                "Where fdt." + fdt.active + " ='1' and fdt." + fdt.status_combo + "='sperm_analysis_liquefaction'";
+            dt = conn.selectData(conn.conn, sql);
+
+            return dt;
+        }
         public DataTable selectOPUMethod()
         {
             DataTable dt = new DataTable();
@@ -783,6 +794,27 @@ namespace clinic_ivf.objdb
         {
             ComboBoxItem item = new ComboBoxItem();
             DataTable dt = selectSpermAnalysisAppearance();
+            //String aaa = "";
+            ComboBoxItem item1 = new ComboBoxItem();
+            item1.Text = "";
+            item1.Value = "000";
+            c.Items.Clear();
+            c.Items.Add(item1);
+            //for (int i = 0; i < dt.Rows.Count; i++)
+            foreach (DataRow row in dt.Rows)
+            {
+                item = new ComboBoxItem();
+                item.Text = row[fdt.doc_type_name].ToString();
+                item.Value = row[fdt.doc_type_id].ToString();
+
+                c.Items.Add(item);
+            }
+            return c;
+        }
+        public C1ComboBox setCboSpermAnalysisLiquefaction(C1ComboBox c)
+        {
+            ComboBoxItem item = new ComboBoxItem();
+            DataTable dt = selectSpermAnalysisLiquefaction();
             //String aaa = "";
             ComboBoxItem item1 = new ComboBoxItem();
             item1.Text = "";

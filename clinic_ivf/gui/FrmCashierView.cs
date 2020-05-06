@@ -1121,7 +1121,7 @@ namespace clinic_ivf.gui
             ContextMenu menuGw = new ContextMenu();
             menuGw.MenuItems.Add("ออก บิล", new EventHandler(ContextMenu_edit_billfinish));
             //menuGw.MenuItems.Add("&แก้ไข", new EventHandler(ContextMenu_Gw_Edit));
-            //menuGw.MenuItems.Add("&ยกเลิก", new EventHandler(ContextMenu_Gw_Cancel));
+            menuGw.MenuItems.Add("&ยกเลิก บิล", new EventHandler(ContextMenu_edit_billVoid));
             grfFinish.ContextMenu = menuGw;
 
             grfFinish.Rows.Count = dt.Rows.Count + 1;
@@ -1267,6 +1267,26 @@ namespace clinic_ivf.gui
             billid = grfFinish[grfFinish.Row, colPttName] != null ? grfFinish[grfFinish.Row, colPttName].ToString() : "";
 
             openBillNew(id, name, "noedit", billid);
+        }
+        private void ContextMenu_edit_billVoid(object sender, System.EventArgs e)
+        {
+            String billid = "", name = "", id = "";
+
+            id = grfFinish[grfFinish.Row, colID] != null ? grfFinish[grfFinish.Row, colID].ToString() : "";     //billid
+            name = grfFinish[grfFinish.Row, colPttName] != null ? grfFinish[grfFinish.Row, colPttName].ToString() : "";
+            billid = grfFinish[grfFinish.Row, colPttName] != null ? grfFinish[grfFinish.Row, colPttName].ToString() : "";
+
+            //openBillNew(id, name, "noedit", billid);
+            ic.cStf.staff_id = "";
+            FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+            frm.ShowDialog(this);
+            if (!ic.cStf.staff_id.Equals(""))
+            {
+                ic.ivfDB.VoidBill(id, ic.cStf.staff_id);
+                String billid1 = ic.ivfDB.getBill(id, ic.cStf.staff_id);
+                String re1 = ic.ivfDB.vsDB.updateOpenStatusCashierByVn(id);
+                ic.ivfDB.nurseFinish(id, ic.cStf.staff_id);        // +0015
+            }
         }
         private void ContextMenu_edit_bill(object sender, System.EventArgs e)
         {

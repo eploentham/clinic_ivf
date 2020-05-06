@@ -800,7 +800,6 @@ namespace clinic_ivf.objdb
             oJpxd.row1 = row1;
             oJpxdDB.insert(oJpxd, "");
             //}
-
         }
         public void PxAdd(String duid, String qty, String pid, String pids, String vn, String extra, String row1, String usage)
         {

@@ -65,6 +65,7 @@ namespace clinic_ivf.control
         public Boolean ftpUsePassive = false;
         Hashtable _styles;
         public LogWriter logw;
+        public int spermFreezingDecimal = 0;
         //public FtpClient ftpC;
         public enum NID_FIELD
         {
@@ -242,6 +243,7 @@ namespace clinic_ivf.control
                 iniC.pathSaveExcelAppointment = iniF.getIni("app", "pathSaveExcelAppointment");
                 iniC.printerA4 = iniF.getIni("app", "printerA4");
                 iniC.statusCashierOldProgram = iniF.getIni("app", "statusCashierOldProgram");
+                iniC.spermFreezingDecimal = iniF.getIni("app", "spermFreezingDecimal");
 
                 iniC.email_form = iniF.getIni("email", "email_form");
                 iniC.email_auth_user = iniF.getIni("email", "email_auth_user");
@@ -303,8 +305,10 @@ namespace clinic_ivf.control
                 iniC.messageDebug = iniC.messageDebug == null ? "0" : iniC.messageDebug.Equals("") ? "0" : iniC.messageDebug;
                 iniC.pathChar = iniC.pathChar == null ? "\\" : iniC.pathChar.Equals("") ? "\\" : iniC.pathChar;
                 iniC.statusCashierOldProgram = iniC.statusCashierOldProgram == null ? "0" : iniC.statusCashierOldProgram.Equals("") ? "0" : iniC.statusCashierOldProgram;
+                iniC.spermFreezingDecimal = iniC.spermFreezingDecimal == null ? "0" : iniC.spermFreezingDecimal.Equals("") ? "0" : iniC.spermFreezingDecimal;
 
                 int.TryParse(iniC.grdViewFontSize, out grdViewFontSize);
+                int.TryParse(iniC.spermFreezingDecimal, out spermFreezingDecimal);
                 Decimal.TryParse(iniC.creditCharge, out CreditCharge);
                 Boolean.TryParse(iniC.usePassiveFTP, out ftpUsePassive);
             }

@@ -212,25 +212,44 @@ namespace clinic_ivf.objdb
         {
             LabSperm lbReq1 = new LabSperm();
             DataTable dt = new DataTable();
+            //String sql = "select lsperm.*,dtr.Name as doctorname" +
+            //    ",fdtapp.doc_type_name as doc_type_name_app" +
+            //    ",fdtliq.doc_type_name as doc_type_name_liq" +
+            //    ",fdtvis.doc_type_name as doc_type_name_vis" +
+            //    ",fdtwbc.doc_type_name as doc_type_name_wbc" +
+            //    ",fdtnoo.doc_type_name as doc_type_name_noo, concat(fpprpt.patient_prefix_description,' ',stfrpt.staff_fname_e,' ',stfrpt.staff_lname_e) as staff_report_name " +
+            //    ", concat(fppapp.patient_prefix_description,' ',stfapp.staff_fname_e,' ',stfapp.staff_lname_e) as staff_approve_name " +
+            //    "From " + lsperm.table + " lsperm " +
+            //    "Left Join Doctor dtr on dtr.ID = lsperm." + lsperm.doctor_id + " " +
+            //    "Left Join f_doc_type fdtapp on lsperm.appearance = fdtapp.doc_type_id " +
+            //    "Left Join f_doc_type fdtliq on lsperm.liquefaction = fdtliq.doc_type_id " +
+            //    "Left Join f_doc_type fdtvis on lsperm.viscosity = fdtvis.doc_type_id " +
+            //    "Left Join f_doc_type fdtwbc on lsperm.wbc = fdtwbc.doc_type_id " +
+            //    "Left Join f_doc_type fdtnoo on lsperm.no_of_vail = fdtnoo.doc_type_id " +
+            //    "Left Join b_staff stfrpt on lsperm.staff_id_report = stfrpt.staff_id " +
+            //    "Left Join f_patient_prefix fpprpt on stfrpt.prefix_id = fpprpt.f_patient_prefix_id " +
+            //    "Left Join b_staff stfapp on lsperm.staff_id_approve = stfapp.staff_id " +
+            //    "Left Join f_patient_prefix fppapp on stfapp.prefix_id = fppapp.f_patient_prefix_id " +
+            //    "Where lsperm." + lsperm.pkField + " ='" + copId + "' ";
             String sql = "select lsperm.*,dtr.Name as doctorname" +
-                ",fdtapp.doc_type_name as doc_type_name_app" +
-                ",fdtliq.doc_type_name as doc_type_name_liq" +
-                ",fdtvis.doc_type_name as doc_type_name_vis" +
-                ",fdtwbc.doc_type_name as doc_type_name_wbc" +
-                ",fdtnoo.doc_type_name as doc_type_name_noo, concat(fpprpt.patient_prefix_description,' ',stfrpt.staff_fname_e,' ',stfrpt.staff_lname_e) as staff_report_name " +
-                ", concat(fppapp.patient_prefix_description,' ',stfapp.staff_fname_e,' ',stfapp.staff_lname_e) as staff_approve_name " +
-                "From " + lsperm.table + " lsperm " +
-                "Left Join Doctor dtr on dtr.ID = lsperm." + lsperm.doctor_id + " " +
-                "Left Join f_doc_type fdtapp on lsperm.appearance = fdtapp.doc_type_id " +
-                "Left Join f_doc_type fdtliq on lsperm.liquefaction = fdtliq.doc_type_id " +
-                "Left Join f_doc_type fdtvis on lsperm.viscosity = fdtvis.doc_type_id " +
-                "Left Join f_doc_type fdtwbc on lsperm.wbc = fdtwbc.doc_type_id " +
-                "Left Join f_doc_type fdtnoo on lsperm.no_of_vail = fdtnoo.doc_type_id " +
-                "Left Join b_staff stfrpt on lsperm.staff_id_report = stfrpt.staff_id " +
-                "Left Join f_patient_prefix fpprpt on stfrpt.prefix_id = fpprpt.f_patient_prefix_id " +
-                "Left Join b_staff stfapp on lsperm.staff_id_approve = stfapp.staff_id " +
-                "Left Join f_patient_prefix fppapp on stfapp.prefix_id = fppapp.f_patient_prefix_id " +
-                "Where lsperm." + lsperm.pkField + " ='" + copId + "' ";
+               ",fdtapp.doc_type_name as doc_type_name_app" +
+               ",fdtliq.doc_type_name as doc_type_name_liq" +
+               ",fdtvis.doc_type_name as doc_type_name_vis" +
+               ",fdtwbc.doc_type_name as doc_type_name_wbc" +
+               ",fdtnoo.doc_type_name as doc_type_name_noo, concat(stfrpt.staff_fname_e,' ',stfrpt.staff_lname_e) as staff_report_name " +
+               ", concat(stfapp.staff_fname_e,' ',stfapp.staff_lname_e) as staff_approve_name " +
+               "From " + lsperm.table + " lsperm " +
+               "Left Join Doctor dtr on dtr.ID = lsperm." + lsperm.doctor_id + " " +
+               "Left Join f_doc_type fdtapp on lsperm.appearance = fdtapp.doc_type_id " +
+               "Left Join f_doc_type fdtliq on lsperm.liquefaction = fdtliq.doc_type_id " +
+               "Left Join f_doc_type fdtvis on lsperm.viscosity = fdtvis.doc_type_id " +
+               "Left Join f_doc_type fdtwbc on lsperm.wbc = fdtwbc.doc_type_id " +
+               "Left Join f_doc_type fdtnoo on lsperm.no_of_vail = fdtnoo.doc_type_id " +
+               "Left Join b_staff stfrpt on lsperm.staff_id_report = stfrpt.staff_id " +
+               "Left Join f_patient_prefix fpprpt on stfrpt.prefix_id = fpprpt.f_patient_prefix_id " +
+               "Left Join b_staff stfapp on lsperm.staff_id_approve = stfapp.staff_id " +
+               "Left Join f_patient_prefix fppapp on stfapp.prefix_id = fppapp.f_patient_prefix_id " +
+               "Where lsperm." + lsperm.pkField + " ='" + copId + "' ";
             dt = conn.selectData(conn.conn, sql);
             
             return dt;

@@ -672,7 +672,8 @@ namespace clinic_ivf.gui
                     }
                     setControl1();
                     txtEmailTo.Value = ic.iniC.email_to_lab_fet;
-                    txtEmailSubject.Value = "Result LAB FET " + DateTime.Now.ToString("dd/MM/") + DateTime.Now.Year + "Name " + txtNameMale.Text + " Name " + txtNameFeMale.Text + " FET Code " + txtFetCode.Text + " ";
+                    //txtEmailSubject.Value = "Result LAB FET " + DateTime.Now.ToString("dd/MM/") + DateTime.Now.Year + "Name " + txtNameMale.Text + " Name " + txtNameFeMale.Text + " FET Code " + txtFetCode.Text + " ";
+                    txtEmailSubject.Value = "Summary FET " + DateTime.Now.ToString("dd/MM/") + DateTime.Now.Year + " " + txtNameMale.Text + " &  " + txtNameFeMale.Text + " ";
                 }
                 else
                 {
@@ -685,7 +686,8 @@ namespace clinic_ivf.gui
                     txtLabReqCode.Value = lbReq.req_code;
 
                     txtEmailTo.Value = ic.iniC.email_to_lab_fet;
-                    txtEmailSubject.Value = "Result LAB FET " + DateTime.Now.ToString("dd/MM/") + DateTime.Now.Year + "Name " + txtNameMale.Text + " Name " + txtNameFeMale.Text + " FET Code " + txtFetCode.Text + " ";
+                    //txtEmailSubject.Value = "Result LAB FET " + DateTime.Now.ToString("dd/MM/") + DateTime.Now.Year + "Name " + txtNameMale.Text + " Name " + txtNameFeMale.Text + " FET Code " + txtFetCode.Text + " ";
+                    txtEmailSubject.Value = "Summary FET " + DateTime.Now.ToString("dd/MM/") + DateTime.Now.Year + " " + txtNameMale.Text + " &  " + txtNameFeMale.Text + " ";
 
                     setControlFirstTime(false);
                 }
@@ -812,6 +814,13 @@ namespace clinic_ivf.gui
             //btnDay6ImgRef.Click += BtnDay6ImgRef_Click;
             btnPrintOpuEmbryoDev.Click += BtnPrintOpuEmbryoDev_Click;
             gbDayImg.DoubleClick += GbDayImg_DoubleClick;
+            btnImg.Click += BtnImg_Click;
+        }
+
+        private void BtnImg_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            imageDoubleClick();
         }
 
         private void BtnApproveResult_Click(object sender, EventArgs e)
@@ -878,7 +887,8 @@ namespace clinic_ivf.gui
             lbEmail.Text = "เริ่มส่ง Email";
             MailMessage mail = new MailMessage();
 
-            txtEmailSubject.Value = "Routine LAB Result HN " + txtHnFeMale.Text + " Name " + txtNameFeMale.Text + " FET Code " + txtFetCode.Text + " Date " + System.DateTime.Now.ToString("dd/MM/") + System.DateTime.Now.Year;
+            //txtEmailSubject.Value = "Routine LAB Result HN " + txtHnFeMale.Text + " Name " + txtNameFeMale.Text + " FET Code " + txtFetCode.Text + " Date " + System.DateTime.Now.ToString("dd/MM/") + System.DateTime.Now.Year;
+            //txtEmailSubject.Value = "Routine LAB Result HN " + txtHnFeMale.Text + " Name " + txtNameFeMale.Text + " FET Code " + txtFetCode.Text + " Date " + System.DateTime.Now.ToString("dd/MM/") + System.DateTime.Now.Year;
 
             mail.From = new MailAddress(ic.iniC.email_form_lab_opu);
             mail.To.Add(txtEmailTo.Text);
@@ -1675,7 +1685,8 @@ namespace clinic_ivf.gui
                 dtEmbr.Columns.Add("embryo_for_et_embryologist_name", typeof(String));
                 dtEmbr.Columns.Add("embryo_for_et_embryologist_name_rpt", typeof(String));
                 dtEmbr.Columns.Add("embryo_for_et_embryologist_name_apv", typeof(String));
-                
+                dtEmbr.Columns.Add("day_embryo", typeof(String));
+
                 //dtEmbr.Columns.Add("media_thawing", typeof(String));
                 if (dtLeft.Rows.Count > 0)
                 {
@@ -1772,8 +1783,10 @@ namespace clinic_ivf.gui
                             //row["embryo_dev_0_01"] = desc0;
                             foreach (DataRow rowembryo in dtEmbr.Rows)
                             {
+                                String date1 = "";
+                                date1 = ic.datetoShow(date).Replace("-", "/");
                                 rowembryo["embryo_dev_1_01"] = no + ". " + desc0 + " " + desc1;
-                                rowembryo["embryo_dev_1_date"] = "Date Time: "+ic.datetoShow(date);
+                                rowembryo["embryo_dev_1_date"] = "Date : " + (date1);
                                 //rowembryo["embryo_dev_1_name"] = "Day " + name;
                                 rowembryo["embryo_dev_1_name"] = "Embryo Development Day ( " + fet.embryo_pic_day1 + ")";
                             }
@@ -1783,8 +1796,10 @@ namespace clinic_ivf.gui
                             //row["embryo_dev_0_02"] = desc0;
                             foreach (DataRow rowembryo in dtEmbr.Rows)
                             {
+                                String date1 = "";
+                                date1 = ic.datetoShow(date).Replace("-", "/");
                                 rowembryo["embryo_dev_1_02"] = no + ". " + desc0 + " " + desc1;
-                                rowembryo["embryo_dev_1_date"] = "Date Time: " + ic.datetoShow(date);
+                                rowembryo["embryo_dev_1_date"] = "Date : " + (date1);
                                 //rowembryo["embryo_dev_1_name"] = "Day " + name;
                                 rowembryo["embryo_dev_1_name"] = "Embryo Development Day ( " + fet.embryo_pic_day1 + ")";
                             }
@@ -1794,8 +1809,10 @@ namespace clinic_ivf.gui
                             //row["embryo_dev_0_03"] = desc0;
                             foreach (DataRow rowembryo in dtEmbr.Rows)
                             {
+                                String date1 = "";
+                                date1 = ic.datetoShow(date).Replace("-", "/");
                                 rowembryo["embryo_dev_1_03"] = no + ". " + desc0 + " " + desc1;
-                                rowembryo["embryo_dev_1_date"] = "Date Time: " + ic.datetoShow(date);
+                                rowembryo["embryo_dev_1_date"] = "Date : " + (date1);
                                 //rowembryo["embryo_dev_1_name"] = "Day " + name;
                                 rowembryo["embryo_dev_1_name"] = "Embryo Development Day ( " + fet.embryo_pic_day1 + ")";
                             }
@@ -1805,8 +1822,10 @@ namespace clinic_ivf.gui
                             //row["embryo_dev_0_04"] = desc0;
                             foreach (DataRow rowembryo in dtEmbr.Rows)
                             {
+                                String date1 = "";
+                                date1 = ic.datetoShow(date).Replace("-", "/");
                                 rowembryo["embryo_dev_1_04"] = no + ". " + desc0 + " " + desc1;
-                                rowembryo["embryo_dev_1_date"] = "Date Time: " + ic.datetoShow(date);
+                                rowembryo["embryo_dev_1_date"] = "Date : " + (date1);
                                 //rowembryo["embryo_dev_1_name"] = "Day " + name;
                                 rowembryo["embryo_dev_1_name"] = "Embryo Development Day ( " + fet.embryo_pic_day1 + ")";
                             }
@@ -1816,8 +1835,10 @@ namespace clinic_ivf.gui
                             //row["embryo_dev_0_05"] = desc0;
                             foreach (DataRow rowembryo in dtEmbr.Rows)
                             {
+                                String date1 = "";
+                                date1 = ic.datetoShow(date).Replace("-", "/");
                                 rowembryo["embryo_dev_1_05"] = no + ". " + desc0 + " " + desc1; ;
-                                rowembryo["embryo_dev_1_date"] = "Date Time: " + ic.datetoShow(date);
+                                rowembryo["embryo_dev_1_date"] = "Date : " + (date1);
                                 //rowembryo["embryo_dev_1_name"] = "Day " + name;
                                 rowembryo["embryo_dev_1_name"] = "Embryo Development Day ( " + fet.embryo_pic_day1 + ")";
                             }
@@ -1930,6 +1951,22 @@ namespace clinic_ivf.gui
                             row["no1_desc3"] = row["no1_desc4"].ToString();
                             //}footer11
                         }
+                        String daya = "";
+                        daya = row["desc5"].ToString();
+                        if(daya.Length > 0){
+                            daya = "Day " + daya;
+                        }
+                        row["desc5"] = daya;
+                        daya = ic.datetoShow(row["media_exp"]);
+                        //daya = ic.date
+                        row["media_exp"] = daya.Replace("-","/");
+                        row["day_embryo"] = "Day "+fet.embryo_pic_day1 + " " + row["embryo_dev_1_date"].ToString();
+                        daya = row["doctor_name"].ToString();
+                        String stf2 = "";
+                        stf2 = row["doctor_name"].ToString();
+                        String[] stf22 = stf2.Split(' ');
+                        stf2 = (stf22.Length > 2) ? stf22[0] + " " + stf22[1] + " " + stf22[2].Substring(0, 1) + "." : stf2;
+                        row["doctor_name"] = stf2;
                         //row["footer11"] = opu.remark_day2;
                         //row["footer12"] = opu.remark_day3;
                         //row["footer13"] = opu.remark_day5;
@@ -2644,7 +2681,7 @@ namespace clinic_ivf.gui
             fet.thaw_no_of_remaining = txtThawRemain.Text;
             //fet.media_date = ic.datetoDB(txtMediaDate.Text);
             fet.embryo_freez_freeze_media = cboEmbryoFreezMedia.SelectedItem == null ? "" : ((ComboBoxItem)cboEmbryoFreezMedia.SelectedItem).Value;
-            fet.media_exp = txtMediaExp.Text;
+            fet.media_exp = ic.datetoDB(txtMediaExp.Text);
             fet.media_lot_no = txtMediaLot.Text;
             //fet.media_thawing = txtMediaThawing.Text;
             fet.media_thawing = cboMediaThawing.SelectedItem == null ? "" : ((ComboBoxItem)cboMediaThawing.SelectedItem).Value;

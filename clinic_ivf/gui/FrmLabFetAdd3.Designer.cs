@@ -180,6 +180,7 @@
             this.txtDay2Date = new C1.Win.C1Input.C1DateEdit();
             this.sB = new System.Windows.Forms.StatusStrip();
             this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.btnImg = new C1.Win.C1Input.C1Button();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnDay2ImgRef)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboEmbryoPicDay)).BeginInit();
@@ -272,6 +273,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.cboCheckedDay2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDay2Date)).BeginInit();
             this.sB.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnImg)).BeginInit();
             this.SuspendLayout();
             // 
             // theme1
@@ -329,6 +331,7 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox1.Controls.Add(this.btnImg);
             this.groupBox1.Controls.Add(this.label72);
             this.groupBox1.Controls.Add(this.txtNameDonor);
             this.groupBox1.Controls.Add(this.btnDonorSearch);
@@ -2928,6 +2931,20 @@
             this.sB1.Size = new System.Drawing.Size(118, 17);
             this.sB1.Text = "toolStripStatusLabel1";
             // 
+            // btnImg
+            // 
+            this.btnImg.Image = global::clinic_ivf.Properties.Resources.Add_ticket_24;
+            this.btnImg.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnImg.Location = new System.Drawing.Point(1236, 65);
+            this.btnImg.Name = "btnImg";
+            this.btnImg.Size = new System.Drawing.Size(83, 39);
+            this.btnImg.TabIndex = 549;
+            this.btnImg.Text = "Image";
+            this.btnImg.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnImg, "(default)");
+            this.btnImg.UseVisualStyleBackColor = true;
+            this.btnImg.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
             // FrmLabFetAdd3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3042,6 +3059,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtDay2Date)).EndInit();
             this.sB.ResumeLayout(false);
             this.sB.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnImg)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3202,5 +3220,6 @@
         private CrystalDecisions.Windows.Forms.CrystalReportViewer cryLabEmbryo;
         private CrystalDecisions.Windows.Forms.CrystalReportViewer cryLab;
         private C1.Win.C1Input.C1Button btnApproveResult;
+        private C1.Win.C1Input.C1Button btnImg;
     }
 }

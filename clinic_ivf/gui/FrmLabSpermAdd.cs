@@ -148,12 +148,13 @@ namespace clinic_ivf.gui
             ic.ivfDB.dtrOldDB.setCboDoctor(cboPeDoctor, "");
             ic.ivfDB.dtrOldDB.setCboDoctor(cboIuiDoctor, "");
 
-            ic.ivfDB.fdtDB.setCboSpermAnalysisAppearanceNew(cboAppearance);
-            ic.ivfDB.fdtDB.setCboSpermAnalysisAppearance(cboLiquefaction);
-            ic.ivfDB.fdtDB.setCboSpermAnalysisAppearance(cboViscosity);
+            //ic.ivfDB.fdtDB.setCboSpermAnalysisAppearanceNew(cboAppearance);
+            ic.ivfDB.fdtDB.setCboSpermAnalysisAppearance(cboAppearance);
+            ic.ivfDB.fdtDB.setCboSpermAnalysisLiquefaction(cboLiquefaction);
+            ic.ivfDB.fdtDB.setCboSpermAnalysisLiquefaction(cboViscosity);
             ic.ivfDB.fdtDB.setCboSpermAnalysisAppearance(cboSfAppearance);
-            ic.ivfDB.fdtDB.setCboSpermAnalysisAppearance(cboSfLiquefaction);
-            ic.ivfDB.fdtDB.setCboSpermAnalysisAppearance(cboSfViscosity);
+            ic.ivfDB.fdtDB.setCboSpermAnalysisLiquefaction(cboSfLiquefaction);
+            ic.ivfDB.fdtDB.setCboSpermAnalysisLiquefaction(cboSfViscosity);
             ic.ivfDB.fdtDB.setCboSpermAnalysisAppearance(cboPeAppearance);
             ic.ivfDB.fdtDB.setCboSpermAnalysisAppearance(cboPeLiquefaction);
             ic.ivfDB.fdtDB.setCboSpermAnalysisAppearance(cboPeViscosity);
@@ -296,7 +297,7 @@ namespace clinic_ivf.gui
             filename = "report\\sperm_analysis_" + datetick + ".pdf";
             lbSfEmail.Text = "เตรียม Email Report";
             Application.DoEvents();
-            if (!setReportSpermAnalysis(filename))
+            if (!setReportSpermAnalysis1("",filename))
             {
                 return;
             }
@@ -538,7 +539,7 @@ namespace clinic_ivf.gui
             filename = "report\\sperm_freezing_"+ datetick + ".pdf";
             lbSfEmail.Text = "เตรียม Email Report";
             Application.DoEvents();
-            if (!setReportSpermFreezing(filename))
+            if (!setReportSpermFreezing1("",filename))
             {
                 return;
             }
@@ -837,80 +838,81 @@ namespace clinic_ivf.gui
         private void calSfMotility()
         {
             Decimal pr = 0, nr = 0, motility=0;
-            int motility1 = 0;
+            Decimal motility1 = 0;
             Decimal.TryParse(txtSfMotility4.Text, out pr);
             Decimal.TryParse(txtSfMotility3.Text, out nr);
             motility = pr + nr;
-            int.TryParse(motility.ToString(), out motility1);
+            Decimal.TryParse(motility.ToString(), out motility1);
             txtSfMotility.Value = motility1;
             txtSfViability.Value = motility1 + 7;
         }
         private void calMotility()
         {
             Decimal pr = 0, nr = 0, motility = 0;
-            int motility1 = 0;
+            Decimal motility1 = 0;
             Decimal.TryParse(txtMotility4.Text, out pr);
             Decimal.TryParse(txtMotility3.Text, out nr);
             motility = pr + nr;
-            int.TryParse(motility.ToString(), out motility1);
+            Decimal.TryParse(motility.ToString(), out motility1);
             txtMotility.Value = motility1;
             txtViability.Value = motility1 + 7;
+        }
+        private void calSfTotalCount()
+        {
+            Decimal vol = 0, cnt = 0, totalcnt = 0;
+            Decimal totalcnt1 = 0;
+            Decimal.TryParse(txtSfVolume.Text, out vol);
+            Decimal.TryParse(txtSfCount.Text, out cnt);
+            totalcnt = vol * cnt;
+            totalcnt = Math.Round(totalcnt,ic.spermFreezingDecimal);
+            //Decimal.TryParse(totalcnt.ToString(), out totalcnt1);
+            txtSfTotalCount.Value = totalcnt;
         }
         private void calSfMotile()
         {
             Decimal motilitysf = 0, cntsf = 0, motile=0, vol=0, totalmotile=0;
-            int motile1 = 0, totalmotile1=0;
+            Decimal motile1 = 0, totalmotile1=0;
             Decimal.TryParse(txtSfMotility.Text, out motilitysf);
             Decimal.TryParse(txtSfCount.Text, out cntsf);
             Decimal.TryParse(txtSfVolume.Text, out vol);
             motile = (motilitysf * cntsf) / 100;
-            motile = Math.Round(motile);
-            int.TryParse(motile.ToString(), out motile1);
+            motile = Math.Round(motile, ic.spermFreezingDecimal);
+            Decimal.TryParse(motile.ToString(), out motile1);
             txtSfMotile.Value = motile1;
 
             totalmotile = motile * vol;
-            totalmotile = Math.Round(totalmotile);
-            int.TryParse(totalmotile.ToString(), out totalmotile1);
+            totalmotile = Math.Round(totalmotile, ic.spermFreezingDecimal);
+            Decimal.TryParse(totalmotile.ToString(), out totalmotile1);
             txtSfTotalMotile.Value = totalmotile1;
+        }
+        
+        private void calTotalCount()
+        {
+            Decimal vol = 0, cnt = 0, totalcnt = 0;
+            Decimal totalcnt1 = 0;
+            Decimal.TryParse(txtVolume.Text, out vol);
+            Decimal.TryParse(txtCount.Text, out cnt);
+            totalcnt = vol * cnt;
+            totalcnt = Math.Round(totalcnt, ic.spermFreezingDecimal);
+            //Decimal.TryParse(totalcnt.ToString(), out totalcnt1);
+            txtTotalCount.Value = totalcnt;
         }
         private void calMotile()
         {
             Decimal motilitysf = 0, cntsf = 0, motile = 0, vol = 0, totalmotile = 0;
-            int motile1 = 0, totalmotile1 = 0;
+            Decimal motile1 = 0, totalmotile1 = 0;
             Decimal.TryParse(txtMotility.Text, out motilitysf);
             Decimal.TryParse(txtCount.Text, out cntsf);
             Decimal.TryParse(txtVolume.Text, out vol);
             motile = (motilitysf * cntsf) / 100;
-            motile = Math.Round(motile);
-            int.TryParse(motile.ToString(), out motile1);
+            motile = Math.Round(motile, ic.spermFreezingDecimal);
+            Decimal.TryParse(motile.ToString(), out motile1);
             txtMotile.Value = motile1;
 
             totalmotile = motile * vol;
-            totalmotile = Math.Round(totalmotile);
-            int.TryParse(totalmotile.ToString(), out totalmotile1);
+            totalmotile = Math.Round(totalmotile, ic.spermFreezingDecimal);
+            Decimal.TryParse(totalmotile.ToString(), out totalmotile1);
             txtTotalMotile.Value = totalmotile1;
-        }
-        private void calSfTotalCount()
-        {
-            Decimal vol = 0, cnt = 0, totalcnt=0;
-            int totalcnt1 = 0;
-            Decimal.TryParse(txtSfVolume.Text, out vol);
-            Decimal.TryParse(txtSfCount.Text, out cnt);
-            totalcnt = vol * cnt;
-            totalcnt = Math.Round(totalcnt);
-            int.TryParse(totalcnt.ToString(), out totalcnt1);
-            txtSfTotalCount.Value = totalcnt1;
-        }
-        private void calTotalCount()
-        {
-            Decimal vol = 0, cnt = 0, totalcnt = 0;
-            int totalcnt1 = 0;
-            Decimal.TryParse(txtVolume.Text, out vol);
-            Decimal.TryParse(txtCount.Text, out cnt);
-            totalcnt = vol * cnt;
-            totalcnt = Math.Round(totalcnt);
-            int.TryParse(totalcnt.ToString(), out totalcnt1);
-            txtTotalCount.Value = totalcnt1;
         }
         private void TxtAbstinenceday_KeyUp(object sender, KeyEventArgs e)
         {
@@ -1177,7 +1179,167 @@ namespace clinic_ivf.gui
             frm.setSpermSa(dt);
             frm.ShowDialog(this);
         }
+        private Boolean setReportSpermAnalysis1(String flag, String filename)
+        {
+            Boolean chk1 = true;
+            DataTable dt = new DataTable();
+            dt = ic.ivfDB.lspermDB.selectByPk(txtID.Text);
+            //FrmWaiting frmW = new FrmWaiting();
+            //frmW.Show();
+            String date1 = dt.Rows[0]["date_report"].ToString();
+            String date2 = dt.Rows[0]["date_approve"].ToString();
+            String datemale = dt.Rows[0]["dob_male"].ToString();
+            date1 = ic.datetimetoShow(dt.Rows[0]["date_report"]);
+            date2 = ic.datetimetoShow(dt.Rows[0]["date_approve"]);
+            dt.Rows[0]["date_report"] = date1;
+            dt.Rows[0]["date_approve"] = date2;
 
+            datemale = ic.datetoShow(dt.Rows[0]["dob_male"]);
+            dt.Rows[0]["dob_male"] = datemale;
+            String appearance = "", appearancetext = "", chk="";
+            appearance = dt.Rows[0]["appearance"].ToString();
+            appearancetext = dt.Rows[0]["appearance_text"].ToString();
+            if (appearancetext.Length > 0)
+            {
+                //dt.Rows[0]["appearance"] = appearancetext;
+                dt.Rows[0]["doc_type_name_app"] = appearancetext;
+            }
+            String stf2 = "";
+            stf2 = dt.Rows[0]["doctorname"].ToString();
+            String[] stf22 = stf2.Split(' ');
+            stf2 = (stf22.Length > 2) ? stf22[0] + " " + stf22[1] + " " + stf22[2].Substring(0, 1) + "." : stf2;
+            dt.Rows[0]["doctorname"] = stf2;
+            if (flag.Equals("print"))
+            {
+                FrmReport frm = new FrmReport(ic);
+                frm.setSpermSa(dt);
+                frm.ShowDialog(this);
+            }
+            else
+            {
+                try 
+                { 
+                    ReportDocument rpt = new ReportDocument();
+                    rpt.Load("lab_sperm_sa.rpt");
+
+                    rpt.SetDataSource(dt);
+                    rpt.SetParameterValue("line1", ic.cop.comp_name_t);
+                    rpt.SetParameterValue("line2", ic.cop.addr1);
+                    rpt.SetParameterValue("line3", ic.cop.addr2);
+                    //rpt.SetParameterValue("report_name", " Summary of OPU Report");
+                    //rpt.SetParameterValue("date1", "" + date1);
+                    this.crySperm.ReportSource = rpt;
+                    this.crySperm.Refresh();
+
+                    if (File.Exists(filename))
+                    {
+                        File.Delete(filename);
+                        System.Threading.Thread.Sleep(200);
+                    }
+
+                    ExportOptions CrExportOptions;
+                    DiskFileDestinationOptions CrDiskFileDestinationOptions = new DiskFileDestinationOptions();
+                    PdfRtfWordFormatOptions CrFormatTypeOptions = new PdfRtfWordFormatOptions();
+                    CrDiskFileDestinationOptions.DiskFileName = filename;
+                    CrExportOptions = rpt.ExportOptions;
+                    {
+                        CrExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
+                        CrExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
+                        CrExportOptions.DestinationOptions = CrDiskFileDestinationOptions;
+                        CrExportOptions.FormatOptions = CrFormatTypeOptions;
+                    }
+
+                    rpt.Export();
+                }
+                catch (Exception ex)
+                {
+                    chk1 = false;
+                    chk = ex.Message.ToString();
+                    MessageBox.Show("error " + ex.Message, "");
+                }
+        }
+            return chk1;
+        }
+        private Boolean setReportSpermFreezing1(String flag,String filename)
+        {
+            Boolean chk1 = true;
+            DataTable dt = new DataTable();
+            dt = ic.ivfDB.lspermDB.selectByPk(txtSfID.Text);
+            String date1 = dt.Rows[0]["date_report"].ToString();
+            String date2 = dt.Rows[0]["date_approve"].ToString();
+            String datemale = dt.Rows[0]["dob_male"].ToString();
+            date1 = ic.datetimetoShow(dt.Rows[0]["date_report"]);
+            date2 = ic.datetimetoShow(dt.Rows[0]["date_approve"]);
+            dt.Rows[0]["date_report"] = date1;
+            dt.Rows[0]["date_approve"] = date2;
+
+            datemale = ic.datetoShow(dt.Rows[0]["dob_male"]);
+            dt.Rows[0]["dob_male"] = datemale;
+            String appearance = "", appearancetext = "";
+            appearance = dt.Rows[0]["appearance"].ToString();
+            appearancetext = dt.Rows[0]["appearance_text"].ToString();
+            if (appearancetext.Length > 0)
+            {
+                //dt.Rows[0]["appearance"] = appearancetext;
+                dt.Rows[0]["doc_type_name_app"] = appearancetext;
+            }
+            String stf2 = "", chk = "";
+            stf2 = dt.Rows[0]["doctorname"].ToString();
+            String[] stf22 = stf2.Split(' ');
+            stf2 = (stf22.Length > 2) ? stf22[0] + " " + stf22[1] + " " + stf22[2].Substring(0, 1) + "." : stf2;
+            dt.Rows[0]["doctorname"] = stf2;
+            //FrmWaiting frmW = new FrmWaiting();
+            //frmW.Show();
+            if (flag.Equals("print"))
+            {
+                FrmReport frm = new FrmReport(ic);
+                frm.setSpermSf(dt);
+                frm.ShowDialog(this);
+            }
+            else
+            {
+                try { 
+                    ReportDocument rpt = new ReportDocument();
+                    rpt.Load("lab_sperm_sf.rpt");
+
+                    rpt.SetDataSource(dt);
+                    rpt.SetParameterValue("line1", ic.cop.comp_name_t);
+                    rpt.SetParameterValue("line2", ic.cop.addr1);
+                    rpt.SetParameterValue("line3", ic.cop.addr2);
+                    //rpt.SetParameterValue("report_name", " Summary of OPU Report");
+                    //rpt.SetParameterValue("date1", "" + date1);
+                    this.crySperm.ReportSource = rpt;
+                    this.crySperm.Refresh();
+
+                    if (File.Exists(filename))
+                    {
+                        File.Delete(filename);
+                        System.Threading.Thread.Sleep(200);
+                    }
+
+                    ExportOptions CrExportOptions;
+                    DiskFileDestinationOptions CrDiskFileDestinationOptions = new DiskFileDestinationOptions();
+                    PdfRtfWordFormatOptions CrFormatTypeOptions = new PdfRtfWordFormatOptions();
+                    CrDiskFileDestinationOptions.DiskFileName = filename;
+                    CrExportOptions = rpt.ExportOptions;
+                    {
+                        CrExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
+                        CrExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
+                        CrExportOptions.DestinationOptions = CrDiskFileDestinationOptions;
+                        CrExportOptions.FormatOptions = CrFormatTypeOptions;
+                    }
+
+                    rpt.Export();
+                }
+                catch (Exception ex)
+                {
+                    chk1 = false;
+                    chk = ex.Message.ToString();
+                    MessageBox.Show("error " + ex.Message, "");
+                }
+            }
+            return chk1;
+        }
         private void BtnPrintSf_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
@@ -1202,6 +1364,11 @@ namespace clinic_ivf.gui
                 //dt.Rows[0]["appearance"] = appearancetext;
                 dt.Rows[0]["doc_type_name_app"] = appearancetext;
             }
+            String stf2 = "";
+            stf2 = dt.Rows[0]["doctorname"].ToString();
+            String[] stf22 = stf2.Split(' ');
+            stf2 = (stf22.Length > 2) ? stf22[0] + " " + stf22[1] + " " + stf22[2].Substring(0, 1) + "." : stf2;
+            dt.Rows[0]["doctorname"] = stf2;
             //FrmWaiting frmW = new FrmWaiting();
             //frmW.Show();
             frm.setSpermSf(dt);
@@ -1368,7 +1535,7 @@ namespace clinic_ivf.gui
             txtSfSpermDate.ReadOnly = !flag;
             txtSfAbstinenceday.ReadOnly = !flag;
             txtSfPh.ReadOnly = !flag;
-            txtSfViability.ReadOnly = !flag;
+            //txtSfViability.ReadOnly = !flag;
             txtSfVolume.ReadOnly = !flag;
             txtSfCount.ReadOnly = !flag;
             txtSfTotalCount.ReadOnly = !flag;
@@ -1506,7 +1673,7 @@ namespace clinic_ivf.gui
             ic.ivfDB.lspermDB.setCboRemark(cboRemark);
             ic.setC1ComboByName(cboRemark, lsperm.remark);
             txtEmailTo.Value = ic.iniC.email_to_sperm_freezing;
-            txtEmailSubject.Value = "Result LAB Sperm Analysis HN " + txtSfHnMale.Text + " Name " + txtSfNameMale.Text+" ["+ txtLabReqCode.Text+"]";
+            txtEmailSubject.Value = "Report Sperm analysis " + DateTime.Now.ToString("dd/MM/") + DateTime.Now.Year + " " + txtNameMale.Text;
             if (!lsperm.status_lab.Equals("5"))
             {
                 if (flagEdit1.Equals(""))
@@ -1519,10 +1686,10 @@ namespace clinic_ivf.gui
                 }
             }
             lbSpSaRemark.Text = lforma.sperm_sa_remark;
-            if (lsperm.appearance_text.Length > 0)
-            {
-                cboAppearance.Text = lsperm.appearance_text;
-            }
+            //if (lsperm.appearance_text.Length > 0)
+            //{
+            //    cboAppearance.Text = lsperm.appearance_text;
+            //}
         }
         private void setControlSpermFreezing()
         {
@@ -1581,7 +1748,7 @@ namespace clinic_ivf.gui
             txtSfTail1.Value = lsperm.morphology_tail_defect1;
 
             txtSfEmailTo.Value = ic.iniC.email_to_sperm_freezing;
-            txtSfEmailSubject.Value = "Result LAB Sperm Freezing HN "+txtSfHnMale.Text+" Name "+txtSfNameMale.Text + " [" + txtSfLabReqCode.Text + "]";
+            txtSfEmailSubject.Value = "Report Sperm Freezing "+ DateTime.Now.ToString("dd/MM/") + DateTime.Now.Year +" "+txtSfNameMale.Text ;
 
             if (!lsperm.status_lab.Equals("5"))
             {
