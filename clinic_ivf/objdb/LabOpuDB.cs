@@ -949,7 +949,7 @@ namespace clinic_ivf.objdb
 
             return re;
         }
-        public String updateStatusOPUApproveResultDay1(String opuid, String userId)
+        public String updateStatusOPUApproveResultDay1(String opuid, String filename, String userId)
         {
             String re = "";
             String sql = "";
@@ -960,6 +960,7 @@ namespace clinic_ivf.objdb
                 " " + opu.status_approve_result_day1 + " = '1'" +
                 "," + opu.approve_result_day1_staff_id + " = '" + userId + "'" +
                 "," + opu.approve_result_day1_date + " = now()" +
+                "," + opu.approve_result_day1_date + " = '"+ filename + "'" +
                 "Where " + opu.pkField + "='" + opuid + "'"
                 ;
             try

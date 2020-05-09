@@ -31,5 +31,6 @@ namespace clinic_ivf.object1
         public String status_ipd { get; set; }
         public String an_cnt { get; set; }
         public String folder_ftp { get; set; }
+        public String status_record { get; set; }
     }
 }

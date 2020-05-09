@@ -168,6 +168,27 @@ namespace clinic_ivf.objdb
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
+        public DataTable selectByStatusFinish(String datestart, String dateend)
+        {
+            DataTable dt = new DataTable();
+            String sql = "select fet." + fet.fet_id + ", fet." + fet.fet_code + ",fet." + fet.hn_female + ",fet." + fet.name_female + ",fet." + fet.fet_date + ",fet." + fet.remark + "," + fet.hn_male + "," + fet.name_male + ", lab_b_procedure.proce_name_t " +
+                "From " + fet.table + " fet " +
+                "Left Join Doctor on Doctor.ID = fet.doctor_id " +
+                "Left Join lab_b_procedure on fet.proce_id = lab_b_procedure.proce_id " +
+                "Where fet." + fet.status_fet + " ='2' and fet." + fet.active + "='1' " +
+                "and fet." + fet.fet_date + " >= '" + datestart + "' and fet." + fet.fet_date + " <= '" + dateend + "' " +
+                //"Order By opu." + opu.opu_id + " " +
+                //"Union " +
+                //"select fet.fet_id , fet.fet_code ,fet.hn_female ,fet.name_female,fet.fet_date ,fet.remark, fet.hn_male, fet.name_male, lab_b_procedure.proce_name_t " +
+                //"From lab_t_fet fet  " +
+                //"Left Join Doctor on Doctor.ID = fet.doctor_id " +
+                //"Left Join lab_b_procedure on fet.proce_id = lab_b_procedure.proce_id " +
+                //"Where fet.status_fet ='1' and fet.active + '1' " +
+                //"Order By fet.fet_id  ";
+                "  ";
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
         public DataTable selectByStatusProcess1()
         {
             DataTable dt = new DataTable();

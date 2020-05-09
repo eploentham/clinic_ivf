@@ -73,6 +73,7 @@ namespace clinic_ivf.gui
             //btnNew.Click += BtnNew_Click;
             //btnSearchA.Click += BtnSearchA_Click;
             txtSearch.KeyUp += TxtSearch_KeyUp;
+            btnSearchF.Click += BtnSearchF_Click;
             //btnOPU.Click += BtnOPU_Click;
             //btnFet.Click += BtnFet_Click;
 
@@ -84,6 +85,13 @@ namespace clinic_ivf.gui
             //setGrfFinish();
             //initGrfSearch();
         }
+
+        private void BtnSearchF_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            setGrfFinish();
+        }
+
         private void BtnFet_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
@@ -610,14 +618,25 @@ namespace clinic_ivf.gui
             //menuGw.MenuItems.Add("&ยกเลิก", new EventHandler(ContextMenu_Gw_Cancel));
             grfFinish.ContextMenu = menuGw;
             gbFinish.Controls.Add(grfFinish);
-
+            grfFinish.Rows.Count = 2;
             theme1.SetTheme(grfFinish, "Office2010Blue");
         }
 
         private void GrfFinish_DoubleClick(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-
+            String chk = "", name = "", id = "";
+            id = grfFinish[grfFinish.Row, colPcId] != null ? grfFinish[grfFinish.Row, colPcId].ToString() : "";
+            chk = grfFinish[grfFinish.Row, colPcOpuNum] != null ? grfFinish[grfFinish.Row, colPcOpuNum].ToString() : "";
+            name = grfFinish[grfFinish.Row, colPcPttName] != null ? grfFinish[grfFinish.Row, colPcPttName].ToString() : "";
+            //if (MessageBox.Show("ต้องการ ป้อน LAB OPU  \n  opu number " + chk + " \n name " + name, "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+            //{
+            //grfReq.Rows.Remove(grfReq.Row);
+            Cursor curOld;
+            curOld = this.Cursor;
+            this.Cursor = Cursors.WaitCursor;
+            openLabOPUAdd(id, name);
+            this.Cursor = curOld;
         }
 
         private void GrfFinish_AfterRowColChange(object sender, RangeEventArgs e)
@@ -633,7 +652,7 @@ namespace clinic_ivf.gui
             String datestart = "", dateend = "";
             datestart = ic.datetoDB(txtFiDateStart.Text);
             dateend = ic.datetoDB(txtFiDateEnd.Text);
-            dt = ic.ivfDB.opuDB.selectByStatusFinish(datestart, dateend);
+            dt = ic.ivfDB.fetDB.selectByStatusFinish(datestart, dateend);
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             if (dt.Rows.Count <= 1)
             {
@@ -692,14 +711,14 @@ namespace clinic_ivf.gui
                 i++;
                 if (i == 1) continue;
                 //Row row1 = grfProc.Rows.Add();
-                grfFinish[i, colPcId] = row[ic.ivfDB.opuDB.opu.opu_id].ToString();
-                grfFinish[i, colPcOpuNum] = row[ic.ivfDB.opuDB.opu.opu_code].ToString();
-                grfFinish[i, colPcHn] = row[ic.ivfDB.opuDB.opu.hn_female].ToString();
-                grfFinish[i, colPcPttName] = row[ic.ivfDB.opuDB.opu.name_female].ToString();
-                grfFinish[i, colPcDate] = ic.datetoShow(row[ic.ivfDB.opuDB.opu.opu_date].ToString());
-                grfFinish[i, colPcRemark] = row[ic.ivfDB.opuDB.opu.remark].ToString();
-                grfFinish[i, colPcHnMale] = row[ic.ivfDB.opuDB.opu.hn_male].ToString();
-                grfFinish[i, colPcNameMale] = row[ic.ivfDB.opuDB.opu.name_male].ToString();
+                grfFinish[i, colPcId] = row[ic.ivfDB.fetDB.fet.fet_id].ToString();
+                grfFinish[i, colPcOpuNum] = row[ic.ivfDB.fetDB.fet.fet_code].ToString();
+                grfFinish[i, colPcHn] = row[ic.ivfDB.fetDB.fet.hn_female].ToString();
+                grfFinish[i, colPcPttName] = row[ic.ivfDB.fetDB.fet.name_female].ToString();
+                grfFinish[i, colPcDate] = ic.datetoShow(row[ic.ivfDB.fetDB.fet.fet_date].ToString());
+                grfFinish[i, colPcRemark] = row[ic.ivfDB.fetDB.fet.remark].ToString();
+                grfFinish[i, colPcHnMale] = row[ic.ivfDB.fetDB.fet.hn_male].ToString();
+                grfFinish[i, colPcNameMale] = row[ic.ivfDB.fetDB.fet.name_male].ToString();
                 grfFinish[i, colProceName] = row["proce_name_t"].ToString();
                 //row1[colRqRemark] = row[ic.ivfDB.lbReqDB.lbReq.remark].ToString();
                 //row1[colOpuId] = "";

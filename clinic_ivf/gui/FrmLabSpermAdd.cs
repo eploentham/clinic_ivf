@@ -163,6 +163,7 @@ namespace clinic_ivf.gui
             ic.ivfDB.fdtDB.setCboSpermAnalysisAppearance(cboIuiViscosity);
             ic.ivfDB.fdtDB.setCboSpermAnalysisWbc(cboSfWbc);
             ic.ivfDB.fdtDB.setCboSpermAnalysisNoofVail(cboSfNoofVail);
+            ic.ivfDB.fdtDB.setCboSpermAnalysisWbc(cboWbc);
 
             ic.ivfDB.stfDB.setCboEmbryologist(cboEmbryologistAppv, "");
             ic.ivfDB.stfDB.setCboEmbryologist(cboEmbryologistReport, "");
@@ -175,15 +176,25 @@ namespace clinic_ivf.gui
             //ic.setCboSpermAppearance(cboSfAppearance);
             //ic.setCboSpermAppearance(cboSfLiquefaction);
             //ic.setCboSpermAppearance(cboSfViscosity);
-
-            txtSfAbstinenceday.KeyUp += TxtSfAbstinenceday_KeyUp;
+            
             txtAbstinenceday.KeyUp += TxtAbstinenceday_KeyUp;
-
             txtVolume.KeyUp += TxtVolume_KeyUp;
             txtCount.KeyUp += TxtCount_KeyUp;
+
+            txtPeVolume.KeyUp += TxtPeVolume_KeyUp;
+            txtPeCount.KeyUp += TxtPeCount_KeyUp;
+            txtPeAbstinenceday.KeyUp += TxtPeAbstinenceday_KeyUp;
+            txtPeMotility4.KeyUp += TxtPeMotility4_KeyUp;
+            txtPeMotility3.KeyUp += TxtPeMotility3_KeyUp;
+            txtPeHead1.KeyUp += TxtPeHead1_KeyUp;
+            txtPeNeck1.KeyUp += TxtPeNeck1_KeyUp;
+            txtPeTail1.KeyUp += TxtPeTail1_KeyUp;
+            txtPePh.KeyUp += TxtPePh_KeyUp;
+            
+
             txtSfVolume.KeyUp += TxtSfVolume_KeyUp;
             txtSfCount.KeyUp += TxtSfCount_KeyUp;
-            
+            txtSfAbstinenceday.KeyUp += TxtSfAbstinenceday_KeyUp;
             txtSfMotility4.KeyUp += TxtSfMotility4_KeyUp;
             txtSfMotility3.KeyUp += TxtSfMotility3_KeyUp;
             txtSfHead1.KeyUp += TxtSfHead1_KeyUp;
@@ -213,7 +224,7 @@ namespace clinic_ivf.gui
             lbSfEmail.Hide();
 
             setControl();
-            setTheme();
+            //setTheme();
             //if (!flagEdit)
             //{
             //    if (lsperm.status_lab_sperm.Equals("1"))
@@ -233,6 +244,18 @@ namespace clinic_ivf.gui
             //        //tC.SelectedTab = TabSpermIUI;
             //    }
             //}
+        }
+
+        
+
+        
+
+        
+
+        private void TxtPeMotility2_KeyUp(object sender, KeyEventArgs e)
+        {
+            //throw new NotImplementedException();
+            calPESAMotility();
         }
 
         private void BtnSfAgentEmail_Click(object sender, EventArgs e)
@@ -587,7 +610,15 @@ namespace clinic_ivf.gui
                 txtSfVolume.Focus();
             }
         }
-
+        private void TxtPePh_KeyUp(object sender, KeyEventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (e.KeyCode == Keys.Enter)
+            {
+                //txtSfViability.Focus();
+                txtPeVolume.Focus();
+            }
+        }
         private void TxtSfPh_KeyUp(object sender, KeyEventArgs e)
         {
             //throw new NotImplementedException();
@@ -597,13 +628,25 @@ namespace clinic_ivf.gui
                 txtSfVolume.Focus();
             }
         }
-
+        private void TxtPeTail1_KeyUp(object sender, KeyEventArgs e)
+        {
+            //throw new NotImplementedException();
+            calPeMorphology();
+        }
         private void TxtSfTail1_KeyUp(object sender, KeyEventArgs e)
         {
             //throw new NotImplementedException();
             calSfMorphology();
         }
-
+        private void TxtPeNeck1_KeyUp(object sender, KeyEventArgs e)
+        {
+            //throw new NotImplementedException();
+            calPeMorphology();
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtPeTail1.Focus();
+            }
+        }
         private void TxtSfNeck1_KeyUp(object sender, KeyEventArgs e)
         {
             //throw new NotImplementedException();
@@ -613,7 +656,15 @@ namespace clinic_ivf.gui
                 txtSfTail1.Focus();
             }
         }
-
+        private void TxtPeHead1_KeyUp(object sender, KeyEventArgs e)
+        {
+            //throw new NotImplementedException();
+            calPeMorphology();
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtPeNeck1.Focus();
+            }
+        }
         private void TxtSfHead1_KeyUp(object sender, KeyEventArgs e)
         {
             //throw new NotImplementedException();
@@ -623,7 +674,16 @@ namespace clinic_ivf.gui
                 txtSfNeck1.Focus();
             }
         }
-
+        private void TxtPeMotility3_KeyUp(object sender, KeyEventArgs e)
+        {
+            //throw new NotImplementedException();
+            calPeMotility();
+            calPeMotile();
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtPeMotility2.Focus();
+            }
+        }
         private void TxtSfMotility3_KeyUp(object sender, KeyEventArgs e)
         {
             //throw new NotImplementedException();
@@ -634,7 +694,16 @@ namespace clinic_ivf.gui
                 txtSfMotility2.Focus();
             }
         }
-
+        private void TxtPeMotility4_KeyUp(object sender, KeyEventArgs e)
+        {
+            //throw new NotImplementedException();
+            calPeMotility();
+            calPeMotile();
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtPeMotility3.Focus();
+            }
+        }
         private void TxtSfMotility4_KeyUp(object sender, KeyEventArgs e)
         {
             //throw new NotImplementedException();
@@ -645,7 +714,19 @@ namespace clinic_ivf.gui
                 txtSfMotility3.Focus();
             }
         }
+        private void TxtPeCount_KeyUp(object sender, KeyEventArgs e)
+        {
+            //throw new NotImplementedException();
+            calPESATotalCount();
+            calPESAMotile();
+        }
 
+        private void TxtPeVolume_KeyUp(object sender, KeyEventArgs e)
+        {
+            //throw new NotImplementedException();
+            calPESATotalCount();
+            calPESAMotile();
+        }
         private void TxtSfCount_KeyUp(object sender, KeyEventArgs e)
         {
             //throw new NotImplementedException();
@@ -680,6 +761,70 @@ namespace clinic_ivf.gui
             //throw new NotImplementedException();
             calTotalCount();
             calMotile();
+        }
+        private void calPeMorphology()
+        {
+            Decimal head1 = 0, neck1 = 0, tail1 = 0, head = 0, neck = 0, tail = 0, total1 = 0, abnormal = 0;
+            int head11 = 0, neck11 = 0, tail11 = 0;
+            Decimal.TryParse(txtPeHead1.Text, out head1);
+            Decimal.TryParse(txtPeNeck1.Text, out neck1);
+            Decimal.TryParse(txtPeTail1.Text, out tail1);
+            total1 = head1 + neck1 + tail1;
+
+            calSfAbNormal();
+            Decimal.TryParse(txtPeAbnormal.Text, out abnormal);
+            if (total1 <= 0) return;
+            head = (abnormal * head1) / total1;
+            neck = (abnormal * neck1) / total1;
+            tail = (abnormal * tail1) / total1;
+            head = Math.Round(head);
+            neck = Math.Round(neck);
+            tail = Math.Round(tail);
+            int.TryParse(head.ToString(), out head11);
+            int.TryParse(neck.ToString(), out neck11);
+            int.TryParse(tail.ToString(), out tail11);
+
+            if ((head11 + neck11 + tail11) != abnormal)
+            {
+                Decimal.TryParse(txtPeHead1.Text, out head1);
+                head = (abnormal * head1) / total1;
+                neck = (abnormal * neck1) / total1;
+                tail = (abnormal * tail1) / total1;
+                Decimal headtemp = 0, necktemp = 0, tailtemp = 0;
+                int headtemp1 = 0, necktemp1 = 0, tailtemp1 = 0;
+                headtemp1 = Decimal.ToInt16(head);
+                headtemp = head - headtemp1;
+                necktemp1 = Decimal.ToInt16(neck);
+                necktemp = neck - necktemp1;
+                tailtemp1 = Decimal.ToInt16(tail);
+                tailtemp = tail - tailtemp1;
+                if (headtemp < necktemp)
+                {
+                    if (headtemp < tailtemp)
+                    {
+                        int.TryParse(headtemp1.ToString(), out head11);
+                    }
+                    else
+                    {
+                        int.TryParse(tailtemp1.ToString(), out tail11);
+                    }
+                }
+                else
+                {
+                    if (necktemp < tailtemp)
+                    {
+                        int.TryParse(necktemp1.ToString(), out neck11);
+                    }
+                    else
+                    {
+                        int.TryParse(tailtemp1.ToString(), out tail11);
+                    }
+                }
+                //head = Math.Round(head);
+            }
+            txtPeHead.Value = head11;
+            txtPeNeck.Value = neck11;
+            txtPeTail.Value = tail11;
         }
         private void calSfMorphology()
         {
@@ -835,6 +980,17 @@ namespace clinic_ivf.gui
             //int.TryParse(abnormal.ToString(), out abnormal1);
             txtAbnormal.Value = 100 - normal;
         }
+        private void calPeMotility()
+        {
+            Decimal pr = 0, nr = 0, motility = 0;
+            Decimal motility1 = 0;
+            Decimal.TryParse(txtPeMotility4.Text, out pr);
+            Decimal.TryParse(txtPeMotility3.Text, out nr);
+            motility = pr + nr;
+            Decimal.TryParse(motility.ToString(), out motility1);
+            txtPeMotility.Value = motility1;
+            txtPeViability.Value = motility1 + 7;
+        }
         private void calSfMotility()
         {
             Decimal pr = 0, nr = 0, motility=0;
@@ -868,6 +1024,34 @@ namespace clinic_ivf.gui
             //Decimal.TryParse(totalcnt.ToString(), out totalcnt1);
             txtSfTotalCount.Value = totalcnt;
         }
+        private void calPESATotalCount()
+        {
+            Decimal vol = 0, cnt = 0, totalcnt = 0;
+            Decimal totalcnt1 = 0;
+            Decimal.TryParse(txtPeVolume.Text, out vol);
+            Decimal.TryParse(txtPeCount.Text, out cnt);
+            totalcnt = vol * cnt;
+            totalcnt = Math.Round(totalcnt, ic.spermFreezingDecimal);
+            //Decimal.TryParse(totalcnt.ToString(), out totalcnt1);
+            txtPeTotalCount.Value = totalcnt;
+        }
+        private void calPeMotile()
+        {
+            Decimal motilitysf = 0, cntsf = 0, motile = 0, vol = 0, totalmotile = 0;
+            Decimal motile1 = 0, totalmotile1 = 0;
+            Decimal.TryParse(txtPeMotility.Text, out motilitysf);
+            Decimal.TryParse(txtPeCount.Text, out cntsf);
+            Decimal.TryParse(txtPeVolume.Text, out vol);
+            motile = (motilitysf * cntsf) / 100;
+            motile = Math.Round(motile, ic.spermFreezingDecimal);
+            Decimal.TryParse(motile.ToString(), out motile1);
+            txtPeMotile.Value = motile1;
+
+            totalmotile = motile * vol;
+            totalmotile = Math.Round(totalmotile, ic.spermFreezingDecimal);
+            Decimal.TryParse(totalmotile.ToString(), out totalmotile1);
+            txtPeTotalMotile.Value = totalmotile1;
+        }
         private void calSfMotile()
         {
             Decimal motilitysf = 0, cntsf = 0, motile=0, vol=0, totalmotile=0;
@@ -886,6 +1070,34 @@ namespace clinic_ivf.gui
             txtSfTotalMotile.Value = totalmotile1;
         }
         
+        private void calPESAMotile()
+        {
+            Decimal motilityPe = 0, cntPe = 0, motile = 0, vol = 0, totalmotile = 0;
+            Decimal motile1 = 0, totalmotile1 = 0;
+            Decimal.TryParse(txtPeMotility.Text, out motilityPe);
+            Decimal.TryParse(txtPeCount.Text, out cntPe);
+            Decimal.TryParse(txtPeVolume.Text, out vol);
+            motile = (motilityPe * cntPe) / 100;
+            motile = Math.Round(motile, ic.spermFreezingDecimal);
+            Decimal.TryParse(motile.ToString(), out motile1);
+            txtPeMotile.Value = motile1;
+
+            totalmotile = motile * vol;
+            totalmotile = Math.Round(totalmotile, ic.spermFreezingDecimal);
+            Decimal.TryParse(totalmotile.ToString(), out totalmotile1);
+            txtPeTotalMotile.Value = totalmotile1;
+        }
+        private void calPESAMotility()
+        {
+            Decimal pr = 0, nr = 0, motility = 0;
+            Decimal motility2 = 0;
+            //Decimal.TryParse(txtPeMotility4.Text, out pr);
+            //Decimal.TryParse(txtPeMotility3.Text, out nr);
+            //motility = pr + nr;
+            Decimal.TryParse(txtPeMotility2.Text, out motility2);
+            txtPeMotility.Value = 100 - motility2;
+            //txtPeViability.Value = motility1 + 7;
+        }
         private void calTotalCount()
         {
             Decimal vol = 0, cnt = 0, totalcnt = 0;
@@ -965,12 +1177,12 @@ namespace clinic_ivf.gui
                 }
                 else if (sender.Equals(txtMotility2))
                 {
-                    txtWbc.Focus();
+                    //txtWbc.Focus();
                 }
-                else if (sender.Equals(txtWbc))
-                {
-                    txtNormal.Focus();
-                }
+                //else if (sender.Equals(txtWbc))
+                //{
+                //    txtNormal.Focus();
+                //}
                 else if (sender.Equals(txtNormal))
                 {
                     txtAbnormal.Focus();
@@ -1013,7 +1225,107 @@ namespace clinic_ivf.gui
                 //}
             }
         }
-
+        private void TxtPeAbstinenceday_KeyUp(object sender, KeyEventArgs e)
+        {
+            //throw new NotImplementedException();
+            if ((e.KeyCode == Keys.Enter))
+            {
+                if (sender.Equals(txtPeAbstinenceday))
+                {
+                    cboPeAppearance.Focus();
+                }
+                else if (sender.Equals(txtPePh))
+                {
+                    txtPeViability.Focus();
+                }
+                else if (sender.Equals(txtPeViability))
+                {
+                    txtPeVolume.Focus();
+                }
+                else if (sender.Equals(txtPeVolume))
+                {
+                    txtPeCount.Focus();
+                }
+                else if (sender.Equals(txtPeCount))
+                {
+                    //txtSfTotalCount.Focus();
+                    txtPeMotility4.Focus();
+                }
+                else if (sender.Equals(txtPeTotalCount))
+                {
+                    txtPeMotile.Focus();
+                }
+                else if (sender.Equals(txtPeMotile))
+                {
+                    txtPeTotalMotile.Focus();
+                }
+                else if (sender.Equals(txtPeTotalMotile))
+                {
+                    txtPeMotility.Focus();
+                }
+                else if (sender.Equals(txtPeMotility))
+                {
+                    txtPeMotility4.Focus();
+                }
+                else if (sender.Equals(txtPeMotility4))
+                {
+                    txtPeMotility3.Focus();
+                }
+                else if (sender.Equals(txtPeMotility3))
+                {
+                    txtPeMotility2.Focus();
+                }
+                else if (sender.Equals(txtPeMotility2))
+                {
+                    txtPeNormal.Focus();
+                }
+                //else if (sender.Equals(txtSfWbc))
+                //{
+                //    txtSfNormal.Focus();
+                //}
+                else if (sender.Equals(txtPeNormal))
+                {
+                    //txtSfAbnormal.Focus();
+                    txtPeHead1.Focus();
+                }
+                else if (sender.Equals(txtPeAbnormal))
+                {
+                    txtPeHead.Focus();
+                }
+                else if (sender.Equals(txtPeHead1))
+                {
+                    txtPeNeck1.Focus();
+                }
+                else if (sender.Equals(txtPeNeck1))
+                {
+                    txtPeTail1.Focus();
+                }
+                else if (sender.Equals(txtPeTail))
+                {
+                    txtPeEjacula.Focus();
+                }
+                //else if (sender.Equals(txtSfVial))
+                //{
+                //    txtSfEjacula.Focus();
+                //}
+                else if (sender.Equals(txtPeEjacula))
+                {
+                    txtPeRecive.Focus();
+                }
+                else if (sender.Equals(txtPeRecive))
+                {
+                    txtPeExam.Focus();
+                }
+                else if (sender.Equals(txtPeExam))
+                {
+                    txtPeFinish.Focus();
+                }
+                else if (sender.Equals(txtPeFinish))
+                {
+                    btnPeSave.Focus();
+                }
+            }
+        }
         private void TxtSfAbstinenceday_KeyUp(object sender, KeyEventArgs e)
         {
             //throw new NotImplementedException();
@@ -1158,11 +1470,11 @@ namespace clinic_ivf.gui
             dt = ic.ivfDB.lspermDB.selectByPk(txtID.Text);
             //FrmWaiting frmW = new FrmWaiting();
             //frmW.Show();
-            String date1 = dt.Rows[0]["date_report"].ToString();
-            String date2 = dt.Rows[0]["date_approve"].ToString();
+            String date1 = ic.datetoShow(dt.Rows[0]["date_report"].ToString());
+            String date2 = ic.datetoShow(dt.Rows[0]["date_approve"].ToString());
             String datemale = dt.Rows[0]["dob_male"].ToString();
-            date1 = ic.datetimetoShow(dt.Rows[0]["date_report"]);
-            date2 = ic.datetimetoShow(dt.Rows[0]["date_approve"]);
+            //date1 = ic.datetimetoShow(dt.Rows[0]["date_report"]);
+            //date2 = ic.datetimetoShow(dt.Rows[0]["date_approve"]);
             dt.Rows[0]["date_report"] = date1;
             dt.Rows[0]["date_approve"] = date2;
 
@@ -1186,11 +1498,11 @@ namespace clinic_ivf.gui
             dt = ic.ivfDB.lspermDB.selectByPk(txtID.Text);
             //FrmWaiting frmW = new FrmWaiting();
             //frmW.Show();
-            String date1 = dt.Rows[0]["date_report"].ToString();
-            String date2 = dt.Rows[0]["date_approve"].ToString();
+            String date1 = ic.datetoShow(dt.Rows[0]["date_report"].ToString());
+            String date2 = ic.datetoShow(dt.Rows[0]["date_approve"].ToString());
             String datemale = dt.Rows[0]["dob_male"].ToString();
-            date1 = ic.datetimetoShow(dt.Rows[0]["date_report"]);
-            date2 = ic.datetimetoShow(dt.Rows[0]["date_approve"]);
+            //date1 = ic.datetimetoShow(dt.Rows[0]["date_report"]);
+            //date2 = ic.datetimetoShow(dt.Rows[0]["date_approve"]);
             dt.Rows[0]["date_report"] = date1;
             dt.Rows[0]["date_approve"] = date2;
 
@@ -1265,11 +1577,11 @@ namespace clinic_ivf.gui
             Boolean chk1 = true;
             DataTable dt = new DataTable();
             dt = ic.ivfDB.lspermDB.selectByPk(txtSfID.Text);
-            String date1 = dt.Rows[0]["date_report"].ToString();
-            String date2 = dt.Rows[0]["date_approve"].ToString();
+            String date1 = ic.datetoShow(dt.Rows[0]["date_report"].ToString());
+            String date2 = ic.datetoShow(dt.Rows[0]["date_approve"].ToString());
             String datemale = dt.Rows[0]["dob_male"].ToString();
-            date1 = ic.datetimetoShow(dt.Rows[0]["date_report"]);
-            date2 = ic.datetimetoShow(dt.Rows[0]["date_approve"]);
+            //date1 = ic.datetimetoShow(dt.Rows[0]["date_report"]);
+            //date2 = ic.datetimetoShow(dt.Rows[0]["date_approve"]);
             dt.Rows[0]["date_report"] = date1;
             dt.Rows[0]["date_approve"] = date2;
 
@@ -1346,11 +1658,12 @@ namespace clinic_ivf.gui
             FrmReport frm = new FrmReport(ic);
             DataTable dt = new DataTable();
             dt = ic.ivfDB.lspermDB.selectByPk(txtSfID.Text);
-            String date1 = dt.Rows[0]["date_report"].ToString();
-            String date2 = dt.Rows[0]["date_approve"].ToString();
+            String date1 = ic.datetoShow(dt.Rows[0]["date_report"].ToString());
+            String date2 = ic.datetoShow(dt.Rows[0]["date_approve"].ToString());
             String datemale = dt.Rows[0]["dob_male"].ToString();
-            date1 = ic.datetimetoShow(dt.Rows[0]["date_report"]);
-            date2 = ic.datetimetoShow(dt.Rows[0]["date_approve"]);
+            //date1 = ic.datetimetoShow(dt.Rows[0]["date_report"]);
+            //date2 = ic.datetimetoShow(dt.Rows[0]["date_approve"]);
+
             dt.Rows[0]["date_report"] = date1;
             dt.Rows[0]["date_approve"] = date2;
 
@@ -1414,17 +1727,17 @@ namespace clinic_ivf.gui
         private void BtnSfSave_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            int pr = 0, nr = 0, im = 0, normal = 0, abnormal = 0; ;
-            int.TryParse(txtSfMotility4.Text, out pr);
-            int.TryParse(txtSfMotility3.Text, out nr);
-            int.TryParse(txtSfMotility2.Text, out im);
+            Decimal pr = 0, nr = 0, im = 0, normal = 0, abnormal = 0; ;
+            Decimal.TryParse(txtSfMotility4.Text, out pr);
+            Decimal.TryParse(txtSfMotility3.Text, out nr);
+            Decimal.TryParse(txtSfMotility2.Text, out im);
             if ((pr + nr + im) != 100)
             {
                 MessageBox.Show("ผลรวม Progessive + Non-progessive + mmotility ไม่เท่ากับ 100", "");
                 return;
             }
-            int.TryParse(txtSfNormal.Text, out normal);
-            int.TryParse(txtSfAbnormal.Text, out abnormal);
+            Decimal.TryParse(txtSfNormal.Text, out normal);
+            Decimal.TryParse(txtSfAbnormal.Text, out abnormal);
             if ((normal + abnormal) != 100)
             {
                 MessageBox.Show("ผลรวม Normal + Abnormal ไม่เท่ากับ 100", "");
@@ -1477,6 +1790,7 @@ namespace clinic_ivf.gui
             cboAppearance.ReadOnly = !flag;
             cboLiquefaction.ReadOnly = !flag;
             cboViscosity.ReadOnly = !flag;
+            cboWbc.ReadOnly = !flag;
 
             txtSpermDate.ReadOnly = !flag;
             txtAbstinenceday.ReadOnly = !flag;
@@ -1492,7 +1806,7 @@ namespace clinic_ivf.gui
             txtMotility3.ReadOnly = !flag;
             txtMotility2.ReadOnly = !flag;
             //txtMotility1.Value = lsperm.motility_rate_1;
-            txtWbc.ReadOnly = !flag;
+            //txtWbc.ReadOnly = !flag;
             txtEjacula.ReadOnly = !flag;
             txtRecive.ReadOnly = !flag;
             txtExam.ReadOnly = !flag;
@@ -1642,6 +1956,7 @@ namespace clinic_ivf.gui
             ic.setC1Combo(cboAppearance, lsperm.appearance);
             ic.setC1Combo(cboLiquefaction, lsperm.liquefaction);
             ic.setC1Combo(cboViscosity, lsperm.viscosity);
+            ic.setC1Combo(cboWbc, lsperm.wbc);
 
             txtSpermDate.Value = ic.datetoDB(lsperm.sperm_date);
             txtAbstinenceday.Value = lsperm.abstinence_day;
@@ -1657,7 +1972,7 @@ namespace clinic_ivf.gui
             txtMotility3.Value = lsperm.motility_rate_3;
             txtMotility2.Value = lsperm.motility_rate_2;
             //txtMotility1.Value = lsperm.motility_rate_1;
-            txtWbc.Value = lsperm.wbc;
+            //txtWbc.Value = lsperm.wbc;
             txtEjacula.Value = lsperm.ejaculation_time;
             txtRecive.Value = lsperm.recive_time;
             txtExam.Value = lsperm.examination_time;
@@ -1910,7 +2225,7 @@ namespace clinic_ivf.gui
             lsperm.motility_rate_2 = txtMotility2.Text;
             lsperm.total_motile = txtTotalMotile.Text;
             //lsperm.no_of_vail = txtSfVial.Text;
-            lsperm.wbc = txtWbc.Text;
+            //lsperm.wbc = txtWbc.Text;
             lsperm.ejaculation_time = txtEjacula.Text;
             lsperm.recive_time = txtRecive.Text;
             lsperm.examination_time = txtExam.Text;
@@ -1928,6 +2243,12 @@ namespace clinic_ivf.gui
             lsperm.date_report = ic.datetoDB(txtReportDate.Text);
             lsperm.remark = cboRemark.Text;
             lsperm.appearance_text = cboAppearance.Text.Trim();
+            String bbb = "";
+            //aaa = ic.getC1Combo(cboSfNoofVail, cboSfNoofVail.Text);
+            bbb = ic.getC1Combo(cboWbc, cboWbc.Text);
+            //lsperm.wbc = cboSfWbc.SelectedItem == null ? "0" : ((ComboBoxItem)cboSfWbc.SelectedItem).Value;
+            //lsperm.no_of_vail = cboSfNoofVail.SelectedItem == null ? "0" : ((ComboBoxItem)cboSfNoofVail.SelectedItem).Value;
+            lsperm.wbc = bbb;
         }
         private void setSpermFreezing()
         {
@@ -2170,6 +2491,11 @@ namespace clinic_ivf.gui
                     theme1.SetTheme(ctl, theme2);
                 }
                 foreach (Control ctl in groupBox5.Controls)
+                {
+                    if (ctl is C1PictureBox) continue;
+                    theme1.SetTheme(ctl, theme2);
+                }
+                foreach (Control ctl in groupBox7.Controls)
                 {
                     if (ctl is C1PictureBox) continue;
                     theme1.SetTheme(ctl, theme2);
@@ -2433,7 +2759,7 @@ namespace clinic_ivf.gui
             {
                 tC.SelectedTab = TabSpermIUI;
             }
-            
+            setTheme();
         }
     }
 }

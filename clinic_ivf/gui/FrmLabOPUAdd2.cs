@@ -4,6 +4,9 @@ using C1.Win.C1SuperTooltip;
 using clinic_ivf.control;
 using clinic_ivf.object1;
 using clinic_ivf.Properties;
+using CrystalDecisions.CrystalReports.Engine;
+using CrystalDecisions.Shared;
+using CrystalDecisions.Windows.Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -360,32 +363,135 @@ namespace clinic_ivf.gui
                 }
             //}
         }
+        private void sendFileFTP(String filename)
+        {
+            DocScan dsc = new DocScan();
+            dsc.active = "1";
+            dsc.doc_scan_id = "";
+            dsc.doc_group_id = opu.opu_id;
+            dsc.hn = "";
+            dsc.vn = "";
+            dsc.an = "";
+            dsc.visit_date = "";
+            dsc.host_ftp = ic.iniC.hostFTP;
+            //dsc.image_path = txtHn.Text + "//" + txtHn.Text + "_" + dgssid + "_" + dsc.row_no + "." + ext[ext.Length - 1];
+            dsc.image_path = "";
+            dsc.doc_group_sub_id = "";
+            dsc.pre_no = "";
+            dsc.an = "";
+            DateTime dt = new DateTime();
 
+            //dsc.an_date = (DateTime.TryParse(txtAnDate.Text, out dt)) ? ic.datetoDB(txtAnDate.Text) : "";
+            //if (dsc.an_date.Equals("1-01-01"))
+            //{
+            dsc.an_date = "";
+            //}
+            dsc.folder_ftp = ic.iniC.folderFTP;
+            dsc.status_ipd = "";
+            dsc.image_path = "";
+            String re = ic.ivfDB.dscDB.insertDocScan(dsc, ic.userId);
+            
+            FtpClient ftp = new FtpClient(ic.iniC.hostFTP, ic.iniC.userFTP, ic.iniC.passFTP, ic.ftpUsePassive, ic.iniC.pathChar);
+            //MessageBox.Show("111", "");
+            //ftp.createDirectory(txtHn.Text);
+            //ftp.createDirectory(ic.iniC.folderFTP + "//" + txtHn.Text.Replace("-", "").Replace("/", "") + "_" + vn);
+            //MessageBox.Show("222", "");
+            ftp.delete(ic.iniC.folderFTP + "//" + dsc.image_path);
+            //MessageBox.Show("333", "");
+            ftp.upload(ic.iniC.folderFTP + "//" + dsc.image_path, filename);
+        }
+        private String setExportDay1()
+        {
+            Boolean chk = true;
+            DataTable dt = new DataTable();
+            CrystalReportViewer cryLab;
+            cryLab = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
+            ReportDocument rpt = new ReportDocument();
+            String filename = "";
+            filename = "\\report\\"+DateTime.Now.Ticks.ToString();
+            try
+            {
+                dt = ic.ivfDB.setOPUReport(txtID.Text, "2", "3", true);     //ต้องการดึงเพื่อส่ง day1 
+                rpt.Load("lab_opu_day1.rpt");
+                rpt.SetDataSource(dt);
+                rpt.SetParameterValue("line1", ic.cop.comp_name_t);
+                rpt.SetParameterValue("line2", "โทรศัพท์ " + ic.cop.tele);
+                rpt.SetParameterValue("report_name", "Summary of OPU Report");
+
+                cryLab.ReportSource = rpt;
+                cryLab.Refresh();
+                //lbEmail.Text = "สร้าง Report เรียบร้อย";
+                Application.DoEvents();
+                if (File.Exists(filename))
+                {
+                    File.Delete(filename);
+                    System.Threading.Thread.Sleep(200);
+                    Application.DoEvents();
+                }
+                Application.DoEvents();
+                ExportOptions CrExportOptions;
+                DiskFileDestinationOptions CrDiskFileDestinationOptions = new DiskFileDestinationOptions();
+                PdfRtfWordFormatOptions CrFormatTypeOptions = new PdfRtfWordFormatOptions();
+                CrDiskFileDestinationOptions.DiskFileName = filename;
+                CrExportOptions = rpt.ExportOptions;
+                {
+                    CrExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
+                    CrExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
+                    CrExportOptions.DestinationOptions = CrDiskFileDestinationOptions;
+                    CrExportOptions.FormatOptions = CrFormatTypeOptions;
+                }
+                //lbEmail.Text = "Export Report";
+                Application.DoEvents();
+                rpt.Export();
+                System.Threading.Thread.Sleep(200);
+                Application.DoEvents();
+
+
+            }
+            catch (Exception ex)
+            {
+                chk = false;
+                //chk = ex.Message.ToString();
+                new LogWriter("e", "FrmLabOPUAdd2 setExportDay1 " + ex.Message);
+                MessageBox.Show("error " + ex.Message, "");
+            }
+            return filename;
+        }
         private void BtnResultDay1_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
             //if (MessageBox.Show("ต้องการ ส่งผล LAB OPU Day 1 ให้ทางพยาบาล  ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
             //{
-                ic.cStf.staff_id = "";
-                Boolean chkSave = false;
-                FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
-                frm.ShowDialog(this);
-                if (!ic.cStf.staff_id.Equals(""))
+            ic.cStf.staff_id = "";
+            Boolean chkSave = false;
+            FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+            frm.ShowDialog(this);
+            if (!ic.cStf.staff_id.Equals(""))
+            {
+                long chk1 = 0;
+                String filename = setExportDay1();
+
+
+
+
+
+
+
+
+                String re = ic.ivfDB.opuDB.updateStatusOPUApproveResultDay1(txtID.Text, filename, ic.user.staff_id);
+                if (long.TryParse(re, out chk1))
                 {
-                    long chk1 = 0;
-                    String re = ic.ivfDB.opuDB.updateStatusOPUApproveResultDay1(txtID.Text, ic.user.staff_id);
-                    if (long.TryParse(re, out chk1))
+                    LabRequest req = new LabRequest();
+                    req = ic.ivfDB.lbReqDB.selectByPk1(opu.req_id);
+                    String re1 = ic.ivfDB.lbReqDB.UpdateStatusRequestResult(req.req_id, ic.cStf.staff_id);
+
+                    if (long.TryParse(re1, out chk1))
                     {
-                        LabRequest req = new LabRequest();
-                        req = ic.ivfDB.lbReqDB.selectByPk1(opu.req_id);
-                        String re1 = ic.ivfDB.lbReqDB.UpdateStatusRequestResult(req.req_id, ic.cStf.staff_id);
-                        if (long.TryParse(re1, out chk1))
-                        {
-                            MessageBox.Show("ส่งผล LAB OPU ให้ทางพยาบาล เรียบร้อย ", "");       //clinic_ivf.Properties.Resources.Female_user_accept_24
-                            btnApproveResult.Image = Resources.Female_user_accept_24;
-                        }
+                        MessageBox.Show("ส่งผล LAB OPU ให้ทางพยาบาล เรียบร้อย ", "");       //clinic_ivf.Properties.Resources.Female_user_accept_24
+                        btnApproveResult.Image = Resources.Female_user_accept_24;
                     }
                 }
+            }
             //}
         }
 

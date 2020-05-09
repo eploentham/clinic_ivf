@@ -641,7 +641,7 @@ namespace clinic_ivf.objdb
                 ", opuEmDev.desc2 as no1_desc2, opuEmDev.desc3 as no1_desc3, fet.fet_id, fet.fet_code, 'Number of transfer' as footer1" +
                 ", 'Number of Freeze' as footer2,'Number of Discard' as footer3, fet.remark as footer4,'' as footer5, 'st# = straw number' as footer6 " +
                 ", fet.embryo_for_et_number_of_transfer, fet.embryo_for_et_number_of_freeze,fet.embryo_for_et_number_of_discard, opuEmDev.desc4 as no1_desc4, opuEmDev.opu_embryo_dev_no, opuEmDev.desc0" +
-                ", opuEmDev.embryo_dev_date, opuEmDev.day, opuEmDev.desc1, fet.embryo_pic_day, fet.embryo_pic_day1 " +
+                ", opuEmDev.embryo_dev_date, opuEmDev.day, opuEmDev.desc1, fet.embryo_pic_day, fet.embryo_pic_day1,opuEmDev.desc2 " +
                 "From " + opuEmDev.table + " opuEmDev " +
                 "Left Join lab_t_fet fet on fet.fet_id = opuEmDev.opu_fet_id " +
                 "Left Join lab_b_procedure proce on proce.proce_id = fet.proce_id " +

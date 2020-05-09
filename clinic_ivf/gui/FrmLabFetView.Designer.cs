@@ -33,6 +33,7 @@
             this.tabLabAccept = new C1.Win.C1Command.C1DockingTabPage();
             this.panel1 = new System.Windows.Forms.Panel();
             this.gB = new System.Windows.Forms.GroupBox();
+            this.txtHn = new C1.Win.C1Input.C1TextBox();
             this.tabProcess = new C1.Win.C1Command.C1DockingTabPage();
             this.panel2 = new System.Windows.Forms.Panel();
             this.tabLabFinish = new C1.Win.C1Command.C1DockingTabPage();
@@ -53,13 +54,13 @@
             this.txtSearch = new C1.Win.C1Input.C1TextBox();
             this.sB = new System.Windows.Forms.StatusStrip();
             this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.txtHn = new C1.Win.C1Input.C1TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tcLabView)).BeginInit();
             this.tcLabView.SuspendLayout();
             this.tabLabAccept.SuspendLayout();
             this.panel1.SuspendLayout();
             this.gB.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtHn)).BeginInit();
             this.tabProcess.SuspendLayout();
             this.tabLabFinish.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -73,7 +74,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnSearch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSearch)).BeginInit();
             this.sB.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtHn)).BeginInit();
             this.SuspendLayout();
             // 
             // theme1
@@ -135,6 +135,20 @@
             this.gB.TabStop = false;
             this.gB.Text = "groupBox2";
             this.theme1.SetTheme(this.gB, "(default)");
+            // 
+            // txtHn
+            // 
+            this.txtHn.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtHn.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtHn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtHn.Location = new System.Drawing.Point(515, 19);
+            this.txtHn.Name = "txtHn";
+            this.txtHn.Size = new System.Drawing.Size(30, 20);
+            this.txtHn.TabIndex = 538;
+            this.txtHn.Tag = null;
+            this.theme1.SetTheme(this.txtHn, "(default)");
+            this.txtHn.Visible = false;
+            this.txtHn.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // tabProcess
             // 
@@ -441,20 +455,6 @@
             this.sB1.Size = new System.Drawing.Size(118, 17);
             this.sB1.Text = "toolStripStatusLabel1";
             // 
-            // txtHn
-            // 
-            this.txtHn.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtHn.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtHn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtHn.Location = new System.Drawing.Point(515, 19);
-            this.txtHn.Name = "txtHn";
-            this.txtHn.Size = new System.Drawing.Size(30, 20);
-            this.txtHn.TabIndex = 538;
-            this.txtHn.Tag = null;
-            this.theme1.SetTheme(this.txtHn, "(default)");
-            this.txtHn.Visible = false;
-            this.txtHn.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
             // FrmLabFetView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -471,6 +471,7 @@
             this.tabLabAccept.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.gB.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.txtHn)).EndInit();
             this.tabProcess.ResumeLayout(false);
             this.tabLabFinish.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
@@ -487,7 +488,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtSearch)).EndInit();
             this.sB.ResumeLayout(false);
             this.sB.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtHn)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

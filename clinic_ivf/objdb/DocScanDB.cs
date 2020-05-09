@@ -49,6 +49,7 @@ namespace clinic_ivf.objdb
             dsc.status_ipd = "status_ipd";
             dsc.an_cnt = "an_cnt";
             dsc.folder_ftp = "folder_ftp";
+            dsc.status_record = "status_record";
 
             dsc.table = "t_doc_scan";
             dsc.pkField = "doc_scan_id";
@@ -85,6 +86,8 @@ namespace clinic_ivf.objdb
                 itm1.an_date = row[dsc.an_date].ToString();
                 itm1.status_ipd = row[dsc.status_ipd].ToString();
                 itm1.an_cnt = row[dsc.an_cnt].ToString();
+                itm1.folder_ftp = row[dsc.folder_ftp].ToString();
+                itm1.status_record = row[dsc.status_record].ToString();
                 lDgs.Add(itm1);
             }
         }
@@ -229,6 +232,7 @@ namespace clinic_ivf.objdb
             p.status_ipd = p.status_ipd == null ? "" : p.status_ipd;
             p.an_cnt = p.an_cnt == null ? "" : p.an_cnt;
             p.folder_ftp = p.folder_ftp == null ? "" : p.folder_ftp;
+            p.status_record = p.status_record == null ? "0" : p.status_record;
 
             p.doc_group_id = long.TryParse(p.doc_group_id, out chk) ? chk.ToString() : "0";
             p.row_no = long.TryParse(p.row_no, out chk) ? chk.ToString() : "0";
@@ -268,6 +272,7 @@ namespace clinic_ivf.objdb
                 "," + dsc.status_ipd + "= '" + p.status_ipd + "'" +
                 "," + dsc.an_cnt + " " + "= '" + p.an_cnt + "'" +
                 "," + dsc.folder_ftp + " " + "= '" + p.folder_ftp + "'" +
+                "," + dsc.status_record + " " + "= '" + p.status_record + "'" +
                 "";
             try
             {
@@ -434,6 +439,7 @@ namespace clinic_ivf.objdb
                 dgs1.status_ipd = dt.Rows[0][dsc.status_ipd].ToString();
                 dgs1.an_cnt = dt.Rows[0][dsc.an_cnt].ToString();
                 dgs1.folder_ftp = dt.Rows[0][dsc.an_cnt].ToString();
+                dgs1.status_record = dt.Rows[0][dsc.status_record].ToString();
             }
             else
             {
@@ -466,6 +472,7 @@ namespace clinic_ivf.objdb
             dgs1.status_ipd = "";
             dgs1.an_cnt = "";
             dgs1.folder_ftp = "";
+            dgs1.status_record = "";
             return dgs1;
         }
         //public void setCboBsp(C1ComboBox c, String selected)

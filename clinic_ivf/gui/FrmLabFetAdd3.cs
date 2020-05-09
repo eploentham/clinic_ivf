@@ -1692,10 +1692,11 @@ namespace clinic_ivf.gui
                 {
                     foreach (DataRow row in dtLeft.Rows)
                     {
-                        String desc0 = "", date="", name="", desc1="", no="";
+                        String desc0 = "", date="", name="", desc1="", no="", desc2="";
 
                         desc0 = row["desc0"] != null ? row["desc0"].ToString() : "";
                         desc1 = row["desc1"] != null ? row["desc1"].ToString() : "";
+                        desc2 = row["desc2"] != null ? row["desc2"].ToString() : "";
                         date = row["embryo_dev_date"] != null ? row["embryo_dev_date"].ToString() : "";
                         //name = row["day"] != null ? row["day"].ToString() : "";
                         name = row["embryo_pic_day"] != null ? row["embryo_pic_day"].ToString() : "";
@@ -1768,10 +1769,11 @@ namespace clinic_ivf.gui
                 {
                     foreach (DataRow row in dtRight.Rows)
                     {
-                        String desc0 = "", date = "", name = "", desc1 = "", no = "";
+                        String desc0 = "", date = "", name = "", desc1 = "", no = "", desc2="";
 
                         desc0 = row["desc0"] != null ? row["desc0"].ToString() : "";
                         desc1 = row["desc1"] != null ? row["desc1"].ToString() : "";
+                        desc2 = row["desc2"] != null ? row["desc2"].ToString() : "";
                         date = row["embryo_dev_date"] != null ? row["embryo_dev_date"].ToString() : "";
                         //name = row["day"] != null ? row["day"].ToString() : "";
                         name = row["opu_embryo_dev_no"] != null ? row["opu_embryo_dev_no"].ToString() : "";
@@ -1785,7 +1787,7 @@ namespace clinic_ivf.gui
                             {
                                 String date1 = "";
                                 date1 = ic.datetoShow(date).Replace("-", "/");
-                                rowembryo["embryo_dev_1_01"] = no + ". " + desc0 + " " + desc1;
+                                rowembryo["embryo_dev_1_01"] = no + ". " + desc0 + " " + desc1 + " " + desc2;
                                 rowembryo["embryo_dev_1_date"] = "Date : " + (date1);
                                 //rowembryo["embryo_dev_1_name"] = "Day " + name;
                                 rowembryo["embryo_dev_1_name"] = "Embryo Development Day ( " + fet.embryo_pic_day1 + ")";
@@ -1798,7 +1800,7 @@ namespace clinic_ivf.gui
                             {
                                 String date1 = "";
                                 date1 = ic.datetoShow(date).Replace("-", "/");
-                                rowembryo["embryo_dev_1_02"] = no + ". " + desc0 + " " + desc1;
+                                rowembryo["embryo_dev_1_02"] = no + ". " + desc0 + " " + desc1 + " " + desc2;
                                 rowembryo["embryo_dev_1_date"] = "Date : " + (date1);
                                 //rowembryo["embryo_dev_1_name"] = "Day " + name;
                                 rowembryo["embryo_dev_1_name"] = "Embryo Development Day ( " + fet.embryo_pic_day1 + ")";
@@ -1811,7 +1813,7 @@ namespace clinic_ivf.gui
                             {
                                 String date1 = "";
                                 date1 = ic.datetoShow(date).Replace("-", "/");
-                                rowembryo["embryo_dev_1_03"] = no + ". " + desc0 + " " + desc1;
+                                rowembryo["embryo_dev_1_03"] = no + ". " + desc0 + " " + desc1 + " " + desc2;
                                 rowembryo["embryo_dev_1_date"] = "Date : " + (date1);
                                 //rowembryo["embryo_dev_1_name"] = "Day " + name;
                                 rowembryo["embryo_dev_1_name"] = "Embryo Development Day ( " + fet.embryo_pic_day1 + ")";
@@ -1824,7 +1826,7 @@ namespace clinic_ivf.gui
                             {
                                 String date1 = "";
                                 date1 = ic.datetoShow(date).Replace("-", "/");
-                                rowembryo["embryo_dev_1_04"] = no + ". " + desc0 + " " + desc1;
+                                rowembryo["embryo_dev_1_04"] = no + ". " + desc0 + " " + desc1 + " " + desc2;
                                 rowembryo["embryo_dev_1_date"] = "Date : " + (date1);
                                 //rowembryo["embryo_dev_1_name"] = "Day " + name;
                                 rowembryo["embryo_dev_1_name"] = "Embryo Development Day ( " + fet.embryo_pic_day1 + ")";
@@ -1837,7 +1839,7 @@ namespace clinic_ivf.gui
                             {
                                 String date1 = "";
                                 date1 = ic.datetoShow(date).Replace("-", "/");
-                                rowembryo["embryo_dev_1_05"] = no + ". " + desc0 + " " + desc1; ;
+                                rowembryo["embryo_dev_1_05"] = no + ". " + desc0 + " " + desc1 + " " + desc2;
                                 rowembryo["embryo_dev_1_date"] = "Date : " + (date1);
                                 //rowembryo["embryo_dev_1_name"] = "Day " + name;
                                 rowembryo["embryo_dev_1_name"] = "Embryo Development Day ( " + fet.embryo_pic_day1 + ")";
