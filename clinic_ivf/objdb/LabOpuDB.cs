@@ -176,14 +176,16 @@ namespace clinic_ivf.objdb
         public DataTable selectByPrintOPU(String copId)
         {
             DataTable dt = new DataTable();
-            String sql = "select opu.*,dtr.Name as doctor_name, proce.proce_name_t,opu.embryo_freez_no_of_straw_0 , opu.embryo_freez_no_of_straw_1  " +
+            String sql = "select opu.*, proce.proce_name_t,opu.embryo_freez_no_of_straw_0 , opu.embryo_freez_no_of_straw_1  " +
                 ", fdt0.doc_type_name as embryo_freez_mothod_0_name, fdt1.doc_type_name as embryo_freez_mothod_1_name " +
                 ", fdt_stage_0.doc_type_name as embryo_freez_stage_0_name, fdt_stage_1.doc_type_name as embryo_freez_stage_1_name " +
                 ", fdt_freeze_0.doc_type_name as embryo_freez_freeze_media_0_name " +
+                ",CONCAT(IFNULL(fpp_dtr.patient_prefix_description,''),' ', dtr.staff_fname_e ,' ',dtr.staff_lname_e ) as doctor_name " +
                 ",CONCAT(IFNULL(fpp_rpt.patient_prefix_description,''),' ', stf_embryo_dev_et_rpt.staff_fname_e ,' ',stf_embryo_dev_et_rpt.staff_lname_e ) as embryo_for_et_embryologist_name_rpt " +
                 ",CONCAT(IFNULL(fpp_apv.patient_prefix_description,''),' ', stf_embryo_dev_et_apv.staff_fname_e ,' ',stf_embryo_dev_et_apv.staff_lname_e ) as embryo_for_et_embryologist_name_apv " +
                 "From " + opu.table + " opu " +
-                "Left Join Doctor dtr on dtr.ID = opu." + opu.doctor_id + " " +
+                "Left Join b_staff dtr on dtr.doctor_id_old = opu." + opu.doctor_id + " " +
+                "Left join f_patient_prefix fpp_dtr on fpp_dtr.f_patient_prefix_id = dtr.prefix_id " +
                 "Left Join lab_b_procedure proce on proce.proce_id = opu.proce_id " +
                 "Left Join f_doc_type fdt0 on fdt0.doc_type_id = opu.embryo_freez_mothod_0 " +
                 "Left Join f_doc_type fdt1 on fdt1.doc_type_id = opu.embryo_freez_mothod_1 " +

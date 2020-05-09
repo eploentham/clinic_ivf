@@ -138,6 +138,7 @@ namespace clinic_ivf.gui
             btnPrintIui.Click += BtnPrintIui_Click;
             btnAgentEmail.Click += BtnAgentEmail_Click;
             btnSfAgentEmail.Click += BtnSfAgentEmail_Click;
+            btnPeSendEmail.Click += BtnPeSendEmail_Click;
 
             sB1.Text = "";
             bg = txtHnFeMale.BackColor;
@@ -186,10 +187,11 @@ namespace clinic_ivf.gui
             txtPeAbstinenceday.KeyUp += TxtPeAbstinenceday_KeyUp;
             txtPeMotility4.KeyUp += TxtPeMotility4_KeyUp;
             txtPeMotility3.KeyUp += TxtPeMotility3_KeyUp;
-            txtPeHead1.KeyUp += TxtPeHead1_KeyUp;
-            txtPeNeck1.KeyUp += TxtPeNeck1_KeyUp;
-            txtPeTail1.KeyUp += TxtPeTail1_KeyUp;
+            //txtPeHead1.KeyUp += TxtPeHead1_KeyUp;
+            //txtPeNeck1.KeyUp += TxtPeNeck1_KeyUp;
+            //txtPeTail1.KeyUp += TxtPeTail1_KeyUp;
             txtPePh.KeyUp += TxtPePh_KeyUp;
+            //txtPeNormal.KeyUp += TxtPeNormal_KeyUp;
             
 
             txtSfVolume.KeyUp += TxtSfVolume_KeyUp;
@@ -248,9 +250,13 @@ namespace clinic_ivf.gui
 
         
 
-        
-
-        
+        //private void TxtPeNormal_KeyUp(object sender, KeyEventArgs e)
+        //{
+        //    //throw new NotImplementedException();
+        //    int normal = 0, abnor = 0;
+        //    int.TryParse(txtPeNormal.Text.Trim(), out normal);
+        //    txtPeAbnormal.Value = (100 - normal);
+        //}
 
         private void TxtPeMotility2_KeyUp(object sender, KeyEventArgs e)
         {
@@ -302,14 +308,69 @@ namespace clinic_ivf.gui
             //throw new NotImplementedException();
 
         }
+        private void BtnPeSendEmail_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            FrmWaiting frmW = new FrmWaiting();
+            frmW.Show();
+            lbPeEmail.Show();
+            lbPeEmail.Text = "เตรียม Email";
+            Application.DoEvents();
+            String filename = "", datetick = "";
+            if (!Directory.Exists("report"))
+            {
+                Directory.CreateDirectory("report");
+            }
+            datetick = DateTime.Now.Ticks.ToString();
+            filename = "report\\sperm_pesa_" + datetick + ".pdf";
+            lbPeEmail.Text = "เตรียม Email Report";
+            Application.DoEvents();
+            if (!setReportSpermPESA1("", filename))
+            {
+                return;
+            }
+            frmW.Dispose();
 
+            MailMessage mail = new MailMessage();
+
+            mail.From = new MailAddress(txtPeEmailTo.Text);
+            mail.To.Add(txtPeEmailTo.Text);
+            mail.Subject = txtPeEmailSubject.Text;
+            mail.Body = txtPeEmailBody.Text;
+
+            mail.IsBodyHtml = true;
+            if (File.Exists(filename))
+            {
+                System.Net.Mail.Attachment attachment;
+                attachment = new System.Net.Mail.Attachment(filename);
+                mail.Attachments.Add(attachment);
+            }
+            lbPeEmail.Text = "เตรียม Email Attach File";
+            Application.DoEvents();
+            AlternateView htmlView = AlternateView.CreateAlternateViewFromString(body, null, "text/html");
+            mail.AlternateViews.Add(htmlView);
+
+            foreach (LinkedResource linkimg in theEmailImage1)
+            {
+                htmlView.LinkedResources.Add(linkimg);
+            }
+            lbPeEmail.Text = "Send Email";
+            Application.DoEvents();
+            SmtpServer.Port = 587;
+            SmtpServer.Credentials = new System.Net.NetworkCredential(ic.iniC.email_auth_user, ic.iniC.email_auth_pass);
+
+            SmtpServer.EnableSsl = true;
+            SmtpServer.Send(mail);
+            lbPeEmail.Text = "ส่ง Email เรียบร้อย";
+            Application.DoEvents();
+        }
         private void BtnSendEmail_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
             FrmWaiting frmW = new FrmWaiting();
             frmW.Show();
             lbEmail.Show();
-            lbSfEmail.Text = "เตรียม Email";
+            lbEmail.Text = "เตรียม Email";
             Application.DoEvents();
             String filename = "", datetick = "";
             if (!Directory.Exists("report"))
@@ -318,7 +379,7 @@ namespace clinic_ivf.gui
             }
             datetick = DateTime.Now.Ticks.ToString();
             filename = "report\\sperm_analysis_" + datetick + ".pdf";
-            lbSfEmail.Text = "เตรียม Email Report";
+            lbEmail.Text = "เตรียม Email Report";
             Application.DoEvents();
             if (!setReportSpermAnalysis1("",filename))
             {
@@ -340,7 +401,7 @@ namespace clinic_ivf.gui
                 attachment = new System.Net.Mail.Attachment(filename);
                 mail.Attachments.Add(attachment);
             }
-            lbSfEmail.Text = "เตรียม Email Attach File";
+            lbEmail.Text = "เตรียม Email Attach File";
             Application.DoEvents();
             AlternateView htmlView = AlternateView.CreateAlternateViewFromString(body, null, "text/html");
             mail.AlternateViews.Add(htmlView);
@@ -349,14 +410,14 @@ namespace clinic_ivf.gui
             {
                 htmlView.LinkedResources.Add(linkimg);
             }
-            lbSfEmail.Text = "Send Email";
+            lbEmail.Text = "Send Email";
             Application.DoEvents();
             SmtpServer.Port = 587;
             SmtpServer.Credentials = new System.Net.NetworkCredential(ic.iniC.email_auth_user, ic.iniC.email_auth_pass);
 
             SmtpServer.EnableSsl = true;
             SmtpServer.Send(mail);
-            lbSfEmail.Text = "ส่ง Email เรียบร้อย";
+            lbEmail.Text = "ส่ง Email เรียบร้อย";
             Application.DoEvents();
         }
 
@@ -628,25 +689,25 @@ namespace clinic_ivf.gui
                 txtSfVolume.Focus();
             }
         }
-        private void TxtPeTail1_KeyUp(object sender, KeyEventArgs e)
-        {
-            //throw new NotImplementedException();
-            calPeMorphology();
-        }
+        //private void TxtPeTail1_KeyUp(object sender, KeyEventArgs e)
+        //{
+        //    //throw new NotImplementedException();
+        //    calPeMorphology();
+        //}
         private void TxtSfTail1_KeyUp(object sender, KeyEventArgs e)
         {
             //throw new NotImplementedException();
             calSfMorphology();
         }
-        private void TxtPeNeck1_KeyUp(object sender, KeyEventArgs e)
-        {
-            //throw new NotImplementedException();
-            calPeMorphology();
-            if (e.KeyCode == Keys.Enter)
-            {
-                txtPeTail1.Focus();
-            }
-        }
+        //private void TxtPeNeck1_KeyUp(object sender, KeyEventArgs e)
+        //{
+        //    //throw new NotImplementedException();
+        //    calPeMorphology();
+        //    if (e.KeyCode == Keys.Enter)
+        //    {
+        //        txtPeTail1.Focus();
+        //    }
+        //}
         private void TxtSfNeck1_KeyUp(object sender, KeyEventArgs e)
         {
             //throw new NotImplementedException();
@@ -656,15 +717,15 @@ namespace clinic_ivf.gui
                 txtSfTail1.Focus();
             }
         }
-        private void TxtPeHead1_KeyUp(object sender, KeyEventArgs e)
-        {
-            //throw new NotImplementedException();
-            calPeMorphology();
-            if (e.KeyCode == Keys.Enter)
-            {
-                txtPeNeck1.Focus();
-            }
-        }
+        //private void TxtPeHead1_KeyUp(object sender, KeyEventArgs e)
+        //{
+        //    //throw new NotImplementedException();
+        //    calPeMorphology();
+        //    if (e.KeyCode == Keys.Enter)
+        //    {
+        //        txtPeNeck1.Focus();
+        //    }
+        //}
         private void TxtSfHead1_KeyUp(object sender, KeyEventArgs e)
         {
             //throw new NotImplementedException();
@@ -762,70 +823,70 @@ namespace clinic_ivf.gui
             calTotalCount();
             calMotile();
         }
-        private void calPeMorphology()
-        {
-            Decimal head1 = 0, neck1 = 0, tail1 = 0, head = 0, neck = 0, tail = 0, total1 = 0, abnormal = 0;
-            int head11 = 0, neck11 = 0, tail11 = 0;
-            Decimal.TryParse(txtPeHead1.Text, out head1);
-            Decimal.TryParse(txtPeNeck1.Text, out neck1);
-            Decimal.TryParse(txtPeTail1.Text, out tail1);
-            total1 = head1 + neck1 + tail1;
+        //private void calPeMorphology()
+        //{
+        //    Decimal head1 = 0, neck1 = 0, tail1 = 0, head = 0, neck = 0, tail = 0, total1 = 0, abnormal = 0;
+        //    int head11 = 0, neck11 = 0, tail11 = 0;
+        //    Decimal.TryParse(txtPeHead1.Text, out head1);
+        //    Decimal.TryParse(txtPeNeck1.Text, out neck1);
+        //    Decimal.TryParse(txtPeTail1.Text, out tail1);
+        //    total1 = head1 + neck1 + tail1;
 
-            calSfAbNormal();
-            Decimal.TryParse(txtPeAbnormal.Text, out abnormal);
-            if (total1 <= 0) return;
-            head = (abnormal * head1) / total1;
-            neck = (abnormal * neck1) / total1;
-            tail = (abnormal * tail1) / total1;
-            head = Math.Round(head);
-            neck = Math.Round(neck);
-            tail = Math.Round(tail);
-            int.TryParse(head.ToString(), out head11);
-            int.TryParse(neck.ToString(), out neck11);
-            int.TryParse(tail.ToString(), out tail11);
+        //    calSfAbNormal();
+        //    Decimal.TryParse(txtPeAbnormal.Text, out abnormal);
+        //    if (total1 <= 0) return;
+        //    head = (abnormal * head1) / total1;
+        //    neck = (abnormal * neck1) / total1;
+        //    tail = (abnormal * tail1) / total1;
+        //    head = Math.Round(head);
+        //    neck = Math.Round(neck);
+        //    tail = Math.Round(tail);
+        //    int.TryParse(head.ToString(), out head11);
+        //    int.TryParse(neck.ToString(), out neck11);
+        //    int.TryParse(tail.ToString(), out tail11);
 
-            if ((head11 + neck11 + tail11) != abnormal)
-            {
-                Decimal.TryParse(txtPeHead1.Text, out head1);
-                head = (abnormal * head1) / total1;
-                neck = (abnormal * neck1) / total1;
-                tail = (abnormal * tail1) / total1;
-                Decimal headtemp = 0, necktemp = 0, tailtemp = 0;
-                int headtemp1 = 0, necktemp1 = 0, tailtemp1 = 0;
-                headtemp1 = Decimal.ToInt16(head);
-                headtemp = head - headtemp1;
-                necktemp1 = Decimal.ToInt16(neck);
-                necktemp = neck - necktemp1;
-                tailtemp1 = Decimal.ToInt16(tail);
-                tailtemp = tail - tailtemp1;
-                if (headtemp < necktemp)
-                {
-                    if (headtemp < tailtemp)
-                    {
-                        int.TryParse(headtemp1.ToString(), out head11);
-                    }
-                    else
-                    {
-                        int.TryParse(tailtemp1.ToString(), out tail11);
-                    }
-                }
-                else
-                {
-                    if (necktemp < tailtemp)
-                    {
-                        int.TryParse(necktemp1.ToString(), out neck11);
-                    }
-                    else
-                    {
-                        int.TryParse(tailtemp1.ToString(), out tail11);
-                    }
-                }
-                //head = Math.Round(head);
-            }
-            txtPeHead.Value = head11;
-            txtPeNeck.Value = neck11;
-            txtPeTail.Value = tail11;
-        }
+        //    if ((head11 + neck11 + tail11) != abnormal)
+        //    {
+        //        Decimal.TryParse(txtPeHead1.Text, out head1);
+        //        head = (abnormal * head1) / total1;
+        //        neck = (abnormal * neck1) / total1;
+        //        tail = (abnormal * tail1) / total1;
+        //        Decimal headtemp = 0, necktemp = 0, tailtemp = 0;
+        //        int headtemp1 = 0, necktemp1 = 0, tailtemp1 = 0;
+        //        headtemp1 = Decimal.ToInt16(head);
+        //        headtemp = head - headtemp1;
+        //        necktemp1 = Decimal.ToInt16(neck);
+        //        necktemp = neck - necktemp1;
+        //        tailtemp1 = Decimal.ToInt16(tail);
+        //        tailtemp = tail - tailtemp1;
+        //        if (headtemp < necktemp)
+        //        {
+        //            if (headtemp < tailtemp)
+        //            {
+        //                int.TryParse(headtemp1.ToString(), out head11);
+        //            }
+        //            else
+        //            {
+        //                int.TryParse(tailtemp1.ToString(), out tail11);
+        //            }
+        //        }
+        //        else
+        //        {
+        //            if (necktemp < tailtemp)
+        //            {
+        //                int.TryParse(necktemp1.ToString(), out neck11);
+        //            }
+        //            else
+        //            {
+        //                int.TryParse(tailtemp1.ToString(), out tail11);
+        //            }
+        //        }
+        //        //head = Math.Round(head);
+        //    }
+        //    txtPeHead.Value = head11;
+        //    txtPeNeck.Value = neck11;
+        //    txtPeTail.Value = tail11;
+        //}
         private void calSfMorphology()
         {
             Decimal head1 = 0, neck1 = 0, tail1 = 0, head=0, neck=0, tail=0, total1=0, abnormal=0;
@@ -1277,33 +1338,33 @@ namespace clinic_ivf.gui
                 }
                 else if (sender.Equals(txtPeMotility2))
                 {
-                    txtPeNormal.Focus();
+                    //txtPeNormal.Focus();
                 }
                 //else if (sender.Equals(txtSfWbc))
                 //{
                 //    txtSfNormal.Focus();
                 //}
-                else if (sender.Equals(txtPeNormal))
-                {
-                    //txtSfAbnormal.Focus();
-                    txtPeHead1.Focus();
-                }
-                else if (sender.Equals(txtPeAbnormal))
-                {
-                    txtPeHead.Focus();
-                }
-                else if (sender.Equals(txtPeHead1))
-                {
-                    txtPeNeck1.Focus();
-                }
-                else if (sender.Equals(txtPeNeck1))
-                {
-                    txtPeTail1.Focus();
-                }
-                else if (sender.Equals(txtPeTail))
-                {
-                    txtPeEjacula.Focus();
-                }
+                //else if (sender.Equals(txtPeNormal))
+                //{
+                //    //txtSfAbnormal.Focus();
+                //    txtPeHead1.Focus();
+                //}
+                //else if (sender.Equals(txtPeAbnormal))
+                //{
+                //    txtPeHead.Focus();
+                //}
+                //else if (sender.Equals(txtPeHead1))
+                //{
+                //    txtPeNeck1.Focus();
+                //}
+                //else if (sender.Equals(txtPeNeck1))
+                //{
+                //    txtPeTail1.Focus();
+                //}
+                //else if (sender.Equals(txtPeTail))
+                //{
+                //    txtPeEjacula.Focus();
+                //}
                 //else if (sender.Equals(txtSfVial))
                 //{
                 //    txtSfEjacula.Focus();
@@ -1446,14 +1507,18 @@ namespace clinic_ivf.gui
             FrmReport frm = new FrmReport(ic);
             DataTable dt = new DataTable();
             dt = ic.ivfDB.lspermDB.selectByPk(txtPeID.Text);
-            String date1 = dt.Rows[0]["date_report"].ToString();
-            String date2 = dt.Rows[0]["date_approve"].ToString();
+            ////dt.Columns.Add("no_of_vial", typeof(String));
+            String date1 = ic.datetoShow(dt.Rows[0]["date_report"].ToString());
+            String date2 = ic.datetoShow(dt.Rows[0]["date_approve"].ToString());
             String datemale = dt.Rows[0]["dob_male"].ToString();
-            date1 = ic.datetimetoShow(dt.Rows[0]["date_report"]);
-            date2 = ic.datetimetoShow(dt.Rows[0]["date_approve"]);
+            //date1 = ic.datetimetoShow(dt.Rows[0]["date_report"]);
+            //date2 = ic.datetimetoShow(dt.Rows[0]["date_approve"]);
             dt.Rows[0]["date_report"] = date1;
             dt.Rows[0]["date_approve"] = date2;
-
+            String noofvial = "";
+            noofvial = dt.Rows[0]["no_of_vail"].ToString();
+            dt.Rows[0]["no_of_vial"] = noofvial;
+            dt.Rows[0]["date_approve"] = date2;
             datemale = ic.datetoShow(dt.Rows[0]["dob_male"]);
             dt.Rows[0]["dob_male"] = datemale;
             //FrmWaiting frmW = new FrmWaiting();
@@ -1490,6 +1555,90 @@ namespace clinic_ivf.gui
             }
             frm.setSpermSa(dt);
             frm.ShowDialog(this);
+        }
+        private Boolean setReportSpermPESA1(String flag, String filename)
+        {
+            Boolean chk1 = true;
+            DataTable dt = new DataTable();
+            dt = ic.ivfDB.lspermDB.selectByPk(txtPeID.Text);
+            //FrmWaiting frmW = new FrmWaiting();
+            //frmW.Show();
+            String date1 = ic.datetoShow(dt.Rows[0]["date_report"].ToString());
+            String date2 = ic.datetoShow(dt.Rows[0]["date_approve"].ToString());
+            String datemale = dt.Rows[0]["dob_male"].ToString();
+            //date1 = ic.datetimetoShow(dt.Rows[0]["date_report"]);
+            //date2 = ic.datetimetoShow(dt.Rows[0]["date_approve"]);
+            dt.Rows[0]["date_report"] = date1;
+            dt.Rows[0]["date_approve"] = date2;
+            String noofvial = "";
+            noofvial = dt.Rows[0]["no_of_vail"].ToString();
+            dt.Rows[0]["no_of_vial"] = noofvial;
+
+            datemale = ic.datetoShow(dt.Rows[0]["dob_male"]);
+            dt.Rows[0]["dob_male"] = datemale;
+            String appearance = "", appearancetext = "", chk = "";
+            appearance = dt.Rows[0]["appearance"].ToString();
+            appearancetext = dt.Rows[0]["appearance_text"].ToString();
+            if (appearancetext.Length > 0)
+            {
+                //dt.Rows[0]["appearance"] = appearancetext;
+                dt.Rows[0]["doc_type_name_app"] = appearancetext;
+            }
+            String stf2 = "";
+            stf2 = dt.Rows[0]["doctorname"].ToString();
+            String[] stf22 = stf2.Split(' ');
+            stf2 = (stf22.Length > 2) ? stf22[0] + " " + stf22[1] + " " + stf22[2].Substring(0, 1) + "." : stf2;
+            dt.Rows[0]["doctorname"] = stf2;
+            if (flag.Equals("print"))
+            {
+                FrmReport frm = new FrmReport(ic);
+                frm.setSpermSa(dt);
+                frm.ShowDialog(this);
+            }
+            else
+            {
+                try
+                {
+                    ReportDocument rpt = new ReportDocument();
+                    rpt.Load("lab_sperm_pesa.rpt");
+
+                    rpt.SetDataSource(dt);
+                    rpt.SetParameterValue("line1", ic.cop.comp_name_t);
+                    rpt.SetParameterValue("line2", ic.cop.addr1);
+                    rpt.SetParameterValue("line3", ic.cop.addr2);
+                    //rpt.SetParameterValue("report_name", " Summary of OPU Report");
+                    //rpt.SetParameterValue("date1", "" + date1);
+                    this.crySperm.ReportSource = rpt;
+                    this.crySperm.Refresh();
+
+                    if (File.Exists(filename))
+                    {
+                        File.Delete(filename);
+                        System.Threading.Thread.Sleep(200);
+                    }
+
+                    ExportOptions CrExportOptions;
+                    DiskFileDestinationOptions CrDiskFileDestinationOptions = new DiskFileDestinationOptions();
+                    PdfRtfWordFormatOptions CrFormatTypeOptions = new PdfRtfWordFormatOptions();
+                    CrDiskFileDestinationOptions.DiskFileName = filename;
+                    CrExportOptions = rpt.ExportOptions;
+                    {
+                        CrExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
+                        CrExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
+                        CrExportOptions.DestinationOptions = CrDiskFileDestinationOptions;
+                        CrExportOptions.FormatOptions = CrFormatTypeOptions;
+                    }
+
+                    rpt.Export();
+                }
+                catch (Exception ex)
+                {
+                    chk1 = false;
+                    chk = ex.Message.ToString();
+                    MessageBox.Show("error " + ex.Message, "");
+                }
+            }
+            return chk1;
         }
         private Boolean setReportSpermAnalysis1(String flag, String filename)
         {
@@ -1776,6 +1925,24 @@ namespace clinic_ivf.gui
                 }
             }
         }
+
+        private void panel8_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void txtSfEmailBody_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void sCFreezing_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        
+
         private void setControlAnalysisReadOnly(Boolean flag)
         {
             txtHnFeMale.ReadOnly = !flag;
@@ -2024,7 +2191,7 @@ namespace clinic_ivf.gui
             ic.setC1Combo(cboSfViscosity, lsperm.viscosity);
             ic.setC1Combo(cboSfEmbryologistAppv, lsperm.staff_id_approve);
             ic.setC1Combo(cboSfEmbryologistReport, lsperm.staff_id_report);
-            ic.setC1Combo(cboSfEmbryologistReport, lsperm.staff_id_report);
+            //ic.setC1Combo(cboSfEmbryologistReport, lsperm.staff_id_report);
             ic.setC1Combo(cboSfWbc, lsperm.wbc);
             ic.setC1Combo(cboSfNoofVail, lsperm.no_of_vail);
 
@@ -2099,6 +2266,8 @@ namespace clinic_ivf.gui
             ic.setC1Combo(cboPeAppearance, lsperm.appearance);
             ic.setC1Combo(cboPeLiquefaction, lsperm.liquefaction);
             ic.setC1Combo(cboPeViscosity, lsperm.viscosity);
+            ic.setC1Combo(cboPeEmbryologistAppv, lsperm.staff_id_approve);
+            ic.setC1Combo(cboPeEmbryologistReport, lsperm.staff_id_report);
 
             txtPeSpermDate.Value = lsperm.sperm_date;
             txtPeAbstinenceday.Value = lsperm.abstinence_day;
@@ -2119,6 +2288,7 @@ namespace clinic_ivf.gui
             txtPeRecive.Value = lsperm.recive_time;
             txtPeExam.Value = lsperm.examination_time;
             txtPeFinish.Value = lsperm.finish_time;
+            
             //txtPeNormal.Value = lsperm.morphology_normal;
             //txtPeAbnormal.Value = lsperm.morphology_abnormal;
             //txtPeHead.Value = lsperm.morphology_head_defect;
@@ -2129,6 +2299,19 @@ namespace clinic_ivf.gui
             //txtSpermTime.Value = lsperm.time;
             ic.ivfDB.lspermDB.setCboRemark(cboPeRemark);
             ic.setC1ComboByName(cboPeRemark, lsperm.remark);
+            txtPeEmailTo.Value = ic.iniC.email_to_sperm_freezing;
+            txtPeEmailSubject.Value = "Report Sperm PESA/TESE " + DateTime.Now.ToString("dd/MM/") + DateTime.Now.Year + " " + txtPeNameMale.Text;
+            if (!lsperm.status_lab.Equals("5"))
+            {
+                if (flagEdit1.Equals(""))
+                {
+                    //pnPeEmailAddSubject.Enabled = true;
+                }
+                else
+                {
+                    //pnPeEmailAddSubject.Enabled = false;
+                }
+            }
         }
         private void setControlIui()
         {
@@ -2333,7 +2516,7 @@ namespace clinic_ivf.gui
             lsperm.total_count = txtPeTotalCount.Text;
             lsperm.motile = txtPeMotile.Text;
             lsperm.motility = txtPeMotility.Text;
-            lsperm.total_motile = txtTotalMotile.Text;
+            lsperm.total_motile = txtPeTotalMotile.Text;
             lsperm.motility_rate_4 = txtPeMotility4.Text;
             lsperm.motility_rate_3 = txtPeMotility3.Text;
             lsperm.motility_rate_2 = txtPeMotility2.Text;
@@ -2350,8 +2533,8 @@ namespace clinic_ivf.gui
             //lsperm.morphology_tail_defect = txtPeTail.Text;
             lsperm.staff_id_approve = txtPeApproveResult.Text;
             lsperm.date_approve = txtPeApproveDate.Text;
-            lsperm.staff_id_report = cboEmbryologistReport.SelectedItem == null ? "0" : ((ComboBoxItem)cboEmbryologistReport.SelectedItem).Value;
-            lsperm.staff_id_approve = cboEmbryologistAppv.SelectedItem == null ? "0" : ((ComboBoxItem)cboEmbryologistAppv.SelectedItem).Value;
+            lsperm.staff_id_report = cboPeEmbryologistReport.SelectedItem == null ? "0" : ((ComboBoxItem)cboPeEmbryologistReport.SelectedItem).Value;
+            lsperm.staff_id_approve = cboPeEmbryologistAppv.SelectedItem == null ? "0" : ((ComboBoxItem)cboPeEmbryologistAppv.SelectedItem).Value;
             lsperm.date_approve = ic.datetoDB(txtPeApproveDate.Text);
             lsperm.date_report = ic.datetoDB(txtPeReportDate.Text);
             lsperm.remark = cboPeRemark.Text;
@@ -2495,11 +2678,11 @@ namespace clinic_ivf.gui
                     if (ctl is C1PictureBox) continue;
                     theme1.SetTheme(ctl, theme2);
                 }
-                foreach (Control ctl in groupBox7.Controls)
-                {
-                    if (ctl is C1PictureBox) continue;
-                    theme1.SetTheme(ctl, theme2);
-                }
+                //foreach (Control ctl in groupBox7.Controls)
+                //{
+                //    if (ctl is C1PictureBox) continue;
+                //    theme1.SetTheme(ctl, theme2);
+                //}
             }
             else if (lsperm.status_lab_sperm.Equals("4"))
             {

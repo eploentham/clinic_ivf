@@ -587,7 +587,7 @@ namespace clinic_ivf.objdb
             //    "Order By opuEmDev." + opuEmDev.opu_embryo_dev_id;
             String sql = "select opu.hn_male, opu.hn_female, opu.name_male, opu.name_female, proce.proce_name_t as procedure1, dtr.Name as doctor, opuEmDev.embryo_dev_date as opu_date " +
                 ", opuEmDev.day as day1, convert(opuEmDev.opu_embryo_dev_no, nchar(55)) as no1, opuEmDev.desc0  as no1_desc0, opuEmDev.path_pic as no1_pathpic, opuEmDev.desc1 as no1_desc1" +
-                ", opuEmDev.desc2 as no1_desc2, opuEmDev.desc3 as no1_desc3, opu.opu_id, opu.opu_code, 'Number of transfer' as footer1" +
+                ", opuEmDev.desc2 as no1_desc2, opuEmDev.desc3 as no1_desc3, opu.opu_id, opu.opu_code, 'Number of Transfer' as footer1" +
                 ", 'Number of Freeze' as footer2,'Number of Discard' as footer3, opu.remark as footer4,'' as footer5, 'st# = straw number' as footer6 " +
                 ", opu.embryo_for_et_number_of_transfer, opu.embryo_for_et_number_of_freeze,opu.embryo_for_et_number_of_discard, opuEmDev.desc4 as no1_desc4, opuEmDev.opu_embryo_dev_no, opuEmDev.desc0" +
                 ", opuEmDev.embryo_dev_date, opuEmDev.day, opuEmDev.desc1, opu.remark_1 as footer7 " +
