@@ -156,5 +156,8 @@ namespace clinic_ivf.object1
         public String remark_day3 { get; set; }
         public String remark_day5 { get; set; }
         public String remark_day6 { get; set; }
+        public String report_day1 { get; set; }
+        public String report_day3 { get; set; }
+        public String report_day6 { get; set; }
     }
 }

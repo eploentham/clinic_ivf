@@ -2106,9 +2106,12 @@ namespace clinic_ivf.objdb
             stf0 = stfDB.getStaffNameBylStf(stfid);
             chk0 = stfDB.getStaffNameBylStf(checkedid);
             String[] stf01 = stf0.Split(' ');
-            String[] chk01 = chk0.Split(' ');            
-            stf0 = (stf01.Length > 0) ? stf01[0] + " " + stf01[1].Substring(0, 1) + "." : stf0;
-            chk0 = (chk01.Length > 0) ? chk01[0] + " " + chk01[1].Substring(0, 1) + "." : chk0;
+            String[] chk01 = chk0.Split(' ');
+            if (stf0.Length > 0 && chk0.Length > 0)
+            {
+                stf0 = (stf01.Length > 0) ? stf01[0] + " " + stf01[1].Substring(0, 1) + "." : stf0;
+                chk0 = (chk01.Length > 0) ? chk01[0] + " " + chk01[1].Substring(0, 1) + "." : chk0;
+            }
             dt.Rows[0]["embryo_dev_0_staff_name"] = stf0;
             dt.Rows[0]["embryo_dev_0_checked_name"] = chk0;
             etName = dt.Rows[0]["embryo_for_et_embryologist_id"].ToString();
@@ -2147,8 +2150,11 @@ namespace clinic_ivf.objdb
                 chk1 = stfDB.getStaffNameBylStf(checkedid);
                 String[] stf11 = stf1.Split(' ');
                 String[] chk11 = chk1.Split(' ');
-                stf1 = (stf11.Length > 0) ? stf11[0] + " " + stf11[1].Substring(0, 1) + "." : stf1;
-                chk1 = (chk11.Length > 0) ? chk11[0] + " " + chk11[1].Substring(0, 1) + "." : chk1;
+                if (stf1.Length > 0 && chk1.Length > 0)
+                {
+                    stf1 = (stf11.Length > 0) ? stf11[0] + " " + stf11[1].Substring(0, 1) + "." : stf1;
+                    chk1 = (chk11.Length > 0) ? chk11[0] + " " + chk11[1].Substring(0, 1) + "." : chk1;
+                }
                 dt.Rows[0]["embryo_dev_1_staff_name"] = stf1;
                 dt.Rows[0]["embryo_dev_1_checked_name"] = chk1;
             }

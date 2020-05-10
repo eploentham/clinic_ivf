@@ -2286,7 +2286,7 @@ namespace clinic_ivf.gui
                 //FrmLabOPUAdd2 frm = new FrmLabOPUAdd2(ic,"", opu.opu_id);
                 FrmNurseOPUView frm = new FrmNurseOPUView(ic, "", opu.opu_id);
                 String txt = "";
-                if (!namef.Equals(""))
+                if (!name.Equals(""))
                 {
                     txt = "ผลLAB OPU " + name;
                 }

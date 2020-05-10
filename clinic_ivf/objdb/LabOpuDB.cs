@@ -169,6 +169,9 @@ namespace clinic_ivf.objdb
             opu.remark_day3 = "remark_day3";
             opu.remark_day5 = "remark_day5";
             opu.remark_day6 = "remark_day6";
+            opu.report_day1 = "report_day1";
+            opu.report_day3 = "report_day3";
+            opu.report_day6 = "report_day6";
 
             opu.table = "lab_t_opu";
             opu.pkField = "opu_id";
@@ -535,6 +538,9 @@ namespace clinic_ivf.objdb
             p.remark_day3 = p.remark_day3 == null ? "" : p.remark_day3;
             p.remark_day5 = p.remark_day5 == null ? "" : p.remark_day5;
             p.remark_day6 = p.remark_day6 == null ? "" : p.remark_day6;
+            p.report_day1 = p.report_day1 == null ? "" : p.report_day1;
+            p.report_day3 = p.report_day3 == null ? "" : p.report_day3;
+            p.report_day6 = p.report_day6 == null ? "" : p.report_day6;
 
             p.doctor_id = long.TryParse(p.doctor_id, out chk) ? chk.ToString() : "0";
             p.proce_id = long.TryParse(p.proce_id, out chk) ? chk.ToString() : "0";
@@ -584,6 +590,9 @@ namespace clinic_ivf.objdb
                 "," + opu.remark_1 + " = '" + p.remark_1 + "'" +
                 "," + opu.dob_donor + " = '" + p.dob_donor + "'" +
                 "," + opu.opu_time + " = '" + p.opu_time + "'" +
+                "," + opu.report_day1 + " = '" + p.report_day1 + "'" +
+                "," + opu.report_day3 + " = '" + p.report_day3 + "'" +
+                "," + opu.report_day6 + " = '" + p.report_day6 + "'" +
                "";
             try
             {
@@ -962,7 +971,32 @@ namespace clinic_ivf.objdb
                 " " + opu.status_approve_result_day1 + " = '1'" +
                 "," + opu.approve_result_day1_staff_id + " = '" + userId + "'" +
                 "," + opu.approve_result_day1_date + " = now()" +
-                "," + opu.approve_result_day1_date + " = '"+ filename + "'" +
+                "," + opu.report_day1 + " = '"+ filename + "'" +
+                "Where " + opu.pkField + "='" + opuid + "'"
+                ;
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+
+            return re;
+        }
+        public String updateStatusOPUApproveResultDay3(String opuid, String filename, String userId)
+        {
+            String re = "";
+            String sql = "";
+            int chk = 0;
+
+            //chkNull(p);
+            sql = "Update " + opu.table + " Set " +
+                " " + opu.status_approve_result_day3 + " = '1'" +
+                "," + opu.approve_result_day3_staff_id + " = '" + userId + "'" +
+                "," + opu.approve_result_day3_date + " = now()" +
+                "," + opu.report_day3 + " = '" + filename + "'" +
                 "Where " + opu.pkField + "='" + opuid + "'"
                 ;
             try
@@ -1178,6 +1212,9 @@ namespace clinic_ivf.objdb
                 opu1.remark_day3 = dt.Rows[0][opu.remark_day3].ToString();
                 opu1.remark_day5 = dt.Rows[0][opu.remark_day5].ToString();
                 opu1.remark_day6 = dt.Rows[0][opu.remark_day6].ToString();
+                opu1.report_day1 = dt.Rows[0][opu.report_day1].ToString();
+                opu1.report_day3 = dt.Rows[0][opu.report_day3].ToString();
+                opu1.report_day6 = dt.Rows[0][opu.report_day6].ToString();
             }
             else
             {
@@ -1328,6 +1365,9 @@ namespace clinic_ivf.objdb
                 opu1.remark_day3 = "";
                 opu1.remark_day5 = "";
                 opu1.remark_day6 = "";
+                opu1.report_day1 = "";
+                opu1.report_day3 = "";
+                opu1.report_day6 = "";
             }
 
             return opu1;

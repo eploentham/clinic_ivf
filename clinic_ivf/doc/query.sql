@@ -1440,3 +1440,10 @@ ADD COLUMN `prefix_receipt1_doc` VARCHAR(45) NULL AFTER `receipt1_doc`;
 
 ALTER TABLE `ivf_101`.`billheader` 
 ADD COLUMN `receipt1_no` VARCHAR(45) NULL AFTER `closeday_id`;
+
+
+ALTER TABLE `ivf`.`lab_t_opu` 
+ADD COLUMN `report_day1` VARCHAR(45) NULL AFTER `remark_day6`,
+ADD COLUMN `report_day3` VARCHAR(45) NULL AFTER `report_day1`,
+ADD COLUMN `report_day6` VARCHAR(45) NULL AFTER `report_day3`;
+

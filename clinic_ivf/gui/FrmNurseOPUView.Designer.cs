@@ -341,11 +341,14 @@
             this.NormalSizeButton = new C1.Win.C1Ribbon.RibbonButton();
             this.ribbonTopToolBar1 = new C1.Win.C1Ribbon.RibbonTopToolBar();
             this.tabReportOPU = new C1.Win.C1Command.C1DockingTabPage();
-            this.cryOpu = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.tabReportEmbryo = new C1.Win.C1Command.C1DockingTabPage();
-            this.cryEmbryo = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.sB = new System.Windows.Forms.StatusStrip();
             this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.cryEmbryo = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
+            this.cryOpu = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
+            this.tabDay1 = new C1.Win.C1Command.C1DockingTabPage();
+            this.tabDay3 = new C1.Win.C1Command.C1DockingTabPage();
+            this.tabDay6 = new C1.Win.C1Command.C1DockingTabPage();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1SplitContainer1)).BeginInit();
             this.c1SplitContainer1.SuspendLayout();
@@ -1285,11 +1288,14 @@
             this.tCResult.Controls.Add(this.tabEmail);
             this.tCResult.Controls.Add(this.tabReportOPU);
             this.tCResult.Controls.Add(this.tabReportEmbryo);
+            this.tCResult.Controls.Add(this.tabDay1);
+            this.tCResult.Controls.Add(this.tabDay3);
+            this.tCResult.Controls.Add(this.tabDay6);
             this.tCResult.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tCResult.HotTrack = true;
             this.tCResult.Location = new System.Drawing.Point(0, 0);
             this.tCResult.Name = "tCResult";
-            this.tCResult.SelectedIndex = 3;
+            this.tCResult.SelectedIndex = 7;
             this.tCResult.Size = new System.Drawing.Size(1344, 524);
             this.tCResult.TabIndex = 13;
             this.tCResult.TabSizeMode = C1.Win.C1Command.TabSizeModeEnum.Fit;
@@ -1352,7 +1358,7 @@
             this.c1SplitterPanel3.SizeRatio = 35.878D;
             this.c1SplitterPanel3.TabIndex = 0;
             this.c1SplitterPanel3.Text = "Panel 1";
-            this.c1SplitterPanel3.Width = 473;
+            this.c1SplitterPanel3.Width = 480;
             // 
             // panel2
             // 
@@ -3481,7 +3487,7 @@
             this.c1SplitterPanel5.SizeRatio = 27.156D;
             this.c1SplitterPanel5.TabIndex = 0;
             this.c1SplitterPanel5.Text = "Panel 1";
-            this.c1SplitterPanel5.Width = 225;
+            this.c1SplitterPanel5.Width = 232;
             // 
             // gbDay2
             // 
@@ -3664,7 +3670,7 @@
             this.c1SplitterPanel6.SizeRatio = 38.889D;
             this.c1SplitterPanel6.TabIndex = 1;
             this.c1SplitterPanel6.Text = "Panel 2";
-            this.c1SplitterPanel6.Width = 233;
+            this.c1SplitterPanel6.Width = 240;
             // 
             // gbDay3
             // 
@@ -3847,7 +3853,7 @@
             this.c1SplitterPanel7.SizeRatio = 60.87D;
             this.c1SplitterPanel7.TabIndex = 2;
             this.c1SplitterPanel7.Text = "Panel 3";
-            this.c1SplitterPanel7.Width = 221;
+            this.c1SplitterPanel7.Width = 228;
             // 
             // gbDay5
             // 
@@ -4375,7 +4381,7 @@
             this.sCEmailView.SizeRatio = 39.088D;
             this.sCEmailView.TabIndex = 0;
             this.sCEmailView.Text = "Panel 1";
-            this.sCEmailView.Width = 523;
+            this.sCEmailView.Width = 516;
             // 
             // pnEmailView
             // 
@@ -5184,20 +5190,6 @@
             this.tabReportOPU.TabIndex = 5;
             this.tabReportOPU.Text = "Report OPU";
             // 
-            // cryOpu
-            // 
-            this.cryOpu.ActiveViewIndex = -1;
-            this.cryOpu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.cryOpu.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.cryOpu.Cursor = System.Windows.Forms.Cursors.Default;
-            this.cryOpu.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cryOpu.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.cryOpu.Location = new System.Drawing.Point(0, 0);
-            this.cryOpu.Name = "cryOpu";
-            this.cryOpu.Size = new System.Drawing.Size(1342, 499);
-            this.cryOpu.TabIndex = 1;
-            this.theme1.SetTheme(this.cryOpu, "(default)");
-            // 
             // tabReportEmbryo
             // 
             this.tabReportEmbryo.Controls.Add(this.cryEmbryo);
@@ -5206,20 +5198,6 @@
             this.tabReportEmbryo.Size = new System.Drawing.Size(1342, 499);
             this.tabReportEmbryo.TabIndex = 6;
             this.tabReportEmbryo.Text = "Report Embryo";
-            // 
-            // cryEmbryo
-            // 
-            this.cryEmbryo.ActiveViewIndex = -1;
-            this.cryEmbryo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.cryEmbryo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.cryEmbryo.Cursor = System.Windows.Forms.Cursors.Default;
-            this.cryEmbryo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cryEmbryo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.cryEmbryo.Location = new System.Drawing.Point(0, 0);
-            this.cryEmbryo.Name = "cryEmbryo";
-            this.cryEmbryo.Size = new System.Drawing.Size(1342, 499);
-            this.cryEmbryo.TabIndex = 1;
-            this.theme1.SetTheme(this.cryEmbryo, "(default)");
             // 
             // sB
             // 
@@ -5236,6 +5214,58 @@
             this.sB1.Name = "sB1";
             this.sB1.Size = new System.Drawing.Size(118, 17);
             this.sB1.Text = "toolStripStatusLabel1";
+            // 
+            // cryEmbryo
+            // 
+            this.cryEmbryo.ActiveViewIndex = -1;
+            this.cryEmbryo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.cryEmbryo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cryEmbryo.Cursor = System.Windows.Forms.Cursors.Default;
+            this.cryEmbryo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cryEmbryo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.cryEmbryo.Location = new System.Drawing.Point(0, 0);
+            this.cryEmbryo.Name = "cryEmbryo";
+            this.cryEmbryo.Size = new System.Drawing.Size(1342, 499);
+            this.cryEmbryo.TabIndex = 1;
+            this.theme1.SetTheme(this.cryEmbryo, "(default)");
+            // 
+            // cryOpu
+            // 
+            this.cryOpu.ActiveViewIndex = -1;
+            this.cryOpu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.cryOpu.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cryOpu.Cursor = System.Windows.Forms.Cursors.Default;
+            this.cryOpu.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cryOpu.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.cryOpu.Location = new System.Drawing.Point(0, 0);
+            this.cryOpu.Name = "cryOpu";
+            this.cryOpu.Size = new System.Drawing.Size(1342, 499);
+            this.cryOpu.TabIndex = 1;
+            this.theme1.SetTheme(this.cryOpu, "(default)");
+            // 
+            // tabDay1
+            // 
+            this.tabDay1.Location = new System.Drawing.Point(1, 24);
+            this.tabDay1.Name = "tabDay1";
+            this.tabDay1.Size = new System.Drawing.Size(1342, 499);
+            this.tabDay1.TabIndex = 7;
+            this.tabDay1.Text = "Day1";
+            // 
+            // tabDay3
+            // 
+            this.tabDay3.Location = new System.Drawing.Point(1, 24);
+            this.tabDay3.Name = "tabDay3";
+            this.tabDay3.Size = new System.Drawing.Size(1342, 499);
+            this.tabDay3.TabIndex = 8;
+            this.tabDay3.Text = "Day3";
+            // 
+            // tabDay6
+            // 
+            this.tabDay6.Location = new System.Drawing.Point(1, 24);
+            this.tabDay6.Name = "tabDay6";
+            this.tabDay6.Size = new System.Drawing.Size(1342, 499);
+            this.tabDay6.TabIndex = 9;
+            this.tabDay6.Text = "Day6";
             // 
             // FrmNurseOPUView
             // 
@@ -5742,13 +5772,16 @@
         private C1.Win.C1Input.C1TextBox txtEmailBody;
         private C1.Win.C1Command.C1DockingTabPage tabReportOPU;
         private C1.Win.C1Command.C1DockingTabPage tabReportEmbryo;
-        private CrystalDecisions.Windows.Forms.CrystalReportViewer cryOpu;
-        private CrystalDecisions.Windows.Forms.CrystalReportViewer cryEmbryo;
         private C1.Win.C1Input.C1CheckBox chkEmbryoFreez2Col;
         private C1.Win.C1Input.C1CheckBox chkEmbryoDev20;
         private C1.Win.C1Input.C1ComboBox cboEmbryoDev2;
         private System.Windows.Forms.Label label92;
         private C1.Win.C1Input.C1ComboBox cboEmbryoDev1;
         private System.Windows.Forms.Label label93;
+        private CrystalDecisions.Windows.Forms.CrystalReportViewer cryOpu;
+        private CrystalDecisions.Windows.Forms.CrystalReportViewer cryEmbryo;
+        private C1.Win.C1Command.C1DockingTabPage tabDay1;
+        private C1.Win.C1Command.C1DockingTabPage tabDay3;
+        private C1.Win.C1Command.C1DockingTabPage tabDay6;
     }
 }

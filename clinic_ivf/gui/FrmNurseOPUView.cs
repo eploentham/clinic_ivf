@@ -1,6 +1,8 @@
-﻿using C1.Win.C1FlexGrid;
+﻿using C1.Win.C1Document;
+using C1.Win.C1FlexGrid;
 using C1.Win.C1Input;
 using C1.Win.C1SuperTooltip;
+using C1.Win.FlexViewer;
 using clinic_ivf.control;
 using clinic_ivf.object1;
 using CrystalDecisions.CrystalReports.Engine;
@@ -816,6 +818,7 @@ namespace clinic_ivf.gui
                     opu = ic.ivfDB.opuDB.selectByPk1(opuId);
                     lbReq = ic.ivfDB.lbReqDB.selectByPk1(opu.req_id);
                     setControl1();
+                    setControlDay1();
                     DataTable dt = new DataTable();
                     dt = ic.ivfDB.opuEmDevDB.selectByOpuFetId_Day(txtID.Text, objdb.LabOpuEmbryoDevDB.Day1.Day2);
                     if (dt.Rows.Count > 0)
@@ -843,6 +846,30 @@ namespace clinic_ivf.gui
             {
                 MessageBox.Show("" + ex.Message, "");
             }
+        }
+        private void setControlDay1()
+        {
+            C1FlexViewer day1View = new C1FlexViewer();
+            day1View = new C1FlexViewer();
+            day1View.AutoScrollMargin = new System.Drawing.Size(0, 0);
+            day1View.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+            day1View.Dock = System.Windows.Forms.DockStyle.Fill;
+            day1View.Location = new System.Drawing.Point(0, 0);
+            day1View.Name = "c1FlexViewer1";
+            day1View.Size = new System.Drawing.Size(1065, 790);
+            day1View.TabIndex = 0;
+            C1PdfDocumentSource pds = new C1PdfDocumentSource();
+            MemoryStream stream;
+            FtpClient ftpc = new FtpClient(ic.iniC.hostFTP, ic.iniC.userFTP, ic.iniC.passFTP, ic.ftpUsePassive);
+            //ftpC.upload(iniC.folderFTP + "/" + opuCode + "/" + filename, pathFile);
+            stream = ftpc.download(ic.iniC.folderFTP + "//" + opu.opu_code + "//" + opu.report_day1);
+            stream.Seek(0, SeekOrigin.Begin);
+            pds.LoadFromStream(stream);
+
+            //pds.LoadFromFile(filename1);
+
+            day1View.DocumentSource = pds;
+            tabDay1.Controls.Add(day1View);
         }
         private void setGrfDay2()
         {
