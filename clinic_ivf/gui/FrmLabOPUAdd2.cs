@@ -349,17 +349,23 @@ namespace clinic_ivf.gui
             frm.ShowDialog(this);
             if (!ic.cStf.staff_id.Equals(""))
             {
-                long chk1 = 0;
-                String re = ic.ivfDB.opuDB.updateStatusOPUApproveResultDay3(txtID.Text, ic.user.staff_id);
-                if (long.TryParse(re, out chk1))
+                ic.statusResult = "";
+                FrmLabOPUPrint frmPrn = new FrmLabOPUPrint(ic, txtID.Text, FrmLabOPUPrint.opuReport.ResultDay3);
+                frmPrn.ShowDialog(this);
+                if (ic.statusResult.Equals("1"))
                 {
-                    LabRequest req = new LabRequest();
-                    req = ic.ivfDB.lbReqDB.selectByPk1(opu.req_id);
-                    String re1 = ic.ivfDB.lbReqDB.UpdateStatusRequestResult(req.req_id, ic.cStf.staff_id);
-                    if (long.TryParse(re1, out chk1))
+                    long chk1 = 0;
+                    String re = ic.ivfDB.opuDB.updateStatusOPUApproveResultDay3(txtID.Text, ic.user.staff_id);
+                    if (long.TryParse(re, out chk1))
                     {
-                        MessageBox.Show("ส่งผล LAB OPU ให้ทางพยาบาล เรียบร้อย ", "");       //clinic_ivf.Properties.Resources.Female_user_accept_24
-                        btnApproveResult.Image = Resources.Female_user_accept_24;
+                        LabRequest req = new LabRequest();
+                        req = ic.ivfDB.lbReqDB.selectByPk1(opu.req_id);
+                        String re1 = ic.ivfDB.lbReqDB.UpdateStatusRequestResult(req.req_id, ic.cStf.staff_id);
+                        if (long.TryParse(re1, out chk1))
+                        {
+                            MessageBox.Show("ส่งผล LAB OPU Day3 ให้ทางพยาบาล เรียบร้อย ", "");       //clinic_ivf.Properties.Resources.Female_user_accept_24
+                            btnApproveResult.Image = Resources.Female_user_accept_24;
+                        }
                     }
                 }
             }
@@ -977,11 +983,22 @@ namespace clinic_ivf.gui
             btnResultDay3.Click += BtnResultDay3_Click;
             btnResultDay5.Click += BtnResultDay5_Click;
             btnResultDay1View.Click += BtnResultDay1View;
+            btnResultDay3View.Click += BtnResultDay3View_Click;
+        }
+
+        private void BtnResultDay3View_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            showResultDay("3");
         }
 
         private void BtnResultDay1View(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
+            showResultDay("1");
+        }
+        private void showResultDay(String day)
+        {
             Form frm = new Form();
             C1FlexViewer day1View = new C1FlexViewer();
             day1View = new C1FlexViewer();
@@ -993,10 +1010,17 @@ namespace clinic_ivf.gui
             day1View.Size = new System.Drawing.Size(1065, 790);
             day1View.TabIndex = 0;
             C1PdfDocumentSource pds = new C1PdfDocumentSource();
-            MemoryStream stream;
+            MemoryStream stream = null;
             FtpClient ftpc = new FtpClient(ic.iniC.hostFTP, ic.iniC.userFTP, ic.iniC.passFTP, ic.ftpUsePassive);
             //ftpC.upload(iniC.folderFTP + "/" + opuCode + "/" + filename, pathFile);
-            stream = ftpc.download(ic.iniC.folderFTP + "//" + opu.opu_code + "//" + opu.report_day1);
+            if (day.Equals("1"))
+            {
+                stream = ftpc.download(ic.iniC.folderFTP + "//" + opu.opu_code + "//" + opu.report_day1);
+            }
+            else if (day.Equals("3"))
+            {
+                stream = ftpc.download(ic.iniC.folderFTP + "//" + opu.opu_code + "//" + opu.report_day3);
+            }
             stream.Seek(0, SeekOrigin.Begin);
             pds.LoadFromStream(stream);
 
@@ -1007,7 +1031,6 @@ namespace clinic_ivf.gui
             frm.WindowState = FormWindowState.Maximized;
             frm.ShowDialog(this);
         }
-
         private void BtnVoidEmbryo_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
@@ -2926,6 +2949,9 @@ namespace clinic_ivf.gui
                 btnApproveResult.Text = "รอ รายงานผล ";
             }
             txtOpuTime.Value = opu.opu_time;
+            
+            btnResultDay1View.Visible = opu.status_approve_result_day1.Equals("1") ? true : false;
+            btnResultDay3View.Visible = opu.status_approve_result_day3.Equals("1") ? true : false;
         }
         private void setOPU()
         {

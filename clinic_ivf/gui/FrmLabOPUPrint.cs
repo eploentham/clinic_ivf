@@ -358,6 +358,8 @@ namespace clinic_ivf.gui
             //throw new NotImplementedException();
             if(opureport == opuReport.ResultDay3)
             {
+                FrmWaiting frmW = new FrmWaiting();
+                frmW.Show();
                 ReportDocument rpt;
                 CrystalReportViewer crv = new CrystalReportViewer();
                 String filename = "", directory = "", ext = ".pdf";
@@ -392,6 +394,9 @@ namespace clinic_ivf.gui
                     System.Threading.Thread.Sleep(200);
                     crv.Refresh();
                     rpt.SetDataSource(dt);
+                    rpt.SetParameterValue("line1", ic.cop.comp_name_t);
+                    rpt.SetParameterValue("line2", "โทรศัพท์ " + ic.cop.tele);
+                    rpt.SetParameterValue("report_name", "Summary of OPU Report");
                     Application.DoEvents();
                     if (File.Exists(filename))
                         File.Delete(filename);
@@ -427,7 +432,8 @@ namespace clinic_ivf.gui
 
                             if (long.TryParse(re1, out chk1))
                             {
-                                MessageBox.Show("ส่งผล LAB OPU Day3 ให้ทางพยาบาล เรียบร้อย ", "");       //clinic_ivf.Properties.Resources.Female_user_accept_24
+                                ic.statusResult = "1";
+                                //MessageBox.Show("ส่งผล LAB OPU Day3 ให้ทางพยาบาล เรียบร้อย ", "");       //clinic_ivf.Properties.Resources.Female_user_accept_24
                                 //btnApproveResult.Image = Resources.Female_user_accept_24;
                             }
                         }
@@ -438,6 +444,10 @@ namespace clinic_ivf.gui
                     new LogWriter("e", "FrmLabOPUAdd2 setExportDay1 " + ex.Message);
                     MessageBox.Show(ex.ToString());
                 }
+                frmW.Dispose();
+                Application.DoEvents();
+                System.Threading.Thread.Sleep(200);
+                this.Dispose();
             }
             else
             {
@@ -791,7 +801,7 @@ namespace clinic_ivf.gui
         }
         private void setControl()
         {
-            if(opureport == opuReport.OPUReport || opureport == opuReport.OPUEmbryoDevReport)
+            if(opureport == opuReport.OPUReport || opureport == opuReport.OPUEmbryoDevReport || opureport == opuReport.ResultDay3)
             {
                 opu = ic.ivfDB.opuDB.selectByPk1(opuId);
                 txtID.Value = opu.opu_id;
