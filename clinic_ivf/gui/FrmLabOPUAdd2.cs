@@ -350,6 +350,7 @@ namespace clinic_ivf.gui
             if (!ic.cStf.staff_id.Equals(""))
             {
                 ic.statusResult = "";
+                ic.opu_report_day3 = "";
                 FrmLabOPUPrint frmPrn = new FrmLabOPUPrint(ic, txtID.Text, FrmLabOPUPrint.opuReport.ResultDay3);
                 frmPrn.ShowDialog(this);
                 if (ic.statusResult.Equals("1"))
@@ -363,6 +364,7 @@ namespace clinic_ivf.gui
                         String re1 = ic.ivfDB.lbReqDB.UpdateStatusRequestResult(req.req_id, ic.cStf.staff_id);
                         if (long.TryParse(re1, out chk1))
                         {
+                            opu.report_day3 = ic.opu_report_day3;
                             MessageBox.Show("ส่งผล LAB OPU Day3 ให้ทางพยาบาล เรียบร้อย ", "");       //clinic_ivf.Properties.Resources.Female_user_accept_24
                             btnApproveResult.Image = Resources.Female_user_accept_24;
                         }

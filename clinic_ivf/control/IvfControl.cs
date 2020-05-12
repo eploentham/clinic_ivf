@@ -40,7 +40,7 @@ namespace clinic_ivf.control
         public String[] args;
         public String userId = "";
         public String copID = "", jobID = "", cusID = "", addrID = "", contID = "", cusrID = "", custID = "", stfID = "", deptID = "", posiID = "", drawID = "", email="";
-        public String rContactName = "", rContacTel = "", rContID = "", userIderc = "", NumSticker="", labrequestremark="", statusResult="";
+        public String rContactName = "", rContacTel = "", rContID = "", userIderc = "", NumSticker="", labrequestremark="", statusResult="", opu_report_day3 = "";
         
         public Staff sStf, cStf;
         
@@ -918,6 +918,24 @@ namespace clinic_ivf.control
             ftpC.delete(iniC.folderFTP + "/" + opuCode + "/" + filename);
             //ftpC.upload( filename, pathFile);
             ftpC.upload(iniC.folderFTP + "/" + opuCode + "/" + filename, pathFile);
+        }
+        public void savePicOPUtoServerDebug(String opuCode, String filename, String pathFile)
+        {
+            //if (File.Exists(@"temppic" + System.Drawing.Imaging.ImageFormat.Jpeg))
+            //{
+            //    File.Delete(@"temppic" + System.Drawing.Imaging.ImageFormat.Jpeg);
+            //}
+            //pathFile.Save(@"temppic." + System.Drawing.Imaging.ImageFormat.Jpeg, System.Drawing.Imaging.ImageFormat.Jpeg);
+            new LogWriter("d", "IvfControl savePicOPUtoServerDebug 00" );
+            ftpC.createDirectory(iniC.folderFTP);
+            new LogWriter("d", "IvfControl savePicOPUtoServerDebug 01");
+            ftpC.createDirectory(iniC.folderFTP + "/" + opuCode);
+            new LogWriter("d", "IvfControl savePicOPUtoServerDebug 02");
+            ftpC.delete(iniC.folderFTP + "/" + opuCode + "/" + filename);
+            new LogWriter("d", "IvfControl savePicOPUtoServerDebug 03");
+            //ftpC.upload( filename, pathFile);
+            ftpC.upload(iniC.folderFTP + "/" + opuCode + "/" + filename, pathFile);
+            new LogWriter("d", "IvfControl savePicOPUtoServerDebug 04");
         }
         public void saveFilePatienttoServer(String pttId,String filenamenew, String localpathandfilename)
         {

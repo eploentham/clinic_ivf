@@ -1423,6 +1423,26 @@ namespace clinic_ivf.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap PDF_file_icon_svg_20 {
+            get {
+                object obj = ResourceManager.GetObject("PDF_file_icon_svg_20", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap PDF_file_icon_svg_40 {
+            get {
+                object obj = ResourceManager.GetObject("PDF_file_icon_svg_40", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap pdf_symbol {
             get {
                 object obj = ResourceManager.GetObject("pdf_symbol", resourceCulture);

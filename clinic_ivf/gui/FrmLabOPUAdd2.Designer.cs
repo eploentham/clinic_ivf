@@ -174,6 +174,7 @@
             this.gbDay3 = new System.Windows.Forms.GroupBox();
             this.pn3Grf = new System.Windows.Forms.Panel();
             this.pn3 = new System.Windows.Forms.Panel();
+            this.btnResultDay3View = new C1.Win.C1Input.C1Button();
             this.label92 = new System.Windows.Forms.Label();
             this.cboRemarkDay3 = new C1.Win.C1Input.C1ComboBox();
             this.btnResultDay3 = new C1.Win.C1Input.C1Button();
@@ -287,7 +288,6 @@
             this.txtHnMale = new C1.Win.C1Input.C1TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtHnFeMale = new C1.Win.C1Input.C1TextBox();
-            this.btnResultDay3View = new C1.Win.C1Input.C1Button();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1CommandDock2)).BeginInit();
@@ -392,6 +392,7 @@
             this.splitContainer4.SuspendLayout();
             this.gbDay3.SuspendLayout();
             this.pn3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnResultDay3View)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboRemarkDay3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnResultDay3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDay3Date)).BeginInit();
@@ -461,7 +462,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnHnSearch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHnMale)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHnFeMale)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnResultDay3View)).BeginInit();
             this.SuspendLayout();
             // 
             // sB
@@ -2835,6 +2835,20 @@
             this.pn3.TabIndex = 0;
             this.theme1.SetTheme(this.pn3, "(default)");
             // 
+            // btnResultDay3View
+            // 
+            this.btnResultDay3View.Image = global::clinic_ivf.Properties.Resources.PDF_file_icon_svg_20;
+            this.btnResultDay3View.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnResultDay3View.Location = new System.Drawing.Point(280, 66);
+            this.btnResultDay3View.Name = "btnResultDay3View";
+            this.btnResultDay3View.Size = new System.Drawing.Size(69, 28);
+            this.btnResultDay3View.TabIndex = 557;
+            this.btnResultDay3View.Text = "PDF Day3";
+            this.btnResultDay3View.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnResultDay3View, "(default)");
+            this.btnResultDay3View.UseVisualStyleBackColor = true;
+            this.btnResultDay3View.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
             // label92
             // 
             this.label92.AutoSize = true;
@@ -4833,20 +4847,6 @@
             this.theme1.SetTheme(this.txtHnFeMale, "(default)");
             this.txtHnFeMale.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // btnResultDay3View
-            // 
-            this.btnResultDay3View.Image = global::clinic_ivf.Properties.Resources.ExportPdf_large;
-            this.btnResultDay3View.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnResultDay3View.Location = new System.Drawing.Point(278, 66);
-            this.btnResultDay3View.Name = "btnResultDay3View";
-            this.btnResultDay3View.Size = new System.Drawing.Size(69, 28);
-            this.btnResultDay3View.TabIndex = 557;
-            this.btnResultDay3View.Text = "PDF Day1";
-            this.btnResultDay3View.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.theme1.SetTheme(this.btnResultDay3View, "(default)");
-            this.btnResultDay3View.UseVisualStyleBackColor = true;
-            this.btnResultDay3View.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
             // FrmLabOPUAdd2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -4970,6 +4970,7 @@
             this.gbDay3.ResumeLayout(false);
             this.pn3.ResumeLayout(false);
             this.pn3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnResultDay3View)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboRemarkDay3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnResultDay3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDay3Date)).EndInit();
@@ -5043,7 +5044,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnHnSearch)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHnMale)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHnFeMale)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnResultDay3View)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

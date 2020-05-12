@@ -2147,6 +2147,8 @@
     <None Include="Resources\excel_1.jpg" />
     <None Include="Resources\excel_2.jpg" />
     <None Include="Resources\Microsoft-Excel-2010-icon.png" />
+    <None Include="Resources\PDF_file_icon_svg_40.png" />
+    <None Include="Resources\PDF_file_icon_svg_20.png" />
     <Content Include="TSCLIB.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

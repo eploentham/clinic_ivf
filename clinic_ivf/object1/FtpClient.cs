@@ -145,6 +145,7 @@ namespace clinic_ivf.object1
             try
             {
                 /* Create an FTP Request */
+                //new LogWriter("d", "FtpClient upload remoteFile " + remoteFile + " localFile " + localFile + " host "+ host+ " pathChar "+ pathChar+" ");
                 ftpRequest = (FtpWebRequest)FtpWebRequest.Create(host + pathChar + remoteFile);     //+0014
                 //ftpRequest = (FtpWebRequest)FtpWebRequest.Create(host + "/" + remoteFile);     //-0014
                 /* Log in to the FTP Server with the User Name and Password Provided */
@@ -158,7 +159,7 @@ namespace clinic_ivf.object1
                 
                 ftpRequest.Method = WebRequestMethods.Ftp.UploadFile;
                 /* Establish Return Communication with the FTP Server */
-
+                //new LogWriter("d", "FtpClient upload remoteFile " + remoteFile + " localFile " + localFile + " host " + host + " pathChar " + pathChar + " 01");
                 /* Open a File Stream to Read the File for Upload */
                 if (!File.Exists(localFile)) return;
                 FileStream localFileStream = new FileStream(localFile, FileMode.Open, FileAccess.Read);
@@ -166,6 +167,7 @@ namespace clinic_ivf.object1
                 /* Buffer for the Downloaded Data */
                 byte[] byteBuffer = new byte[bufferSize];
                 int bytesSent = localFileStream.Read(byteBuffer, 0, bufferSize);
+                //new LogWriter("d", "FtpClient upload remoteFile " + remoteFile + " localFile " + localFile + " host " + host + " pathChar " + pathChar + " 02");
                 /* Upload the File by Sending the Buffered Data Until the Transfer is Complete */
                 try
                 {
@@ -175,16 +177,22 @@ namespace clinic_ivf.object1
                         bytesSent = localFileStream.Read(byteBuffer, 0, bufferSize);
                     }
                 }
-                catch (Exception ex) { Console.WriteLine(ex.ToString()); }
+                catch (Exception ex) 
+                { 
+                    Console.WriteLine(ex.ToString());
+                    new LogWriter("e", "FtpClient upload remoteFile " + remoteFile + " localFile " + localFile + " host " + host + " pathChar " + pathChar + " ex "+ ex.Message);
+                }
                 /* Resource Cleanup */
                 localFileStream.Close();
                 ftpStream.Close();
                 ftpRequest = null;
+                //new LogWriter("d", "FtpClient upload remoteFile " + remoteFile + " localFile " + localFile + " host " + host + " pathChar " + pathChar + " success");
             }
             catch (Exception ex)
             {
                 //String status = ((FtpWebResponse)ex.Response).StatusDescription;
                 Console.WriteLine(ex.ToString());
+                //new LogWriter("e", "FtpClient upload remoteFile "+ remoteFile+ " localFile " + localFile+" ex"+ ex.Message);
             }
             return;
         }
