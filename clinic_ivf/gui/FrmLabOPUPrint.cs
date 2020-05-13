@@ -37,6 +37,7 @@ namespace clinic_ivf.gui
         C1SuperTooltip stt;
         C1SuperErrorProvider sep;
         C1Button btnPreview;
+        CheckBox chkRptEmbryo;
         Color color;
         public enum opuReport {OPUReport, OPUEmbryoDevReport, ResultDay3, FETEmbryoDevReport };
         opuReport opureport;
@@ -105,6 +106,7 @@ namespace clinic_ivf.gui
                 ////btnPreview.them
                 //btnPreview.Click += BtnPreview_Click;
                 //groupBox1.Controls.Add(btnPreview);
+                chkRptEmbryo = new CheckBox();
             }
             else
             {

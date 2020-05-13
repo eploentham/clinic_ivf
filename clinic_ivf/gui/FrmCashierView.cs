@@ -1286,6 +1286,7 @@ namespace clinic_ivf.gui
                 String billid1 = ic.ivfDB.getBill(id, ic.cStf.staff_id);
                 String re1 = ic.ivfDB.vsDB.updateOpenStatusCashierByVn(id);
                 ic.ivfDB.nurseFinish(id, ic.cStf.staff_id);        // +0015
+                setGrfFinish();
             }
         }
         private void ContextMenu_edit_bill(object sender, System.EventArgs e)

@@ -116,38 +116,44 @@ namespace clinic_ivf.gui
         private void BtnPrnReceipt_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            String cashid1 = "", creditid1 = "";
-            cashid1 = cboAccCash.SelectedItem == null ? "" : ((ComboBoxItem)cboAccCash.SelectedItem).Value;
-            creditid1 = cboAccCredit.SelectedItem == null ? "" : ((ComboBoxItem)cboAccCredit.SelectedItem).Value;
-            if (cashid1.Length == 0 && creditid1.Length == 0)
+            ic.cStf.staff_id = "";
+            FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+            frm.ShowDialog(this);
+            if (!ic.cStf.staff_id.Equals(""))
             {
-                MessageBox.Show("ยังไม่ได้เลือก ประเภทบัญชี", "");
-                return;
-            }
-            
-            String flag = "";
-            if (cashid1.Length > 0)
-            {
-                OldCashAccount oca = new OldCashAccount();
-                oca = ic.ivfDB.ocaDB.selectByPk1(cashid1);
-                flag = oca.IntLock.Equals("1") ? "2":"1";
-            }
-            else
-            {
-                OldCreditCardAccount ocr = new OldCreditCardAccount();
-                ocr = ic.ivfDB.ocrDB.selectByPk1(creditid1);
-                flag = ocr.IntLock.Equals("1") ? "2" : "1";
-            }
-            if (flag.Equals("1"))
-            {
-                printReceipt("");
-                printReceipt("2");
-            }
-            else
-            {
-                printReceipt("");
-            }
+                String cashid1 = "", creditid1 = "";
+                cashid1 = cboAccCash.SelectedItem == null ? "" : ((ComboBoxItem)cboAccCash.SelectedItem).Value;
+                creditid1 = cboAccCredit.SelectedItem == null ? "" : ((ComboBoxItem)cboAccCredit.SelectedItem).Value;
+                if (cashid1.Length == 0 && creditid1.Length == 0)
+                {
+                    MessageBox.Show("ยังไม่ได้เลือก ประเภทบัญชี", "");
+                    return;
+                }
 
+                String flag = "";
+                if (cashid1.Length > 0)
+                {
+                    OldCashAccount oca = new OldCashAccount();
+                    oca = ic.ivfDB.ocaDB.selectByPk1(cashid1);
+                    flag = oca.IntLock.Equals("1") ? "2" : "1";
+                }
+                else
+                {
+                    OldCreditCardAccount ocr = new OldCreditCardAccount();
+                    ocr = ic.ivfDB.ocrDB.selectByPk1(creditid1);
+                    flag = ocr.IntLock.Equals("1") ? "2" : "1";
+                }
+                if (flag.Equals("1"))
+                {
+                    printReceipt("");
+
+                }
+                else
+                {
+                    printReceipt("");
+                    printReceipt("2");
+                }
+            }            
         }
         private void printReceipt(String flagExtra)
         {
@@ -200,7 +206,7 @@ namespace clinic_ivf.gui
             String receiptno = "", billnoex1 = "";
             receiptno = ic.ivfDB.obilhDB.selectReceiptNoByVN(ovs.VN);
             //billnoex1 = ic.ivfDB.obilhDB.selectBillNoExByVN(ovs.VN);
-            new LogWriter("e", "printReceipt receiptno " + receiptno);
+            //new LogWriter("e", "printReceipt receiptno " + receiptno);
             if (flagExtra.Equals("2")) receiptno = "";      //พิมพ์ ใบเสร็จ 2 ชุด
             if (receiptno.Length <= 0)
             {
@@ -334,7 +340,9 @@ namespace clinic_ivf.gui
             day = ic.cop.day;
             month = ic.cop.month;
             year = ic.cop.year;
+            btnPrnReceipt.Enabled = false;
             FrmReport frm = new FrmReport(ic);
+            new LogWriter("e", "printReceipt billNo " + billNo);
             frm.setPrintBill(dtprn, txtHn.Text, txtPttNameE.Text, amt2, amt.ToString("#,###.00"), billNo, day + "/" + month + "/" + year, payby, "ใบเสร็จ/Receipt", sumprice.ToString("#,###.00"), flagExtra);
             frm.Show(this);
         }
@@ -454,6 +462,26 @@ namespace clinic_ivf.gui
                         discount = (nettotal * discountper / 100);
                         txtDiscount.Value = discount;
                     }
+                    String grpt = "";
+                    Decimal amtg11 = 0;
+                    grpt = cboGrpType.Text;
+                    foreach (Row row in grfBillD.Rows)
+                    {
+                        String grp = "";
+                        if (row[colGrpName] == null) continue;
+                        grp = row[colGrpName].ToString();
+                        if (grp.ToLower().Equals(cboGrpType.Text.Trim().ToLower()))
+                        {
+                            String amtg = "";
+                            amtg = row[colNetAmt].ToString();
+                            Decimal amtg1 = 0;
+                            Decimal.TryParse(amtg,out amtg1);
+                            amtg11 += amtg1;
+                        }
+                    }
+                    discount = (amtg11 * discountper / 100);
+                    txtDiscount.Value = discount;
+
                 }
                 obilld.Price = "-" + txtDiscount.Text.Replace(",", "");
                 obilld.Total = "-" + txtDiscount.Text.Replace(",", "");

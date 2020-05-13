@@ -679,10 +679,20 @@ namespace clinic_ivf.gui
                 }
                 
                 rpt.SetDataSource(dt);
-                rpt.SetParameterValue("line1", ic.cop.comp_name_t);
-                rpt.SetParameterValue("line2", ic.cop.addr1);
-                rpt.SetParameterValue("line3", ic.cop.addr2);
-                rpt.SetParameterValue("line4", "");
+                if (flag.Equals(""))
+                {
+                    rpt.SetParameterValue("line1", "");
+                    rpt.SetParameterValue("line2", "");
+                    rpt.SetParameterValue("line3", "");
+                    rpt.SetParameterValue("line4", "");
+                }
+                else
+                {
+                    rpt.SetParameterValue("line1", ic.cop.comp_name_t);
+                    rpt.SetParameterValue("line2", ic.cop.addr1);
+                    rpt.SetParameterValue("line3", ic.cop.addr2);
+                    rpt.SetParameterValue("line4", "");
+                }
                 if (billname.IndexOf("Receipt")>=0)
                 {
                     rpt.SetParameterValue("bill_no", "เลขที่/Receipt No " + bill_no);
@@ -703,6 +713,7 @@ namespace clinic_ivf.gui
                 rpt.SetParameterValue("payby", payby);
                 rpt.SetParameterValue("bill_name", billname);
                 rpt.SetParameterValue("sum_price", sumprice);
+                rpt.SetParameterValue("sign_code", ic.cStf.doctor_id);
                 //rpt.SetParameterValue("pay_by", sumprice);
                 this.crystalReportViewer1.ReportSource = rpt;
                 this.crystalReportViewer1.Refresh();

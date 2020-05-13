@@ -898,7 +898,9 @@ namespace clinic_ivf.objdb
             jlabD.status_amt = status_amt;
             jlabD.status_order_group = status_order_group;
             jlabD.lab_order_id = lidordergrp;
-            
+            jlabD.price1 = olab.Price;
+
+
             oJlabdDB.insert(jlabD, "");
         }
         public void LabAdd(String lid, String qty, String pid, String pids, String vn, String extra, String sp1v, String sp2v, String sp3v, String sp4v, String sp5v, String sp6v, String sp7v, String row1
@@ -975,6 +977,7 @@ namespace clinic_ivf.objdb
             ojsd.row1 = row1;
             ojsd.qty = qty;
             ojsd.bill_group_id = ojs.BillGroupID;
+            ojsd.price1 = ojs.Price;
             ojsdDB.insert(ojsd, "");
         }
         public void SpecialAdd(String sid, String qty, String pid, String pids, String vn, String extra, String w1uid, String w2uid, String w3uid, String w4uid, String row1, String flagOld)
