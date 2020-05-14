@@ -99,6 +99,22 @@ namespace clinic_ivf.objdb
             }
             return amt;
         }
+        public String selectSumPriceByBilIdItmId(String bilid, String bilgrpid, String itmId)
+        {
+            DataTable dt = new DataTable();
+            String amt = "";
+
+            String sql = "SELECT sum(obilld." + obilld.Price + ") as amount " +
+                " " +
+                "From " + obilld.table + " obilld " +
+                "Where obilld." + obilld.bill_id + "='" + bilid + "' and obilld." + obilld.bill_group_id + "='" + bilgrpid + "' and obilld." + obilld.active + "='1' and obilld.pcksid > 0 ";
+            dt = conn.selectData(conn.conn, sql);
+            if (dt.Rows.Count > 0)
+            {
+                amt = dt.Rows[0]["amount"].ToString();
+            }
+            return amt;
+        }
         public String selectSumPriceByBilId1(String bilid, String bilgrpid)
         {
             DataTable dt = new DataTable();

@@ -514,7 +514,7 @@
             this.spCld.SizeRatio = 34.522D;
             this.spCld.TabIndex = 0;
             this.spCld.Text = "Panel 1";
-            this.spCld.Width = 361;
+            this.spCld.Width = 368;
             // 
             // txtCldId
             // 
