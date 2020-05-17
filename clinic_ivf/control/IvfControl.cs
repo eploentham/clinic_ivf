@@ -695,6 +695,23 @@ namespace clinic_ivf.control
                 }
             }
         }
+        public C1ComboBox setCboCldReport()
+        {
+            C1ComboBox c = new C1ComboBox();
+            ComboBoxItem item = new ComboBoxItem();
+            //DataTable dt = selectWard();
+
+            item = new ComboBoxItem();
+            item.Value = "";
+            item.Text = "";
+            c.Items.Add(item);
+            item = new ComboBoxItem();
+            item.Value = "BillDetail Excel";
+            item.Text = "BillDetailExcel";
+            c.Items.Add(item);
+
+            return c;
+        }
         public void setC1ComboByName(C1ComboBox c, String data)
         {
             if (c.Items.Count == 0) return;

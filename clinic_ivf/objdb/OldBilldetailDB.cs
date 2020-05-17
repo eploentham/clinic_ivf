@@ -99,6 +99,72 @@ namespace clinic_ivf.objdb
             }
             return amt;
         }
+        public String selectSumPriceByBilIdItmId(String bilid, String itmid)
+        {
+            DataTable dt = new DataTable();
+            String amt = "";
+
+            String sql = "SELECT sum(obilld." + obilld.Price + ") as amount " +
+                " " +
+                "From " + obilld.table + " obilld " +
+                "Where obilld." + obilld.bill_id + "='" + bilid + "' and obilld." + obilld.item_id + " in (" + itmid + ") and obilld." + obilld.active + "='1'  ";
+            dt = conn.selectData(conn.conn, sql);
+            if (dt.Rows.Count > 0)
+            {
+                amt = dt.Rows[0]["amount"].ToString();
+            }
+            return amt;
+        }
+        public String selectSumPriceByBilId(String bilid)
+        {
+            DataTable dt = new DataTable();
+            String amt = "";
+
+            String sql = "SELECT sum(obilld." + obilld.Price + ") as amount " +
+                " " +
+                "From " + obilld.table + " obilld " +
+                "Where obilld." + obilld.bill_id + "='" + bilid + "' and  obilld." + obilld.active + "='1'  ";
+            dt = conn.selectData(conn.conn, sql);
+            if (dt.Rows.Count > 0)
+            {
+                amt = dt.Rows[0]["amount"].ToString();
+            }
+            return amt;
+        }
+        public String selectSumPriceByLabAll(String bilid)
+        {
+            DataTable dt = new DataTable();
+            String amt = "";
+
+            String sql = "SELECT sum(obilld." + obilld.Price + ") as amount " +
+                " " +
+                "From " + obilld.table + " obilld " +
+                "Where obilld." + obilld.bill_id + "='" + bilid + "' and obilld." + obilld.bill_group_id + " in ('2600000003','2600000004') and obilld." + obilld.active + "='1'  ";
+            dt = conn.selectData(conn.conn, sql);
+            if (dt.Rows.Count > 0)
+            {
+                amt = dt.Rows[0]["amount"].ToString();
+            }
+            return amt;
+        }
+        public String selectSumPriceByLabGroup(String bilid, String labgroup)
+        {
+            DataTable dt = new DataTable();
+            String amt = "";
+
+            String sql = "SELECT sum(obilld." + obilld.Price + ") as amount " +
+                " " +
+                "From " + obilld.table + " obilld " +
+                "inner join LabItem lab on obilld." + obilld.item_id+" = lab.LID " +
+                "inner join LabItemGroup labg on lab.LGID = labg.LGID " +
+                "Where obilld." + obilld.bill_id + "='" + bilid + "' and obilld." + obilld.status + " = 'lab' and obilld." + obilld.active + "='1' and labg.LGID = '"+labgroup+"'";
+            dt = conn.selectData(conn.conn, sql);
+            if (dt.Rows.Count > 0)
+            {
+                amt = dt.Rows[0]["amount"].ToString();
+            }
+            return amt;
+        }
         public String selectSumPriceByBilIdItmId(String bilid, String bilgrpid, String itmId)
         {
             DataTable dt = new DataTable();

@@ -109,6 +109,8 @@
             this.label18 = new System.Windows.Forms.Label();
             this.c1SplitterPanel2 = new C1.Win.C1SplitContainer.C1SplitterPanel();
             this.pnReportView = new System.Windows.Forms.Panel();
+            this.cboRpt = new C1.Win.C1Input.C1ComboBox();
+            this.btnRpt = new C1.Win.C1Input.C1Button();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tC)).BeginInit();
@@ -169,6 +171,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtRptDateEnd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPrint)).BeginInit();
             this.c1SplitterPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cboRpt)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnRpt)).BeginInit();
             this.SuspendLayout();
             // 
             // sB
@@ -479,6 +483,8 @@
             // spCld
             // 
             this.spCld.Collapsible = true;
+            this.spCld.Controls.Add(this.btnRpt);
+            this.spCld.Controls.Add(this.cboRpt);
             this.spCld.Controls.Add(this.txtCldId);
             this.spCld.Controls.Add(this.label15);
             this.spCld.Controls.Add(this.txtRemark);
@@ -1420,6 +1426,38 @@
             this.pnReportView.TabIndex = 0;
             this.theme1.SetTheme(this.pnReportView, "(default)");
             // 
+            // cboRpt
+            // 
+            this.cboRpt.AllowSpinLoop = false;
+            this.cboRpt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cboRpt.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.cboRpt.GapHeight = 0;
+            this.cboRpt.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.cboRpt.ItemsDisplayMember = "";
+            this.cboRpt.ItemsValueMember = "";
+            this.cboRpt.Location = new System.Drawing.Point(76, 447);
+            this.cboRpt.Name = "cboRpt";
+            this.cboRpt.Size = new System.Drawing.Size(227, 18);
+            this.cboRpt.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.cboRpt.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
+            this.cboRpt.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboRpt.TabIndex = 765;
+            this.cboRpt.Tag = null;
+            this.theme1.SetTheme(this.cboRpt, "(default)");
+            this.cboRpt.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // btnRpt
+            // 
+            this.btnRpt.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRpt.Location = new System.Drawing.Point(309, 443);
+            this.btnRpt.Name = "btnRpt";
+            this.btnRpt.Size = new System.Drawing.Size(31, 25);
+            this.btnRpt.TabIndex = 766;
+            this.btnRpt.Text = "...";
+            this.theme1.SetTheme(this.btnRpt, "(default)");
+            this.btnRpt.UseVisualStyleBackColor = true;
+            this.btnRpt.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
             // FrmCashierView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1495,6 +1533,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtRptDateEnd)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPrint)).EndInit();
             this.c1SplitterPanel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.cboRpt)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnRpt)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1583,5 +1623,7 @@
         private C1.Win.C1Input.C1Button btnExcel;
         private C1.Win.C1Input.C1Button btnPrint;
         private System.Windows.Forms.Panel pnReportCri001;
+        private C1.Win.C1Input.C1ComboBox cboRpt;
+        private C1.Win.C1Input.C1Button btnRpt;
     }
 }

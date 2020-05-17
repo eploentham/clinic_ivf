@@ -1,4 +1,5 @@
-﻿using C1.Win.C1Command;
+﻿using C1.C1Excel;
+using C1.Win.C1Command;
 using C1.Win.C1FlexGrid;
 using C1.Win.C1Input;
 using C1.Win.C1SuperTooltip;
@@ -29,7 +30,7 @@ namespace clinic_ivf.gui
         int colID = 1, colVNshow = 2, colVN = 12, colPttHn = 3, colPttName = 4, colVsDate = 5, colVsTime = 6, colVsEtime = 7, colVsAgent=8, colStatus = 9, colPttId = 10, colStatusNurse = 11, colStatusCashier = 12, colBillId=13;
         int colCldId = 1, colCldBillNo = 2, colCldReceiptNo = 3, colCldDate = 4, colCldHn = 5, colCldName = 6, colCldPkg1 = 7, colCldPkg2 = 8, colCldPkg3 = 9, colCldPkg4 = 10, colCldPkg5 = 11, colCldPkg6 = 12, colCldDiscount = 13, colCldFreezing = 14;
         int colCldExtraDay6 = 15, colCldLabAll = 16, colCldLabBlood = 17, colCldMed = 18, colCldTVS = 19, colCldDtrfee = 20, colCldEquipment = 21, colCldOtherService = 22;
-        int colCldAmount = 16, colCldVn=17, colCldBillId=18;
+        int colCldAmount = 23, colCldAmount1 = 24, colCldInc=25, colCldExt=26, colCldVn =27, colCldBillId=28;
         int colBildId = 1, colBildName = 2, colBildprice = 3, colBildqty = 4, colBildAmt = 5, colBildDiscount = 6, colBildNetAmt = 7, colBildGrpName = 8, colBildBilId = 9, colBildInclude = 10, colBildStatus = 11, colBildItmId=12;
         int colRptId = 1, colRptVnShow = 2, colRptVn = 3, colRptHn = 4, colRptPttName = 5, colRptVsDate = 6, colRptDOB = 7, colRptFormACode = 8, colRptOPU = 9, colRptFET = 10, colRptSpermAna = 11, colRptSpermFreezing = 12, colRptSpermIUI = 13, colRptSpermPESA = 14, colRptName_1 = 15, colRptName_2 = 16, colRptDtr = 17, colRptAgent = 18;
 
@@ -68,12 +69,14 @@ namespace clinic_ivf.gui
             imgCorr = Resources.red_checkmark_png_16;
             imgTran = Resources.red_checkmark_png_51;
             imgFinish = Resources.OK_24;
+            cboRpt = ic.setCboCldReport();
 
             tC.SelectedTabChanged += TC_SelectedTabChanged;
             btnSearch.Click += BtnSearch_Click;
             btnSaveCld.Click += BtnSaveCld_Click;
             btnRptOk.Click += BtnRptOk_Click;
             btnExcel.Click += BtnExcel_Click;
+            btnRpt.Click += BtnRpt_Click;
 
             txtExp1.KeyUp += TxtExp1_KeyUp;
             txtExp2.KeyUp += TxtExp2_KeyUp;
@@ -105,6 +108,36 @@ namespace clinic_ivf.gui
             timer.Interval = timerlab * 1000;
             timer.Tick += Timer_Tick;
             timer.Enabled = true;
+        }
+
+        private void BtnRpt_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            String rpt = "";
+            rpt = cboRpt.SelectedItem != null ? cboRpt.SelectedItem.ToString() : "";
+            if (rpt.Equals("BillDetailExcel"))
+            {
+                SaveFileDialog dlg = new SaveFileDialog();
+                dlg.DefaultExt = "xls";
+                dlg.Filter = "Excel |*.xls";
+                dlg.InitialDirectory = ic.iniC.pathSaveExcelAppointment;
+                dlg.FileName = "*.xls";
+                if (dlg.ShowDialog() != DialogResult.OK)
+                    return;
+                // clear book
+                C1XLBook _book = new C1XLBook();
+
+                XLSheet sheet = _book.Sheets.Add("closeday" + DateTime.Now.ToString("dd-MM-") + DateTime.Now.Year.ToString());
+
+                ic.SaveSheet(grfCld, sheet, _book, false);
+                //}
+
+                // save selected sheet index
+                _book.Sheets.SelectedIndex = 0;
+
+                // save the book
+                _book.Save(dlg.FileName);
+            }
         }
 
         private void BtnExcel_Click(object sender, EventArgs e)
@@ -484,7 +517,7 @@ namespace clinic_ivf.gui
             dt = ic.ivfDB.obilhDB.selectByCloseDay();
 
             grfCld.Rows.Count = dt.Rows.Count + 1;
-            grfCld.Cols.Count = 19;
+            grfCld.Cols.Count = 29;
 
             grfCld.Cols[colCldBillNo].Width = 100;
             grfCld.Cols[colCldReceiptNo].Width = 100;
@@ -508,6 +541,7 @@ namespace clinic_ivf.gui
             grfCld.Cols[colCldDiscount].Width = 90;
             grfCld.Cols[colCldOtherService].Width = 90;
             grfCld.Cols[colCldAmount].Width = 90;
+            grfCld.Cols[colCldAmount1].Width = 90;
 
             grfCld.ShowCursor = true;
             //grdFlex.Cols[colID].Caption = "no";
@@ -518,23 +552,26 @@ namespace clinic_ivf.gui
             grfCld.Cols[colCldDate].Caption = "Date";
             grfCld.Cols[colCldHn].Caption = "HN";
             grfCld.Cols[colCldName].Caption = "Name";
-            grfCld.Cols[colCldPkg1].Caption = "Package1";
-            grfCld.Cols[colCldPkg2].Caption = "Package2";
-            grfCld.Cols[colCldPkg3].Caption = "Package3";
-            grfCld.Cols[colCldPkg4].Caption = "Package4";
-            grfCld.Cols[colCldPkg5].Caption = "Package5";
-            grfCld.Cols[colCldPkg6].Caption = "Package6";
+            grfCld.Cols[colCldPkg1].Caption = "Package ICSI";
+            grfCld.Cols[colCldPkg2].Caption = "Package FET";
+            grfCld.Cols[colCldPkg3].Caption = "Package TESE/PESA";
+            grfCld.Cols[colCldPkg4].Caption = "Package NGS";
+            grfCld.Cols[colCldPkg5].Caption = "Package PGD";
+            grfCld.Cols[colCldPkg6].Caption = "Package Frozen Sperm";
             grfCld.Cols[colCldFreezing].Caption = "Freezing";
             grfCld.Cols[colCldExtraDay6].Caption = "ExtraDay6";
             grfCld.Cols[colCldMed].Caption = "Medicine";
             grfCld.Cols[colCldDtrfee].Caption = "Doctor fee";
-            grfCld.Cols[colCldLabAll].Caption = "Blood Lab";
-            grfCld.Cols[colCldLabBlood].Caption = "IVF Lab";
+            grfCld.Cols[colCldLabAll].Caption = "Lab";
+            grfCld.Cols[colCldLabBlood].Caption = "Blood Lab";
             grfCld.Cols[colCldTVS].Caption = "TVS";
             grfCld.Cols[colCldEquipment].Caption = "Equipment";
             grfCld.Cols[colCldDiscount].Caption = "Discount";
             grfCld.Cols[colCldOtherService].Caption = "Other";
             grfCld.Cols[colCldAmount].Caption = "Total";
+            grfCld.Cols[colCldAmount1].Caption = "Amount";
+            grfCld.Cols[colCldInc].Caption = "Include";
+            grfCld.Cols[colCldExt].Caption = "Extra";
 
             //menuGw.MenuItems.Add("&receive operation", new EventHandler(ContextMenu_Apm));
             //menuGw.MenuItems.Add("receive operation", new EventHandler(ContextMenu_order));
@@ -552,10 +589,47 @@ namespace clinic_ivf.gui
             foreach (DataRow row in dt.Rows)
             {
                 String bilid = row[ic.ivfDB.obilhDB.obillh.bill_id].ToString();
-                String amtpkg = "", amtmed="", amtdtrfee="", amtlab1="", amtlab2="", amtnurfee="", amttreat="", amtdiscount="",amtother="";
-                Decimal amtpkg1 = 0, amtmed1 = 0, amtdtrfee1 = 0, amtlab11 = 0, amtlab21 = 0, amtnurfee1 = 0, amttreat1 = 0, amtdiscount1 = 0, amtother1 = 0, total=0;
-                amtpkg = ic.ivfDB.obildDB.selectSumPriceByBilId(bilid, "0");
-                Decimal.TryParse(amtpkg, out amtpkg1);
+                String pkg1 = "", pkg2 = "", pkg3 = "", pkg4 = "", pkg5 = "", pkg6 = "", freezing="", extraday6="", laball="", labblood="", tvs="",equipment="", amt="";
+                String amtmed ="", amtdtrfee="", amtlab1="", amtlab2="", amtnurfee="", amttreat="", amtdiscount="",amtother="";
+                Decimal pkg11 = 0, pkg21 = 0, pkg31 = 0, pkg41 = 0, pkg51 = 0, pkg61 = 0, freezing1=0, extraday61=0, laball1=0, labblood1=0,tvs1=0, equipment1=0, amt1=0;
+                Decimal amtmed1 = 0, amtdtrfee1 = 0, amtlab11 = 0, amtlab21 = 0, amtnurfee1 = 0, amttreat1 = 0, amtdiscount1 = 0, amtother1 = 0, total=0;
+                String pkgicsi = "2570000001,2570000002, 2570000003, 2570000020, 2570000025, 2570000037";
+                String pkgfet = "2570000006,2570000024, 2570000026";
+                String pkgpesa = "2570000011";
+                String pkgngs = "2570000039, 2570000038, 2570000040, 2570000045, 2570000046, 2570000044";
+                String pkgpgd = "2570000008";
+                String pkgsperm = "2570000017";
+                String itmfreezing = "2580000000, 2580000001,2580000002,2580000003,2580000004,2580000005,2580000006";
+                String itmextraday6 = "2590000000";
+                String itmlabboood = "1";
+                String itmtvs = "1";
+                String itmequipment = "1";
+                pkg1 = ic.ivfDB.obildDB.selectSumPriceByBilIdItmId(bilid, pkgicsi);
+                Decimal.TryParse(pkg1, out pkg11);
+                pkg2 = ic.ivfDB.obildDB.selectSumPriceByBilIdItmId(bilid, pkgfet);
+                Decimal.TryParse(pkg2, out pkg21);
+                pkg3 = ic.ivfDB.obildDB.selectSumPriceByBilIdItmId(bilid, pkgpesa);
+                Decimal.TryParse(pkg3, out pkg31);
+                pkg4 = ic.ivfDB.obildDB.selectSumPriceByBilIdItmId(bilid, pkgngs);
+                Decimal.TryParse(pkg4, out pkg41);
+                pkg5 = ic.ivfDB.obildDB.selectSumPriceByBilIdItmId(bilid, pkgpgd);
+                Decimal.TryParse(pkg5, out pkg51);
+                pkg6 = ic.ivfDB.obildDB.selectSumPriceByBilIdItmId(bilid, pkgsperm);
+                Decimal.TryParse(pkg6, out pkg61);
+                freezing = ic.ivfDB.obildDB.selectSumPriceByBilIdItmId(bilid, itmfreezing);
+                Decimal.TryParse(freezing, out freezing1);
+                extraday6 = ic.ivfDB.obildDB.selectSumPriceByBilIdItmId(bilid, itmextraday6);
+                Decimal.TryParse(extraday6, out extraday61);
+                laball = ic.ivfDB.obildDB.selectSumPriceByLabAll(bilid);
+                Decimal.TryParse(laball, out laball1);
+                labblood = ic.ivfDB.obildDB.selectSumPriceByLabGroup(bilid, itmlabboood);
+                Decimal.TryParse(labblood, out labblood1);
+                tvs = ic.ivfDB.obildDB.selectSumPriceByBilIdItmId(bilid, itmtvs);
+                Decimal.TryParse(tvs, out tvs1);
+                equipment = ic.ivfDB.obildDB.selectSumPriceByBilIdItmId(bilid, itmequipment);
+                Decimal.TryParse(equipment, out equipment1);
+                amt = ic.ivfDB.obildDB.selectSumPriceByBilId(bilid);
+                Decimal.TryParse(amt, out amt1);
 
                 amtmed = ic.ivfDB.obildDB.selectSumPriceByBilId1(bilid, "1");
                 Decimal.TryParse(amtmed, out amtmed1);
@@ -563,17 +637,17 @@ namespace clinic_ivf.gui
                 amtdtrfee = ic.ivfDB.obildDB.selectSumPriceByBilId1(bilid, "2");
                 Decimal.TryParse(amtdtrfee, out amtdtrfee1);
 
-                amtlab1 = ic.ivfDB.obildDB.selectSumPriceByBilId1(bilid, "3");
-                Decimal.TryParse(amtlab1, out amtlab11);
+                //amtlab1 = ic.ivfDB.obildDB.selectSumPriceByBilId1(bilid, "3");
+                //Decimal.TryParse(amtlab1, out amtlab11);
 
-                amtlab2 = ic.ivfDB.obildDB.selectSumPriceByBilId1(bilid, "4");
-                Decimal.TryParse(amtlab2, out amtlab21);
+                //amtlab2 = ic.ivfDB.obildDB.selectSumPriceByBilId1(bilid, "4");
+                //Decimal.TryParse(amtlab2, out amtlab21);
 
-                amtnurfee = ic.ivfDB.obildDB.selectSumPriceByBilId1(bilid, "5");
-                Decimal.TryParse(amtnurfee, out amtnurfee1);
+                //amtnurfee = ic.ivfDB.obildDB.selectSumPriceByBilId1(bilid, "5");
+                //Decimal.TryParse(amtnurfee, out amtnurfee1);
 
-                amttreat = ic.ivfDB.obildDB.selectSumPriceByBilId1(bilid, "90");
-                Decimal.TryParse(amttreat, out amttreat1);
+                //amttreat = ic.ivfDB.obildDB.selectSumPriceByBilId1(bilid, "90");
+                //Decimal.TryParse(amttreat, out amttreat1);
 
                 amtdiscount = ic.ivfDB.obildDB.selectSumPriceByBilId1(bilid, "99");
                 Decimal.TryParse(amtdiscount, out amtdiscount1);
@@ -581,7 +655,7 @@ namespace clinic_ivf.gui
                 amtother = ic.ivfDB.obildDB.selectSumPriceByBilId1(bilid, "102");
                 Decimal.TryParse(amtother, out amtother1);
 
-                total = amtpkg1 + amtmed1 + amtdtrfee1 + amtlab11 + amtlab21 + amtnurfee1 + amttreat1 + amtdiscount1 + amtother1;
+                total = pkg11 + pkg21 + pkg31 + pkg41 + pkg51 + pkg61 + freezing1 + extraday61 + laball1 + amtmed1 + amtdtrfee1 + amtdiscount1 + amtother1;
 
                 grfCld[i, 0] = i;
                 grfCld[i, colCldId] = "";
@@ -591,16 +665,34 @@ namespace clinic_ivf.gui
                 grfCld[i, colCldDate] = ic.datetoShow(row[ic.ivfDB.obilhDB.obillh.Date].ToString());
                 grfCld[i, colCldHn] = row[ic.ivfDB.obilhDB.obillh.PIDS].ToString();
                 grfCld[i, colCldName] = row[ic.ivfDB.obilhDB.obillh.PName].ToString();
-                grfCld[i, colCldPkg1] = amtpkg1.ToString("#,###.00");
+                grfCld[i, colCldPkg1] = pkg11.ToString("#,###.00");
+                grfCld[i, colCldPkg2] = pkg21.ToString("#,###.00");
+                grfCld[i, colCldPkg3] = pkg31.ToString("#,###.00");
+                grfCld[i, colCldPkg4] = pkg41.ToString("#,###.00");
+                grfCld[i, colCldPkg5] = pkg51.ToString("#,###.00");
+                grfCld[i, colCldPkg6] = pkg61.ToString("#,###.00");
+                grfCld[i, colCldFreezing] = freezing1.ToString("#,###.00");
+                grfCld[i, colCldExtraDay6] = extraday61.ToString("#,###.00");
+                //grfCld[i, colCldLabAll] = (laball1 - labblood1) > 0 ? (laball1 - labblood1).ToString("#,###.00") : laball1.ToString("#,###.00");
+                grfCld[i, colCldLabAll] = (laball1 - labblood1 - freezing1).ToString("#,###.00");
+                grfCld[i, colCldLabBlood] = labblood1.ToString("#,###.00");
                 grfCld[i, colCldMed] = amtmed1.ToString("#,###.00");
+                grfCld[i, colCldTVS] = tvs1.ToString("#,###.00");
                 grfCld[i, colCldDtrfee] = amtdtrfee1.ToString("#,###.00");
-                grfCld[i, colCldLabAll] = amtlab11.ToString("#,###.00");
-                grfCld[i, colCldLabBlood] = amtlab21.ToString("#,###.00");
+                grfCld[i, colCldEquipment] = equipment1.ToString("#,###.00");
+
+                //grfCld[i, colCldMed] = amtmed1.ToString("#,###.00");
+                //grfCld[i, colCldDtrfee] = amtdtrfee1.ToString("#,###.00");
+                //grfCld[i, colCldLabAll] = amtlab11.ToString("#,###.00");
+                //grfCld[i, colCldLabBlood] = amtlab21.ToString("#,###.00");
                 //grfCld[i, colCldNurfee] = amtnurfee1.ToString("#,###.00");
                 //grfCld[i, colCldTreat] = amttreat1.ToString("#,###.00");
                 grfCld[i, colCldDiscount] = amtdiscount1.ToString("#,###.00");
                 grfCld[i, colCldOtherService] = amtother1.ToString("#,###.00");
                 grfCld[i, colCldAmount] = total.ToString("#,###.00");
+                grfCld[i, colCldAmount1] = amt1.ToString("#,###.00");
+                grfCld[i, colCldInc] = row[ic.ivfDB.obilhDB.obillh.Include_Pkg_Price].ToString();
+                grfCld[i, colCldExt] = row[ic.ivfDB.obilhDB.obillh.Extra_Pkg_Price].ToString();
                 //grfCld[i, colBillId] = "";
                 //if (!row[ic.ivfDB.ovsDB.vsold.form_a_id].ToString().Equals("0"))
                 //{
@@ -644,6 +736,7 @@ namespace clinic_ivf.gui
             grfCld.Cols[colCldDiscount].AllowEditing = false;
             grfCld.Cols[colCldOtherService].AllowEditing = false;
             grfCld.Cols[colCldAmount].AllowEditing = false;
+            grfCld.Cols[colCldAmount1].AllowEditing = false;
             //theme1.SetTheme(grfQue, ic.theme);
         }
         private void initGrfCloseDay()
@@ -658,11 +751,11 @@ namespace clinic_ivf.gui
             grfCld.DoubleClick += GrfCld_DoubleClick;
             //grfExpnC.CellButtonClick += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellButtonClick);
             //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
-            //ContextMenu menuGw = new ContextMenu();
-            //menuGw.MenuItems.Add("ออก บิล", new EventHandler(ContextMenu_edit_bill));
+            ContextMenu menuGw = new ContextMenu();
+            menuGw.MenuItems.Add("Export Excel", new EventHandler(ContextMenu_export_closeday));
             ////menuGw.MenuItems.Add("&แก้ไข", new EventHandler(ContextMenu_Gw_Edit));
             ////menuGw.MenuItems.Add("&ยกเลิก", new EventHandler(ContextMenu_Gw_Cancel));
-            //grfCld.ContextMenu = menuGw;
+            grfCld.ContextMenu = menuGw;
             pnCldDetail.Controls.Add(grfCld);
 
             theme1.SetTheme(grfCld, "Office2010Red");
@@ -670,7 +763,37 @@ namespace clinic_ivf.gui
             //theme1.SetTheme(tabDiag, "Office2010Blue");
             //theme1.SetTheme(tabFinish, "Office2010Blue");
         }
+        private void ContextMenu_export_closeday(object sender, System.EventArgs e)
+        {
+            SaveFileDialog dlg = new SaveFileDialog();
+            dlg.DefaultExt = "xls";
+            dlg.Filter = "Excel |*.xls";
+            dlg.InitialDirectory = ic.iniC.pathSaveExcelAppointment;
+            dlg.FileName = "*.xls";
+            if (dlg.ShowDialog() != DialogResult.OK)
+                return;
 
+            // clear book
+            C1XLBook _book = new C1XLBook();
+            //_book.Clear();
+            //_book.Sheets.Clear();
+
+            // copy grids to book sheets
+            //foreach (TabPage pg in _tab.TabPages)
+            //{
+            //    C1FlexGrid grid = pg.Controls[0] as C1FlexGrid;
+            XLSheet sheet = _book.Sheets.Add("closeday"+DateTime.Now.ToString("dd-MM-")+ DateTime.Now.Year.ToString());
+            
+            ic.SaveSheet(grfCld, sheet, _book, false);
+            //}
+            
+            // save selected sheet index
+            _book.Sheets.SelectedIndex = 0;
+
+            // save the book
+            _book.Save(dlg.FileName);
+            
+        }
         private void GrfCld_DoubleClick(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
@@ -887,7 +1010,6 @@ namespace clinic_ivf.gui
                 }
             }
         }
-
         private void setGrfRpt()
         {
             //grfDept.Rows.Count = 7;

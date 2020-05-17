@@ -1458,7 +1458,7 @@ CHANGE COLUMN `PCKID` `PCKID` BIGINT NOT NULL ;
 update PackageHeader
 set pckid_old = pckid;
 
-ALTER TABLE PackageHeader AUTO_INCREMENT = 2570000000;
+ALTER TABLE PackageHeader AUTO_INCREMENT = 2570000048;
 
 ALTER TABLE `ivf`.`PackageHeader` 
 ENGINE = MyISAM ;
@@ -1513,3 +1513,53 @@ ALTER TABLE `ivf`.`BillDetail`
 CHANGE COLUMN `item_id` `item_id` BIGINT NULL DEFAULT NULL ,
 CHANGE COLUMN `pcksid` `pcksid` BIGINT NULL DEFAULT NULL ;
 
+
+update ivf.PackageHeader set PCKID = 2570000000 where PCKID = 6;
+update ivf.PackageDetail set PCKID = 2570000000 where PCKID = 6;
+update ivf.PackageSold set PCKID = 2570000000 where PCKID = 6;
+update ivf.BillDetail set item_id = 2570000000 where item_id = 6 and status = 'package';
+
+  ALTER TABLE `ivf`.`SpecialItem` 
+ENGINE = MyISAM ;
+
+ALTER TABLE `ivf`.`SpecialItem` 
+CHANGE COLUMN `SID` `SID` BIGINT NOT NULL ;
+
+ALTER TABLE `ivf`.`LabItem` 
+CHANGE COLUMN `LID` `LID` BIGINT NOT NULL ,
+CHANGE COLUMN `LGID` `LGID` BIGINT NOT NULL , COMMENT = 'id=258' ;
+
+ALTER TABLE LabItem AUTO_INCREMENT = 2580000149;
+
+ALTER TABLE `ivf`.`SpecialItem` 
+COMMENT = 'id=259' ;
+
+ALTER TABLE `ivf`.`SpecialItem` 
+CHANGE COLUMN `BillGroupID` `BillGroupID` BIGINT NULL DEFAULT NULL ;
+
+ALTER TABLE `ivf`.`LabItem` 
+ADD COLUMN `lid_old` BIGINT NULL AFTER `LGName`;
+
+ALTER TABLE `ivf`.`SpecialItem` 
+ADD COLUMN `sid_old` BIGINT NULL AFTER `item_code`;
+
+ALTER TABLE `ivf`.`BillGroup` 
+COMMENT = 'id=260' ;
+
+ALTER TABLE `ivf`.`BillGroup` 
+ENGINE = MyISAM ;
+
+ALTER TABLE `ivf`.`BillGroup` 
+ADD COLUMN `id_old` BIGINT NULL AFTER `active`;
+
+update SpecialItem set SID = 2590000000 where SID = 169;
+update JobSpecialDetail set SID = 2590000000 where SID = 169;
+update BillDetail set item_id = 2590000000 where item_id = 169;
+
+update LabItem set LID = 2580000006 where LID = 13;
+update JobLabDetail set LID = 2580000006 where LID = 13;
+update BillDetail set item_id = 25800000006 where item_id = 13;
+
+update BillGroup set ID = 2600000000 where ID = 0;
+update BillDetail set bill_group_id = 2600000000 Where bill_group_id = 0;
+  
