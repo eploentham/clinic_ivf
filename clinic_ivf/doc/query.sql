@@ -1554,12 +1554,34 @@ ADD COLUMN `id_old` BIGINT NULL AFTER `active`;
 
 update SpecialItem set SID = 2590000000 where SID = 169;
 update JobSpecialDetail set SID = 2590000000 where SID = 169;
-update BillDetail set item_id = 2590000000 where item_id = 169;
+update BillDetail set item_id = 2590000000 where item_id = 169 and status = 'special';
 
 update LabItem set LID = 2580000006 where LID = 13;
 update JobLabDetail set LID = 2580000006 where LID = 13;
-update BillDetail set item_id = 25800000006 where item_id = 13;
+update BillDetail set item_id = 25800000006 where item_id = 13 and status = 'lab';
 
 update BillGroup set ID = 2600000000 where ID = 0;
 update BillDetail set bill_group_id = 2600000000 Where bill_group_id = 0;
-  
+
+
+ALTER TABLE `ivf`.`LabItem` 
+COMMENT = 'id=263' ;
+
+ALTER TABLE `ivf`.`SpecialItem` 
+COMMENT = 'id=264' ;
+
+ALTER TABLE `ivf`.`BillGroup` 
+COMMENT = 'id=265' ;
+
+ALTER TABLE PackageSold AUTO_INCREMENT = 2580022353;
+
+SELECT obilld.id, bill.bill_id, bill.receipt_no, bill.BillNo, bill.receipt_cover_no
+, obilld.status,obilld.bill_group_id, billg.Name , obilld.item_id, obilld.bill_id, obilld.price1, obilld.Price, obilld.qty, obilld.pcksid, pkg.PackageName, lab.LName
+From BillDetail obilld
+inner join BillHeader bill on bill.bill_id = obilld.bill_id 
+inner join BillGroup billg on obilld.bill_group_id = billg.ID
+Left Join PackageSold pkgs on obilld.pcksid = pkgs.PCKSID
+Left join PackageHeader pkg on pkgs.PCKID = pkg.PCKID
+Left join LabItem lab on obilld.item_id = lab.LID
+
+Where obilld.bill_id='2390062005' and obilld.active='1';  
