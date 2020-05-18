@@ -117,27 +117,77 @@ namespace clinic_ivf.gui
             rpt = cboRpt.SelectedItem != null ? cboRpt.SelectedItem.ToString() : "";
             if (rpt.Equals("BillDetailExcel"))
             {
-                SaveFileDialog dlg = new SaveFileDialog();
-                dlg.DefaultExt = "xls";
-                dlg.Filter = "Excel |*.xls";
-                dlg.InitialDirectory = ic.iniC.pathSaveExcelAppointment;
-                dlg.FileName = "*.xls";
-                if (dlg.ShowDialog() != DialogResult.OK)
-                    return;
-                // clear book
-                C1XLBook _book = new C1XLBook();
+                Size size = new Size();
+                Form frm = new Form();
+                frm.WindowState = FormWindowState.Normal;
+                frm.StartPosition = FormStartPosition.CenterScreen;
+                frm.Size = new Size(400, 400);
+                Panel pn = new Panel();
+                pn.Dock = DockStyle.Fill;
+                frm.Controls.Add(pn);
+                int gapx = 10, gapy = 10;
+                C1DateEdit txtRptDateStart = new C1DateEdit();
+                C1DateEdit txtRptDateEnd = new C1DateEdit();
+                Label lbRptDateStart = new Label();
+                Label lbRptDateEnd = new Label();
+                C1Button btnRptPrint = new C1Button();
+                txtRptDateStart.Value = DateTime.Now;
+                txtRptDateEnd.Value = DateTime.Now;
+                txtRptDateStart.Font = fEdit;
+                txtRptDateEnd.Font = fEdit;
+                lbRptDateStart.Font = fEdit;
+                lbRptDateEnd.Font = fEdit;
+                
+                txtRptDateEnd.Location = new Point(gapx, gapy);
+                lbRptDateStart.Location = new Point(gapx, gapy);
+                
+                lbRptDateStart.Text = "Start Date";
+                size = ic.MeasureString(lbRptDateStart);
+                txtRptDateStart.Location = new Point(gapx + size.Width+10, gapy);
+                lbRptDateEnd.Text = "End Date";
+                lbRptDateEnd.Location = new Point(txtRptDateStart.Location.X + txtRptDateStart.Width + 10, gapy);
+                size = ic.MeasureString(lbRptDateEnd);
+                txtRptDateEnd.Location = new Point(gapx + lbRptDateEnd.Location.X + size.Width + 10, gapy);
+                btnRptPrint.Text = "Print";
+                btnRptPrint.Font = fEdit;
+                btnRptPrint.Size = new Size(200, 60);
+                btnRptPrint.Location = new Point(gapx + lbRptDateEnd.Location.X + size.Width + 10, gapy + 30);
+                btnRptPrint.Click += BtnRptPrint_Click;
 
-                XLSheet sheet = _book.Sheets.Add("closeday" + DateTime.Now.ToString("dd-MM-") + DateTime.Now.Year.ToString());
+                pn.Controls.Add(txtRptDateStart);
+                pn.Controls.Add(txtRptDateEnd);
+                pn.Controls.Add(lbRptDateStart);
+                pn.Controls.Add(lbRptDateEnd);
+                pn.Controls.Add(btnRptPrint);
+                this.ShowDialog(frm);
 
-                ic.SaveSheet(grfCld, sheet, _book, false);
-                //}
-
-                // save selected sheet index
-                _book.Sheets.SelectedIndex = 0;
-
-                // save the book
-                _book.Save(dlg.FileName);
+                
             }
+        }
+
+        private void BtnRptPrint_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            SaveFileDialog dlg = new SaveFileDialog();
+            dlg.DefaultExt = "xls";
+            dlg.Filter = "Excel |*.xls";
+            dlg.InitialDirectory = ic.iniC.pathSaveExcelAppointment;
+            dlg.FileName = "*.xls";
+            if (dlg.ShowDialog() != DialogResult.OK)
+                return;
+            // clear book
+            C1XLBook _book = new C1XLBook();
+
+            XLSheet sheet = _book.Sheets.Add("closeday" + DateTime.Now.ToString("dd-MM-") + DateTime.Now.Year.ToString());
+
+            ic.SaveSheet(grfCld, sheet, _book, false);
+            //}
+
+            // save selected sheet index
+            _book.Sheets.SelectedIndex = 0;
+
+            // save the book
+            _book.Save(dlg.FileName);
         }
 
         private void BtnExcel_Click(object sender, EventArgs e)

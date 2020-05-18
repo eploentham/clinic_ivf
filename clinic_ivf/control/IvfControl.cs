@@ -24,6 +24,7 @@ using System.Collections;
 using System.Diagnostics;
 using C1.Win.BarCode;
 using System.IO.Ports;
+using System.Data;
 
 namespace clinic_ivf.control
 {
@@ -1353,6 +1354,49 @@ namespace clinic_ivf.control
 
                     // apply content
                     cell.Value = flex[r, c];
+
+                    // apply style
+                    //XLStyle xs = StyleFromFlex(_book,flex.GetCellStyle(r, c), _styles);
+                    //if (xs != null)
+                    //    cell.Style = xs;
+                }
+            }
+        }
+        public void SaveSheetDataTable(DataTable flex, XLSheet sheet, C1XLBook _book, bool fixedCells)
+        {
+            // account for fixed cells
+            //int frows = flex.Rows.Fixed;
+            int frows = 0;// with header
+            //int fcols = flex.Cols.Fixed;
+            //if (fixedCells) frows = fcols = 0;
+
+            // copy dimensions
+            //int lastRow = flex.Rows.Count - frows - 1;
+            int lastRow = flex.Rows.Count;// with header
+            int lastCol = flex.Columns.Count - 1;
+            if (lastRow < 0 || lastCol < 0) return;
+            XLCell cell = sheet[lastRow, lastCol];
+
+            // set default properties
+            sheet.Book.DefaultFont = new Font(iniC.grdViewFontName, grdViewFontSize, FontStyle.Regular);
+            //sheet.DefaultRowHeight = C1XLBook.PixelsToTwips(flex.Rows.DefaultSize);
+            //sheet.DefaultColumnWidth = C1XLBook.PixelsToTwips(flex.Cols.DefaultSize);
+
+            // prepare to convert styles
+            _styles = new Hashtable();
+
+            // set row/column properties
+            
+            // load cells
+            for (int r = frows; r < flex.Rows.Count; r++)
+            {
+                for (int c = 0; c < flex.Columns.Count; c++)
+                {
+                    // get cell
+                    cell = sheet[r - frows, c];
+
+                    // apply content
+                    cell.Value = flex.Rows[r][c];
 
                     // apply style
                     //XLStyle xs = StyleFromFlex(_book,flex.GetCellStyle(r, c), _styles);
