@@ -696,9 +696,9 @@ namespace clinic_ivf.control
                 }
             }
         }
-        public C1ComboBox setCboCldReport()
+        public C1ComboBox setCboCldReport(C1ComboBox c)
         {
-            C1ComboBox c = new C1ComboBox();
+            //C1ComboBox c = new C1ComboBox();
             ComboBoxItem item = new ComboBoxItem();
             //DataTable dt = selectWard();
 

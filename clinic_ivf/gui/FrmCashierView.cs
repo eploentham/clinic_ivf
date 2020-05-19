@@ -69,7 +69,7 @@ namespace clinic_ivf.gui
             imgCorr = Resources.red_checkmark_png_16;
             imgTran = Resources.red_checkmark_png_51;
             imgFinish = Resources.OK_24;
-            cboRpt = ic.setCboCldReport();
+            cboRpt = ic.setCboCldReport(cboRpt);
 
             tC.SelectedTabChanged += TC_SelectedTabChanged;
             btnSearch.Click += BtnSearch_Click;
@@ -118,23 +118,56 @@ namespace clinic_ivf.gui
             if (rpt.Equals("BillDetailExcel"))
             {
                 Size size = new Size();
-                Form frm = new Form();
-                frm.WindowState = FormWindowState.Normal;
-                frm.StartPosition = FormStartPosition.CenterScreen;
-                frm.Size = new Size(400, 400);
+                Form frmRpt = new Form();
+                frmRpt.WindowState = FormWindowState.Normal;
+                frmRpt.StartPosition = FormStartPosition.CenterScreen;
+                frmRpt.Size = new Size(600, 400);
                 Panel pn = new Panel();
                 pn.Dock = DockStyle.Fill;
-                frm.Controls.Add(pn);
+                frmRpt.Controls.Add(pn);
                 int gapx = 10, gapy = 10;
                 C1DateEdit txtRptDateStart = new C1DateEdit();
                 C1DateEdit txtRptDateEnd = new C1DateEdit();
                 Label lbRptDateStart = new Label();
                 Label lbRptDateEnd = new Label();
                 C1Button btnRptPrint = new C1Button();
-                txtRptDateStart.Value = DateTime.Now;
-                txtRptDateEnd.Value = DateTime.Now;
+                
                 txtRptDateStart.Font = fEdit;
                 txtRptDateEnd.Font = fEdit;
+                txtRptDateStart.DateTimeInput = false;
+                txtRptDateEnd.DateTimeInput = false;
+                txtRptDateStart.CurrentTimeZone = false;
+                txtRptDateEnd.CurrentTimeZone = false;
+                txtRptDateStart.DisplayFormat.FormatType = FormatTypeEnum.ShortDate;
+                txtRptDateEnd.DisplayFormat.FormatType = FormatTypeEnum.ShortDate;
+                txtRptDateStart.DisplayFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
+                txtRptDateEnd.DisplayFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
+                txtRptDateStart.EditFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
+                txtRptDateEnd.EditFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
+                txtRptDateStart.EditFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
+                txtRptDateEnd.EditFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
+                txtRptDateStart.Size = new System.Drawing.Size(133, 18);
+                txtRptDateEnd.Size = new System.Drawing.Size(133, 18);
+                txtRptDateStart.EmptyAsNull = true;
+                txtRptDateEnd.EmptyAsNull = true;
+                txtRptDateStart.AllowSpinLoop = false;
+                txtRptDateEnd.AllowSpinLoop = false;
+                txtRptDateStart.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+                txtRptDateEnd.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+                txtRptDateStart.Calendar.ArrowColor = System.Drawing.Color.Black;
+                txtRptDateEnd.Calendar.ArrowColor = System.Drawing.Color.Black;
+                
+                txtRptDateStart.Name = "txtRptDateStart";
+                txtRptDateStart.Size = new System.Drawing.Size(133, 18);
+                txtRptDateStart.TabIndex = 510;
+                txtRptDateStart.Tag = null;
+                theme1.SetTheme(this.txtRptDateStart, "(default)");
+                txtRptDateStart.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+
+
+                txtRptDateStart.Value = DateTime.Now;
+                txtRptDateEnd.Value = DateTime.Now;
+
                 lbRptDateStart.Font = fEdit;
                 lbRptDateEnd.Font = fEdit;
                 
@@ -159,7 +192,7 @@ namespace clinic_ivf.gui
                 pn.Controls.Add(lbRptDateStart);
                 pn.Controls.Add(lbRptDateEnd);
                 pn.Controls.Add(btnRptPrint);
-                this.ShowDialog(frm);
+                frmRpt.ShowDialog(this);
 
                 
             }
@@ -177,10 +210,21 @@ namespace clinic_ivf.gui
                 return;
             // clear book
             C1XLBook _book = new C1XLBook();
-
-            XLSheet sheet = _book.Sheets.Add("closeday" + DateTime.Now.ToString("dd-MM-") + DateTime.Now.Year.ToString());
-
-            ic.SaveSheet(grfCld, sheet, _book, false);
+            String rpt = "", datestart="", dateend="", filename="";
+            DataTable dt = new DataTable();
+            //txtRptDateStart.Value = DateTime.Now;
+            //txtRptDateEnd.Value = DateTime.Now;
+            datestart = ic.datetoDB(txtRptDateStart.Text); 
+            dateend = ic.datetoDB(txtRptDateEnd.Text);
+            rpt = cboRpt.SelectedItem != null ? cboRpt.SelectedItem.ToString() : "";
+            if (rpt.Equals("BillDetailExcel"))
+            {
+                dt = ic.ivfDB.obildDB.selectByDate(datestart, dateend);
+                filename = "billdetail-"+ datestart+"-"+ dateend;
+            }
+            XLSheet sheet = _book.Sheets.Add(filename + DateTime.Now.ToString("dd-MM-") + DateTime.Now.Year.ToString());
+            ic.SaveSheetDataTable(dt, sheet, _book, false);
+            //ic.SaveSheet(grfCld, sheet, _book, false);
             //}
 
             // save selected sheet index
