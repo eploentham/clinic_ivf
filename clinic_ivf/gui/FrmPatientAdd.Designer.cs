@@ -281,6 +281,8 @@
             this.txtPttO = new C1.Win.C1Input.C1TextBox();
             this.cPdf = new C1.Win.C1Document.C1PdfDocumentSource(this.components);
             this._c1pdf = new C1.C1Pdf.C1PdfDocument();
+            this.cboVsAgent = new C1.Win.C1Input.C1ComboBox();
+            this.label77 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitMain)).BeginInit();
             this.splitMain.Panel1.SuspendLayout();
@@ -446,6 +448,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtBP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPulse)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPttO)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboVsAgent)).BeginInit();
             this.SuspendLayout();
             // 
             // theme1
@@ -3323,6 +3326,8 @@
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox2.Controls.Add(this.label77);
+            this.groupBox2.Controls.Add(this.cboVsAgent);
             this.groupBox2.Controls.Add(this.c1TextBox3);
             this.groupBox2.Controls.Add(this.label75);
             this.groupBox2.Controls.Add(this.btnVisitVoid);
@@ -3484,7 +3489,7 @@
             this.txtVisitPttO.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtVisitPttO.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtVisitPttO.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtVisitPttO.Location = new System.Drawing.Point(794, 13);
+            this.txtVisitPttO.Location = new System.Drawing.Point(979, 89);
             this.txtVisitPttO.Name = "txtVisitPttO";
             this.txtVisitPttO.Size = new System.Drawing.Size(30, 20);
             this.txtVisitPttO.TabIndex = 714;
@@ -3772,7 +3777,7 @@
             this.txtVisitPttId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtVisitPttId.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtVisitPttId.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtVisitPttId.Location = new System.Drawing.Point(758, 14);
+            this.txtVisitPttId.Location = new System.Drawing.Point(943, 88);
             this.txtVisitPttId.Name = "txtVisitPttId";
             this.txtVisitPttId.Size = new System.Drawing.Size(30, 20);
             this.txtVisitPttId.TabIndex = 648;
@@ -3894,7 +3899,7 @@
             this.txtVisitID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtVisitID.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtVisitID.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtVisitID.Location = new System.Drawing.Point(731, 14);
+            this.txtVisitID.Location = new System.Drawing.Point(907, 89);
             this.txtVisitID.Name = "txtVisitID";
             this.txtVisitID.Size = new System.Drawing.Size(30, 20);
             this.txtVisitID.TabIndex = 622;
@@ -4319,6 +4324,40 @@
             this._c1pdf.UseFastTextOut = true;
             this._c1pdf.UseFontShaping = true;
             // 
+            // cboVsAgent
+            // 
+            this.cboVsAgent.AllowSpinLoop = false;
+            this.cboVsAgent.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cboVsAgent.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.cboVsAgent.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboVsAgent.GapHeight = 0;
+            this.cboVsAgent.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.cboVsAgent.ItemsDisplayMember = "";
+            this.cboVsAgent.ItemsValueMember = "";
+            this.cboVsAgent.Location = new System.Drawing.Point(802, 14);
+            this.cboVsAgent.Name = "cboVsAgent";
+            this.cboVsAgent.Size = new System.Drawing.Size(124, 20);
+            this.cboVsAgent.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.cboVsAgent.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
+            this.cboVsAgent.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboVsAgent.TabIndex = 734;
+            this.cboVsAgent.Tag = null;
+            this.theme1.SetTheme(this.cboVsAgent, "(default)");
+            this.cboVsAgent.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label77
+            // 
+            this.label77.AutoSize = true;
+            this.label77.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label77.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label77.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label77.Location = new System.Drawing.Point(748, 16);
+            this.label77.Name = "label77";
+            this.label77.Size = new System.Drawing.Size(48, 16);
+            this.label77.TabIndex = 735;
+            this.label77.Text = "agent :";
+            this.theme1.SetTheme(this.label77, "(default)");
+            // 
             // FrmPatientAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -4501,6 +4540,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtBP)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPulse)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPttO)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboVsAgent)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -4764,5 +4804,7 @@
         private C1.Win.C1Input.C1DateEdit txtLmp;
         private C1.Win.C1Input.C1Button btnRefresh;
         private C1.Win.C1Input.C1TextBox txtAge;
+        private System.Windows.Forms.Label label77;
+        private C1.Win.C1Input.C1ComboBox cboVsAgent;
     }
 }

@@ -1,0 +1,187 @@
+SID,SName,Price,isActive,active,BillGroupID,sid_old
+148," 	Equipment2",500.00,1,1,0,148
+64,"1st Trimaster Screening",1800.00,1,1,90,64
+105,"a-CGH : Extra per embryo",15000.00,0,1,3,105
+69,"a-CGH Extra per embryo",15000.00,0,1,0,69
+28,acupuncture,1500.00,0,1,NULL,28
+29,Acupuncture,5000.00,1,1,90,29
+176,"Add NGS",50000.00,1,1,0,176
+33,"agency fee",2000.00,0,1,NULL,33
+95,"Alpha thalasemia",2000.00,0,1,0,95
+58,Aminocentesis,15000.00,1,1,90,58
+138,"Amniotic DNA",30000.00,1,1,0,138
+82,"Amniotic fluid CGH",35000.00,1,1,3,82
+78,"Anibody Screening",3000.00,0,1,90,78
+184,"Aspirate cyst",35000.00,1,1,0,184
+168,"Aspiration needle",2500.00,1,1,0,168
+163,"Biood Group Rh",500.00,1,1,0,163
+162,"Blood Group ABO",500.00,1,1,0,162
+107,"Blood Screening (Dr.V)",4000.00,0,1,0,107
+1,"Blood screening +TVS for ED,SM Package",4000.00,0,1,NULL,1
+2,"Blood screening Male, Female",3500.00,0,1,NULL,2
+84,"Blood screening+Sperm Freeze",8000.00,0,1,0,84
+57,"Blood Test",14000.00,1,1,3,57
+152,CA-12-5,2000.00,0,1,0,152
+153,CA-19-9,2000.00,0,1,0,153
+186,"Charge D1",10000.00,1,1,0,186
+115,"Clamydia cuture",2000.00,1,1,0,115
+145,cotton,30.00,0,1,5,145
+62,Cyst,1500.00,1,1,3,62
+26,D&C,16500.00,0,1,NULL,26
+40,D&C,16500.00,1,1,0,40
+149,"Deposit ",100000.00,0,1,0,149
+83,"Deposit for IVF",85000.00,0,1,0,83
+3,DF,500.00,0,3,NULL,3
+12,df,2000.00,0,3,NULL,12
+15,DF,1000.00,0,3,NULL,15
+89,DF,5000.00,0,3,0,89
+155,DF,10000.00,1,3,0,155
+19,"DF 1000",1000.00,1,1,2,19
+20,"DF 1500",1500.00,1,1,2,20
+21,"DF 2000",2000.00,1,1,2,21
+44,"DF 2500",2500.00,1,1,1,44
+166,"DF 25000",25000.00,1,1,0,166
+42,"DF 300",300.00,1,3,1,42
+52,"DF 300",300.00,0,3,2,52
+22,"DF 3000",3000.00,1,1,2,22
+174,"DF 4000",4000.00,1,1,0,174
+18,"DF 500",500.00,1,1,2,18
+23,"DF 5000",5000.00,1,1,2,23
+43,"DF 800",800.00,1,3,1,43
+48,"DF Anesthesia",5000.00,1,1,2,48
+49,"DF Biopsy",5000.00,1,1,2,49
+50,"DF D&C",5000.00,1,1,2,50
+47,"DF ET",5000.00,1,1,2,47
+51,"DF IUI",4000.00,1,1,2,51
+46,"DF OPU",15000.00,1,1,2,46
+103,"DF Stimulation",5000.00,0,1,2,103
+104,"DF Stimulation",5000.00,0,1,2,104
+151,DF3500,3500.00,1,1,2,151
+67,Discount,-50000.00,0,1,99,67
+124,"Dr.Fee Precaution",25000.00,1,1,0,124
+71,"E2 (Extra package)",500.00,0,1,3,71
+38,"ED Blood screening Package",4000.00,0,1,0,38
+65,"Egg Donor Expense",120000.00,0,1,0,65
+136,"Egg washing for precaution",20000.00,1,1,0,136
+86,"Embryo storage fee",4500.00,0,1,0,86
+94,"Embryo Storage fee",16800.00,0,1,4,94
+81,"Embryo/sperm transport from another or to another center",6000.00,1,1,0,81
+74,Equipment,40.00,0,1,1,74
+117,Equipment,200.00,1,1,0,117
+147,"equipment 1000",1000.00,1,1,0,147
+132,"ET ",50000.00,1,1,0,132
+167,"Excission breast",10000.00,1,1,0,167
+135,"extra charge for stimulation",25000.00,0,1,0,135
+2640000000,"Extra for day6",5000.00,1,1,0,169
+181,"Extra Oocyte",8000.00,1,1,0,181
+133,"Extra Washing for Precauiton",50000.00,0,1,0,133
+160,"F/U  ET / FET",0.00,1,1,0,160
+66,"Freezing : Embryo Blast",30000.00,0,1,0,66
+70,"Freezing : Extra per straw",2000.00,0,1,0,70
+76,"Freezing : Extra per straw",2000.00,0,1,0,76
+126,"freezing of embryo for precaution",30000.00,0,1,0,126
+60,"Frozen Sperm Package",8000.00,0,1,0,60
+88,"Hemoglobin typing",500.00,0,1,0,88
+116,"Hemoglobin typing",500.00,0,1,0,116
+121,"Hemoglobin typing",1000.00,0,1,0,121
+119,"Hepatitis B Viral load",8000.00,0,1,0,119
+177,"HPV ",2500.00,1,1,0,177
+130,"ICSI ( freeze 2pn)",75000.00,1,1,0,130
+131,"ICSI (culture D5)",95000.00,1,1,0,131
+7,"ICSI stimulation OPU, ET, B-HCG age  38 years",250000.00,0,1,NULL,7
+8,"ICSI stimulation OPU, ET, B-HCG age  40 years",270000.00,0,1,NULL,8
+6,"ICSI stimulation OPU, ET, B-HCG age 33 -37 years",230000.00,0,1,NULL,6
+5,"ICSI stimulation OPU, ET, B-HCG age under 32 years",210000.00,0,1,NULL,5
+150,"Injection fee for nurse",5000.00,1,1,5,150
+120,Interpretor,2000.00,0,1,102,120
+37,"IUI not Gender selection(Thai)",15000.00,0,1,0,37
+106,"IV Cathetor No.24",240.00,0,1,0,106
+108,LAB,70000.00,1,1,4,108
+61,"Lab progesterone",500.00,0,1,0,61
+72,"LH (Extra package)",500.00,0,1,3,72
+75,LVR,120000.00,1,1,0,75
+68,Medicine,40000.00,0,1,0,68
+77,Medicine,560.00,0,1,1,77
+91,Medicine,60.00,0,1,1,91
+140,Medicine,36200.00,1,1,0,140
+92,"Microarray: Extra per embryo",45000.00,0,1,3,92
+172,"NGS : Extra per embryo",12000.00,1,1,0,172
+63,"Nifty test",30000.00,0,1,0,63
+85,"Nifty test",30000.00,0,1,3,85
+122,"No ET",-15000.00,0,1,0,122
+13,"No med, No DF",0.00,1,1,102,13
+27,"No visit",0.00,1,1,2,27
+134,NST,5000.00,1,1,0,134
+111,"Nursing Service",1000.00,0,1,0,111
+113,Oestrogel,400.00,0,1,0,113
+112,"OPU ",90000.00,1,1,0,112
+129,OPU,70000.00,0,1,0,129
+80,"Other Fee",150000.00,0,1,0,80
+98,"Other service",20000.00,0,1,102,98
+9,"Package Oocyte Pick-Up",170000.00,0,1,NULL,9
+97,Pathology,3000.00,0,1,0,97
+87,"PGD: Extra per embryo",10000.00,0,1,0,87
+123,"Precaution Handling",10000.00,0,1,0,123
+173,PRP,8000.00,1,1,0,173
+118,PV,500.00,1,1,0,118
+161,"Re-biopsy a-CGH",25000.00,1,1,0,161
+171,"Re-biopsy NGS(1 embryo)",20000.00,1,1,0,171
+182,"Re-biopsy NGS(2 embryos)",40000.00,1,1,0,182
+180,"Re-biopsy NGS(3 embryos)",60000.00,1,1,0,180
+183,"Re-NGS(4 embs)",80000.00,1,1,0,183
+110,"RequestCGH D5 and get Result D6",20000.00,0,1,0,110
+164,"Revise Labiaplasty",50000.00,1,1,0,164
+79,"Screening Package",4000.00,0,1,0,79
+99,"Set Dressing",200.00,0,1,5,99
+156,"Set Dressing1",500.00,1,1,0,156
+157,"Set Dressing2",1500.00,1,1,0,157
+35,"SM Blood Screening Package",4000.00,0,1,0,35
+127,"special DF add package for precaution",25000.00,0,1,0,127
+128,"special DF add package for precaution",25000.00,0,1,0,128
+178,"Special result NGS",20000.00,1,1,0,178
+11,"Sperm freez + Blood test package",8000.00,0,1,NULL,11
+90,"Sperm Freeze",5000.00,0,1,0,90
+32,"Sperm Freezing",4000.00,0,1,0,32
+101,"sperm shipping",6000.00,0,1,0,101
+114,"Sperm thawing + SA",2500.00,0,1,0,114
+154,"Sperm Washing for Precaution(Hep B)",20000.00,0,1,0,154
+109,"Sperm Washing for Precaution(HIV)",50000.00,0,1,0,109
+10,"Stimulate + Ovum pick-up + ICSI",195000.00,0,1,NULL,10
+146,Stimulation,100000.00,1,1,0,146
+125,"Storage for Precaution",70000.00,0,1,0,125
+93,"Suction tube",2000.00,0,1,0,93
+25,TAS,2000.00,0,1,NULL,25
+30,"TAS 1500",1500.00,1,1,0,30
+24,"TAS 2000",2000.00,1,1,0,24
+34,"TAS Twin",4800.00,1,1,NULL,34
+31,TAS1,1500.00,0,1,NULL,31
+14,"TEST 12",0.00,0,1,NULL,14
+73,Thawing,10000.00,0,1,0,73
+45,"ThinPrep Smear",1500.00,1,1,90,45
+16,"Thyroid Hormone",2000.00,0,1,NULL,16
+17,"Thyroid Hormone, Free T3&T4, T3,T4. TSH",2000.00,0,1,NULL,17
+4,TVS,1500.00,0,1,NULL,4
+59,"TVS ",1500.00,1,1,90,59
+36,"TVS 1000",1000.00,1,1,90,36
+100,"TVS 2500 บาท",2500.00,0,1,0,100
+179,"TVS 3000",3000.00,1,1,0,179
+39,"TVS under 10 weeks",1500.00,1,1,90,39
+175,"TVS x 2",3000.00,1,1,0,175
+96,"TVS x 3",4500.00,0,1,0,96
+102,UA(Jet),500.00,1,1,90,102
+56,"Ultrasound 4D",4000.00,1,1,90,56
+158,"Ultrasound 8 weeks",3200.00,1,1,0,158
+53,"Ultrasound between 10-12 weeks",3200.00,1,1,90,53
+54,"Ultrasound between 12-18 weeks",3500.00,1,1,90,54
+41,"Ultrasound more than 16 wks",3200.00,0,1,90,41
+55,"Ultrasound more than 18 weeks",3500.00,1,1,90,55
+185,ค่าปรับ,5000.00,1,1,0,185
+165,"ค่ายกเลิก OPU",5000.00,1,1,0,165
+139,ค่าแพทย์เจาะน้ำคล่ำ,15000.00,1,1,0,139
+143,น้ำยา,15000.00,1,1,0,143
+170,ส่งตรวจผลชิ้นเนื้อ,3000.00,1,1,0,170
+159,"สาย ET",2000.00,1,1,0,159
+141,"สาย IUI",1000.00,0,1,0,141
+142,อุปกรร์เครื่องมือOR,3000.00,1,1,0,142
+144,เครื่องมือแพทย์+ค่าหัถตการ,10000.00,1,1,5,144
+137,เจาะน้ำคล่ำ,5000.00,1,1,0,137

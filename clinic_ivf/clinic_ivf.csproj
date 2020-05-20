@@ -654,6 +654,7 @@
     <Compile Include="objdb\EggStiDayDB.cs" />
     <Compile Include="objdb\EggStiDB.cs" />
     <Compile Include="objdb\LabDataTypeComboBoxDB.cs" />
+    <Compile Include="objdb\LabFormDay1DB.cs" />
     <Compile Include="objdb\LabInterpretComboBoxDB.cs" />
     <Compile Include="objdb\LabMethodDB.cs" />
     <Compile Include="objdb\LabOrderGroupDB.cs" />
@@ -743,6 +744,7 @@
     <Compile Include="object1\FilterRow1.cs" />
     <Compile Include="object1\FilterRowUnBound.cs" />
     <Compile Include="object1\LabDataTypeComboBox.cs" />
+    <Compile Include="object1\LabFormDay1.cs" />
     <Compile Include="object1\LabInterpretComboBox.cs" />
     <Compile Include="object1\LabMethod.cs" />
     <Compile Include="object1\LabOrderGroup.cs" />

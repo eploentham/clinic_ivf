@@ -28,18 +28,21 @@ namespace clinic_ivf.gui
         Font ff, ffB;
 
         int colID = 1, colVNshow = 2, colVN = 12, colPttHn = 3, colPttName = 4, colVsDate = 5, colVsTime = 6, colVsEtime = 7, colVsAgent=8, colStatus = 9, colPttId = 10, colStatusNurse = 11, colStatusCashier = 12, colBillId=13;
-        int colCldId = 1, colCldBillNo = 2, colCldReceiptNo = 3, colCldDate = 4, colCldHn = 5, colCldName = 6, colCldPkg1 = 7, colCldPkg2 = 8, colCldPkg3 = 9, colCldPkg4 = 10, colCldPkg5 = 11, colCldPkg6 = 12, colCldDiscount = 13, colCldFreezing = 14;
-        int colCldExtraDay6 = 15, colCldLabAll = 16, colCldLabBlood = 17, colCldMed = 18, colCldTVS = 19, colCldDtrfee = 20, colCldEquipment = 21, colCldOtherService = 22;
-        int colCldAmount = 23, colCldAmount1 = 24, colCldInc=25, colCldExt=26, colCldVn =27, colCldBillId=28;
+        int colCldId = 1, colCldBillNo = 2, colCldReceiptNo = 3, colCldDate = 4, colCldHn = 5, colCldName = 6, colCldPkg1 = 7, colCldPkg2 = 8, colCldPkg3 = 9, colCldPkg4 = 10, colCldPkg5 = 11, colCldPkg6 = 12, colCldPkgOther=13, colCldDiscount = 14, colCldFreezing = 15;
+        int colCldExtraDay6 = 16, colCldLabAll = 17, colCldLabBlood = 18, colCldMed = 19, colCldTVS = 20, colCldDtrfee = 21, colCldEquipment = 22, colCldOtherService = 23;
+        int colCldAmount = 24, colCldAmount1 = 25, colCldInc=26, colCldExt=27, colCldVn =28, colCldBillId=29;
         int colBildId = 1, colBildName = 2, colBildprice = 3, colBildqty = 4, colBildAmt = 5, colBildDiscount = 6, colBildNetAmt = 7, colBildGrpName = 8, colBildBilId = 9, colBildInclude = 10, colBildStatus = 11, colBildItmId=12;
         int colRptId = 1, colRptVnShow = 2, colRptVn = 3, colRptHn = 4, colRptPttName = 5, colRptVsDate = 6, colRptDOB = 7, colRptFormACode = 8, colRptOPU = 9, colRptFET = 10, colRptSpermAna = 11, colRptSpermFreezing = 12, colRptSpermIUI = 13, colRptSpermPESA = 14, colRptName_1 = 15, colRptName_2 = 16, colRptDtr = 17, colRptAgent = 18;
 
         C1FlexGrid grfQue, grfFinish, grfSearch, grfCld, grfBilD, grfRptCri, grfRpt;
         C1SuperTooltip stt;
         C1SuperErrorProvider sep;
+        C1DateEdit txtRptDateStart1;
+        C1DateEdit txtRptDateEnd1;
         Timer timer;
         Closeday cld;
         Image imgCorr, imgTran, imgFinish;
+        Form frmRpt;
 
         public FrmCashierView(IvfControl ic, MainMenu m)
         {
@@ -61,9 +64,11 @@ namespace clinic_ivf.gui
             bg = txtSearch.BackColor;
             fc = txtSearch.ForeColor;
             ff = txtSearch.Font;
+            
 
             stt = new C1SuperTooltip();
             sep = new C1SuperErrorProvider();
+            frmRpt = new Form();
 
             cld = new Closeday();
             imgCorr = Resources.red_checkmark_png_16;
@@ -102,6 +107,7 @@ namespace clinic_ivf.gui
             setGrfRpt();
             setHideRptCri();
             initGrfRptView();
+            createFrmRpt01();
             int timerlab = 0;
             int.TryParse(ic.iniC.timerlabreqaccept, out timerlab);
             timer = new Timer();
@@ -109,7 +115,85 @@ namespace clinic_ivf.gui
             timer.Tick += Timer_Tick;
             timer.Enabled = true;
         }
+        private void createFrmRpt01()
+        {
+            Size size = new Size();
+            txtRptDateStart1 = new C1DateEdit();
+            txtRptDateEnd1 = new C1DateEdit();
 
+            frmRpt.WindowState = FormWindowState.Normal;
+            frmRpt.StartPosition = FormStartPosition.CenterScreen;
+            frmRpt.Size = new Size(600, 400);
+            Panel pn = new Panel();
+            pn.Dock = DockStyle.Fill;
+            frmRpt.Controls.Add(pn);
+            int gapx = 10, gapy = 10;
+
+            Label lbRptDateStart = new Label();
+            Label lbRptDateEnd = new Label();
+            C1Button btnRptPrint = new C1Button();
+
+            txtRptDateStart1.Font = fEdit;
+            txtRptDateEnd1.Font = fEdit;
+            txtRptDateStart1.DateTimeInput = false;
+            txtRptDateEnd1.DateTimeInput = false;
+            txtRptDateStart1.CurrentTimeZone = false;
+            txtRptDateEnd1.CurrentTimeZone = false;
+            txtRptDateStart1.DisplayFormat.FormatType = FormatTypeEnum.ShortDate;
+            txtRptDateEnd1.DisplayFormat.FormatType = FormatTypeEnum.ShortDate;
+            txtRptDateStart1.DisplayFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
+            txtRptDateEnd1.DisplayFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
+            txtRptDateStart1.EditFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
+            txtRptDateEnd1.EditFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
+            txtRptDateStart1.EditFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
+            txtRptDateEnd1.EditFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
+            txtRptDateStart1.Size = new System.Drawing.Size(133, 18);
+            txtRptDateEnd1.Size = new System.Drawing.Size(133, 18);
+            txtRptDateStart1.EmptyAsNull = true;
+            txtRptDateEnd1.EmptyAsNull = true;
+            txtRptDateStart1.AllowSpinLoop = false;
+            txtRptDateEnd1.AllowSpinLoop = false;
+            txtRptDateStart1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            txtRptDateEnd1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            txtRptDateStart1.Calendar.ArrowColor = System.Drawing.Color.Black;
+            txtRptDateEnd1.Calendar.ArrowColor = System.Drawing.Color.Black;
+
+            txtRptDateStart1.Name = "txtRptDateStart";
+            txtRptDateStart1.Size = new System.Drawing.Size(133, 18);
+            txtRptDateStart1.TabIndex = 510;
+            txtRptDateStart1.Tag = null;
+            theme1.SetTheme(this.txtRptDateStart1, "(default)");
+            txtRptDateStart1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+
+
+            txtRptDateStart1.Value = DateTime.Now;
+            txtRptDateEnd1.Value = DateTime.Now;
+
+            lbRptDateStart.Font = fEdit;
+            lbRptDateEnd.Font = fEdit;
+
+            txtRptDateEnd1.Location = new Point(gapx, gapy);
+            lbRptDateStart.Location = new Point(gapx, gapy);
+
+            lbRptDateStart.Text = "Start Date";
+            size = ic.MeasureString(lbRptDateStart);
+            txtRptDateStart1.Location = new Point(gapx + size.Width + 10, gapy);
+            lbRptDateEnd.Text = "End Date";
+            lbRptDateEnd.Location = new Point(txtRptDateStart1.Location.X + txtRptDateStart1.Width + 10, gapy);
+            size = ic.MeasureString(lbRptDateEnd);
+            txtRptDateEnd1.Location = new Point(gapx + lbRptDateEnd.Location.X + size.Width + 10, gapy);
+            btnRptPrint.Text = "Print";
+            btnRptPrint.Font = fEdit;
+            btnRptPrint.Size = new Size(200, 60);
+            btnRptPrint.Location = new Point(gapx + lbRptDateEnd.Location.X + size.Width + 10, gapy + 30);
+            btnRptPrint.Click += BtnRptPrint_Click;
+
+            pn.Controls.Add(txtRptDateStart1);
+            pn.Controls.Add(txtRptDateEnd1);
+            pn.Controls.Add(lbRptDateStart);
+            pn.Controls.Add(lbRptDateEnd);
+            pn.Controls.Add(btnRptPrint);
+        }
         private void BtnRpt_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
@@ -117,84 +201,7 @@ namespace clinic_ivf.gui
             rpt = cboRpt.SelectedItem != null ? cboRpt.SelectedItem.ToString() : "";
             if (rpt.Equals("BillDetailExcel"))
             {
-                Size size = new Size();
-                Form frmRpt = new Form();
-                frmRpt.WindowState = FormWindowState.Normal;
-                frmRpt.StartPosition = FormStartPosition.CenterScreen;
-                frmRpt.Size = new Size(600, 400);
-                Panel pn = new Panel();
-                pn.Dock = DockStyle.Fill;
-                frmRpt.Controls.Add(pn);
-                int gapx = 10, gapy = 10;
-                C1DateEdit txtRptDateStart = new C1DateEdit();
-                C1DateEdit txtRptDateEnd = new C1DateEdit();
-                Label lbRptDateStart = new Label();
-                Label lbRptDateEnd = new Label();
-                C1Button btnRptPrint = new C1Button();
-                
-                txtRptDateStart.Font = fEdit;
-                txtRptDateEnd.Font = fEdit;
-                txtRptDateStart.DateTimeInput = false;
-                txtRptDateEnd.DateTimeInput = false;
-                txtRptDateStart.CurrentTimeZone = false;
-                txtRptDateEnd.CurrentTimeZone = false;
-                txtRptDateStart.DisplayFormat.FormatType = FormatTypeEnum.ShortDate;
-                txtRptDateEnd.DisplayFormat.FormatType = FormatTypeEnum.ShortDate;
-                txtRptDateStart.DisplayFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
-                txtRptDateEnd.DisplayFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
-                txtRptDateStart.EditFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
-                txtRptDateEnd.EditFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
-                txtRptDateStart.EditFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
-                txtRptDateEnd.EditFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
-                txtRptDateStart.Size = new System.Drawing.Size(133, 18);
-                txtRptDateEnd.Size = new System.Drawing.Size(133, 18);
-                txtRptDateStart.EmptyAsNull = true;
-                txtRptDateEnd.EmptyAsNull = true;
-                txtRptDateStart.AllowSpinLoop = false;
-                txtRptDateEnd.AllowSpinLoop = false;
-                txtRptDateStart.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-                txtRptDateEnd.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-                txtRptDateStart.Calendar.ArrowColor = System.Drawing.Color.Black;
-                txtRptDateEnd.Calendar.ArrowColor = System.Drawing.Color.Black;
-                
-                txtRptDateStart.Name = "txtRptDateStart";
-                txtRptDateStart.Size = new System.Drawing.Size(133, 18);
-                txtRptDateStart.TabIndex = 510;
-                txtRptDateStart.Tag = null;
-                theme1.SetTheme(this.txtRptDateStart, "(default)");
-                txtRptDateStart.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-
-
-                txtRptDateStart.Value = DateTime.Now;
-                txtRptDateEnd.Value = DateTime.Now;
-
-                lbRptDateStart.Font = fEdit;
-                lbRptDateEnd.Font = fEdit;
-                
-                txtRptDateEnd.Location = new Point(gapx, gapy);
-                lbRptDateStart.Location = new Point(gapx, gapy);
-                
-                lbRptDateStart.Text = "Start Date";
-                size = ic.MeasureString(lbRptDateStart);
-                txtRptDateStart.Location = new Point(gapx + size.Width+10, gapy);
-                lbRptDateEnd.Text = "End Date";
-                lbRptDateEnd.Location = new Point(txtRptDateStart.Location.X + txtRptDateStart.Width + 10, gapy);
-                size = ic.MeasureString(lbRptDateEnd);
-                txtRptDateEnd.Location = new Point(gapx + lbRptDateEnd.Location.X + size.Width + 10, gapy);
-                btnRptPrint.Text = "Print";
-                btnRptPrint.Font = fEdit;
-                btnRptPrint.Size = new Size(200, 60);
-                btnRptPrint.Location = new Point(gapx + lbRptDateEnd.Location.X + size.Width + 10, gapy + 30);
-                btnRptPrint.Click += BtnRptPrint_Click;
-
-                pn.Controls.Add(txtRptDateStart);
-                pn.Controls.Add(txtRptDateEnd);
-                pn.Controls.Add(lbRptDateStart);
-                pn.Controls.Add(lbRptDateEnd);
-                pn.Controls.Add(btnRptPrint);
                 frmRpt.ShowDialog(this);
-
-                
             }
         }
 
@@ -214,15 +221,15 @@ namespace clinic_ivf.gui
             DataTable dt = new DataTable();
             //txtRptDateStart.Value = DateTime.Now;
             //txtRptDateEnd.Value = DateTime.Now;
-            datestart = ic.datetoDB(txtRptDateStart.Text); 
-            dateend = ic.datetoDB(txtRptDateEnd.Text);
+            datestart = ic.datetoDB(txtRptDateStart1.Text); 
+            dateend = ic.datetoDB(txtRptDateEnd1.Text);
             rpt = cboRpt.SelectedItem != null ? cboRpt.SelectedItem.ToString() : "";
             if (rpt.Equals("BillDetailExcel"))
             {
                 dt = ic.ivfDB.obildDB.selectByDate(datestart, dateend);
                 filename = "billdetail-"+ datestart+"-"+ dateend;
             }
-            XLSheet sheet = _book.Sheets.Add(filename + DateTime.Now.ToString("dd-MM-") + DateTime.Now.Year.ToString());
+            XLSheet sheet = _book.Sheets.Add(datestart+"-"+ dateend);
             ic.SaveSheetDataTable(dt, sheet, _book, false);
             //ic.SaveSheet(grfCld, sheet, _book, false);
             //}
@@ -611,7 +618,7 @@ namespace clinic_ivf.gui
             dt = ic.ivfDB.obilhDB.selectByCloseDay();
 
             grfCld.Rows.Count = dt.Rows.Count + 1;
-            grfCld.Cols.Count = 29;
+            grfCld.Cols.Count = 30;
 
             grfCld.Cols[colCldBillNo].Width = 100;
             grfCld.Cols[colCldReceiptNo].Width = 100;
@@ -636,6 +643,7 @@ namespace clinic_ivf.gui
             grfCld.Cols[colCldOtherService].Width = 90;
             grfCld.Cols[colCldAmount].Width = 90;
             grfCld.Cols[colCldAmount1].Width = 90;
+            grfCld.Cols[colCldPkgOther].Width = 100;
 
             grfCld.ShowCursor = true;
             //grdFlex.Cols[colID].Caption = "no";
@@ -656,7 +664,7 @@ namespace clinic_ivf.gui
             grfCld.Cols[colCldExtraDay6].Caption = "ExtraDay6";
             grfCld.Cols[colCldMed].Caption = "Medicine";
             grfCld.Cols[colCldDtrfee].Caption = "Doctor fee";
-            grfCld.Cols[colCldLabAll].Caption = "Lab";
+            grfCld.Cols[colCldLabAll].Caption = "Lab Other";
             grfCld.Cols[colCldLabBlood].Caption = "Blood Lab";
             grfCld.Cols[colCldTVS].Caption = "TVS";
             grfCld.Cols[colCldEquipment].Caption = "Equipment";
@@ -666,6 +674,7 @@ namespace clinic_ivf.gui
             grfCld.Cols[colCldAmount1].Caption = "Amount";
             grfCld.Cols[colCldInc].Caption = "Include";
             grfCld.Cols[colCldExt].Caption = "Extra";
+            grfCld.Cols[colCldPkgOther].Caption = "Package Other";
 
             //menuGw.MenuItems.Add("&receive operation", new EventHandler(ContextMenu_Apm));
             //menuGw.MenuItems.Add("receive operation", new EventHandler(ContextMenu_order));
@@ -683,10 +692,10 @@ namespace clinic_ivf.gui
             foreach (DataRow row in dt.Rows)
             {
                 String bilid = row[ic.ivfDB.obilhDB.obillh.bill_id].ToString();
-                String pkg1 = "", pkg2 = "", pkg3 = "", pkg4 = "", pkg5 = "", pkg6 = "", freezing="", extraday6="", laball="", labblood="", tvs="",equipment="", amt="";
+                String pkg1 = "", pkg2 = "", pkg3 = "", pkg4 = "", pkg5 = "", pkg6 = "", labfreezing="", extraday6="", laball="", labblood="", tvs="",equipment="", amt="", pkgother="", pkgall="", specialall="";
                 String amtmed ="", amtdtrfee="", amtlab1="", amtlab2="", amtnurfee="", amttreat="", amtdiscount="",amtother="";
-                Decimal pkg11 = 0, pkg21 = 0, pkg31 = 0, pkg41 = 0, pkg51 = 0, pkg61 = 0, freezing1=0, extraday61=0, laball1=0, labblood1=0,tvs1=0, equipment1=0, amt1=0;
-                Decimal amtmed1 = 0, amtdtrfee1 = 0, amtlab11 = 0, amtlab21 = 0, amtnurfee1 = 0, amttreat1 = 0, amtdiscount1 = 0, amtother1 = 0, total=0;
+                Decimal pkg11 = 0, pkg21 = 0, pkg31 = 0, pkg41 = 0, pkg51 = 0, pkg61 = 0, labfreezing1=0, extraday61=0, laball1=0, labblood1=0,tvs1=0, equipment1=0, amt1=0;
+                Decimal amtmed1 = 0, amtdtrfee1 = 0, amtlab11 = 0, amtlab21 = 0, amtnurfee1 = 0, amttreat1 = 0, amtdiscount1 = 0, amtother1 = 0, total=0, pkgother1=0, pkgall1=0, specialall1=0;
                 String pkgicsi = "2570000001,2570000002, 2570000003, 2570000020, 2570000025, 2570000037";
                 String pkgfet = "2570000006,2570000024, 2570000026";
                 String pkgpesa = "2570000011";
@@ -694,10 +703,10 @@ namespace clinic_ivf.gui
                 String pkgpgd = "2570000008";
                 String pkgsperm = "2570000017";
                 String itmfreezing = "2580000000, 2580000001,2580000002,2580000003,2580000004,2580000005,2580000006";
-                String itmextraday6 = "2590000000";
+                String itmextraday6 = "2640000000";
                 String itmlabboood = "1";
-                String itmtvs = "1";
-                String itmequipment = "1";
+                String itmtvs = "4,59,36,100,179,39,175,96";
+                String itmequipment = "74,117,147";
                 pkg1 = ic.ivfDB.obildDB.selectSumPriceByBilIdItmId(bilid, pkgicsi);
                 Decimal.TryParse(pkg1, out pkg11);
                 pkg2 = ic.ivfDB.obildDB.selectSumPriceByBilIdItmId(bilid, pkgfet);
@@ -710,8 +719,13 @@ namespace clinic_ivf.gui
                 Decimal.TryParse(pkg5, out pkg51);
                 pkg6 = ic.ivfDB.obildDB.selectSumPriceByBilIdItmId(bilid, pkgsperm);
                 Decimal.TryParse(pkg6, out pkg61);
-                freezing = ic.ivfDB.obildDB.selectSumPriceByBilIdItmId(bilid, itmfreezing);
-                Decimal.TryParse(freezing, out freezing1);
+                pkgall = ic.ivfDB.obildDB.selectSumPriceByBilIdBillGroup(bilid, "2650000000");
+                Decimal.TryParse(pkgall, out pkgall1);
+                specialall = ic.ivfDB.obildDB.selectSumPriceByBilIdBillGroup(bilid, "2650000090");      //2650000090
+                Decimal.TryParse(specialall, out specialall1);
+
+                labfreezing = ic.ivfDB.obildDB.selectSumPriceByBilIdItmId(bilid, itmfreezing);
+                Decimal.TryParse(labfreezing, out labfreezing1);
                 extraday6 = ic.ivfDB.obildDB.selectSumPriceByBilIdItmId(bilid, itmextraday6);
                 Decimal.TryParse(extraday6, out extraday61);
                 laball = ic.ivfDB.obildDB.selectSumPriceByLabAll(bilid);
@@ -743,13 +757,15 @@ namespace clinic_ivf.gui
                 //amttreat = ic.ivfDB.obildDB.selectSumPriceByBilId1(bilid, "90");
                 //Decimal.TryParse(amttreat, out amttreat1);
 
-                amtdiscount = ic.ivfDB.obildDB.selectSumPriceByBilId1(bilid, "99");
+                amtdiscount = ic.ivfDB.obildDB.selectSumPriceByBilId1(bilid, "2650000099");
                 Decimal.TryParse(amtdiscount, out amtdiscount1);
 
-                amtother = ic.ivfDB.obildDB.selectSumPriceByBilId1(bilid, "102");
+                amtother = ic.ivfDB.obildDB.selectSumPriceByBilId1(bilid, "2650000102");
                 Decimal.TryParse(amtother, out amtother1);
 
-                total = pkg11 + pkg21 + pkg31 + pkg41 + pkg51 + pkg61 + freezing1 + extraday61 + laball1 + amtmed1 + amtdtrfee1 + amtdiscount1 + amtother1;
+                total = pkg11 + pkg21 + pkg31 + pkg41 + pkg51 + pkg61 + labfreezing1 + extraday61 + laball1 + amtmed1 + amtdtrfee1 + amtdiscount1 + amtother1;
+
+                pkgother1 = pkgall1 - pkg11 + pkg21 + pkg31 + pkg41 + pkg51 + pkg61;
 
                 grfCld[i, 0] = i;
                 grfCld[i, colCldId] = "";
@@ -765,10 +781,10 @@ namespace clinic_ivf.gui
                 grfCld[i, colCldPkg4] = pkg41.ToString("#,###.00");
                 grfCld[i, colCldPkg5] = pkg51.ToString("#,###.00");
                 grfCld[i, colCldPkg6] = pkg61.ToString("#,###.00");
-                grfCld[i, colCldFreezing] = freezing1.ToString("#,###.00");
+                grfCld[i, colCldFreezing] = labfreezing1.ToString("#,###.00");
                 grfCld[i, colCldExtraDay6] = extraday61.ToString("#,###.00");
                 //grfCld[i, colCldLabAll] = (laball1 - labblood1) > 0 ? (laball1 - labblood1).ToString("#,###.00") : laball1.ToString("#,###.00");
-                grfCld[i, colCldLabAll] = (laball1 - labblood1 - freezing1).ToString("#,###.00");
+                grfCld[i, colCldLabAll] = (laball1 - labblood1 - labfreezing1).ToString("#,###.00");
                 grfCld[i, colCldLabBlood] = labblood1.ToString("#,###.00");
                 grfCld[i, colCldMed] = amtmed1.ToString("#,###.00");
                 grfCld[i, colCldTVS] = tvs1.ToString("#,###.00");
@@ -787,6 +803,8 @@ namespace clinic_ivf.gui
                 grfCld[i, colCldAmount1] = amt1.ToString("#,###.00");
                 grfCld[i, colCldInc] = row[ic.ivfDB.obilhDB.obillh.Include_Pkg_Price].ToString();
                 grfCld[i, colCldExt] = row[ic.ivfDB.obilhDB.obillh.Extra_Pkg_Price].ToString();
+
+                grfCld[i, colCldPkgOther] = pkgother1.ToString("#,###.00");
                 //grfCld[i, colBillId] = "";
                 //if (!row[ic.ivfDB.ovsDB.vsold.form_a_id].ToString().Equals("0"))
                 //{

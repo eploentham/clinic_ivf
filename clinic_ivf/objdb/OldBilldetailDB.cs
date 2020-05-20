@@ -137,6 +137,22 @@ namespace clinic_ivf.objdb
             }
             return amt;
         }
+        public String selectSumPriceByBilIdBillGroup(String bilid, String billgrpid)
+        {
+            DataTable dt = new DataTable();
+            String amt = "";
+
+            String sql = "SELECT sum(obilld." + obilld.Price + ") as amount " +
+                " " +
+                "From " + obilld.table + " obilld " +
+                "Where obilld." + obilld.bill_id + "='" + bilid + "' and obilld.bill_group_id = '"+ billgrpid + "' and obilld." + obilld.active + "='1'  ";
+            dt = conn.selectData(conn.conn, sql);
+            if (dt.Rows.Count > 0)
+            {
+                amt = dt.Rows[0]["amount"].ToString();
+            }
+            return amt;
+        }
         public String selectSumPriceByBilId(String bilid)
         {
             DataTable dt = new DataTable();
@@ -161,7 +177,7 @@ namespace clinic_ivf.objdb
             String sql = "SELECT sum(obilld." + obilld.Price + ") as amount " +
                 " " +
                 "From " + obilld.table + " obilld " +
-                "Where obilld." + obilld.bill_id + "='" + bilid + "' and obilld." + obilld.bill_group_id + " in ('2600000003','2600000004') and obilld." + obilld.active + "='1'  ";
+                "Where obilld." + obilld.bill_id + "='" + bilid + "' and obilld." + obilld.bill_group_id + " in ('2650000003','2650000004') and obilld." + obilld.active + "='1'  ";
             dt = conn.selectData(conn.conn, sql);
             if (dt.Rows.Count > 0)
             {

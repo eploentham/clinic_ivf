@@ -1,0 +1,48 @@
+PCKID,PackageName,Price,active,pckid_old
+2570000000,"Blood screening Female",4000,1,6
+2570000001,"ICSI stimulation OPU, ET, B-HCG age under 32 years",250000,1,9
+2570000002,"ICSI stimulation OPU, ET, B-HCG age under 33-37 years",270000,1,10
+2570000003,"ICSI stimulation OPU, ET, B-HCG age under 38-39 years",290000,1,15
+2570000004,"Sperm selection XY",4000,1,21
+2570000005,"Package Oocyte Pick-Up",200000,1,23
+2570000006,"FET with Assisted Hatching (Dr. T)",50000,1,24
+2570000007,"Freezing Embryo Blast(10E,10S)",30000,3,27
+2570000008,"PGD (Maximum 10 embryos)",100000,1,28
+2570000009,"Freezing D3 (16E,4S)",20000,3,29
+2570000010,"Freezing Oocyte (12E,4S)",30000,3,30
+2570000011,TESE/PESA,35000,1,31
+2570000012,"IUI Normal for Thai",15000,1,33
+2570000013,"IUI Normal for foreiger",30000,1,34
+2570000014,"IUI gender for Thai",18000,1,35
+2570000015,"IUI gender for foreiger",38000,1,36
+2570000016,"a-CGH (maximum 8 embryos)",160000,1,37
+2570000017,"Frozen Sperm Package",9000,1,38
+2570000018,"SM: Screening package",4000,1,39
+2570000019,"ED: Screening package",4000,1,40
+2570000020,"ICSI stimulation OPU, ET, B-HCG age upper 40 years",310000,1,43
+2570000021,"ANC after Beta-HCG positive",80000,1,44
+2570000022,"ANC after find heart beat",70000,1,45
+2570000023,"Caucasian Donor",135000,1,46
+2570000024,"FET with Assisted Hatching (Dr. Visut)",50000,1,47
+2570000025,"ICSI no stimulation OPU, ET, B-HCG ",190000,1,48
+2570000026,"FET with Assisted Hatching Special (Dr. Visut) ",57000,1,49
+2570000027,"Blood screening Male",3500,1,51
+2570000028,LVR,120000,1,52
+2570000029,"Package: Egg sharing",110000,1,53
+2570000030,"Prepare Patient Package",8000,1,54
+2570000031,"a - CGH 4 embryos",120000,1,56
+2570000032,"Freezing Sperm PRECAITION CASE",155000,1,61
+2570000033,LVR,100000,3,62
+2570000034,"Two times stimulation (PGD)",700000,1,65
+2570000035,"Two times stimulation (CGH)",750000,1,66
+2570000036,"Re-biopsy a-CGH 1 embryo",25000,1,67
+2570000037,"ICSI Egg Frozen 2PN+Culture-D5",95000,1,68
+2570000038,"NGS 10 embryos",150000,1,69
+2570000039,"NGS (maximum 10 embryos)",150000,1,70
+2570000040,"NGS 5 embryos",100000,1,71
+2570000041,"Egg Freezing: Stimulation,OPU,Freezing(12eggs/4straw under 35Yrs",200000,1,72
+2570000042,"Egg Freezing: Stimulation,OPU,Freezing(12eggs/4straw upper 35Yrs",220000,1,73
+2570000043,"Egg Stimulation - OPU other center",120000,1,74
+2570000044,"NGS with Thalassemia 5 embryos",150000,1,75
+2570000045,"NGS Day5 (13,16,18,21,22,XY)",150000,1,76
+2570000046,"NGS Day5 (13,16,18,21,22,XY) 5 EMB",100000,1,77

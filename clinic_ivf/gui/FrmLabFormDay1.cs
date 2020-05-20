@@ -16,32 +16,34 @@ namespace clinic_ivf.gui
     public partial class FrmLabFormDay1 : Form
     {
         IvfControl ic;
-        String lformaId = "", pttid = "", vsid = "", vsidOld = "";
-        LabFormA lFormA;
+        String lformDay1Id = "", pttid = "", vsid = "", vsidOld = "";
+        LabFormDay1 lFormDay1;
         LabOpu opu;
         VisitOld ovs;
         PatientOld optt;
         Patient ptt;
+        Visit vs;
 
         C1SuperTooltip stt;
         C1SuperErrorProvider sep;
 
-        public FrmLabFormDay1(IvfControl ic, String lformaId, String pttid, String vsid, String vsidOld)
+        public FrmLabFormDay1(IvfControl ic, String ldormday1Id, String pttid, String vsid, String vsidOld)
         {
             InitializeComponent();
             this.ic = ic;
             this.pttid = pttid;
             this.vsid = vsid;
             this.vsidOld = vsidOld;
-            this.lformaId = lformaId;
+            this.lformDay1Id = ldormday1Id;
             initConfig();
         }
         private void initConfig()
         {
-            lFormA = new LabFormA();
+            lFormDay1 = new LabFormDay1();
             opu = new LabOpu();
             ptt = new Patient();
             ovs = new VisitOld();
+            vs = new Visit();
 
             stt = new C1SuperTooltip();
             sep = new C1SuperErrorProvider();
@@ -67,7 +69,47 @@ namespace clinic_ivf.gui
             ChkNgs_CheckedChanged(null, null);
 
         }
+        private void setControl()
+        {
+            lFormDay1 = ic.ivfDB.lformDay1DB.selectByPk1(lformDay1Id);
+            
+            if (!lFormDay1.form_day1_id.Equals(""))
+            {
+                LabRequest req = new LabRequest();
+                vs = ic.ivfDB.vsDB.selectByPk1(vsid);
+                //opu = ic.ivfDB.opuDB.selectByReqID(req.req_id);
+                setControl1();
+            }
+            else
+            {
+                ovs = ic.ivfDB.ovsDB.selectByPk1(vsidOld);
+                ptt = ic.ivfDB.pttDB.selectByHn(ovs.PIDS);
+                txtHnFeMale.Value = ptt.patient_hn;
+                txtNameFeMale.Value = ptt.Name;
+                txtHnMale.Value = ptt.patient_hn_couple;
+                txtNameMale.Value = ptt.patient_couple_firstname;
+                txtDobFeMale.Value = ptt.AgeString();
+                txtAgent.Value = ptt.agent;
+            }
+        }
+        private void setControl1()
+        {
+            txtID.Value = lFormDay1.form_day1_id;
+            //txtLabFormACode.Value = lFormA.form_a_code;
+            txtPttId.Value = lFormDay1.t_patient_id;
+            txtVsId.Value = lFormDay1.t_visit_id;
+            //txtVnOld.Value = lFormDay1.vn_old;
+            //txtHnOld.Value = lFormDay1.hn_old;
+            txtHnFeMale.Value = lFormDay1.hn_female;
+            txtNameFeMale.Value = lFormDay1.name_female;
+            txtNameMale.Value = lFormDay1.name_male;
+            txtHnMale.Value = lFormDay1.hn_male;
+            txtDobFeMale.Value = lFormDay1.dob_female;
+            txtDobMale.Value = lFormDay1.dob_male;
+            //ic.setC1Combo(cboDoctor, lFormDay1.doctor_id);
 
+            txtFertili2Pn.Value = opu.fertili_2_pn;
+        }
         private void BtnMaleSearch_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
@@ -216,51 +258,6 @@ namespace clinic_ivf.gui
             FrmReport frm = new FrmReport(ic);
             frm.setLabFormDay1Report(dt);
             frm.ShowDialog(this);
-        }
-
-        private void setControl()
-        {
-            lFormA = ic.ivfDB.lFormaDB.selectByPk1(lformaId);
-            if (lFormA.form_a_id.Equals(""))
-            {
-                lFormA = ic.ivfDB.lFormaDB.selectByVnOld(vsidOld);
-            }
-            if (!lFormA.form_a_id.Equals(""))
-            {
-                LabRequest req = new LabRequest();
-                req = ic.ivfDB.lbReqDB.selectByPk1(lFormA.req_id_opu);
-                opu = ic.ivfDB.opuDB.selectByReqID(req.req_id);
-                setControl1();
-            }
-            else
-            {
-                ovs = ic.ivfDB.ovsDB.selectByPk1(vsidOld);
-                ptt = ic.ivfDB.pttDB.selectByHn(ovs.PIDS);
-                txtHnFeMale.Value = ptt.patient_hn;
-                txtNameFeMale.Value = ptt.Name;
-                txtHnMale.Value = ptt.patient_hn_couple;
-                txtNameMale.Value = ptt.patient_couple_firstname;
-                txtDobFeMale.Value = ptt.AgeString();
-                txtAgent.Value = ptt.agent;
-            }
-        }
-        private void setControl1()
-        {
-            txtID.Value = lFormA.form_a_id;
-            //txtLabFormACode.Value = lFormA.form_a_code;
-            txtPttId.Value = lFormA.t_patient_id;
-            txtVsId.Value = lFormA.t_visit_id;
-            txtVnOld.Value = lFormA.vn_old;
-            txtHnOld.Value = lFormA.hn_old;
-            txtHnFeMale.Value = lFormA.hn_female;
-            txtNameFeMale.Value = lFormA.name_female;
-            txtNameMale.Value = lFormA.name_male;
-            txtHnMale.Value = lFormA.hn_male;
-            txtDobFeMale.Value = lFormA.dob_female;
-            txtDobMale.Value = lFormA.dob_male;
-            ic.setC1Combo(cboDoctor, lFormA.doctor_id);
-
-            txtFertili2Pn.Value = opu.fertili_2_pn;
         }
         private void ChkEmbryoTransferFresh_CheckedChanged(object sender, EventArgs e)
         {

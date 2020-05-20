@@ -138,6 +138,7 @@ namespace clinic_ivf.objdb
             vs.remark = "remark";
             vs.nurse_finish_date_time = "nurse_finish_date_time";
             vs.cashier_finish_date_time = "cashier_finish_date_time";
+            vs.agent_id = "agent_id";
 
             vs.table = "t_visit";
             vs.pkField = "t_visit_id";
@@ -261,6 +262,7 @@ namespace clinic_ivf.objdb
             p.visit_lab_status_id = long.TryParse(p.visit_lab_status_id, out chk) ? chk.ToString() : "0";
             p.doctor_id = long.TryParse(p.doctor_id, out chk) ? chk.ToString() : "0";
             p.closeday_id = long.TryParse(p.closeday_id, out chk) ? chk.ToString() : "0";
+            p.agent_id = long.TryParse(p.agent_id, out chk) ? chk.ToString() : "0";
         }
         public String insert(Visit p, String userId)
         {
@@ -364,6 +366,7 @@ namespace clinic_ivf.objdb
                     "," + vs.user_create + "='" + userId + "@" + conn._IPAddress + "' " +
                     "," + vs.user_modi + "='' " +
                     "," + vs.user_cancel + "='' " +
+                    "," + vs.agent_id + "='" + p.agent_id + "' " +
                     "";
                 re = conn.ExecuteNonQuery(conn.conn, sql);
             }
@@ -394,6 +397,7 @@ namespace clinic_ivf.objdb
                 "," + vs.patient_hn_2 + "='" + p.patient_hn_2 + "' " +
                 "," + vs.date_modi + "=now() " +
                 "," + vs.user_modi + "='" + userId + "@" + conn._IPAddress + "' " +
+                "," + vs.agent_id + "='" + p.agent_id + "' " +
                 "Where " + vs.pkField + " ='" + p.t_visit_id + "' ";
             try
             {
@@ -1175,6 +1179,7 @@ namespace clinic_ivf.objdb
                 vs1.status_cashier = dt.Rows[0][vs.status_cashier].ToString();
                 vs1.cashier_finish_date_time = dt.Rows[0][vs.cashier_finish_date_time].ToString();
                 vs1.nurse_finish_date_time = dt.Rows[0][vs.nurse_finish_date_time].ToString();
+                vs1.agent_id = dt.Rows[0][vs.agent_id].ToString();
             }
             else
             {
@@ -1290,6 +1295,7 @@ namespace clinic_ivf.objdb
             stf1.status_cashier = "";
             stf1.cashier_finish_date_time = "";
             stf1.nurse_finish_date_time = "";
+            stf1.agent_id = "";
             return stf1;
         }
     }

@@ -116,5 +116,6 @@ namespace clinic_ivf.object1
         public String status_cashier { get; set; }
         public String nurse_finish_date_time { get; set; }
         public String cashier_finish_date_time { get; set; }
+        public String agent_id { get; set; }
     }
 }

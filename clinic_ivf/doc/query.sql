@@ -1585,3 +1585,81 @@ Left join PackageHeader pkg on pkgs.PCKID = pkg.PCKID
 Left join LabItem lab on obilld.item_id = lab.LID
 
 Where obilld.bill_id='2390062005' and obilld.active='1';  
+
+ALTER TABLE `ivf`.`Agent` 
+COMMENT = 'id=266' ;
+
+SELECT table_name, table_comment     FROM INFORMATION_SCHEMA.TABLES     WHERE table_schema='ivf' ;
+
+ALTER TABLE PackageSold AUTO_INCREMENT = 2660000363;
+
+ALTER TABLE `ivf`.`t_visit` 
+ADD COLUMN `agent_id` BIGINT NULL AFTER `visit_begin_visit_time1`;
+
+ALTER TABLE `ivf`.`BillHeader` 
+ADD COLUMN `agent_id` BIGINT NULL AFTER `closeday_id`;
+
+ALTER TABLE `ivf`.`BillHeader` 
+ADD COLUMN `receipt1_no` VARCHAR(45) NULL COMMENT 'ใบเสร็จอีกบัญชี' AFTER `agent_id`;
+
+CREATE TABLE `ivf`.`lab_t_form_day1` (
+  `form_day1_id` BIGINT NOT NULL,
+  `t_patient_id` BIGINT NULL,
+  `t_visit_id` BIGINT NULL,
+  `day1_date` VARCHAR(45) NULL,
+  `form_day1_code` VARCHAR(45) NULL,
+  `hn_male` VARCHAR(45) NULL,
+  `hn_female` VARCHAR(45) NULL,
+  `name_male` VARCHAR(45) NULL,
+  `name_female` VARCHAR(45) NULL,
+  `hn_donor` VARCHAR(45) NULL,
+  `name_donor` VARCHAR(45) NULL,
+  `day1_remark` VARCHAR(45) NULL,
+  `dob_male` VARCHAR(45) NULL,
+  `dob_female` VARCHAR(45) NULL,
+  `dob_donor` VARCHAR(45) NULL,
+  `status_no_biopsy` VARCHAR(45) NULL DEFAULT 0 COMMENT '0=default;1=no biopsy; 2=biopsy',
+  `status_biopsy_pgs` VARCHAR(45) NULL DEFAULT 0,
+  `status_biopsy_ngs` VARCHAR(45) NULL DEFAULT 0,
+  `status_biopsy_ngs_7_pair` VARCHAR(45) NULL DEFAULT 0,
+  `status_biopsy_ngs_23_pair` VARCHAR(45) NULL DEFAULT 0,
+  `biopsy_pgs_min` VARCHAR(45) NULL,
+  `biopsy_pgs_max` VARCHAR(45) NULL,
+  `biopsy_ngs_min` VARCHAR(45) NULL,
+  `biopsy_ngs_max` VARCHAR(45) NULL,
+  `status_embryo_freezing_day` VARCHAR(45) NULL DEFAULT 0 COMMENT '0=default;1=embryo freezing day',
+  `embryo_freezing_day` VARCHAR(45) NULL,
+  `embryo_freezing_day_max` VARCHAR(45) NULL,
+  `status_stage_blastocyst` VARCHAR(45) NULL DEFAULT 0 COMMENT '0=default;1=blastocyst',
+  `status_stage_morula` VARCHAR(45) NULL DEFAULT 0 COMMENT '0=default;1=morula',
+  `status_stage_cleavage` VARCHAR(45) NULL DEFAULT 0 COMMENT '0=default;1=cleavage',
+  `status_embryo_tranfer` VARCHAR(45) NULL DEFAULT 0 COMMENT '0=default;1=embryo tranfer',
+  `status_embryo_tranfer_day` VARCHAR(45) NULL DEFAULT 0 COMMENT '0=default;3=day3;5=day5',
+  `status_embryo_tranfer_embryo_glue` VARCHAR(45) NULL DEFAULT 0 COMMENT '0=default;1=embryo tranfer embryo glue',
+  `status_discard_all` VARCHAR(45) NULL DEFAULT 0,
+  `status_remark` VARCHAR(45) NULL DEFAULT 0 COMMENT '0=default;1=freeze only NGS; 2=plan re-NGS;3=Other',
+  `remark_other` VARCHAR(255) NULL,
+  `date_create` VARCHAR(45) NULL,
+  `date_modi` VARCHAR(45) NULL,
+  `date_cancel` VARCHAR(45) NULL,
+  `user_create` VARCHAR(45) NULL,
+  `user_modi` VARCHAR(45) NULL,
+  `user_cancel` VARCHAR(45) NULL,
+  `active` VARCHAR(45) NULL,
+  `remark` VARCHAR(255) NULL,
+  PRIMARY KEY (`form_day1_id`))
+ENGINE = MyISAM
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_bin
+COMMENT = 'id=267';
+
+
+UPDATE `ivf`.`SpecialItem` SET `BillGroupID` = '2650000090' WHERE (`SID` = '4');
+UPDATE `ivf`.`SpecialItem` SET `BillGroupID` = '2650000090' WHERE (`SID` = '59');
+UPDATE `ivf`.`SpecialItem` SET `BillGroupID` = '2650000090' WHERE (`SID` = '36');
+UPDATE `ivf`.`SpecialItem` SET `BillGroupID` = '2650000090' WHERE (`SID` = '100');
+UPDATE `ivf`.`SpecialItem` SET `BillGroupID` = '2650000090' WHERE (`SID` = '179');
+UPDATE `ivf`.`SpecialItem` SET `BillGroupID` = '2650000090' WHERE (`SID` = '39');
+UPDATE `ivf`.`SpecialItem` SET `BillGroupID` = '2650000090' WHERE (`SID` = '175');
+UPDATE `ivf`.`SpecialItem` SET `BillGroupID` = '2650000090' WHERE (`SID` = '96');
+

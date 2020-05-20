@@ -39,5 +39,6 @@ namespace clinic_ivf.object1
         public String credit { get; set; }
         public String closeday_id { get; set; }
         public String receipt1_no { get; set; }
+        public String agent_id { get; set; }
     }
 }
