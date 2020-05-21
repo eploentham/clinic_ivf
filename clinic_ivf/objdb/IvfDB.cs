@@ -980,6 +980,7 @@ namespace clinic_ivf.objdb
             ojsd.qty = qty;
             ojsd.bill_group_id = ojs.BillGroupID;
             ojsd.price1 = ojs.Price;
+            //ojsd. = ojs.Price;
             ojsdDB.insert(ojsd, "");
         }
         public void SpecialAdd(String sid, String qty, String pid, String pids, String vn, String extra, String w1uid, String w2uid, String w3uid, String w4uid, String row1, String flagOld)
