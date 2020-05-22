@@ -49,6 +49,7 @@ namespace clinic_ivf.gui
             sep = new C1SuperErrorProvider();
             ic.ivfDB.dtrOldDB.setCboDoctor(cboDoctor, "");
             ic.setCboDay(cboEmbryoFreezingDay, "");
+
             setControl();
 
             chkBiopsy.CheckedChanged += ChkBiopsy_CheckedChanged;
@@ -175,12 +176,79 @@ namespace clinic_ivf.gui
             txtHnMale.Value = lFormDay1.hn_male;
             txtDobFeMale.Value = lFormDay1.dob_female;
             txtDobMale.Value = lFormDay1.dob_male;
+            txtFormDay1Code.Value = lFormDay1.form_day1_code;
+            txtFormDay1Date.Value = lFormDay1.day1_date;
             //ic.setC1Combo(cboDoctor, lFormDay1.doctor_id);
 
             //txtFertili2Pn.Value = opu.fertili_2_pn;
-            txtFertili2Pn.Value = lFormDay1.fe;
+            txtFertili2Pn.Value = lFormDay1.fertili_2_pn;
             //ic.setC1Combo(cboDoctor, lFormDay1.doctor_id);
             txtLabFormACode.Value = lFormDay1.form_day1_code;
+            chkNoBiopsy.Checked = lFormDay1.status_no_biopsy.Equals("1") ? true : false;
+            chkBiopsy.Checked = lFormDay1.status_no_biopsy.Equals("2") ? true : false;
+            chkPgsMin.Checked = lFormDay1.status_biopsy_pgs.Equals("1") ? true : false;
+            chkNgs.Checked = lFormDay1.status_biopsy_ngs.Equals("1") ? true : false;
+            chkNgs7Pair.Checked = lFormDay1.status_biopsy_ngs_7_pair.Equals("1") ? true : false;
+            chkNgs23Pair.Checked = lFormDay1.status_biopsy_ngs_23_pair.Equals("1") ? true : false;
+            txtNgsMin.Value = lFormDay1.biopsy_ngs_min;
+            txtNgsMax.Value = lFormDay1.biopsy_ngs_max;
+            chkEmbryoFreezingDay.Checked = lFormDay1.embryo_freezing_day.Equals("1") ? true : false;
+            ic.setC1Combo(cboEmbryoFreezingDay, lFormDay1.embryo_freezing_day);
+            txtEmbryoFreezingEmbryoMax.Value = lFormDay1.embryo_freezing_day_max;
+            chkBlastocyst.Checked = lFormDay1.status_stage_blastocyst.Equals("1") ? true : false;
+            chkMorula.Checked = lFormDay1.status_stage_morula.Equals("1") ? true : false;
+            chkEmbryoTransferFresh.Checked = lFormDay1.status_embryo_tranfer.Equals("1") ? true : false;
+            chkEmbryoGlue.Checked = lFormDay1.status_embryo_tranfer_embryo_glue.Equals("1") ? true : false;
+            chkEmbryoTransferFreshDay3.Checked = lFormDay1.status_embryo_tranfer_day.Equals("3") ? true : false;
+            chkEmbryoTransferFreshDay5.Checked = lFormDay1.status_embryo_tranfer_day.Equals("5") ? true : false;
+            chkDiscard.Checked = lFormDay1.status_discard_all.Equals("1") ? true : false;
+
+            cboRemark.Text = lFormDay1.remark;
+        }
+        private void setLabFormDay1()
+        {
+            lFormDay1.form_day1_id = txtID.Text;
+            //txtLabFormACode.Value = lFormA.form_a_code;
+            lFormDay1.t_patient_id = txtPttId.Text;
+            lFormDay1.t_visit_id = txtVsId.Text;
+            //txtVnOld.Value = lFormDay1.vn_old;
+            //txtHnOld.Value = lFormDay1.hn_old;
+            lFormDay1.hn_female = txtHnFeMale.Text;
+            lFormDay1.name_female = txtNameFeMale.Text;
+            lFormDay1.name_male = txtNameMale.Text;
+            lFormDay1.hn_male = txtHnMale.Text;
+            lFormDay1.dob_female = txtDobFeMale.Text;
+            lFormDay1.dob_male = txtDobMale.Text;
+            lFormDay1.form_day1_code = txtFormDay1Code.Text;
+            lFormDay1.day1_date = txtFormDay1Date.Text;
+            //ic.setC1Combo(cboDoctor, lFormDay1.doctor_id);
+
+            //txtFertili2Pn.Value = opu.fertili_2_pn;
+            lFormDay1.fertili_2_pn = txtFertili2Pn.Text;
+            //ic.setC1Combo(cboDoctor, lFormDay1.doctor_id);
+            lFormDay1.form_day1_code = txtLabFormACode.Text;
+            lFormDay1.status_no_biopsy = chkNoBiopsy.Checked ? "1" : "2";
+            //lFormDay1.status_no_biopsy = chkBiopsy.Checked ? "2" : "1";
+            lFormDay1.status_biopsy_pgs = chkPgsMin.Checked ? "1" : "0";
+            //lFormDay1.status_biopsy_pgs = chkPgsMin.Checked ? "1" : "0";
+            lFormDay1.status_biopsy_ngs = chkNgs.Checked ? "1" : "0";
+            lFormDay1.status_biopsy_ngs_7_pair = chkNgs7Pair.Checked ? "1" : "0";
+            lFormDay1.status_biopsy_ngs_23_pair = chkNgs23Pair.Checked ? "1" : "0";
+            lFormDay1.biopsy_ngs_min = txtNgsMin.Text;
+            lFormDay1.biopsy_ngs_max = txtNgsMax.Text;
+            lFormDay1.embryo_freezing_day = chkEmbryoFreezingDay.Checked ? "1" : "0";
+            //ic.setC1Combo(cboEmbryoFreezingDay, lFormDay1.embryo_freezing_day);
+            lFormDay1.embryo_freezing_day = cboEmbryoFreezingDay.SelectedItem == null ? "" : ((ComboBoxItem)cboEmbryoFreezingDay.SelectedItem).Value;
+            lFormDay1.embryo_freezing_day_max = txtEmbryoFreezingEmbryoMax.Text;
+            lFormDay1.status_stage_blastocyst = chkBlastocyst.Checked ? "1" : "0";
+            lFormDay1.status_stage_morula = chkMorula.Checked ? "1" : "0";
+            lFormDay1.status_embryo_tranfer = chkEmbryoTransferFresh.Checked ? "1": "0";
+            lFormDay1.status_embryo_tranfer_embryo_glue = chkEmbryoGlue.Checked ? "1" : "0";
+            lFormDay1.status_embryo_tranfer_day = chkEmbryoTransferFreshDay3.Checked ? "3" : "5";
+            //chkEmbryoTransferFreshDay5.Checked = lFormDay1.status_embryo_tranfer_day.Equals("5") ? true : false;
+            lFormDay1.status_discard_all = chkDiscard.Checked ? "1" : "0"
+
+            cboRemark.Text = lFormDay1.remark;
         }
         private void BtnMaleSearch_Click(object sender, EventArgs e)
         {
@@ -324,7 +392,7 @@ namespace clinic_ivf.gui
             dt.Rows[0]["embryo_transfer_fresh_day3"] = chkEmbryoTransferFreshDay3.Checked == true ? "1" : "0";
             dt.Rows[0]["embryo_transfer_fresh_day5"] = chkEmbryoTransferFreshDay5.Checked == true ? "1" : "0";
             dt.Rows[0]["discard"] = chkDiscard.Checked == true ? "1" : "0";
-            dt.Rows[0]["remark"] = txtRemark.Text;
+            dt.Rows[0]["remark"] = cboRemark.Text;
             dt.Rows[0]["embryo_freezing_embryo_max"] = txtEmbryoFreezingEmbryoMax.Text;
             //dt.Rows[0][""]
             FrmReport frm = new FrmReport(ic);
