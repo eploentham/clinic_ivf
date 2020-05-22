@@ -1687,3 +1687,9 @@ ALTER TABLE `ivf`.`LabItemGroup`
 ADD COLUMN `bill_group_id` BIGINT NULL AFTER `active`,
 CHANGE COLUMN `LGID` `LGID` BIGINT NOT NULL AUTO_INCREMENT ;
 
+ALTER TABLE `ivf`.`lab_t_form_day1` 
+ADD COLUMN `form_a_id` BIGINT NULL AFTER `remark`;
+
+ALTER TABLE `ivf`.`lab_t_form_day1` 
+ADD COLUMN `fertili_2_pn` VARCHAR(45) NULL AFTER `form_a_id`;
+

@@ -169,9 +169,9 @@
             this.gbNgs = new System.Windows.Forms.GroupBox();
             this.chkNgs = new C1.Win.C1Input.C1CheckBox();
             this.chkNgsDay5 = new System.Windows.Forms.RadioButton();
+            this.chkWaitDay1 = new C1.Win.C1Input.C1CheckBox();
             this.chkPgs = new C1.Win.C1Input.C1CheckBox();
             this.chkNgsDay3 = new System.Windows.Forms.RadioButton();
-            this.chkWaitDay1 = new C1.Win.C1Input.C1CheckBox();
             this.label30 = new System.Windows.Forms.Label();
             this.txtOPURemark = new C1.Win.C1Input.C1TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -311,8 +311,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.chkNoNgs)).BeginInit();
             this.gbNgs.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkNgs)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkPgs)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkWaitDay1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkPgs)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtOPURemark)).BeginInit();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cboOPUWaitRemark)).BeginInit();
@@ -582,9 +582,9 @@
             this.label62.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.label62.Location = new System.Drawing.Point(648, 57);
             this.label62.Name = "label62";
-            this.label62.Size = new System.Drawing.Size(91, 16);
+            this.label62.Size = new System.Drawing.Size(90, 16);
             this.label62.TabIndex = 538;
-            this.label62.Text = "Req Number :";
+            this.label62.Text = "FormA Code :";
             this.theme1.SetTheme(this.label62, "(default)");
             // 
             // txtID
@@ -807,9 +807,9 @@
             this.label31.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.label31.Location = new System.Drawing.Point(648, 37);
             this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(91, 16);
+            this.label31.Size = new System.Drawing.Size(86, 16);
             this.label31.TabIndex = 527;
-            this.label31.Text = "Date request :";
+            this.label31.Text = "FormA Date :";
             this.theme1.SetTheme(this.label31, "(default)");
             // 
             // label6
@@ -2884,6 +2884,25 @@
             this.theme1.SetTheme(this.chkNgsDay5, "(default)");
             this.chkNgsDay5.UseVisualStyleBackColor = false;
             // 
+            // chkWaitDay1
+            // 
+            this.chkWaitDay1.BackColor = System.Drawing.Color.Transparent;
+            this.chkWaitDay1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkWaitDay1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.chkWaitDay1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chkWaitDay1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkWaitDay1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkWaitDay1.Location = new System.Drawing.Point(226, 33);
+            this.chkWaitDay1.Name = "chkWaitDay1";
+            this.chkWaitDay1.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.chkWaitDay1.Size = new System.Drawing.Size(140, 24);
+            this.chkWaitDay1.TabIndex = 733;
+            this.chkWaitDay1.Text = "รอ Confirm Day1";
+            this.theme1.SetTheme(this.chkWaitDay1, "(default)");
+            this.chkWaitDay1.UseVisualStyleBackColor = true;
+            this.chkWaitDay1.Value = null;
+            this.chkWaitDay1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
             // chkPgs
             // 
             this.chkPgs.BackColor = System.Drawing.Color.Transparent;
@@ -2918,25 +2937,6 @@
             this.chkNgsDay3.Text = "Day 3";
             this.theme1.SetTheme(this.chkNgsDay3, "(default)");
             this.chkNgsDay3.UseVisualStyleBackColor = false;
-            // 
-            // chkWaitDay1
-            // 
-            this.chkWaitDay1.BackColor = System.Drawing.Color.Transparent;
-            this.chkWaitDay1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.chkWaitDay1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.chkWaitDay1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.chkWaitDay1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkWaitDay1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkWaitDay1.Location = new System.Drawing.Point(226, 33);
-            this.chkWaitDay1.Name = "chkWaitDay1";
-            this.chkWaitDay1.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
-            this.chkWaitDay1.Size = new System.Drawing.Size(140, 24);
-            this.chkWaitDay1.TabIndex = 733;
-            this.chkWaitDay1.Text = "รอ Confirm Day1";
-            this.theme1.SetTheme(this.chkWaitDay1, "(default)");
-            this.chkWaitDay1.UseVisualStyleBackColor = true;
-            this.chkWaitDay1.Value = null;
-            this.chkWaitDay1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // label30
             // 
@@ -3762,8 +3762,8 @@
             this.gbNgs.ResumeLayout(false);
             this.gbNgs.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkNgs)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkPgs)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkWaitDay1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkPgs)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtOPURemark)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();

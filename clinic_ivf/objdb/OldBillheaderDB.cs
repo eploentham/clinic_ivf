@@ -452,7 +452,8 @@ namespace clinic_ivf.objdb
             }
             return re;
         }
-        public String updateReceiptNoByBillId(String billid, String billno, String cash, String credit, String creditnumber, String cashid, String creditid, String total, String discount, String paymentby)
+        public String updateReceiptNoByBillId(String billid, String billno, String cash, String credit, String creditnumber, String cashid
+            , String creditid, String total, String discount, String paymentby)
         {
             String re = "", sql = "";
             long chk = 0;
@@ -486,7 +487,7 @@ namespace clinic_ivf.objdb
             long chk = 0;            
 
             sql = "Update " + obillh.table + " set " +
-                "" + obillh.receipt_no + "='" + billno + "' " +
+                "" + obillh.receipt1_no + "='" + billno + "' " +
                 "Where " + obillh.bill_id + "='" + billid + "' ";
             try
             {

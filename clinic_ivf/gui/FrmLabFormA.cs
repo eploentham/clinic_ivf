@@ -1247,7 +1247,7 @@ namespace clinic_ivf.gui
             {
                 lFormA = ic.ivfDB.lFormaDB.selectByVnOld(vn);
             }
-            if (!lFormA.form_a_id.Equals(""))
+            if (!lFormA.form_a_id.Equals("")) //  found
             {
                 if (lFormA.status_sperm_analysis.Equals("1"))
                 {
@@ -1292,7 +1292,7 @@ namespace clinic_ivf.gui
                     txtDobFeMale.Value = ptt2.patient_birthday;
                 }
             }
-            else
+            else// Not found
             {
                 if (!pttid.Equals(""))
                 {

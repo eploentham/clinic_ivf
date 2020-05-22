@@ -27,7 +27,7 @@ namespace clinic_ivf.gui
         Color bg, fc;
         Font ff, ffB;
 
-        int colID = 1, colVNshow = 2, colVN = 12, colPttHn = 3, colPttName = 4, colVsDate = 5, colVsTime = 6, colVsEtime = 7, colVsAgent=8, colStatus = 9, colPttId = 10, colStatusNurse = 11, colStatusCashier = 12, colBillId=13;
+        int colID = 1, colVNshow = 2, colVN = 12, colPttHn = 3, colPttName = 4, colVsDate = 5, colVsTime = 6, colVsEtime = 7, colVsAgent=8, colStatus = 9, colPttId = 10, colStatusNurse = 11, colStatusCashier = 12, colBillId=13, colAgentId=14;
         int colCldId = 1, colCldBillNo = 2, colCldReceiptNo = 3, colCldDate = 4, colCldHn = 5, colCldName = 6, colCldPkg1 = 7, colCldPkg2 = 8, colCldPkg3 = 9, colCldPkg4 = 10, colCldPkg5 = 11, colCldPkg6 = 12, colCldPkgOther=13, colCldDiscount = 14, colCldFreezing = 15;
         int colCldExtraDay6 = 16, colCldLabAll = 17, colCldLabBlood = 18, colCldMed = 19, colCldTVS = 20, colCldDtrfee = 21, colCldEquipment = 22, colCldOtherService = 23;
         int colCldAmount = 24, colCldAmount1 = 25, colCldInc=26, colCldExt=27, colCldVn =28, colCldBillId=29;
@@ -1542,7 +1542,7 @@ namespace clinic_ivf.gui
             if (!ic.cStf.staff_id.Equals(""))
             {
                 ic.ivfDB.VoidBill(id, ic.cStf.staff_id);
-                String billid1 = ic.ivfDB.getBill(id, ic.cStf.staff_id);
+                //String billid1 = ic.ivfDB.getBill(id, ic.cStf.staff_id);
                 String re1 = ic.ivfDB.vsDB.updateOpenStatusCashierByVn(id);
                 ic.ivfDB.nurseFinish(id, ic.cStf.staff_id);        // +0015
                 setGrfFinish();
@@ -1550,12 +1550,13 @@ namespace clinic_ivf.gui
         }
         private void ContextMenu_edit_bill(object sender, System.EventArgs e)
         {
-            String chk = "", name = "", id = "", vn="";
+            String chk = "", name = "", id = "", vn="", agentid="";
 
             id = grfQue[grfQue.Row, colID] != null ? grfQue[grfQue.Row, colID].ToString() : "";
             vn = grfQue[grfQue.Row, colVN] != null ? grfQue[grfQue.Row, colVN].ToString() : "";
             name = grfQue[grfQue.Row, colPttName] != null ? grfQue[grfQue.Row, colPttName].ToString() : "";
-            String billid = ic.getBillVN(id, ic.userId);
+            agentid = grfQue[grfQue.Row, colAgentId] != null ? grfQue[grfQue.Row, colAgentId].ToString() : "";
+            String billid = ic.getBillVN(id, agentid, ic.userId);
             String re1 = ic.ivfDB.vsDB.updateOpenStatusCashierByVn(id);
             openBillNew(id, name,"edit", billid);
         }
@@ -1594,7 +1595,7 @@ namespace clinic_ivf.gui
             //grfQue.ContextMenu = menuGw;
 
             grfQue.Rows.Count = dt.Rows.Count + 1;
-            grfQue.Cols.Count = 14;
+            grfQue.Cols.Count = 15;
             C1TextBox txt = new C1TextBox();
             //C1ComboBox cboproce = new C1ComboBox();
             //ic.ivfDB.itmDB.setCboItem(cboproce);
@@ -1656,6 +1657,7 @@ namespace clinic_ivf.gui
                 grfQue[i, colPttId] = row["PID"].ToString();
                 grfQue[i, colVsAgent] = row["AgentName"].ToString();
                 grfQue[i, colBillId] = "";
+                grfQue[i, colAgentId] = row["agent"].ToString();
                 //grfQue[i, colStatusNurse] = row["status_nurse"] != null ? row["status_nurse"].ToString() : "";
                 //grfQue[i, colStatusCashier] = row["status_cashier"] != null ? row["status_cashier"].ToString() : "";
                 //if (!row[ic.ivfDB.ovsDB.vsold.form_a_id].ToString().Equals("0"))
@@ -1671,6 +1673,7 @@ namespace clinic_ivf.gui
             CellNoteManager mgr = new CellNoteManager(grfQue);
             grfQue.Cols[colID].Visible = false;
             grfQue.Cols[colVN].Visible = false;
+            grfQue.Cols[colAgentId].Visible = false;
             grfQue.Cols[colBillId].Visible = false;
             grfQue.Cols[colVNshow].AllowEditing = false;
             grfQue.Cols[colPttHn].AllowEditing = false;

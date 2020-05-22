@@ -1087,7 +1087,7 @@ namespace clinic_ivf.objdb
             obilhDB.delete(vn);
             obildDB.delete(vn);
         }
-        public String getBill(String vn, String userId)
+        public String getBill(String vn, String agentId, String userId)
         {
             /* Step 1.
              * $this->db->query('delete from DebtorHeader Where VN="'.$VN.'"');
@@ -1224,6 +1224,7 @@ namespace clinic_ivf.objdb
             obillh.SepCredit = "";
             obillh.ExtBillNo = "";
             obillh.IntLock = "";
+            obillh.agent_id = agentId;
             String billid = "";
             billid = obilhDB.insertBillHeader(obillh, userId);
             //sql = "Select * from PackageSold Where PID='"+ ovs.PID+ "' and Status<>3'";
@@ -1347,8 +1348,8 @@ namespace clinic_ivf.objdb
                     {
                         Decimal price = 0,qty=0;
                         String grp3 = "", grp4 = "", grp = "";
-                        grp3 = obilgDB.getList("3");
-                        grp4 = obilgDB.getList("4");
+                        grp3 = obilgDB.getList("2650000003");
+                        grp4 = obilgDB.getList("2650000004");
 
                         grp = row["LGID"].ToString().Equals("1") ? grp3 : grp4;
                         Decimal.TryParse(row["Price"].ToString(), out price);
@@ -1394,7 +1395,7 @@ namespace clinic_ivf.objdb
                     {
                         Decimal price = 0, qty = 0;
                         String grp1 = "", grp4 = "", grp = "";
-                        grp1 = obilgDB.getList("1");
+                        grp1 = obilgDB.getList("2650000001");
                         Decimal.TryParse(row["Price"].ToString(), out price);
                         Decimal.TryParse(row["QTY"].ToString(), out qty);
                         OldBilldetail obilld = new OldBilldetail();
@@ -1456,8 +1457,8 @@ namespace clinic_ivf.objdb
                     {
                         Decimal price = 0, qty = 0;
                         String grp3 = "", grp4 = "", grp = "";
-                        grp3 = obilgDB.getList("3");
-                        grp4 = obilgDB.getList("4");
+                        grp3 = obilgDB.getList("2650000003");
+                        grp4 = obilgDB.getList("2650000004");
 
                         grp = row["LGID"].ToString().Equals("1") ? grp3 : grp4;
                         Decimal.TryParse(row["Price"].ToString(), out price);
@@ -1506,7 +1507,7 @@ namespace clinic_ivf.objdb
                     {
                         Decimal price = 0, qty = 0;
                         String grp1 = "", grp4 = "", grp = "";
-                        grp1 = obilgDB.getList("1");
+                        grp1 = obilgDB.getList("2650000001");
                         Decimal.TryParse(row["Price"].ToString(), out price);
                         Decimal.TryParse(row["QTY"].ToString(), out qty);
                         OldBilldetail obilld = new OldBilldetail();
@@ -1759,7 +1760,7 @@ namespace clinic_ivf.objdb
             dtprn.Columns.Add("grp", typeof(String));
             dtprn.Columns.Add("grp_name", typeof(String));
             dtprn.Columns.Add("original", typeof(String));
-            sql = "Select ID,Name from BillGroup Where ID=2650000000";
+            sql = "Select ID,Name from BillGroup Where ID=2650000000";//package
             dt = conn.selectData(conn.conn, sql);
             String name = "", total111="", comm="";
             Decimal total1111 = 0, amt=0;
@@ -1808,7 +1809,7 @@ namespace clinic_ivf.objdb
                 }
             }
 
-            sql = "Select ID, Name from BillGroup Where ID<=2650000099 and ID>2650000000";
+            sql = "Select ID, Name from BillGroup Where ID<2650000099 and ID>2650000000";
             dt = conn.selectData(conn.conn, sql);
             if (dt.Rows.Count > 0)
             {
@@ -1871,7 +1872,7 @@ namespace clinic_ivf.objdb
 
                     id = row["ID"].ToString();
                     namedesc = row["Name"].ToString();
-                    sql = "Select sum(Total) as Total1, Name from BillDetail Where Total<>0 and VN='" + vn + "' and GroupType='" + id + "' and active = '1' Group By Name ";
+                    sql = "Select sum(Total) as Total1, Name from BillDetail Where Total<>0 and VN='" + vn + "' and bill_group_id ='" + id + "' and active = '1' Group By Name ";
                     dtb0 = conn.selectData(conn.conn, sql);
                     if (dtb0.Rows.Count > 0)
                     {
@@ -1914,7 +1915,7 @@ namespace clinic_ivf.objdb
 
                     id = row["ID"].ToString();
                     namedesc = row["Name"].ToString();
-                    sql = "Select sum(Total) as Total1, Name from BillDetail Where Total<>0 and VN='" + vn + "' and GroupType='" + id + "' and active = '1' Group By Name ";
+                    sql = "Select sum(Total) as Total1, Name from BillDetail Where Total<>0 and VN='" + vn + "' and bill_group_id='" + id + "' and active = '1' Group By Name ";
                     dtb0 = conn.selectData(conn.conn, sql);
                     if (dtb0.Rows.Count > 0)
                     {

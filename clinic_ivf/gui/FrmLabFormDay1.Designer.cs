@@ -30,6 +30,8 @@
         {
             this.theme1 = new C1.Win.C1Themes.C1ThemeController();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.txtAgent = new C1.Win.C1Input.C1TextBox();
             this.btnPrint = new C1.Win.C1Input.C1Button();
             this.txtDonorDob = new C1.Win.C1Input.C1TextBox();
             this.txtNameDonor = new C1.Win.C1Input.C1TextBox();
@@ -101,10 +103,18 @@
             this.chkNoBiopsy = new System.Windows.Forms.RadioButton();
             this.sB = new System.Windows.Forms.StatusStrip();
             this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.label18 = new System.Windows.Forms.Label();
-            this.txtAgent = new C1.Win.C1Input.C1TextBox();
+            this.btnSave = new C1.Win.C1Input.C1Button();
+            this.btnSend = new C1.Win.C1Input.C1Button();
+            this.txtLabFormACode = new C1.Win.C1Input.C1TextBox();
+            this.label62 = new System.Windows.Forms.Label();
+            this.btnSearchFormA = new C1.Win.C1Input.C1Button();
+            this.txtFormDay1Code = new C1.Win.C1Input.C1TextBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.txtFormDay1Date = new C1.Win.C1Input.C1DateEdit();
+            this.label31 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtAgent)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPrint)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDonorDob)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNameDonor)).BeginInit();
@@ -150,7 +160,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.chkNgs)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkPgsMin)).BeginInit();
             this.sB.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtAgent)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSave)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSend)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtLabFormACode)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSearchFormA)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtFormDay1Code)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtFormDay1Date)).BeginInit();
             this.SuspendLayout();
             // 
             // theme1
@@ -160,9 +175,12 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox1.Controls.Add(this.txtFormDay1Code);
+            this.groupBox1.Controls.Add(this.label19);
+            this.groupBox1.Controls.Add(this.txtFormDay1Date);
+            this.groupBox1.Controls.Add(this.label31);
             this.groupBox1.Controls.Add(this.label18);
             this.groupBox1.Controls.Add(this.txtAgent);
-            this.groupBox1.Controls.Add(this.btnPrint);
             this.groupBox1.Controls.Add(this.txtDonorDob);
             this.groupBox1.Controls.Add(this.txtNameDonor);
             this.groupBox1.Controls.Add(this.btmDonorSearch);
@@ -200,11 +218,37 @@
             this.groupBox1.Text = "Patient";
             this.theme1.SetTheme(this.groupBox1, "(default)");
             // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label18.Location = new System.Drawing.Point(648, 37);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(49, 16);
+            this.label18.TabIndex = 731;
+            this.label18.Text = "Agent :";
+            this.theme1.SetTheme(this.label18, "(default)");
+            // 
+            // txtAgent
+            // 
+            this.txtAgent.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtAgent.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtAgent.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtAgent.Location = new System.Drawing.Point(742, 35);
+            this.txtAgent.Name = "txtAgent";
+            this.txtAgent.Size = new System.Drawing.Size(207, 20);
+            this.txtAgent.TabIndex = 730;
+            this.txtAgent.Tag = null;
+            this.theme1.SetTheme(this.txtAgent, "(default)");
+            this.txtAgent.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
             // btnPrint
             // 
             this.btnPrint.Image = global::clinic_ivf.Properties.Resources.print;
             this.btnPrint.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPrint.Location = new System.Drawing.Point(956, 65);
+            this.btnPrint.Location = new System.Drawing.Point(781, 514);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(79, 34);
             this.btnPrint.TabIndex = 729;
@@ -596,7 +640,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(67, 16);
             this.label1.TabIndex = 515;
-            this.label1.Text = "HN male :";
+            this.label1.Text = "HN Male :";
             this.theme1.SetTheme(this.label1, "(default)");
             // 
             // txtHnMale
@@ -641,6 +685,12 @@
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox2.Controls.Add(this.btnSend);
+            this.groupBox2.Controls.Add(this.btnSave);
+            this.groupBox2.Controls.Add(this.btnSearchFormA);
+            this.groupBox2.Controls.Add(this.txtLabFormACode);
+            this.groupBox2.Controls.Add(this.label62);
+            this.groupBox2.Controls.Add(this.btnPrint);
             this.groupBox2.Controls.Add(this.label17);
             this.groupBox2.Controls.Add(this.txtRemark);
             this.groupBox2.Controls.Add(this.chkDiscard);
@@ -1301,31 +1351,155 @@
             this.sB1.Size = new System.Drawing.Size(118, 17);
             this.sB1.Text = "toolStripStatusLabel1";
             // 
-            // label18
+            // btnSave
             // 
-            this.label18.AutoSize = true;
-            this.label18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label18.Location = new System.Drawing.Point(648, 37);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(49, 16);
-            this.label18.TabIndex = 731;
-            this.label18.Text = "Agent :";
-            this.theme1.SetTheme(this.label18, "(default)");
+            this.btnSave.Image = global::clinic_ivf.Properties.Resources.SaveAs_large;
+            this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSave.Location = new System.Drawing.Point(686, 514);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(79, 34);
+            this.btnSave.TabIndex = 732;
+            this.btnSave.Text = "Save";
+            this.btnSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnSave, "(default)");
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // txtAgent
+            // btnSend
             // 
-            this.txtAgent.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtAgent.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtAgent.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtAgent.Location = new System.Drawing.Point(742, 35);
-            this.txtAgent.Name = "txtAgent";
-            this.txtAgent.Size = new System.Drawing.Size(207, 20);
-            this.txtAgent.TabIndex = 730;
-            this.txtAgent.Tag = null;
-            this.theme1.SetTheme(this.txtAgent, "(default)");
-            this.txtAgent.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.btnSend.Image = global::clinic_ivf.Properties.Resources.lorry_48x48;
+            this.btnSend.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSend.Location = new System.Drawing.Point(947, 514);
+            this.btnSend.Name = "btnSend";
+            this.btnSend.Size = new System.Drawing.Size(88, 34);
+            this.btnSend.TabIndex = 733;
+            this.btnSend.Text = "Send";
+            this.btnSend.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnSend, "(default)");
+            this.btnSend.UseVisualStyleBackColor = true;
+            this.btnSend.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // txtLabFormACode
+            // 
+            this.txtLabFormACode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtLabFormACode.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtLabFormACode.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtLabFormACode.Location = new System.Drawing.Point(495, 19);
+            this.txtLabFormACode.Name = "txtLabFormACode";
+            this.txtLabFormACode.Size = new System.Drawing.Size(207, 24);
+            this.txtLabFormACode.TabIndex = 767;
+            this.txtLabFormACode.Tag = null;
+            this.theme1.SetTheme(this.txtLabFormACode, "(default)");
+            this.txtLabFormACode.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label62
+            // 
+            this.label62.AutoSize = true;
+            this.label62.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label62.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label62.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label62.Location = new System.Drawing.Point(403, 24);
+            this.label62.Name = "label62";
+            this.label62.Size = new System.Drawing.Size(90, 16);
+            this.label62.TabIndex = 766;
+            this.label62.Text = "FormA Code :";
+            this.theme1.SetTheme(this.label62, "(default)");
+            // 
+            // btnSearchFormA
+            // 
+            this.btnSearchFormA.Location = new System.Drawing.Point(708, 18);
+            this.btnSearchFormA.Name = "btnSearchFormA";
+            this.btnSearchFormA.Size = new System.Drawing.Size(28, 23);
+            this.btnSearchFormA.TabIndex = 768;
+            this.btnSearchFormA.Text = "...";
+            this.theme1.SetTheme(this.btnSearchFormA, "(default)");
+            this.btnSearchFormA.UseVisualStyleBackColor = true;
+            this.btnSearchFormA.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // txtFormDay1Code
+            // 
+            this.txtFormDay1Code.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtFormDay1Code.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtFormDay1Code.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtFormDay1Code.Location = new System.Drawing.Point(742, 80);
+            this.txtFormDay1Code.Name = "txtFormDay1Code";
+            this.txtFormDay1Code.Size = new System.Drawing.Size(207, 20);
+            this.txtFormDay1Code.TabIndex = 735;
+            this.txtFormDay1Code.Tag = null;
+            this.theme1.SetTheme(this.txtFormDay1Code, "(default)");
+            this.txtFormDay1Code.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label19.Location = new System.Drawing.Point(649, 83);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(75, 16);
+            this.label19.TabIndex = 734;
+            this.label19.Text = "Day Code :";
+            this.theme1.SetTheme(this.label19, "(default)");
+            // 
+            // txtFormDay1Date
+            // 
+            this.txtFormDay1Date.AllowSpinLoop = false;
+            this.txtFormDay1Date.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            // 
+            // 
+            // 
+            this.txtFormDay1Date.Calendar.ArrowColor = System.Drawing.Color.Black;
+            this.txtFormDay1Date.Calendar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.txtFormDay1Date.Calendar.DayNamesFont = new System.Drawing.Font("Tahoma", 8F);
+            this.txtFormDay1Date.Calendar.Font = new System.Drawing.Font("Tahoma", 8F);
+            this.txtFormDay1Date.Calendar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.txtFormDay1Date.Calendar.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(71)))), ((int)(((byte)(47)))));
+            this.txtFormDay1Date.Calendar.SelectionForeColor = System.Drawing.Color.White;
+            this.txtFormDay1Date.Calendar.TitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.txtFormDay1Date.Calendar.TitleFont = new System.Drawing.Font("Tahoma", 8F);
+            this.txtFormDay1Date.Calendar.TitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.txtFormDay1Date.Calendar.TodayBorderColor = System.Drawing.Color.White;
+            this.txtFormDay1Date.Calendar.TrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtFormDay1Date.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.txtFormDay1Date.Culture = 1054;
+            this.txtFormDay1Date.CurrentTimeZone = false;
+            this.txtFormDay1Date.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtFormDay1Date.DisplayFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
+            this.txtFormDay1Date.DisplayFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
+            this.txtFormDay1Date.DisplayFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)(((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
+            this.txtFormDay1Date.EditFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
+            this.txtFormDay1Date.EditFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
+            this.txtFormDay1Date.EditFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)(((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
+            this.txtFormDay1Date.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtFormDay1Date.GMTOffset = System.TimeSpan.Parse("00:00:00");
+            this.txtFormDay1Date.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.txtFormDay1Date.Location = new System.Drawing.Point(743, 57);
+            this.txtFormDay1Date.Name = "txtFormDay1Date";
+            this.txtFormDay1Date.Size = new System.Drawing.Size(128, 20);
+            this.txtFormDay1Date.TabIndex = 733;
+            this.txtFormDay1Date.Tag = null;
+            this.theme1.SetTheme(this.txtFormDay1Date, "(default)");
+            this.txtFormDay1Date.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label31.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label31.Location = new System.Drawing.Point(649, 61);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(78, 16);
+            this.label31.TabIndex = 732;
+            this.label31.Text = "Day1 Date :";
+            this.theme1.SetTheme(this.label31, "(default)");
             // 
             // FrmLabFormDay1
             // 
@@ -1342,6 +1516,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtAgent)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPrint)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDonorDob)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNameDonor)).EndInit();
@@ -1394,7 +1569,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.chkPgsMin)).EndInit();
             this.sB.ResumeLayout(false);
             this.sB.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtAgent)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSave)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSend)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtLabFormACode)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSearchFormA)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtFormDay1Code)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtFormDay1Date)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1477,5 +1657,14 @@
         private C1.Win.C1Input.C1Button btnPrint;
         private System.Windows.Forms.Label label18;
         private C1.Win.C1Input.C1TextBox txtAgent;
+        private C1.Win.C1Input.C1Button btnSend;
+        private C1.Win.C1Input.C1Button btnSave;
+        private C1.Win.C1Input.C1TextBox txtLabFormACode;
+        private System.Windows.Forms.Label label62;
+        private C1.Win.C1Input.C1Button btnSearchFormA;
+        private C1.Win.C1Input.C1TextBox txtFormDay1Code;
+        private System.Windows.Forms.Label label19;
+        private C1.Win.C1Input.C1DateEdit txtFormDay1Date;
+        private System.Windows.Forms.Label label31;
     }
 }

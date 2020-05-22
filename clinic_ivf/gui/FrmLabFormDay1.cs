@@ -73,23 +73,92 @@ namespace clinic_ivf.gui
         {
             lFormDay1 = ic.ivfDB.lformDay1DB.selectByPk1(lformDay1Id);
             
-            if (!lFormDay1.form_day1_id.Equals(""))
+            if (!lFormDay1.form_day1_id.Equals("")) //  found
             {
                 LabRequest req = new LabRequest();
                 vs = ic.ivfDB.vsDB.selectByPk1(vsid);
                 //opu = ic.ivfDB.opuDB.selectByReqID(req.req_id);
                 setControl1();
             }
-            else
+            else// Not found
             {
                 ovs = ic.ivfDB.ovsDB.selectByPk1(vsidOld);
                 ptt = ic.ivfDB.pttDB.selectByHn(ovs.PIDS);
                 txtHnFeMale.Value = ptt.patient_hn;
                 txtNameFeMale.Value = ptt.Name;
+                txtDobFeMale.Value = ptt.AgeString();
                 txtHnMale.Value = ptt.patient_hn_couple;
                 txtNameMale.Value = ptt.patient_couple_firstname;
-                txtDobFeMale.Value = ptt.AgeString();
+                
                 txtAgent.Value = ptt.agent;
+                if (ic.iniC.statusAppDonor.Equals("1"))
+                {
+                    if (ptt.f_sex_id.Equals("1"))//male
+                    {
+                        Patient ptt1 = new Patient();
+                        ptt1 = ic.ivfDB.pttDB.selectByHn(ptt.patient_hn_1);
+                        txtHnMale.Value = ptt.patient_hn;
+                        txtNameMale.Value = ptt.Name;
+                        txtHnFeMale.Value = ptt.patient_hn_1;
+                        txtNameFeMale.Value = ptt1.Name;
+                        txtDobFeMale.Value = ptt1.patient_birthday;
+                        txtDobMale.Value = ptt.patient_birthday;
+                    }
+                    else if (ptt.f_sex_id.Equals("2"))//female
+                    {
+                        if (!ptt.patient_hn_1.Equals("") && !ptt.patient_hn_2.Equals(""))    // record donor
+                        {
+                            txtHnFeMale.Value = ptt.patient_hn_1;
+                            txtHnMale.Value = ptt.patient_hn_2;
+                            txtHnDonor.Value = ptt.patient_hn;
+                            txtNameDonor.Value = ptt.Name;
+                            Patient ptt1 = new Patient();
+                            ptt1 = ic.ivfDB.pttDB.selectByHn(ptt.patient_hn_1);
+                            txtNameFeMale.Value = ptt1.Name;
+                            Patient ptt2 = new Patient();
+                            ptt2 = ic.ivfDB.pttDB.selectByHn(ptt.patient_hn_2);
+                            txtNameMale.Value = ptt2.Name;
+                            txtDobFeMale.Value = ptt1.patient_birthday;
+                            txtDobMale.Value = ptt2.patient_birthday;
+                        }
+                        else if (ptt.patient_hn_1.Equals("") && !ptt.patient_hn_2.Equals(""))   // record female
+                        {
+                            Patient ptt1 = new Patient();
+                            ptt1 = ic.ivfDB.pttDB.selectByHn(ptt.patient_hn_2);
+                            txtHnMale.Value = ptt.patient_hn_2;
+                            txtNameMale.Value = ptt1.Name;
+                            txtHnFeMale.Value = ptt.patient_hn;
+                            txtNameFeMale.Value = ptt.Name;
+                            txtDobMale.Value = ptt1.patient_birthday;
+                            txtDobFeMale.Value = ptt.patient_birthday;
+                        }
+                    }
+                }
+                else
+                {
+                    if (ptt.f_sex_id.Equals("1"))//male
+                    {
+                        Patient ptt1 = new Patient();
+                        ptt1 = ic.ivfDB.pttDB.selectByHn(ptt.patient_hn_1);
+                        txtHnMale.Value = ptt.patient_hn;
+                        txtNameMale.Value = ptt.Name;
+                        txtHnFeMale.Value = ptt.patient_hn_1;
+                        txtNameFeMale.Value = ptt1.Name;
+                        txtDobMale.Value = ptt.patient_birthday;
+                        txtDobFeMale.Value = ptt1.patient_birthday;
+                    }
+                    else if (ptt.f_sex_id.Equals("2"))//female
+                    {
+                        Patient ptt2 = new Patient();
+                        ptt2 = ic.ivfDB.pttDB.selectByHn(ptt.patient_hn_2);
+                        txtHnMale.Value = ptt.patient_hn_2;
+                        txtNameMale.Value = ptt2.Name;
+                        txtHnFeMale.Value = ptt.patient_hn;
+                        txtNameFeMale.Value = ptt.Name;
+                        txtDobMale.Value = ptt2.patient_birthday;
+                        txtDobFeMale.Value = ptt.patient_birthday;
+                    }
+                }
             }
         }
         private void setControl1()
@@ -108,7 +177,10 @@ namespace clinic_ivf.gui
             txtDobMale.Value = lFormDay1.dob_male;
             //ic.setC1Combo(cboDoctor, lFormDay1.doctor_id);
 
-            txtFertili2Pn.Value = opu.fertili_2_pn;
+            //txtFertili2Pn.Value = opu.fertili_2_pn;
+            txtFertili2Pn.Value = lFormDay1.fe;
+            //ic.setC1Combo(cboDoctor, lFormDay1.doctor_id);
+            txtLabFormACode.Value = lFormDay1.form_day1_code;
         }
         private void BtnMaleSearch_Click(object sender, EventArgs e)
         {

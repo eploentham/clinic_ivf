@@ -971,7 +971,7 @@ namespace clinic_ivf.objdb
                 conn.ExecuteNonQuery(conn.conn, sql);
             }
             year = String.Concat(DateTime.Now.Year + 543);
-            doc = cop1.prefix_vn_doc + doc;
+            doc = cop1.prefix_form_a_doc + doc;
             return doc;
         }
         public String genFEFDoc()

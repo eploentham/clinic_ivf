@@ -203,8 +203,9 @@ namespace clinic_ivf.gui
             long.TryParse(amt.ToString(), out amt1);
             dt = ic.ivfDB.printBill(txtVn.Text, ref amt, ref payby);
 
-            String receiptno = "", billnoex1 = "";
+            String receiptno = "", billnoex1 = "", agentId="";
             receiptno = ic.ivfDB.obilhDB.selectReceiptNoByVN(ovs.VN);
+            
             //billnoex1 = ic.ivfDB.obilhDB.selectBillNoExByVN(ovs.VN);
             //new LogWriter("e", "printReceipt receiptno " + receiptno);
             if (flagExtra.Equals("2")) receiptno = "";      //พิมพ์ ใบเสร็จ 2 ชุด
@@ -453,6 +454,16 @@ namespace clinic_ivf.gui
                         txtDiscount.Value = discount;
                     }
                 }
+                else if (chkDiscountCash.Checked)
+                {
+                    Decimal.TryParse(txtAmt.Text, out nettotal);
+                    //if (!chkDiscountCash.Checked)
+                    //{
+                        //Decimal.TryParse(txtDiscountAmt.Text, out discountper);
+                        //discount = (nettotal * discountper / 100);
+                        //txtDiscount.Value = discount;
+                    //}
+                }
                 else
                 {
                     Decimal.TryParse(txtAmt.Text, out nettotal);
@@ -485,8 +496,9 @@ namespace clinic_ivf.gui
                 }
                 obilld.Price = "-" + txtDiscount.Text.Replace(",", "");
                 obilld.Total = "-" + txtDiscount.Text.Replace(",", "");
+                obilld.price1 = "-" + txtDiscount.Text.Replace(",", "");
                 obilld.Comment = "";
-                obilld.bill_group_id = "99";            // form table billgroup
+                obilld.bill_group_id = "2650000099";            // form table billgroup
                 obilld.GroupType = "Discount";
                 obilld.bill_id = txtBillId.Text;
                 long chk = 0;
@@ -550,8 +562,9 @@ namespace clinic_ivf.gui
             obilld.item_id = "98";            // form table specialitem
             obilld.GroupType = "OtherService";
             obilld.status = "special";
-            obilld.bill_group_id = "102";            // form table billgroup
+            obilld.bill_group_id = "2650000102";            // form table billgroup
             obilld.bill_id = txtBillId.Text;        //  +0007
+            obilld.price1 = txtPayCreditCard.Text.Replace(",", "");
             ic.ivfDB.obildDB.insertBillDetail(obilld, ic.userId);
             setGrfBillD();
             calTotal();
@@ -1176,8 +1189,8 @@ namespace clinic_ivf.gui
         {
             String date = "";
             date = DateTime.Now.Year + "-" + DateTime.Now.ToString("MM-dd");
-            menu.Text = ic.iniC.statusAppDonor.Equals("1") ? "โปรแกรมClinic IVF Donor " + "สวัสดี คุณ " + ic.user.staff_fname_t + " " + ic.user.staff_lname_t + " Update 2020-05-06-1 "
-                : "โปรแกรมClinic IVF " + "สวัสดี คุณ " + ic.user.staff_fname_t + " " + ic.user.staff_lname_t + " Update 2020-05-06-1 format date " + date
+            menu.Text = ic.iniC.statusAppDonor.Equals("1") ? "โปรแกรมClinic IVF Donor " + "สวัสดี คุณ " + ic.user.staff_fname_t + " " + ic.user.staff_lname_t + " Update 2020-05-21 "
+                : "โปรแกรมClinic IVF " + "สวัสดี คุณ " + ic.user.staff_fname_t + " " + ic.user.staff_lname_t + " Update 2020-05-21 format date " + date
                 + " [" + ic.ivfDB.copDB.cop.day + "-" + ic.ivfDB.copDB.cop.month + "-" + ic.ivfDB.copDB.cop.year + "]";
             //sB1.Text = "Date " + ic.cop.day + "-" + ic.cop.month + "-" + ic.cop.year + " Server " + ic.iniC.hostDB + " FTP " + ic.iniC.hostFTP;
             sB1.Text = "Date " + ic.cop.day + "-" + ic.cop.month + "-" + ic.cop.year + " Server " + ic.iniC.hostDB + " FTP " + ic.iniC.hostFTP + "/" + ic.iniC.folderFTP;

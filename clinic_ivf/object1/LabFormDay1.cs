@@ -44,6 +44,7 @@ namespace clinic_ivf.object1
         public String status_discard_all { get; set; }
         public String status_remark { get; set; }
         public String remark_other { get; set; }
-        
+        public String form_a_id { get; set; }
+        public String fertili_2_pn { get; set; }
     }
 }

@@ -65,6 +65,8 @@ namespace clinic_ivf.objdb
             lformDay1.user_create = "user_create";
             lformDay1.user_modi = "user_modi";
             lformDay1.user_cancel = "user_cancel";
+            lformDay1.form_a_id = "form_a_id";
+            lformDay1.fertili_2_pn = "fertili_2_pn";
 
             lformDay1.pkField = "form_day1_id";
             lformDay1.table = "lab_t_form_day1";
@@ -121,7 +123,7 @@ namespace clinic_ivf.objdb
             p.remark_other = p.remark_other == null ? "" : p.remark_other;
             p.active = p.active == null ? "1" : p.active;
             p.remark = p.remark == null ? "" : p.remark;
-            //p.opu_date = p.opu_date == null ? "" : p.opu_date;
+            p.fertili_2_pn = p.fertili_2_pn == null ? "" : p.fertili_2_pn;
             //p.opu_date = p.opu_date == null ? "" : p.opu_date;
             //p.opu_date = p.opu_date == null ? "" : p.opu_date;
             //p.opu_date = p.opu_date == null ? "" : p.opu_date;
@@ -150,10 +152,10 @@ namespace clinic_ivf.objdb
 
             p.t_patient_id = long.TryParse(p.t_patient_id, out chk) ? chk.ToString() : "0";
             p.t_visit_id = long.TryParse(p.t_visit_id, out chk) ? chk.ToString() : "0";
-            p.t_patient_id = long.TryParse(p.t_patient_id, out chk) ? chk.ToString() : "0";
-            p.t_patient_id = long.TryParse(p.t_patient_id, out chk) ? chk.ToString() : "0";
-            p.t_patient_id = long.TryParse(p.t_patient_id, out chk) ? chk.ToString() : "0";
-            p.t_patient_id = long.TryParse(p.t_patient_id, out chk) ? chk.ToString() : "0";
+            p.form_a_id = long.TryParse(p.form_a_id, out chk) ? chk.ToString() : "0";
+            //p.t_patient_id = long.TryParse(p.t_patient_id, out chk) ? chk.ToString() : "0";
+            //p.t_patient_id = long.TryParse(p.t_patient_id, out chk) ? chk.ToString() : "0";
+            //p.t_patient_id = long.TryParse(p.t_patient_id, out chk) ? chk.ToString() : "0";
         }
         public String insert(LabFormDay1 p, String userId)
         {
@@ -207,7 +209,9 @@ namespace clinic_ivf.objdb
                     "," + lformDay1.user_create + "='" + userId + "@" + conn._IPAddress + "' " +
                     "," + lformDay1.user_modi + "='' " +
                     "," + lformDay1.user_cancel + "='' " +
-                    
+                    "," + lformDay1.form_a_id + "='" + p.form_a_id + "'" +
+                    "," + lformDay1.fertili_2_pn + "='" + p.fertili_2_pn + "'" +
+
                     "";
                 re = conn.ExecuteNonQuery(conn.conn, sql);
             }
@@ -263,6 +267,8 @@ namespace clinic_ivf.objdb
                     "," + lformDay1.remark_other + "='" + p.remark_other.Replace("'", "''") + "'" +
                     "," + lformDay1.date_modi + "=now() " +
                     "," + lformDay1.user_modi + "='" + userId + "@" + conn._IPAddress + "' " +
+                    "," + lformDay1.form_a_id + "='" + p.form_a_id + "'" +
+                    "," + lformDay1.fertili_2_pn + "='" + p.fertili_2_pn + "'" +
                 " Where " + lformDay1.pkField + " = '" + p.form_day1_id + "' "
                 ;
             try
@@ -339,6 +345,8 @@ namespace clinic_ivf.objdb
                 vs1.user_create = dt.Rows[0][lformDay1.user_create].ToString();
                 vs1.user_modi = dt.Rows[0][lformDay1.user_modi].ToString();
                 vs1.user_cancel = dt.Rows[0][lformDay1.user_cancel].ToString();
+                vs1.form_a_id = dt.Rows[0][lformDay1.form_a_id].ToString();
+                vs1.fertili_2_pn = dt.Rows[0][lformDay1.fertili_2_pn].ToString();
             }
             else
             {
@@ -392,7 +400,8 @@ namespace clinic_ivf.objdb
             vs1.user_create = "";
             vs1.user_modi = "";
             vs1.user_cancel = "";
-
+            vs1.form_a_id = "";
+            vs1.fertili_2_pn = "";
             return vs1;
         }
     }
