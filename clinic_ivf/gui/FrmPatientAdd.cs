@@ -591,7 +591,7 @@ namespace clinic_ivf.gui
             }
             dt.Rows[0]["queue"] = txt;
 
-            dt.Rows[0]["agent"] = ic.ivfDB.oAgnDB.getList(ptt.agent);
+            dt.Rows[0]["agent"] = ic.ivfDB.oAgnDB.getAgentNameById(ptt.agent);
             //BinaryFormatter bformatter = new BinaryFormatter();
             //stream.Seek(0, SeekOrigin.Begin);
             //var aaa = bformatter.Deserialize(stream);

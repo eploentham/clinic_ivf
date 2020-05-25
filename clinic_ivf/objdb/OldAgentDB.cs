@@ -102,7 +102,7 @@ namespace clinic_ivf.objdb
                 loAgn.Add(itm1);
             }
         }
-        public String getList(String id)
+        public String getAgentNameById(String id)
         {
             String re = "";
             re = id;

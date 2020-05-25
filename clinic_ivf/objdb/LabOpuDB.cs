@@ -172,6 +172,7 @@ namespace clinic_ivf.objdb
             opu.report_day1 = "report_day1";
             opu.report_day3 = "report_day3";
             opu.report_day6 = "report_day6";
+            opu.fertili_2_pn_add = "fertili_2_pn_add";
 
             opu.table = "lab_t_opu";
             opu.pkField = "opu_id";
@@ -281,6 +282,31 @@ namespace clinic_ivf.objdb
                 "Left Join Doctor on Doctor.ID = opu.doctor_id " +
                 "Left Join lab_b_procedure on opu.proce_id = lab_b_procedure.proce_id " +
                 "Where opu." + opu.status_opu + " ='1' and opu." + opu.active + "='1' "+ wherehn +
+                //"Order By opu." + opu.opu_id + " " +
+                //"Union " +
+                //"select fet.fet_id , fet.fet_code ,fet.hn_female ,fet.name_female,fet.fet_date ,fet.remark, fet.hn_male, fet.name_male, lab_b_procedure.proce_name_t " +
+                //"From lab_t_fet fet  " +
+                //"Left Join Doctor on Doctor.ID = fet.doctor_id " +
+                //"Left Join lab_b_procedure on fet.proce_id = lab_b_procedure.proce_id " +
+                //"Where fet.status_fet ='1' and fet.active + '1' " +
+                //"Order By fet.fet_id  ";
+                "  ";
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
+        public DataTable selectBySearchHn(String search)
+        {
+            String wherehn = "";
+            if (!search.Equals(""))
+            {
+                wherehn = "  (opu." + opu.hn_male + " like '%" + search + "%' and opu." + opu.active + "='1') or (opu." + opu.hn_female + " like '%" + search + "%' and opu." + opu.active + "='1') ";
+            }
+            DataTable dt = new DataTable();
+            String sql = "select opu." + opu.opu_id + ", opu." + opu.opu_code + ",opu." + opu.hn_female + ",opu." + opu.name_female + ",opu." + opu.opu_date + ",opu." + opu.remark + "," + opu.hn_male + "," + opu.name_male + ", lab_b_procedure.proce_name_t " +
+                "From " + opu.table + " opu " +
+                "Left Join Doctor on Doctor.ID = opu.doctor_id " +
+                "Left Join lab_b_procedure on opu.proce_id = lab_b_procedure.proce_id " +
+                "Where  " + wherehn +
                 //"Order By opu." + opu.opu_id + " " +
                 //"Union " +
                 //"select fet.fet_id , fet.fet_code ,fet.hn_female ,fet.name_female,fet.fet_date ,fet.remark, fet.hn_male, fet.name_male, lab_b_procedure.proce_name_t " +
@@ -1058,6 +1084,52 @@ namespace clinic_ivf.objdb
 
             return re;
         }
+        public String updateFertili(String opuid, String ferti)
+        {
+            String re = "";
+            String sql = "";
+            int chk = 0;
+
+            //chkNull(p);
+            sql = "Update " + opu.table + " Set " +
+                " " + opu.fertili_2_pn + " = '"+ ferti + "'" +
+                
+                "Where " + opu.pkField + "='" + opuid + "'"
+                ;
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+
+            return re;
+        }
+        public String updateFertiliAdd(String opuid, String fertiadd)
+        {
+            String re = "";
+            String sql = "";
+            int chk = 0;
+
+            //chkNull(p);
+            sql = "Update " + opu.table + " Set " +
+                " " + opu.fertili_2_pn_add + " = '" + fertiadd + "'" +
+
+                "Where " + opu.pkField + "='" + opuid + "'"
+                ;
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+
+            return re;
+        }
         public LabOpu setLabOPU(DataTable dt)
         {
             LabOpu opu1 = new LabOpu();
@@ -1215,6 +1287,7 @@ namespace clinic_ivf.objdb
                 opu1.report_day1 = dt.Rows[0][opu.report_day1].ToString();
                 opu1.report_day3 = dt.Rows[0][opu.report_day3].ToString();
                 opu1.report_day6 = dt.Rows[0][opu.report_day6].ToString();
+                opu1.fertili_2_pn_add = dt.Rows[0][opu.fertili_2_pn_add].ToString();
             }
             else
             {
@@ -1368,6 +1441,7 @@ namespace clinic_ivf.objdb
                 opu1.report_day1 = "";
                 opu1.report_day3 = "";
                 opu1.report_day6 = "";
+                opu1.fertili_2_pn_add = "";
             }
 
             return opu1;

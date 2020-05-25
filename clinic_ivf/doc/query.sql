@@ -1693,3 +1693,14 @@ ADD COLUMN `form_a_id` BIGINT NULL AFTER `remark`;
 ALTER TABLE `ivf`.`lab_t_form_day1` 
 ADD COLUMN `fertili_2_pn` VARCHAR(45) NULL AFTER `form_a_id`;
 
+
+ALTER TABLE `ivf`.`lab_t_form_day1` 
+CHANGE COLUMN `form_day1_id` `form_day1_id` BIGINT(20) NOT NULL AUTO_INCREMENT ;
+
+ALTER TABLE `ivf`.`b_company` 
+ADD COLUMN `form_day1_doc` INT NULL AFTER `prefix_receipt1_doc`,
+ADD COLUMN `prefix_form_day1` VARCHAR(45) NULL AFTER `form_day1_doc`;
+
+ALTER TABLE `ivf`.`lab_t_opu` 
+ADD COLUMN `fertili_2_pn_add` VARCHAR(45) NULL AFTER `report_day6`;
+

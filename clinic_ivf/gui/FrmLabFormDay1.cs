@@ -27,13 +27,13 @@ namespace clinic_ivf.gui
         C1SuperTooltip stt;
         C1SuperErrorProvider sep;
 
-        public FrmLabFormDay1(IvfControl ic, String ldormday1Id, String pttid, String vsid, String vsidOld)
+        public FrmLabFormDay1(IvfControl ic, String ldormday1Id, String pttid, String vsid, String vn)
         {
             InitializeComponent();
             this.ic = ic;
             this.pttid = pttid;
             this.vsid = vsid;
-            this.vsidOld = vsidOld;
+            this.vsidOld = vn;
             this.lformDay1Id = ldormday1Id;
             initConfig();
         }
@@ -48,6 +48,7 @@ namespace clinic_ivf.gui
             stt = new C1SuperTooltip();
             sep = new C1SuperErrorProvider();
             ic.ivfDB.dtrOldDB.setCboDoctor(cboDoctor, "");
+            ic.ivfDB.lformDay1DB.setCboRemark(cboRemark);
             ic.setCboDay(cboEmbryoFreezingDay, "");
 
             setControl();
@@ -61,6 +62,7 @@ namespace clinic_ivf.gui
             chkNgs.CheckedChanged += ChkNgs_CheckedChanged;
             btmDonorSearch.Click += BtmDonorSearch_Click;
             btnMaleSearch.Click += BtnMaleSearch_Click;
+            btnSave.Click += BtnSave_Click;
 
             ChkBiopsy_CheckedChanged(null, null);
             ChkEmbryoFreezingDay_CheckedChanged(null, null);
@@ -70,28 +72,60 @@ namespace clinic_ivf.gui
             ChkNgs_CheckedChanged(null, null);
 
         }
+
+        private void BtnSave_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            ic.cStf.staff_id = "";
+            FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+            frm.ShowDialog(this);
+            if (!ic.cStf.staff_id.Equals(""))
+            {
+                setLabFormDay1();
+                String re = "";
+                long chk = 0;
+                re = ic.ivfDB.lformDay1DB.insertLabFormday1(lFormDay1, ic.cStf.staff_id);
+                if(long.TryParse(re, out chk))
+                {
+                    if (chk > 1)
+                    {
+                        LabFormDay1 formday1 = new LabFormDay1();
+                        formday1 = ic.ivfDB.lformDay1DB.selectByPk1(re);
+                        txtFormDay1Code.Value = formday1.form_day1_code;
+                    }
+                }
+            }
+        }
+
         private void setControl()
         {
             lFormDay1 = ic.ivfDB.lformDay1DB.selectByPk1(lformDay1Id);
-            
+            vs = ic.ivfDB.vsDB.selectByPk1(vsid);
+            ptt = ic.ivfDB.pttDB.selectByPk1(pttid);
+            if (lFormDay1.form_day1_id.Equals(""))
+            {
+                lFormDay1 = ic.ivfDB.lformDay1DB.selectByVsId(vs.t_visit_id);
+            }
             if (!lFormDay1.form_day1_id.Equals("")) //  found
             {
                 LabRequest req = new LabRequest();
-                vs = ic.ivfDB.vsDB.selectByPk1(vsid);
                 //opu = ic.ivfDB.opuDB.selectByReqID(req.req_id);
                 setControl1();
             }
             else// Not found
             {
                 ovs = ic.ivfDB.ovsDB.selectByPk1(vsidOld);
-                ptt = ic.ivfDB.pttDB.selectByHn(ovs.PIDS);
+                
                 txtHnFeMale.Value = ptt.patient_hn;
                 txtNameFeMale.Value = ptt.Name;
                 txtDobFeMale.Value = ptt.AgeString();
                 txtHnMale.Value = ptt.patient_hn_couple;
                 txtNameMale.Value = ptt.patient_couple_firstname;
-                
-                txtAgent.Value = ptt.agent;
+                txtPttId.Value = ptt.t_patient_id;
+                txtVsId.Value = vs.t_visit_id;
+                txtAgent.Value = ic.ivfDB.oAgnDB.getAgentNameById(ptt.agent);
+                ic.setC1Combo(cboDoctor, vs.doctor_id);
+                txtFormDay1Date.Value = DateTime.Now.Year.ToString() + "-" + DateTime.Now.ToString("MM-dd");
                 if (ic.iniC.statusAppDonor.Equals("1"))
                 {
                     if (ptt.f_sex_id.Equals("1"))//male
@@ -178,7 +212,7 @@ namespace clinic_ivf.gui
             txtDobMale.Value = lFormDay1.dob_male;
             txtFormDay1Code.Value = lFormDay1.form_day1_code;
             txtFormDay1Date.Value = lFormDay1.day1_date;
-            //ic.setC1Combo(cboDoctor, lFormDay1.doctor_id);
+            //ic.setC1Combo(cboDoctor, lFormDay1.d);
 
             //txtFertili2Pn.Value = opu.fertili_2_pn;
             txtFertili2Pn.Value = lFormDay1.fertili_2_pn;
@@ -202,8 +236,17 @@ namespace clinic_ivf.gui
             chkEmbryoTransferFreshDay3.Checked = lFormDay1.status_embryo_tranfer_day.Equals("3") ? true : false;
             chkEmbryoTransferFreshDay5.Checked = lFormDay1.status_embryo_tranfer_day.Equals("5") ? true : false;
             chkDiscard.Checked = lFormDay1.status_discard_all.Equals("1") ? true : false;
-
-            cboRemark.Text = lFormDay1.remark;
+            
+            Patient ptt = new Patient();
+            ptt = ic.ivfDB.pttDB.selectByPk1(pttid);
+            Patient ptt2 = new Patient();
+            ptt2 = ic.ivfDB.pttDB.selectByHn(ptt.patient_hn_2);
+            txtHnFeMale.Value = ptt2.patient_hn;
+            txtNameFeMale.Value = ptt2.Name;
+            txtDobFeMale.Value = ptt2.patient_birthday;
+            
+            //cboRemark.Text = lFormDay1.remark;
+            ic.setC1ComboByName(cboRemark, lFormDay1.remark);
         }
         private void setLabFormDay1()
         {
@@ -217,16 +260,16 @@ namespace clinic_ivf.gui
             lFormDay1.name_female = txtNameFeMale.Text;
             lFormDay1.name_male = txtNameMale.Text;
             lFormDay1.hn_male = txtHnMale.Text;
-            lFormDay1.dob_female = txtDobFeMale.Text;
-            lFormDay1.dob_male = txtDobMale.Text;
-            lFormDay1.form_day1_code = txtFormDay1Code.Text;
-            lFormDay1.day1_date = txtFormDay1Date.Text;
+            lFormDay1.dob_female = ic.datetoDB(txtDobFeMale.Text);
+            lFormDay1.dob_male = ic.datetoDB(txtDobMale.Text);
+            lFormDay1.form_day1_code = txtFormDay1Code.Text.Trim().Equals("") ? ic.ivfDB.copDB.genFormADay1Doc() : txtFormDay1Code.Text.Trim();
+            lFormDay1.day1_date = ic.datetoDB(txtFormDay1Date.Text);
             //ic.setC1Combo(cboDoctor, lFormDay1.doctor_id);
 
             //txtFertili2Pn.Value = opu.fertili_2_pn;
             lFormDay1.fertili_2_pn = txtFertili2Pn.Text;
             //ic.setC1Combo(cboDoctor, lFormDay1.doctor_id);
-            lFormDay1.form_day1_code = txtLabFormACode.Text;
+            //lFormDay1.form_day1_code = txtLabFormACode.Text;
             lFormDay1.status_no_biopsy = chkNoBiopsy.Checked ? "1" : "2";
             //lFormDay1.status_no_biopsy = chkBiopsy.Checked ? "2" : "1";
             lFormDay1.status_biopsy_pgs = chkPgsMin.Checked ? "1" : "0";
@@ -246,9 +289,9 @@ namespace clinic_ivf.gui
             lFormDay1.status_embryo_tranfer_embryo_glue = chkEmbryoGlue.Checked ? "1" : "0";
             lFormDay1.status_embryo_tranfer_day = chkEmbryoTransferFreshDay3.Checked ? "3" : "5";
             //chkEmbryoTransferFreshDay5.Checked = lFormDay1.status_embryo_tranfer_day.Equals("5") ? true : false;
-            lFormDay1.status_discard_all = chkDiscard.Checked ? "1" : "0"
+            lFormDay1.status_discard_all = chkDiscard.Checked ? "1" : "0";
 
-            cboRemark.Text = lFormDay1.remark;
+            lFormDay1.remark = cboRemark.Text;
         }
         private void BtnMaleSearch_Click(object sender, EventArgs e)
         {

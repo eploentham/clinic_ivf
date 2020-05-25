@@ -140,9 +140,9 @@ namespace clinic_ivf.objdb
                 "," + opuEmDev.desc1 + " = '" + p.desc1.Replace("'", "''") + "'" +
                 "," + opuEmDev.desc2 + " = '" + p.desc2.Replace("'", "''") + "'" +
                 "," + opuEmDev.desc3 + " = '" + p.desc3.Replace("'", "''") + "'" +
-                "," + opuEmDev.staff_id + " = '" + p.staff_id + "'" +
-                "," + opuEmDev.checked_id + "='" + p.checked_id + "'" +
-                "," + opuEmDev.embryo_dev_date + "='" + p.embryo_dev_date + "'" +
+                //"," + opuEmDev.staff_id + " = '" + p.staff_id + "'" +
+                //"," + opuEmDev.checked_id + "='" + p.checked_id + "'" +
+                //"," + opuEmDev.embryo_dev_date + "='" + p.embryo_dev_date + "'" +
                 "," + opuEmDev.desc4 + "='" + p.desc4.Replace("'", "''") + "'" +
                 "," + opuEmDev.desc5 + "='" + p.desc5.Replace("'", "''") + "'" +
                 "," + opuEmDev.status_biopsy_ngs + "='" + p.status_biopsy_ngs.Replace("'", "''") + "'" +
@@ -263,6 +263,30 @@ namespace clinic_ivf.objdb
             sql = "Update " + opuEmDev.table + " Set " +
                 " " + opuEmDev.embryo_dev_date + " = '" + devdate + "'" +
                 "Where " + opuEmDev.opu_fet_id + "='" + opufetid + "' and " + opuEmDev.day + "='" + day + "' and " + opuEmDev.active + " = '1' ";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+
+            return re;
+        }
+        public String updateDesc012345(String id, String desc0, String desc1, String desc2, String desc3, String desc4, String desc5)
+        {
+            String re = "";
+            String sql = "";
+            int chk = 0;
+            sql = "Update " + opuEmDev.table + " Set " +
+                " " + opuEmDev.desc0 + " = '" + desc0.Replace("'","''") + "'" +
+                "," + opuEmDev.desc1+ " = '" + desc1.Replace("'", "''") + "'" +
+                "," + opuEmDev.desc2 + " = '" + desc2.Replace("'", "''") + "'" +
+                "," + opuEmDev.desc3 + " = '" + desc3.Replace("'", "''") + "'" +
+                "," + opuEmDev.desc4 + " = '" + desc4.Replace("'", "''") + "'" +
+                "," + opuEmDev.desc5 + " = '" + desc5.Replace("'", "''") + "'" +
+                "Where " + opuEmDev.pkField + "='" + id + "'";
             try
             {
                 re = conn.ExecuteNonQuery(conn.conn, sql);
@@ -693,7 +717,7 @@ namespace clinic_ivf.objdb
                 "Left join f_doc_type fdt on fdt.doc_type_id = fet.embryo_freez_freeze_media " +
                 "Left join f_doc_type fdtstate on fdtstate.doc_type_id = fet.freeze_stage_of_freeze " +
                 "Where opuEmDev." + opuEmDev.active + " ='1' and " + opuEmDev.opu_fet_id + "='" + opufetid + "' and " + opuEmDev.day + "='" + day + "' " +
-                "and length(opuEmDev.path_pic) > 0 " +
+                //"and length(opuEmDev.path_pic) > 0 " +
                 "Order By opuEmDev." + opuEmDev.opu_embryo_dev_id;
 
             dt = conn.selectData(conn.conn, sql);

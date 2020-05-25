@@ -898,7 +898,7 @@ namespace clinic_ivf.gui
             txtBg.Value = ptt.f_patient_blood_group_id.Equals("2140000005") ? "O"
                 : ptt.f_patient_blood_group_id.Equals("2140000002") ? "A" : ptt.f_patient_blood_group_id.Equals("2140000003") ? "B"
                 : ptt.f_patient_blood_group_id.Equals("2140000004") ? "AB" : "ไม่ระบุ";
-            txtAgent.Value = ic.ivfDB.oAgnDB.getList(ptt.agent);
+            txtAgent.Value = ic.ivfDB.oAgnDB.getAgentNameById(ptt.agent);
             setGrfBillD();
             calTotal();
             calTotalCredit();

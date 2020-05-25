@@ -4362,7 +4362,7 @@ namespace clinic_ivf.gui
                 cboBsp.SelectedIndex = 3;
             }
             ic.ivfDB.eggsDB.setCboPatient(cboEggStiId, txtPttId.Text);
-            txtAgent.Value = ic.ivfDB.oAgnDB.getList(ptt.agent);
+            txtAgent.Value = ic.ivfDB.oAgnDB.getAgentNameById(ptt.agent);
             txtLmp.Value = ptt.lmp;
             ic.ivfDB.vsDB.setCboVisit(cboLabVs, txtVsId.Text, txtPttId.Text);
 

@@ -573,7 +573,7 @@ namespace clinic_ivf.objdb
             lbreq = lbReqDB.selectByPk1(reqid);
             lformA = lFormaDB.selectByVnOld(lbreq.vn);
             fet.fet_id = "";
-            fet.fet_code = copDB.genFEFDoc();
+            fet.fet_code = copDB.genFETDoc();
             //opu.embryo_freez_stage = "";
             //opu.embryoid_freez_position = "";
             fet.hn_male = lformA.hn_male;

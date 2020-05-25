@@ -209,6 +209,8 @@ namespace clinic_ivf.gui
             SmtpServer.SendCompleted += SmtpServer_SendCompleted;
             btnIuiSendEmail.Click += BtnIuiSendEmail_Click;
             btnSfApproveResult.Click += BtnSfApproveResult_Click;
+            btnApproveResult.Click += BtnApproveResult_Click;
+            btnIuiApproveResult.Click += BtnIuiApproveResult_Click;
 
             txtMotility4.KeyUp += TxtMotility4_KeyUp;
             txtMotility3.KeyUp += TxtMotility3_KeyUp;
@@ -248,7 +250,45 @@ namespace clinic_ivf.gui
             //}
         }
 
-        
+        private void BtnIuiApproveResult_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            ic.cStf.staff_id = "";
+            FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+            frm.ShowDialog(this);
+            if (!ic.cStf.staff_id.Equals(""))
+            {
+                long chk = 0;
+                String re = "", re1 = "";
+                re = ic.ivfDB.lbReqDB.UpdateStatusRequestResult(lbReq.req_id, ic.cStf.staff_id);
+                re1 = ic.ivfDB.lspermDB.updateStatusLabFinish(lsperm.sperm_id, ic.cStf.staff_id);
+                if (long.TryParse(re, out chk))
+                {
+                    panel12.Enabled = true;
+                }
+            }
+        }
+
+        private void BtnApproveResult_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            ic.cStf.staff_id = "";
+            FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+            frm.ShowDialog(this);
+            if (!ic.cStf.staff_id.Equals(""))
+            {
+                long chk = 0;
+                String re = "", re1 = "";
+                re = ic.ivfDB.lbReqDB.UpdateStatusRequestResult(lbReq.req_id, ic.cStf.staff_id);
+                re1 = ic.ivfDB.lspermDB.updateStatusLabFinish(lsperm.sperm_id, ic.cStf.staff_id);
+                if (long.TryParse(re, out chk))
+                {
+                    panel5.Enabled = true;
+                }
+            }
+        }
+
+
 
         //private void TxtPeNormal_KeyUp(object sender, KeyEventArgs e)
         //{
@@ -1081,7 +1121,7 @@ namespace clinic_ivf.gui
             Decimal.TryParse(txtSfVolume.Text, out vol);
             Decimal.TryParse(txtSfCount.Text, out cnt);
             totalcnt = vol * cnt;
-            totalcnt = Math.Round(totalcnt,ic.spermFreezingDecimal);
+            totalcnt = Math.Round(totalcnt,ic.spermFreezingDecimal, MidpointRounding.AwayFromZero);
             //Decimal.TryParse(totalcnt.ToString(), out totalcnt1);
             txtSfTotalCount.Value = totalcnt;
         }
@@ -1092,7 +1132,7 @@ namespace clinic_ivf.gui
             Decimal.TryParse(txtPeVolume.Text, out vol);
             Decimal.TryParse(txtPeCount.Text, out cnt);
             totalcnt = vol * cnt;
-            totalcnt = Math.Round(totalcnt, ic.spermFreezingDecimal);
+            totalcnt = Math.Round(totalcnt, ic.spermFreezingDecimal, MidpointRounding.AwayFromZero);
             //Decimal.TryParse(totalcnt.ToString(), out totalcnt1);
             txtPeTotalCount.Value = totalcnt;
         }
@@ -1104,12 +1144,12 @@ namespace clinic_ivf.gui
             Decimal.TryParse(txtPeCount.Text, out cntsf);
             Decimal.TryParse(txtPeVolume.Text, out vol);
             motile = (motilitysf * cntsf) / 100;
-            motile = Math.Round(motile, ic.spermFreezingDecimal);
+            motile = Math.Round(motile, ic.spermFreezingDecimal, MidpointRounding.AwayFromZero);
             Decimal.TryParse(motile.ToString(), out motile1);
             txtPeMotile.Value = motile1;
 
             totalmotile = motile * vol;
-            totalmotile = Math.Round(totalmotile, ic.spermFreezingDecimal);
+            totalmotile = Math.Round(totalmotile, ic.spermFreezingDecimal, MidpointRounding.AwayFromZero);
             Decimal.TryParse(totalmotile.ToString(), out totalmotile1);
             txtPeTotalMotile.Value = totalmotile1;
         }
@@ -1121,12 +1161,12 @@ namespace clinic_ivf.gui
             Decimal.TryParse(txtSfCount.Text, out cntsf);
             Decimal.TryParse(txtSfVolume.Text, out vol);
             motile = (motilitysf * cntsf) / 100;
-            motile = Math.Round(motile, ic.spermFreezingDecimal);
+            motile = Math.Round(motile, ic.spermFreezingDecimal, MidpointRounding.AwayFromZero);
             Decimal.TryParse(motile.ToString(), out motile1);
             txtSfMotile.Value = motile1;
 
             totalmotile = motile * vol;
-            totalmotile = Math.Round(totalmotile, ic.spermFreezingDecimal);
+            totalmotile = Math.Round(totalmotile, ic.spermFreezingDecimal, MidpointRounding.AwayFromZero);
             Decimal.TryParse(totalmotile.ToString(), out totalmotile1);
             txtSfTotalMotile.Value = totalmotile1;
         }
@@ -1139,12 +1179,12 @@ namespace clinic_ivf.gui
             Decimal.TryParse(txtPeCount.Text, out cntPe);
             Decimal.TryParse(txtPeVolume.Text, out vol);
             motile = (motilityPe * cntPe) / 100;
-            motile = Math.Round(motile, ic.spermFreezingDecimal);
+            motile = Math.Round(motile, ic.spermFreezingDecimal, MidpointRounding.AwayFromZero);
             Decimal.TryParse(motile.ToString(), out motile1);
             txtPeMotile.Value = motile1;
 
             totalmotile = motile * vol;
-            totalmotile = Math.Round(totalmotile, ic.spermFreezingDecimal);
+            totalmotile = Math.Round(totalmotile, ic.spermFreezingDecimal, MidpointRounding.AwayFromZero);
             Decimal.TryParse(totalmotile.ToString(), out totalmotile1);
             txtPeTotalMotile.Value = totalmotile1;
         }
@@ -1166,7 +1206,7 @@ namespace clinic_ivf.gui
             Decimal.TryParse(txtVolume.Text, out vol);
             Decimal.TryParse(txtCount.Text, out cnt);
             totalcnt = vol * cnt;
-            totalcnt = Math.Round(totalcnt, ic.spermFreezingDecimal);
+            totalcnt = Math.Round(totalcnt, ic.spermFreezingDecimal, MidpointRounding.AwayFromZero);
             //Decimal.TryParse(totalcnt.ToString(), out totalcnt1);
             txtTotalCount.Value = totalcnt;
         }
@@ -1178,12 +1218,12 @@ namespace clinic_ivf.gui
             Decimal.TryParse(txtCount.Text, out cntsf);
             Decimal.TryParse(txtVolume.Text, out vol);
             motile = (motilitysf * cntsf) / 100;
-            motile = Math.Round(motile, ic.spermFreezingDecimal);
+            motile = Math.Round(motile, ic.spermFreezingDecimal, MidpointRounding.AwayFromZero);
             Decimal.TryParse(motile.ToString(), out motile1);
             txtMotile.Value = motile1;
 
             totalmotile = motile * vol;
-            totalmotile = Math.Round(totalmotile, ic.spermFreezingDecimal);
+            totalmotile = Math.Round(totalmotile, ic.spermFreezingDecimal, MidpointRounding.AwayFromZero);
             Decimal.TryParse(totalmotile.ToString(), out totalmotile1);
             txtTotalMotile.Value = totalmotile1;
         }
@@ -1854,10 +1894,8 @@ namespace clinic_ivf.gui
                 }
             }
         }
-
-        private void BtnPeSave_Click(object sender, EventArgs e)
+        private void savePESA()
         {
-            //throw new NotImplementedException();
             ic.cStf.staff_id = "";
             FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
             frm.ShowDialog(this);
@@ -1872,10 +1910,13 @@ namespace clinic_ivf.gui
                 }
             }
         }
-
-        private void BtnSfSave_Click(object sender, EventArgs e)
+        private void BtnPeSave_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
+            savePESA();
+        }
+        private void saveSF()
+        {
             Decimal pr = 0, nr = 0, im = 0, normal = 0, abnormal = 0; ;
             Decimal.TryParse(txtSfMotility4.Text, out pr);
             Decimal.TryParse(txtSfMotility3.Text, out nr);
@@ -1907,10 +1948,13 @@ namespace clinic_ivf.gui
                 }
             }
         }
-
-        private void BtnSave_Click(object sender, EventArgs e)
+        private void BtnSfSave_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
+            saveSF();
+        }
+        private void saveSA()
+        {
             ic.cStf.staff_id = "";
             FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
             frm.ShowDialog(this);
@@ -1924,6 +1968,11 @@ namespace clinic_ivf.gui
                     sB1.Text = "Save done";
                 }
             }
+        }
+        private void BtnSave_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            saveSA();
         }
 
         private void panel8_Paint(object sender, PaintEventArgs e)
@@ -1941,8 +1990,32 @@ namespace clinic_ivf.gui
 
         }
 
-        
 
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            switch (keyData)
+            {
+                case Keys.S | Keys.Control:
+                    if (StatusSperm.Equals("1"))        //Freezing
+                    {
+                        saveSF();
+                    }
+                    else if (StatusSperm.Equals("2"))   //Analysis
+                    {
+                        saveSA();
+                    }
+                    else if (StatusSperm.Equals("3"))   //PESA
+                    {
+                        savePESA();
+                    }
+                    else if (StatusSperm.Equals("4"))
+                    {
+
+                    }
+                    return true;
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
         private void setControlAnalysisReadOnly(Boolean flag)
         {
             txtHnFeMale.ReadOnly = !flag;

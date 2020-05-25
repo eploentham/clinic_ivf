@@ -160,7 +160,11 @@ namespace clinic_ivf.gui
         private void GrfSearch_DoubleClick(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-
+            String chk = "", name = "", id = "";
+            id = grfSearch[grfSearch.Row, colPcId] != null ? grfSearch[grfSearch.Row, colPcId].ToString() : "";
+            chk = grfSearch[grfSearch.Row, colPcOpuNum] != null ? grfSearch[grfSearch.Row, colPcOpuNum].ToString() : "";
+            name = grfSearch[grfSearch.Row, colPcPttName] != null ? grfSearch[grfSearch.Row, colPcPttName].ToString() : "";
+            openLabOPUAdd(id, name);
         }
 
         private void GrfSearch_AfterRowColChange(object sender, RangeEventArgs e)
@@ -172,10 +176,10 @@ namespace clinic_ivf.gui
         private void setGrfSearch(String search)
         {
             grfSearch.DataSource = null;
-            grfSearch.Clear();
+            grfSearch.Rows.Count = 0;
             DataTable dt = new DataTable();
 
-            dt = ic.ivfDB.opuDB.selectByStatusProcess1(search);
+            dt = ic.ivfDB.opuDB.selectBySearchHn(search);
 
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             if (dt.Rows.Count <= 1)
@@ -223,17 +227,17 @@ namespace clinic_ivf.gui
             //CellRange rg1 = grfBank.GetCellRange(1, colE, grfBank.Rows.Count, colE);
             //rg1.Style = grfBank.Styles["date"];
             //grfCu.Cols[colID].Visible = false;
-            for (int col = 0; col < dt.Columns.Count; ++col)
-            {
-                grfSearch.Cols[col + 1].DataType = dt.Columns[col].DataType;
-                //grfSearch.Cols[col + 1].Caption = dt.Columns[col].ColumnName;
-                grfSearch.Cols[col + 1].Name = dt.Columns[col].ColumnName;
-            }
+            //for (int col = 0; col < dt.Columns.Count; ++col)
+            //{
+            //    grfSearch.Cols[col + 1].DataType = dt.Columns[col].DataType;
+            //    //grfSearch.Cols[col + 1].Caption = dt.Columns[col].ColumnName;
+            //    grfSearch.Cols[col + 1].Name = dt.Columns[col].ColumnName;
+            //}
             int i = 0;
             foreach (DataRow row in dt.Rows)
             {
                 i++;
-                if (i == 1) continue;
+                //if (i == 1) continue;
                 //Row row1 = grfSearch.Rows.Add();
                 grfSearch[i, colPcId] = row[ic.ivfDB.opuDB.opu.opu_id].ToString();
                 grfSearch[i, colPcOpuNum] = row[ic.ivfDB.opuDB.opu.opu_code].ToString();
@@ -260,12 +264,12 @@ namespace clinic_ivf.gui
             grfSearch.Cols[colPcNameMale].AllowEditing = false;
             grfSearch.Cols[colProceName].AllowEditing = false;
             //grfReq.Cols[coldt].Visible = false;
-            if (grfSearch.Rows.Count > 2)
-            {
-                FilterRow fr = new FilterRow(grfSearch);
-                grfSearch.AllowFiltering = true;
-                grfSearch.AfterFilter += GrfProc_AfterFilter;
-            }
+            //if (grfSearch.Rows.Count > 2)
+            //{
+            //    FilterRow fr = new FilterRow(grfSearch);
+            //    grfSearch.AllowFiltering = true;
+            //    grfSearch.AfterFilter += GrfProc_AfterFilter;
+            //}
         }
         private void initGrfReq()
         {

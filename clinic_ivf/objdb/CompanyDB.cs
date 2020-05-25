@@ -103,6 +103,8 @@ namespace clinic_ivf.objdb
             cop.month_curr_cashier = "month_curr_cashier";
             cop.receipt1_doc = "receipt1_doc";
             cop.prefix_receipt1_doc = "prefix_receipt1_doc";
+            cop.form_day1_doc = "form_day1_doc";
+            cop.prefix_form_day1_doc = "prefix_form_day1";
 
             cop.table = "b_company";
             cop.pkField = "comp_id";
@@ -974,7 +976,40 @@ namespace clinic_ivf.objdb
             doc = cop1.prefix_form_a_doc + doc;
             return doc;
         }
-        public String genFEFDoc()
+        public String genFormADay1Doc()
+        {
+            String doc = "", year = "", sql = "";
+            Company cop1 = new Company();
+            cop1 = selectByCode1("001");
+            year = DateTime.Now.ToString("yyyy");
+            if (!year.Equals(cop1.year_curr))
+            {
+                sql = "Update " + cop.table + " Set " +
+                    " " + cop.year_curr + "='" + year + "' " +
+                    "," + cop.form_day1_doc + "=1 " +
+                    "Where " + cop.pkField + "='" + cop1.comp_id + "'";
+                conn.ExecuteNonQuery(conn.conn, sql);
+                //doc = "00001";
+            }
+
+            int chk = 0;
+            if (int.TryParse(cop1.form_day1_doc, out chk))
+            {
+                chk++;
+                doc = "00000" + chk;
+                doc = doc.Substring(doc.Length - 5, 5);
+                year = cop1.year_curr;
+
+                sql = "Update " + cop.table + " Set " +
+                "" + cop.form_day1_doc + "=" + chk +
+                " Where " + cop.pkField + "='" + cop1.comp_id + "'";
+                conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            year = String.Concat(DateTime.Now.Year + 543);
+            doc = cop1.prefix_form_day1_doc + doc;
+            return doc;
+        }
+        public String genFETDoc()
         {
             String doc = "", year = "", sql = "";
             Company cop1 = new Company();
@@ -1107,6 +1142,8 @@ namespace clinic_ivf.objdb
                 cop1.month_curr_cashier = dt.Rows[0][cop.month_curr_cashier].ToString();
                 cop1.receipt1_doc = dt.Rows[0][cop.receipt1_doc].ToString();
                 cop1.prefix_receipt1_doc = dt.Rows[0][cop.prefix_receipt1_doc].ToString();
+                cop1.form_day1_doc = dt.Rows[0][cop.form_day1_doc].ToString();
+                cop1.prefix_form_day1_doc = dt.Rows[0][cop.prefix_form_day1_doc].ToString();
             }
             else
             {
@@ -1193,6 +1230,8 @@ namespace clinic_ivf.objdb
                 cop1.month_curr_cashier = "";
                 cop1.receipt1_doc = "";
                 cop1.prefix_receipt1_doc = "";
+                cop1.form_day1_doc = "";
+                cop1.prefix_form_day1_doc = "";
             }
 
             return cop1;

@@ -1162,7 +1162,6 @@
             this.pnSfEmailView.Size = new System.Drawing.Size(642, 317);
             this.pnSfEmailView.TabIndex = 1;
             this.theme1.SetTheme(this.pnSfEmailView, "(default)");
-            
             // 
             // pnSfLeftEmail
             // 
@@ -3821,7 +3820,7 @@
             this.c1SplitterPanel1.SizeRatio = 42.265D;
             this.c1SplitterPanel1.TabIndex = 0;
             this.c1SplitterPanel1.Text = "Panel 1";
-            this.c1SplitterPanel1.Width = 635;
+            this.c1SplitterPanel1.Width = 642;
             // 
             // panel6
             // 
@@ -3855,10 +3854,10 @@
             this.txtEmailBody.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtEmailBody.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtEmailBody.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtEmailBody.Location = new System.Drawing.Point(0, 211);
+            this.txtEmailBody.Location = new System.Drawing.Point(0, 214);
             this.txtEmailBody.Multiline = true;
             this.txtEmailBody.Name = "txtEmailBody";
-            this.txtEmailBody.Size = new System.Drawing.Size(635, 543);
+            this.txtEmailBody.Size = new System.Drawing.Size(635, 540);
             this.txtEmailBody.TabIndex = 542;
             this.txtEmailBody.Tag = null;
             this.theme1.SetTheme(this.txtEmailBody, "(default)");
@@ -3876,7 +3875,7 @@
             this.panel5.Controls.Add(this.txtEmailTo);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.panel5.Location = new System.Drawing.Point(0, 143);
+            this.panel5.Location = new System.Drawing.Point(0, 146);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(635, 68);
             this.panel5.TabIndex = 2;
@@ -3985,7 +3984,7 @@
             this.c1Ribbon2.QatHolder = this.ribbonQat11;
             this.c1Ribbon2.QatItemsHolder.Add(this.UndoButton1);
             this.c1Ribbon2.QatItemsHolder.Add(this.RedoButton1);
-            this.c1Ribbon2.Size = new System.Drawing.Size(635, 143);
+            this.c1Ribbon2.Size = new System.Drawing.Size(635, 146);
             this.c1Ribbon2.Tabs.Add(this.HomeTab1);
             this.c1Ribbon2.Tabs.Add(this.ViewTab1);
             this.theme1.SetTheme(this.c1Ribbon2, "(default)");
@@ -8682,7 +8681,7 @@
             this.c1SplitterPanel5.SizeRatio = 43.91D;
             this.c1SplitterPanel5.TabIndex = 0;
             this.c1SplitterPanel5.Text = "Panel 1";
-            this.c1SplitterPanel5.Width = 667;
+            this.c1SplitterPanel5.Width = 660;
             // 
             // panel8
             // 
@@ -8706,10 +8705,10 @@
             this.txtPeEmailBody.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtPeEmailBody.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtPeEmailBody.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtPeEmailBody.Location = new System.Drawing.Point(0, 214);
+            this.txtPeEmailBody.Location = new System.Drawing.Point(0, 211);
             this.txtPeEmailBody.Multiline = true;
             this.txtPeEmailBody.Name = "txtPeEmailBody";
-            this.txtPeEmailBody.Size = new System.Drawing.Size(660, 276);
+            this.txtPeEmailBody.Size = new System.Drawing.Size(660, 279);
             this.txtPeEmailBody.TabIndex = 546;
             this.txtPeEmailBody.Tag = null;
             this.theme1.SetTheme(this.txtPeEmailBody, "(default)");
@@ -8725,7 +8724,6 @@
             this.pnPeEmailView.Size = new System.Drawing.Size(660, 264);
             this.pnPeEmailView.TabIndex = 545;
             this.theme1.SetTheme(this.pnPeEmailView, "(default)");
-            
             // 
             // panel13
             // 
@@ -8739,7 +8737,7 @@
             this.panel13.Controls.Add(this.txtPeEmailTo);
             this.panel13.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.panel13.Location = new System.Drawing.Point(0, 146);
+            this.panel13.Location = new System.Drawing.Point(0, 143);
             this.panel13.Name = "panel13";
             this.panel13.Size = new System.Drawing.Size(660, 68);
             this.panel13.TabIndex = 2;
@@ -8848,7 +8846,7 @@
             this.c1Ribbon4.QatHolder = this.ribbonQat13;
             this.c1Ribbon4.QatItemsHolder.Add(this.UndoButton3);
             this.c1Ribbon4.QatItemsHolder.Add(this.RedoButton3);
-            this.c1Ribbon4.Size = new System.Drawing.Size(660, 146);
+            this.c1Ribbon4.Size = new System.Drawing.Size(660, 143);
             this.c1Ribbon4.Tabs.Add(this.HomeTab3);
             this.c1Ribbon4.Tabs.Add(this.ViewTab3);
             this.theme1.SetTheme(this.c1Ribbon4, "(default)");

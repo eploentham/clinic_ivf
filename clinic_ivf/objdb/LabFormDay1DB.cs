@@ -1,4 +1,5 @@
-﻿using clinic_ivf.object1;
+﻿using C1.Win.C1Input;
+using clinic_ivf.object1;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -90,6 +91,49 @@ namespace clinic_ivf.objdb
             dt = conn.selectData(conn.conn, sql);
             cop1 = setLabFormDay1(dt);
             return cop1;
+        }
+        public LabFormDay1 selectByVsId(String vsid)
+        {
+            LabFormDay1 cop1 = new LabFormDay1();
+            DataTable dt = new DataTable();
+            String sql = "select lformDay1.* " +
+                "From " + lformDay1.table + " lformDay1 " +
+                "Where lformDay1." + lformDay1.t_visit_id + " ='" + vsid + "' ";
+            dt = conn.selectData(conn.conn, sql);
+            cop1 = setLabFormDay1(dt);
+            return cop1;
+        }
+        public DataTable selectDistinctByRemark()
+        {
+            DataTable dt = new DataTable();
+            String sql = "select distinct lformDay1.remark " +
+                "From " + lformDay1.table + " lformDay1 " +
+                "Where lformDay1." + lformDay1.active + "='1' ";
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
+        public C1ComboBox setCboRemark(C1ComboBox c)
+        {
+            ComboBoxItem item = new ComboBoxItem();
+            DataTable dt = selectDistinctByRemark();
+            //String aaa = "";
+            ComboBoxItem item1 = new ComboBoxItem();
+            item1.Text = "";
+            item1.Value = "";
+            c.Items.Clear();
+            c.Items.Add(item1);
+            //for (int i = 0; i < dt.Rows.Count; i++)
+            int i = 0;
+            foreach (DataRow row in dt.Rows)
+            {
+                item = new ComboBoxItem();
+                item.Text = row[lformDay1.remark].ToString();
+                item.Value = i.ToString();
+
+                c.Items.Add(item);
+                i++;
+            }
+            return c;
         }
         private void chkNull(LabFormDay1 p)
         {

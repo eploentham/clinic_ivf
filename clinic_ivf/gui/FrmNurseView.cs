@@ -382,7 +382,7 @@ namespace clinic_ivf.gui
             ContextMenu menuGw = new ContextMenu();
             menuGw.MenuItems.Add("&Receive operation", new EventHandler(ContextMenu_order_finish));
             menuGw.MenuItems.Add("&LAB request FORM A", new EventHandler(ContextMenu_LAB_req_formA_Ptt_finish));
-            menuGw.MenuItems.Add("LAB Form Day1", new EventHandler(ContextMenu_Form_day1));
+            menuGw.MenuItems.Add("LAB Form Day1", new EventHandler(ContextMenu_Form_day1_grfFinish));
             //menuGw.MenuItems.Add("&Order Entry", new EventHandler(ContextMenu_Apm));
             menuGw.MenuItems.Add("&Edit Appointment", new EventHandler(ContextMenu_Finish_Apm));
             //menuGw.MenuItems.Add("&Cancel Receive", new EventHandler(ContextMenu_Apm));
@@ -506,7 +506,7 @@ namespace clinic_ivf.gui
             ContextMenu menuGw = new ContextMenu();
             menuGw.MenuItems.Add("Receive operation", new EventHandler(ContextMenu_order_finish));
             menuGw.MenuItems.Add("&LAB request FORM A", new EventHandler(ContextMenu_LAB_req_formA_Ptt_finish));
-            menuGw.MenuItems.Add("LAB Form Day1", new EventHandler(ContextMenu_Form_day1));
+            menuGw.MenuItems.Add("LAB Form Day1", new EventHandler(ContextMenu_Form_day1_grfFinish));
             //menuGw.MenuItems.Add("&Order Entry", new EventHandler(ContextMenu_Apm));
             menuGw.MenuItems.Add("&Edit Appointment", new EventHandler(ContextMenu_Apm_Finish));
             //menuGw.MenuItems.Add("&Cancel Receive", new EventHandler(ContextMenu_Apm));
@@ -816,7 +816,7 @@ namespace clinic_ivf.gui
             if (!chkPrnSticker.Checked)     // สั่ง LAB ไม่ได้ เพราะ ไม่มี visit_id
             {
                 menuGw.MenuItems.Add("&LAB request FORM A", new EventHandler(ContextMenu_LAB_req_formA_Ptt_search));
-                menuGw.MenuItems.Add("LAB Form Day1", new EventHandler(ContextMenu_Form_day1));
+                menuGw.MenuItems.Add("LAB Form Day1", new EventHandler(ContextMenu_Form_day1_grfSearch));
             }
             //menuGw.MenuItems.Add("&Add Appointment", new EventHandler(ContextMenu_Apm_Ptt));
             //menuGw.MenuItems.Add("&Cancel Receive", new EventHandler(ContextMenu_Apm_Ptt));
@@ -905,11 +905,24 @@ namespace clinic_ivf.gui
             //theme1.SetTheme(grfQue, ic.theme);
 
         }
-        private void ContextMenu_Form_day1(object sender, System.EventArgs e)
+        private void ContextMenu_Form_day1_grfSearch(object sender, System.EventArgs e)
         {
-            String vnold = "";
-            vnold = grfSearch[grfSearch.Row, colID].ToString();
-            FrmLabFormDay1 frm = new FrmLabFormDay1(ic,"","","", vnold);
+            String chk = "", name = "", vsid = "", pttId = "", vn = "";
+            if (grfFinish.Row <= 0) return;
+            vsid = grfSearch[grfSearch.Row, colID] != null ? grfSearch[grfSearch.Row, colID].ToString() : "";
+            pttId = grfSearch[grfSearch.Row, colPttId] != null ? grfSearch[grfSearch.Row, colPttId].ToString() : "";
+            vn = grfFinish[grfFinish.Row, colVn] != null ? grfFinish[grfFinish.Row, colVn].ToString() : "";
+            FrmLabFormDay1 frm = new FrmLabFormDay1(ic, "", pttId, vsid, vn);
+            frm.ShowDialog(this);
+        }
+        private void ContextMenu_Form_day1_grfFinish(object sender, System.EventArgs e)
+        {
+            String chk = "", name = "", vsid = "", pttId = "", vn = "";
+            if (grfFinish.Row <= 0) return;
+            vsid = grfFinish[grfFinish.Row, colID] != null ? grfFinish[grfFinish.Row, colID].ToString() : "";
+            pttId = grfFinish[grfFinish.Row, colPttId] != null ? grfFinish[grfFinish.Row, colPttId].ToString() : "";
+            vn = grfFinish[grfFinish.Row, colVn] != null ? grfFinish[grfFinish.Row, colVn].ToString() : "";
+            FrmLabFormDay1 frm = new FrmLabFormDay1(ic,"", pttId, vsid, vn);
             frm.ShowDialog(this);
         }
         private void initGrfLab()
@@ -1357,7 +1370,7 @@ namespace clinic_ivf.gui
             ContextMenu menuGw = new ContextMenu();
             menuGw.MenuItems.Add("&receive operation", new EventHandler(ContextMenu_order));
             //menuGw.MenuItems.Add("&Order Entry", new EventHandler(ContextMenu_order));
-            menuGw.MenuItems.Add("&LAB request FORM A", new EventHandler(ContextMenu_LAB_req_formA));
+            menuGw.MenuItems.Add("&LAB request FORM A", new EventHandler(ContextMenu_LAB_req_formA_grfQue));
             menuGw.MenuItems.Add("&Add Appointment", new EventHandler(ContextMenu_Apm));
             menuGw.MenuItems.Add("&Cancel Receive", new EventHandler(ContextMenu_Apm));
             //menuGw.MenuItems.Add("&No Appointment Close Operation", new EventHandler(ContextMenu_NO_Apm));
@@ -1493,7 +1506,7 @@ namespace clinic_ivf.gui
             //menuGw.MenuItems.Add("&receive operation", new EventHandler(ContextMenu_Apm));
             menuGw.MenuItems.Add("receive operation", new EventHandler(ContextMenu_order));
             menuGw.MenuItems.Add("LAB request FORM A", new EventHandler(ContextMenu_LAB_req_formA_Ptt));
-            menuGw.MenuItems.Add("LAB FORM DAY1", new EventHandler(ContextMenu_LAB_req_form_day1));
+            menuGw.MenuItems.Add("LAB FORM DAY1", new EventHandler(ContextMenu_LAB_req_form_day1_grfQue));
             menuGw.MenuItems.Add("Egg Sti ", new EventHandler(ContextMenu_egg_sti));
             menuGw.MenuItems.Add("&Add Appointment", new EventHandler(ContextMenu_Apm_Ptt));
             menuGw.MenuItems.Add("&Cancel Receive", new EventHandler(ContextMenu_Void_Ptt));
@@ -2329,7 +2342,7 @@ namespace clinic_ivf.gui
         private void ContextMenu_LAB_req_formA_Ptt_finish(object sender, System.EventArgs e)
         {
             String chk = "", name = "", vsid = "", pttId = "", vn="";
-            if (grfFinish.Row < 0) return;
+            if (grfFinish.Row <= 0) return;
             vsid = grfFinish[grfFinish.Row, colID] != null ? grfFinish[grfFinish.Row, colID].ToString() : "";
             pttId = grfFinish[grfFinish.Row, colPttId] != null ? grfFinish[grfFinish.Row, colPttId].ToString() : "";
             chk = grfFinish[grfFinish.Row, colPttHn] != null ? grfFinish[grfFinish.Row, colPttHn].ToString() : "";
@@ -2394,10 +2407,11 @@ namespace clinic_ivf.gui
             //openPatientAdd(id, name);
             //}
         }
-        private void ContextMenu_LAB_req_form_day1(object sender, System.EventArgs e)
+        private void ContextMenu_LAB_req_form_day1_grfQue(object sender, System.EventArgs e)
         {
-            String chk = "", name = "", vsid = "", pttId = "";
-            if (grfQue.Row < 0) return;
+            String chk = "", name = "", vsid = "", vn = "", pttId = "";
+            if (grfQue.Row <= 0) return;
+            vn = grfQue[grfQue.Row, colVn] != null ? grfQue[grfQue.Row, colVn].ToString() : "";
             vsid = grfQue[grfQue.Row, colID] != null ? grfQue[grfQue.Row, colID].ToString() : "";
             pttId = grfQue[grfQue.Row, colPttId] != null ? grfQue[grfQue.Row, colPttId].ToString() : "";
             chk = grfQue[grfQue.Row, colPttHn] != null ? grfQue[grfQue.Row, colPttHn].ToString() : "";
@@ -2405,15 +2419,15 @@ namespace clinic_ivf.gui
             //reqid = ic.ivfDB.oJsDB.selectByStatusOPU(vsid);
             //if (!reqid.Equals(""))
             //{
-            FrmLabFormDay1 frm = new FrmLabFormDay1(ic, "", pttId, "", vsid);
+            FrmLabFormDay1 frm = new FrmLabFormDay1(ic, "", pttId, vsid, vn);
             frm.ShowDialog(this);
             setGrfQue();
             
         }
-        private void ContextMenu_LAB_req_formA(object sender, System.EventArgs e)
+        private void ContextMenu_LAB_req_formA_grfQue(object sender, System.EventArgs e)
         {
             String chk = "", name = "", vsid = "", pttId = "", vn="", pid="";
-
+            if (grfQue.Row <= 0) return;
             vn = grfQue[grfQue.Row, colVn] != null ? grfQue[grfQue.Row, colVn].ToString() : "";
             vsid = grfQue[grfQue.Row, colID] != null ? grfQue[grfQue.Row, colID].ToString() : "";
             pid = grfQue[grfQue.Row, colPID] != null ? grfQue[grfQue.Row, colPID].ToString() : "";
@@ -2425,10 +2439,11 @@ namespace clinic_ivf.gui
             //openApmAdd(pttId, vsid, name);
             //if (MessageBox.Show("ต้องการป้อน LAB request FORM A\n  hn number " + chk + " \n name " + name, "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
             //{
-                FrmLabFormA frm = new FrmLabFormA(ic,"", pttId, vsid, vn);
-                frm.ShowDialog(this);
-                //grfReq.Rows.Remove(grfReq.Row);
-                //openPatientAdd(id, name);
+            FrmLabFormA frm = new FrmLabFormA(ic,"", pttId, vsid, vn);
+            frm.ShowDialog(this);
+            setGrfQue();
+            //grfReq.Rows.Remove(grfReq.Row);
+            //openPatientAdd(id, name);
             //}
         }
         private void ContextMenu_Apm_Finish(object sender, System.EventArgs e)
