@@ -29,8 +29,8 @@ namespace clinic_ivf.gui
 
         int colID = 1, colVNshow = 2, colVN = 12, colPttHn = 3, colPttName = 4, colVsDate = 5, colVsTime = 6, colVsEtime = 7, colVsAgent=8, colStatus = 9, colPttId = 10, colStatusNurse = 11, colStatusCashier = 12, colBillId=13, colAgentId=14;
         int colCldId = 1, colCldBillNo = 2, colCldReceiptNo = 3, colCldDate = 4, colCldHn = 5, colCldName = 6, colCldPkg1 = 7, colCldPkg2 = 8, colCldPkg3 = 9, colCldPkg4 = 10, colCldPkg5 = 11, colCldPkg6 = 12, colCldPkgOther=13, colCldDiscount = 14, colCldFreezing = 15;
-        int colCldExtraDay6 = 16, colCldLabAll = 17, colCldLabBlood = 18, colCldMed = 19, colCldTVS = 20, colCldDtrfee = 21, colCldEquipment = 22, colCldOtherService = 23;
-        int colCldAmount = 24, colCldAmount1 = 25, colCldInc=26, colCldExt=27, colCldVn =28, colCldBillId=29;
+        int colCldExtraDay6 = 16, colCldLabAll = 17, colCldLabBlood = 18, colCldMedInc = 19, colCldMedExtra=20, colCldTVS = 21, colCldDtrfee = 22, colCldEquipment = 23, colCldOtherService = 24;
+        int colCldAmount = 25, colCldAmount1 = 26, colCldInc=27, colCldExt=28, colCldVn =29, colCldBillId=30;
         int colBildId = 1, colBildName = 2, colBildprice = 3, colBildqty = 4, colBildAmt = 5, colBildDiscount = 6, colBildNetAmt = 7, colBildGrpName = 8, colBildBilId = 9, colBildInclude = 10, colBildStatus = 11, colBildItmId=12;
         int colRptId = 1, colRptVnShow = 2, colRptVn = 3, colRptHn = 4, colRptPttName = 5, colRptVsDate = 6, colRptDOB = 7, colRptFormACode = 8, colRptOPU = 9, colRptFET = 10, colRptSpermAna = 11, colRptSpermFreezing = 12, colRptSpermIUI = 13, colRptSpermPESA = 14, colRptName_1 = 15, colRptName_2 = 16, colRptDtr = 17, colRptAgent = 18;
 
@@ -424,7 +424,7 @@ namespace clinic_ivf.gui
                             cldd.patient_hn = row[colCldHn] != null ? row[colCldHn].ToString() : "";
                             cldd.patient_name = row[colCldName] != null ? row[colCldName].ToString() : "";
                             cldd.amt_package = row[colCldPkg1] != null ? row[colCldPkg1].ToString() : "0";
-                            cldd.amt_medicine = row[colCldMed] != null ? row[colCldMed].ToString() : "0";
+                            cldd.amt_medicine = row[colCldMedInc] != null ? row[colCldMedInc].ToString() : "0";
                             cldd.active = "";
                             cldd.remark = "";
                             cldd.date_create = "";
@@ -618,7 +618,7 @@ namespace clinic_ivf.gui
             dt = ic.ivfDB.obilhDB.selectByCloseDay();
 
             grfCld.Rows.Count = dt.Rows.Count + 1;
-            grfCld.Cols.Count = 30;
+            grfCld.Cols.Count = 31;
 
             grfCld.Cols[colCldBillNo].Width = 100;
             grfCld.Cols[colCldReceiptNo].Width = 100;
@@ -633,7 +633,8 @@ namespace clinic_ivf.gui
             grfCld.Cols[colCldPkg6].Width = 100;
             grfCld.Cols[colCldFreezing].Width = 100;
             grfCld.Cols[colCldExtraDay6].Width = 100;
-            grfCld.Cols[colCldMed].Width = 90;
+            grfCld.Cols[colCldMedInc].Width = 90;
+            grfCld.Cols[colCldMedExtra].Width = 90;
             grfCld.Cols[colCldDtrfee].Width = 90;
             grfCld.Cols[colCldLabAll].Width = 90;
             grfCld.Cols[colCldLabBlood].Width = 90;
@@ -662,7 +663,8 @@ namespace clinic_ivf.gui
             grfCld.Cols[colCldPkg6].Caption = "Package Frozen Sperm";
             grfCld.Cols[colCldFreezing].Caption = "Freezing";
             grfCld.Cols[colCldExtraDay6].Caption = "ExtraDay6";
-            grfCld.Cols[colCldMed].Caption = "Medicine";
+            grfCld.Cols[colCldMedInc].Caption = "Medicine In";
+            grfCld.Cols[colCldMedExtra].Caption = "Medicine Ex";
             grfCld.Cols[colCldDtrfee].Caption = "Doctor fee";
             grfCld.Cols[colCldLabAll].Caption = "Lab Other";
             grfCld.Cols[colCldLabBlood].Caption = "Blood Lab";
@@ -691,11 +693,18 @@ namespace clinic_ivf.gui
             int i = 1;
             foreach (DataRow row in dt.Rows)
             {
+                String receiptno = "", debug="";
+                receiptno = row[ic.ivfDB.obilhDB.obillh.receipt_no].ToString();
+                if (receiptno.Equals("RC630500082"))
+                {
+                    debug = "";
+                }
+
                 String bilid = row[ic.ivfDB.obilhDB.obillh.bill_id].ToString();
-                String pkg1 = "", pkg2 = "", pkg3 = "", pkg4 = "", pkg5 = "", pkg6 = "", labfreezing="", extraday6="", laball="", labblood="", tvs="",equipment="", amt="", pkgother="", pkgall="", specialall="";
-                String amtmed ="", amtdtrfee="", amtlab1="", amtlab2="", amtnurfee="", amttreat="", amtdiscount="",amtother="";
-                Decimal pkg11 = 0, pkg21 = 0, pkg31 = 0, pkg41 = 0, pkg51 = 0, pkg61 = 0, labfreezing1=0, extraday61=0, laball1=0, labblood1=0,tvs1=0, equipment1=0, amt1=0;
-                Decimal amtmed1 = 0, amtdtrfee1 = 0, amtlab11 = 0, amtlab21 = 0, amtnurfee1 = 0, amttreat1 = 0, amtdiscount1 = 0, amtother1 = 0, total=0, pkgother1=0, pkgall1=0, specialall1=0;
+                String pkg1 = "", pkg2 = "", pkg3 = "", pkg4 = "", pkg5 = "", pkg6 = "", labfreezing="", extraday6="", laball="", labblood="", tvs="",equipment="", amt="", pkgother="", pkgall="", specialall="", extra="";
+                String amtmedinc ="", amtdtrfee="", amtlab1="", amtlab2="", amtnurfee="", amttreat="", amtdiscount="",amtother="", include="", amtmedext="";
+                Decimal pkg11 = 0, pkg21 = 0, pkg31 = 0, pkg41 = 0, pkg51 = 0, pkg61 = 0, labfreezing1=0, extraday61=0, laball1=0, labblood1=0,tvs1=0, equipment1=0, amt1=0, amtmedext1=0;
+                Decimal amtmed1 = 0, amtdtrfee1 = 0, amtlab11 = 0, amtlab21 = 0, amtnurfee1 = 0, amttreat1 = 0, amtdiscount1 = 0, amtother1 = 0, total=0, pkgother1=0, pkgall1=0, specialall1=0, include1=0, pkgall2=0, extra1=0;
                 String pkgicsi = "2570000001,2570000002, 2570000003, 2570000020, 2570000025, 2570000037";
                 String pkgfet = "2570000006,2570000024, 2570000026";
                 String pkgpesa = "2570000011";
@@ -739,11 +748,19 @@ namespace clinic_ivf.gui
                 amt = ic.ivfDB.obildDB.selectSumPriceByBilId(bilid);
                 Decimal.TryParse(amt, out amt1);
 
-                amtmed = ic.ivfDB.obildDB.selectSumPriceByBilId1(bilid, "1");
-                Decimal.TryParse(amtmed, out amtmed1);
+                amtmedinc = ic.ivfDB.obildDB.selectSumPriceIncludeByBilId1(bilid, "2650000001");
+                Decimal.TryParse(amtmedinc, out amtmed1);
+                amtmedext = ic.ivfDB.obildDB.selectSumPriceExtraByBilId1(bilid, "2650000001");
+                Decimal.TryParse(amtmedext, out amtmedext1);
 
-                amtdtrfee = ic.ivfDB.obildDB.selectSumPriceByBilId1(bilid, "2");
+                amtdtrfee = ic.ivfDB.obildDB.selectSumPriceByBilId1(bilid, "2650000002");
                 Decimal.TryParse(amtdtrfee, out amtdtrfee1);
+
+                //include = ic.ivfDB.obildDB.selectSumPriceIncludeByBilId(bilid);
+                //Decimal.TryParse(include, out include1);
+
+                extra = ic.ivfDB.obildDB.selectSumPriceExtraByBilId(bilid);
+                Decimal.TryParse(extra, out extra1);
 
                 //amtlab1 = ic.ivfDB.obildDB.selectSumPriceByBilId1(bilid, "3");
                 //Decimal.TryParse(amtlab1, out amtlab11);
@@ -763,10 +780,13 @@ namespace clinic_ivf.gui
                 amtother = ic.ivfDB.obildDB.selectSumPriceByBilId1(bilid, "2650000102");
                 Decimal.TryParse(amtother, out amtother1);
 
-                total = pkg11 + pkg21 + pkg31 + pkg41 + pkg51 + pkg61 + labfreezing1 + extraday61 + laball1 + amtmed1 + amtdtrfee1 + amtdiscount1 + amtother1;
+                pkgall2 = pkg11 + pkg21 + pkg31 + pkg41 + pkg51 + pkg61;
+                //total = pkg11 + pkg21 + pkg31 + pkg41 + pkg51 + pkg61 + labfreezing1 + extraday61 + laball1 + amtmed1 + amtdtrfee1 + amtdiscount1 + amtother1-include1;
+                total = pkgall2 + extra1 + amtdiscount1;
+
 
                 pkgother1 = pkgall1 - pkg11 + pkg21 + pkg31 + pkg41 + pkg51 + pkg61;
-
+                
                 grfCld[i, 0] = i;
                 grfCld[i, colCldId] = "";
                 grfCld[i, colCldBillId] = row[ic.ivfDB.obilhDB.obillh.bill_id].ToString();
@@ -786,7 +806,8 @@ namespace clinic_ivf.gui
                 //grfCld[i, colCldLabAll] = (laball1 - labblood1) > 0 ? (laball1 - labblood1).ToString("#,###.00") : laball1.ToString("#,###.00");
                 grfCld[i, colCldLabAll] = (laball1 - labblood1 - labfreezing1).ToString("#,###.00");
                 grfCld[i, colCldLabBlood] = labblood1.ToString("#,###.00");
-                grfCld[i, colCldMed] = amtmed1.ToString("#,###.00");
+                grfCld[i, colCldMedInc] = amtmed1.ToString("#,###.00");
+                grfCld[i, colCldMedExtra] = amtmedext1.ToString("#,###.00");
                 grfCld[i, colCldTVS] = tvs1.ToString("#,###.00");
                 grfCld[i, colCldDtrfee] = amtdtrfee1.ToString("#,###.00");
                 grfCld[i, colCldEquipment] = equipment1.ToString("#,###.00");
@@ -801,8 +822,9 @@ namespace clinic_ivf.gui
                 grfCld[i, colCldOtherService] = amtother1.ToString("#,###.00");
                 grfCld[i, colCldAmount] = total.ToString("#,###.00");
                 grfCld[i, colCldAmount1] = amt1.ToString("#,###.00");
-                grfCld[i, colCldInc] = row[ic.ivfDB.obilhDB.obillh.Include_Pkg_Price].ToString();
-                grfCld[i, colCldExt] = row[ic.ivfDB.obilhDB.obillh.Extra_Pkg_Price].ToString();
+                grfCld[i, colCldInc] = pkgall2.ToString("#,###.00");
+                extra1 = extra1 + amtdiscount1; // extra 
+                grfCld[i, colCldExt] = extra1.ToString("#,###.00");
 
                 grfCld[i, colCldPkgOther] = pkgother1.ToString("#,###.00");
                 //grfCld[i, colBillId] = "";
@@ -839,16 +861,16 @@ namespace clinic_ivf.gui
             grfCld.Cols[colCldExtraDay6].AllowEditing = false;
             grfCld.Cols[colCldTVS].AllowEditing = false;
             grfCld.Cols[colCldEquipment].AllowEditing = false;
-            grfCld.Cols[colCldMed].AllowEditing = false;
+            grfCld.Cols[colCldMedInc].AllowEditing = false;
             grfCld.Cols[colCldDtrfee].AllowEditing = false;
             grfCld.Cols[colCldLabAll].AllowEditing = false;
             grfCld.Cols[colCldLabBlood].AllowEditing = false;
-            //grfCld.Cols[colCldNurfee].AllowEditing = false;
+            grfCld.Cols[colCldMedExtra].AllowEditing = false;
             //grfCld.Cols[colCldTreat].AllowEditing = false;
             grfCld.Cols[colCldDiscount].AllowEditing = false;
             grfCld.Cols[colCldOtherService].AllowEditing = false;
             grfCld.Cols[colCldAmount].AllowEditing = false;
-            grfCld.Cols[colCldAmount1].AllowEditing = false;
+            grfCld.Cols[colCldAmount1].Visible = false;
             //theme1.SetTheme(grfQue, ic.theme);
         }
         private void initGrfCloseDay()
