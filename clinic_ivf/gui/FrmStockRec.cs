@@ -32,7 +32,7 @@ namespace clinic_ivf.gui
 
         int colId = 1, colName = 2, colQty = 4, colUnit = 3, colLotNo = 7, colExpDate = 6, colPrice = 5, colAmt = 8;
         Boolean pageLoad = false;
-
+        List<OldStockDrug> lstkD;
         public FrmStockRec(IvfControl ic)
         {
             InitializeComponent();
@@ -57,6 +57,7 @@ namespace clinic_ivf.gui
             initGrfStk();
             setGrfStockRec("");
             sB1.Text = "";
+            lstkD = ic.ivfDB.oStkdDB.getlStf();
             pageLoad = false;
         }
         private void setStockDrug()
@@ -79,6 +80,7 @@ namespace clinic_ivf.gui
             stkr.user_cancel = "";
             stkr.branch_id = "";
             stkr.status_stock = "";
+            stkr.stock_sub_id = cboStkSubName.SelectedItem == null ? "" : ((ComboBoxItem)cboStkSubName.SelectedItem).Value;
         }
         private void BtnSave_Click(object sender, EventArgs e)
         {
@@ -90,7 +92,28 @@ namespace clinic_ivf.gui
                 int chk = 0;
                 if (int.TryParse(re, out chk))
                 {
+                    foreach (Row row in grfStk.Rows)
+                    {
+                        StockRecDetail stkrd = new StockRecDetail();
+                        stkrd.rec_detail_id = "";
+                        stkrd.rec_id = "";
+                        stkrd.goods_id = "";
+                        stkrd.price = "";
+                        stkrd.cost = "";
+                        stkrd.qty = "";
+                        stkrd.amount = "";
+                        stkrd.unit_id = "";
+                        stkrd.active = "";
+                        stkrd.remark = "";
+                        stkrd.date_create = "";
+                        stkrd.date_modi = "";
+                        stkrd.date_cancel = "";
+                        stkrd.user_create = "";
+                        stkrd.user_modi = "";
+                        stkrd.user_cancel = "";
+                        stkrd.status_stock = "1";
 
+                    }
                     btnSave.Image = Resources.accept_database24;
                 }
                 else
@@ -120,7 +143,8 @@ namespace clinic_ivf.gui
             //FilterRow2 fr = new FilterRow2(grfBloodLab);
 
             grfStk.DoubleClick += GrfStk_DoubleClick;
-            grfStk.ComboCloseUp += GrfStk_ComboCloseUp;
+            grfStk.AfterRowColChange += GrfStk_AfterRowColChange;
+            grfStk.KeyUpEdit += GrfStk_KeyUpEdit;
             //grfExpnC.CellButtonClick += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellButtonClick);
             //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
             ContextMenu menuGw = new ContextMenu();
@@ -138,12 +162,22 @@ namespace clinic_ivf.gui
 
         }
 
-        private void GrfStk_ComboCloseUp(object sender, RowColEventArgs e)
+        private void GrfStk_KeyUpEdit(object sender, KeyEditEventArgs e)
         {
             //throw new NotImplementedException();
-            MessageBox.Show("11", "");
+            if (e.Col == colQty)
+            {
+                if (grfStk.Rows.Count == (grfStk.Row + 1)) grfStk.Rows.Count++;
+                grfStk.Col = colName;
+                grfStk.Row = grfStk.Rows.Count - 1;
+            }
         }
 
+        private void GrfStk_AfterRowColChange(object sender, RangeEventArgs e)
+        {
+            //throw new NotImplementedException();
+            
+        }
         private void GrfStk_DoubleClick(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
@@ -168,7 +202,10 @@ namespace clinic_ivf.gui
             grfStk.ShowCursor = true;
             //grdFlex.Cols[colID].Caption = "no";
             //grfDept.Cols[colCode].Caption = "รหัส";
-
+            CellStyle cs = grfStk.Styles.Add("date");
+            cs.DataType = typeof(DateTime);
+            
+            grfStk.Cols[colExpDate].Style = cs;
             grfStk.Cols[colId].Caption = "รหัส";
             grfStk.Cols[colName].Caption = "ชื่อ";
             grfStk.Cols[colPrice].Caption = "ราคา";
@@ -189,6 +226,11 @@ namespace clinic_ivf.gui
             //    grfDrug.Cols[col + 1].Caption = dt.Columns[col].ColumnName;
             //    grfDrug.Cols[col + 1].Name = dt.Columns[col].ColumnName;
             //}
+            grfStk.Cols[colId].Visible = false;
+            grfStk.Cols[colPrice].Visible = false;
+            grfStk.Cols[colUnit].AllowEditing = false;
+            //grfStk.Cols[colQty].Visible = false;
+            grfStk.SelectionMode = SelectionModeEnum.Cell;
             if (id.Length <= 0) return;
             DataTable dt = new DataTable();
             dt = ic.ivfDB.stkrdDB.selectByRecId(id);
@@ -202,9 +244,7 @@ namespace clinic_ivf.gui
                 if (i % 2 == 0)
                     grfStk.Rows[i].StyleNew.BackColor = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
             }
-            grfStk.Cols[colId].Visible = false;
-            grfStk.Cols[colQty].Visible = false;
-
+            
             //grfAgn.Cols[colS].Visible = false;
             //grfAgn.Cols[colRemark].Visible = false;
         }
@@ -217,8 +257,11 @@ namespace clinic_ivf.gui
             ComboBoxItem item = new ComboBoxItem();
             item = (ComboBoxItem)((C1ComboBox)sender).SelectedItem;
             if (item == null) return;
-            grfStk.Rows[grfStk.Row][colId] = item.Value;
-            grfStk.ColSel = colQty;
+            grfStk[grfStk.Row,colId] = item.Value;
+            grfStk.Col = colQty;
+            grfStk[grfStk.Row, colUnit] = ic.ivfDB.oStkdDB.getUnit(item.Value.Trim());
+            grfStk[grfStk.Row, 0] = grfStk.Row;
+            //col.Selected = true;
             //if (grfStk.Rows.Count == grfStk.Row+1) grfStk.Rows.Add();
             //item = (ComboBoxItem)item1;
             //item = (ComboBoxItem)item1;

@@ -67,7 +67,7 @@ namespace clinic_ivf.gui
             String col = cboStkSubName.SelectedItem == null ? "" : ((ComboBoxItem)cboStkSubName.SelectedItem).Value;
             StockSubName stkn = new StockSubName();
             stkn = ic.ivfDB.stknDB.selectByPk(col);
-            setGrfStk(stkn.stock_sub_column_name);
+            setGrfStk(stkn.stock_column_name);
         }
 
         private void initGrfStk()
@@ -127,7 +127,8 @@ namespace clinic_ivf.gui
         private void setGrfStk(String column)
         {
             //grfDept.Rows.Count = 7;
-            grfStk.Clear();
+            //grfStk.Clear();
+            grfStk.Rows.Count = 1;
             DataTable dt = new DataTable();
             dt = ic.ivfDB.oStkdDB.selectAll2(column);
             //grfBloodLab.Rows.Count = dt.Rows.Count + 1;
@@ -173,7 +174,8 @@ namespace clinic_ivf.gui
                 {
                     i++;
                     if (i == 1) continue;
-
+                    //if (i == 2) continue;
+                    grfStk[i, 0] = (i-1);
                     Decimal.TryParse(row[ic.ivfDB.oStkdDB.ostkD.Price].ToString(), out aaa);
                     grfStk[i, colPrice] = aaa.ToString("#,##0");
                     grfStk[i, colId] = row[ic.ivfDB.oStkdDB.ostkD.DUID].ToString();

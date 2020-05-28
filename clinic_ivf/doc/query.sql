@@ -1719,3 +1719,25 @@ CHANGE COLUMN `stock_sub_name_id` `stock_sub_id` BIGINT(20) NULL DEFAULT NULL ;
 
 ALTER TABLE t_stock_rec AUTO_INCREMENT =4040000001;
 ALTER TABLE b_stock_sub AUTO_INCREMENT =2280000001;
+
+ALTER TABLE `ivf`.`b_stock_sub` 
+ADD COLUMN `stock_column_name` VARCHAR(45) NULL AFTER `stock_sub_id`;
+
+
+ALTER TABLE `ivf`.`StockDrug` 
+ADD COLUMN `date_create` VARCHAR(45) NULL AFTER `order_amount_sub_3`,
+ADD COLUMN `date_modi` VARCHAR(45) NULL AFTER `date_create`,
+ADD COLUMN `date_cancel` VARCHAR(45) NULL AFTER `date_modi`,
+ADD COLUMN `user_create` VARCHAR(45) NULL AFTER `date_cancel`,
+ADD COLUMN `user_modi` VARCHAR(45) NULL AFTER `user_create`,
+ADD COLUMN `user_cancel` VARCHAR(45) NULL AFTER `user_modi`,
+ADD COLUMN `remark` VARCHAR(45) NULL AFTER `user_cancel`;
+
+
+ALTER TABLE `ivf`.`t_stock_rec_detail` 
+CHANGE COLUMN `rec_detail_id` `rec_detail_id` BIGINT NOT NULL AUTO_INCREMENT ,
+ADD PRIMARY KEY (`rec_detail_id`);
+;
+
+ALTER TABLE t_stock_rec_detail AUTO_INCREMENT =4050000001;
+

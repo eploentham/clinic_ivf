@@ -49,6 +49,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.c1TextBox1 = new C1.Win.C1Input.C1TextBox();
             this.pnItem = new System.Windows.Forms.Panel();
+            this.txtId = new C1.Win.C1Input.C1TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             this.sB.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -63,6 +64,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtRecDoc)).BeginInit();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtId)).BeginInit();
             this.SuspendLayout();
             // 
             // theme1
@@ -90,6 +92,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel1.Controls.Add(this.txtId);
             this.panel1.Controls.Add(this.c1Button1);
             this.panel1.Controls.Add(this.cboStkSubName);
             this.panel1.Controls.Add(this.label7);
@@ -382,6 +385,20 @@
             this.pnItem.TabIndex = 0;
             this.theme1.SetTheme(this.pnItem, "(default)");
             // 
+            // txtId
+            // 
+            this.txtId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtId.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtId.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtId.Location = new System.Drawing.Point(476, 9);
+            this.txtId.Name = "txtId";
+            this.txtId.Size = new System.Drawing.Size(45, 24);
+            this.txtId.TabIndex = 937;
+            this.txtId.Tag = null;
+            this.theme1.SetTheme(this.txtId, "(default)");
+            this.txtId.Visible = false;
+            this.txtId.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
             // FrmStockRec
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -411,6 +428,7 @@
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtId)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -439,5 +457,6 @@
         private C1.Win.C1Input.C1ComboBox cboStkSubName;
         private System.Windows.Forms.Label label7;
         private C1.Win.C1Input.C1Button c1Button1;
+        private C1.Win.C1Input.C1TextBox txtId;
     }
 }

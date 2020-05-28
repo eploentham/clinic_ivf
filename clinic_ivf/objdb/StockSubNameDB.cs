@@ -35,6 +35,7 @@ namespace clinic_ivf.objdb
             stkn.user_create = "user_create";
             stkn.user_modi = "user_modi";
             stkn.user_cancel = "user_cancel";
+            stkn.stock_column_name = "stock_column_name";
 
             stkn.table = "b_stock_sub";
             stkn.pkField = "stock_sub_id";
@@ -51,7 +52,7 @@ namespace clinic_ivf.objdb
                 StockSubName itm1 = new StockSubName();
                 itm1.stock_sub_id = row[stkn.stock_sub_id].ToString();
                 itm1.stock_sub_name = row[stkn.stock_sub_name].ToString();
-                itm1.stock_sub_column_name = row[stkn.stock_sub_column_name].ToString();
+                itm1.stock_column_name = row[stkn.stock_column_name].ToString();
                 itm1.sort1 = row[stkn.sort1].ToString();
                 itm1.active = row[stkn.active].ToString();
                 itm1.remark = row[stkn.remark].ToString();
@@ -117,7 +118,7 @@ namespace clinic_ivf.objdb
             p.remark = p.remark == null ? "" : p.remark;            
 
             p.stock_sub_name = long.TryParse(p.stock_sub_name, out chk) ? chk.ToString() : "0";
-            p.stock_sub_column_name = long.TryParse(p.stock_sub_column_name, out chk) ? chk.ToString() : "0";
+            p.stock_column_name = long.TryParse(p.stock_column_name, out chk) ? chk.ToString() : "0";
             
         }
         public String insert(StockSubName p, String userId)
@@ -140,6 +141,7 @@ namespace clinic_ivf.objdb
                 "," + stkn.user_create + "= '" + userId + "'" +
                 "," + stkn.user_modi + "= ''" +
                 "," + stkn.user_cancel + "= ''" +
+                "," + stkn.stock_column_name + "= '" + p.stock_column_name + "'" +
                 "";
             try
             {
@@ -193,6 +195,7 @@ namespace clinic_ivf.objdb
                 "," + stkn.remark + " = '" + p.remark + "'" +
                 "," + stkn.date_modi + " = now()" +
                 "," + stkn.user_modi + " = '" + userId + "'" +
+                "," + stkn.stock_column_name + "= '" + p.stock_column_name + "'" +
                 "Where " + stkn.pkField + "='" + p.stock_sub_id + "'"
                 ;
 
@@ -292,7 +295,7 @@ namespace clinic_ivf.objdb
                 dgs1.user_create = dt.Rows[0][stkn.user_create].ToString();
                 dgs1.user_modi = dt.Rows[0][stkn.user_modi].ToString();
                 dgs1.user_cancel = dt.Rows[0][stkn.user_cancel].ToString();
-                
+                dgs1.stock_column_name = dt.Rows[0][stkn.stock_column_name].ToString();
             }
             else
             {
@@ -314,7 +317,7 @@ namespace clinic_ivf.objdb
             dgs1.user_create = "";
             dgs1.user_modi = "";
             dgs1.user_cancel = "";
-            
+            dgs1.stock_column_name = "";
             return dgs1;
         }
     }

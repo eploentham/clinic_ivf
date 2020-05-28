@@ -13,6 +13,7 @@ namespace clinic_ivf.objdb
     {
         public OldStockDrug ostkD;
         ConnectDB conn;
+        public List<OldStockDrug> lstkD;
         public OldStockDrugDB(ConnectDB c)
         {
             conn = c;
@@ -57,9 +58,60 @@ namespace clinic_ivf.objdb
             ostkD.user_cancel = "user_cancel";
             ostkD.user_create = "user_create";
             ostkD.user_modi = "user_modi";
+            ostkD.remark = "remark";
 
             ostkD.table = "StockDrug";
             ostkD.pkField = "DUID";
+            lstkD = new List<OldStockDrug>();
+        }
+        public List<OldStockDrug> getlStf()
+        {
+            //lDept = new List<Position>();
+
+            lstkD.Clear();
+            DataTable dt = new DataTable();
+            dt = selectAll();
+            foreach (DataRow row in dt.Rows)
+            {
+                OldStockDrug itm1 = new OldStockDrug();
+                itm1.DUID = row[ostkD.DUID].ToString();
+                itm1.DUName = row[ostkD.DUName].ToString();
+                itm1.EUsage = row[ostkD.EUsage].ToString();
+                itm1.TUsage = row[ostkD.TUsage].ToString();
+                itm1.UnitType = row[ostkD.UnitType].ToString();
+                itm1.Alert = row[ostkD.Alert].ToString();
+                itm1.QTY = row[ostkD.QTY].ToString();
+                itm1.PendingQTY = row[ostkD.PendingQTY].ToString();
+                itm1.Price = row[ostkD.Price].ToString();
+                itm1.drug_caution = row[ostkD.drug_caution].ToString();
+                itm1.active = row[ostkD.active].ToString();
+                itm1.remark = row[ostkD.remark].ToString();
+                itm1.date_create = row[ostkD.date_create].ToString();
+                itm1.date_modi = row[ostkD.date_modi].ToString();
+                itm1.date_cancel = row[ostkD.date_cancel].ToString();
+                itm1.user_create = row[ostkD.user_create].ToString();
+                itm1.user_modi = row[ostkD.user_modi].ToString();
+                itm1.instruction_id = row[ostkD.instruction_id].ToString();
+                itm1.frequency_id = row[ostkD.frequency_id].ToString();
+                //itm1.user_modi = row[ostkD.user_modi].ToString();
+                //itm1.user_modi = row[ostkD.user_modi].ToString();
+                //itm1.user_modi = row[ostkD.user_modi].ToString();
+                lstkD.Add(itm1);
+            }
+            return lstkD;
+        }
+        public String getUnit(String stkid)
+        {
+            String name = "";
+            foreach(OldStockDrug ostk in lstkD)
+            {
+                if (ostk.DUID.Equals(stkid))
+                {
+                    name = ostk.UnitType;
+                }
+            }
+
+            return name;
         }
         private void chkNull(OldStockDrug p)
         {
@@ -268,7 +320,8 @@ namespace clinic_ivf.objdb
             DataTable dt = new DataTable();
             String sql = "select ostkD.DUID,ostkD.DUName,ostkD.UnitType,ostkD.Price,ostkD.on_hand"+ column + ",ostkD.order_point" + column + ",ostkD.order_amount" + column + "  " +
                 "From " + ostkD.table + " ostkD " +
-                "Where ostkD." + ostkD.active + " ='1' ";
+                "Where ostkD." + ostkD.active + " ='1' " +
+                "Order By " + ostkD.DUName;
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
@@ -277,7 +330,8 @@ namespace clinic_ivf.objdb
             DataTable dt = new DataTable();
             String sql = "select ostkD.*  " +
                 "From " + ostkD.table + " ostkD " +
-                "Where ostkD." + ostkD.active + " ='1' ";
+                "Where ostkD." + ostkD.active + " ='1' " +
+                "Order By " + ostkD.DUName;
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
@@ -286,7 +340,8 @@ namespace clinic_ivf.objdb
             DataTable dt = new DataTable();
             String sql = "select ostkD."+ostkD.DUID+" as id,"+ostkD.item_code+" as code,"+ostkD.DUName+" as name " +
                 "From " + ostkD.table + " ostkD " +
-                "Where ostkD." + ostkD.active + " ='1' ";
+                "Where ostkD." + ostkD.active + " ='1' " +
+                "Order By ostkD.DUName ";
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
@@ -295,7 +350,8 @@ namespace clinic_ivf.objdb
             DataTable dt = new DataTable();
             String sql = "select ostkD." + ostkD.DUID + " as id," + ostkD.item_code + " as code," + ostkD.DUName + " as name " +
                 "From " + ostkD.table + " ostkD " +
-                "Where ostkD." + ostkD.active + " ='1' ";
+                "Where ostkD." + ostkD.active + " ='1' "+
+                "Order By " + ostkD.DUName;
             dt = conn.selectData(conn.connEx, sql);
             return dt;
         }
