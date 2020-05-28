@@ -42,6 +42,7 @@ namespace clinic_ivf.objdb
             stkr.user_cancel = "user_cancel";
             stkr.branch_id = "branch_id";
             stkr.status_stock = "status_stock";
+            stkr.stock_sub_id = "stock_sub_id";
 
             stkr.table = "t_stock_rec";
             stkr.pkField = "rec_id";
@@ -74,7 +75,7 @@ namespace clinic_ivf.objdb
                 itm1.user_cancel = row[stkr.user_cancel].ToString();
                 itm1.branch_id = row[stkr.branch_id].ToString();
                 itm1.status_stock = row[stkr.status_stock].ToString();
-                
+                itm1.stock_sub_id = row[stkr.stock_sub_id].ToString();
                 lStkR.Add(itm1);
             }
         }
@@ -155,7 +156,7 @@ namespace clinic_ivf.objdb
             p.comp_id = long.TryParse(p.comp_id, out chk) ? chk.ToString() : "0";
             p.vend_id = long.TryParse(p.vend_id, out chk) ? chk.ToString() : "0";
             p.branch_id = long.TryParse(p.branch_id, out chk) ? chk.ToString() : "0";
-            //p.pre_no = int.TryParse(p.pre_no, out chk) ? chk.ToString() : "0";
+            p.stock_sub_id = long.TryParse(p.stock_sub_id, out chk) ? chk.ToString() : "0";
             //p.doctor_id = int.TryParse(p.doctor_id, out chk) ? chk.ToString() : "0";
         }
         public String insert(StockRec p, String userId)
@@ -184,7 +185,8 @@ namespace clinic_ivf.objdb
                 "," + stkr.user_modi + "= ''" +
                 "," + stkr.user_cancel + "= ''" +
                 "," + stkr.branch_id + "= '" + p.branch_id + "'" +
-                "," + stkr.status_stock + "= '" + p.status_stock + "'" +                
+                "," + stkr.status_stock + "= '" + p.status_stock + "'" +
+                "," + stkr.stock_sub_id + "= '" + p.stock_sub_id + "'" +
                 "";
             try
             {
@@ -224,7 +226,7 @@ namespace clinic_ivf.objdb
                 "," + stkr.user_modi + " = '" + userId + "'" +
                 "," + stkr.branch_id + " = '" + p.branch_id + "'" +
                 "," + stkr.status_stock + " = '" + p.status_stock + "'" +
-                
+                "," + stkr.stock_sub_id + "= '" + p.stock_sub_id + "'" +
                 "Where " + stkr.pkField + "='" + p.rec_id + "'"
                 ;
 
@@ -321,7 +323,7 @@ namespace clinic_ivf.objdb
                 dgs1.user_cancel = dt.Rows[0][stkr.user_cancel].ToString();
                 dgs1.branch_id = dt.Rows[0][stkr.branch_id].ToString();
                 dgs1.status_stock = dt.Rows[0][stkr.status_stock].ToString();
-                
+                dgs1.stock_sub_id = dt.Rows[0][stkr.stock_sub_id].ToString();
             }
             else
             {
@@ -349,7 +351,7 @@ namespace clinic_ivf.objdb
             dgs1.user_cancel = "";
             dgs1.branch_id = "";
             dgs1.status_stock = "";
-            
+            dgs1.stock_sub_id = "";
             return dgs1;
         }
     }

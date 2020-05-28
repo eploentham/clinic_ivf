@@ -18,7 +18,7 @@ namespace clinic_ivf.object1
         public String vend_id { get; set; }
         public String branch_id { get; set; }
         public String status_stock { get; set; }
-
+        public String stock_sub_id { get; set; }
 
     }
 }

@@ -24,9 +24,8 @@ namespace clinic_ivf.objdb
             stkn = new StockSubName();
             lDgs = new List<StockSubName>();
 
-            stkn.stock_sub_name_id = "stock_sub_name_id";
+            stkn.stock_sub_id = "stock_sub_id";
             stkn.stock_sub_name = "stock_sub_name";
-            stkn.stock_sub_column_name = "stock_sub_column_name";
             stkn.sort1 = "sort1";
             stkn.active = "active";
             stkn.remark = "remark";
@@ -37,8 +36,8 @@ namespace clinic_ivf.objdb
             stkn.user_modi = "user_modi";
             stkn.user_cancel = "user_cancel";
 
-            stkn.table = "b_stock_sub_name";
-            stkn.pkField = "stock_sub_name_id";
+            stkn.table = "b_stock_sub";
+            stkn.pkField = "stock_sub_id";
         }
         public void getlBsp()
         {
@@ -50,7 +49,7 @@ namespace clinic_ivf.objdb
             foreach (DataRow row in dt.Rows)
             {
                 StockSubName itm1 = new StockSubName();
-                itm1.stock_sub_name_id = row[stkn.stock_sub_name_id].ToString();
+                itm1.stock_sub_id = row[stkn.stock_sub_id].ToString();
                 itm1.stock_sub_name = row[stkn.stock_sub_name].ToString();
                 itm1.stock_sub_column_name = row[stkn.stock_sub_column_name].ToString();
                 itm1.sort1 = row[stkn.sort1].ToString();
@@ -133,7 +132,6 @@ namespace clinic_ivf.objdb
             sql = "Insert Into " + stkn.table + " set " +
                 "" + stkn.stock_sub_name + "= '" + p.stock_sub_name + "'" +
                 "," + stkn.active + "= '" + p.active + "'" +
-                "," + stkn.stock_sub_column_name + "= '" + p.stock_sub_column_name + "'" +
                 "," + stkn.sort1 + "= '" + p.sort1 + "'" +
                 "," + stkn.remark + "= '" + p.remark + "'" +
                 "," + stkn.date_create + "= now()" +
@@ -191,12 +189,11 @@ namespace clinic_ivf.objdb
             chkNull(p);
             sql = "Update " + stkn.table + " Set " +
                 " " + stkn.stock_sub_name + " = '" + p.stock_sub_name + "'" +
-                "," + stkn.stock_sub_column_name + " = '" + p.stock_sub_column_name + "'" +
                 "," + stkn.sort1 + " = '" + p.sort1 + "'" +
                 "," + stkn.remark + " = '" + p.remark + "'" +
                 "," + stkn.date_modi + " = now()" +
                 "," + stkn.user_modi + " = '" + userId + "'" +
-                "Where " + stkn.pkField + "='" + p.stock_sub_name_id + "'"
+                "Where " + stkn.pkField + "='" + p.stock_sub_id + "'"
                 ;
 
             try
@@ -214,7 +211,7 @@ namespace clinic_ivf.objdb
         {
             String re = "";
 
-            if (p.stock_sub_name_id.Equals(""))
+            if (p.stock_sub_id.Equals(""))
             {
                 re = insert(p, "");
             }
@@ -265,11 +262,11 @@ namespace clinic_ivf.objdb
             {
                 item = new ComboBoxItem();
                 item.Text = row[stkn.stock_sub_name].ToString();
-                item.Value = row[stkn.stock_sub_name_id].ToString();
+                item.Value = row[stkn.stock_sub_id].ToString();
                 if (i == 0)
                 {
                     item2.Text = row[stkn.stock_sub_name].ToString();
-                    item2.Value = row[stkn.stock_sub_name_id].ToString();
+                    item2.Value = row[stkn.stock_sub_id].ToString();
                 }
                 c.Items.Add(item);
                 i++;
@@ -283,9 +280,8 @@ namespace clinic_ivf.objdb
             StockSubName dgs1 = new StockSubName();
             if (dt.Rows.Count > 0)
             {
-                dgs1.stock_sub_name_id = dt.Rows[0][stkn.stock_sub_name_id].ToString();
+                dgs1.stock_sub_id = dt.Rows[0][stkn.stock_sub_id].ToString();
                 dgs1.stock_sub_name = dt.Rows[0][stkn.stock_sub_name].ToString();
-                dgs1.stock_sub_column_name = dt.Rows[0][stkn.stock_sub_column_name].ToString();
                 dgs1.sort1 = dt.Rows[0][stkn.sort1].ToString();
                 
                 dgs1.active = dt.Rows[0][stkn.active].ToString();
@@ -306,9 +302,8 @@ namespace clinic_ivf.objdb
         }
         public StockSubName setDocGroupScan(StockSubName dgs1)
         {
-            dgs1.stock_sub_name_id = "";
+            dgs1.stock_sub_id = "";
             dgs1.stock_sub_name = "";
-            dgs1.stock_sub_column_name = "";
             dgs1.sort1 = "";
             
             dgs1.active = "";

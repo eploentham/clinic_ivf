@@ -1,4 +1,5 @@
-﻿using C1.Win.C1FlexGrid;
+﻿using C1.C1Excel;
+using C1.Win.C1FlexGrid;
 using C1.Win.C1SuperTooltip;
 using clinic_ivf.control;
 using clinic_ivf.FlexGrid;
@@ -7,7 +8,9 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -80,6 +83,7 @@ namespace clinic_ivf.gui
             //grfExpnC.CellButtonClick += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellButtonClick);
             //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
             ContextMenu menuGw = new ContextMenu();
+            menuGw.MenuItems.Add("Export Excel", new EventHandler(ContextMenu_export_grfstk));
             //if (flagedit.Equals("edit"))
             //{
             //    menuGw.MenuItems.Add("สั่งการ", new EventHandler(ContextMenu_order_bl_set));
@@ -92,6 +96,33 @@ namespace clinic_ivf.gui
 
             theme1.SetTheme(grfStk, "Office2010Red");
 
+        }
+        private void ContextMenu_export_grfstk(object sender, System.EventArgs e)
+        {
+            SaveFileDialog dlg = new SaveFileDialog();
+            dlg.DefaultExt = "xls";
+            dlg.Filter = "Excel |*.xls";
+            dlg.InitialDirectory = ic.iniC.pathSaveExcelAppointment;
+            dlg.FileName = "*.xls";
+            if (dlg.ShowDialog() != DialogResult.OK)
+                return;
+            // clear book
+            C1XLBook _book = new C1XLBook();
+            XLSheet sheet = _book.Sheets.Add("stock" + DateTime.Now.ToString("dd-MM-") + DateTime.Now.Year.ToString());
+
+            ic.SaveSheet(grfStk, sheet, _book, false);
+
+            _book.Sheets.SelectedIndex = 0;
+            // save the book
+            _book.Save(dlg.FileName);
+            if (File.Exists(dlg.FileName))
+            {
+                //Process p = new Process();
+                //p.StartInfo.FileName = dlg.FileName;
+                //p.Start();
+                string argument = "/select, \"" + dlg.FileName + "\"";
+                Process.Start("explorer.exe", argument);
+            }
         }
         private void setGrfStk(String column)
         {

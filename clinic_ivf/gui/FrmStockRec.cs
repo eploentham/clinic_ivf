@@ -59,17 +59,38 @@ namespace clinic_ivf.gui
             sB1.Text = "";
             pageLoad = false;
         }
-
+        private void setStockDrug()
+        {
+            stkr.rec_id = "";
+            stkr.rec_doc = "";
+            stkr.inv_ex = "";
+            stkr.description = "";
+            stkr.rec_date = ic.datetoDB(txtRecDate.Text);
+            stkr.inv_ex_date = "";
+            stkr.comp_id = "";
+            stkr.vend_id = "";
+            stkr.active = "";
+            stkr.remark = txtRemark.Text.Trim();
+            stkr.date_create = "";
+            stkr.date_modi = "";
+            stkr.date_cancel = "";
+            stkr.user_create = "";
+            stkr.user_modi = "";
+            stkr.user_cancel = "";
+            stkr.branch_id = "";
+            stkr.status_stock = "";
+        }
         private void BtnSave_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
             if (MessageBox.Show("ต้องการ บันทึกช้อมูล ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
             {
-                //setStockDrug();
+                setStockDrug();
                 String re = ic.ivfDB.stkrDB.insertStockRec(stkr, ic.user.staff_id);
                 int chk = 0;
                 if (int.TryParse(re, out chk))
                 {
+
                     btnSave.Image = Resources.accept_database24;
                 }
                 else

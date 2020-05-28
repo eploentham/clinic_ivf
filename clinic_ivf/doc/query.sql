@@ -1704,3 +1704,18 @@ ADD COLUMN `prefix_form_day1` VARCHAR(45) NULL AFTER `form_day1_doc`;
 ALTER TABLE `ivf`.`lab_t_opu` 
 ADD COLUMN `fertili_2_pn_add` VARCHAR(45) NULL AFTER `report_day6`;
 
+ALTER TABLE `ivf`.`t_stock_rec` 
+ADD COLUMN `stock_sub_name_id` BIGINT NULL AFTER `user_cancel`,
+CHANGE COLUMN `rec_id` `rec_id` BIGINT NOT NULL AUTO_INCREMENT ,
+ADD PRIMARY KEY (`rec_id`);
+;
+
+ALTER TABLE `ivf`.`b_stock_sub_name` 
+DROP COLUMN `stock_sub_column_name`,
+CHANGE COLUMN `stock_sub_name_id` `stock_sub_id` BIGINT NOT NULL AUTO_INCREMENT , RENAME TO  `ivf`.`b_stock_sub` ;
+
+ALTER TABLE `ivf`.`t_stock_rec` 
+CHANGE COLUMN `stock_sub_name_id` `stock_sub_id` BIGINT(20) NULL DEFAULT NULL ;
+
+ALTER TABLE t_stock_rec AUTO_INCREMENT =4040000001;
+ALTER TABLE b_stock_sub AUTO_INCREMENT =2280000001;

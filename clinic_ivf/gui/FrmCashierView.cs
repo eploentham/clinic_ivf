@@ -10,7 +10,9 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -926,7 +928,15 @@ namespace clinic_ivf.gui
 
             // save the book
             _book.Save(dlg.FileName);
-            
+            if (File.Exists(dlg.FileName))
+            {
+                //Process p = new Process();
+                //p.StartInfo.FileName = dlg.FileName;
+                //p.Start();
+                string argument = "/select, \"" + dlg.FileName + "\"";
+                Process.Start("explorer.exe", argument);
+            }
+
         }
         private void GrfCld_DoubleClick(object sender, EventArgs e)
         {
