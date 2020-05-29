@@ -168,7 +168,7 @@ namespace clinic_ivf.gui
         private void MenuStockRec_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            FrmStockRec frm = new FrmStockRec(ic);
+            FrmStockRecView frm = new FrmStockRecView(ic, this);
             frm.FormBorderStyle = FormBorderStyle.None;
             AddNewTab(frm, menuStockRec.Text + " ");
         }

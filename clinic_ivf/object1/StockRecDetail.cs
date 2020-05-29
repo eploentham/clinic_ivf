@@ -17,6 +17,9 @@ namespace clinic_ivf.object1
         public String amount { get; set; }
         public String unit_id { get; set; }
         public String status_stock { get; set; }
-
+        public String row1 { get; set; }
+        public String unit_name { get; set; }
+        public String date_expire { get; set; }
+        public String lot_no { get; set; }
     }
 }

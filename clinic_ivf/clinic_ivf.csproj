@@ -616,6 +616,9 @@
     <Compile Include="gui\FrmStockRec.Designer.cs">
       <DependentUpon>FrmStockRec.cs</DependentUpon>
     </Compile>
+    <Compile Include="gui\FrmStockRecView.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="gui\FrmVisitAdd.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -1620,6 +1620,15 @@ namespace clinic_ivf.control
 
             //cbo.Text = cbo.Items[0].ToString();
         }
+        public C1ComboBox setCboYear(C1ComboBox c)
+        {
+            c.Items.Clear();
+            c.Items.Add(System.DateTime.Now.Year + 543);
+            c.Items.Add(System.DateTime.Now.Year + 543 - 1);
+            c.Items.Add(System.DateTime.Now.Year + 543 - 2);
+            c.SelectedIndex = 0;
+            return c;
+        }
         public Size MeasureString(Control c, string text)
         {
             return TextRenderer.MeasureText(text, c.Font, new Size(int.MaxValue, int.MaxValue), TextFormatFlags.SingleLine | TextFormatFlags.NoClipping | TextFormatFlags.PreserveGraphicsClipping);

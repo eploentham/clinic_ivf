@@ -1741,3 +1741,14 @@ ADD PRIMARY KEY (`rec_detail_id`);
 
 ALTER TABLE t_stock_rec_detail AUTO_INCREMENT =4050000001;
 
+ALTER TABLE `ivf`.`t_stock_draw_detail` 
+ADD COLUMN `unit_name` VARCHAR(255) NULL AFTER `row1`;
+
+ALTER TABLE `ivf`.`t_stock_rec_detail` 
+ADD COLUMN `unit_name` VARCHAR(255) NULL AFTER `row1`;
+
+ALTER TABLE `ivf`.`t_stock_rec_detail` 
+ADD COLUMN `date_expire` VARCHAR(45) NULL AFTER `unit_name`,
+ADD COLUMN `lot_no` VARCHAR(45) NULL AFTER `date_expire`;
+
+

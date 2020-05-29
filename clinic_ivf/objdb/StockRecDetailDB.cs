@@ -41,6 +41,10 @@ namespace clinic_ivf.objdb
             stkrd.user_modi = "user_modi";
             stkrd.user_cancel = "user_cancel";
             stkrd.status_stock = "status_stock";
+            stkrd.row1 = "row1";
+            stkrd.unit_name = "unit_name";
+            stkrd.date_expire = "date_expire";
+            stkrd.lot_no = "lot_no";
 
             stkrd.table = "t_stock_rec_detail";
             stkrd.pkField = "rec_detail_id";
@@ -155,10 +159,14 @@ namespace clinic_ivf.objdb
             p.unit_id = p.unit_id == null ? "" : p.unit_id;
             p.remark = p.remark == null ? "" : p.remark;
             p.status_stock = p.status_stock == null ? "" : p.status_stock;
+            p.unit_name = p.unit_name == null ? "" : p.unit_name;
+            p.date_expire = p.date_expire == null ? "" : p.date_expire;
+            p.lot_no = p.lot_no == null ? "" : p.lot_no;
 
             p.rec_id = long.TryParse(p.rec_id, out chk) ? chk.ToString() : "0";
             p.goods_id = long.TryParse(p.goods_id, out chk) ? chk.ToString() : "0";
             p.unit_id = long.TryParse(p.unit_id, out chk) ? chk.ToString() : "0";
+            p.row1 = long.TryParse(p.row1, out chk) ? chk.ToString() : "0";
 
             p.price = Decimal.TryParse(p.price, out chk1) ? chk1.ToString() : "0";
             p.cost = Decimal.TryParse(p.cost, out chk1) ? chk1.ToString() : "0";
@@ -191,7 +199,10 @@ namespace clinic_ivf.objdb
                 "," + stkrd.user_modi + "= ''" +
                 "," + stkrd.user_cancel + "= ''" +
                 "," + stkrd.status_stock + "= '" + p.status_stock + "'" +
-                
+                "," + stkrd.row1 + "= '" + p.row1 + "'" +
+                "," + stkrd.unit_name + "= '" + p.unit_name + "'" +
+                "," + stkrd.date_expire + "= '" + p.date_expire + "'" +
+                "," + stkrd.lot_no + "= '" + p.lot_no + "'" +
                 "";
             try
             {
@@ -226,7 +237,10 @@ namespace clinic_ivf.objdb
                 "," + stkrd.date_modi + " = now()" +
                 "," + stkrd.user_modi + " = '" + userId + "'" +
                 "," + stkrd.status_stock + " = '" + p.status_stock + "'" +
-                
+                "," + stkrd.row1 + " = '" + p.row1 + "'" +
+                "," + stkrd.unit_name + " = '" + p.unit_name + "'" +
+                "," + stkrd.date_expire + " = '" + p.date_expire + "'" +
+                "," + stkrd.lot_no + " = '" + p.lot_no + "'" +
                 "Where " + stkrd.pkField + "='" + p.rec_detail_id + "'"
                 ;
 
@@ -322,7 +336,10 @@ namespace clinic_ivf.objdb
                 dgs1.user_modi = dt.Rows[0][stkrd.user_modi].ToString();
                 dgs1.user_cancel = dt.Rows[0][stkrd.user_cancel].ToString();
                 dgs1.status_stock = dt.Rows[0][stkrd.status_stock].ToString();
-                
+                dgs1.row1 = dt.Rows[0][stkrd.row1].ToString();
+                dgs1.unit_name = dt.Rows[0][stkrd.unit_name].ToString();
+                dgs1.date_expire = dt.Rows[0][stkrd.date_expire].ToString();
+                dgs1.lot_no = dt.Rows[0][stkrd.lot_no].ToString();
             }
             else
             {
@@ -349,7 +366,10 @@ namespace clinic_ivf.objdb
             dgs1.user_modi = "";
             dgs1.user_cancel = "";
             dgs1.status_stock = "";
-            
+            dgs1.row1 = "";
+            dgs1.unit_name = "";
+            dgs1.date_expire = "";
+            dgs1.lot_no = "";
             return dgs1;
         }
     }
