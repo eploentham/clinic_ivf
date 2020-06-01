@@ -58,13 +58,13 @@ namespace clinic_ivf.gui
         Font ff, ffB;
 
         C1FlexGrid grfBloodLab, grfSperm, grfEmbryo, grfGenetic, grfSpecial, grfRx, grfRxSet, grfOrder, grfPackage, grfPackageD, grfRxSetD, grfNote, grfpApmAll, grfpApmDayAll, grfpApmVisit, grfImgOutLab, grfHis;
-        C1FlexGrid grfEggsd, grfLab, grfHisDrug, grfImg, grfPg;
+        C1FlexGrid grfEggsd, grfLab, grfHisDrug, grfImg, grfPg, grfItminPkg;
         C1SuperTooltip stt;
         C1SuperErrorProvider sep;
 
         int colImgID = 1, colImgHn = 2, colImgImg = 3, colImgDesc = 4, colImgDesc2 = 5, colImgDesc3 = 6, colImgPathPic = 7, colImgBtn = 8, colImgStatus = 9, colImgDoctor = 10;
         int colBlId = 1, colBlName = 2, colBlQty = 3, colBlPrice = 4, colBlInclude = 5, colBlRemark = 6, colBlOrderGroup=7;
-        int colPkgdId = 1, colPkgId = 2, colPkgType = 3, colPkgItmName = 4, colPkgItmId = 5, colPkgQty = 6;
+        int colPkgdId = 1, colPkgType = 2, colPkgItmName = 3, colPkgQty = 4, colPkgUse=5,colPkgId = 6, colPkgItmId=7;
         int colRxdId = 1, colRxName = 2, colRxQty = 3, colRxPrice = 4, colRxInclude = 5, colRxRemark = 6, colRxUsE = 7, colRxUsT = 8, colRxId = 9, colRxItmId = 10;
         int colNoteId = 1, colNote = 2, colNoteStatusAll = 3;
         int colApmId = 1, colApmAppointment = 4, colApmDate = 2, colApmTime = 3, colApmDoctor = 5, colApmSp = 6, colApmNotice = 7, colE2 = 8, colLh = 9, colEndo = 10, colPrl = 10, colFsh = 11, colRt = 12, colLt = 13;
@@ -72,6 +72,7 @@ namespace clinic_ivf.gui
         int colRsLabSend=14, colRsLabReqdate=15, colRsLabDatetimereceive=16, colRsLabdatetimeresult=17, colRslabdatetimeapprove=18, colRslabjoblabid=19, colRslabjoblabreqid=20, colRslabStatusResult=21;
         int colHisVsId = 1, colHisVsDate = 2, colHisVsVn = 3;
         int colPgId = 1, colPgFilename = 2;
+        int colItminPkgId = 1, colItminPgkOrdDate = 2, colItminPkgItmTyp = 3, colItminPkgItmName = 4, colItminPkgPrice = 5, colItminPkgQty=6, colItminPkgExtra=7, colItminPkgQtyAmt=8;
 
         int colOrderId = 1, colOrderVn = 2, colOrderLID = 3, colOrderExtra = 4, colOrderPrice = 5, colOrderStatus = 6;
         int colOrderPID = 7, colOrderPIDS = 8, colOrderLName = 9, colOrderSP1V = 10, colOrderSP2V = 11, colOrderSP3V = 12;
@@ -295,6 +296,8 @@ namespace clinic_ivf.gui
             setGrfImg();
             initGrfPg();
             setGrfPg();
+            initGrfItminPgk();
+            setGrfItminPkg();
 
             ChkPmhMarried_CheckedChanged(null, null);
             ChkPmhConOther_CheckedChanged(null, null);
@@ -4320,6 +4323,118 @@ namespace clinic_ivf.gui
             //grfOrder.Subtotal(AggregateEnum.Clear);
             //grfOrder.Subtotal(AggregateEnum.Sum, 0, -1, colOrdAmt, "Total");
         }
+        private void initGrfItminPgk()
+        {
+            grfItminPkg = new C1FlexGrid();
+            grfItminPkg.Font = fEdit;
+            grfItminPkg.Dock = System.Windows.Forms.DockStyle.Fill;
+            grfItminPkg.Location = new System.Drawing.Point(0, 0);
+
+            //FilterRow fr = new FilterRow(grfExpn);
+
+            //grfImg.AfterRowColChange += GrfImg_AfterRowColChange;
+            //grfImg.MouseDown += GrfImg_MouseDown;
+            //grfNote.DoubleClick += GrfNote_DoubleClick;
+            //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
+            //ContextMenu menuGw = new ContextMenu();
+            //menuGw.MenuItems.Add("Upload รูปบัตรประชาชน", new EventHandler(ContextMenu_grfimg_upload_ptt));
+            //menuGw.MenuItems.Add("Upload สำเนาบัตรประชาชน ที่มีลายเซ็น", new EventHandler(ContextMenu_grfimg_upload_ptt));
+            //menuGw.MenuItems.Add("Upload รูป Passport", new EventHandler(ContextMenu_grfimg_upload_ptt));
+            //menuGw.MenuItems.Add("ยกเลิก", new EventHandler(ContextMenu_grfimg_Cancel));
+            //grfImgOld.ContextMenu = menuGw;
+            pnItminPkg.Controls.Add(grfItminPkg);
+
+            theme1.SetTheme(grfItminPkg, "Office2016Colorful");
+
+        }
+        private void setGrfItminPkg()
+        {
+            //grfDept.Rows.Count = 7;
+            grfItminPkg.Clear();
+            DataTable dt = new DataTable();
+            dt = ic.ivfDB.obildDB.selectByHn(txtHn.Text.Trim());
+            grfItminPkg.Cols.Count = 9;
+            //grfItminPgk.DataSource = dt;
+
+            grfItminPkg.Cols[colItminPkgItmTyp].Width = 100;
+            grfItminPkg.Cols[colItminPkgItmName].Width = 320;
+            grfItminPkg.Cols[colItminPkgQty].Width = 80;
+            grfItminPkg.Cols[colItminPkgPrice].Width = 80;
+            grfItminPkg.Cols[colItminPkgExtra].Width = 80;
+            grfItminPkg.Cols[colItminPkgQtyAmt].Width = 80;
+            grfItminPkg.Cols[colItminPgkOrdDate].Width = 100;
+
+            grfItminPkg.ShowCursor = true;
+            //grdFlex.Cols[colID].Caption = "no";
+            //grfDept.Cols[colCode].Caption = "รหัส";
+
+            grfItminPkg.Cols[colItminPkgItmTyp].Caption = "Type1";
+            grfItminPkg.Cols[colItminPkgItmName].Caption = "Name";
+            grfItminPkg.Cols[colItminPkgQty].Caption = "QTY";
+            grfItminPkg.Cols[colItminPkgPrice].Caption = "Price";
+            grfItminPkg.Cols[colItminPkgExtra].Caption = "Extra";
+            grfItminPkg.Cols[colItminPkgQtyAmt].Caption = "Amout";
+            grfItminPkg.Cols[colItminPgkOrdDate].Caption = "Date";            
+            //grfPackageD.Cols[colBlRemark].Caption = "Remark";
+
+            Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
+            //CellRange rg1 = grfBank.GetCellRange(1, colE, grfBank.Rows.Count, colE);
+            //rg1.Style = grfBank.Styles["date"];
+            //grfCu.Cols[colID].Visible = false;
+            int i = 1;
+            foreach (DataRow row in dt.Rows)
+            {
+                try
+                {
+                    Row row1 = grfItminPkg.Rows.Add();
+                    row1[0] = i;
+                    row1[colItminPkgId] = row["id"].ToString();
+                    row1[colItminPkgItmTyp] = row["status"].ToString();
+                    
+                    row1[colItminPkgPrice] = row["Price"].ToString();
+                    row1[colItminPkgQty] = row["qty"].ToString();
+                    row1[colItminPgkOrdDate] = ic.ivfDB.datetoShow(row["Date"].ToString());
+                    row1[colItminPkgExtra] = row["Extra"].ToString();
+                    row1[colItminPkgQtyAmt] = "0";
+                    if (row["status"].ToString().Equals("package"))
+                    {
+                        row1.StyleNew.BackColor = Color.FromArgb(143, 200, 127);
+                        row1[colItminPkgItmName] = row["PackageName"].ToString();
+                    }
+                    else if (row["status"].ToString().Equals("special"))
+                    {
+                        row1.StyleNew.BackColor = Color.FromArgb(244, 222, 242);
+                        row1[colItminPkgItmName] = row["SName"].ToString();
+                    }
+                    else if (row["status"].ToString().Equals("lab"))
+                    {
+                        row1.StyleNew.BackColor = Color.FromArgb(253, 233, 233);
+                        row1[colItminPkgItmName] = row["LName"].ToString();
+                    }
+                    else if (row["status"].ToString().Equals("drug"))
+                    {
+                        row1.StyleNew.BackColor = Color.FromArgb(224, 224, 224);
+                        row1[colItminPkgItmName] = row["DUName"].ToString();
+                    }
+                    i++;
+                }
+                catch (Exception ex)
+                {
+                    String err = "";
+                }
+
+            }
+            CellNoteManager mgr = new CellNoteManager(grfItminPkg);
+            grfItminPkg.Cols[colPkgdId].Visible = false;
+            //grfPackageD.Cols[colPkgId].Visible = false;
+            //grfPackageD.Cols[colPkgItmId].Visible = false;
+
+            grfItminPkg.Cols[colPkgType].AllowEditing = false;
+            grfItminPkg.Cols[colPkgItmName].AllowEditing = false;
+            grfItminPkg.Cols[colPkgQty].AllowEditing = false;
+            //theme1.SetTheme(grfFinish, ic.theme);
+
+        }
         private void setControl(String vsid)
         {
             vsOld = ic.ivfDB.ovsDB.selectByPk1(vsid);
@@ -4749,8 +4864,20 @@ namespace clinic_ivf.gui
                     row1[colOrdStatusAmt] = row["status_amt"].ToString();
                     row1[colOrdStatusOrdGrp] = row["status_order_group"].ToString();
                     row1[0] = i;
-                    //if (i % 2 == 0)
-                    //    grfPtt.Rows[i].StyleNew.BackColor = color;
+                    if (row["status"].ToString().Equals("package"))
+                        row1.StyleNew.BackColor = Color.FromArgb(143, 200, 127);
+                    else if (row["status"].ToString().Equals("specialitem"))
+                        row1.StyleNew.BackColor = Color.FromArgb(244, 222, 242);
+                    else if (row["status"].ToString().Equals("bloodlab"))
+                        row1.StyleNew.BackColor = Color.FromArgb(253, 233, 233);
+                    else if (row["status"].ToString().Equals("Sperm Lab"))
+                        row1.StyleNew.BackColor = Color.FromArgb(244, 252, 232);
+                    else if (row["status"].ToString().Equals("Embryo Lab"))
+                        row1.StyleNew.BackColor = Color.FromArgb(218, 237, 255);
+                    else if (row["status"].ToString().Equals("Genetic Lab"))
+                        row1.StyleNew.BackColor = Color.FromArgb(255, 255, 231);
+                    else if (row["status"].ToString().Equals("px"))
+                        row1.StyleNew.BackColor = Color.FromArgb(224, 224, 224);
                     i++;
                 }
                 catch (Exception ex)
@@ -4818,35 +4945,35 @@ namespace clinic_ivf.gui
             //grfDept.Rows.Count = 7;
             grfPackageD.Clear();
             DataTable dt = new DataTable();
-            dt = ic.ivfDB.oPkgdDB.selectByPkgId(id);
+            dt = ic.ivfDB.oPkgdDB.selectByPkgId2(id);
 
-            //grfExpn.Rows.Count = dt.Rows.Count + 1;
+            grfPackageD.Rows.Count = dt.Rows.Count + 1;
             //grfEmbryo.Rows.Count = dt.Rows.Count + 1;
-            grfPackageD.DataSource = dt;
-            grfPackageD.Cols.Count = 7;
-            C1TextBox txt = new C1TextBox();
-            C1CheckBox chk = new C1CheckBox();
-            chk.Text = "Include Package";
+            //grfPackageD.DataSource = dt;
+            grfPackageD.Cols.Count = 8;
+            //C1TextBox txt = new C1TextBox();
+            //C1CheckBox chk = new C1CheckBox();
+            ///*chk*/.Text = "Include Package";
             //C1ComboBox cboproce = new C1ComboBox();
             //ic.ivfDB.itmDB.setCboItem(cboproce);
-            grfPackageD.Cols[colBlName].Editor = txt;
-            grfPackageD.Cols[colBlInclude].Editor = txt;
-            grfPackageD.Cols[colBlPrice].Editor = txt;
-            grfPackageD.Cols[colBlRemark].Editor = txt;
+            //grfPackageD.Cols[colBlName].Editor = txt;
+            //grfPackageD.Cols[colBlInclude].Editor = txt;
+            //grfPackageD.Cols[colBlPrice].Editor = txt;
+            //grfPackageD.Cols[colBlRemark].Editor = txt;
 
-            grfPackageD.Cols[colBlName].Width = 220;
-            grfPackageD.Cols[colBlInclude].Width = 120;
-            grfPackageD.Cols[colBlPrice].Width = 80;
-            grfPackageD.Cols[colBlRemark].Width = 100;
+            grfPackageD.Cols[colPkgType].Width = 100;
+            grfPackageD.Cols[colPkgItmName].Width = 320;
+            grfPackageD.Cols[colPkgQty].Width = 80;
+            grfPackageD.Cols[colPkgUse].Width = 80;
 
             grfPackageD.ShowCursor = true;
             //grdFlex.Cols[colID].Caption = "no";
             //grfDept.Cols[colCode].Caption = "รหัส";
 
-            grfPackageD.Cols[colPkgType].Caption = "Type";
+            grfPackageD.Cols[colPkgType].Caption = "Type1";
             grfPackageD.Cols[colPkgItmName].Caption = "Name";
             grfPackageD.Cols[colPkgQty].Caption = "QTY";
-            //grfPackageD.Cols[colBlRemark].Caption = "Remark";
+            grfPackageD.Cols[colPkgUse].Caption = "Use";
 
             Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
             //CellRange rg1 = grfBank.GetCellRange(1, colE, grfBank.Rows.Count, colE);
@@ -4858,7 +4985,13 @@ namespace clinic_ivf.gui
                 try
                 {
                     grfPackageD[i, 0] = i;
-
+                    grfPackageD[i, colPkgdId] = row["ID"].ToString();
+                    grfPackageD[i, colPkgId] = row["PCKID"].ToString();
+                    grfPackageD[i, colPkgType] = row["ItemType"].ToString();
+                    grfPackageD[i, colPkgItmName] = row["ItemName"].ToString();
+                    grfPackageD[i, colPkgQty] = row["QTY"].ToString();
+                    grfPackageD[i, colPkgItmId] = row["ItemID"].ToString();
+                    grfPackageD[i, colPkgUse] = "0";
                     //if (i % 2 == 0)
                     //    grfPtt.Rows[i].StyleNew.BackColor = color;
                     i++;
@@ -4872,11 +5005,12 @@ namespace clinic_ivf.gui
             CellNoteManager mgr = new CellNoteManager(grfPackageD);
             grfPackageD.Cols[colPkgdId].Visible = false;
             grfPackageD.Cols[colPkgId].Visible = false;
-            grfPackageD.Cols[colPkgItmId].Visible = false;
+            //grfPackageD.Cols[colPkgItmId].Visible = false;
 
             grfPackageD.Cols[colPkgType].AllowEditing = false;
             grfPackageD.Cols[colPkgItmName].AllowEditing = false;
             grfPackageD.Cols[colPkgQty].AllowEditing = false;
+            grfPackageD.Cols[colPkgUse].AllowEditing = false;
             //theme1.SetTheme(grfFinish, ic.theme);
 
         }
@@ -6203,9 +6337,22 @@ namespace clinic_ivf.gui
             String labid = "", include = "", qty = "",ordergroup="";
             rowOrder++;
             labid = grfBloodLab[grfBloodLab.Row, colBlId].ToString();
-            include = grfBloodLab[grfBloodLab.Row, colBlInclude] != null ? grfBloodLab[grfBloodLab.Row, colBlInclude].ToString().Equals("True") ? "1" : "0" : "0";
+            //include = grfBloodLab[grfBloodLab.Row, colBlInclude] != null ? grfBloodLab[grfBloodLab.Row, colBlInclude].ToString().Equals("True") ? "1" : "0" : "0";
             qty = grfBloodLab[grfBloodLab.Row, colBlQty] != null ? grfBloodLab[grfBloodLab.Row, colBlQty].ToString() : "1";
             ordergroup = grfBloodLab[grfBloodLab.Row, colBlOrderGroup] != null ? grfBloodLab[grfBloodLab.Row, colBlOrderGroup].ToString() : "0";
+            foreach(Row row in grfItminPkg.Rows)
+            {
+                if (row[colPkgdId].ToString().Equals(labid))
+                {
+                    String pkgqty = "", pkguse="";
+                    Decimal pkgqty1 = 0, pkguse1=0;
+                    pkgqty = row[colItminPkgQty].ToString();
+                    pkguse = row[colItminPkgQtyAmt].ToString();
+                    Decimal.TryParse(pkgqty, out pkgqty1);
+                    Decimal.TryParse(pkguse, out pkguse1);
+                    include = (pkgqty1 >= pkguse1) ? "1" : "";
+                }
+            }
             if (include.Equals("1"))
             {
                 if (ic.iniC.statusCashierOldProgram.Equals("1"))

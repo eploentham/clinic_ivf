@@ -153,7 +153,7 @@
             this.tabOrd = new C1.Win.C1Command.C1DockingTabPage();
             this.pnOrder = new System.Windows.Forms.Panel();
             this.tabPkg = new C1.Win.C1Command.C1DockingTabPage();
-            this.pnPkg = new System.Windows.Forms.Panel();
+            this.pnItminPkg = new System.Windows.Forms.Panel();
             this.tabLab = new C1.Win.C1Command.C1DockingTabPage();
             this.pnLabVs = new System.Windows.Forms.Panel();
             this.pnLab = new System.Windows.Forms.Panel();
@@ -2886,23 +2886,23 @@
             // 
             // tabPkg
             // 
-            this.tabPkg.Controls.Add(this.pnPkg);
+            this.tabPkg.Controls.Add(this.pnItminPkg);
             this.tabPkg.Location = new System.Drawing.Point(1, 24);
             this.tabPkg.Name = "tabPkg";
             this.tabPkg.Size = new System.Drawing.Size(789, 619);
             this.tabPkg.TabIndex = 1;
-            this.tabPkg.Text = "Package";
+            this.tabPkg.Text = "Item in HN";
             // 
-            // pnPkg
+            // pnItminPkg
             // 
-            this.pnPkg.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.pnPkg.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnPkg.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.pnPkg.Location = new System.Drawing.Point(0, 0);
-            this.pnPkg.Name = "pnPkg";
-            this.pnPkg.Size = new System.Drawing.Size(789, 619);
-            this.pnPkg.TabIndex = 0;
-            this.theme1.SetTheme(this.pnPkg, "(default)");
+            this.pnItminPkg.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnItminPkg.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnItminPkg.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.pnItminPkg.Location = new System.Drawing.Point(0, 0);
+            this.pnItminPkg.Name = "pnItminPkg";
+            this.pnItminPkg.Size = new System.Drawing.Size(789, 619);
+            this.pnItminPkg.TabIndex = 0;
+            this.theme1.SetTheme(this.pnItminPkg, "(default)");
             // 
             // tabLab
             // 
@@ -11960,7 +11960,7 @@
         private C1.Win.C1Command.C1DockingTabPage tabOrd;
         private System.Windows.Forms.Panel pnOrder;
         private C1.Win.C1Command.C1DockingTabPage tabPkg;
-        private System.Windows.Forms.Panel pnPkg;
+        private System.Windows.Forms.Panel pnItminPkg;
         private C1.Win.C1Input.C1PictureBox picPtt;
         private System.Windows.Forms.TableLayoutPanel tlpPatient;
         private C1.Win.C1Command.C1DockingTabPage tabHis;

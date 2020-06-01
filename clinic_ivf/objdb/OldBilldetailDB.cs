@@ -93,6 +93,28 @@ namespace clinic_ivf.objdb
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
+        public DataTable selectByHn(String hn)
+        {
+            DataTable dt = new DataTable();
+            String wherehn = "";
+
+            String sql = "SELECT obilld.id, bill.bill_id, bill.receipt_no, bill.BillNo, bill.receipt_cover_no  " +
+                ", obilld.status,obilld.bill_group_id, billg.Name , obilld.item_id, obilld.bill_id, obilld.price1, obilld.Price, obilld.qty" +
+                ", obilld.pcksid, pkg.PackageName, lab.LName, labg.LGName, drug.DUName, spec.SName, obilld.Extra, bill.Date, bill.Time " +
+                "From " + obilld.table + " obilld " +
+                "inner join BillHeader bill on bill.bill_id = obilld.bill_id " +
+                "inner join BillGroup billg on obilld.bill_group_id = billg.ID " +
+                "Left Join PackageSold pkgs on obilld.pcksid = pkgs.PCKSID " +
+                "Left join PackageHeader pkg on pkgs.PCKID = pkg.PCKID and obilld.status = 'package' " +
+                "Left join LabItem lab on obilld.item_id = lab.LID and obilld.status = 'lab' " +
+                "Left Join LabItemGroup labg on lab.LGID = labg.LGID " +
+                "Left Join StockDrug drug on obilld.item_id = drug.DUID and obilld.status = 'drug' " +
+                "Left Join SpecialItem spec on obilld.item_id = spec.SID and obilld.status = 'special' " +
+                "Where bill.PIDS >= '" + hn + "' and obilld." + obilld.active + "= '1' and bill.active = '1' " +
+                "Order By bill.bill_id, obilld.ID ";
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
         public DataTable selectByVN(String vn)
         {
             DataTable dt = new DataTable();

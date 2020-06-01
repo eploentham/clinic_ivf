@@ -173,7 +173,7 @@ namespace clinic_ivf.objdb
             String sql = "select oPkgD.* " +
                 "From " + oPkgD.table + " oPkgD " +
                 "Where oPkgD." + oPkgD.PCKID + " ='" + pttId + "' and active = '1'" +
-                "Order By oPkgD." + oPkgD.ItemName; ;
+                "Order By oPkgD." + oPkgD.ItemName;
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
@@ -183,7 +183,17 @@ namespace clinic_ivf.objdb
             String sql = "select oPkgD."+oPkgD.ID+ ",oPkgD." + oPkgD.ItemName+ ",oPkgD." + oPkgD.QTY+" " +
                 "From " + oPkgD.table + " oPkgD " +
                 "Where oPkgD." + oPkgD.PCKID + " ='" + pttId + "' and active = '1'" +
-                "Order By oPkgD." + oPkgD.ItemName; ;
+                "Order By oPkgD." + oPkgD.ItemName;
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
+        public DataTable selectByPkgId2(String pttId)
+        {
+            DataTable dt = new DataTable();
+            String sql = "select oPkgD." + oPkgD.ID + ", case oPkgD." + oPkgD.ItemType + " when 'DUID' then 'Drug' when 'SID' then 'Special' when 'LID' then 'LAB' else oPkgD." + oPkgD.ItemType + " end as " + oPkgD.ItemType + ",oPkgD." + oPkgD.ItemName + ",oPkgD." + oPkgD.QTY + ",oPkgD." + oPkgD.PCKID + ",oPkgD." + oPkgD.ItemID + " " +
+                "From " + oPkgD.table + " oPkgD " +
+                "Where oPkgD." + oPkgD.PCKID + " ='" + pttId + "' and active = '1'" +
+                "Order By oPkgD." + oPkgD.ItemType + ",oPkgD." + oPkgD.ItemName;
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
