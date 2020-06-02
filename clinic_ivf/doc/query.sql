@@ -1751,4 +1751,10 @@ ALTER TABLE `ivf`.`t_stock_rec_detail`
 ADD COLUMN `date_expire` VARCHAR(45) NULL AFTER `unit_name`,
 ADD COLUMN `lot_no` VARCHAR(45) NULL AFTER `date_expire`;
 
+ALTER TABLE `ivf`.`JobPxDetail` 
+ADD COLUMN `PCKID` BIGINT NULL COMMENT 'รายการนี้เป็น include เพราะมีรหัส package ถ้าไม่มีรหัสpackage จะเป็น extra' AFTER `price1`;
+
+ALTER TABLE `ivf`.`JobSpecialDetail` 
+ADD COLUMN `PCKID` BIGINT NULL COMMENT 'รายการนี้เป็น include เพราะมีรหัส package ถ้าไม่มีรหัสpackage จะเป็น extra' AFTER `price1`;
+
 

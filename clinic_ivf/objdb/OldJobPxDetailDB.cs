@@ -36,11 +36,12 @@ namespace clinic_ivf.objdb
             oJpxd.EUsage = "EUsage";
             oJpxd.row1 = "row1";
             oJpxd.price1 = "price1";
+            oJpxd.pckid = "pckid";
 
             oJpxd.table = "JobPxDetail";
             oJpxd.pkField = "ID";
         }
-        private void chkNull(JobPxDetail p)
+        private void chkNull(OldJobPxDetail p)
         {
             long chk = 0;
             decimal chk1 = 0;
@@ -61,11 +62,12 @@ namespace clinic_ivf.objdb
             p.Status = long.TryParse(p.Status, out chk) ? chk.ToString() : "0";
             p.PID = long.TryParse(p.PID, out chk) ? chk.ToString() : "0";
             p.row1 = long.TryParse(p.row1, out chk) ? chk.ToString() : "0";
+            p.pckid = long.TryParse(p.pckid, out chk) ? chk.ToString() : "0";
 
             p.Price = decimal.TryParse(p.Price, out chk1) ? chk1.ToString() : "0";
             p.price1 = decimal.TryParse(p.price1, out chk1) ? chk1.ToString() : "0";
         }
-        public String insert(JobPxDetail p, String userId)
+        public String insert(OldJobPxDetail p, String userId)
         {
             String re = "";
             String sql = "";
@@ -91,6 +93,7 @@ namespace clinic_ivf.objdb
                 "," + oJpxd.EUsage + "= '" + p.EUsage.Replace("'", "''") + "'" +
                 "," + oJpxd.row1 + "= '" + p.row1 + "'" +
                 "," + oJpxd.price1 + "= '" + p.price1 + "'" +
+                "," + oJpxd.pckid + "= '" + p.pckid + "'" +
                 "";
             try
             {
