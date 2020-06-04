@@ -28,6 +28,7 @@ namespace clinic_ivf.objdb
             oPkgD.ItemID= "ItemID";
             oPkgD.QTY= "QTY";
             oPkgD.active = "active";
+            oPkgD.qty_use = "qty_use";
 
             oPkgD.table = "PackageDetail";
             oPkgD.pkField = "ID";
@@ -52,7 +53,7 @@ namespace clinic_ivf.objdb
             p.ItemID = long.TryParse(p.ItemID, out chk) ? chk.ToString() : "0";
 
             p.QTY = Decimal.TryParse(p.QTY, out chk1) ? chk1.ToString() : "0";
-
+            p.qty_use = Decimal.TryParse(p.qty_use, out chk1) ? chk1.ToString() : "0";
         }
         public String insert(OldPackageDetail p, String userId)
         {
@@ -76,7 +77,7 @@ namespace clinic_ivf.objdb
                 "," + oPkgD.ItemID + "= '" + p.ItemID + "'" +
                 "," + oPkgD.active + "= '" + p.active + "'" +
                 "," + oPkgD.QTY + "= '" + p.QTY + "'" +
-                //"," + note.status_all + "= '" + p.status_all + "'" +
+                "," + oPkgD.qty_use + "= '0'" +
                 "";
             try
             {
@@ -130,6 +131,27 @@ namespace clinic_ivf.objdb
                 " " + oPkgD.active + " = '3'" +
                 "," + oPkgD.user_cancel + " = '"+ userId + "'" +
                 "," + oPkgD.date_cancel + " = now() " +
+                "Where " + oPkgD.pkField + "='" + id + "'";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+
+            return re;
+        }
+        public String upDateQtyUse(String id, String qtyuse)
+        {
+            String re = "";
+            String sql = "";
+            //chkNull(p);
+            sql = "Update " + oPkgD.table + " Set " +
+                " " + oPkgD.qty_use + " = '"+ qtyuse + "'" +
+                //"," + oPkgD.user_cancel + " = '" + userId + "'" +
+                //"," + oPkgD.date_cancel + " = now() " +
                 "Where " + oPkgD.pkField + "='" + id + "'";
             try
             {
@@ -209,7 +231,7 @@ namespace clinic_ivf.objdb
                 ostkd1.ItemID = dt.Rows[0][oPkgD.ItemID].ToString();
                 ostkd1.QTY = dt.Rows[0][oPkgD.QTY].ToString();
                 ostkd1.active = dt.Rows[0][oPkgD.active].ToString();
-                
+                ostkd1.qty_use = dt.Rows[0][oPkgD.qty_use].ToString();
             }
             else
             {
@@ -226,7 +248,7 @@ namespace clinic_ivf.objdb
             stf1.ItemID = "";
             stf1.QTY = "";
             stf1.active = "";
-            
+            stf1.qty_use = "";
             return stf1;
         }
     }

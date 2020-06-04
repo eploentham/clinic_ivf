@@ -1757,4 +1757,7 @@ ADD COLUMN `PCKID` BIGINT NULL COMMENT 'รายการนี้เป็น 
 ALTER TABLE `ivf`.`JobSpecialDetail` 
 ADD COLUMN `PCKID` BIGINT NULL COMMENT 'รายการนี้เป็น include เพราะมีรหัส package ถ้าไม่มีรหัสpackage จะเป็น extra' AFTER `price1`;
 
+ALTER TABLE `ivf`.`PackageDetail` 
+ADD COLUMN `qty_use` DECIMAL(17,2) NULL DEFAULT 0 AFTER `active`;
+
 

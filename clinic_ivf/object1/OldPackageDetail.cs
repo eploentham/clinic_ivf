@@ -14,6 +14,6 @@ namespace clinic_ivf.object1
         public String ItemName { get; set; }
         public String ItemID { get; set; }
         public String QTY { get; set; }
-        
+        public String qty_use { get; set; }
     }
 }

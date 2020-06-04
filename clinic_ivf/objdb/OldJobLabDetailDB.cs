@@ -66,7 +66,7 @@ namespace clinic_ivf.objdb
             jlabD.lab_order_id = "lab_order_id";
             jlabD.req_id = "req_id";
             jlabD.price1 = "price1";
-            jlabD.PCKID = "PCKID";
+            jlabD.pckdid = "pckdid";
 
             jlabD.table = "JobLabDetail";
             jlabD.pkField = "ID";
@@ -121,7 +121,7 @@ namespace clinic_ivf.objdb
             p.row1 = long.TryParse(p.row1, out chk) ? chk.ToString() : "0";
             p.lab_order_id = long.TryParse(p.lab_order_id, out chk) ? chk.ToString() : "0";
             p.req_id = long.TryParse(p.req_id, out chk) ? chk.ToString() : "0";
-            p.PCKID = long.TryParse(p.PCKID, out chk) ? chk.ToString() : "0";
+            p.pckdid = long.TryParse(p.pckdid, out chk) ? chk.ToString() : "0";
 
             p.Price = decimal.TryParse(p.Price, out chk1) ? chk1.ToString() : "0";
             p.price1 = decimal.TryParse(p.price1, out chk1) ? chk1.ToString() : "0";
@@ -181,7 +181,7 @@ namespace clinic_ivf.objdb
                 "," + jlabD.status_order_group + "= '" + p.status_order_group.Replace("'", "''") + "'" +
                 "," + jlabD.lab_order_id + "= '" + p.lab_order_id + "'" +
                 "," + jlabD.price1 + "= '" + p.price1 + "'" +
-                "," + jlabD.PCKID + "= '" + p.PCKID + "'" +
+                "," + jlabD.pckdid + "= '" + p.pckdid + "'" +
                 "";
             try
             {
@@ -465,7 +465,7 @@ namespace clinic_ivf.objdb
                 lbReq1.lab_order_id = dt.Rows[0][jlabD.lab_order_id].ToString();
                 lbReq1.req_id = dt.Rows[0][jlabD.req_id].ToString();
                 lbReq1.price1 = dt.Rows[0][jlabD.price1].ToString();
-                lbReq1.PCKID = dt.Rows[0][jlabD.PCKID].ToString();
+                lbReq1.pckdid = dt.Rows[0][jlabD.pckdid].ToString();
             }
             else
             {
@@ -514,7 +514,7 @@ namespace clinic_ivf.objdb
                 lbReq1.lab_order_id = "";
                 lbReq1.req_id = "";
                 lbReq1.price1 = "";
-                lbReq1.PCKID = "";
+                lbReq1.pckdid = "";
             }
 
             return lbReq1;

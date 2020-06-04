@@ -744,32 +744,33 @@ namespace clinic_ivf.objdb
                 //String duid = "";
                 //duid = row["DUID"].ToString();
                 //qty = row["QTY"].ToString();
-                JobPxDetail oJpxd = new JobPxDetail();
-                //OldStockDrug ostkD = new OldStockDrug();
-                Decimal price1 = 0, qty1 = 0;
-                Decimal.TryParse(price, out price1);
-                Decimal.TryParse(qty, out qty1);
-                //ostkD = oStkdDB.selectByPk1(duid);
-                oJpxd.VN = vn;
-                oJpxd.DUID = duid;
-                oJpxd.QTY = qty;
-                oJpxd.Extra = extra;
-                oJpxd.Price = price;
-                oJpxd.Status = "1";
-                oJpxd.PID = pid;
-                oJpxd.PIDS = pids;
-                oJpxd.DUName = duname;
-                oJpxd.Comment = "";
-                oJpxd.TUsage = usaget;
-                oJpxd.EUsage = usagee;
+            OldJobPxDetail oJpxd = new OldJobPxDetail();
+            //OldStockDrug ostkD = new OldStockDrug();
+            Decimal price1 = 0, qty1 = 0;
+            Decimal.TryParse(price, out price1);
+            Decimal.TryParse(qty, out qty1);
+            //ostkD = oStkdDB.selectByPk1(duid);
+            oJpxd.VN = vn;
+            oJpxd.DUID = duid;
+            oJpxd.QTY = qty;
+            oJpxd.Extra = extra;
+            oJpxd.Price = price;
+            oJpxd.Status = "1";
+            oJpxd.PID = pid;
+            oJpxd.PIDS = pids;
+            oJpxd.DUName = duname;
+            oJpxd.Comment = "";
+            oJpxd.TUsage = usaget;
+            oJpxd.EUsage = usagee;
             oJpxd.row1 = row1;
-                oJpxdDB.insert(oJpxd, "");
+            oJpxd.pckdid = "";
+            oJpxdDB.insert(oJpxd, "");
             //}
 
         }
         public void PxSetAdd(String duid, String pid, String pids, String vn, String extra, String row1, String qty, String usaget, String usagee, String duname, String price, String flagOld)
         {
-            JobPxDetail oJpxd = new JobPxDetail();
+            OldJobPxDetail oJpxd = new OldJobPxDetail();
             //OldStockDrug ostkD = new OldStockDrug();
             Decimal price1 = 0, qty1 = 0;
             Decimal.TryParse(price, out price1);
@@ -800,12 +801,13 @@ namespace clinic_ivf.objdb
             oJpxd.TUsage = usaget;
             oJpxd.EUsage = usagee;
             oJpxd.row1 = row1;
+            oJpxd.pckdid = "";
             oJpxdDB.insert(oJpxd, "");
             //}
         }
-        public void PxAdd(String duid, String qty, String pid, String pids, String vn, String extra, String row1, String usage)
+        public void PxAdd(String duid, String qty, String pid, String pids, String vn, String extra, String row1, String usage, String pckdid)
         {
-            JobPxDetail oJpxd = new JobPxDetail();
+            OldJobPxDetail oJpxd = new OldJobPxDetail();
             OldStockDrug ostkD = new OldStockDrug();
             Decimal price1 = 0, qty1 = 0;
             ostkD = oStkdDB.selectByPk1(duid);
@@ -827,11 +829,12 @@ namespace clinic_ivf.objdb
             oJpxd.TUsage = usage;
             oJpxd.EUsage = ostkD.EUsage;
             oJpxd.row1 = row1;
+            oJpxd.pckdid = pckdid;
             oJpxdDB.insert(oJpxd, "");
         }
-        public void PxAdd(String duid, String qty, String pid, String pids, String vn, String extra, String row1, String usage, String flagOld)
+        public void PxAdd(String duid, String qty, String pid, String pids, String vn, String extra, String row1, String usage, String flagOld, String pckdid)
         {       //      0015
-            JobPxDetail oJpxd = new JobPxDetail();
+            OldJobPxDetail oJpxd = new OldJobPxDetail();
             OldStockDrug ostkD = new OldStockDrug();
             Decimal price1 = 0, qty1 = 0;
             ostkD = oStkdDB.selectByPk1(duid);
@@ -864,9 +867,10 @@ namespace clinic_ivf.objdb
             oJpxd.TUsage = usage;
             oJpxd.EUsage = ostkD.EUsage;
             oJpxd.row1 = row1;
+            oJpxd.pckdid = pckdid;
             oJpxdDB.insert(oJpxd, "");
         }
-        public void LabAdd(String lid, String qty, String pid, String pids, String vn, String extra, String sp1v, String sp2v, String sp3v, String sp4v, String sp5v, String sp6v, String sp7v, String row1, String lidordergrp, String status_amt, String status_order_group)
+        public void LabAdd(String lid, String qty, String pid, String pids, String vn, String extra, String sp1v, String sp2v, String sp3v, String sp4v, String sp5v, String sp6v, String sp7v, String row1, String lidordergrp, String status_amt, String status_order_group, String pckdid)
         {
             OldJobLabDetail jlabD = new OldJobLabDetail();
             OldLabItem olab = new OldLabItem();
@@ -901,12 +905,12 @@ namespace clinic_ivf.objdb
             jlabD.status_order_group = status_order_group;
             jlabD.lab_order_id = lidordergrp;
             jlabD.price1 = olab.Price;
-
+            jlabD.pckdid = pckdid;
 
             oJlabdDB.insert(jlabD, "");
         }
         public void LabAdd(String lid, String qty, String pid, String pids, String vn, String extra, String sp1v, String sp2v, String sp3v, String sp4v, String sp5v, String sp6v, String sp7v, String row1
-            , String lidordergrp, String status_amt, String status_order_group, String flagOld)
+            , String lidordergrp, String status_amt, String status_order_group, String flagOld, String pckdid)
         {
             OldJobLabDetail jlabD = new OldJobLabDetail();
             OldLabItem olab = new OldLabItem();
@@ -952,10 +956,10 @@ namespace clinic_ivf.objdb
             jlabD.status_amt = status_amt;
             jlabD.status_order_group = status_order_group;
             jlabD.lab_order_id = lidordergrp;
-
+            jlabD.pckdid = pckdid;
             oJlabdDB.insert(jlabD, "");
         }
-        public void SpecialAdd(String sid, String qty, String pid, String pids, String vn, String extra, String w1uid, String w2uid, String w3uid, String w4uid, String row1)
+        public void SpecialAdd(String sid, String qty, String pid, String pids, String vn, String extra, String w1uid, String w2uid, String w3uid, String w4uid, String row1, String pckdid)
         {
             OldJobSpecialDetail ojsd = new OldJobSpecialDetail();
             OldSpecialItem ojs = new OldSpecialItem();
@@ -980,10 +984,10 @@ namespace clinic_ivf.objdb
             ojsd.qty = qty;
             ojsd.bill_group_id = ojs.BillGroupID;
             ojsd.price1 = ojs.Price;
-            //ojsd. = ojs.Price;
+            ojsd.pckdid = pckdid;
             ojsdDB.insert(ojsd, "");
         }
-        public void SpecialAdd(String sid, String qty, String pid, String pids, String vn, String extra, String w1uid, String w2uid, String w3uid, String w4uid, String row1, String flagOld)
+        public void SpecialAdd(String sid, String qty, String pid, String pids, String vn, String extra, String w1uid, String w2uid, String w3uid, String w4uid, String row1, String flagOld, String pckdid)
         {
             OldJobSpecialDetail ojsd = new OldJobSpecialDetail();
             OldSpecialItem ojs = new OldSpecialItem();
@@ -1019,6 +1023,7 @@ namespace clinic_ivf.objdb
             ojsd.row1 = row1;
             ojsd.qty = qty;
             ojsd.bill_group_id = ojs.BillGroupID;
+            ojsd.pckdid = pckdid;
             ojsdDB.insert(ojsd, "");
         }
         public void calPx(String vn)
