@@ -149,7 +149,7 @@ namespace clinic_ivf.objdb
             String sql = "";
             //chkNull(p);
             sql = "Update " + oPkgD.table + " Set " +
-                " " + oPkgD.qty_use + " = '"+ qtyuse + "'" +
+                " " + oPkgD.qty_use + " = "+ oPkgD.qty_use + " + "+ qtyuse + " " +
                 //"," + oPkgD.user_cancel + " = '" + userId + "'" +
                 //"," + oPkgD.date_cancel + " = now() " +
                 "Where " + oPkgD.pkField + "='" + id + "'";
@@ -212,7 +212,9 @@ namespace clinic_ivf.objdb
         public DataTable selectByPkgId2(String pttId)
         {
             DataTable dt = new DataTable();
-            String sql = "select oPkgD." + oPkgD.ID + ", case oPkgD." + oPkgD.ItemType + " when 'DUID' then 'Drug' when 'SID' then 'Special' when 'LID' then 'LAB' else oPkgD." + oPkgD.ItemType + " end as " + oPkgD.ItemType + ",oPkgD." + oPkgD.ItemName + ",oPkgD." + oPkgD.QTY + ",oPkgD." + oPkgD.PCKID + ",oPkgD." + oPkgD.ItemID + " " +
+            String sql = "select oPkgD." + oPkgD.ID 
+                + ", case oPkgD." + oPkgD.ItemType + " when 'DUID' then 'Drug' when 'SID' then 'Special' when 'LID' then 'LAB' else oPkgD." + oPkgD.ItemType + " end as " + oPkgD.ItemType 
+                + ",oPkgD." + oPkgD.ItemName + ",oPkgD." + oPkgD.QTY + ",oPkgD." + oPkgD.PCKID + ",oPkgD." + oPkgD.ItemID + ",oPkgD." + oPkgD.qty_use + " " +
                 "From " + oPkgD.table + " oPkgD " +
                 "Where oPkgD." + oPkgD.PCKID + " ='" + pttId + "' and active = '1'" +
                 "Order By oPkgD." + oPkgD.ItemType + ",oPkgD." + oPkgD.ItemName;

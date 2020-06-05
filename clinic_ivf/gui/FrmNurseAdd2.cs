@@ -3627,12 +3627,30 @@ namespace clinic_ivf.gui
             opkgs.row1 = grfOrder.Rows.Count.ToString();
             ic.ivfDB.PackageAdd(opkgs);
             setGrfOrder(txtVn.Text);
+            
             setTabPkg(txtPkgId.Text, txtPkgName.Text);
         }
         private void setTabPkg(String pkgid, String tabname)
         {
+            Boolean chk = false;
+            foreach (Control tab in tcOrd.Controls)
+            {
+                if(tab is C1DockingTabPage)
+                {
+                    String name = tab.Name;
+                    if (name.Length >= 10)
+                    {
+                        name = name.Substring(name.Length - 10);
+                        if (name.Equals(pkgid))
+                        {
+                            chk = true;
+                        }
+                    }
+                }
+            }
+            if (chk) return;
             C1DockingTabPage tabPkgUse = new C1DockingTabPage();
-            tabPkgUse.Name = "tabPkgUse";
+            tabPkgUse.Name = "tabPkgUse_"+ pkgid;
             tabPkgUse.TabIndex = 0;
             tabPkgUse.Text = tabname;
             tabPkgUse.Font = fEditB;
@@ -3698,7 +3716,8 @@ namespace clinic_ivf.gui
                     Decimal.TryParse(row["QTY"].ToString(), out qty);
                     if (Decimal.TryParse(row["qty_use"].ToString(), out chk) && chk <= qty)
                     {
-                        grfPkg.StyleNew.BackColor = Color.Red;
+                        grfPkg.Rows[i].StyleNew.BackColor = color;
+
                     }
                     //if (i % 2 == 0)
                     //    grfPtt.Rows[i].StyleNew.BackColor = color;
@@ -6455,13 +6474,16 @@ namespace clinic_ivf.gui
                         Decimal pkgqty1 = 0, pkguse1 = 0, qty1 = 0;
                         pkgqty = row[colPkgQty].ToString();
                         pkguse = row[colPkgUse].ToString();
+                        pkguse = row[colPkgUse].ToString();
                         Decimal.TryParse(pkgqty, out pkgqty1);
                         Decimal.TryParse(pkguse, out pkguse1);
                         Decimal.TryParse(qty, out qty1);
+                        if (pkguse1 == pkgqty1) continue;
                         pkguse1 += qty1;
                         pkgdid = (pkgqty1 >= pkguse1) ? row[colPkgdId].ToString() : "";
                         row.StyleNew.BackColor = Color.Red;
                         row[colPkgUse] = pkguse1;
+                        ic.ivfDB.oPkgdDB.upDateQtyUse(pkgdid, qty);
                     }
                 }
             }
