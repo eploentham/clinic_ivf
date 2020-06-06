@@ -319,6 +319,9 @@
     <Compile Include="gui\FrmLabOpuView.Designer.cs">
       <DependentUpon>FrmLabOpuView.cs</DependentUpon>
     </Compile>
+    <Compile Include="gui\FrmLabPrescription.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="gui\FrmLabPrintSticker.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -661,6 +664,7 @@
     <Compile Include="objdb\LabInterpretComboBoxDB.cs" />
     <Compile Include="objdb\LabMethodDB.cs" />
     <Compile Include="objdb\LabOrderGroupDB.cs" />
+    <Compile Include="objdb\LabPrescriptionDB.cs" />
     <Compile Include="objdb\LabResultDB.cs" />
     <Compile Include="objdb\LabSpermDB.cs" />
     <Compile Include="objdb\LabUnitDB.cs" />
@@ -751,6 +755,7 @@
     <Compile Include="object1\LabInterpretComboBox.cs" />
     <Compile Include="object1\LabMethod.cs" />
     <Compile Include="object1\LabOrderGroup.cs" />
+    <Compile Include="object1\LabPrescription.cs" />
     <Compile Include="object1\LabResult.cs" />
     <Compile Include="object1\LabSperm.cs" />
     <Compile Include="object1\LabUnit.cs" />

@@ -191,6 +191,7 @@
             this.gbDay5 = new System.Windows.Forms.GroupBox();
             this.pn5Grf = new System.Windows.Forms.Panel();
             this.pn5 = new System.Windows.Forms.Panel();
+            this.btnResultDay5View = new C1.Win.C1Input.C1Button();
             this.label93 = new System.Windows.Forms.Label();
             this.cboRemarkDay5 = new C1.Win.C1Input.C1ComboBox();
             this.btnResultDay5 = new C1.Win.C1Input.C1Button();
@@ -204,6 +205,8 @@
             this.gbDay6 = new System.Windows.Forms.GroupBox();
             this.pn6Grf = new System.Windows.Forms.Panel();
             this.pn6 = new System.Windows.Forms.Panel();
+            this.btnResultDay6View = new C1.Win.C1Input.C1Button();
+            this.btnResultDay6 = new C1.Win.C1Input.C1Button();
             this.btnSaveDay6Copy = new C1.Win.C1Input.C1Button();
             this.label94 = new System.Windows.Forms.Label();
             this.cboRemarkDay6 = new C1.Win.C1Input.C1ComboBox();
@@ -291,9 +294,7 @@
             this.txtHnMale = new C1.Win.C1Input.C1TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtHnFeMale = new C1.Win.C1Input.C1TextBox();
-            this.btnResultDay5View = new C1.Win.C1Input.C1Button();
-            this.btnResultDay6View = new C1.Win.C1Input.C1Button();
-            this.btnResultDay6 = new C1.Win.C1Input.C1Button();
+            this.tabPresc = new C1.Win.C1Command.C1DockingTabPage();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1CommandDock2)).BeginInit();
@@ -412,6 +413,7 @@
             this.splitContainer5.SuspendLayout();
             this.gbDay5.SuspendLayout();
             this.pn5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnResultDay5View)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboRemarkDay5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnResultDay5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDay5Date)).BeginInit();
@@ -420,6 +422,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnSaveDay5)).BeginInit();
             this.gbDay6.SuspendLayout();
             this.pn6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnResultDay6View)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnResultDay6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSaveDay6Copy)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboRemarkDay6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDay6Date)).BeginInit();
@@ -470,9 +474,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnHnSearch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHnMale)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHnFeMale)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnResultDay5View)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnResultDay6View)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnResultDay6)).BeginInit();
             this.SuspendLayout();
             // 
             // sB
@@ -519,6 +520,7 @@
             this.tC1.Controls.Add(this.tabDay3);
             this.tC1.Controls.Add(this.tabDay5);
             this.tC1.Controls.Add(this.tabDay6);
+            this.tC1.Controls.Add(this.tabPresc);
             this.tC1.HotTrack = true;
             this.tC1.Location = new System.Drawing.Point(0, 0);
             this.tC1.Name = "tC1";
@@ -3159,6 +3161,20 @@
             this.pn5.TabIndex = 0;
             this.theme1.SetTheme(this.pn5, "(default)");
             // 
+            // btnResultDay5View
+            // 
+            this.btnResultDay5View.Image = global::clinic_ivf.Properties.Resources.PDF_file_icon_svg_20;
+            this.btnResultDay5View.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnResultDay5View.Location = new System.Drawing.Point(281, 67);
+            this.btnResultDay5View.Name = "btnResultDay5View";
+            this.btnResultDay5View.Size = new System.Drawing.Size(69, 28);
+            this.btnResultDay5View.TabIndex = 558;
+            this.btnResultDay5View.Text = "PDF Day5";
+            this.btnResultDay5View.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnResultDay5View, "(default)");
+            this.btnResultDay5View.UseVisualStyleBackColor = true;
+            this.btnResultDay5View.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
             // label93
             // 
             this.label93.AutoSize = true;
@@ -3396,6 +3412,34 @@
             this.pn6.Size = new System.Drawing.Size(282, 97);
             this.pn6.TabIndex = 0;
             this.theme1.SetTheme(this.pn6, "(default)");
+            // 
+            // btnResultDay6View
+            // 
+            this.btnResultDay6View.Image = global::clinic_ivf.Properties.Resources.PDF_file_icon_svg_20;
+            this.btnResultDay6View.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnResultDay6View.Location = new System.Drawing.Point(280, 66);
+            this.btnResultDay6View.Name = "btnResultDay6View";
+            this.btnResultDay6View.Size = new System.Drawing.Size(69, 28);
+            this.btnResultDay6View.TabIndex = 561;
+            this.btnResultDay6View.Text = "PDF Day6";
+            this.btnResultDay6View.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnResultDay6View, "(default)");
+            this.btnResultDay6View.UseVisualStyleBackColor = true;
+            this.btnResultDay6View.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // btnResultDay6
+            // 
+            this.btnResultDay6.Image = global::clinic_ivf.Properties.Resources.Female_user_add_24;
+            this.btnResultDay6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnResultDay6.Location = new System.Drawing.Point(280, 35);
+            this.btnResultDay6.Name = "btnResultDay6";
+            this.btnResultDay6.Size = new System.Drawing.Size(69, 28);
+            this.btnResultDay6.TabIndex = 560;
+            this.btnResultDay6.Text = "รายงานผล";
+            this.btnResultDay6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnResultDay6, "(default)");
+            this.btnResultDay6.UseVisualStyleBackColor = true;
+            this.btnResultDay6.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // btnSaveDay6Copy
             // 
@@ -4912,47 +4956,15 @@
             this.theme1.SetTheme(this.txtHnFeMale, "(default)");
             this.txtHnFeMale.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // btnResultDay5View
+            // tabPresc
             // 
-            this.btnResultDay5View.Image = global::clinic_ivf.Properties.Resources.PDF_file_icon_svg_20;
-            this.btnResultDay5View.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnResultDay5View.Location = new System.Drawing.Point(281, 67);
-            this.btnResultDay5View.Name = "btnResultDay5View";
-            this.btnResultDay5View.Size = new System.Drawing.Size(69, 28);
-            this.btnResultDay5View.TabIndex = 558;
-            this.btnResultDay5View.Text = "PDF Day5";
-            this.btnResultDay5View.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.theme1.SetTheme(this.btnResultDay5View, "(default)");
-            this.btnResultDay5View.UseVisualStyleBackColor = true;
-            this.btnResultDay5View.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // btnResultDay6View
-            // 
-            this.btnResultDay6View.Image = global::clinic_ivf.Properties.Resources.PDF_file_icon_svg_20;
-            this.btnResultDay6View.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnResultDay6View.Location = new System.Drawing.Point(280, 66);
-            this.btnResultDay6View.Name = "btnResultDay6View";
-            this.btnResultDay6View.Size = new System.Drawing.Size(69, 28);
-            this.btnResultDay6View.TabIndex = 561;
-            this.btnResultDay6View.Text = "PDF Day6";
-            this.btnResultDay6View.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.theme1.SetTheme(this.btnResultDay6View, "(default)");
-            this.btnResultDay6View.UseVisualStyleBackColor = true;
-            this.btnResultDay6View.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // btnResultDay6
-            // 
-            this.btnResultDay6.Image = global::clinic_ivf.Properties.Resources.Female_user_add_24;
-            this.btnResultDay6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnResultDay6.Location = new System.Drawing.Point(280, 35);
-            this.btnResultDay6.Name = "btnResultDay6";
-            this.btnResultDay6.Size = new System.Drawing.Size(69, 28);
-            this.btnResultDay6.TabIndex = 560;
-            this.btnResultDay6.Text = "รายงานผล";
-            this.btnResultDay6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.theme1.SetTheme(this.btnResultDay6, "(default)");
-            this.btnResultDay6.UseVisualStyleBackColor = true;
-            this.btnResultDay6.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.tabPresc.CaptionVisible = true;
+            this.tabPresc.Image = global::clinic_ivf.Properties.Resources.Cut_small;
+            this.tabPresc.Location = new System.Drawing.Point(4, 1);
+            this.tabPresc.Name = "tabPresc";
+            this.tabPresc.Size = new System.Drawing.Size(128, 888);
+            this.tabPresc.TabIndex = 4;
+            this.tabPresc.Text = "Prescription";
             // 
             // FrmLabOPUAdd2
             // 
@@ -5092,6 +5104,7 @@
             this.gbDay5.ResumeLayout(false);
             this.pn5.ResumeLayout(false);
             this.pn5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnResultDay5View)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboRemarkDay5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnResultDay5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDay5Date)).EndInit();
@@ -5101,6 +5114,8 @@
             this.gbDay6.ResumeLayout(false);
             this.pn6.ResumeLayout(false);
             this.pn6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnResultDay6View)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnResultDay6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSaveDay6Copy)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboRemarkDay6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDay6Date)).EndInit();
@@ -5153,9 +5168,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnHnSearch)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHnMale)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHnFeMale)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnResultDay5View)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnResultDay6View)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnResultDay6)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -5429,5 +5441,6 @@
         private C1.Win.C1Input.C1Button btnResultDay5View;
         private C1.Win.C1Input.C1Button btnResultDay6View;
         private C1.Win.C1Input.C1Button btnResultDay6;
+        private C1.Win.C1Command.C1DockingTabPage tabPresc;
     }
 }
