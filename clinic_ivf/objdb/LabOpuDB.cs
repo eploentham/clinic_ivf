@@ -173,6 +173,10 @@ namespace clinic_ivf.objdb
             opu.report_day3 = "report_day3";
             opu.report_day6 = "report_day6";
             opu.fertili_2_pn_add = "fertili_2_pn_add";
+            opu.report_day5 = "report_day5";
+            opu.approve_result_day6_staff_id = "approve_result_day6_staff_id";
+            opu.status_approve_result_day6 = "status_approve_result_day6";
+            opu.approve_result_day6_date = "approve_result_day6_date";
 
             opu.table = "lab_t_opu";
             opu.pkField = "opu_id";
@@ -567,7 +571,10 @@ namespace clinic_ivf.objdb
             p.report_day1 = p.report_day1 == null ? "" : p.report_day1;
             p.report_day3 = p.report_day3 == null ? "" : p.report_day3;
             p.report_day6 = p.report_day6 == null ? "" : p.report_day6;
-
+            p.report_day5 = p.report_day5 == null ? "" : p.report_day5;
+            p.approve_result_day6_date = p.approve_result_day6_date == null ? "" : p.approve_result_day6_date;
+            p.status_approve_result_day6 = p.status_approve_result_day6 == null ? "0" : p.status_approve_result_day6;
+            
             p.doctor_id = long.TryParse(p.doctor_id, out chk) ? chk.ToString() : "0";
             p.proce_id = long.TryParse(p.proce_id, out chk) ? chk.ToString() : "0";
             p.req_id = long.TryParse(p.req_id, out chk) ? chk.ToString() : "0";
@@ -576,6 +583,9 @@ namespace clinic_ivf.objdb
             p.embryologist_approve_id = long.TryParse(p.embryologist_approve_id, out chk) ? chk.ToString() : "0";
             p.embryologist_report_id = long.TryParse(p.embryologist_report_id, out chk) ? chk.ToString() : "0";
             p.approve_result_staff_id = long.TryParse(p.approve_result_staff_id, out chk) ? chk.ToString() : "0";
+            p.approve_result_day6_staff_id = long.TryParse(p.approve_result_day6_staff_id, out chk) ? chk.ToString() : "0";
+            //opu.approve_result_day6_staff_id = "approve_result_day6_staff_id";
+            
         }
         public String insert(LabOpu p, String userId)
         {
@@ -619,6 +629,7 @@ namespace clinic_ivf.objdb
                 "," + opu.report_day1 + " = '" + p.report_day1 + "'" +
                 "," + opu.report_day3 + " = '" + p.report_day3 + "'" +
                 "," + opu.report_day6 + " = '" + p.report_day6 + "'" +
+                "," + opu.report_day5 + " = '" + p.report_day5 + "'" +
                "";
             try
             {
@@ -986,6 +997,30 @@ namespace clinic_ivf.objdb
 
             return re;
         }
+        public String updateStatusOPUApproveResultDay1(String opuid, String userId)
+        {
+            String re = "";
+            String sql = "";
+            int chk = 0;
+
+            //chkNull(p);
+            sql = "Update " + opu.table + " Set " +
+                " " + opu.status_approve_result_day1 + " = '1'" +
+                "," + opu.approve_result_day1_staff_id + " = '" + userId + "'" +
+                "," + opu.approve_result_day1_date + " = now()" +                
+                "Where " + opu.pkField + "='" + opuid + "'"
+                ;
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+
+            return re;
+        }
         public String updateStatusOPUApproveResultDay1(String opuid, String filename, String userId)
         {
             String re = "";
@@ -1060,6 +1095,31 @@ namespace clinic_ivf.objdb
 
             return re;
         }
+        public String updateStatusOPUApproveResultDay5(String opuid, String filename, String userId)
+        {
+            String re = "";
+            String sql = "";
+            int chk = 0;
+
+            //chkNull(p);
+            sql = "Update " + opu.table + " Set " +
+                " " + opu.status_approve_result_day5 + " = '1'" +
+                "," + opu.approve_result_day5_staff_id + " = '" + userId + "'" +
+                "," + opu.approve_result_day5_date + " = now()" +
+                "," + opu.report_day5 + " = '" + filename + "'" +
+                "Where " + opu.pkField + "='" + opuid + "'"
+                ;
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+
+            return re;
+        }
         public String updateStatusOPUApproveResultDay5(String opuid, String userId)
         {
             String re = "";
@@ -1071,6 +1131,55 @@ namespace clinic_ivf.objdb
                 " " + opu.status_approve_result_day5 + " = '1'" +
                 "," + opu.approve_result_day5_staff_id + " = '" + userId + "'" +
                 "," + opu.approve_result_day5_date + " = now()" +
+                "Where " + opu.pkField + "='" + opuid + "'"
+                ;
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+
+            return re;
+        }
+        public String updateStatusOPUApproveResultDay6(String opuid, String filename, String userId)
+        {
+            String re = "";
+            String sql = "";
+            int chk = 0;
+
+            //chkNull(p);
+            sql = "Update " + opu.table + " Set " +
+                " " + opu.status_approve_result_day6 + " = '1'" +
+                "," + opu.approve_result_day6_staff_id + " = '" + userId + "'" +
+                "," + opu.approve_result_day6_date + " = now()" +
+                "," + opu.report_day6 + " = '" + filename + "'" +
+                "Where " + opu.pkField + "='" + opuid + "'"
+                ;
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+
+            return re;
+        }
+        public String updateStatusOPUApproveResultDay6(String opuid, String userId)
+        {
+            String re = "";
+            String sql = "";
+            int chk = 0;
+
+            //chkNull(p);
+            sql = "Update " + opu.table + " Set " +
+                " " + opu.status_approve_result_day6 + " = '1'" +
+                "," + opu.approve_result_day6_staff_id + " = '" + userId + "'" +
+                "," + opu.approve_result_day6_date + " = now()" +
                 "Where " + opu.pkField + "='" + opuid + "'"
                 ;
             try
@@ -1288,6 +1397,10 @@ namespace clinic_ivf.objdb
                 opu1.report_day3 = dt.Rows[0][opu.report_day3].ToString();
                 opu1.report_day6 = dt.Rows[0][opu.report_day6].ToString();
                 opu1.fertili_2_pn_add = dt.Rows[0][opu.fertili_2_pn_add].ToString();
+                opu1.report_day5 = dt.Rows[0][opu.report_day5].ToString();
+                opu1.status_approve_result_day6 = dt.Rows[0][opu.status_approve_result_day6].ToString();
+                opu1.approve_result_day6_staff_id = dt.Rows[0][opu.approve_result_day6_staff_id].ToString();
+                opu1.approve_result_day6_date = dt.Rows[0][opu.approve_result_day6_date].ToString();
             }
             else
             {
@@ -1442,6 +1555,10 @@ namespace clinic_ivf.objdb
                 opu1.report_day3 = "";
                 opu1.report_day6 = "";
                 opu1.fertili_2_pn_add = "";
+                opu1.report_day5 = "";
+                opu1.status_approve_result_day6 = "";
+                opu1.approve_result_day6_staff_id = "";
+                opu1.approve_result_day6_date = "";
             }
 
             return opu1;

@@ -119,7 +119,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(651, 370);
+            this.groupBox1.Size = new System.Drawing.Size(666, 370);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "เงื่อนไข";
@@ -360,9 +360,9 @@
             // 
             this.btnExport.Image = global::clinic_ivf.Properties.Resources.ExportPdf_large;
             this.btnExport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExport.Location = new System.Drawing.Point(545, 252);
+            this.btnExport.Location = new System.Drawing.Point(548, 252);
             this.btnExport.Name = "btnExport";
-            this.btnExport.Size = new System.Drawing.Size(102, 39);
+            this.btnExport.Size = new System.Drawing.Size(112, 39);
             this.btnExport.TabIndex = 551;
             this.btnExport.Text = "Export PDF";
             this.btnExport.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -534,7 +534,7 @@
             this.btnPrint.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnPrint.Location = new System.Drawing.Point(548, 210);
             this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(79, 39);
+            this.btnPrint.Size = new System.Drawing.Size(112, 39);
             this.btnPrint.TabIndex = 541;
             this.btnPrint.Text = "Print";
             this.btnPrint.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -652,7 +652,7 @@
             this.sB1});
             this.sB.Location = new System.Drawing.Point(0, 348);
             this.sB.Name = "sB";
-            this.sB.Size = new System.Drawing.Size(651, 22);
+            this.sB.Size = new System.Drawing.Size(666, 22);
             this.sB.TabIndex = 10;
             this.sB.Text = "statusStrip1";
             this.theme1.SetTheme(this.sB, "(default)");
@@ -667,7 +667,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(651, 370);
+            this.ClientSize = new System.Drawing.Size(666, 370);
             this.Controls.Add(this.sB);
             this.Controls.Add(this.groupBox1);
             this.Name = "FrmLabOPUPrint";

@@ -160,7 +160,9 @@ namespace clinic_ivf.gui
             btnResultDay5.MouseMove += BtnResultDay5_MouseMove;
             btnSaveImg6Copy.Click += BtnSaveImg6Copy_Click;
             btnSaveDay6Copy.Click += BtnSaveDay6Copy_Click;
-            //btnClearData.Click += BtnClearData_Click;
+            btnResultDay5View.Click += BtnResultDay5View_Click;
+            btnResultDay6.Click += BtnResultDay6_Click;
+            btnResultDay6View.Click += BtnResultDay6View_Click;
 
             setFocusColor();
             initGrf();
@@ -199,6 +201,46 @@ namespace clinic_ivf.gui
             btnSaveEmbryoFreezDay0.Hide();
             btnSaveEmbryoFreezDay1.Hide();
             btnSaveEmbryoEt.Hide();
+            btnResultDay1View.Hide();
+        }
+
+        private void BtnResultDay6View_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            showResultDay("6");
+        }
+
+        private void BtnResultDay6_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            ic.cStf.staff_id = "";
+            Boolean chkSave = false;
+            FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+            frm.ShowDialog(this);
+            if (!ic.cStf.staff_id.Equals(""))
+            {
+                ic.statusResultDay6 = "";
+                ic.opu_report_day6 = "";
+                FrmLabOPUPrint frmPrn = new FrmLabOPUPrint(ic, txtID.Text, FrmLabOPUPrint.opuReport.ResultDay6);
+                frmPrn.ShowDialog(this);
+                if (ic.statusResultDay6.Equals("1"))
+                {
+                    long chk1 = 0;
+                    String re = ic.ivfDB.opuDB.updateStatusOPUApproveResultDay6(txtID.Text, ic.user.staff_id);
+                    if (long.TryParse(re, out chk1))
+                    {
+                        LabRequest req = new LabRequest();
+                        req = ic.ivfDB.lbReqDB.selectByPk1(opu.req_id);
+                        String re1 = ic.ivfDB.lbReqDB.UpdateStatusRequestResult(req.req_id, ic.cStf.staff_id);
+                        if (long.TryParse(re1, out chk1))
+                        {
+                            opu = ic.ivfDB.opuDB.selectByPk1(txtID.Text);
+                            MessageBox.Show("ส่งผล LAB OPU Day6 ให้ทางพยาบาล เรียบร้อย ", "");       //clinic_ivf.Properties.Resources.Female_user_accept_24
+                            btnApproveResult.Image = Resources.Female_user_accept_24;
+                        }
+                    }
+                }
+            }
         }
 
         private void BtnSaveDay6Copy_Click(object sender, EventArgs e)
@@ -389,17 +431,33 @@ namespace clinic_ivf.gui
                 stt.SetToolTip(btnResultDay1, text);
             }
         }
-
+        private void BtnResultDay5View_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            showResultDay("5");
+        }
         private void BtnResultDay5_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
             //if (MessageBox.Show("ต้องการ ส่งผล LAB OPU Day 5 ให้ทางพยาบาล  ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
             //{
-                ic.cStf.staff_id = "";
-                Boolean chkSave = false;
-                FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
-                frm.ShowDialog(this);
-                if (!ic.cStf.staff_id.Equals(""))
+            //ic.cStf.staff_id = "";
+            //Boolean chkSave = false;
+            //FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+            //frm.ShowDialog(this);
+            //if (!ic.cStf.staff_id.Equals(""))
+            //{
+            ic.cStf.staff_id = "";
+            Boolean chkSave = false;
+            FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+            frm.ShowDialog(this);
+            if (!ic.cStf.staff_id.Equals(""))
+            {
+                ic.statusResultDay5 = "";
+                ic.opu_report_day5 = "";
+                FrmLabOPUPrint frmPrn = new FrmLabOPUPrint(ic, txtID.Text, FrmLabOPUPrint.opuReport.ResultDay5);
+                frmPrn.ShowDialog(this);
+                if (ic.statusResultDay5.Equals("1"))
                 {
                     long chk1 = 0;
                     String re = ic.ivfDB.opuDB.updateStatusOPUApproveResultDay5(txtID.Text, ic.user.staff_id);
@@ -410,14 +468,36 @@ namespace clinic_ivf.gui
                         String re1 = ic.ivfDB.lbReqDB.UpdateStatusRequestResult(req.req_id, ic.cStf.staff_id);
                         if (long.TryParse(re1, out chk1))
                         {
-                            MessageBox.Show("ส่งผล LAB OPU ให้ทางพยาบาล เรียบร้อย ", "");       //clinic_ivf.Properties.Resources.Female_user_accept_24
+                            opu = ic.ivfDB.opuDB.selectByPk1(txtID.Text);
+                            MessageBox.Show("ส่งผล LAB OPU Day5 ให้ทางพยาบาล เรียบร้อย ", "");       //clinic_ivf.Properties.Resources.Female_user_accept_24
                             btnApproveResult.Image = Resources.Female_user_accept_24;
                         }
                     }
                 }
+            }
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+                //}
             //}
         }
-
+        private void BtnResultDay3View_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            showResultDay("3");
+        }
         private void BtnResultDay3_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
@@ -522,30 +602,43 @@ namespace clinic_ivf.gui
             frm.ShowDialog(this);
             if (!ic.cStf.staff_id.Equals(""))
             {
-                FrmWaiting frmW = new FrmWaiting();
-                frmW.Show();
-                long chk1 = 0;
-                String filename = setExportDay1();
-                String filename1 = Path.GetFileName(filename);
-                if (File.Exists(filename))       // -0012
-                {       // -0012
-                    ic.savePicOPUtoServer(txtOpuCode.Text, filename1, filename);       // -0012
-                    String re = ic.ivfDB.opuDB.updateStatusOPUApproveResultDay1(txtID.Text, filename1, ic.user.staff_id);
-                    opu.report_day1 = filename1;
-                    if (long.TryParse(re, out chk1))
-                    {
-                        LabRequest req = new LabRequest();
-                        req = ic.ivfDB.lbReqDB.selectByPk1(opu.req_id);
-                        String re1 = ic.ivfDB.lbReqDB.UpdateStatusRequestResult(req.req_id, ic.cStf.staff_id);
+                ic.statusResultDay1 = "";
+                ic.opu_report_day1 = "";
+                FrmLabOPUPrint frmPrn = new FrmLabOPUPrint(ic, txtID.Text, FrmLabOPUPrint.opuReport.ResultDay1);
+                frmPrn.ShowDialog(this);
+                if (ic.statusResultDay1.Equals("1"))
+                {
+                    //FrmWaiting frmW = new FrmWaiting();
+                    //frmW.Show();
+                    long chk1 = 0;
+                    //String filename = setExportDay1();
+                    //String filename1 = Path.GetFileName(filename);
+                    //if (File.Exists(filename))       // -0012
+                    //{       // -0012
+                        //ic.savePicOPUtoServer(txtOpuCode.Text, filename1, filename);       // -0012
+                        //String re = ic.ivfDB.opuDB.updateStatusOPUApproveResultDay1(txtID.Text, filename1, ic.user.staff_id);
+                        //opu.report_day1 = filename1;
+                        //if (long.TryParse(re, out chk1))
+                        //{
+                        //    LabRequest req = new LabRequest();
+                        //    req = ic.ivfDB.lbReqDB.selectByPk1(opu.req_id);
+                        //    String re1 = ic.ivfDB.lbReqDB.UpdateStatusRequestResult(req.req_id, ic.cStf.staff_id);
 
-                        if (long.TryParse(re1, out chk1))
-                        {
-                            MessageBox.Show("ส่งผล LAB OPU Day1 ให้ทางพยาบาล เรียบร้อย ", "");       //clinic_ivf.Properties.Resources.Female_user_accept_24
-                            btnApproveResult.Image = Resources.Female_user_accept_24;
-                        }
-                    }
+                        //    if (long.TryParse(re1, out chk1))
+                            //{
+                                MessageBox.Show("ส่งผล LAB OPU Day1 ให้ทางพยาบาล เรียบร้อย ", "");       //clinic_ivf.Properties.Resources.Female_user_accept_24
+                                btnApproveResult.Image = Resources.Female_user_accept_24;
+                        //    }
+                        //}
+                    //}
+                    //frmW.Dispose();
                 }
-                frmW.Dispose();
+
+
+
+
+
+                
             }
             //}
         }
@@ -1080,13 +1173,7 @@ namespace clinic_ivf.gui
             btnResultDay1View.Click += BtnResultDay1View;
             btnResultDay3View.Click += BtnResultDay3View_Click;
         }
-
-        private void BtnResultDay3View_Click(object sender, EventArgs e)
-        {
-            //throw new NotImplementedException();
-            showResultDay("3");
-        }
-
+        
         private void BtnResultDay1View(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
@@ -1115,6 +1202,14 @@ namespace clinic_ivf.gui
             else if (day.Equals("3"))
             {
                 stream = ftpc.download(ic.iniC.folderFTP + "//" + opu.opu_code + "//" + opu.report_day3);
+            }
+            else if (day.Equals("5"))
+            {
+                stream = ftpc.download(ic.iniC.folderFTP + "//" + opu.opu_code + "//" + opu.report_day5);
+            }
+            else if (day.Equals("6"))
+            {
+                stream = ftpc.download(ic.iniC.folderFTP + "//" + opu.opu_code + "//" + opu.report_day6);
             }
             stream.Seek(0, SeekOrigin.Begin);
             pds.LoadFromStream(stream);

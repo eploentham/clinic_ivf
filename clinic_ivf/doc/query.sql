@@ -1761,3 +1761,4 @@ ALTER TABLE `ivf`.`PackageDetail`
 ADD COLUMN `qty_use` DECIMAL(17,2) NULL DEFAULT 0 AFTER `active`;
 
 
+Day1 06-06-2020 Mr. Tong Mingfu & Mrs. Meng Mi

@@ -179,6 +179,22 @@ namespace clinic_ivf.objdb
             }
             return amt;
         }
+        public String selectSumPriceExtraByBilIdItmId(String bilid, String itmid)
+        {
+            DataTable dt = new DataTable();
+            String amt = "";
+
+            String sql = "SELECT sum(obilld." + obilld.Price + ") as amount " +
+                " " +
+                "From " + obilld.table + " obilld " +
+                "Where obilld." + obilld.bill_id + "='" + bilid + "' and obilld." + obilld.item_id + " in (" + itmid + ") and obilld." + obilld.active + "='1'  and obilld.Extra = '1' ";
+            dt = conn.selectData(conn.conn, sql);
+            if (dt.Rows.Count > 0)
+            {
+                amt = dt.Rows[0]["amount"].ToString();
+            }
+            return amt;
+        }
         public String selectSumPriceByBilIdBillGroup(String bilid, String billgrpid)
         {
             DataTable dt = new DataTable();
@@ -259,6 +275,22 @@ namespace clinic_ivf.objdb
             }
             return amt;
         }
+        public String selectSumPriceExtraByLabAll(String bilid)
+        {
+            DataTable dt = new DataTable();
+            String amt = "";
+
+            String sql = "SELECT sum(obilld." + obilld.Price + ") as amount " +
+                " " +
+                "From " + obilld.table + " obilld " +
+                "Where obilld." + obilld.bill_id + "='" + bilid + "' and obilld." + obilld.bill_group_id + " in ('2650000003','2650000004') and obilld." + obilld.active + "='1' and obilld.Extra = '1' ";
+            dt = conn.selectData(conn.conn, sql);
+            if (dt.Rows.Count > 0)
+            {
+                amt = dt.Rows[0]["amount"].ToString();
+            }
+            return amt;
+        }
         public String selectSumPriceByLabGroup(String bilid, String labgroup)
         {
             DataTable dt = new DataTable();
@@ -270,6 +302,24 @@ namespace clinic_ivf.objdb
                 "inner join LabItem lab on obilld." + obilld.item_id+" = lab.LID " +
                 "inner join LabItemGroup labg on lab.LGID = labg.LGID " +
                 "Where obilld." + obilld.bill_id + "='" + bilid + "' and obilld." + obilld.status + " = 'lab' and obilld." + obilld.active + "='1' and labg.LGID = '"+labgroup+"'";
+            dt = conn.selectData(conn.conn, sql);
+            if (dt.Rows.Count > 0)
+            {
+                amt = dt.Rows[0]["amount"].ToString();
+            }
+            return amt;
+        }
+        public String selectSumPriceExtraByLabGroup(String bilid, String labgroup)
+        {
+            DataTable dt = new DataTable();
+            String amt = "";
+
+            String sql = "SELECT sum(obilld." + obilld.Price + ") as amount " +
+                " " +
+                "From " + obilld.table + " obilld " +
+                "inner join LabItem lab on obilld." + obilld.item_id + " = lab.LID " +
+                "inner join LabItemGroup labg on lab.LGID = labg.LGID " +
+                "Where obilld." + obilld.bill_id + "='" + bilid + "' and obilld." + obilld.status + " = 'lab' and obilld." + obilld.active + "='1' and labg.LGID = '" + labgroup + "' and obilld.Extra = '1' ";
             dt = conn.selectData(conn.conn, sql);
             if (dt.Rows.Count > 0)
             {
@@ -420,7 +470,7 @@ namespace clinic_ivf.objdb
             String sql = "";
             //p.active = "1";
             //p.ssdata_id = "";
-            int chk = 0;
+            long chk = 0;
 
             chkNull(p);
             if (userId == null) userId = "";

@@ -2005,9 +2005,8 @@ namespace clinic_ivf.gui
             }
             return dtEmbr;
         }
-        private void BtnSaveImg2_Click(object sender, EventArgs e)
+        private void saveImg2()
         {
-            //throw new NotImplementedException();
             String embryopicday = "", embryopicday1 = "";
             int chk1 = 0;
             embryopicday = ((ComboBoxItem)cboEmbryoPicDay.SelectedItem).Value;
@@ -2015,17 +2014,17 @@ namespace clinic_ivf.gui
             if (embryopicday.Equals(""))
             {
                 MessageBox.Show("กรุณา เลือก Embryo Pciture Day", "");
-                return;
+                //return;
             }
             if (!embryopicday.Equals("5,6"))
             {
                 if (!int.TryParse(embryopicday, out chk1))
                 {
                     MessageBox.Show("Embryo Pciture Day ไม่ถูกต้อง", "");
-                    return;
+                    //return;
                 }
             }
-            
+
             //if (embryopicday1.Equals(""))
             //{
             //    MessageBox.Show("กรุณา เลือก Embryo Pciture Day1", "");
@@ -2038,63 +2037,68 @@ namespace clinic_ivf.gui
             //}
             //if (MessageBox.Show("ต้องการ บันทึกช้อมูล Day Embryo Development  ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
             //{
-                ic.cStf.staff_id = "";
-                Boolean chkSave = false;
-                FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
-                frm.ShowDialog(this);
-                if (!ic.cStf.staff_id.Equals(""))
-                {
-                    String re = "";
-                    int i = 0;
-                    FrmWaiting frmW = new FrmWaiting();
-                    frmW.Show();
-                    //embryopicday = ((ComboBoxItem)cboEmbryoPicDay.SelectedItem).Value;
+            ic.cStf.staff_id = "";
+            Boolean chkSave = false;
+            //FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+            //frm.ShowDialog(this);
+            //if (!ic.cStf.staff_id.Equals(""))
+            //{
+                String re = "";
+                int i = 0;
+                FrmWaiting frmW = new FrmWaiting();
+                frmW.Show();
+                //embryopicday = ((ComboBoxItem)cboEmbryoPicDay.SelectedItem).Value;
 
-                    ic.ivfDB.fetDB.updateEmbryoPicDay(txtID.Text, ((ComboBoxItem)cboEmbryoPicDay.SelectedItem).Value);
-                    ic.ivfDB.fetDB.updateEmbryoPicDay1(txtID.Text, ((ComboBoxItem)cboEmbryoPicDay1.SelectedItem).Value);
-                    foreach (Row row in grfDay2Img.Rows)
+                ic.ivfDB.fetDB.updateEmbryoPicDay(txtID.Text, ((ComboBoxItem)cboEmbryoPicDay.SelectedItem).Value);
+                ic.ivfDB.fetDB.updateEmbryoPicDay1(txtID.Text, ((ComboBoxItem)cboEmbryoPicDay1.SelectedItem).Value);
+                foreach (Row row in grfDay2Img.Rows)
+                {
+                    try
                     {
-                        try
+                        String id = row[colDay2ImgId] != null ? row[colDay2ImgId].ToString() : "";
+                        String path = row[colDay2PathPic] != null ? row[colDay2PathPic].ToString() : "";
+                        String desc = row[colDay2ImgDesc0] != null ? row[colDay2ImgDesc0].ToString() : "";
+                        String no = row[colDay2ImgNun] != null ? row[colDay2ImgNun].ToString() : "";
+                        String desc1 = row[colDay2ImgDesc1] != null ? row[colDay2ImgDesc1].ToString() : "";
+                        String desc5 = row[colDay2ImgDesc2] != null ? row[colDay2ImgDesc2].ToString() : "";
+                        i++;
+                        if (i == 1) continue;
+                        if (id.Equals("")) continue;
+                        if (no.Length > 0)
                         {
-                            String id = row[colDay2ImgId] != null ? row[colDay2ImgId].ToString() : "";
-                            String path = row[colDay2PathPic] != null ? row[colDay2PathPic].ToString() : "";
-                            String desc = row[colDay2ImgDesc0] != null ? row[colDay2ImgDesc0].ToString() : "";
-                            String no = row[colDay2ImgNun] != null ? row[colDay2ImgNun].ToString() : "";
-                            String desc1 = row[colDay2ImgDesc1] != null ? row[colDay2ImgDesc1].ToString() : "";
-                            String desc5 = row[colDay2ImgDesc2] != null ? row[colDay2ImgDesc2].ToString() : "";
-                            i++;
-                            if (i == 1) continue;
-                            if (id.Equals("")) continue;
-                            if (no.Length > 0)
+                            String filename = "";
+                            String[] ext = path.Split('.');
+                            if (ext.Length > 1)
                             {
-                                String filename = "";
-                                String[] ext = path.Split('.');
-                                if (ext.Length > 1)
+                                filename = txtFetCode.Text + "_day" + embryopicday + "_" + no + "." + ext[ext.Length - 1];
+                                //re = ic.ivfDB.opuEmDevDB.updatePathPic(id, no, ic.iniC.folderFTP + "/" + txtFetCode.Text + "/" + filename, desc, desc1, ic.cStf.staff_id);       // -0012
+                                re = ic.ivfDB.opuEmDevDB.updatePathPicNoPic(id, no, desc, desc1, desc5, ic.cStf.staff_id, "");       // +0012
+                                long chk = 0;
+                                if (long.TryParse(re, out chk))
                                 {
-                                    filename = txtFetCode.Text + "_day"+ embryopicday + "_" + no + "." + ext[ext.Length - 1];
-                                    //re = ic.ivfDB.opuEmDevDB.updatePathPic(id, no, ic.iniC.folderFTP + "/" + txtFetCode.Text + "/" + filename, desc, desc1, ic.cStf.staff_id);       // -0012
-                                    re = ic.ivfDB.opuEmDevDB.updatePathPicNoPic(id, no, desc, desc1, desc5, ic.cStf.staff_id,"");       // +0012
-                                    long chk = 0;
-                                    if (long.TryParse(re, out chk))
-                                    {
-                                        //if (File.Exists(path))       // -0012
-                                        //{       // -0012
-                                        //ic.savePicOPUtoServer(txtFetCode.Text, filename, path);       // -0012
-                                        //}       // -0012
-                                        grfDay2Img.Rows[i - 1].StyleNew.BackColor = color;
-                                    }
+                                    //if (File.Exists(path))       // -0012
+                                    //{       // -0012
+                                    //ic.savePicOPUtoServer(txtFetCode.Text, filename, path);       // -0012
+                                    //}       // -0012
+                                    grfDay2Img.Rows[i - 1].StyleNew.BackColor = color;
                                 }
                             }
-                            frmW.pB.Value = i;
                         }
-                        catch (Exception ex)
-                        {
-                            frmW.lb.Text = ex.Message;
-                        }
-                        //i++;
+                        frmW.pB.Value = i;
                     }
-                    frmW.Dispose();
+                    catch (Exception ex)
+                    {
+                        frmW.lb.Text = ex.Message;
+                    }
+                    //i++;
                 }
+            frmW.Dispose();
+            //}
+        }
+        private void BtnSaveImg2_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            saveImg2();
             //}
         }
         private void BtnSaveDay2_Click(object sender, EventArgs e)
@@ -2357,6 +2361,7 @@ namespace clinic_ivf.gui
                         if (!ic.cStf.staff_id.Equals(""))
                         {
                             saveLabFET();
+                            saveImg2();
                             setFETEmbryeEt();
                             String re = ic.ivfDB.fetDB.updateEmbryoEt(fet, ic.user.staff_id);
                         }

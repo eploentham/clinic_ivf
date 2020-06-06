@@ -717,7 +717,7 @@ namespace clinic_ivf.gui
                 String itmextraday6 = "2640000000";
                 String itmlabboood = "1";
                 String itmtvs = "4,59,36,100,179,39,175,96";
-                String itmequipment = "74,117,147";
+                String itmequipment = "2590000001,2590000002,2590000003,2590000004";
                 pkg1 = ic.ivfDB.obildDB.selectSumPriceByBilIdItmId(bilid, pkgicsi);
                 Decimal.TryParse(pkg1, out pkg11);
                 pkg2 = ic.ivfDB.obildDB.selectSumPriceByBilIdItmId(bilid, pkgfet);
@@ -739,11 +739,13 @@ namespace clinic_ivf.gui
                 Decimal.TryParse(labfreezing, out labfreezing1);
                 extraday6 = ic.ivfDB.obildDB.selectSumPriceByBilIdItmId(bilid, itmextraday6);
                 Decimal.TryParse(extraday6, out extraday61);
-                laball = ic.ivfDB.obildDB.selectSumPriceByLabAll(bilid);
+                laball = ic.ivfDB.obildDB.selectSumPriceExtraByLabAll(bilid);
                 Decimal.TryParse(laball, out laball1);
-                labblood = ic.ivfDB.obildDB.selectSumPriceByLabGroup(bilid, itmlabboood);
+                //labblood = ic.ivfDB.obildDB.selectSumPriceByLabGroup(bilid, itmlabboood);
+                labblood = ic.ivfDB.obildDB.selectSumPriceExtraByLabGroup(bilid, itmlabboood);
                 Decimal.TryParse(labblood, out labblood1);
-                tvs = ic.ivfDB.obildDB.selectSumPriceByBilIdItmId(bilid, itmtvs);
+                //tvs = ic.ivfDB.obildDB.selectSumPriceByBilIdItmId(bilid, itmtvs);
+                tvs = ic.ivfDB.obildDB.selectSumPriceExtraByBilIdItmId(bilid, itmtvs);
                 Decimal.TryParse(tvs, out tvs1);
                 equipment = ic.ivfDB.obildDB.selectSumPriceByBilIdItmId(bilid, itmequipment);
                 Decimal.TryParse(equipment, out equipment1);
@@ -786,8 +788,9 @@ namespace clinic_ivf.gui
                 //total = pkg11 + pkg21 + pkg31 + pkg41 + pkg51 + pkg61 + labfreezing1 + extraday61 + laball1 + amtmed1 + amtdtrfee1 + amtdiscount1 + amtother1-include1;
                 total = pkgall2 + extra1 + amtdiscount1;
 
-
-                pkgother1 = pkgall1 - pkg11 + pkg21 + pkg31 + pkg41 + pkg51 + pkg61;
+                String rc = "";
+                rc = row[ic.ivfDB.obilhDB.obillh.receipt_no].ToString();
+                pkgother1 = pkgall1 - pkg11 - pkg21 - pkg31 - pkg41 - pkg51 - pkg61;
                 
                 grfCld[i, 0] = i;
                 grfCld[i, colCldId] = "";

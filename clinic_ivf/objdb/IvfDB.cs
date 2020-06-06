@@ -1155,7 +1155,7 @@ namespace clinic_ivf.objdb
              *
              */
             Decimal inclab = 0, extlab = 0, incpx = 0, extpx = 0, incspe = 0, extspe = 0, inc=0, ext=0,incpkg=0;
-            int chk = 0;
+            long chk = 0;
             sql = "Select Include_Pkg_Price, Extra_Pkg_Price from JobLab Where VN='"+vn+"'";
             dt = conn.selectData(conn.conn,sql);
             if (dt.Rows.Count > 0)

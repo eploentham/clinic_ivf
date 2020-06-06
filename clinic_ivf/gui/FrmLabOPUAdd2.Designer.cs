@@ -119,6 +119,8 @@
             this.txtSpermVol = new C1.Win.C1Input.C1TextBox();
             this.label32 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label95 = new System.Windows.Forms.Label();
+            this.txtFertili2PnAdd = new C1.Win.C1Input.C1NumericEdit();
             this.btnResultDay1View = new C1.Win.C1Input.C1Button();
             this.btnResultDay1 = new C1.Win.C1Input.C1Button();
             this.btnSaveFertili = new C1.Win.C1Input.C1Button();
@@ -202,6 +204,7 @@
             this.gbDay6 = new System.Windows.Forms.GroupBox();
             this.pn6Grf = new System.Windows.Forms.Panel();
             this.pn6 = new System.Windows.Forms.Panel();
+            this.btnSaveDay6Copy = new C1.Win.C1Input.C1Button();
             this.label94 = new System.Windows.Forms.Label();
             this.cboRemarkDay6 = new C1.Win.C1Input.C1ComboBox();
             this.label85 = new System.Windows.Forms.Label();
@@ -288,9 +291,9 @@
             this.txtHnMale = new C1.Win.C1Input.C1TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtHnFeMale = new C1.Win.C1Input.C1TextBox();
-            this.txtFertili2PnAdd = new C1.Win.C1Input.C1NumericEdit();
-            this.label95 = new System.Windows.Forms.Label();
-            this.btnSaveDay6Copy = new C1.Win.C1Input.C1Button();
+            this.btnResultDay5View = new C1.Win.C1Input.C1Button();
+            this.btnResultDay6View = new C1.Win.C1Input.C1Button();
+            this.btnResultDay6 = new C1.Win.C1Input.C1Button();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1CommandDock2)).BeginInit();
@@ -353,6 +356,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtSpermDate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSpermVol)).BeginInit();
             this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtFertili2PnAdd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnResultDay1View)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnResultDay1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSaveFertili)).BeginInit();
@@ -416,6 +420,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnSaveDay5)).BeginInit();
             this.gbDay6.SuspendLayout();
             this.pn6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSaveDay6Copy)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboRemarkDay6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDay6Date)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboCheckedDay6)).BeginInit();
@@ -465,8 +470,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnHnSearch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHnMale)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHnFeMale)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtFertili2PnAdd)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnSaveDay6Copy)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnResultDay5View)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnResultDay6View)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnResultDay6)).BeginInit();
             this.SuspendLayout();
             // 
             // sB
@@ -1919,6 +1925,40 @@
             this.groupBox3.Text = "Fertilization";
             this.theme1.SetTheme(this.groupBox3, "(default)");
             // 
+            // label95
+            // 
+            this.label95.AutoSize = true;
+            this.label95.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label95.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label95.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label95.Location = new System.Drawing.Point(237, 38);
+            this.label95.Name = "label95";
+            this.label95.Size = new System.Drawing.Size(120, 16);
+            this.label95.TabIndex = 555;
+            this.label95.Text = "add more text box :";
+            this.theme1.SetTheme(this.label95, "(default)");
+            // 
+            // txtFertili2PnAdd
+            // 
+            this.txtFertili2PnAdd.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            // 
+            // 
+            // 
+            this.txtFertili2PnAdd.Calculator.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.txtFertili2PnAdd.Calculator.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.txtFertili2PnAdd.DataType = typeof(short);
+            this.txtFertili2PnAdd.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtFertili2PnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtFertili2PnAdd.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.txtFertili2PnAdd.Location = new System.Drawing.Point(361, 36);
+            this.txtFertili2PnAdd.Name = "txtFertili2PnAdd";
+            this.txtFertili2PnAdd.Size = new System.Drawing.Size(78, 20);
+            this.txtFertili2PnAdd.TabIndex = 554;
+            this.txtFertili2PnAdd.Tag = null;
+            this.theme1.SetTheme(this.txtFertili2PnAdd, "(default)");
+            this.txtFertili2PnAdd.Value = ((short)(1));
+            this.txtFertili2PnAdd.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
             // btnResultDay1View
             // 
             this.btnResultDay1View.Image = global::clinic_ivf.Properties.Resources.ExportPdf_large;
@@ -3100,6 +3140,7 @@
             // pn5
             // 
             this.pn5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pn5.Controls.Add(this.btnResultDay5View);
             this.pn5.Controls.Add(this.label93);
             this.pn5.Controls.Add(this.cboRemarkDay5);
             this.pn5.Controls.Add(this.btnResultDay5);
@@ -3297,7 +3338,7 @@
             // 
             this.btnSaveDay5.Image = global::clinic_ivf.Properties.Resources.download_database16;
             this.btnSaveDay5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSaveDay5.Location = new System.Drawing.Point(281, 4);
+            this.btnSaveDay5.Location = new System.Drawing.Point(281, 5);
             this.btnSaveDay5.Name = "btnSaveDay5";
             this.btnSaveDay5.Size = new System.Drawing.Size(49, 28);
             this.btnSaveDay5.TabIndex = 546;
@@ -3336,6 +3377,8 @@
             // pn6
             // 
             this.pn6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pn6.Controls.Add(this.btnResultDay6View);
+            this.pn6.Controls.Add(this.btnResultDay6);
             this.pn6.Controls.Add(this.btnSaveDay6Copy);
             this.pn6.Controls.Add(this.label94);
             this.pn6.Controls.Add(this.cboRemarkDay6);
@@ -3353,6 +3396,20 @@
             this.pn6.Size = new System.Drawing.Size(282, 97);
             this.pn6.TabIndex = 0;
             this.theme1.SetTheme(this.pn6, "(default)");
+            // 
+            // btnSaveDay6Copy
+            // 
+            this.btnSaveDay6Copy.Image = global::clinic_ivf.Properties.Resources.download_database16;
+            this.btnSaveDay6Copy.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSaveDay6Copy.Location = new System.Drawing.Point(281, 5);
+            this.btnSaveDay6Copy.Name = "btnSaveDay6Copy";
+            this.btnSaveDay6Copy.Size = new System.Drawing.Size(82, 28);
+            this.btnSaveDay6Copy.TabIndex = 559;
+            this.btnSaveDay6Copy.Text = "copy  day5";
+            this.btnSaveDay6Copy.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnSaveDay6Copy, "(default)");
+            this.btnSaveDay6Copy.UseVisualStyleBackColor = true;
+            this.btnSaveDay6Copy.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // label94
             // 
@@ -4855,53 +4912,47 @@
             this.theme1.SetTheme(this.txtHnFeMale, "(default)");
             this.txtHnFeMale.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // txtFertili2PnAdd
+            // btnResultDay5View
             // 
-            this.txtFertili2PnAdd.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.btnResultDay5View.Image = global::clinic_ivf.Properties.Resources.PDF_file_icon_svg_20;
+            this.btnResultDay5View.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnResultDay5View.Location = new System.Drawing.Point(281, 67);
+            this.btnResultDay5View.Name = "btnResultDay5View";
+            this.btnResultDay5View.Size = new System.Drawing.Size(69, 28);
+            this.btnResultDay5View.TabIndex = 558;
+            this.btnResultDay5View.Text = "PDF Day5";
+            this.btnResultDay5View.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnResultDay5View, "(default)");
+            this.btnResultDay5View.UseVisualStyleBackColor = true;
+            this.btnResultDay5View.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
+            // btnResultDay6View
             // 
+            this.btnResultDay6View.Image = global::clinic_ivf.Properties.Resources.PDF_file_icon_svg_20;
+            this.btnResultDay6View.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnResultDay6View.Location = new System.Drawing.Point(280, 66);
+            this.btnResultDay6View.Name = "btnResultDay6View";
+            this.btnResultDay6View.Size = new System.Drawing.Size(69, 28);
+            this.btnResultDay6View.TabIndex = 561;
+            this.btnResultDay6View.Text = "PDF Day6";
+            this.btnResultDay6View.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnResultDay6View, "(default)");
+            this.btnResultDay6View.UseVisualStyleBackColor = true;
+            this.btnResultDay6View.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            this.txtFertili2PnAdd.Calculator.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.txtFertili2PnAdd.Calculator.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            this.txtFertili2PnAdd.DataType = typeof(short);
-            this.txtFertili2PnAdd.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtFertili2PnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtFertili2PnAdd.ImagePadding = new System.Windows.Forms.Padding(0, 0, 0, 0);
-            this.txtFertili2PnAdd.Location = new System.Drawing.Point(361, 36);
-            this.txtFertili2PnAdd.Name = "txtFertili2PnAdd";
-            this.txtFertili2PnAdd.Size = new System.Drawing.Size(78, 20);
-            this.txtFertili2PnAdd.TabIndex = 554;
-            this.txtFertili2PnAdd.Tag = null;
-            this.theme1.SetTheme(this.txtFertili2PnAdd, "(default)");
-            this.txtFertili2PnAdd.Value = ((short)(1));
-            this.txtFertili2PnAdd.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // btnResultDay6
             // 
-            // label95
-            // 
-            this.label95.AutoSize = true;
-            this.label95.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label95.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label95.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label95.Location = new System.Drawing.Point(237, 38);
-            this.label95.Name = "label95";
-            this.label95.Size = new System.Drawing.Size(120, 16);
-            this.label95.TabIndex = 555;
-            this.label95.Text = "add more text box :";
-            this.theme1.SetTheme(this.label95, "(default)");
-            // 
-            // btnSaveDay6Copy
-            // 
-            this.btnSaveDay6Copy.Image = global::clinic_ivf.Properties.Resources.download_database16;
-            this.btnSaveDay6Copy.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSaveDay6Copy.Location = new System.Drawing.Point(281, 13);
-            this.btnSaveDay6Copy.Name = "btnSaveDay6Copy";
-            this.btnSaveDay6Copy.Size = new System.Drawing.Size(82, 28);
-            this.btnSaveDay6Copy.TabIndex = 559;
-            this.btnSaveDay6Copy.Text = "copy  day5";
-            this.btnSaveDay6Copy.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.theme1.SetTheme(this.btnSaveDay6Copy, "(default)");
-            this.btnSaveDay6Copy.UseVisualStyleBackColor = true;
-            this.btnSaveDay6Copy.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.btnResultDay6.Image = global::clinic_ivf.Properties.Resources.Female_user_add_24;
+            this.btnResultDay6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnResultDay6.Location = new System.Drawing.Point(280, 35);
+            this.btnResultDay6.Name = "btnResultDay6";
+            this.btnResultDay6.Size = new System.Drawing.Size(69, 28);
+            this.btnResultDay6.TabIndex = 560;
+            this.btnResultDay6.Text = "รายงานผล";
+            this.btnResultDay6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnResultDay6, "(default)");
+            this.btnResultDay6.UseVisualStyleBackColor = true;
+            this.btnResultDay6.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // FrmLabOPUAdd2
             // 
@@ -4981,6 +5032,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtSpermVol)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtFertili2PnAdd)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnResultDay1View)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnResultDay1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSaveFertili)).EndInit();
@@ -5049,6 +5101,7 @@
             this.gbDay6.ResumeLayout(false);
             this.pn6.ResumeLayout(false);
             this.pn6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSaveDay6Copy)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboRemarkDay6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDay6Date)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboCheckedDay6)).EndInit();
@@ -5100,8 +5153,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnHnSearch)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHnMale)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHnFeMale)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtFertili2PnAdd)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnSaveDay6Copy)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnResultDay5View)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnResultDay6View)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnResultDay6)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -5372,5 +5426,8 @@
         private System.Windows.Forms.Label label95;
         private C1.Win.C1Input.C1NumericEdit txtFertili2PnAdd;
         private C1.Win.C1Input.C1Button btnSaveDay6Copy;
+        private C1.Win.C1Input.C1Button btnResultDay5View;
+        private C1.Win.C1Input.C1Button btnResultDay6View;
+        private C1.Win.C1Input.C1Button btnResultDay6;
     }
 }

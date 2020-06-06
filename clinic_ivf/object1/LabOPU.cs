@@ -160,5 +160,9 @@ namespace clinic_ivf.object1
         public String report_day3 { get; set; }
         public String report_day6 { get; set; }
         public String fertili_2_pn_add { get; set; }
+        public String report_day5 { get; set; }
+        public String status_approve_result_day6 { get; set; }
+        public String approve_result_day6_staff_id { get; set; }
+        public String approve_result_day6_date { get; set; }
     }
 }
