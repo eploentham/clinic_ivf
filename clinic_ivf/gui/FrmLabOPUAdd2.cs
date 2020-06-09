@@ -56,6 +56,8 @@ namespace clinic_ivf.gui
         String theme2 = "Office2007Blue";       //Office2016Black       BeigeOne
         String flagEdit = "";
         Image imgCorr, imgTran, imgFinish;
+        FrmLabPrescription frmlabPresc;
+
         [DllImport("user32.dll", CharSet = CharSet.Auto, CallingConvention = CallingConvention.Winapi)]
         internal static extern IntPtr GetFocus();
         public FrmLabOPUAdd2(IvfControl ic, String reqid, String opuid)
@@ -202,6 +204,19 @@ namespace clinic_ivf.gui
             btnSaveEmbryoFreezDay1.Hide();
             btnSaveEmbryoEt.Hide();
             btnResultDay1View.Hide();
+
+            Panel pnlabPresc = new Panel();
+            pnlabPresc.Dock = DockStyle.Fill;
+            pnlabPresc.BackColor = Color.Red;
+
+            frmlabPresc = new FrmLabPrescription(ic, "","","");
+            frmlabPresc.FormBorderStyle = FormBorderStyle.None;
+            frmlabPresc.Dock = DockStyle.Fill;
+            frmlabPresc.TopLevel = false;
+
+            pnlabPresc.Controls.Add(frmlabPresc);
+            tabPresc.Controls.Add(pnlabPresc);
+            frmlabPresc.Show();
         }
 
         private void BtnResultDay6View_Click(object sender, EventArgs e)
@@ -474,21 +489,7 @@ namespace clinic_ivf.gui
                         }
                     }
                 }
-            }
-            
-
-
-
-
-
-
-
-
-
-
-
-
-
+            }            
                 
                 //}
             //}

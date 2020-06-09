@@ -111,6 +111,7 @@ namespace clinic_ivf.objdb
         public LabDataTypeComboBoxDB lbDtDB;
         public LabInterpretComboBoxDB lbinDB;
         public LabFormDay1DB lformDay1DB;
+        public LabPrescriptionDB lPrescDB;
         public IvfDB(ConnectDB c)
         {
             conn = c;
@@ -209,6 +210,7 @@ namespace clinic_ivf.objdb
             lbDtDB = new LabDataTypeComboBoxDB(conn);
             lbinDB = new LabInterpretComboBoxDB(conn);
             lformDay1DB = new LabFormDay1DB(conn);
+            lPrescDB = new LabPrescriptionDB(conn);
 
             Console.WriteLine("ivfDB end");
         }

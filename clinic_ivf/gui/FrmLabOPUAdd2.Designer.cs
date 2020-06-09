@@ -54,6 +54,7 @@
             this.btnSaveImg6Copy = new C1.Win.C1Input.C1Button();
             this.btnDay6ImgRef = new C1.Win.C1Input.C1Button();
             this.btnSaveImg6 = new C1.Win.C1Input.C1Button();
+            this.tabPresc = new C1.Win.C1Command.C1DockingTabPage();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
@@ -294,7 +295,6 @@
             this.txtHnMale = new C1.Win.C1Input.C1TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtHnFeMale = new C1.Win.C1Input.C1TextBox();
-            this.tabPresc = new C1.Win.C1Command.C1DockingTabPage();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1CommandDock2)).BeginInit();
@@ -799,6 +799,16 @@
             this.theme1.SetTheme(this.btnSaveImg6, "(default)");
             this.btnSaveImg6.UseVisualStyleBackColor = true;
             this.btnSaveImg6.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // tabPresc
+            // 
+            this.tabPresc.CaptionVisible = true;
+            this.tabPresc.Image = global::clinic_ivf.Properties.Resources.Cut_small;
+            this.tabPresc.Location = new System.Drawing.Point(4, 1);
+            this.tabPresc.Name = "tabPresc";
+            this.tabPresc.Size = new System.Drawing.Size(128, 888);
+            this.tabPresc.TabIndex = 4;
+            this.tabPresc.Text = "Prescription";
             // 
             // panel1
             // 
@@ -4955,16 +4965,6 @@
             this.txtHnFeMale.Tag = null;
             this.theme1.SetTheme(this.txtHnFeMale, "(default)");
             this.txtHnFeMale.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // tabPresc
-            // 
-            this.tabPresc.CaptionVisible = true;
-            this.tabPresc.Image = global::clinic_ivf.Properties.Resources.Cut_small;
-            this.tabPresc.Location = new System.Drawing.Point(4, 1);
-            this.tabPresc.Name = "tabPresc";
-            this.tabPresc.Size = new System.Drawing.Size(128, 888);
-            this.tabPresc.TabIndex = 4;
-            this.tabPresc.Text = "Prescription";
             // 
             // FrmLabOPUAdd2
             // 

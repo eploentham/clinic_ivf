@@ -33,5 +33,8 @@ namespace clinic_ivf.object1
         public String status_discard_all { get; set; }
         public String staff_id { get; set; }
         public String checkby_id { get; set; }
+        public String sperm_selection { get; set; }
+        public String sperm_precaution { get; set; }
+        public String visit_hn { get; set; }
     }
 }
