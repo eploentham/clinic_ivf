@@ -49,9 +49,17 @@ namespace clinic_ivf.objdb
             lPresc.sperm_selection = "sperm_selection";
             lPresc.sperm_precaution = "sperm_precaution";
             lPresc.visit_hn = "visit_hn";
+            lPresc.active = "active";
+            lPresc.remark = "remark";
+            lPresc.date_create = "date_create";
+            lPresc.date_modi = "date_modi";
+            lPresc.date_cancel = "date_cancel";
+            lPresc.user_create = "user_create";
+            lPresc.user_modi = "user_modi";
+            lPresc.user_cancel = "user_cancel";
 
             lPresc.table = "lab_t_prescription";
-            lPresc.pkField = "closeday_id";
+            lPresc.pkField = "presc_id";
 
         }
         public LabPrescription selectByPk(String id)
@@ -62,7 +70,7 @@ namespace clinic_ivf.objdb
                 "From " + lPresc.table + " labPresc " +
                 //"Left Join f_patient_prefix pfx On stf.prefix_id = pfx.f_patient_prefix_id " +
                 "Where labPresc." + lPresc.pkField + " ='" + id + "' " +
-                "Order By closeday_date ";
+                "Order By presc_id ";
             dt = conn.selectData(conn.conn, sql);
             cop1 = setPrescription(dt);
             return cop1;
@@ -75,7 +83,7 @@ namespace clinic_ivf.objdb
                 "From " + lPresc.table + " labPresc " +
                 //"Left Join f_patient_prefix pfx On stf.prefix_id = pfx.f_patient_prefix_id " +
                 "Where labPresc." + lPresc.opu_fet_id + " ='" + opudetid + "' " +
-                "Order By closeday_date ";
+                "Order By presc_id ";
             dt = conn.selectData(conn.conn, sql);
             cop1 = setPrescription(dt);
             return cop1;
@@ -88,7 +96,7 @@ namespace clinic_ivf.objdb
                 "From " + lPresc.table + " labPresc " +
                 //"Left Join f_patient_prefix pfx On stf.prefix_id = pfx.f_patient_prefix_id " +
                 "Where labPresc." + lPresc.visit_hn + " ='" + hn + "' " +
-                "Order By closeday_date ";
+                "Order By presc_id ";
             dt = conn.selectData(conn.conn, sql);
             cop1 = setPrescription(dt);
             return cop1;

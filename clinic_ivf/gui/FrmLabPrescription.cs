@@ -53,6 +53,7 @@ namespace clinic_ivf.gui
             imgStart = Resources.accept_database24;
 
             theme1 = new C1ThemeController();
+            theme1.Theme = ic.theme;
             panel1 = new Panel();
 
             panel1.SuspendLayout();
@@ -62,8 +63,7 @@ namespace clinic_ivf.gui
 
             txtID = new C1TextBox();
             txtID.Font = fEdit;
-            
-            txtID.Location = new System.Drawing.Point(cboPkg.Location.X, lbName.Location.Y);
+            //txtID.Location = new System.Drawing.Point(cboPkg.Location.X, lbName.Location.Y);
             txtID.Size = new Size(120, 20);
             txtID.Name = "txtID";
             txtID.Hide();
@@ -75,6 +75,7 @@ namespace clinic_ivf.gui
             lbDate.AutoSize = true;
             lbDate.Name = "lbDate";
             txtDate = new C1.Win.C1Input.C1DateEdit();
+            txtDate.Font = fEdit;
             txtDate.AllowSpinLoop = false;
             txtDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             txtDate.Calendar.ArrowColor = System.Drawing.Color.Black;
@@ -119,13 +120,15 @@ namespace clinic_ivf.gui
 
             gapY += gapLine;
             lbPkg = new Label();
+            lbPkg.Font = fEdit;
+            lbPkg.Name = "lbPkg";
             lbPkg.Text = "Package : ";
             lbPkg.Font = fEdit;
             lbPkg.Location = new System.Drawing.Point(gapX, gapY);
             lbPkg.AutoSize = true;
-            lbPkg.Name = "lbPkg";
             cboPkg = new C1ComboBox();
             cboPkg.Font = fEdit;
+            cboPkg.Name = "cboPkg";
             size = ic.MeasureString(lbPkg);
             cboPkg.Location = new System.Drawing.Point(lbPkg.Location.X + lbPkg.Width + 20, lbPkg.Location.Y);
             cboPkg.AllowSpinLoop = false;
@@ -137,8 +140,7 @@ namespace clinic_ivf.gui
             cboPkg.ItemsDisplayMember = "";
             cboPkg.ItemsValueMember = "";
             //cboPkg.Location = new System.Drawing.Point(106, 12);
-            cboPkg.Name = "cboPkg";
-            cboPkg.Size = new System.Drawing.Size(65, 20);
+            cboPkg.Size = new System.Drawing.Size(480, 20);
             cboPkg.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             cboPkg.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
             cboPkg.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
@@ -149,91 +151,92 @@ namespace clinic_ivf.gui
 
             gapY += gapLine;
             lbName = new Label();
-            lbName.Text = "Name : ";
             lbName.Font = fEdit;
+            lbName.Text = "Name : ";
             lbName.Location = new System.Drawing.Point(gapX, gapY);
             lbName.AutoSize = true;
             lbName.Name = "lbName";
             txtName = new C1TextBox();
             txtName.Font = fEdit;
+            txtName.Name = "txtName";
             size = ic.MeasureString(lbName);
             txtName.Location = new System.Drawing.Point(cboPkg.Location.X, lbName.Location.Y);
             txtName.Size = new Size(120, 20);
-            txtName.Name = "txtName";
 
             gapY += gapLine;
             chkEmbryoFreezing = new C1.Win.C1Input.C1CheckBox();
+            chkEmbryoFreezing.Font = fEdit;
+            chkEmbryoFreezing.Text = "Embryo freezing ";
+            chkEmbryoFreezing.Name = "chkEmbryoFreezing";
             chkEmbryoFreezing.BackColor = System.Drawing.Color.Transparent;
             chkEmbryoFreezing.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
             chkEmbryoFreezing.BorderStyle = System.Windows.Forms.BorderStyle.None;
             chkEmbryoFreezing.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             chkEmbryoFreezing.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             chkEmbryoFreezing.Location = new System.Drawing.Point(gapX, gapY);
-            chkEmbryoFreezing.Name = "chkEmbryoFreezing";
             chkEmbryoFreezing.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
             chkEmbryoFreezing.Size = new System.Drawing.Size(180, 24);
             chkEmbryoFreezing.TabIndex = 553;
-            chkEmbryoFreezing.Text = "Embryo freezing ";
             theme1.SetTheme(this.chkEmbryoFreezing, "(default)");
             chkEmbryoFreezing.UseVisualStyleBackColor = true;
             chkEmbryoFreezing.Value = null;
             chkEmbryoFreezing.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            chkEmbryoFreezing.Font = fEdit;
             chkEmbryoFreezing.AutoSize = true;
             txtEmbryoFreezing = new C1TextBox();
             txtEmbryoFreezing.Font = fEdit;
             size = ic.MeasureString(chkEmbryoFreezing);
             txtEmbryoFreezing.Location = new System.Drawing.Point(chkEmbryoFreezing.Location.X + size.Width + 25, chkEmbryoFreezing.Location.Y);
-            txtEmbryoFreezing.Size = new Size(120, 20);
+            txtEmbryoFreezing.Size = new Size(40, 20);
             txtEmbryoFreezing.Name = "txtEmbryoFreezing";
             lbEmbryoFreezing = new Label();
-            lbEmbryoFreezing.Text = "embryos ";
             lbEmbryoFreezing.Font = fEdit;
+            lbEmbryoFreezing.Text = "embryos ";
+            lbEmbryoFreezing.Name = "lbEmbryoFreezing";
             lbEmbryoFreezing.Location = new System.Drawing.Point(txtEmbryoFreezing.Location.X + txtEmbryoFreezing.Width + 5, chkEmbryoFreezing.Location.Y);
             lbEmbryoFreezing.AutoSize = true;
-            lbEmbryoFreezing.Name = "lbEmbryoFreezing";
             txtEmbryoStraws = new C1TextBox();
             txtEmbryoStraws.Font = fEdit;
             size = ic.MeasureString(lbEmbryoFreezing);
-            txtEmbryoStraws.Location = new System.Drawing.Point(lbEmbryoFreezing.Location.X + size.Width + 25, chkEmbryoFreezing.Location.Y);
+            txtEmbryoStraws.Location = new System.Drawing.Point(lbEmbryoFreezing.Location.X + size.Width + 15, chkEmbryoFreezing.Location.Y);
             txtEmbryoStraws.Size = new Size(40, 20);
             txtEmbryoStraws.Name = "txtEmbryoStraws";
             lbEmbryoStraws = new Label();
-            lbEmbryoStraws.Text = "straws (Extra ";
             lbEmbryoStraws.Font = fEdit;
+            lbEmbryoStraws.Text = "straws (Extra ";
+            lbEmbryoStraws.Name = "lbEmbryoStraws";
             lbEmbryoStraws.Location = new System.Drawing.Point(txtEmbryoStraws.Location.X + txtEmbryoStraws.Width + 5, chkEmbryoFreezing.Location.Y);
             lbEmbryoStraws.AutoSize = true;
-            lbEmbryoStraws.Name = "lbEmbryoStraws";
             txtEmbryoStrawsExtra = new C1TextBox();
             txtEmbryoStrawsExtra.Font = fEdit;
             size = ic.MeasureString(lbEmbryoStraws);
             txtEmbryoStrawsExtra.Location = new System.Drawing.Point(lbEmbryoStraws.Location.X + size.Width + 5, chkEmbryoFreezing.Location.Y);
             txtEmbryoStrawsExtra.Size = new Size(40, 20);
             lbEmbryoEmbryo = new Label();
-            lbEmbryoEmbryo.Text = "embryos) ";
             lbEmbryoEmbryo.Font = fEdit;
+            lbEmbryoEmbryo.Text = "embryos) ";
+            lbEmbryoEmbryo.Name = "lbEmbryoEmbryo";
             lbEmbryoEmbryo.Location = new System.Drawing.Point(txtEmbryoStrawsExtra.Location.X + txtEmbryoStrawsExtra.Width + 5, chkEmbryoFreezing.Location.Y);
             lbEmbryoEmbryo.AutoSize = true;
-            lbEmbryoEmbryo.Name = "lbEmbryoEmbryo";
 
             gapY += gapLine;
             chkNGS = new C1.Win.C1Input.C1CheckBox();
+            chkNGS.Font = fEdit;
+            chkNGS.Text = "NGS ";
+            chkNGS.Name = "chkNGS";
             chkNGS.BackColor = System.Drawing.Color.Transparent;
             chkNGS.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
             chkNGS.BorderStyle = System.Windows.Forms.BorderStyle.None;
             chkNGS.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             chkNGS.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             chkNGS.Location = new System.Drawing.Point(gapX, gapY);
-            chkNGS.Name = "chkNGS";
             chkNGS.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
             chkNGS.Size = new System.Drawing.Size(180, 24);
             chkNGS.TabIndex = 553;
-            chkNGS.Text = "NGS ";
             theme1.SetTheme(this.chkNGS, "(default)");
             chkNGS.UseVisualStyleBackColor = true;
             chkNGS.Value = null;
             chkNGS.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            chkNGS.Font = fEdit;
+            
             txtNGSEmbryo = new C1TextBox();
             txtNGSEmbryo.Font = fEdit;
             size = ic.MeasureString(chkNGS);
@@ -241,11 +244,11 @@ namespace clinic_ivf.gui
             txtNGSEmbryo.Size = new Size(60, 20);
             txtNGSEmbryo.Name = "txtNGSEmbryo";
             lbNGSEmbryo = new Label();
-            lbNGSEmbryo.Text = "embryo (Extra ";
             lbNGSEmbryo.Font = fEdit;
+            lbNGSEmbryo.Text = "embryo  (Extra ";
+            lbNGSEmbryo.Name = "lbNGSEmbryo";
             lbNGSEmbryo.Location = new System.Drawing.Point(txtNGSEmbryo.Location.X + txtNGSEmbryo.Width, chkNGS.Location.Y);
             lbNGSEmbryo.AutoSize = true;
-            lbNGSEmbryo.Name = "lbNGSEmbryo";
             txtNGSExtra = new C1TextBox();
             txtNGSExtra.Font = fEdit;
             size = ic.MeasureString(lbNGSEmbryo);
@@ -255,7 +258,7 @@ namespace clinic_ivf.gui
             lbNGSExtra = new Label();
             lbNGSExtra.Text = "embryos) ";
             lbNGSExtra.Font = fEdit;
-            lbNGSExtra.Location = new System.Drawing.Point(txtNGSEmbryo.Location.X + txtNGSExtra.Width, chkNGS.Location.Y);
+            lbNGSExtra.Location = new System.Drawing.Point(txtNGSExtra.Location.X + txtNGSExtra.Width, chkNGS.Location.Y);
             lbNGSExtra.AutoSize = true;
             lbNGSExtra.Name = "lbNGSExtra";
 
@@ -268,10 +271,11 @@ namespace clinic_ivf.gui
             chkPGS.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             chkPGS.Location = new System.Drawing.Point(gapX, gapY);
             chkPGS.Name = "chkPGS";
-            chkPGS.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
-            chkPGS.Size = new System.Drawing.Size(180, 24);
-            chkPGS.TabIndex = 553;
             chkPGS.Text = "PGS ";
+            size = ic.MeasureString(chkPGS);
+            chkPGS.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            chkPGS.Size = new System.Drawing.Size(size.Width+30, 24);
+            chkPGS.TabIndex = 553;
             theme1.SetTheme(this.chkPGS, "(default)");
             chkPGS.UseVisualStyleBackColor = true;
             chkPGS.Value = null;
@@ -279,47 +283,47 @@ namespace clinic_ivf.gui
             chkPGS.Font = fEdit;
             txtPGSEmbryo = new C1TextBox();
             txtPGSEmbryo.Font = fEdit;
-            size = ic.MeasureString(chkPGS);
-            txtPGSEmbryo.Location = new System.Drawing.Point(chkPGS.Location.X + chkPGS.Width, chkPGS.Location.Y);
+            txtPGSEmbryo.Location = new System.Drawing.Point(chkPGS.Location.X + size.Width+35, chkPGS.Location.Y);
             txtPGSEmbryo.Size = new Size(60, 20);
             txtPGSEmbryo.Name = "txtPGSEmbryo";
             lbPGSEmbryo = new Label();
-            lbPGSEmbryo.Text = "embryo (Extra ";
             lbPGSEmbryo.Font = fEdit;
-            lbPGSEmbryo.Location = new System.Drawing.Point(txtNGSEmbryo.Location.X + txtNGSExtra.Width, chkPGS.Location.Y);
-            lbPGSEmbryo.AutoSize = true;
             lbPGSEmbryo.Name = "lbPGSEmbryo";
+            lbPGSEmbryo.Text = "embryo  (Extra ";
+            lbPGSEmbryo.Location = new System.Drawing.Point(txtPGSEmbryo.Location.X + txtPGSEmbryo.Width, chkPGS.Location.Y);
+            lbPGSEmbryo.AutoSize = true;
+            
             txtPGSExtra = new C1TextBox();
             txtPGSExtra.Font = fEdit;
             size = ic.MeasureString(lbPGSEmbryo);
-            txtPGSExtra.Location = new System.Drawing.Point(lbPGSEmbryo.Location.X + lbPGSEmbryo.Width, chkPGS.Location.Y);
+            txtPGSExtra.Location = new System.Drawing.Point(lbPGSEmbryo.Location.X + size.Width, chkPGS.Location.Y);
             txtPGSExtra.Size = new Size(60, 20);
             txtPGSExtra.Name = "txtPGSExtra";
             lbPGSExtra = new Label();
-            lbPGSExtra.Text = "embryos) ";
             lbPGSExtra.Font = fEdit;
+            lbPGSExtra.Text = "embryos) ";
+            lbPGSExtra.Name = "lbPGSExtra";
             lbPGSExtra.Location = new System.Drawing.Point(txtPGSExtra.Location.X + txtPGSExtra.Width, chkPGS.Location.Y);
             lbPGSExtra.AutoSize = true;
-            lbPGSExtra.Name = "lbPGSExtra";
 
             gapY += gapLine;
             chkDay6 = new C1.Win.C1Input.C1CheckBox();
+            chkDay6.Font = fEdit;
+            chkDay6.Name = "chkPGS";
+            chkDay6.Text = "Day 6 ";
             chkDay6.BackColor = System.Drawing.Color.Transparent;
             chkDay6.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
             chkDay6.BorderStyle = System.Windows.Forms.BorderStyle.None;
             chkDay6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             chkDay6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             chkDay6.Location = new System.Drawing.Point(gapX, gapY);
-            chkDay6.Name = "chkPGS";
             chkDay6.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
             chkDay6.Size = new System.Drawing.Size(180, 24);
             chkDay6.TabIndex = 553;
-            chkDay6.Text = "Day 6 ";
             theme1.SetTheme(this.chkDay6, "(default)");
             chkDay6.UseVisualStyleBackColor = true;
             chkDay6.Value = null;
             chkDay6.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            chkDay6.Font = fEdit;
 
             gapY += gapLine;
             chkAssistedHatching = new C1.Win.C1Input.C1CheckBox();
@@ -422,7 +426,7 @@ namespace clinic_ivf.gui
             chkEmbryoGlue.Size = new System.Drawing.Size(180, 24);
             chkEmbryoGlue.TabIndex = 553;
             chkEmbryoGlue.Text = "Embryo Glue ";
-            theme1.SetTheme(this.chkSpermPrecaution, "(default)");
+            theme1.SetTheme(this.chkEmbryoGlue, "(default)");
             chkEmbryoGlue.UseVisualStyleBackColor = true;
             chkEmbryoGlue.Value = null;
             chkEmbryoGlue.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
@@ -461,30 +465,30 @@ namespace clinic_ivf.gui
 
             gapY += gapLine;
             chkDiscardAll = new C1.Win.C1Input.C1CheckBox();
+            chkDiscardAll.Font = fEdit;
+            chkDiscardAll.Name = "chkDiscardAll";
+            chkDiscardAll.Text = "Discard All Embryos ";
             chkDiscardAll.BackColor = System.Drawing.Color.Transparent;
             chkDiscardAll.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
             chkDiscardAll.BorderStyle = System.Windows.Forms.BorderStyle.None;
             chkDiscardAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             chkDiscardAll.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             chkDiscardAll.Location = new System.Drawing.Point(gapX, gapY);
-            chkDiscardAll.Name = "chkDiscardAll";
             chkDiscardAll.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
             chkDiscardAll.Size = new System.Drawing.Size(180, 24);
             chkDiscardAll.TabIndex = 553;
-            chkDiscardAll.Text = "Discard All Embryos ";
             theme1.SetTheme(this.chkDiscardAll, "(default)");
             chkDiscardAll.UseVisualStyleBackColor = true;
             chkDiscardAll.Value = null;
             chkDiscardAll.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            chkDiscardAll.Font = fEdit;
 
             gapY += gapLine;
             lbStfId = new Label();
-            lbStfId.Text = "Staff : ";
             lbStfId.Font = fEdit;
+            lbStfId.Name = "lbStfId";
+            lbStfId.Text = "Staff : ";
             lbStfId.Location = new System.Drawing.Point(gapX, gapY);
             lbStfId.AutoSize = true;
-            lbStfId.Name = "lbStfId";
             cboStfId = new C1ComboBox();
             cboStfId.Font = fEdit;
             size = ic.MeasureString(lbStfId);
@@ -498,7 +502,7 @@ namespace clinic_ivf.gui
             cboStfId.ItemsDisplayMember = "";
             cboStfId.ItemsValueMember = "";            
             cboStfId.Name = "cboStfId";
-            cboStfId.Size = new System.Drawing.Size(65, 20);
+            cboStfId.Size = new System.Drawing.Size(180, 20);
             cboStfId.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             cboStfId.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
             cboStfId.Style.Font = fEdit;
@@ -509,13 +513,14 @@ namespace clinic_ivf.gui
 
             gapY += gapLine;
             lbChkId = new Label();
-            lbChkId.Text = "Check By : ";
             lbChkId.Font = fEdit;
+            lbChkId.Text = "Check By : ";
+            lbChkId.Name = "lbChkId";
             lbChkId.Location = new System.Drawing.Point(gapX, gapY);
             lbChkId.AutoSize = true;
-            lbChkId.Name = "lbChkId";
             cboChkId = new C1ComboBox();
             cboChkId.Font = fEdit;
+            cboChkId.Name = "cboChkId";
             size = ic.MeasureString(lbChkId);
             cboChkId.Location = new System.Drawing.Point(cboPkg.Location.X, lbChkId.Location.Y);
             cboChkId.AllowSpinLoop = false;
@@ -526,8 +531,7 @@ namespace clinic_ivf.gui
             cboChkId.ImagePadding = new System.Windows.Forms.Padding(0);
             cboChkId.ItemsDisplayMember = "";
             cboChkId.ItemsValueMember = "";
-            cboChkId.Name = "cboChkId";
-            cboChkId.Size = new System.Drawing.Size(65, 20);
+            cboChkId.Size = new System.Drawing.Size(180, 20);
             cboChkId.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             cboChkId.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
             cboChkId.Style.Font = fEdit;
@@ -538,9 +542,9 @@ namespace clinic_ivf.gui
 
             gapY += gapLine;
             btnSave = new C1Button();
-            btnSave.Name = "btnLisStart";
-            btnSave.Text = "Start";
             btnSave.Font = fEdit;
+            btnSave.Name = "btnLisStart";
+            btnSave.Text = "Save";
             //size = bc.MeasureString(btnHnSearch);
             btnSave.Location = new System.Drawing.Point(gapX, gapY);
             btnSave.Size = new Size(70, 60);
@@ -550,6 +554,8 @@ namespace clinic_ivf.gui
             btnSave.ImageAlign = ContentAlignment.MiddleLeft;
 
             //panel1.Controls.Add(chkNGS);
+            panel1.Controls.Add(lbDate);
+            panel1.Controls.Add(txtDate);
             panel1.Controls.Add(lbPkg);
             panel1.Controls.Add(cboPkg);
             panel1.Controls.Add(lbName);
@@ -563,6 +569,17 @@ namespace clinic_ivf.gui
             panel1.Controls.Add(lbEmbryoEmbryo);
             panel1.Controls.Add(chkNGS);
             panel1.Controls.Add(chkPGS);
+
+            //panel1.Controls.Add(lbPGSEmbryo);
+            panel1.Controls.Add(txtPGSEmbryo);
+            panel1.Controls.Add(lbPGSEmbryo);
+            panel1.Controls.Add(txtPGSExtra);
+            panel1.Controls.Add(lbPGSExtra);
+            panel1.Controls.Add(txtSpermSelection);
+            panel1.Controls.Add(txtSpermPrecaution);
+            panel1.Controls.Add(txtEmbryoRemaining);
+            panel1.Controls.Add(lbEmbryoRemaining);
+
             panel1.Controls.Add(chkDay6);
             panel1.Controls.Add(chkHA);
             panel1.Controls.Add(chkSpermSelection);
@@ -576,11 +593,19 @@ namespace clinic_ivf.gui
             panel1.Controls.Add(cboChkId);
             panel1.Controls.Add(btnSave);
             this.Controls.Add(panel1);
+            setTheme();
 
             panel1.ResumeLayout(false);
 
             panel1.PerformLayout();
             this.PerformLayout();
+        }
+        private void setTheme()
+        {
+            foreach(Control c in this.Controls)
+            {
+                theme1.SetTheme(c, theme1.Theme);
+            }
         }
         private void initConfig()
         {
@@ -590,10 +615,13 @@ namespace clinic_ivf.gui
             btnSave.Click += BtnSave_Click;
 
             ic.ivfDB.oPkgDB.setCboPackage(cboPkg, "");
+            ic.ivfDB.stfDB.setCboEmbryologist(cboStfId, "");
+            ic.ivfDB.stfDB.setCboEmbryologist(cboChkId, "");
             setControl();
         }
         private void setControl()
         {
+            Boolean chkNew = false;
             labPresc = ic.ivfDB.lPrescDB.selectByPk(id);
             if (labPresc.presc_id.Equals(""))
             {
@@ -603,12 +631,16 @@ namespace clinic_ivf.gui
                     labPresc = ic.ivfDB.lPrescDB.selectByHN(hn);
                     if (labPresc.presc_id.Equals(""))
                     {
-
+                        chkNew = true;
                     }
                 }
             }
-            txtID.Text = labPresc.presc_id;
-            opufetid = labPresc.opu_fet_id;
+            txtID.Value = labPresc.presc_id;
+            if (!chkNew)
+            {
+                opufetid = labPresc.opu_fet_id;
+                hn = labPresc.visit_hn;
+            }
             txtDate.Value = labPresc.presc_date;
             //cboPkg.SelectedItem labPresc.pkg_id = cboPkg.SelectedItem == null ? "" : ((ComboBoxItem)cboPkg.SelectedItem).Value;
             ic.setC1Combo(cboPkg, labPresc.pkg_id);
@@ -640,8 +672,9 @@ namespace clinic_ivf.gui
         {
 
             labPresc.presc_id = txtID.Text;
-            labPresc.opu_fet_id = "";
+            labPresc.opu_fet_id = opufetid;
             labPresc.presc_date = ic.datetoDB(txtDate.Text);
+            labPresc.visit_hn = hn;
             labPresc.pkg_id = cboPkg.SelectedItem == null ? "" : ((ComboBoxItem)cboPkg.SelectedItem).Value;
             labPresc.status_embryo_freezing = chkEmbryoFreezing.Checked ? "1" : "0";
             labPresc.embryo_freezing = txtEmbryoFreezing.Text.Trim();
@@ -670,7 +703,16 @@ namespace clinic_ivf.gui
         private void BtnSave_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            setLabPrescription();
+            ic.cStf.staff_id = "";
+            Boolean chkSave = false;
+            FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+            frm.ShowDialog(this);
+            if (!ic.cStf.staff_id.Equals(""))
+            {
+                setLabPrescription();
+                ic.ivfDB.lPrescDB.insertPrescription(labPresc, ic.cStf.staff_id);
+            }
+                
         }
 
         private void FrmLabPrescription_Load(object sender, EventArgs e)

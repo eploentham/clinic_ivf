@@ -209,7 +209,7 @@ namespace clinic_ivf.gui
             pnlabPresc.Dock = DockStyle.Fill;
             pnlabPresc.BackColor = Color.Red;
 
-            frmlabPresc = new FrmLabPrescription(ic, "","","");
+            frmlabPresc = new FrmLabPrescription(ic, "",txtID.Text,txtHnMale.Text);
             frmlabPresc.FormBorderStyle = FormBorderStyle.None;
             frmlabPresc.Dock = DockStyle.Fill;
             frmlabPresc.TopLevel = false;

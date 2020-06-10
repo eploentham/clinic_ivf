@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtBillId = new C1.Win.C1Input.C1TextBox();
             this.txtVnShow = new C1.Win.C1Input.C1TextBox();
             this.label20 = new System.Windows.Forms.Label();
             this.txtAgent = new C1.Win.C1Input.C1TextBox();
@@ -65,6 +66,8 @@
             this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.theme1 = new C1.Win.C1Themes.C1ThemeController();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.tC1 = new C1.Win.C1Command.C1DockingTab();
+            this.tabBillItem = new C1.Win.C1Command.C1DockingTabPage();
             this.pnBillD = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnDiscountAdd = new C1.Win.C1Input.C1Button();
@@ -101,8 +104,11 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.txtPayName = new C1.Win.C1Input.C1TextBox();
-            this.txtBillId = new C1.Win.C1Input.C1TextBox();
+            this.tabLabPrescription = new C1.Win.C1Command.C1DockingTabPage();
+            this.btnPayPeriod = new C1.Win.C1Input.C1Button();
+            this.btnItmAdd = new C1.Win.C1Input.C1Button();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtBillId)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtVnShow)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAgent)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPrnReceipt)).BeginInit();
@@ -128,6 +134,9 @@
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tC1)).BeginInit();
+            this.tC1.SuspendLayout();
+            this.tabBillItem.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnDiscountAdd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnChargeAdd)).BeginInit();
@@ -148,7 +157,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtDiscount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboAccCash)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPayName)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtBillId)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnPayPeriod)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnItmAdd)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -197,6 +207,20 @@
             this.groupBox1.Text = "Patient";
             this.theme1.SetTheme(this.groupBox1, "(default)");
             this.groupBox1.Enter += new System.EventHandler(this.GroupBox1_Enter);
+            // 
+            // txtBillId
+            // 
+            this.txtBillId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtBillId.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtBillId.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtBillId.Location = new System.Drawing.Point(1239, 15);
+            this.txtBillId.Name = "txtBillId";
+            this.txtBillId.Size = new System.Drawing.Size(30, 20);
+            this.txtBillId.TabIndex = 705;
+            this.txtBillId.Tag = null;
+            this.theme1.SetTheme(this.txtBillId, "(default)");
+            this.txtBillId.Visible = false;
+            this.txtBillId.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // txtVnShow
             // 
@@ -661,8 +685,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.panel1.Controls.Add(this.pnBillD);
-            this.panel1.Controls.Add(this.panel2);
+            this.panel1.Controls.Add(this.tC1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.panel1.Location = new System.Drawing.Point(0, 93);
@@ -671,20 +694,51 @@
             this.panel1.TabIndex = 532;
             this.theme1.SetTheme(this.panel1, "(default)");
             // 
+            // tC1
+            // 
+            this.tC1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.tC1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tC1.Controls.Add(this.tabBillItem);
+            this.tC1.Controls.Add(this.tabLabPrescription);
+            this.tC1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tC1.HotTrack = true;
+            this.tC1.Location = new System.Drawing.Point(0, 0);
+            this.tC1.Name = "tC1";
+            this.tC1.SelectedIndex = 1;
+            this.tC1.Size = new System.Drawing.Size(1276, 570);
+            this.tC1.TabIndex = 701;
+            this.tC1.TabSizeMode = C1.Win.C1Command.TabSizeModeEnum.Fit;
+            this.tC1.TabsShowFocusCues = false;
+            this.tC1.TabsSpacing = 2;
+            this.tC1.TabStyle = C1.Win.C1Command.TabStyleEnum.Office2007;
+            this.theme1.SetTheme(this.tC1, "(default)");
+            // 
+            // tabBillItem
+            // 
+            this.tabBillItem.Controls.Add(this.pnBillD);
+            this.tabBillItem.Controls.Add(this.panel2);
+            this.tabBillItem.Location = new System.Drawing.Point(1, 24);
+            this.tabBillItem.Name = "tabBillItem";
+            this.tabBillItem.Size = new System.Drawing.Size(1274, 545);
+            this.tabBillItem.TabIndex = 0;
+            this.tabBillItem.Text = "Bill Item";
+            // 
             // pnBillD
             // 
             this.pnBillD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.pnBillD.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnBillD.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.pnBillD.Location = new System.Drawing.Point(0, 150);
+            this.pnBillD.Location = new System.Drawing.Point(0, 144);
             this.pnBillD.Name = "pnBillD";
-            this.pnBillD.Size = new System.Drawing.Size(1276, 420);
+            this.pnBillD.Size = new System.Drawing.Size(1274, 401);
             this.pnBillD.TabIndex = 700;
             this.theme1.SetTheme(this.pnBillD, "(default)");
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel2.Controls.Add(this.btnItmAdd);
+            this.panel2.Controls.Add(this.btnPayPeriod);
             this.panel2.Controls.Add(this.btnDiscountAdd);
             this.panel2.Controls.Add(this.btnChargeAdd);
             this.panel2.Controls.Add(this.panel3);
@@ -716,7 +770,7 @@
             this.panel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1276, 150);
+            this.panel2.Size = new System.Drawing.Size(1274, 144);
             this.panel2.TabIndex = 699;
             this.theme1.SetTheme(this.panel2, "(default)");
             // 
@@ -1230,19 +1284,41 @@
             this.theme1.SetTheme(this.txtPayName, "(default)");
             this.txtPayName.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // txtBillId
+            // tabLabPrescription
             // 
-            this.txtBillId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtBillId.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtBillId.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtBillId.Location = new System.Drawing.Point(1239, 15);
-            this.txtBillId.Name = "txtBillId";
-            this.txtBillId.Size = new System.Drawing.Size(30, 20);
-            this.txtBillId.TabIndex = 705;
-            this.txtBillId.Tag = null;
-            this.theme1.SetTheme(this.txtBillId, "(default)");
-            this.txtBillId.Visible = false;
-            this.txtBillId.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.tabLabPrescription.Location = new System.Drawing.Point(1, 24);
+            this.tabLabPrescription.Name = "tabLabPrescription";
+            this.tabLabPrescription.Size = new System.Drawing.Size(1274, 545);
+            this.tabLabPrescription.TabIndex = 1;
+            this.tabLabPrescription.Text = "Prescription";
+            // 
+            // btnPayPeriod
+            // 
+            this.btnPayPeriod.Image = global::clinic_ivf.Properties.Resources.maintenance24;
+            this.btnPayPeriod.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPayPeriod.Location = new System.Drawing.Point(1089, 40);
+            this.btnPayPeriod.Name = "btnPayPeriod";
+            this.btnPayPeriod.Size = new System.Drawing.Size(107, 36);
+            this.btnPayPeriod.TabIndex = 756;
+            this.btnPayPeriod.Text = "แบ่งชำระ";
+            this.btnPayPeriod.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnPayPeriod, "(default)");
+            this.btnPayPeriod.UseVisualStyleBackColor = true;
+            this.btnPayPeriod.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // btnItmAdd
+            // 
+            this.btnItmAdd.Image = global::clinic_ivf.Properties.Resources.zoom_in24;
+            this.btnItmAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnItmAdd.Location = new System.Drawing.Point(1089, 86);
+            this.btnItmAdd.Name = "btnItmAdd";
+            this.btnItmAdd.Size = new System.Drawing.Size(107, 36);
+            this.btnItmAdd.TabIndex = 757;
+            this.btnItmAdd.Text = "เพิ่ม / ลด รายการ";
+            this.btnItmAdd.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnItmAdd, "(default)");
+            this.btnItmAdd.UseVisualStyleBackColor = true;
+            this.btnItmAdd.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // FrmCashierAdd
             // 
@@ -1259,6 +1335,7 @@
             this.Load += new System.EventHandler(this.FrmCashierAdd_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtBillId)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtVnShow)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAgent)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPrnReceipt)).EndInit();
@@ -1285,6 +1362,9 @@
             this.sB.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).EndInit();
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.tC1)).EndInit();
+            this.tC1.ResumeLayout(false);
+            this.tabBillItem.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnDiscountAdd)).EndInit();
@@ -1308,7 +1388,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtDiscount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboAccCash)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPayName)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtBillId)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnPayPeriod)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnItmAdd)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1390,5 +1471,10 @@
         private C1.Win.C1Input.C1TextBox txtAgent;
         private C1.Win.C1Input.C1TextBox txtVnShow;
         private C1.Win.C1Input.C1TextBox txtBillId;
+        private C1.Win.C1Command.C1DockingTab tC1;
+        private C1.Win.C1Command.C1DockingTabPage tabBillItem;
+        private C1.Win.C1Command.C1DockingTabPage tabLabPrescription;
+        private C1.Win.C1Input.C1Button btnItmAdd;
+        private C1.Win.C1Input.C1Button btnPayPeriod;
     }
 }
