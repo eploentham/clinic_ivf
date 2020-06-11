@@ -51,6 +51,8 @@
             this.pnCloseDay = new System.Windows.Forms.Panel();
             this.spCloseDay = new C1.Win.C1SplitContainer.C1SplitContainer();
             this.spCld = new C1.Win.C1SplitContainer.C1SplitterPanel();
+            this.btnRpt = new C1.Win.C1Input.C1Button();
+            this.cboRpt = new C1.Win.C1Input.C1ComboBox();
             this.txtCldId = new C1.Win.C1Input.C1TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.txtRemark = new C1.Win.C1Input.C1TextBox();
@@ -109,8 +111,6 @@
             this.label18 = new System.Windows.Forms.Label();
             this.c1SplitterPanel2 = new C1.Win.C1SplitContainer.C1SplitterPanel();
             this.pnReportView = new System.Windows.Forms.Panel();
-            this.cboRpt = new C1.Win.C1Input.C1ComboBox();
-            this.btnRpt = new C1.Win.C1Input.C1Button();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tC)).BeginInit();
@@ -131,6 +131,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.spCloseDay)).BeginInit();
             this.spCloseDay.SuspendLayout();
             this.spCld.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnRpt)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboRpt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCldId)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtRemark)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSaveCld)).BeginInit();
@@ -171,8 +173,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtRptDateEnd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPrint)).BeginInit();
             this.c1SplitterPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cboRpt)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnRpt)).BeginInit();
             this.SuspendLayout();
             // 
             // sB
@@ -520,7 +520,39 @@
             this.spCld.SizeRatio = 34.522D;
             this.spCld.TabIndex = 0;
             this.spCld.Text = "Panel 1";
-            this.spCld.Width = 368;
+            this.spCld.Width = 361;
+            // 
+            // btnRpt
+            // 
+            this.btnRpt.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRpt.Location = new System.Drawing.Point(309, 443);
+            this.btnRpt.Name = "btnRpt";
+            this.btnRpt.Size = new System.Drawing.Size(31, 25);
+            this.btnRpt.TabIndex = 766;
+            this.btnRpt.Text = "...";
+            this.theme1.SetTheme(this.btnRpt, "(default)");
+            this.btnRpt.UseVisualStyleBackColor = true;
+            this.btnRpt.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // cboRpt
+            // 
+            this.cboRpt.AllowSpinLoop = false;
+            this.cboRpt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cboRpt.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.cboRpt.GapHeight = 0;
+            this.cboRpt.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.cboRpt.ItemsDisplayMember = "";
+            this.cboRpt.ItemsValueMember = "";
+            this.cboRpt.Location = new System.Drawing.Point(76, 447);
+            this.cboRpt.Name = "cboRpt";
+            this.cboRpt.Size = new System.Drawing.Size(227, 18);
+            this.cboRpt.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.cboRpt.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
+            this.cboRpt.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboRpt.TabIndex = 765;
+            this.cboRpt.Tag = null;
+            this.theme1.SetTheme(this.cboRpt, "(default)");
+            this.cboRpt.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // txtCldId
             // 
@@ -1145,7 +1177,7 @@
             this.c1SplitterPanel1.SizeRatio = 27.341D;
             this.c1SplitterPanel1.TabIndex = 0;
             this.c1SplitterPanel1.Text = "Panel 1";
-            this.c1SplitterPanel1.Width = 285;
+            this.c1SplitterPanel1.Width = 292;
             // 
             // c1SplitContainer2
             // 
@@ -1173,7 +1205,7 @@
             // 
             this.c1SplitterPanel3.Collapsible = true;
             this.c1SplitterPanel3.Controls.Add(this.pnReportItem);
-            this.c1SplitterPanel3.Height = 329;
+            this.c1SplitterPanel3.Height = 336;
             this.c1SplitterPanel3.Location = new System.Drawing.Point(0, 21);
             this.c1SplitterPanel3.Name = "c1SplitterPanel3";
             this.c1SplitterPanel3.Size = new System.Drawing.Size(285, 308);
@@ -1426,38 +1458,6 @@
             this.pnReportView.TabIndex = 0;
             this.theme1.SetTheme(this.pnReportView, "(default)");
             // 
-            // cboRpt
-            // 
-            this.cboRpt.AllowSpinLoop = false;
-            this.cboRpt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.cboRpt.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.cboRpt.GapHeight = 0;
-            this.cboRpt.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.cboRpt.ItemsDisplayMember = "";
-            this.cboRpt.ItemsValueMember = "";
-            this.cboRpt.Location = new System.Drawing.Point(76, 447);
-            this.cboRpt.Name = "cboRpt";
-            this.cboRpt.Size = new System.Drawing.Size(227, 18);
-            this.cboRpt.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.cboRpt.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
-            this.cboRpt.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.cboRpt.TabIndex = 765;
-            this.cboRpt.Tag = null;
-            this.theme1.SetTheme(this.cboRpt, "(default)");
-            this.cboRpt.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // btnRpt
-            // 
-            this.btnRpt.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRpt.Location = new System.Drawing.Point(309, 443);
-            this.btnRpt.Name = "btnRpt";
-            this.btnRpt.Size = new System.Drawing.Size(31, 25);
-            this.btnRpt.TabIndex = 766;
-            this.btnRpt.Text = "...";
-            this.theme1.SetTheme(this.btnRpt, "(default)");
-            this.btnRpt.UseVisualStyleBackColor = true;
-            this.btnRpt.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
             // FrmCashierView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1491,6 +1491,8 @@
             this.spCloseDay.ResumeLayout(false);
             this.spCld.ResumeLayout(false);
             this.spCld.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnRpt)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboRpt)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCldId)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtRemark)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSaveCld)).EndInit();
@@ -1533,8 +1535,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtRptDateEnd)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPrint)).EndInit();
             this.c1SplitterPanel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.cboRpt)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnRpt)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

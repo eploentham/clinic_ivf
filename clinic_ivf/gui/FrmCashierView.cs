@@ -45,6 +45,7 @@ namespace clinic_ivf.gui
         Closeday cld;
         Image imgCorr, imgTran, imgFinish;
         Form frmRpt;
+        String rptid = "";
 
         public FrmCashierView(IvfControl ic, MainMenu m)
         {
@@ -65,8 +66,7 @@ namespace clinic_ivf.gui
             sB1.Text = "";
             bg = txtSearch.BackColor;
             fc = txtSearch.ForeColor;
-            ff = txtSearch.Font;
-            
+            ff = txtSearch.Font;            
 
             stt = new C1SuperTooltip();
             sep = new C1SuperErrorProvider();
@@ -261,7 +261,35 @@ namespace clinic_ivf.gui
         private void BtnRptOk_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            setGrfRpt001();
+            if (rptid.Equals("rptcashier001"))
+            {
+                setGrfRpt001();
+            }
+            else if (rptid.Equals("rptcashier002"))
+            {
+                setGrfRpt002();
+            }
+        }
+        private void setGrfRpt002()
+        {
+            String rpt = "", dateStart = "", dateEnd = "";
+            dateStart = ic.datetoDB(txtRptDateStart.Text);
+            dateEnd = ic.datetoDB(txtRptDateEnd.Text);
+            grfRpt.Clear();
+            grfRpt.Cols.Count = 3;
+            DataTable dt = new DataTable();
+            dt = ic.ivfDB.ocrDB.selectByCreditCardName1();
+            foreach(DataRow row in dt.Rows)
+            {
+                Column col = grfRpt.Cols.Add();
+                grfRpt.Cols[grfRpt.Cols.Count - 1].Caption = row["CreditCardName"].ToString();
+            }
+            dt = ic.ivfDB.ocaDB.selectByCashCardName();
+            foreach (DataRow row in dt.Rows)
+            {
+                grfRpt.Cols.Add();
+            }
+            grfRpt.Refresh();
         }
         private void setGrfRpt001()
         {
@@ -1148,12 +1176,23 @@ namespace clinic_ivf.gui
             if (grfRptCri == null) return;
             if (grfRptCri.Row <= 0) return;
             if (grfRptCri.Col <= 0) return;
-            String rptid = "";
+            rptid = "";
             setHideRptCri();
             rptid = grfRptCri[grfRptCri.Row, 1].ToString();
             if (rptid.Length > 0)
             {
                 if (rptid.Equals("rptcashier001"))
+                {
+                    pnReportCri001.Show();
+                }
+                else if (rptid.Equals("rptcashier002"))
+                {
+                    pnReportCri001.Show();
+                }
+            }
+            else if (rptid.Length > 0)
+            {
+                if (rptid.Equals("rptcashier002"))
                 {
                     pnReportCri001.Show();
                 }
@@ -1170,10 +1209,8 @@ namespace clinic_ivf.gui
             //C1ComboBox cboproce = new C1ComboBox();
             //ic.ivfDB.itmDB.setCboItem(cboproce);
 
-
             grfRptCri.Cols[1].Width = 80;
-            grfRptCri.Cols[2].Width = 120;
-
+            grfRptCri.Cols[2].Width = 420;
 
             grfRptCri.ShowCursor = true;
             //grdFlex.Cols[colID].Caption = "no";
@@ -1181,9 +1218,6 @@ namespace clinic_ivf.gui
 
             grfRptCri.Cols[2].Caption = "Report Name";
             
-
-            
-
             Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
             
             int i = 1;
@@ -1191,9 +1225,13 @@ namespace clinic_ivf.gui
             grfRptCri[i, 0] = i;
             grfRptCri[i, 1] = "rptcashier001";
             grfRptCri[i, 2] = "List คนไข้ประจำวัน";
-                
-                //    grfPtt.Rows[i].StyleNew.BackColor = color;
-                i++;
+            i++;
+            Row row = grfRptCri.Rows.Add();
+            row[1] = "rptcashier002";
+            row[2] = "รายงานประจำวัน ตามเครื่องรูดบัตร";
+
+            //    grfPtt.Rows[i].StyleNew.BackColor = color;
+            i++;
             
             CellNoteManager mgr = new CellNoteManager(grfRptCri);
             grfRptCri.Cols[1].Visible = false;

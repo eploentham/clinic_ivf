@@ -122,13 +122,23 @@ namespace clinic_ivf.objdb
 
             return re;
         }
-        public DataTable selectByCreditCardName()
+        public DataTable selectByCashCardName()
         {
             DataTable dt = new DataTable();
             String sql = "select oca." + oca.CashID + ",oca." + oca.CashName + " " +
                 "From " + oca.table + " oca " +
                 "Where active = '1' " +
                 "Order By oca." + oca.CashName;
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
+        public DataTable selectByCashCardName1()
+        {
+            DataTable dt = new DataTable();
+            String sql = "select oca." + oca.CashID + ",oca." + oca.CashName + " " +
+                "From " + oca.table + " oca " +
+                "Where active = '1' " +
+                "Order By oca." + oca.CashID;
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }

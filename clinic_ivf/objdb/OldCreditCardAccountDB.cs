@@ -132,6 +132,16 @@ namespace clinic_ivf.objdb
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
+        public DataTable selectByCreditCardName1()
+        {
+            DataTable dt = new DataTable();
+            String sql = "select occa." + occa.CreditCardID + ",occa." + occa.CreditCardName + " " +
+                "From " + occa.table + " occa " +
+                "Where active = '1' " +
+                "Order By occa." + occa.CreditCardID;
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
         public DataTable selectAll()
         {
             DataTable dt = new DataTable();
