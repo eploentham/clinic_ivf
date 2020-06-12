@@ -24,6 +24,7 @@ namespace clinic_ivf.objdb
         private void initConfig()
         {
             obillh = new OldBillheader();
+            obillh.bill_id = "bill_id";
             obillh.VN = "VN";
             obillh.BillNo = "BillNo";
             obillh.PName = "PName";
@@ -50,7 +51,7 @@ namespace clinic_ivf.objdb
             obillh.IntLock = "IntLock";
             obillh.receipt_cover_no = "receipt_cover_no";
             obillh.receipt_no = "receipt_no";
-            obillh.bill_id = "bill_id";
+            
             obillh.active = "active";
             obillh.remark = "remark";
             obillh.date_cancel = "date_cancel";
@@ -63,6 +64,13 @@ namespace clinic_ivf.objdb
             obillh.credit = "credit";
             obillh.closeday_id = "closeday_id";
             obillh.receipt1_no = "receipt1_no";
+            obillh.include_lab = "include_lab";
+            obillh.ext_lab = "ext_lab";
+            obillh.include_special = "include_special";
+            obillh.ext_special = "ext_special";
+            obillh.include_package = "include_package";
+            obillh.ext_package = "ext_package";
+            obillh.total1 = "total1";
 
             obillh.table = "BillHeader";
             obillh.pkField = "VN";
@@ -283,6 +291,13 @@ namespace clinic_ivf.objdb
                 "," + obillh.ExtBillNo + " = '" + p.ExtBillNo + "'" +
                 "," + obillh.IntLock + " = '" + p.IntLock + "' " +
                 "," + obillh.active + " = '1' " +
+                "," + obillh.include_lab + " = '" + p.include_lab + "' " +
+                "," + obillh.ext_lab + " = '" + p.ext_lab + "' " +
+                "," + obillh.include_special + " = '" + p.include_special + "' " +
+                "," + obillh.ext_special + " = '" + p.ext_special + "' " +
+                "," + obillh.include_package + " = '" + p.include_package + "' " +
+                "," + obillh.ext_package + " = '" + p.ext_package + "' " +
+                "," + obillh.total1 + " = '" + p.total1 + "' " +
                 "," + obillh.closeday_id + " = '0' " +
                 "";
             try

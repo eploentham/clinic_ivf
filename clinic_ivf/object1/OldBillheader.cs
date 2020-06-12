@@ -40,5 +40,12 @@ namespace clinic_ivf.object1
         public String closeday_id { get; set; }
         public String receipt1_no { get; set; }
         public String agent_id { get; set; }
+        public String include_lab { get; set; }
+        public String ext_lab { get; set; }
+        public String include_special { get; set; }
+        public String ext_special { get; set; }
+        public String include_package { get; set; }
+        public String ext_package { get; set; }
+        public String total1 { get; set; }
     }
 }

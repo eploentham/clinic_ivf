@@ -1232,6 +1232,13 @@ namespace clinic_ivf.objdb
             obillh.ExtBillNo = "";
             obillh.IntLock = "";
             obillh.agent_id = agentId;
+            obillh.include_lab = inclab.ToString();
+            obillh.ext_lab = extlab.ToString();
+            obillh.include_special = incspe.ToString();
+            obillh.ext_special = extspe.ToString();
+            obillh.include_package = incpkg.ToString();
+            obillh.ext_package = extpx.ToString();
+            obillh.total1 = (inc+ext).ToString();
             String billid = "";
             billid = obilhDB.insertBillHeader(obillh, userId);
             //sql = "Select * from PackageSold Where PID='"+ ovs.PID+ "' and Status<>3'";
@@ -1375,7 +1382,7 @@ namespace clinic_ivf.objdb
                         
                         obilld.Extra = "0";
                         obilld.Price = (price*qty).ToString();
-                        obilld.Total = "0";
+                        obilld.Total = (price * qty).ToString();
                         obilld.GroupType = grp;
                         obilld.Comment = "";
                         obilld.item_id = row["LID"].ToString();
@@ -1411,7 +1418,7 @@ namespace clinic_ivf.objdb
                         obilld.Name = row["DUName"].ToString();
                         obilld.Extra = "0";
                         obilld.Price = (price * qty).ToString();
-                        obilld.Total = "0";
+                        obilld.Total = (price * qty).ToString();
                         obilld.GroupType = grp1;
                         obilld.Comment = "";
                         obilld.item_id = row["DUID"].ToString();
@@ -1441,7 +1448,7 @@ namespace clinic_ivf.objdb
                         obilld.Name = row["SName"].ToString();
                         obilld.Extra = "0";
                         obilld.Price = (price * qty).ToString();
-                        obilld.Total = "0";
+                        obilld.Total = (price * qty).ToString();
                         obilld.GroupType = grp;
                         obilld.Comment = "";
                         obilld.item_id = row["SID"].ToString();
