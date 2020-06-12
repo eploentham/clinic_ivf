@@ -128,7 +128,7 @@ namespace clinic_ivf.objdb
             String sql = "select oca." + oca.CashID + ",oca." + oca.CashName + " " +
                 "From " + oca.table + " oca " +
                 "Where active = '1' " +
-                "Order By oca." + oca.CashName;
+                "Order By oca." + oca.CashID;
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
@@ -148,7 +148,8 @@ namespace clinic_ivf.objdb
             String sql = "select oca.*  " +
                 "From " + oca.table + " oca " +
                 " " +
-                "Where oca." + oca.active + " ='1' ";
+                "Where oca." + oca.active + " ='1' "+
+                "Order By oca." + oca.CashID; 
             dt = conn.selectData(conn.conn, sql);
 
             return dt;

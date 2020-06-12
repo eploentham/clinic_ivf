@@ -71,6 +71,7 @@ namespace clinic_ivf.objdb
             obillh.include_package = "include_package";
             obillh.ext_package = "ext_package";
             obillh.total1 = "total1";
+            obillh.agent_id = "agent_id";            
 
             obillh.table = "BillHeader";
             obillh.pkField = "VN";
@@ -124,6 +125,21 @@ namespace clinic_ivf.objdb
                 "left join Patient ptt on ptt.PIDS = obillh.PIDS " +
                 "left join SurfixName on SurfixName.SurfixID = ptt.SurfixID " +
                 "Where JobPx.VN = '" + vn + "'  and obillh." + obillh.active + "='1'";
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
+        public DataTable selectByDate(String startdate, String enddate)
+        {
+            DataTable dt = new DataTable();
+            String wherehn = "";
+
+            String sql = "SELECT bill.bill_id, bill.Date, bill.VN, bill.Pname, bill.PIDS, bill.Total, ifnull(bill.status,'') as status,bill.CashID, bill.CreditCardID, ifnull(cash.CashName,'') as CashName,ifnull(credit.CreditCardName,'') as CreditName   " +
+                ", bill.Include_Pkg_Price, bill.Extra_Pkg_Price, bill.Discount,bill.receipt_no, bill.agent_id, agen.AgentName, cash, credit,bill.receipt1_no " +
+                "From " + obillh.table + " bill " +
+                "Left Join CashAccount cash on bill.CashID = cash.CashID " +
+                "Left Join CreditCardAccount credit on bill.CreditCardID = credit.CreditCardID " +
+                "Inner Join Agent agen on bill.agent_id = agen.AgentID " +
+                "Where bill.Date >= '"+startdate+ "' and bill.Date <= '" + enddate + "' and bill.active = '1' and length(bill.receipt_no) > 0 ";
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
@@ -236,6 +252,7 @@ namespace clinic_ivf.objdb
             p.PID = long.TryParse(p.PID, out chk) ? chk.ToString() : "0";
             p.IntLock = long.TryParse(p.IntLock, out chk) ? chk.ToString() : "0";
             p.closeday_id = long.TryParse(p.closeday_id, out chk) ? chk.ToString() : "0";
+            p.agent_id = long.TryParse(p.agent_id, out chk) ? chk.ToString() : "0";
 
             p.Include_Pkg_Price = decimal.TryParse(p.Include_Pkg_Price, out chk1) ? chk.ToString() : "0";
             p.Extra_Pkg_Price = decimal.TryParse(p.Extra_Pkg_Price, out chk1) ? chk.ToString() : "0";
@@ -298,6 +315,7 @@ namespace clinic_ivf.objdb
                 "," + obillh.include_package + " = '" + p.include_package + "' " +
                 "," + obillh.ext_package + " = '" + p.ext_package + "' " +
                 "," + obillh.total1 + " = '" + p.total1 + "' " +
+                "," + obillh.agent_id + " = '" + p.agent_id + "' " +
                 "," + obillh.closeday_id + " = '0' " +
                 "";
             try

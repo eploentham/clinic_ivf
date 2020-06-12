@@ -70,6 +70,8 @@
             this.tabBillItem = new C1.Win.C1Command.C1DockingTabPage();
             this.pnBillD = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnItmAdd = new C1.Win.C1Input.C1Button();
+            this.btnPayPeriod = new C1.Win.C1Input.C1Button();
             this.btnDiscountAdd = new C1.Win.C1Input.C1Button();
             this.btnChargeAdd = new C1.Win.C1Input.C1Button();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -105,8 +107,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.txtPayName = new C1.Win.C1Input.C1TextBox();
             this.tabLabPrescription = new C1.Win.C1Command.C1DockingTabPage();
-            this.btnPayPeriod = new C1.Win.C1Input.C1Button();
-            this.btnItmAdd = new C1.Win.C1Input.C1Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtBillId)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtVnShow)).BeginInit();
@@ -138,6 +138,8 @@
             this.tC1.SuspendLayout();
             this.tabBillItem.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnItmAdd)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnPayPeriod)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnDiscountAdd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnChargeAdd)).BeginInit();
             this.panel3.SuspendLayout();
@@ -157,8 +159,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtDiscount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboAccCash)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPayName)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnPayPeriod)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnItmAdd)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -774,6 +774,34 @@
             this.panel2.TabIndex = 699;
             this.theme1.SetTheme(this.panel2, "(default)");
             // 
+            // btnItmAdd
+            // 
+            this.btnItmAdd.Image = global::clinic_ivf.Properties.Resources.zoom_in24;
+            this.btnItmAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnItmAdd.Location = new System.Drawing.Point(1089, 86);
+            this.btnItmAdd.Name = "btnItmAdd";
+            this.btnItmAdd.Size = new System.Drawing.Size(107, 36);
+            this.btnItmAdd.TabIndex = 757;
+            this.btnItmAdd.Text = "เพิ่ม / ลด รายการ";
+            this.btnItmAdd.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnItmAdd, "(default)");
+            this.btnItmAdd.UseVisualStyleBackColor = true;
+            this.btnItmAdd.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // btnPayPeriod
+            // 
+            this.btnPayPeriod.Image = global::clinic_ivf.Properties.Resources.maintenance24;
+            this.btnPayPeriod.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPayPeriod.Location = new System.Drawing.Point(1089, 40);
+            this.btnPayPeriod.Name = "btnPayPeriod";
+            this.btnPayPeriod.Size = new System.Drawing.Size(107, 36);
+            this.btnPayPeriod.TabIndex = 756;
+            this.btnPayPeriod.Text = "แบ่งชำระ";
+            this.btnPayPeriod.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnPayPeriod, "(default)");
+            this.btnPayPeriod.UseVisualStyleBackColor = true;
+            this.btnPayPeriod.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
             // btnDiscountAdd
             // 
             this.btnDiscountAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1292,34 +1320,6 @@
             this.tabLabPrescription.TabIndex = 1;
             this.tabLabPrescription.Text = "Prescription";
             // 
-            // btnPayPeriod
-            // 
-            this.btnPayPeriod.Image = global::clinic_ivf.Properties.Resources.maintenance24;
-            this.btnPayPeriod.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPayPeriod.Location = new System.Drawing.Point(1089, 40);
-            this.btnPayPeriod.Name = "btnPayPeriod";
-            this.btnPayPeriod.Size = new System.Drawing.Size(107, 36);
-            this.btnPayPeriod.TabIndex = 756;
-            this.btnPayPeriod.Text = "แบ่งชำระ";
-            this.btnPayPeriod.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.theme1.SetTheme(this.btnPayPeriod, "(default)");
-            this.btnPayPeriod.UseVisualStyleBackColor = true;
-            this.btnPayPeriod.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // btnItmAdd
-            // 
-            this.btnItmAdd.Image = global::clinic_ivf.Properties.Resources.zoom_in24;
-            this.btnItmAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnItmAdd.Location = new System.Drawing.Point(1089, 86);
-            this.btnItmAdd.Name = "btnItmAdd";
-            this.btnItmAdd.Size = new System.Drawing.Size(107, 36);
-            this.btnItmAdd.TabIndex = 757;
-            this.btnItmAdd.Text = "เพิ่ม / ลด รายการ";
-            this.btnItmAdd.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.theme1.SetTheme(this.btnItmAdd, "(default)");
-            this.btnItmAdd.UseVisualStyleBackColor = true;
-            this.btnItmAdd.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
             // FrmCashierAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1367,6 +1367,8 @@
             this.tabBillItem.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnItmAdd)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnPayPeriod)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnDiscountAdd)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnChargeAdd)).EndInit();
             this.panel3.ResumeLayout(false);
@@ -1388,8 +1390,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtDiscount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboAccCash)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPayName)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnPayPeriod)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnItmAdd)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

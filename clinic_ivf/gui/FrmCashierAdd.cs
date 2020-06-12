@@ -567,9 +567,12 @@ namespace clinic_ivf.gui
             obilld.price1 = txtPayCreditCard.Text.Replace(",", "");
             ic.ivfDB.obildDB.insertBillDetail(obilld, ic.userId);
             setGrfBillD();
+            Decimal credit = 0;
+            Decimal.TryParse(txtTotalCredit.Text, out credit);
             calTotal();
             calTotalCredit();
-            txtPayCreditCard.Value = "";
+            //txtPayCreditCard.Value = "";
+
         }
 
         private void BtnClose_Click(object sender, EventArgs e)
@@ -899,6 +902,15 @@ namespace clinic_ivf.gui
                 : ptt.f_patient_blood_group_id.Equals("2140000002") ? "A" : ptt.f_patient_blood_group_id.Equals("2140000003") ? "B"
                 : ptt.f_patient_blood_group_id.Equals("2140000004") ? "AB" : "ไม่ระบุ";
             txtAgent.Value = ic.ivfDB.oAgnDB.getAgentNameById(ptt.agent);
+
+            FrmLabPrescription frm = new FrmLabPrescription(ic, "", "", txtHn.Text);
+            //frm.WindowState = FormWindowState.Maximized;
+            frm.FormBorderStyle = FormBorderStyle.None;
+            frm.TopLevel = false;
+            frm.Dock = DockStyle.Fill;
+            frm.Show();
+            tabLabPrescription.Controls.Add(frm);
+
             setGrfBillD();
             calTotal();
             calTotalCredit();
@@ -1138,23 +1150,29 @@ namespace clinic_ivf.gui
         }
         private void calTotal()
         {
-            Decimal amt = 0, total = 0, discount=0;
+            Decimal amt = 0, total = 0, discount=0, total11=0;
             Decimal.TryParse(txtAmt.Text, out amt);
             Decimal.TryParse(txtDiscount.Text, out discount);
+            Decimal.TryParse(txtTotalCredit.Text, out total11);
             //Decimal.TryParse(txtAmt.Text, out amt);
             total = amt - discount;
             txtTotal.Value = total.ToString("#,###.00");
             String cashid1 = "", creditid1 = "";
             cashid1 = cboAccCash.SelectedItem == null ? "" : ((ComboBoxItem)cboAccCash.SelectedItem).Value;
             creditid1 = cboAccCredit.SelectedItem == null ? "" : ((ComboBoxItem)cboAccCredit.SelectedItem).Value;
-            if (cashid1.Length > 0)
+            if ((cashid1.Length > 0) && (creditid1.Length > 0))
             {
                 txtTotalCash.Value = total;
-                txtTotalCredit.Value = "0";
+                //txtTotalCredit.Value = "0";
+            }
+            else if (cashid1.Length > 0)
+            {
+                txtTotalCash.Value = total;
+                //txtTotalCredit.Value = "0";
             }
             else if (creditid1.Length > 0)
             {
-                txtTotalCash.Value = "0";
+                //txtTotalCash.Value = "0";
                 txtTotalCredit.Value = total;
             }
             
@@ -1172,6 +1190,7 @@ namespace clinic_ivf.gui
                 paycredit = credit * per / 100;
                 txtTotalCredit.Value = credit.ToString("0.00");
                 txtPayCreditCard.Value = paycredit.ToString("0.00");
+                txtTotalCash.Value = total - credit;
             }
         }
         private void calTotalCash()
@@ -1194,6 +1213,7 @@ namespace clinic_ivf.gui
                 + " [" + ic.ivfDB.copDB.cop.day + "-" + ic.ivfDB.copDB.cop.month + "-" + ic.ivfDB.copDB.cop.year + "]";
             //sB1.Text = "Date " + ic.cop.day + "-" + ic.cop.month + "-" + ic.cop.year + " Server " + ic.iniC.hostDB + " FTP " + ic.iniC.hostFTP;
             sB1.Text = "Date " + ic.cop.day + "-" + ic.cop.month + "-" + ic.cop.year + " Server " + ic.iniC.hostDB + " FTP " + ic.iniC.hostFTP + "/" + ic.iniC.folderFTP;
+            tC1.SelectedTab = tabBillItem;
         }
     }
 }

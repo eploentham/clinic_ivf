@@ -65,7 +65,7 @@ namespace clinic_ivf.gui
 
         int colImgID = 1, colImgHn = 2, colImgImg = 3, colImgDesc = 4, colImgDesc2 = 5, colImgDesc3 = 6, colImgPathPic = 7, colImgBtn = 8, colImgStatus = 9, colImgDoctor = 10;
         int colBlId = 1, colBlName = 2, colBlQty = 3, colBlPrice = 4, colBlInclude = 5, colBlRemark = 6, colBlOrderGroup=7, colBlPkgName=8, colBlPkgId=9;
-        int colPkgdId = 1, colPkgType = 2, colPkgItmName = 3, colPkgQty = 4, colPkgUse=5,colPkgId = 6, colPkgItmId=7;
+        int colPkgdId = 1, colPkgType = 2, colPkgItmName = 3, colPkgQty = 4, colPkgUse=5,colPkgsId = 6, colPkgItmId=7;
         int colRxdId = 1, colRxName = 2, colRxQty = 3, colRxPrice = 4, colRxInclude = 5, colRxRemark = 6, colRxUsE = 7, colRxUsT = 8, colRxId = 9, colRxItmId = 10;
         int colNoteId = 1, colNote = 2, colNoteStatusAll = 3;
         int colApmId = 1, colApmAppointment = 4, colApmDate = 2, colApmTime = 3, colApmDoctor = 5, colApmSp = 6, colApmNotice = 7, colE2 = 8, colLh = 9, colEndo = 10, colPrl = 10, colFsh = 11, colRt = 12, colLt = 13;
@@ -3625,12 +3625,13 @@ namespace clinic_ivf.gui
             opkgs.P4BDetailID = "";
             opkgs.VN = txtVnOld.Text;
             opkgs.row1 = grfOrder.Rows.Count.ToString();
-            ic.ivfDB.PackageAdd(opkgs);
+            String pkgsid = ic.ivfDB.PackageAdd(opkgs, ic.userId);
+
             setGrfOrder(txtVn.Text);
             
-            setTabPkg(txtPkgId.Text, txtPkgName.Text);
+            setTabPkg(pkgsid, txtPkgName.Text);
         }
-        private void setTabPkg(String pkgid, String tabname)
+        private void setTabPkg(String pkgsid, String tabname)
         {
             Boolean chk = false;
             foreach (Control tab in tcOrd.Controls)
@@ -3641,7 +3642,7 @@ namespace clinic_ivf.gui
                     if (name.Length >= 10)
                     {
                         name = name.Substring(name.Length - 10);
-                        if (name.Equals(pkgid))
+                        if (name.Equals(pkgsid))
                         {
                             chk = true;
                         }
@@ -3650,7 +3651,7 @@ namespace clinic_ivf.gui
             }
             if (chk) return;
             C1DockingTabPage tabPkgUse = new C1DockingTabPage();
-            tabPkgUse.Name = "tabPkgUse_"+ pkgid;
+            tabPkgUse.Name = "tabPkgUse_"+ pkgsid;
             tabPkgUse.TabIndex = 0;
             tabPkgUse.Text = tabname;
             tabPkgUse.Font = fEditB;
@@ -3665,15 +3666,15 @@ namespace clinic_ivf.gui
             grfPkg.Name = "grfPkg_" + cnt.ToString();
             
             tabPkgUse.Controls.Add(grfPkg);
-            setGrfPgk(pkgid, grfPkg);
+            setGrfPgk(pkgsid, grfPkg);
             lgrfPkg.Add(grfPkg);
         }
-        private void setGrfPgk(String id, C1FlexGrid grfPkg)
+        private void setGrfPgk(String pkgsid, C1FlexGrid grfPkg)
         {
             //grfDept.Rows.Count = 7;
             grfPkg.Clear();
             DataTable dt = new DataTable();
-            dt = ic.ivfDB.oPkgdDB.selectByPkgId2(id);
+            dt = ic.ivfDB.oPkgdpDB.selectByPkgId2(pkgsid);
 
             grfPkg.Rows.Count = dt.Rows.Count + 1;
             //grfEmbryo.Rows.Count = dt.Rows.Count + 1;
@@ -3706,8 +3707,8 @@ namespace clinic_ivf.gui
                 {
                     Decimal chk = 0, qty=0;
                     grfPkg[i, 0] = i;
-                    grfPkg[i, colPkgdId] = row["ID"].ToString();
-                    grfPkg[i, colPkgId] = row["PCKID"].ToString();
+                    grfPkg[i, colPkgdId] = row["PCKDPSID"].ToString();
+                    grfPkg[i, colPkgsId] = row["PCKSID"].ToString();
                     grfPkg[i, colPkgType] = row["ItemType"].ToString();
                     grfPkg[i, colPkgItmName] = row["ItemName"].ToString();
                     grfPkg[i, colPkgQty] = row["QTY"].ToString();
@@ -3730,7 +3731,7 @@ namespace clinic_ivf.gui
             }
             CellNoteManager mgr = new CellNoteManager(grfPkg);
             grfPkg.Cols[colPkgdId].Visible = false;
-            grfPkg.Cols[colPkgId].Visible = false;
+            grfPkg.Cols[colPkgsId].Visible = false;
             //grfPackageD.Cols[colPkgItmId].Visible = false;
 
             grfPkg.Cols[colPkgType].AllowEditing = false;
@@ -5112,7 +5113,7 @@ namespace clinic_ivf.gui
                 {
                     grfPackageD[i, 0] = i;
                     grfPackageD[i, colPkgdId] = row["ID"].ToString();
-                    grfPackageD[i, colPkgId] = row["PCKID"].ToString();
+                    grfPackageD[i, colPkgsId] = row["PCKID"].ToString();
                     grfPackageD[i, colPkgType] = row["ItemType"].ToString();
                     grfPackageD[i, colPkgItmName] = row["ItemName"].ToString();
                     grfPackageD[i, colPkgQty] = row["QTY"].ToString();
@@ -5130,7 +5131,7 @@ namespace clinic_ivf.gui
             }
             CellNoteManager mgr = new CellNoteManager(grfPackageD);
             grfPackageD.Cols[colPkgdId].Visible = false;
-            grfPackageD.Cols[colPkgId].Visible = false;
+            grfPackageD.Cols[colPkgsId].Visible = false;
             //grfPackageD.Cols[colPkgItmId].Visible = false;
 
             grfPackageD.Cols[colPkgType].AllowEditing = false;
@@ -5313,7 +5314,7 @@ namespace clinic_ivf.gui
             opkgs.P4BDetailID = "";
             opkgs.VN = txtVnOld.Text;
             opkgs.row1 = grfOrder.Rows.Count.ToString();
-            ic.ivfDB.PackageAdd(opkgs);
+            ic.ivfDB.PackageAdd(opkgs,"");
         }
         private void initGrfRxSetD()
         {

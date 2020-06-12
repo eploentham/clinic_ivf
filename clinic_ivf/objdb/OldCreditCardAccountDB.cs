@@ -148,7 +148,8 @@ namespace clinic_ivf.objdb
             String sql = "select occa.*  " +
                 "From " + occa.table + " occa " +
                 " " +
-                "Where occa." + occa.active + " ='1' ";
+                "Where occa." + occa.active + " ='1' "+
+                "Order By occa." + occa.CreditCardID;
             dt = conn.selectData(conn.conn, sql);
 
             return dt;

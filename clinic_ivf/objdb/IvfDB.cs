@@ -723,9 +723,27 @@ namespace clinic_ivf.objdb
             oPkgdpdDB.updateStatusDPS(pkgsid);
 
         }
-        public void PackageAdd(OldPackageSold opkgs)
+        public String PackageAdd(OldPackageSold opkgs, String userid)
         {
-            opkgsDB.insert(opkgs, "");
+            DataTable dt = new DataTable();
+            String re = "";
+            re = opkgsDB.insert(opkgs, "");
+            dt = oPkgdDB.selectByPkgId(opkgs.PCKID);
+            foreach(DataRow row in dt.Rows)
+            {
+                OldPackageDeposit oPkgdp = new OldPackageDeposit();
+                oPkgdp.PCKDPSID = "";
+                oPkgdp.PCKSID = re;
+                oPkgdp.PID = opkgs.PID;
+                oPkgdp.ItemType = row["ItemType"].ToString();
+                oPkgdp.ItemID = row["ItemID"].ToString();
+                oPkgdp.ItemName = row["ItemName"].ToString();
+                oPkgdp.QTY = row["QTY"].ToString();
+                oPkgdp.QTYused = "0";
+                oPkgdp.isPCKclosed = "0";
+                oPkgdpDB.insertPackageDeposit(oPkgdp, userid);
+            }
+            return re;
         }
         public void PxSetAdd(String duid, String pid, String pids, String vn, String extra, String row1, String qty, String usaget, String usagee, String duname, String price)
         {
@@ -1188,6 +1206,7 @@ namespace clinic_ivf.objdb
             //}
             inc = inclab + incpx + incspe;
             ext = extlab + extpx + extspe;
+            
             /* Step 5.
              * insert Bill Header
              * insert Bill Detail
@@ -1575,7 +1594,17 @@ namespace clinic_ivf.objdb
                 }
             }
             //sql = "update BillHeader Set Total=Extra_Pkg_Price Where VN='"+vn+"'";
-            sql = "update BillHeader Set Total=Extra_Pkg_Price Where bill_id ='" + billid + "'";
+            String pkgall = "", extra="";
+            Decimal pkgall1 = 0, extra1 = 0, total1=0;
+            pkgall = obildDB.selectSumPriceByBilIdBillGroup(billid, "2650000000");
+            extra = obildDB.selectSumPriceExtraByBilId(billid);
+            Decimal.TryParse(pkgall, out pkgall1);
+            Decimal.TryParse(extra, out extra1);
+            total1 = pkgall1 + extra1;
+            sql = "update BillHeader Set Total="+ total1 + " " +
+                ",Include_Pkg_Price ='"+ pkgall +"' "+
+                ",Extra_Pkg_Price ='" + extra +"' "+
+                "Where bill_id ='" + billid + "'";
             re = conn.ExecuteNonQuery(conn.conn, sql);
             return billid;
         }

@@ -176,7 +176,6 @@ namespace clinic_ivf.objdb
             {
                 re = update(p, "");
             }
-
             return re;
         }
         
@@ -195,7 +194,7 @@ namespace clinic_ivf.objdb
             String sql = "select oPkgD.* " +
                 "From " + oPkgD.table + " oPkgD " +
                 "Where oPkgD." + oPkgD.PCKID + " ='" + pttId + "' and active = '1'" +
-                "Order By oPkgD." + oPkgD.ItemName;
+                "Order By oPkgD." + oPkgD.ID;
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
