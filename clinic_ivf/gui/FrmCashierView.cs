@@ -343,9 +343,15 @@ namespace clinic_ivf.gui
                     grfRpt[i, colAccName] = row["CashName"].ToString()+"/"+ row["CreditName"].ToString();
                     grfRpt[i, colAccId] = row["CashID"].ToString()+","+ row["CreditCardID"].ToString();
                 }
+                else if ((cash1 == 0) && (credit1 == 0))
+                {
+                    grfRpt[i, colAccType] = "";
+                    grfRpt[i, colAccName] = "";
+                    grfRpt[i, colAccId] = "";
+                }
                 else
                 {
-                    if (row["status"].ToString().Equals("1"))
+                    if (cash1 > 0)
                     {
                         grfRpt[i, colAccType] = "Cash";
                         grfRpt[i, colAccName] = row["CashName"].ToString();
@@ -892,7 +898,7 @@ namespace clinic_ivf.gui
             {
                 String receiptno = "", debug="";
                 receiptno = row[ic.ivfDB.obilhDB.obillh.receipt_no].ToString();
-                if (receiptno.Equals("RE630500020"))
+                if (receiptno.Equals("RE630600053"))
                 {
                     debug = "";
                 }
@@ -912,7 +918,7 @@ namespace clinic_ivf.gui
                 String pkgfreezing = "2570000009, 2570000007,2570000010,2570000032";
                 String itmextraday6 = "2640000000";
                 String itmlabboood = "1";
-                String itmtvs = "4,59,36,100,179,39,175,96";
+                String itmtvs = "42640000005,2640000059,2640000036,2640000100,2640000179,2640000039,2640000175,2640000096";
                 String itmequipment = "2590000001,2590000002,2590000003,2590000004";
                 pkg1 = ic.ivfDB.obildDB.selectSumPriceByBilIdItmId(bilid, pkgicsi);
                 Decimal.TryParse(pkg1, out pkg11);
@@ -944,7 +950,8 @@ namespace clinic_ivf.gui
                 //tvs = ic.ivfDB.obildDB.selectSumPriceByBilIdItmId(bilid, itmtvs);
                 tvs = ic.ivfDB.obildDB.selectSumPriceExtraByBilIdItmId(bilid, itmtvs);
                 Decimal.TryParse(tvs, out tvs1);
-                equipment = ic.ivfDB.obildDB.selectSumPriceByBilIdItmId(bilid, itmequipment);
+                //equipment = ic.ivfDB.obildDB.selectSumPriceByBilIdItmId(bilid, itmequipment);
+                equipment = ic.ivfDB.obildDB.selectSumPriceByBilIdBillGroup(bilid, "2650000006");
                 Decimal.TryParse(equipment, out equipment1);
                 amt = ic.ivfDB.obildDB.selectSumPriceByBilId(bilid);
                 Decimal.TryParse(amt, out amt1);
@@ -983,12 +990,11 @@ namespace clinic_ivf.gui
                                 
                 //total = pkg11 + pkg21 + pkg31 + pkg41 + pkg51 + pkg61 + labfreezing1 + extraday61 + laball1 + amtmed1 + amtdtrfee1 + amtdiscount1 + amtother1-include1;
                 
-
                 String rc = "";
                 rc = row[ic.ivfDB.obilhDB.obillh.receipt_no].ToString();
                 pkgother1 = pkgall1 - pkg11 - pkg21 - pkg31 - pkg41 - pkg51 - pkg61 - pkglabfreezing1;
                 pkgall2 = pkg11 + pkg21 + pkg31 + pkg41 + pkg51 + pkg61 + pkgother1;
-                total = pkgall2 + extra1 + amtdiscount1;
+                total = pkgall1 + extra1 + amtdiscount1;
 
                 grfCld[i, 0] = i;
                 grfCld[i, colCldId] = "";
@@ -1025,7 +1031,7 @@ namespace clinic_ivf.gui
                 grfCld[i, colCldOtherService] = amtother1.ToString("#,###.00");
                 grfCld[i, colCldAmount] = total.ToString("#,###.00");
                 grfCld[i, colCldAmount1] = amt1.ToString("#,###.00");
-                grfCld[i, colCldInc] = pkgall2.ToString("#,###.00");
+                grfCld[i, colCldInc] = pkgall1.ToString("#,###.00");
                 extra1 = extra1 + amtdiscount1; // extra 
                 grfCld[i, colCldExt] = extra1.ToString("#,###.00");
 
@@ -1626,7 +1632,7 @@ namespace clinic_ivf.gui
         private void setGrfFinish()
         {
             //grfDept.Rows.Count = 7;
-            grfFinish.Clear();
+            grfFinish.Rows.Count = 1;
             DataTable dt1 = new DataTable();
             DataTable dt = new DataTable();
             dt = ic.ivfDB.ovsDB.selectByStatusCashierFinish();
@@ -1654,7 +1660,7 @@ namespace clinic_ivf.gui
             grfFinish.ContextMenu = menuGw;
 
             grfFinish.Rows.Count = dt.Rows.Count + 1;
-            grfFinish.Cols.Count = 14;
+            grfFinish.Cols.Count = 15;
             C1TextBox txt = new C1TextBox();
             //C1ComboBox cboproce = new C1ComboBox();
             //ic.ivfDB.itmDB.setCboItem(cboproce);
@@ -1711,7 +1717,7 @@ namespace clinic_ivf.gui
                 grfFinish[i, colVsEtime] = row["VEndTime"].ToString();
                 grfFinish[i, colStatus] = row["VName"].ToString();
                 grfFinish[i, colPttId] = row["PID"].ToString();
-                grfFinish[i, colBillId] = "";
+                grfFinish[i, colBillId] = row["bill_id"].ToString();
                 if (!row[ic.ivfDB.ovsDB.vsold.form_a_id].ToString().Equals("0"))
                 {
                     CellNote note = new CellNote("ส่ง Lab Request Foam A");
@@ -1803,7 +1809,7 @@ namespace clinic_ivf.gui
 
             id = grfFinish[grfFinish.Row, colID] != null ? grfFinish[grfFinish.Row, colID].ToString() : "";     //billid
             name = grfFinish[grfFinish.Row, colPttName] != null ? grfFinish[grfFinish.Row, colPttName].ToString() : "";
-            billid = grfFinish[grfFinish.Row, colPttName] != null ? grfFinish[grfFinish.Row, colPttName].ToString() : "";
+            billid = grfFinish[grfFinish.Row, colBillId] != null ? grfFinish[grfFinish.Row, colBillId].ToString() : "";
 
             //openBillNew(id, name, "noedit", billid);
             ic.cStf.staff_id = "";
@@ -1813,6 +1819,8 @@ namespace clinic_ivf.gui
             {
                 ic.ivfDB.VoidBill(id, ic.cStf.staff_id);
                 //String billid1 = ic.ivfDB.getBill(id, ic.cStf.staff_id);
+                //ic.ivfDB.updatePackagePaymentComplete(ovs.PID, row["PCKSID"].ToString());
+                ic.ivfDB.opkgsDB.updateStatus1(billid);
                 String re1 = ic.ivfDB.vsDB.updateOpenStatusCashierByVn(id);
                 ic.ivfDB.nurseFinish(id, ic.cStf.staff_id);        // +0015
                 setGrfFinish();

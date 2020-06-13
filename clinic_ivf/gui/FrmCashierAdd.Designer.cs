@@ -107,6 +107,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.txtPayName = new C1.Win.C1Input.C1TextBox();
             this.tabLabPrescription = new C1.Win.C1Command.C1DockingTabPage();
+            this.tabReceipt = new C1.Win.C1Command.C1DockingTabPage();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtBillId)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtVnShow)).BeginInit();
@@ -699,6 +700,7 @@
             this.tC1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.tC1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tC1.Controls.Add(this.tabBillItem);
+            this.tC1.Controls.Add(this.tabReceipt);
             this.tC1.Controls.Add(this.tabLabPrescription);
             this.tC1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tC1.HotTrack = true;
@@ -1320,6 +1322,14 @@
             this.tabLabPrescription.TabIndex = 1;
             this.tabLabPrescription.Text = "Prescription";
             // 
+            // tabReceipt
+            // 
+            this.tabReceipt.Location = new System.Drawing.Point(1, 24);
+            this.tabReceipt.Name = "tabReceipt";
+            this.tabReceipt.Size = new System.Drawing.Size(1274, 545);
+            this.tabReceipt.TabIndex = 2;
+            this.tabReceipt.Text = "Receipt";
+            // 
             // FrmCashierAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1476,5 +1486,6 @@
         private C1.Win.C1Command.C1DockingTabPage tabLabPrescription;
         private C1.Win.C1Input.C1Button btnItmAdd;
         private C1.Win.C1Input.C1Button btnPayPeriod;
+        private C1.Win.C1Command.C1DockingTabPage tabReceipt;
     }
 }

@@ -242,7 +242,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtHnFeMale)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtVsId)).BeginInit();
             this.groupBox2.SuspendLayout();
-            this.groupBox5.SuspendLayout();
             this.gbSpermIUI.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtReqIUIId)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkSpermIUI)).BeginInit();
@@ -970,9 +969,14 @@
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox2.Controls.Add(this.gbSpermIUI);
             this.groupBox2.Controls.Add(this.groupBox5);
+            this.groupBox2.Controls.Add(this.gbSpermPESA);
             this.groupBox2.Controls.Add(this.gbETFET);
+            this.groupBox2.Controls.Add(this.gbSpermFreezing);
             this.groupBox2.Controls.Add(this.gbOPU);
+            this.groupBox2.Controls.Add(this.gbSpermAnalysis);
+            this.groupBox2.Controls.Add(this.btnPrintSperm);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.groupBox2.Location = new System.Drawing.Point(0, 105);
@@ -986,15 +990,10 @@
             // groupBox5
             // 
             this.groupBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.groupBox5.Controls.Add(this.gbSpermIUI);
-            this.groupBox5.Controls.Add(this.gbSpermPESA);
-            this.groupBox5.Controls.Add(this.gbSpermFreezing);
-            this.groupBox5.Controls.Add(this.gbSpermAnalysis);
-            this.groupBox5.Controls.Add(this.btnPrintSperm);
             this.groupBox5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.groupBox5.Location = new System.Drawing.Point(11, 478);
+            this.groupBox5.Location = new System.Drawing.Point(1075, 504);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(1140, 267);
+            this.groupBox5.Size = new System.Drawing.Size(60, 24);
             this.groupBox5.TabIndex = 13;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Sperm";
@@ -1009,7 +1008,7 @@
             this.gbSpermIUI.Controls.Add(this.cboRemark);
             this.gbSpermIUI.Controls.Add(this.label27);
             this.gbSpermIUI.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.gbSpermIUI.Location = new System.Drawing.Point(14, 210);
+            this.gbSpermIUI.Location = new System.Drawing.Point(12, 594);
             this.gbSpermIUI.Name = "gbSpermIUI";
             this.gbSpermIUI.Size = new System.Drawing.Size(1017, 54);
             this.gbSpermIUI.TabIndex = 727;
@@ -1143,7 +1142,7 @@
             this.gbSpermPESA.Controls.Add(this.txtPasaTeseDate);
             this.gbSpermPESA.Controls.Add(this.chkSememPESA);
             this.gbSpermPESA.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.gbSpermPESA.Location = new System.Drawing.Point(14, 152);
+            this.gbSpermPESA.Location = new System.Drawing.Point(12, 542);
             this.gbSpermPESA.Name = "gbSpermPESA";
             this.gbSpermPESA.Size = new System.Drawing.Size(1017, 52);
             this.gbSpermPESA.TabIndex = 749;
@@ -1276,7 +1275,7 @@
             this.gbSpermFreezing.Controls.Add(this.pnSpermFreezing);
             this.gbSpermFreezing.Controls.Add(this.chkSpermFreezing);
             this.gbSpermFreezing.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.gbSpermFreezing.Location = new System.Drawing.Point(14, 81);
+            this.gbSpermFreezing.Location = new System.Drawing.Point(12, 478);
             this.gbSpermFreezing.Name = "gbSpermFreezing";
             this.gbSpermFreezing.Size = new System.Drawing.Size(1017, 64);
             this.gbSpermFreezing.TabIndex = 727;
@@ -1561,7 +1560,7 @@
             this.gbSpermAnalysis.Controls.Add(this.pnSpermAnalysis);
             this.gbSpermAnalysis.Controls.Add(this.chkSememAnalysis);
             this.gbSpermAnalysis.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.gbSpermAnalysis.Location = new System.Drawing.Point(14, 15);
+            this.gbSpermAnalysis.Location = new System.Drawing.Point(12, 413);
             this.gbSpermAnalysis.Name = "gbSpermAnalysis";
             this.gbSpermAnalysis.Size = new System.Drawing.Size(1017, 64);
             this.gbSpermAnalysis.TabIndex = 748;
@@ -1689,7 +1688,7 @@
             this.pnSpermAnalysis.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.pnSpermAnalysis.Location = new System.Drawing.Point(146, 9);
             this.pnSpermAnalysis.Name = "pnSpermAnalysis";
-            this.pnSpermAnalysis.Size = new System.Drawing.Size(656, 27);
+            this.pnSpermAnalysis.Size = new System.Drawing.Size(648, 27);
             this.pnSpermAnalysis.TabIndex = 724;
             this.theme1.SetTheme(this.pnSpermAnalysis, "(default)");
             // 
@@ -1837,7 +1836,7 @@
             // 
             this.btnPrintSperm.Image = global::clinic_ivf.Properties.Resources.printer_orange24;
             this.btnPrintSperm.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPrintSperm.Location = new System.Drawing.Point(1037, 17);
+            this.btnPrintSperm.Location = new System.Drawing.Point(1047, 419);
             this.btnPrintSperm.Name = "btnPrintSperm";
             this.btnPrintSperm.Size = new System.Drawing.Size(97, 35);
             this.btnPrintSperm.TabIndex = 747;
@@ -1870,9 +1869,9 @@
             this.gbETFET.Controls.Add(this.txtEmbryoTranferDate);
             this.gbETFET.Controls.Add(this.label14);
             this.gbETFET.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.gbETFET.Location = new System.Drawing.Point(11, 306);
+            this.gbETFET.Location = new System.Drawing.Point(11, 259);
             this.gbETFET.Name = "gbETFET";
-            this.gbETFET.Size = new System.Drawing.Size(1025, 168);
+            this.gbETFET.Size = new System.Drawing.Size(1140, 154);
             this.gbETFET.TabIndex = 13;
             this.gbETFET.TabStop = false;
             this.gbETFET.Text = "ET FET";
@@ -1997,7 +1996,7 @@
             // 
             this.btnVoidFET.Image = global::clinic_ivf.Properties.Resources.trash24;
             this.btnVoidFET.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnVoidFET.Location = new System.Drawing.Point(838, 18);
+            this.btnVoidFET.Location = new System.Drawing.Point(1051, 37);
             this.btnVoidFET.Name = "btnVoidFET";
             this.btnVoidFET.Size = new System.Drawing.Size(83, 39);
             this.btnVoidFET.TabIndex = 749;
@@ -2011,7 +2010,7 @@
             // 
             this.btnPrintFet.Image = global::clinic_ivf.Properties.Resources.printer_orange24;
             this.btnPrintFet.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPrintFet.Location = new System.Drawing.Point(924, 22);
+            this.btnPrintFet.Location = new System.Drawing.Point(1036, 102);
             this.btnPrintFet.Name = "btnPrintFet";
             this.btnPrintFet.Size = new System.Drawing.Size(97, 35);
             this.btnPrintFet.TabIndex = 746;
@@ -2107,7 +2106,7 @@
             this.pnFET.Controls.Add(this.txtFET1No);
             this.pnFET.Controls.Add(this.txtFETNo);
             this.pnFET.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.pnFET.Location = new System.Drawing.Point(88, 76);
+            this.pnFET.Location = new System.Drawing.Point(88, 65);
             this.pnFET.Name = "pnFET";
             this.pnFET.Size = new System.Drawing.Size(919, 85);
             this.pnFET.TabIndex = 13;
@@ -2494,7 +2493,7 @@
             this.chkFET.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
             this.chkFET.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
             this.chkFET.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkFET.Location = new System.Drawing.Point(25, 81);
+            this.chkFET.Location = new System.Drawing.Point(25, 80);
             this.chkFET.Name = "chkFET";
             this.chkFET.Size = new System.Drawing.Size(65, 17);
             this.chkFET.TabIndex = 723;
@@ -2627,9 +2626,9 @@
             this.gbOPU.Controls.Add(this.chkFrozenSperm);
             this.gbOPU.Controls.Add(this.chkFreshSprem);
             this.gbOPU.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.gbOPU.Location = new System.Drawing.Point(10, 14);
+            this.gbOPU.Location = new System.Drawing.Point(10, 12);
             this.gbOPU.Name = "gbOPU";
-            this.gbOPU.Size = new System.Drawing.Size(1089, 286);
+            this.gbOPU.Size = new System.Drawing.Size(1141, 247);
             this.gbOPU.TabIndex = 725;
             this.gbOPU.TabStop = false;
             this.gbOPU.Text = "OPU";
@@ -2654,7 +2653,7 @@
             this.txtPasswordVoidOPU.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPasswordVoidOPU.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtPasswordVoidOPU.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtPasswordVoidOPU.Location = new System.Drawing.Point(844, 111);
+            this.txtPasswordVoidOPU.Location = new System.Drawing.Point(967, 93);
             this.txtPasswordVoidOPU.Name = "txtPasswordVoidOPU";
             this.txtPasswordVoidOPU.PasswordChar = '*';
             this.txtPasswordVoidOPU.Size = new System.Drawing.Size(78, 20);
@@ -2671,7 +2670,7 @@
             this.chkVoidOPU.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.chkVoidOPU.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkVoidOPU.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkVoidOPU.Location = new System.Drawing.Point(813, 81);
+            this.chkVoidOPU.Location = new System.Drawing.Point(840, 89);
             this.chkVoidOPU.Name = "chkVoidOPU";
             this.chkVoidOPU.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
             this.chkVoidOPU.Size = new System.Drawing.Size(122, 24);
@@ -2686,7 +2685,7 @@
             // 
             this.btnVoidOPU.Image = global::clinic_ivf.Properties.Resources.trash24;
             this.btnVoidOPU.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnVoidOPU.Location = new System.Drawing.Point(998, 92);
+            this.btnVoidOPU.Location = new System.Drawing.Point(1051, 92);
             this.btnVoidOPU.Name = "btnVoidOPU";
             this.btnVoidOPU.Size = new System.Drawing.Size(83, 39);
             this.btnVoidOPU.TabIndex = 746;
@@ -2700,7 +2699,7 @@
             // 
             this.btnPrintOPU.Image = global::clinic_ivf.Properties.Resources.printer_orange24;
             this.btnPrintOPU.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPrintOPU.Location = new System.Drawing.Point(982, 137);
+            this.btnPrintOPU.Location = new System.Drawing.Point(1037, 137);
             this.btnPrintOPU.Name = "btnPrintOPU";
             this.btnPrintOPU.Size = new System.Drawing.Size(97, 35);
             this.btnPrintOPU.TabIndex = 745;
@@ -2749,7 +2748,7 @@
             this.txtFrozenSpermDate.EmptyAsNull = true;
             this.txtFrozenSpermDate.GMTOffset = System.TimeSpan.Parse("00:00:00");
             this.txtFrozenSpermDate.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.txtFrozenSpermDate.Location = new System.Drawing.Point(159, 95);
+            this.txtFrozenSpermDate.Location = new System.Drawing.Point(159, 92);
             this.txtFrozenSpermDate.Name = "txtFrozenSpermDate";
             this.txtFrozenSpermDate.Size = new System.Drawing.Size(110, 18);
             this.txtFrozenSpermDate.TabIndex = 744;
@@ -2763,7 +2762,7 @@
             this.lbMessage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.lbMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbMessage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.lbMessage.Location = new System.Drawing.Point(474, 118);
+            this.lbMessage.Location = new System.Drawing.Point(682, 89);
             this.lbMessage.Name = "lbMessage";
             this.lbMessage.Size = new System.Drawing.Size(73, 24);
             this.lbMessage.TabIndex = 743;
@@ -2775,7 +2774,7 @@
             this.lbMessage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.lbMessage1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.lbMessage1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.lbMessage1.Location = new System.Drawing.Point(476, 158);
+            this.lbMessage1.Location = new System.Drawing.Point(683, 122);
             this.lbMessage1.Name = "lbMessage1";
             this.lbMessage1.Size = new System.Drawing.Size(288, 24);
             this.lbMessage1.TabIndex = 742;
@@ -2809,7 +2808,7 @@
             this.panel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.panel3.Location = new System.Drawing.Point(1, 119);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(462, 98);
+            this.panel3.Size = new System.Drawing.Size(676, 50);
             this.panel3.TabIndex = 739;
             this.theme1.SetTheme(this.panel3, "(default)");
             // 
@@ -2824,7 +2823,7 @@
             this.chkNoNgs.Location = new System.Drawing.Point(9, 3);
             this.chkNoNgs.Name = "chkNoNgs";
             this.chkNoNgs.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
-            this.chkNoNgs.Size = new System.Drawing.Size(140, 24);
+            this.chkNoNgs.Size = new System.Drawing.Size(103, 24);
             this.chkNoNgs.TabIndex = 734;
             this.chkNoNgs.Text = "No Biopsy";
             this.theme1.SetTheme(this.chkNoNgs, "(default)");
@@ -2841,9 +2840,9 @@
             this.gbNgs.Controls.Add(this.chkPgs);
             this.gbNgs.Controls.Add(this.chkNgsDay3);
             this.gbNgs.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.gbNgs.Location = new System.Drawing.Point(9, 29);
+            this.gbNgs.Location = new System.Drawing.Point(118, 3);
             this.gbNgs.Name = "gbNgs";
-            this.gbNgs.Size = new System.Drawing.Size(426, 63);
+            this.gbNgs.Size = new System.Drawing.Size(555, 40);
             this.gbNgs.TabIndex = 714;
             this.gbNgs.TabStop = false;
             this.gbNgs.Text = "Biopsy";
@@ -2857,7 +2856,7 @@
             this.chkNgs.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkNgs.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkNgs.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkNgs.Location = new System.Drawing.Point(11, 36);
+            this.chkNgs.Location = new System.Drawing.Point(193, 16);
             this.chkNgs.Name = "chkNgs";
             this.chkNgs.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
             this.chkNgs.Size = new System.Drawing.Size(75, 24);
@@ -2876,7 +2875,7 @@
             this.chkNgsDay5.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
             this.chkNgsDay5.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
             this.chkNgsDay5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkNgsDay5.Location = new System.Drawing.Point(122, 42);
+            this.chkNgsDay5.Location = new System.Drawing.Point(298, 17);
             this.chkNgsDay5.Name = "chkNgsDay5";
             this.chkNgsDay5.Size = new System.Drawing.Size(53, 17);
             this.chkNgsDay5.TabIndex = 535;
@@ -2892,7 +2891,7 @@
             this.chkWaitDay1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkWaitDay1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkWaitDay1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkWaitDay1.Location = new System.Drawing.Point(226, 33);
+            this.chkWaitDay1.Location = new System.Drawing.Point(408, 16);
             this.chkWaitDay1.Name = "chkWaitDay1";
             this.chkWaitDay1.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
             this.chkWaitDay1.Size = new System.Drawing.Size(140, 24);
@@ -2930,7 +2929,7 @@
             this.chkNgsDay3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
             this.chkNgsDay3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
             this.chkNgsDay3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkNgsDay3.Location = new System.Drawing.Point(122, 17);
+            this.chkNgsDay3.Location = new System.Drawing.Point(100, 17);
             this.chkNgsDay3.Name = "chkNgsDay3";
             this.chkNgsDay3.Size = new System.Drawing.Size(53, 17);
             this.chkNgsDay3.TabIndex = 534;
@@ -2944,7 +2943,7 @@
             this.label30.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label30.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label30.Location = new System.Drawing.Point(424, 219);
+            this.label30.Location = new System.Drawing.Point(424, 179);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(94, 16);
             this.label30.TabIndex = 737;
@@ -2956,7 +2955,7 @@
             this.txtOPURemark.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtOPURemark.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtOPURemark.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtOPURemark.Location = new System.Drawing.Point(528, 216);
+            this.txtOPURemark.Location = new System.Drawing.Point(528, 176);
             this.txtOPURemark.Name = "txtOPURemark";
             this.txtOPURemark.Size = new System.Drawing.Size(486, 20);
             this.txtOPURemark.TabIndex = 736;
@@ -2972,7 +2971,7 @@
             this.groupBox3.Controls.Add(this.chkOPUUnActive);
             this.groupBox3.Controls.Add(this.chkOPUActive);
             this.groupBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.groupBox3.Location = new System.Drawing.Point(582, 238);
+            this.groupBox3.Location = new System.Drawing.Point(582, 198);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(429, 41);
             this.groupBox3.TabIndex = 735;
@@ -3232,10 +3231,10 @@
             this.chkXselet.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkXselet.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkXselet.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkXselet.Location = new System.Drawing.Point(679, 89);
+            this.chkXselet.Location = new System.Drawing.Point(567, 89);
             this.chkXselet.Name = "chkXselet";
             this.chkXselet.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
-            this.chkXselet.Size = new System.Drawing.Size(140, 24);
+            this.chkXselet.Size = new System.Drawing.Size(104, 24);
             this.chkXselet.TabIndex = 731;
             this.chkXselet.Text = "X Selection";
             this.theme1.SetTheme(this.chkXselet, "(default)");
@@ -3251,10 +3250,10 @@
             this.chkYselet.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkYselet.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkYselet.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkYselet.Location = new System.Drawing.Point(480, 89);
+            this.chkYselet.Location = new System.Drawing.Point(430, 89);
             this.chkYselet.Name = "chkYselet";
             this.chkYselet.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
-            this.chkYselet.Size = new System.Drawing.Size(140, 24);
+            this.chkYselet.Size = new System.Drawing.Size(114, 24);
             this.chkYselet.TabIndex = 730;
             this.chkYselet.Text = "Y Selection";
             this.theme1.SetTheme(this.chkYselet, "(default)");
@@ -3340,7 +3339,7 @@
             // 
             this.btnPrint.Image = global::clinic_ivf.Properties.Resources.print;
             this.btnPrint.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPrint.Location = new System.Drawing.Point(1002, 19);
+            this.btnPrint.Location = new System.Drawing.Point(1055, 19);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(79, 34);
             this.btnPrint.TabIndex = 728;
@@ -3358,7 +3357,7 @@
             this.gbEmbryoFresh.Controls.Add(this.chkEmbryoFreezingDay3);
             this.gbEmbryoFresh.Controls.Add(this.chkEmbryoFreezingDay1);
             this.gbEmbryoFresh.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.gbEmbryoFresh.Location = new System.Drawing.Point(159, 247);
+            this.gbEmbryoFresh.Location = new System.Drawing.Point(159, 207);
             this.gbEmbryoFresh.Name = "gbEmbryoFresh";
             this.gbEmbryoFresh.Size = new System.Drawing.Size(399, 30);
             this.gbEmbryoFresh.TabIndex = 716;
@@ -3439,7 +3438,7 @@
             this.gbEmbryoTranfer.Controls.Add(this.chkEmbryoTranferFrozen);
             this.gbEmbryoTranfer.Controls.Add(this.chkEmbryoTranferFresh);
             this.gbEmbryoTranfer.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.gbEmbryoTranfer.Location = new System.Drawing.Point(159, 215);
+            this.gbEmbryoTranfer.Location = new System.Drawing.Point(159, 175);
             this.gbEmbryoTranfer.Name = "gbEmbryoTranfer";
             this.gbEmbryoTranfer.Size = new System.Drawing.Size(256, 28);
             this.gbEmbryoTranfer.TabIndex = 715;
@@ -3491,7 +3490,7 @@
             this.chkSpermHa.Location = new System.Drawing.Point(296, 89);
             this.chkSpermHa.Name = "chkSpermHa";
             this.chkSpermHa.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
-            this.chkSpermHa.Size = new System.Drawing.Size(140, 24);
+            this.chkSpermHa.Size = new System.Drawing.Size(114, 24);
             this.chkSpermHa.TabIndex = 713;
             this.chkSpermHa.Text = "Sperm HA";
             this.theme1.SetTheme(this.chkSpermHa, "(default)");
@@ -3572,7 +3571,7 @@
             this.chkEmbryoFreezing.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkEmbryoFreezing.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkEmbryoFreezing.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkEmbryoFreezing.Location = new System.Drawing.Point(9, 250);
+            this.chkEmbryoFreezing.Location = new System.Drawing.Point(9, 210);
             this.chkEmbryoFreezing.Name = "chkEmbryoFreezing";
             this.chkEmbryoFreezing.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
             this.chkEmbryoFreezing.Size = new System.Drawing.Size(140, 24);
@@ -3591,7 +3590,7 @@
             this.chkEmbryoTranfer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkEmbryoTranfer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkEmbryoTranfer.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkEmbryoTranfer.Location = new System.Drawing.Point(9, 217);
+            this.chkEmbryoTranfer.Location = new System.Drawing.Point(9, 177);
             this.chkEmbryoTranfer.Name = "chkEmbryoTranfer";
             this.chkEmbryoTranfer.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
             this.chkEmbryoTranfer.Size = new System.Drawing.Size(140, 24);
@@ -3682,7 +3681,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtHnFeMale)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtVsId)).EndInit();
             this.groupBox2.ResumeLayout(false);
-            this.groupBox5.ResumeLayout(false);
             this.gbSpermIUI.ResumeLayout(false);
             this.gbSpermIUI.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtReqIUIId)).EndInit();

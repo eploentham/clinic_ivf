@@ -238,6 +238,28 @@ namespace clinic_ivf.objdb
 
             return re;
         }
+        public String updateStatus1(String pkgsid)
+        {
+            //$this->db->query("UPDATE PackageSold Set Status='3' Where PCKSID='".$PCKSID."'");
+            String re = "";
+            String sql = "";
+            int chk = 0;
+
+            sql = "Update " + opkgs.table + " Set " +
+                " " + opkgs.Status + " = '1'" +
+                "Where " + opkgs.PCKSID + "= (select billd.pcksid from BillDetail billd inner join BillHeader billh on billd.bill_id = billh.bill_id where billh.bill_id = '"+ pkgsid + "' and billd.status='package') "
+                ;
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+
+            return re;
+        }
         public String updateStatus3(String pkgsid)
         {
             //$this->db->query("UPDATE PackageSold Set Status='3' Where PCKSID='".$PCKSID."'");

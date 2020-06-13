@@ -215,6 +215,23 @@ namespace clinic_ivf.objdb
             }
             return re;
         }
+        public String deleteByPkgsId(String pkgsid)
+        {
+            DataTable dt = new DataTable();
+            String re = "";
+            String sql = "Delete From  " + jlabD.table + " " +
+                "Where " + jlabD.pckdid + "='" + pkgsid + "'";
+            //re = conn.ExecuteNonQuery(conn.conn, sql);
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+            return re;
+        }
         public String updateReqId(String reqid,String id)
         {
             DataTable dt = new DataTable();

@@ -324,7 +324,7 @@ namespace clinic_ivf.gui
             setGrfImgOutLab();
             initGrfLab();
             setGrfLab();
-            
+            initPnLabFormA();
             if (flagedit.Equals("view"))
             {
                 btnPkgOrder.Enabled = false;
@@ -335,7 +335,16 @@ namespace clinic_ivf.gui
             initProgressNote();
             pageLoad = false;
         }
-
+        private void initPnLabFormA()
+        {
+            FrmLabFormA frm = new FrmLabFormA(ic, "", txtPttId.Text, txtVsId.Text, txtVn.Text);
+            frm.TopLevel = false;
+            frm.FormBorderStyle = FormBorderStyle.None;
+            frm.AutoScroll = true;
+            frm.Parent = pnLabFormA;
+            frm.Show();
+            pnLabFormA.Controls.Add(frm);
+        }
         private void FrmNurseAdd2_Disposed(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
@@ -3713,12 +3722,17 @@ namespace clinic_ivf.gui
                     grfPkg[i, colPkgItmName] = row["ItemName"].ToString();
                     grfPkg[i, colPkgQty] = row["QTY"].ToString();
                     grfPkg[i, colPkgItmId] = row["ItemID"].ToString();
-                    grfPkg[i, colPkgUse] = row["qty_use"].ToString();
+                    grfPkg[i, colPkgUse] = row["QTYused"].ToString();
                     Decimal.TryParse(row["QTY"].ToString(), out qty);
-                    if (Decimal.TryParse(row["qty_use"].ToString(), out chk) && chk <= qty)
+                    Decimal.TryParse(row["QTYused"].ToString(), out chk);
+                    if (chk < qty)
                     {
                         grfPkg.Rows[i].StyleNew.BackColor = color;
-
+                        //grfPkg.Rows[i].StyleNew.BackColor = Color.Red;
+                    }
+                    else if(chk>0)
+                    {
+                        grfPkg.Rows[i].StyleNew.BackColor = Color.Red;
                     }
                     //if (i % 2 == 0)
                     //    grfPtt.Rows[i].StyleNew.BackColor = color;
@@ -4691,7 +4705,32 @@ namespace clinic_ivf.gui
             }
             else if (status.Equals("package"))
             {
+                String re = ic.ivfDB.oPkgdpDB.voidPackageDeposit(ptt.t_patient_id_old);
+                if (re.Length >= 1)
+                {
+                    foreach(Control tab in tcOrd.Controls)
+                    {
+                        if (tab is C1DockingTabPage)
+                        {
+                            String name = tab.Name;
+                            if (name.IndexOf("tabPkgUse_")>=0)
+                            {
+                                if (name.Length > 10)
+                                {
+                                    name = name.Substring(name.Length - 10);
+                                    if (name.Equals(id))
+                                    {
+                                        tcOrd.Controls.Remove(tab);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
                 ic.ivfDB.opkgsDB.deleteByPk(id);
+                ic.ivfDB.oJpxdDB.deleteByPkgsId(id);
+                ic.ivfDB.oJlabdDB.deleteByPkgsId(id);
+                ic.ivfDB.ojsdDB.deleteByPk(id);
             }
             setGrfOrder(txtVnOld.Text);
         }
@@ -4870,7 +4909,7 @@ namespace clinic_ivf.gui
                     dtAll.Rows.InsertAt(row1, i);
                     i++;
                 }
-                setTabPkg(row["PCKID"].ToString(), row["PackageName"].ToString());
+                setTabPkg(row["PCKSID"].ToString(), row["PackageName"].ToString());
             }
             dtAll.DefaultView.Sort = "row1";
             DataView view = dtAll.DefaultView;
@@ -6463,7 +6502,7 @@ namespace clinic_ivf.gui
         }
         private String setPkgDId(String id, String qty)
         {
-            String pkgdid = "";
+            String pkgsid = "";
             foreach (C1FlexGrid grf in lgrfPkg)
             {
                 foreach (Row row in grf.Rows)
@@ -6481,14 +6520,14 @@ namespace clinic_ivf.gui
                         Decimal.TryParse(qty, out qty1);
                         if (pkguse1 == pkgqty1) continue;
                         pkguse1 += qty1;
-                        pkgdid = (pkgqty1 >= pkguse1) ? row[colPkgdId].ToString() : "";
+                        pkgsid = (pkgqty1 >= pkguse1) ? row[colPkgsId].ToString() : "";
                         row.StyleNew.BackColor = Color.Red;
                         row[colPkgUse] = pkguse1;
-                        ic.ivfDB.oPkgdDB.upDateQtyUse(pkgdid, qty);
+                        ic.ivfDB.oPkgdpDB.upDateQtyUse(row[colPkgdId].ToString(), qty);
                     }
                 }
             }
-            return pkgdid;
+            return pkgsid;
         }
         private void setOrderBloodLab()
         {
@@ -7357,6 +7396,10 @@ namespace clinic_ivf.gui
             spPatient.Height = spHeight;
             sCHistory.Height = 0;
             rat = picPtt.Height / picPtt.Width;
+            picPtt.Height = picPtt.Height - 50;
+            //tlpPatient.
+            //tlpPatient[1].SizeType = SizeType.Absolute;
+            spPatient.SizeRatio = 15;
             theme1.SetTheme(sC, theme1.Theme);
             foreach (Control ctl in spPatient.Controls)
             {

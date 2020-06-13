@@ -1401,7 +1401,7 @@ namespace clinic_ivf.objdb
                         
                         obilld.Extra = "0";
                         obilld.Price = (price*qty).ToString();
-                        obilld.Total = (price * qty).ToString();
+                        obilld.Total = "0";     // เพราะ include ตอนออกใบเสร็จจะได้คำนวณถูก
                         obilld.GroupType = grp;
                         obilld.Comment = "";
                         obilld.item_id = row["LID"].ToString();
@@ -1437,7 +1437,7 @@ namespace clinic_ivf.objdb
                         obilld.Name = row["DUName"].ToString();
                         obilld.Extra = "0";
                         obilld.Price = (price * qty).ToString();
-                        obilld.Total = (price * qty).ToString();
+                        obilld.Total = "0";     // เพราะ include ตอนออกใบเสร็จจะได้คำนวณถูก
                         obilld.GroupType = grp1;
                         obilld.Comment = "";
                         obilld.item_id = row["DUID"].ToString();
@@ -1467,7 +1467,7 @@ namespace clinic_ivf.objdb
                         obilld.Name = row["SName"].ToString();
                         obilld.Extra = "0";
                         obilld.Price = (price * qty).ToString();
-                        obilld.Total = (price * qty).ToString();
+                        obilld.Total = "0";     // เพราะ include ตอนออกใบเสร็จจะได้คำนวณถูก
                         obilld.GroupType = grp;
                         obilld.Comment = "";
                         obilld.item_id = row["SID"].ToString();
@@ -1864,7 +1864,7 @@ namespace clinic_ivf.objdb
                     id = row["ID"].ToString();
                     namedesc = row["Name"].ToString();
                     //sql = "Select sum(Total) as Total1, Name from BillDetail Where Total<>0 and VN='" + vn + "' and GroupType='" + grpname + "' Group By Name ";
-                    sql = "Select sum(Total) as Total1 from BillDetail Where Total<>0 and VN='" + vn + "' and bill_group_id='" + id + "'  and active = '1' ";
+                    sql = "Select sum(Total) as Total1 from BillDetail Where Total<>0 and VN='" + vn + "' and bill_group_id='" + id + "'  and active = '1' and Extra = '1' ";
                     dtb0 = conn.selectData(conn.conn, sql);
                     if (dtb0.Rows.Count > 0)
                     {
@@ -1915,7 +1915,7 @@ namespace clinic_ivf.objdb
 
                     id = row["ID"].ToString();
                     namedesc = row["Name"].ToString();
-                    sql = "Select sum(Total) as Total1, Name from BillDetail Where Total<>0 and VN='" + vn + "' and bill_group_id ='" + id + "' and active = '1' Group By Name ";
+                    sql = "Select sum(Total) as Total1, Name from BillDetail Where Total<>0 and VN='" + vn + "' and bill_group_id ='" + id + "' and active = '1'  Group By Name ";
                     dtb0 = conn.selectData(conn.conn, sql);
                     if (dtb0.Rows.Count > 0)
                     {
@@ -2027,20 +2027,19 @@ namespace clinic_ivf.objdb
                 {
                     opkgsDB.updateStatus2Payment1(pkg.PCKSID);
                 }
-                
             }
             ovsDB.updateStatusCashierbackNurse(vn);
         }
-        public String updatePackagePaymentComplete(String pid, String pkgid)
+        public String updatePackagePaymentComplete(String pid, String pkgsid)
         {
             DataTable dt = new DataTable();
             String re = "", sql = "", billid = "";
             OldPackageSold opkgs1 = new OldPackageSold();
-            opkgs1 = opkgsDB.selectByPk1(pkgid);
+            opkgs1 = opkgsDB.selectByPk1(pkgsid);
             String bill1 = "", bill2 = "", bill3 = "", bill4 = "", times = "", name = "";
             Decimal price = 0, amt = 0, pay2 = 0, pay3 = 0, pay4 = 0, pay = 0;
             Decimal.TryParse(opkgs1.Price, out amt);
-            dt = obildDB.selectByPIDPkgsID(pid, pkgid);
+            dt = obildDB.selectByPIDPkgsID(pid, pkgsid);
             if (dt.Rows.Count > 0)
             {
                 foreach (DataRow row in dt.Rows)

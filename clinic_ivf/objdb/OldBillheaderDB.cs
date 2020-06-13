@@ -133,13 +133,20 @@ namespace clinic_ivf.objdb
             DataTable dt = new DataTable();
             String wherehn = "";
 
+            //String sql = "SELECT bill.bill_id, bill.Date, bill.VN, bill.Pname, bill.PIDS, bill.Total, ifnull(bill.status,'') as status,bill.CashID, bill.CreditCardID, ifnull(cash.CashName,'') as CashName,ifnull(credit.CreditCardName,'') as CreditName   " +
+            //    ", bill.Include_Pkg_Price, bill.Extra_Pkg_Price, bill.Discount,bill.receipt_no, bill.agent_id, agen.AgentName, cash, credit,bill.receipt1_no " +
+            //    "From " + obillh.table + " bill " +
+            //    "Left Join CashAccount cash on bill.CashID = cash.CashID " +
+            //    "Left Join CreditCardAccount credit on bill.CreditCardID = credit.CreditCardID " +
+            //    "Inner Join Agent agen on bill.agent_id = agen.AgentID " +
+            //    "Where bill.Date >= '"+startdate+ "' and bill.Date <= '" + enddate + "' and bill.active = '1' and length(bill.receipt_no) > 0 ";
             String sql = "SELECT bill.bill_id, bill.Date, bill.VN, bill.Pname, bill.PIDS, bill.Total, ifnull(bill.status,'') as status,bill.CashID, bill.CreditCardID, ifnull(cash.CashName,'') as CashName,ifnull(credit.CreditCardName,'') as CreditName   " +
                 ", bill.Include_Pkg_Price, bill.Extra_Pkg_Price, bill.Discount,bill.receipt_no, bill.agent_id, agen.AgentName, cash, credit,bill.receipt1_no " +
                 "From " + obillh.table + " bill " +
                 "Left Join CashAccount cash on bill.CashID = cash.CashID " +
                 "Left Join CreditCardAccount credit on bill.CreditCardID = credit.CreditCardID " +
                 "Inner Join Agent agen on bill.agent_id = agen.AgentID " +
-                "Where bill.Date >= '"+startdate+ "' and bill.Date <= '" + enddate + "' and bill.active = '1' and length(bill.receipt_no) > 0 ";
+                "Where bill.Date >= '" + startdate + "' and bill.Date <= '" + enddate + "' and bill.active = '1'  ";
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }

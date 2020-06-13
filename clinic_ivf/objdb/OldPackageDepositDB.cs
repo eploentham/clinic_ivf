@@ -47,7 +47,7 @@ namespace clinic_ivf.objdb
             DataTable dt = new DataTable();
             String sql = "select oPkgdp." + oPkgdp.PCKDPSID
                 + ", case oPkgdp." + oPkgdp.ItemType + " when 'DUID' then 'Drug' when 'SID' then 'Special' when 'LID' then 'LAB' else oPkgdp." + oPkgdp.ItemType + " end as " + oPkgdp.ItemType
-                + ",oPkgdp." + oPkgdp.ItemName + ",oPkgdp." + oPkgdp.QTY + ",oPkgdp." + oPkgdp.PCKSID + ",oPkgdp." + oPkgdp.ItemID + ",oPkgD." + oPkgdp.QTYused + " " +
+                + ",oPkgdp." + oPkgdp.ItemName + ",oPkgdp." + oPkgdp.QTY + ",oPkgdp." + oPkgdp.PCKSID + ",oPkgdp." + oPkgdp.ItemID + ",oPkgdp." + oPkgdp.QTYused + " " +
                 "From " + oPkgdp.table + " oPkgdp " +
                 "Where oPkgdp." + oPkgdp.PCKSID + " ='" + pttId + "' and active = '1'" +
                 "Order By oPkgdp." + oPkgdp.ItemType + ",oPkgdp." + oPkgdp.ItemName;
@@ -188,6 +188,45 @@ namespace clinic_ivf.objdb
                 sql = ex.Message + " " + ex.InnerException;
             }
 
+            return re;
+        }
+        public String upDateQtyUse(String id, String qtyuse)
+        {
+            String re = "";
+            String sql = "";
+            //chkNull(p);
+            sql = "Update " + oPkgdp.table + " Set " +
+                " " + oPkgdp.QTYused + " = " + oPkgdp.QTYused + " + " + qtyuse + " " +
+                //"," + oPkgD.user_cancel + " = '" + userId + "'" +
+                //"," + oPkgD.date_cancel + " = now() " +
+                "Where " + oPkgdp.pkField + "='" + id + "'";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+
+            return re;
+        }
+        public String voidPackageDeposit(String pid)
+        {
+            String re = "";
+            String sql = "";
+            int chk = 0;
+            sql = "Update " + oPkgdp.table + " Set " +
+                " " + oPkgdp.active + " = '3'" +
+                "Where " + oPkgdp.PID + "='" + pid + "'";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
             return re;
         }
         public OldPackageDeposit setNote(DataTable dt)

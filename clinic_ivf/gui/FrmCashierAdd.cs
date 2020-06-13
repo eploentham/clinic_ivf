@@ -1,6 +1,7 @@
 ﻿using C1.Win.C1Command;
 using C1.Win.C1FlexGrid;
 using C1.Win.C1Input;
+using C1.Win.C1SplitContainer;
 using C1.Win.C1SuperTooltip;
 using clinic_ivf.control;
 using clinic_ivf.object1;
@@ -34,7 +35,7 @@ namespace clinic_ivf.gui
         Patient ptt;
         Visit vs;
 
-        C1FlexGrid grfBillD;
+        C1FlexGrid grfBillD, grfOrder, grfReceipt;
         Font fEdit, fEditB;
         Color bg, fc;
         Font ff, ffB;
@@ -43,8 +44,10 @@ namespace clinic_ivf.gui
 
         C1SuperTooltip stt;
         C1SuperErrorProvider sep;
+        Panel pnOrder, pnBill;
 
         int colId = 1, colName = 2, colprice=3, colqty=4, colAmt = 5, colDiscount = 6, colNetAmt = 7, colGrpName=8, colBilId=9, colInclude=10, colStatus=11;
+        int colOrdid = 1, colOrdDate = 2, colOrdlpid = 3, colOrdName = 4, colOrdPrice = 5, colOrdPrice1 = 6, colOrdQty = 7, colOrdstatus = 8, colOrdrow1 = 9, colOrditmid = 10, colOrdInclude = 11, colOrdAmt = 12, colOrdUsE = 13, colOrdUsT = 14, colOrdOrderId = 15, colOrdStatusAmt = 16, colOrdStatusOrdGrp = 17;
         [DllImport("winspool.drv", CharSet = CharSet.Auto, SetLastError = true)]
         public static extern bool SetDefaultPrinter(string Printer);
         public FrmCashierAdd(IvfControl ic, MainMenu m, String billid, String vnold, String flagedit)
@@ -99,13 +102,19 @@ namespace clinic_ivf.gui
             chkDiscountCash.Click += ChkDiscountCash_Click;
             chkDiscountPer.Click += ChkDiscountPer_Click;
             btnPrnReceipt.Click += BtnPrnReceipt_Click;
+            btnPayPeriod.Click += BtnPayPeriod_Click;
             //txtTotalCash.KeyPress += TxtTotalCash_KeyPress;
             //txtTotalCredit.KeyPress += TxtTotalCredit_KeyPress;
 
             ChkDiscountPer_CheckedChanged(null, null);
+            initGrf();
             initGrfBillD();
+            initGrfOrder();
+            initGrfReceipt();
             setChkDiscount(false);
             setControl();
+            setGrfOrder(vs.visit_vn);
+            setGrfReceipt();
             //ic.ivfDB.copDB.cop = ic.ivfDB.copDB.selectByCode2("001");
             //year = DateTime.Now.ToString("yyyy");
 
@@ -113,6 +122,99 @@ namespace clinic_ivf.gui
             //MessageBox.Show(DateTime.Now.ToString("MM"), "");
             //MessageBox.Show(DateTime.Now.ToString("dd"), "");
         }
+        private void initGrf()
+        {
+            C1SplitterPanel scOrder = new C1.Win.C1SplitContainer.C1SplitterPanel();
+            C1SplitterPanel scBill = new C1.Win.C1SplitContainer.C1SplitterPanel();
+            C1SplitContainer sC = new C1.Win.C1SplitContainer.C1SplitContainer();
+            pnOrder = new Panel();
+            pnOrder.Dock = DockStyle.Fill;
+            pnOrder.Name = "pnOrder";
+            pnBill = new Panel();
+            pnBill.Dock = DockStyle.Fill;
+            pnBill.Name = "pnBill";
+
+            sC.SuspendLayout();
+            scOrder.SuspendLayout();
+            scBill.SuspendLayout();
+            pnOrder.SuspendLayout();
+            pnBill.SuspendLayout();
+
+            scOrder.Collapsible = true;
+            scOrder.Dock = C1.Win.C1SplitContainer.PanelDockStyle.Right;
+            scOrder.Location = new System.Drawing.Point(0, 21);
+            scOrder.Name = "scOrder";
+            scOrder.Controls.Add(pnOrder);
+            scBill.Collapsible = true;
+            scBill.Dock = C1.Win.C1SplitContainer.PanelDockStyle.Left;
+            scBill.Location = new System.Drawing.Point(0, 21);
+            scBill.Name = "scBill";
+            scBill.Controls.Add(pnBill);
+            sC.AutoSizeElement = C1.Framework.AutoSizeElement.Both;
+            sC.Name = "sC";
+            sC.Dock = System.Windows.Forms.DockStyle.Fill;
+            sC.Panels.Add(scBill);
+            sC.Panels.Add(scOrder);
+            sC.HeaderHeight = 20;
+            scOrder.SizeRatio = 30;
+
+            scBill.ResumeLayout(false);
+            scOrder.ResumeLayout(false);
+            sC.ResumeLayout(false);
+            pnBill.ResumeLayout(false);
+            pnOrder.ResumeLayout(false);
+            pnBill.PerformLayout();
+            pnOrder.PerformLayout();
+            scBill.PerformLayout();
+            scOrder.PerformLayout();
+            sC.PerformLayout();
+
+            pnBillD.Controls.Add(sC);
+        }
+        private void BtnPayPeriod_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            int gapY = 30, gapX = 20, gapLine = 0, gapColName = 120;
+            Size size = new Size();
+
+            Form frm = new Form();
+            frm.WindowState = FormWindowState.Normal;
+            frm.StartPosition = FormStartPosition.CenterScreen;
+            frm.Size = new Size(400, 400);
+            Label lbPeriod1, lbPeriod2, lbPeriod3, lbPeriod4;
+            C1TextBox txtPeriod1, txtPeriod2, txtPeriod3, txtPeriod4;
+            lbPeriod1 = new Label();
+            lbPeriod1.Text = "งวด 1.";
+            lbPeriod1.Font = fEdit;
+            lbPeriod1.Location = new System.Drawing.Point(gapX, 5);
+            lbPeriod1.AutoSize = true;
+            lbPeriod1.Name = "lbPeriod1";
+            txtPeriod1 = new C1TextBox();
+            txtPeriod1.Font = fEdit;
+            txtPeriod1.Name = "txtPeriod1";
+            txtPeriod1.Location = new System.Drawing.Point(gapColName, lbPeriod1.Location.Y);
+            txtPeriod1.Size = new Size(120, 20);
+            gapLine += gapY;
+            lbPeriod2 = new Label();
+            lbPeriod2.Text = "งวด 2.";
+            lbPeriod2.Font = fEdit;
+            lbPeriod2.Location = new System.Drawing.Point(gapX, gapLine);
+            lbPeriod2.AutoSize = true;
+            lbPeriod2.Name = "lbPeriod2";
+            txtPeriod2 = new C1TextBox();
+            txtPeriod2.Font = fEdit;
+            txtPeriod2.Name = "txtPeriod2";
+            txtPeriod2.Location = new System.Drawing.Point(gapColName, lbPeriod2.Location.Y);
+            txtPeriod2.Size = new Size(120, 20);
+            gapLine += gapY;
+
+            frm.Controls.Add(lbPeriod1);
+            frm.Controls.Add(txtPeriod1);
+            frm.Controls.Add(lbPeriod2);
+            frm.Controls.Add(txtPeriod2);
+            frm.ShowDialog(this);
+        }
+
         private void BtnPrnReceipt_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
@@ -146,14 +248,13 @@ namespace clinic_ivf.gui
                 if (flag.Equals("1"))
                 {
                     printReceipt("");
-
                 }
                 else
                 {
                     printReceipt("");
                     printReceipt("2");
                 }
-            }            
+            }
         }
         private void printReceipt(String flagExtra)
         {
@@ -246,7 +347,7 @@ namespace clinic_ivf.gui
                         Decimal price = 0;
                         //row["PaymentTimes"].GetType()
                         times = row["payment_times"].ToString();
-                        ic.ivfDB.updatePackagePaymentComplete(ovs.PID, row["PCKID"].ToString());
+                        ic.ivfDB.updatePackagePaymentComplete(ovs.PID, row["PCKSID"].ToString());
                         if (Decimal.TryParse(row["Payment1"].ToString(), out price) && row["P1BDetailID"].ToString().Equals("0"))
                         {
                             ic.ivfDB.opkgsDB.updateP1BillNo(row["PCKSID"].ToString(), billNo.Replace(ic.cop.prefix_receipt_doc, ""));
@@ -915,6 +1016,397 @@ namespace clinic_ivf.gui
             calTotal();
             calTotalCredit();
         }
+        private void initGrfReceipt()
+        {
+            grfReceipt = new C1FlexGrid();
+            grfReceipt.Font = fEdit;
+            grfReceipt.Dock = System.Windows.Forms.DockStyle.Fill;
+            grfReceipt.Location = new System.Drawing.Point(0, 0);
+
+            grfReceipt.SubtotalPosition = SubtotalPositionEnum.BelowData;
+            tabReceipt.Controls.Add(grfReceipt);
+
+            theme1.SetTheme(grfReceipt, "Windows8Blue");
+
+        }
+        private void setGrfReceipt()
+        {
+            DataTable dt = new DataTable();
+            DataTable dtprn = new DataTable();
+            DataTable dtpgk = new DataTable();
+            Decimal amt = 0;
+            String payby = "";
+            grfReceipt.Rows.Count = 1;
+            grfReceipt.Cols.Count = 6;
+            grfReceipt.Cols[1].Width = 300;
+            grfReceipt.Cols[2].Width = 100;
+            dt = ic.ivfDB.printBill(txtVn.Text, ref amt, ref payby);
+            foreach (DataRow row in dt.Rows)
+            {
+                Row row1 = grfReceipt.Rows.Add();
+                row1[1] = row["col1"].ToString();
+                row1[2] = row["col2"].ToString();
+            }
+        }
+        private void initGrfOrder()
+        {
+            grfOrder = new C1FlexGrid();
+            grfOrder.Font = fEdit;
+            grfOrder.Dock = System.Windows.Forms.DockStyle.Fill;
+            grfOrder.Location = new System.Drawing.Point(0, 0);
+            
+            grfOrder.SubtotalPosition = SubtotalPositionEnum.BelowData;
+            pnOrder.Controls.Add(grfOrder);
+
+            theme1.SetTheme(grfOrder, "RainerOrange");
+
+        }
+        private void setGrfOrder(String vn)
+        {
+            //grfDept.Rows.Count = 7;
+            grfOrder.Clear();
+            DataTable dtAll = new DataTable();
+            DataTable dtbl = new DataTable();
+            DataTable dtse = new DataTable();
+            DataTable dtpx = new DataTable();
+            DataTable dtpkg = new DataTable();
+
+            dtbl = ic.ivfDB.oJlabdDB.selectByVN(vn);
+            dtse = ic.ivfDB.ojsdDB.selectByVN(vn);
+            dtpx = ic.ivfDB.oJpxdDB.selectByVN(vn);
+            //dtpkg = ic.ivfDB.opkgsDB.selectByVN(vn);
+            dtpkg = ic.ivfDB.opkgsDB.selectByPID(ptt.t_patient_id_old);    // ต้องดึงตาม HN เพราะ ถ้ามีงวดการชำระ 
+
+            //grfExpn.Rows.Count = dt.Rows.Count + 1;
+            //grfEmbryo.Rows.Count = dt.Rows.Count + 1;
+
+            dtAll.Columns.Add("id", typeof(String));
+            dtAll.Columns.Add("lgid", typeof(String));
+            dtAll.Columns.Add("name", typeof(String));
+            dtAll.Columns.Add("price", typeof(String));
+            dtAll.Columns.Add("qty", typeof(String));
+            dtAll.Columns.Add("status", typeof(String));
+            dtAll.Columns.Add("row1", typeof(int));
+            dtAll.Columns.Add("itmid", typeof(String));
+            dtAll.Columns.Add("extra", typeof(String));
+            dtAll.Columns.Add("usage", typeof(String));
+            dtAll.Columns.Add("lab_order_id", typeof(String));
+            dtAll.Columns.Add("status_amt", typeof(String));
+            dtAll.Columns.Add("status_order_group", typeof(String));
+            dtAll.Columns.Add("price1", typeof(String));
+            dtAll.Columns.Add("pckdid", typeof(String));
+            int i = 0;
+            foreach (DataRow row in dtbl.Rows)
+            {
+                DataRow row1 = dtAll.NewRow();
+                row1["id"] = row["ID"];
+                row1["itmid"] = row["LID"];
+                row1["lgid"] = row["LGID"];
+                row1["name"] = row["LName"];
+                row1["price"] = row["Price"];
+                row1["qty"] = row["QTY"];
+                row1["row1"] = row["row1"];
+                row1["extra"] = row["Extra"];
+                row1["usage"] = "";
+                row1["lab_order_id"] = row["lab_order_id"];
+                row1["status_amt"] = row["status_amt"];
+                row1["status_order_group"] = row["status_order_group"];
+                row1["price1"] = row["price1"];
+                row1["pckdid"] = row["pckdid"];
+                if (row["LGID"].ToString().Equals("1"))
+                {
+                    row1["status"] = "bloodlab";
+                }
+                else if (row["LGID"].ToString().Equals("2"))
+                {
+                    row1["status"] = "";
+                }
+                else if (row["LGID"].ToString().Equals("3"))
+                {
+                    row1["status"] = "Sperm Lab";
+                }
+                else if (row["LGID"].ToString().Equals("4"))
+                {
+                    row1["status"] = "Embryo Lab";
+                }
+                else if (row["LGID"].ToString().Equals("5"))
+                {
+                    row1["status"] = "Genetic Lab";
+                }
+                dtAll.Rows.InsertAt(row1, i);
+                i++;
+            }
+            foreach (DataRow row in dtse.Rows)
+            {
+                DataRow row1 = dtAll.NewRow();
+                row1["id"] = row["ID"];
+                row1["itmid"] = row["SID"];
+                row1["lgid"] = "";
+                row1["name"] = row["SName"];
+                row1["price"] = row["Price"];
+                row1["qty"] = row["qty"];
+                row1["status"] = "specialitem";
+                row1["row1"] = row["row1"];
+                row1["extra"] = row["Extra"];
+                row1["usage"] = "";
+                row1["lab_order_id"] = "0";
+                row1["status_amt"] = "1";
+                row1["status_order_group"] = "0";
+                row1["price1"] = row["price1"];
+                row1["pckdid"] = row["pckdid"];
+                dtAll.Rows.InsertAt(row1, i);
+                i++;
+            }
+            foreach (DataRow row in dtpx.Rows)
+            {
+                DataRow row1 = dtAll.NewRow();
+                row1["id"] = row["ID"];
+                row1["itmid"] = row["DUID"];
+                row1["lgid"] = "";
+                row1["name"] = row["DUName"];
+                row1["price"] = row["Price"];
+                row1["qty"] = row["QTY"];
+                row1["status"] = "px";
+                row1["row1"] = row["row1"];
+                row1["extra"] = row["Extra"];
+                row1["usage"] = row["TUsage"];
+                row1["lab_order_id"] = "0";
+                row1["status_amt"] = "1";
+                row1["status_order_group"] = "0";
+                row1["price1"] = row["price1"];
+                row1["pckdid"] = row["pckdid"];
+                dtAll.Rows.InsertAt(row1, i);
+                i++;
+
+            }
+
+            foreach (DataRow row in dtpkg.Rows)
+            {
+                String bill1 = "", bill2 = "", bill3 = "", bill4 = "", times = "", name = "";
+                Decimal price = 0, pay1 = 0, pay2 = 0, pay3 = 0, pay4 = 0, pay = 0;
+                Decimal.TryParse(row["price"].ToString(), out price);
+                Decimal.TryParse(row["payment1"].ToString(), out pay1);
+                Decimal.TryParse(row["payment2"].ToString(), out pay2);
+                Decimal.TryParse(row["payment3"].ToString(), out pay3);
+                Decimal.TryParse(row["payment4"].ToString(), out pay4);
+                times = row["payment_times"].ToString();
+                bill1 = row["P1BDetailID"].ToString();
+                bill2 = row["P2BDetailID"].ToString();
+                bill3 = row["P3BDetailID"].ToString();
+                bill4 = row["P4BDetailID"].ToString();
+                name = row["PackageName"].ToString();
+                if (price > 0)
+                {
+                    if ((pay1 > 0) && bill1.Equals("0"))
+                    {
+                        pay = pay1;
+                        name += "1/" + times;
+                    }
+                    else if ((pay2 > 0) && bill2.Equals("0"))
+                    {
+                        pay = pay2;
+                        name += "2/" + times;
+                    }
+                    else if ((pay3 > 0) && bill3.Equals("0"))
+                    {
+                        pay = pay3;
+                        name += "3/" + times;
+                    }
+                    else if ((pay4 > 0) && bill4.Equals("0"))
+                    {
+                        pay = pay4;
+                        name += "4/" + times;
+                    }
+                    DataRow row1 = dtAll.NewRow();
+                    row1["id"] = row["PCKSID"];
+                    row1["itmid"] = row["PCKID"];
+                    row1["lgid"] = "";
+                    row1["name"] = name;
+                    row1["price"] = pay;
+                    row1["qty"] = "1";
+                    row1["status"] = "package";
+                    row1["row1"] = row["row1"];
+                    row1["extra"] = "0";
+                    row1["usage"] = "";
+                    row1["lab_order_id"] = "0";
+                    row1["status_amt"] = "1";
+                    row1["status_order_group"] = "0";
+                    row1["price1"] = pay;
+                    row1["pckdid"] = "";
+                    dtAll.Rows.InsertAt(row1, i);
+                    i++;
+                }
+                //setTabPkg(row["PCKSID"].ToString(), row["PackageName"].ToString());
+            }
+            dtAll.DefaultView.Sort = "row1";
+            DataView view = dtAll.DefaultView;
+            view.Sort = "row1 ASC";
+            DataTable sortedDate = view.ToTable();
+            //grfOrder.DataSource = dtAll;
+            grfOrder.Cols.Count = 18;
+            //C1TextBox txt = new C1TextBox();
+            //C1CheckBox chk = new C1CheckBox();
+            //chk.Text = "Include Package";
+            //C1ComboBox cboproce = new C1ComboBox();
+            //ic.ivfDB.itmDB.setCboItem(cboproce);
+            //grfOrder.Cols[1].Editor = txt;
+            //grfOrder.Cols[colOrderPrice].Editor = txt;
+            //grfOrder.Cols[colOrderQTY].Editor = txt;
+            //grfOrder.Cols[colRxId].Editor = txt;
+
+            grfOrder.Cols[colOrdName].Width = 280;
+            grfOrder.Cols[colOrdPrice].Width = 100;
+            grfOrder.Cols[colOrdQty].Width = 80;
+            grfOrder.Cols[colOrdUsT].Width = 100;
+
+            grfOrder.ShowCursor = true;
+            //grdFlex.Cols[colID].Caption = "no";
+            //grfDept.Cols[colCode].Caption = "รหัส";
+
+            grfOrder.Cols[colOrdName].Caption = "Name";
+            if (ic.iniC.statusCashierOldProgram.Equals("1"))
+            {
+                grfOrder.Cols[colOrdPrice].Caption = "SumPrice";
+                grfOrder.Cols[colOrdPrice1].Caption = "Price1";
+            }
+            else
+            {
+                grfOrder.Cols[colOrdPrice].Caption = "Price";
+                grfOrder.Cols[colOrdPrice1].Caption = "Price1";
+            }
+            //grfOrder.Cols[colOrdPrice1].Caption = "Price";
+            grfOrder.Cols[colOrdQty].Caption = "QTY";
+            grfOrder.Cols[colOrdInclude].Caption = "Include Package";
+            grfOrder.Cols[colOrdUsT].Caption = "Usage";
+            grfOrder.Cols[colOrdAmt].Caption = "Amount";
+            //grfOrder.SubtotalPosition = SubtotalPositionEnum.BelowData;
+            Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
+            //CellRange rg1 = grfBank.GetCellRange(1, colE, grfBank.Rows.Count, colE);
+            //rg1.Style = grfBank.Styles["date"];
+            //grfCu.Cols[colID].Visible = false;
+            i = 1;
+            grfOrder.Rows.Count = 1;
+            Decimal inc = 0, ext = 0;
+            foreach (DataRow row in sortedDate.Rows)
+            {
+                try
+                {
+                    Decimal price = 0, qty = 0, price1 = 0;
+                    Row row1 = grfOrder.Rows.Add();
+                    row1[colOrdid] = row["id"].ToString();
+                    row1[colOrdlpid] = row["lgid"].ToString();
+                    row1[colOrdName] = row["name"].ToString();
+                    row1[colOrdUsT] = row["usage"].ToString();
+                    //row1[colOrdQty] = row["qty"].ToString();
+                    row1[colOrdstatus] = row["status"].ToString();
+                    row1[colOrdrow1] = row["row1"].ToString();
+                    row1[colOrditmid] = row["itmid"].ToString();
+                    row1[colOrdInclude] = row["extra"].ToString().Equals("1") ? "Extra" : "Include";
+
+                    Decimal.TryParse(row["price"].ToString(), out price);
+                    Decimal.TryParse(row["price1"].ToString(), out price1);
+                    Decimal.TryParse(row["qty"].ToString(), out qty);
+                    row1[colOrdPrice] = price.ToString("#,###.00");
+                    row1[colOrdPrice1] = price1.ToString("#,###.00");
+                    row1[colOrdQty] = qty.ToString("#,###.00");
+                    row1[colOrdAmt] = (price * qty).ToString("#,###.00");
+                    if (row["status_amt"].ToString().Equals("1"))
+                    {
+                        if (row["extra"].ToString().Equals("1"))
+                        {
+                            if (ic.iniC.statusCashierOldProgram.Equals("1"))
+                            {
+                                ext += price;
+                            }
+                            else
+                            {
+                                ext += (price1 * qty);
+                            }
+                        }
+                        else
+                        {
+                            if (row["status"].ToString().Equals("package"))
+                            {
+                                if (ic.iniC.statusCashierOldProgram.Equals("1"))
+                                {
+                                    inc += price;
+                                }
+                                else
+                                {
+                                    inc += (price1 * qty);
+                                }
+                            }
+                        }
+                    }
+
+                    if (ic.iniC.statusCashierOldProgram.Equals("1"))
+                    {
+                        row1[colOrdAmt] = price.ToString("#,###.00");
+                    }
+                    else
+                    {
+                        row1[colOrdAmt] = (price1 * qty).ToString("#,###.00");
+                    }
+                    row1[colOrdOrderId] = row["lab_order_id"].ToString();
+                    row1[colOrdStatusAmt] = row["status_amt"].ToString();
+                    row1[colOrdStatusOrdGrp] = row["status_order_group"].ToString();
+                    row1[0] = i;
+                    if (row["status"].ToString().Equals("package"))
+                        row1.StyleNew.BackColor = Color.FromArgb(143, 200, 127);
+                    else if (row["status"].ToString().Equals("specialitem"))
+                        row1.StyleNew.BackColor = Color.FromArgb(244, 222, 242);
+                    else if (row["status"].ToString().Equals("bloodlab"))
+                        row1.StyleNew.BackColor = Color.FromArgb(253, 233, 233);
+                    else if (row["status"].ToString().Equals("Sperm Lab"))
+                        row1.StyleNew.BackColor = Color.FromArgb(244, 252, 232);
+                    else if (row["status"].ToString().Equals("Embryo Lab"))
+                        row1.StyleNew.BackColor = Color.FromArgb(218, 237, 255);
+                    else if (row["status"].ToString().Equals("Genetic Lab"))
+                        row1.StyleNew.BackColor = Color.FromArgb(255, 255, 231);
+                    else if (row["status"].ToString().Equals("px"))
+                        row1.StyleNew.BackColor = Color.FromArgb(224, 224, 224);
+                    if (row["pckdid"].ToString().Length > 1)
+                    {
+                        CellNote note = new CellNote("Package " + row["pckdid"].ToString());
+                        CellRange rg = grfOrder.GetCellRange(i, colOrdName);
+                        rg.UserData = note;
+                    }
+                    i++;
+                }
+                catch (Exception ex)
+                {
+                    String err = "";
+                }
+            }
+            //rowOrder = grfOrder.Rows.Count;
+            CellNoteManager mgr = new CellNoteManager(grfOrder);
+            grfOrder.Cols[colOrdrow1].Visible = false;
+            grfOrder.Cols[colOrdlpid].Visible = false;
+            grfOrder.Cols[colOrdid].Visible = false;
+            //grfOrder.Cols[colOrdstatus].Visible = false;
+            grfOrder.Cols[colOrditmid].Visible = false;
+            if (ic.iniC.statusCashierOldProgram.Equals("1"))
+            {
+                grfOrder.Cols[colOrdPrice].Visible = false;
+                grfOrder.Cols[colOrdPrice1].Visible = true;
+            }
+            else
+            {
+                grfOrder.Cols[colOrdPrice].Visible = true;
+                grfOrder.Cols[colOrdPrice1].Visible = false;
+            }
+            grfOrder.Cols[colOrdUsE].Visible = false;
+            grfOrder.Cols[colOrdDate].Visible = false;
+
+            grfOrder.Cols[colOrdUsT].AllowEditing = false;
+            grfOrder.Cols[colOrdName].AllowEditing = false;
+            grfOrder.Cols[colOrdPrice].AllowEditing = false;
+            grfOrder.Cols[colOrdQty].AllowEditing = false;
+            grfOrder.Cols[colOrdOrderId].AllowEditing = false;
+            grfOrder.Cols[colOrdStatusAmt].AllowEditing = false;
+            grfOrder.Cols[colOrdStatusOrdGrp].AllowEditing = false;
+
+        }
         private void initGrfBillD()
         {
             grfBillD = new C1FlexGrid();
@@ -933,7 +1425,7 @@ namespace clinic_ivf.gui
             //menuGw.MenuItems.Add("&ยกเลิก", new EventHandler(ContextMenu_Gw_Cancel));
             grfBillD.ContextMenu = menuGw;
             grfBillD.SubtotalPosition = SubtotalPositionEnum.BelowData;
-            pnBillD.Controls.Add(grfBillD);
+            pnBill.Controls.Add(grfBillD);
 
             theme1.SetTheme(grfBillD, "Office2010Red");
 
