@@ -80,7 +80,7 @@ namespace clinic_ivf.gui
         int colOrderSP4V = 13, colOrderSP5V = 14, colOrderSP6V = 15, colOrderSP7V = 16, colOrderSubItem = 17;
         int colOrderFileName = 18, colOrderWorder1 = 19, colOrderWorker2 = 20, colOrderWorker3 = 21, colOrderWorkder4 = 22;
         int colOrderWorker5 = 23, colOrderLGID = 24, colOrderQTY = 25, colOrderActive = 26;
-        int colOrdid = 1, colOrdDate=2, colOrdlpid = 3, colOrdName = 4, colOrdPrice = 5, colOrdPrice1=6, colOrdQty = 7, colOrdstatus = 8, colOrdrow1 = 9, colOrditmid = 10, colOrdInclude = 11, colOrdAmt = 12, colOrdUsE = 13, colOrdUsT = 14, colOrdOrderId=15, colOrdStatusAmt=16, colOrdStatusOrdGrp=17;
+        int colOrdid = 1, colOrdDate=2, colOrdlpid = 3, colOrdName = 4, colOrdPrice = 5, colOrdPrice1=6, colOrdQty = 7, colOrdstatus = 8, colOrdrow1 = 9, colOrditmid = 10, colOrdInclude = 11, colOrdAmt = 12, colOrdUsE = 13, colOrdUsT = 14, colOrdOrderId=15, colOrdStatusAmt=16, colOrdStatusOrdGrp=17, colOrdPkgSId=18;
         int rowOrder = 0, spHeight = 150;
         int colEggDay = 1, colEggDate = 2, colEggE2 = 3, colEggLH = 4, colEggFSH = 5, colEggProlactin = 6, colEggRt1 = 7, colEggRt2 = 8, colEggLt1 = 9, colEggLt2 = 10, colEggEndo = 11, colEggMedi = 12, colEggId = 13, colEggEdit = 14, colEggMedi2 = 15;
         
@@ -4687,10 +4687,13 @@ namespace clinic_ivf.gui
         {
             if (grfOrder.Row < 0) return;
             if (grfOrder[grfOrder.Row, colOrdid] == null) return;
-            String id = "", status = "";
+            String id = "", status = "", pkgsid="", qty="", itmid="";
             rowOrder--;
             id = grfOrder[grfOrder.Row, colOrdid].ToString();
             status = grfOrder[grfOrder.Row, colOrdstatus].ToString();
+            pkgsid = grfOrder[grfOrder.Row, colOrdPkgSId].ToString();
+            qty = grfOrder[grfOrder.Row, colOrdQty].ToString();
+            itmid = grfOrder[grfOrder.Row, colOrditmid].ToString();
             if (status.Equals("bloodlab") || status.Equals("Sperm Lab") || status.Equals("Embryo Lab") || status.Equals("Genetic Lab"))
             {
                 ic.ivfDB.oJlabdDB.deleteByPk(id);
@@ -4702,6 +4705,7 @@ namespace clinic_ivf.gui
             else if (status.Equals("px"))
             {
                 ic.ivfDB.oJpxdDB.deleteByPk(id);
+                String re = ic.ivfDB.oPkgdpDB.upDateQtyUseMinus(pkgsid, itmid, qty);
             }
             else if (status.Equals("package"))
             {
@@ -4850,7 +4854,6 @@ namespace clinic_ivf.gui
                 row1["pckdid"] = row["pckdid"];
                 dtAll.Rows.InsertAt(row1, i);
                 i++;
-
             }
             
             foreach (DataRow row in dtpkg.Rows)
@@ -4916,7 +4919,7 @@ namespace clinic_ivf.gui
             view.Sort = "row1 ASC";
             DataTable sortedDate = view.ToTable();
             //grfOrder.DataSource = dtAll;
-            grfOrder.Cols.Count = 18;
+            grfOrder.Cols.Count = 19;
             //C1TextBox txt = new C1TextBox();
             //C1CheckBox chk = new C1CheckBox();
             //chk.Text = "Include Package";
@@ -5024,6 +5027,7 @@ namespace clinic_ivf.gui
                     row1[colOrdStatusAmt] = row["status_amt"].ToString();
                     row1[colOrdStatusOrdGrp] = row["status_order_group"].ToString();
                     row1[0] = i;
+                    row1[colOrdPkgSId] = row["pckdid"].ToString();
                     if (row["status"].ToString().Equals("package"))
                         row1.StyleNew.BackColor = Color.FromArgb(143, 200, 127);
                     else if (row["status"].ToString().Equals("specialitem"))
@@ -5095,6 +5099,7 @@ namespace clinic_ivf.gui
             grfOrder.Cols[colOrdOrderId].AllowEditing = false;
             grfOrder.Cols[colOrdStatusAmt].AllowEditing = false;
             grfOrder.Cols[colOrdStatusOrdGrp].AllowEditing = false;
+            grfOrder.Cols[colOrdPkgSId].AllowEditing = false;
             //theme1.SetTheme(grfFinish, ic.theme);
             //UpdateTotals();
             String total = "";
@@ -5639,12 +5644,23 @@ namespace clinic_ivf.gui
         {
             if (grfRx.Row <= 0) return;
             if (grfRx[grfRx.Row, colBlId] == null) return;
-            String chk = "", name = "", drugid = "", qty = "", include = "", usage = "", pkgdid = "";
+            String chk = "", name = "", drugid = "", qty = "", include = "", usage = "", pkgdid = "", qtyext="";
             drugid = grfRx[grfRx.Row, colRxdId] != null ? grfRx[grfRx.Row, colRxdId].ToString() : "";
             qty = grfRx[grfRx.Row, colRxQty] != null ? grfRx[grfRx.Row, colRxQty].ToString() : "";
             //include = grfRx[grfRx.Row, colRxInclude] != null ? grfRx[grfRx.Row, colRxInclude].ToString().Equals("True") ? "1" : "0" : "0";
             pkgdid = setPkgDId(drugid, qty);
-            include = pkgdid.Length > 0 ? "1" : "";
+            String[] pkgdid1 = pkgdid.Split('#');
+            if (pkgdid1.Length > 1)
+            {
+                qtyext = pkgdid1[1];
+                pkgdid = pkgdid1[0];
+            }
+            else
+            {
+                include = pkgdid.Length > 0 ? "1" : "";
+                qtyext = "";
+            }
+            
             if (cboLangSticker.Text.Equals("English"))
             {
                 usage = grfRx[grfRx.Row, colRxUsE] != null ? grfRx[grfRx.Row, colRxUsE].ToString() : "";
@@ -5658,11 +5674,33 @@ namespace clinic_ivf.gui
             {
                 if (ic.iniC.statusCashierOldProgram.Equals("1"))
                 {
-                    ic.ivfDB.PxAdd(drugid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", grfOrder.Rows.Count.ToString(), usage, "old", pkgdid);
+                    if (qtyext.Length > 0)
+                    {
+                        Decimal qty1 = 0, qtyext1=0;
+                        Decimal.TryParse(qty, out qty1);
+                        Decimal.TryParse(qtyext, out qtyext1);
+                        ic.ivfDB.PxAdd(drugid, (qty1 - qtyext1).ToString(), txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", grfOrder.Rows.Count.ToString(), usage, "old", pkgdid);
+                        ic.ivfDB.PxAdd(drugid, qtyext, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", grfOrder.Rows.Count.ToString(), usage, "old", pkgdid);
+                    }
+                    else
+                    {
+                        ic.ivfDB.PxAdd(drugid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", grfOrder.Rows.Count.ToString(), usage, "old", pkgdid);
+                    }
                 }
                 else
                 {
-                    ic.ivfDB.PxAdd(drugid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", grfOrder.Rows.Count.ToString(), usage, pkgdid);
+                    if (qtyext.Length > 0)
+                    {
+                        Decimal qty1 = 0, qtyext1 = 0;
+                        Decimal.TryParse(qty, out qty1);
+                        Decimal.TryParse(qtyext, out qtyext1);
+                        ic.ivfDB.PxAdd(drugid, (qty1 - qtyext1).ToString(), txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", grfOrder.Rows.Count.ToString(), usage, "old", pkgdid);
+                        ic.ivfDB.PxAdd(drugid, qtyext, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", grfOrder.Rows.Count.ToString(), usage, "old", pkgdid);
+                    }
+                    else
+                    {
+                        ic.ivfDB.PxAdd(drugid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", grfOrder.Rows.Count.ToString(), usage, pkgdid);
+                    }
                 }
             }
             else
@@ -5673,7 +5711,18 @@ namespace clinic_ivf.gui
                 //}
                 //else
                 //{
+                if (qtyext.Length > 0)
+                {
+                    Decimal qty1 = 0, qtyext1 = 0;
+                    Decimal.TryParse(qty, out qty1);
+                    Decimal.TryParse(qtyext, out qtyext1);
+                    ic.ivfDB.PxAdd(drugid, (qty1 - qtyext1).ToString(), txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", grfOrder.Rows.Count.ToString(), usage, "old", pkgdid);
+                    ic.ivfDB.PxAdd(drugid, qtyext, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", grfOrder.Rows.Count.ToString(), usage, "old", pkgdid);
+                }
+                else
+                {
                     ic.ivfDB.PxAdd(drugid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "1", grfOrder.Rows.Count.ToString(), usage, pkgdid);
+                }
                 //}
             }
             setGrfOrder(txtVnOld.Text);
@@ -6511,19 +6560,23 @@ namespace clinic_ivf.gui
                     if (row[colPkgItmId].ToString().Equals(id))
                     {
                         String pkgqty = "", pkguse = "";
-                        Decimal pkgqty1 = 0, pkguse1 = 0, qty1 = 0;
+                        Decimal pkgqty1 = 0, pkguse1 = 0, qty1 = 0,qtyamt=0;
                         pkgqty = row[colPkgQty].ToString();
                         pkguse = row[colPkgUse].ToString();
-                        pkguse = row[colPkgUse].ToString();
+                        //pkguse = row[colPkgUse].ToString();
                         Decimal.TryParse(pkgqty, out pkgqty1);
                         Decimal.TryParse(pkguse, out pkguse1);
                         Decimal.TryParse(qty, out qty1);
+                        qtyamt = pkgqty1 - pkguse1;
+                        qtyamt -= qty1;
+                        qtyamt = Math.Abs(qtyamt);
                         if (pkguse1 == pkgqty1) continue;
                         pkguse1 += qty1;
-                        pkgsid = (pkgqty1 >= pkguse1) ? row[colPkgsId].ToString() : "";
+                        pkgsid = (pkgqty1 >= pkguse1) ? row[colPkgsId].ToString() : row[colPkgsId].ToString()+"#"+ qtyamt.ToString();
                         row.StyleNew.BackColor = Color.Red;
                         row[colPkgUse] = pkguse1;
                         ic.ivfDB.oPkgdpDB.upDateQtyUse(row[colPkgdId].ToString(), qty);
+                        break;
                     }
                 }
             }

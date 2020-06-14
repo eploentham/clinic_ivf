@@ -210,13 +210,25 @@ namespace clinic_ivf.gui
             ContextMenu menuGw = new ContextMenu();
             menuGw.MenuItems.Add("ป้อน LAB FET", new EventHandler(ContextMenu_edit));
             menuGw.MenuItems.Add("รับทราบการเปลี่ยนแปลงเวลา", new EventHandler(ContextMenu_Gw_time_modi));
-            //menuGw.MenuItems.Add("&ยกเลิก", new EventHandler(ContextMenu_Gw_Cancel));
+            menuGw.MenuItems.Add("Lab Form A", new EventHandler(ContextMenu_grfreq_lab_form_a));
             grfReq.ContextMenu = menuGw;
             gB.Controls.Add(grfReq);
 
             theme1.SetTheme(grfReq, "Office2010Blue");
         }
+        private void ContextMenu_grfreq_lab_form_a(object sender, System.EventArgs e)
+        {
+            String chk = "", name = "", id = "", formaid = "";
+            id = grfReq[grfReq.Row, colRqId] != null ? grfReq[grfReq.Row, colRqId].ToString() : "";
+            //formaid = grfReq[grfReq.Row, colFormAId] != null ? grfReq[grfReq.Row, colFormAId].ToString() : "";
+            LabRequest req = new LabRequest();
+            req = ic.ivfDB.lbReqDB.selectByPk1(id);
+            LabFormA forma = new LabFormA();
+            forma = ic.ivfDB.lFormaDB.selectBReqFET(req.req_id);
+            FrmLabFormA frm = new FrmLabFormA(ic, forma.form_a_id, "", "", "", "view");
 
+            frm.ShowDialog(this);
+        }
         private void GrfReq_DoubleClick(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
@@ -587,14 +599,28 @@ namespace clinic_ivf.gui
             //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
             ContextMenu menuGw = new ContextMenu();
             menuGw.MenuItems.Add("ป้อน LAB FET", new EventHandler(ContextMenu_proc_edit));
-            //menuGw.MenuItems.Add("&แก้ไข", new EventHandler(ContextMenu_Gw_Edit));
+            menuGw.MenuItems.Add("Lab Form A", new EventHandler(ContextMenu_grfproc_lab_form_a));
             //menuGw.MenuItems.Add("&ยกเลิก", new EventHandler(ContextMenu_Gw_Cancel));
             grfProc.ContextMenu = menuGw;
             panel2.Controls.Add(grfProc);
 
             theme1.SetTheme(grfProc, "Office2010Blue");
         }
+        private void ContextMenu_grfproc_lab_form_a(object sender, System.EventArgs e)
+        {
+            String chk = "", name = "", id = "", formaid = "";
+            id = grfProc[grfProc.Row, colPcId] != null ? grfProc[grfProc.Row, colPcId].ToString() : "";
+            //formaid = grfReq[grfReq.Row, colFormAId] != null ? grfReq[grfReq.Row, colFormAId].ToString() : "";
+            LabFet fet = new LabFet();
+            fet = ic.ivfDB.fetDB.selectByPk1(id);
+            LabRequest req = new LabRequest();
+            req = ic.ivfDB.lbReqDB.selectByPk1(fet.req_id);
+            LabFormA forma = new LabFormA();
+            forma = ic.ivfDB.lFormaDB.selectBReqFET(req.req_id);
+            FrmLabFormA frm = new FrmLabFormA(ic, forma.form_a_id, "", "", "", "view");
 
+            frm.ShowDialog(this);
+        }
         private void GrfProc_DoubleClick(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
@@ -743,14 +769,28 @@ namespace clinic_ivf.gui
             //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
             ContextMenu menuGw = new ContextMenu();
             menuGw.MenuItems.Add("ป้อน LAB FET", new EventHandler(ContextMenu_proc_edit));
-            //menuGw.MenuItems.Add("&แก้ไข", new EventHandler(ContextMenu_Gw_Edit));
+            menuGw.MenuItems.Add("Lab Form A", new EventHandler(ContextMenu_grffinish_lab_form_a));
             //menuGw.MenuItems.Add("&ยกเลิก", new EventHandler(ContextMenu_Gw_Cancel));
             grfFinish.ContextMenu = menuGw;
             gbFinish.Controls.Add(grfFinish);
             grfFinish.Rows.Count = 2;
             theme1.SetTheme(grfFinish, "Office2010Blue");
         }
+        private void ContextMenu_grffinish_lab_form_a(object sender, System.EventArgs e)
+        {
+            String chk = "", name = "", id = "", formaid = "";
+            id = grfFinish[grfFinish.Row, colPcId] != null ? grfFinish[grfFinish.Row, colPcId].ToString() : "";
+            //formaid = grfReq[grfReq.Row, colFormAId] != null ? grfReq[grfReq.Row, colFormAId].ToString() : "";
+            LabFet fet = new LabFet();
+            fet = ic.ivfDB.fetDB.selectByPk1(id);
+            LabRequest req = new LabRequest();
+            req = ic.ivfDB.lbReqDB.selectByPk1(fet.req_id);
+            LabFormA forma = new LabFormA();
+            forma = ic.ivfDB.lFormaDB.selectBReqFET(req.req_id);
+            FrmLabFormA frm = new FrmLabFormA(ic, forma.form_a_id, "", "", "", "view");
 
+            frm.ShowDialog(this);
+        }
         private void GrfFinish_DoubleClick(object sender, EventArgs e)
         {
             //throw new NotImplementedException();

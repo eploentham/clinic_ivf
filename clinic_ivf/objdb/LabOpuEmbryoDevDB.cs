@@ -196,6 +196,27 @@ namespace clinic_ivf.objdb
 
             return re;
         }
+        public String VoidLabOpuEmbryoDevMax(String opufetid, String userid)
+        {
+            String re = "";
+            String sql = "";
+            int chk = 0;
+            sql = "Update " + opuEmDev.table + " Set " +
+                " " + opuEmDev.active + " = '3'" +
+                "," + opuEmDev.date_cancel + " = now()" +
+                "," + opuEmDev.user_cancel + " = '" + userid + "' " +
+                "Where " + opuEmDev.opu_fet_id + "='" + opufetid + "' and opu_embryo_dev_no = (select max(opu_embryo_dev_no) from lab_t_opu_embryo_dev where opu_fet_id = '" + opufetid + "') ";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+
+            return re;
+        }
         public String VoidLabOpuEmbryoDev(String id, String userid)
         {
             String re = "";

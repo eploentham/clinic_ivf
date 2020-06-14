@@ -1,4 +1,5 @@
-﻿using C1.Win.C1SuperTooltip;
+﻿using C1.Win.C1Input;
+using C1.Win.C1SuperTooltip;
 using clinic_ivf.control;
 using clinic_ivf.object1;
 using clinic_ivf.Properties;
@@ -27,7 +28,7 @@ namespace clinic_ivf.gui
 
         C1SuperTooltip stt;
         C1SuperErrorProvider sep;
-        String statusOPU = "", statusFET = "";
+        String statusOPU = "", statusFET = "", flag="";
         [DllImport("winspool.drv", CharSet = CharSet.Auto, SetLastError = true)]
         public static extern bool SetDefaultPrinter(string Printer);
         public FrmLabFormA(IvfControl ic, String lformaId, String pttid, String vsid, String vn)
@@ -38,6 +39,18 @@ namespace clinic_ivf.gui
             this.vsid = vsid;
             this.pttid = pttid;
             this.vn = vn;
+            //this.reqid = reqid;
+            initConfig();
+        }
+        public FrmLabFormA(IvfControl ic, String lformaId, String pttid, String vsid, String vn, String flag)
+        {
+            InitializeComponent();
+            this.ic = ic;
+            this.lformaId = lformaId;
+            this.vsid = vsid;
+            this.pttid = pttid;
+            this.vn = vn;
+            this.flag = flag;
             //this.reqid = reqid;
             initConfig();
         }
@@ -1447,6 +1460,95 @@ namespace clinic_ivf.gui
             if (lFormA.status_opu_active.Equals("3"))
             {
                 lbMessage1.Text = "มี ยกเลิก OPU";
+            }
+            if (flag.Equals("view"))
+            {
+                btnPrint.Hide();
+                btnPrintFet.Hide();
+                btnPrintOPU.Hide();
+                foreach (Control c in this.Controls)
+                {
+                    if(c is GroupBox)
+                    {
+                        foreach(Control cc in c.Controls)
+                        {
+                            if(cc is C1Button)
+                            {
+                                cc.Hide();
+                            }
+                        }
+                    }
+                    else if(c is Panel)
+                    {
+                        foreach (Control cc in c.Controls)
+                        {
+                            if (cc is C1Button)
+                            {
+                                cc.Hide();
+                            }
+                        }
+                    }
+                }
+                foreach(Control ccc in gbOPU.Controls)
+                {
+                    foreach (Control cc in ccc.Controls)
+                    {
+                        if (cc is C1Button)
+                        {
+                            cc.Hide();
+                        }
+                    }
+                }
+                foreach (Control ccc in gbETFET.Controls)
+                {
+                    foreach (Control cc in ccc.Controls)
+                    {
+                        if (cc is C1Button)
+                        {
+                            cc.Hide();
+                        }
+                    }
+                }
+                foreach (Control ccc in gbSpermAnalysis.Controls)
+                {
+                    foreach (Control cc in ccc.Controls)
+                    {
+                        if (cc is C1Button)
+                        {
+                            cc.Hide();
+                        }
+                    }
+                }
+                foreach (Control ccc in gbSpermFreezing.Controls)
+                {
+                    foreach (Control cc in ccc.Controls)
+                    {
+                        if (cc is C1Button)
+                        {
+                            cc.Hide();
+                        }
+                    }
+                }
+                foreach (Control ccc in gbSpermPESA.Controls)
+                {
+                    foreach (Control cc in ccc.Controls)
+                    {
+                        if (cc is C1Button)
+                        {
+                            cc.Hide();
+                        }
+                    }
+                }
+                foreach (Control ccc in gbSpermIUI.Controls)
+                {
+                    foreach (Control cc in ccc.Controls)
+                    {
+                        if (cc is C1Button)
+                        {
+                            cc.Hide();
+                        }
+                    }
+                }
             }
         }
         private void setControl1()

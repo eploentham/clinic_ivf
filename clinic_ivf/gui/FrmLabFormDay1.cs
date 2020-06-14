@@ -16,7 +16,7 @@ namespace clinic_ivf.gui
     public partial class FrmLabFormDay1 : Form
     {
         IvfControl ic;
-        String lformDay1Id = "", pttid = "", vsid = "", vsidOld = "";
+        String lformDay1Id = "", pttid = "", vsid = "", vsidOld = "", flag="";
         LabFormDay1 lFormDay1;
         LabOpu opu;
         VisitOld ovs;
@@ -35,6 +35,17 @@ namespace clinic_ivf.gui
             this.vsid = vsid;
             this.vsidOld = vn;
             this.lformDay1Id = ldormday1Id;
+            initConfig();
+        }
+        public FrmLabFormDay1(IvfControl ic, String ldormday1Id, String pttid, String vsid, String vn, String flag)
+        {
+            InitializeComponent();
+            this.ic = ic;
+            this.pttid = pttid;
+            this.vsid = vsid;
+            this.vsidOld = vn;
+            this.lformDay1Id = ldormday1Id;
+            this.flag = flag;
             initConfig();
         }
         private void initConfig()

@@ -864,7 +864,7 @@ namespace clinic_ivf.objdb
 
             oJpxd.VN = vn;
             oJpxd.DUID = duid;
-            oJpxd.QTY = qty;
+            oJpxd.QTY = qty.Replace(".00","");
             oJpxd.Extra = extra;
             if (flagOld.Equals("old"))
             {

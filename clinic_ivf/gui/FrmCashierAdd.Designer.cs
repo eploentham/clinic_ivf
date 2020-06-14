@@ -106,8 +106,9 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.txtPayName = new C1.Win.C1Input.C1TextBox();
-            this.tabLabPrescription = new C1.Win.C1Command.C1DockingTabPage();
             this.tabReceipt = new C1.Win.C1Command.C1DockingTabPage();
+            this.tabLabPrescription = new C1.Win.C1Command.C1DockingTabPage();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtBillId)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtVnShow)).BeginInit();
@@ -739,6 +740,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel2.Controls.Add(this.panel4);
             this.panel2.Controls.Add(this.btnItmAdd);
             this.panel2.Controls.Add(this.btnPayPeriod);
             this.panel2.Controls.Add(this.btnDiscountAdd);
@@ -780,7 +782,7 @@
             // 
             this.btnItmAdd.Image = global::clinic_ivf.Properties.Resources.zoom_in24;
             this.btnItmAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnItmAdd.Location = new System.Drawing.Point(1089, 86);
+            this.btnItmAdd.Location = new System.Drawing.Point(767, 6);
             this.btnItmAdd.Name = "btnItmAdd";
             this.btnItmAdd.Size = new System.Drawing.Size(107, 36);
             this.btnItmAdd.TabIndex = 757;
@@ -794,7 +796,7 @@
             // 
             this.btnPayPeriod.Image = global::clinic_ivf.Properties.Resources.maintenance24;
             this.btnPayPeriod.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPayPeriod.Location = new System.Drawing.Point(1089, 40);
+            this.btnPayPeriod.Location = new System.Drawing.Point(880, 6);
             this.btnPayPeriod.Name = "btnPayPeriod";
             this.btnPayPeriod.Size = new System.Drawing.Size(107, 36);
             this.btnPayPeriod.TabIndex = 756;
@@ -819,7 +821,7 @@
             // btnChargeAdd
             // 
             this.btnChargeAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnChargeAdd.Location = new System.Drawing.Point(1011, 113);
+            this.btnChargeAdd.Location = new System.Drawing.Point(1027, 113);
             this.btnChargeAdd.Name = "btnChargeAdd";
             this.btnChargeAdd.Size = new System.Drawing.Size(26, 24);
             this.btnChargeAdd.TabIndex = 755;
@@ -918,7 +920,7 @@
             this.label9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label9.Location = new System.Drawing.Point(780, 117);
+            this.label9.Location = new System.Drawing.Point(796, 117);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(78, 16);
             this.label9.TabIndex = 754;
@@ -931,7 +933,7 @@
             this.txtPayCreditCard.DataType = typeof(decimal);
             this.txtPayCreditCard.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtPayCreditCard.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtPayCreditCard.Location = new System.Drawing.Point(864, 115);
+            this.txtPayCreditCard.Location = new System.Drawing.Point(880, 115);
             this.txtPayCreditCard.Name = "txtPayCreditCard";
             this.txtPayCreditCard.Size = new System.Drawing.Size(141, 20);
             this.txtPayCreditCard.TabIndex = 753;
@@ -1314,6 +1316,14 @@
             this.theme1.SetTheme(this.txtPayName, "(default)");
             this.txtPayName.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
+            // tabReceipt
+            // 
+            this.tabReceipt.Location = new System.Drawing.Point(1, 24);
+            this.tabReceipt.Name = "tabReceipt";
+            this.tabReceipt.Size = new System.Drawing.Size(1274, 545);
+            this.tabReceipt.TabIndex = 2;
+            this.tabReceipt.Text = "Receipt";
+            // 
             // tabLabPrescription
             // 
             this.tabLabPrescription.Location = new System.Drawing.Point(1, 24);
@@ -1322,13 +1332,15 @@
             this.tabLabPrescription.TabIndex = 1;
             this.tabLabPrescription.Text = "Prescription";
             // 
-            // tabReceipt
+            // panel4
             // 
-            this.tabReceipt.Location = new System.Drawing.Point(1, 24);
-            this.tabReceipt.Name = "tabReceipt";
-            this.tabReceipt.Size = new System.Drawing.Size(1274, 545);
-            this.tabReceipt.TabIndex = 2;
-            this.tabReceipt.Text = "Receipt";
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.panel4.Location = new System.Drawing.Point(1089, 3);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(179, 138);
+            this.panel4.TabIndex = 758;
+            this.theme1.SetTheme(this.panel4, "(default)");
             // 
             // FrmCashierAdd
             // 
@@ -1487,5 +1499,6 @@
         private C1.Win.C1Input.C1Button btnItmAdd;
         private C1.Win.C1Input.C1Button btnPayPeriod;
         private C1.Win.C1Command.C1DockingTabPage tabReceipt;
+        private System.Windows.Forms.Panel panel4;
     }
 }

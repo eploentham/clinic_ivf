@@ -1247,10 +1247,10 @@ namespace clinic_ivf.gui
                             row["no1_desc3"] = row["no1_desc4"].ToString();
                             //}footer11
                         }
-                        row["footer11"] = opu.remark_day2;
-                        row["footer12"] = opu.remark_day3;
-                        row["footer13"] = opu.remark_day5;
-                        row["footer14"] = opu.remark_day6;
+                        //row["footer11"] = opu.remark_day2;
+                        //row["footer12"] = opu.remark_day3;
+                        //row["footer13"] = opu.remark_day5;
+                        //row["footer14"] = opu.remark_day6;
                         row["footer15"] = "";
                         row["footer16"] = "";
                         if(day.Equals("6"))

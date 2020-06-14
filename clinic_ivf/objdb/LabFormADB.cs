@@ -818,6 +818,17 @@ namespace clinic_ivf.objdb
             cop1 = setLabFormA(dt);
             return cop1;
         }
+        public LabFormA selectBReqFET(String pttId)
+        {
+            LabFormA cop1 = new LabFormA();
+            DataTable dt = new DataTable();
+            String sql = "select lformA.* " +
+                "From " + lformA.table + " lformA " +
+                "Where lformA." + lformA.req_id_fet + " ='" + pttId + "' ";
+            dt = conn.selectData(conn.conn, sql);
+            cop1 = setLabFormA(dt);
+            return cop1;
+        }
         public LabFormA selectByVnOld(String pttId)
         {
             LabFormA cop1 = new LabFormA();

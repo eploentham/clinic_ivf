@@ -211,6 +211,25 @@ namespace clinic_ivf.objdb
 
             return re;
         }
+        public String upDateQtyUseMinus(String id, String itmid, String qtyuse)
+        {
+            String re = "";
+            String sql = "";
+            //chkNull(p);
+            sql = "Update " + oPkgdp.table + " Set " +
+                " " + oPkgdp.QTYused + " = " + oPkgdp.QTYused + " - " + qtyuse + " " +
+                "Where " + oPkgdp.PCKSID + "='" + id + "' and " + oPkgdp.ItemID + "='" + itmid + "'";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+
+            return re;
+        }
         public String voidPackageDeposit(String pid)
         {
             String re = "";
