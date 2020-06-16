@@ -3672,7 +3672,7 @@ namespace clinic_ivf.gui
             grfPkg.Dock = DockStyle.Fill;
             grfPkg.Location = new Point(0, 0);
             grfPkg.Rows.Count = 1;
-            grfPkg.Name = "grfPkg_" + cnt.ToString();
+            grfPkg.Name = "grfPkg_" + pkgsid;
             
             tabPkgUse.Controls.Add(grfPkg);
             setGrfPgk(pkgsid, grfPkg);
@@ -3681,10 +3681,10 @@ namespace clinic_ivf.gui
         private void setGrfPgk(String pkgsid, C1FlexGrid grfPkg)
         {
             //grfDept.Rows.Count = 7;
-            grfPkg.Clear();
+            //grfPkg.Clear();
             DataTable dt = new DataTable();
             dt = ic.ivfDB.oPkgdpDB.selectByPkgId2(pkgsid);
-
+            grfPkg.Rows.Count = 1;
             grfPkg.Rows.Count = dt.Rows.Count + 1;
             //grfEmbryo.Rows.Count = dt.Rows.Count + 1;
             //grfPackageD.DataSource = dt;
@@ -4736,7 +4736,17 @@ namespace clinic_ivf.gui
                 ic.ivfDB.oJlabdDB.deleteByPkgsId(id);
                 ic.ivfDB.ojsdDB.deleteByPk(id);
             }
+
             setGrfOrder(txtVnOld.Text);
+            
+            foreach(C1FlexGrid grf in lgrfPkg)
+            {
+                if (grf.Name.Equals("grfPkg_" + pkgsid))
+                {
+                    setGrfPgk(pkgsid, grf);
+                }
+            }
+            
         }
         private void setGrfOrder(String vn)
         {
@@ -5680,7 +5690,7 @@ namespace clinic_ivf.gui
                         Decimal.TryParse(qty, out qty1);
                         Decimal.TryParse(qtyext, out qtyext1);
                         ic.ivfDB.PxAdd(drugid, (qty1 - qtyext1).ToString(), txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", grfOrder.Rows.Count.ToString(), usage, "old", pkgdid);
-                        ic.ivfDB.PxAdd(drugid, qtyext, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", grfOrder.Rows.Count.ToString(), usage, "old", pkgdid);
+                        ic.ivfDB.PxAdd(drugid, qtyext, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "1", grfOrder.Rows.Count.ToString(), usage, "old", pkgdid);
                     }
                     else
                     {
@@ -5717,11 +5727,11 @@ namespace clinic_ivf.gui
                     Decimal.TryParse(qty, out qty1);
                     Decimal.TryParse(qtyext, out qtyext1);
                     ic.ivfDB.PxAdd(drugid, (qty1 - qtyext1).ToString(), txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", grfOrder.Rows.Count.ToString(), usage, "old", pkgdid);
-                    ic.ivfDB.PxAdd(drugid, qtyext, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", grfOrder.Rows.Count.ToString(), usage, "old", pkgdid);
+                    ic.ivfDB.PxAdd(drugid, qtyext, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "1", grfOrder.Rows.Count.ToString(), usage, "old", "");
                 }
                 else
                 {
-                    ic.ivfDB.PxAdd(drugid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "1", grfOrder.Rows.Count.ToString(), usage, pkgdid);
+                    ic.ivfDB.PxAdd(drugid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "1", grfOrder.Rows.Count.ToString(), usage, "");
                 }
                 //}
             }
@@ -6567,6 +6577,11 @@ namespace clinic_ivf.gui
                         Decimal.TryParse(pkgqty, out pkgqty1);
                         Decimal.TryParse(pkguse, out pkguse1);
                         Decimal.TryParse(qty, out qty1);
+                        if(pkgqty1 < pkguse1)
+                        {
+                            pkgsid = "";
+                            break;
+                        }
                         qtyamt = pkgqty1 - pkguse1;
                         qtyamt -= qty1;
                         qtyamt = Math.Abs(qtyamt);

@@ -147,6 +147,7 @@ namespace clinic_ivf.objdb
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
+        
         public String selectSumPriceByBilId(String bilid, String bilgrpid)
         {
             DataTable dt = new DataTable();
@@ -573,6 +574,26 @@ namespace clinic_ivf.objdb
             sql = "Update " + obilld.table + " Set " +                                
                 " " + obilld.closeday_id + "= '" + cldid + "'" +
                 "Where " + obilld.closeday_id + "='0'";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+            return re;
+        }
+        public String updatePaymentPeriod(String vn, String pkgsid, String amt)
+        {
+            DataTable dt = new DataTable();
+            String sql = "", re="";
+            //dt = selectByVN(vn);
+            sql = "Update " + obilld.table + " Set " +
+                " " + obilld.Price + "= '" + amt + "'" +
+                "," + obilld.price1 + "= '" + amt + "'" +
+                "," + obilld.Total + "= '" + amt + "'" +
+                "Where " + obilld.VN + "='" + vn + "' and "+obilld.pcksid +" = '"+pkgsid+"' ";
             try
             {
                 re = conn.ExecuteNonQuery(conn.conn, sql);
