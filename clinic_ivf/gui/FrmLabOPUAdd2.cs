@@ -866,6 +866,11 @@ namespace clinic_ivf.gui
                         ccc.Text = Clipboard.GetText();
                         //Clipboard.SetText(ccc.SelectedText);
                     }
+                    else if(ctl1 is C1TextBox)
+                    {
+                        C1TextBox ccc = (C1TextBox)ctl1;
+                        ccc.Value = Clipboard.GetText();
+                    }
                     return true;
                 case Keys.S | Keys.Control :
                     if (ic.user.status_module_lab.Equals("1"))
@@ -890,43 +895,57 @@ namespace clinic_ivf.gui
                     Control ctl = new Control();
                     ctl = GetFocusedControl();
                     txt = ctl.Text;
-                    if (grf2Focus)
+                    if(ctl is C1FlexGrid)
                     {
-                        txt = grfDay2[grfDay2.Row, grfDay2.Col].ToString();
-                    }
-                    else if (grf3Focus)
-                    {
-                        txt = grfDay3[grfDay3.Row, grfDay3.Col].ToString();
-                    }
-                    else if (grf5Focus)
-                    {
-                        txt = grfDay5[grfDay5.Row, grfDay5.Col].ToString();
-                    }
-                    else if (grf6Focus)
-                    {
-                        txt = grfDay6[grfDay6.Row, grfDay6.Col].ToString();
-                    }
-                    else
-                    {
-                        if(ctl is C1ComboBox)
+                        if (grf2Focus)
                         {
-                            C1ComboBox ccc = (C1ComboBox)ctl;
-                            Clipboard.SetText(ccc.SelectedText);
+                            txt = grfDay2[grfDay2.Row, grfDay2.Col].ToString();
+                        }
+                        else if (grf3Focus)
+                        {
+                            txt = grfDay3[grfDay3.Row, grfDay3.Col].ToString();
+                        }
+                        else if (grf5Focus)
+                        {
+                            txt = grfDay5[grfDay5.Row, grfDay5.Col].ToString();
+                        }
+                        else if (grf6Focus)
+                        {
+                            txt = grfDay6[grfDay6.Row, grfDay6.Col].ToString();
+                        }
+                        if (!txt.Equals(""))
+                        {
+                            Clipboard.SetText(txt);
                         }
                     }
-                    //else if (grf6Focus)
-                    //{
-                    //    txt = grfDay6[grfDay6.Row, grfDay6.Col].ToString();
-                    //}
-                    //else if (this.Controls is C1ComboBox)
-                    //{
-                    //    txt = grfDay6[grfDay6.Row, grfDay6.Col].ToString();
-                    //}
-                    if (!txt.Equals(""))
+                    else if(ctl is C1ComboBox)
                     {
-                        Clipboard.SetText(txt);
+                        C1ComboBox ccc = (C1ComboBox)ctl;
+                        Clipboard.SetText(ccc.SelectedText);
                     }
-                    return true; // signal that we've processed this key
+                    else if (ctl is C1TextBox)
+                    {
+                        C1TextBox ccc = (C1TextBox)ctl;
+                        Clipboard.SetText(ccc.SelectedText);
+                    }
+                        //Application.OpenForms["FrmLabOPUAdd2"].Focus();
+                        //var container = control as IContainerControl;
+                        //while (container != null)
+                        //{
+                        //    control = container.ActiveControl;
+                        //    container = control as IContainerControl;
+                        //}
+
+                        //else if (grf6Focus)
+                        //{
+                        //    txt = grfDay6[grfDay6.Row, grfDay6.Col].ToString();
+                        //}
+                        //else if (this.Controls is C1ComboBox)
+                        //{
+                        //    txt = grfDay6[grfDay6.Row, grfDay6.Col].ToString();
+                        //}
+
+                        return true; // signal that we've processed this key
             }
             return base.ProcessCmdKey(ref msg, keyData);
         }

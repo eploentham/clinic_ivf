@@ -169,6 +169,9 @@
     <Compile Include="gui\FrmCashierAdd.Designer.cs">
       <DependentUpon>FrmCashierAdd.cs</DependentUpon>
     </Compile>
+    <Compile Include="gui\FrmCashierRefund.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="gui\FrmCashierView.cs">
       <SubType>Form</SubType>
     </Compile>

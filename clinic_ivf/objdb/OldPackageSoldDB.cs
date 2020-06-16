@@ -247,7 +247,10 @@ namespace clinic_ivf.objdb
 
             sql = "Update " + opkgs.table + " Set " +
                 " " + opkgs.Status + " = '1'" +
-                "Where " + opkgs.PCKSID + "= (select billd.pcksid from BillDetail billd inner join BillHeader billh on billd.bill_id = billh.bill_id where billh.bill_id = '"+ pkgsid + "' and billd.status='package') "
+                "Where " + opkgs.PCKSID + "= " +
+                "(select billd.pcksid " +
+                "from BillDetail billd inner join BillHeader billh on billd.bill_id = billh.bill_id " +
+                "where billh.bill_id = '"+ pkgsid + "' and billd.status='package') "
                 ;
             try
             {
@@ -342,6 +345,78 @@ namespace clinic_ivf.objdb
 
             sql = "Update " + opkgs.table + " set " +
                 "" + opkgs.P4BDetailID + "='" + billno + "' " +
+                //"," + opkgs.Payment1 + "='" + pay + "' " +
+                "Where " + opkgs.PCKSID + "='" + pcksid + "' ";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+            return re;
+        }
+        public String updatePayment1(String pcksid, String amt)
+        {
+            String re = "", sql = "";
+
+            sql = "Update " + opkgs.table + " set " +
+                "" + opkgs.Payment1 + "='" + amt + "' " +
+                //"," + opkgs.Payment1 + "='" + pay + "' " +
+                "Where " + opkgs.PCKSID + "='" + pcksid + "' ";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+            return re;
+        }
+        public String updatePayment2(String pcksid, String amt)
+        {
+            String re = "", sql = "";
+
+            sql = "Update " + opkgs.table + " set " +
+                "" + opkgs.Payment2 + "='" + amt + "' " +
+                //"," + opkgs.Payment1 + "='" + pay + "' " +
+                "Where " + opkgs.PCKSID + "='" + pcksid + "' ";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+            return re;
+        }
+        public String updatePayment3(String pcksid, String amt)
+        {
+            String re = "", sql = "";
+
+            sql = "Update " + opkgs.table + " set " +
+                "" + opkgs.Payment3 + "='" + amt + "' " +
+                //"," + opkgs.Payment1 + "='" + pay + "' " +
+                "Where " + opkgs.PCKSID + "='" + pcksid + "' ";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+            return re;
+        }
+        public String updatePayment4(String pcksid, String amt)
+        {
+            String re = "", sql = "";
+
+            sql = "Update " + opkgs.table + " set " +
+                "" + opkgs.Payment4 + "='" + amt + "' " +
                 //"," + opkgs.Payment1 + "='" + pay + "' " +
                 "Where " + opkgs.PCKSID + "='" + pcksid + "' ";
             try

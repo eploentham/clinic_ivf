@@ -70,6 +70,7 @@
             this.tabBillItem = new C1.Win.C1Command.C1DockingTabPage();
             this.pnBillD = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.btnItmAdd = new C1.Win.C1Input.C1Button();
             this.btnPayPeriod = new C1.Win.C1Input.C1Button();
             this.btnDiscountAdd = new C1.Win.C1Input.C1Button();
@@ -108,7 +109,6 @@
             this.txtPayName = new C1.Win.C1Input.C1TextBox();
             this.tabReceipt = new C1.Win.C1Command.C1DockingTabPage();
             this.tabLabPrescription = new C1.Win.C1Command.C1DockingTabPage();
-            this.panel4 = new System.Windows.Forms.Panel();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtBillId)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtVnShow)).BeginInit();
@@ -778,6 +778,16 @@
             this.panel2.TabIndex = 699;
             this.theme1.SetTheme(this.panel2, "(default)");
             // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.panel4.Location = new System.Drawing.Point(1089, 3);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(179, 138);
+            this.panel4.TabIndex = 758;
+            this.theme1.SetTheme(this.panel4, "(default)");
+            // 
             // btnItmAdd
             // 
             this.btnItmAdd.Image = global::clinic_ivf.Properties.Resources.zoom_in24;
@@ -1331,16 +1341,6 @@
             this.tabLabPrescription.Size = new System.Drawing.Size(1274, 545);
             this.tabLabPrescription.TabIndex = 1;
             this.tabLabPrescription.Text = "Prescription";
-            // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.panel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.panel4.Location = new System.Drawing.Point(1089, 3);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(179, 138);
-            this.panel4.TabIndex = 758;
-            this.theme1.SetTheme(this.panel4, "(default)");
             // 
             // FrmCashierAdd
             // 

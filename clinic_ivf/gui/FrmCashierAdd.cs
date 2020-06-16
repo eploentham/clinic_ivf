@@ -1030,6 +1030,7 @@ namespace clinic_ivf.gui
             grfPkgPayPeriod.Cols[2].Caption = "งวด 2";
             grfPkgPayPeriod.Cols[3].Caption = "งวด 3";
             grfPkgPayPeriod.Cols[4].Caption = "งวด 4";
+            
             ContextMenu menuGw = new ContextMenu();
             menuGw.MenuItems.Add("บันทึกข้อมูล", new EventHandler(ContextMenu_pkgpayperiod_save));
             grfPkgPayPeriod.ContextMenu = menuGw;
@@ -1042,7 +1043,44 @@ namespace clinic_ivf.gui
         }
         private void ContextMenu_pkgpayperiod_save(object sender, System.EventArgs e)
         {
-            
+            if (grfPkgPayPeriod == null) return;
+            if (grfPkgPayPeriod.Row <= 0) return;
+            if (grfPkgPayPeriod.Col <= 0) return;
+
+            String pkgsid = "";
+            Decimal amt = 0, period1=0, period2=0, period3=0, period4=0;
+            Boolean chkPayment = false;
+
+            pkgsid = grfPkgPayPeriod[grfPkgPayPeriod.Row, 6].ToString();
+            Decimal.TryParse(txtAmt.Text.Trim(), out amt);
+            Decimal.TryParse(grfPkgPayPeriod[grfPkgPayPeriod.Row, 1].ToString(), out period1);
+            Decimal.TryParse(grfPkgPayPeriod[grfPkgPayPeriod.Row, 2].ToString(), out period2);
+            Decimal.TryParse(grfPkgPayPeriod[grfPkgPayPeriod.Row, 3].ToString(), out period3);
+            Decimal.TryParse(grfPkgPayPeriod[grfPkgPayPeriod.Row, 4].ToString(), out period4);
+
+            OldPackageSold pkgs = new OldPackageSold();
+            pkgs = ic.ivfDB.opkgsDB.selectByPk1(pkgsid);
+            if (pkgs.P1BDetailID.Length > 0) chkPayment = true;
+            if (pkgs.P2BDetailID.Length > 0) chkPayment = true;
+            if (pkgs.P3BDetailID.Length > 0) chkPayment = true;
+            if (pkgs.P4BDetailID.Length > 0) chkPayment = true;
+
+            if (chkPayment)
+            {
+                MessageBox.Show("มีการรับชำระไปแล้ว ", "");
+                return;
+            }
+            if ((period1 + period2+ period3+ period4) < amt)
+            {
+                MessageBox.Show("ยอดรับชำระ น้อยกว่า ยอด BILL ", "");
+                return;
+            }
+            String re1 = "", re2 = "", re3 = "", re4 = "";
+            re1 = ic.ivfDB.opkgsDB.updatePayment1(pkgsid, period1.ToString());
+            re2 = ic.ivfDB.opkgsDB.updatePayment1(pkgsid, period2.ToString());
+            re3 = ic.ivfDB.opkgsDB.updatePayment1(pkgsid, period3.ToString());
+            re4 = ic.ivfDB.opkgsDB.updatePayment1(pkgsid, period4.ToString());
+
         }
         private void setGrfPkgPayPeriod()
         {
@@ -1076,25 +1114,25 @@ namespace clinic_ivf.gui
                 {
                     CellNote note = new CellNote(period1.ToString());
                     CellRange rg = grfPkgPayPeriod.GetCellRange(grfPkgPayPeriod.Rows.Count-1, 1);
-                    rg.UserData = note;
+                    rg.UserData = "เลขที่ใบเสร็จ "+note;
                 }
                 if (int.TryParse(row["P2BDetailID"].ToString(), out period2))
                 {
                     CellNote note = new CellNote(period2.ToString());
                     CellRange rg = grfPkgPayPeriod.GetCellRange(grfPkgPayPeriod.Rows.Count-1, 1);
-                    rg.UserData = note;
+                    rg.UserData = "เลขที่ใบเสร็จ " + note;
                 }
                 if (int.TryParse(row["P3BDetailID"].ToString(), out period3))
                 {
                     CellNote note = new CellNote(period3.ToString());
                     CellRange rg = grfPkgPayPeriod.GetCellRange(grfPkgPayPeriod.Rows.Count-1, 1);
-                    rg.UserData = note;
+                    rg.UserData = "เลขที่ใบเสร็จ " + note;
                 }
                 if (int.TryParse(row["P4BDetailID"].ToString(), out period4))
                 {
                     CellNote note = new CellNote(period4.ToString());
                     CellRange rg = grfPkgPayPeriod.GetCellRange(grfPkgPayPeriod.Rows.Count-1, 1);
-                    rg.UserData = note;
+                    rg.UserData = "เลขที่ใบเสร็จ " + note;
                 }
             }
             CellNoteManager mgr = new CellNoteManager(grfPkgPayPeriod);
@@ -1791,7 +1829,7 @@ namespace clinic_ivf.gui
             tC1.SelectedTab = tabBillItem;
             panel4.Height = panel2.Height;
             panel4.BackColor = Color.Khaki;
-            panel4.Width = 400;
+            panel4.Width = 500;
             panel4.Top = 0;
         }
     }

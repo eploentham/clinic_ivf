@@ -201,20 +201,27 @@ namespace clinic_ivf.objdb
             String re = "";
             String sql = "";
             int chk = 0;
-            sql = "Update " + opuEmDev.table + " Set " +
+            DataTable dt = new DataTable();
+            sql = "select max(opu_embryo_dev_no) as cnt from lab_t_opu_embryo_dev where opu_fet_id = '" + opufetid + "' and active = '1'";
+            dt = conn.selectData(conn.conn, sql);
+            if (dt.Rows.Count > 0)
+            {
+                sql = "Update " + opuEmDev.table + " Set " +
                 " " + opuEmDev.active + " = '3'" +
                 "," + opuEmDev.date_cancel + " = now()" +
                 "," + opuEmDev.user_cancel + " = '" + userid + "' " +
-                "Where " + opuEmDev.opu_fet_id + "='" + opufetid + "' and opu_embryo_dev_no = (select max(opu_embryo_dev_no) from lab_t_opu_embryo_dev where opu_fet_id = '" + opufetid + "') ";
-            try
-            {
-                re = conn.ExecuteNonQuery(conn.conn, sql);
+                "Where " + opuEmDev.opu_fet_id + "='" + opufetid + "' " +
+                "and opu_embryo_dev_no = '"+dt.Rows[0]["cnt"].ToString()+"' ";
+                try
+                {
+                    re = conn.ExecuteNonQuery(conn.conn, sql);
+                }
+                catch (Exception ex)
+                {
+                    sql = ex.Message + " " + ex.InnerException;
+                }
             }
-            catch (Exception ex)
-            {
-                sql = ex.Message + " " + ex.InnerException;
-            }
-
+            
             return re;
         }
         public String VoidLabOpuEmbryoDev(String id, String userid)

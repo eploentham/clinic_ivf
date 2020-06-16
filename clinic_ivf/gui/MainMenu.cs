@@ -115,6 +115,15 @@ namespace clinic_ivf.gui
             menuConfig.Click += MenuConfig_Click;
             menuItemMas.Click += MenuItemMas_Click;
             menuMiscView.Click += MenuMiscView_Click;
+            menuCashierRefund.Click += MenuCashierRefund_Click;
+        }
+
+        private void MenuCashierRefund_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            FrmCashierRefund frm = new FrmCashierRefund(ic, "");
+            frm.FormBorderStyle = FormBorderStyle.None;
+            AddNewTab(frm, menuCashierRefund.Text + " ");
         }
 
         private void MenuMiscView_Click(object sender, EventArgs e)
@@ -683,8 +692,8 @@ namespace clinic_ivf.gui
         {
             String date = "";
             date = DateTime.Now.Year+"-"+ DateTime.Now.ToString("MM-dd");
-            this.Text = ic.iniC.statusAppDonor.Equals("1") ? "โปรแกรมClinic IVF Donor " +"สวัสดี คุณ "+ic.user.staff_fname_t +" "+ic.user.staff_lname_t+" Update 2020-06-13 "
-                : "โปรแกรมClinic IVF " + "สวัสดี คุณ " + ic.user.staff_fname_t + " " + ic.user.staff_lname_t + " Update 2020-06-13 format date " + date;
+            this.Text = ic.iniC.statusAppDonor.Equals("1") ? "โปรแกรมClinic IVF Donor " +"สวัสดี คุณ "+ic.user.staff_fname_t +" "+ic.user.staff_lname_t+" Update 2020-06-15 "
+                : "โปรแกรมClinic IVF " + "สวัสดี คุณ " + ic.user.staff_fname_t + " " + ic.user.staff_lname_t + " Update 2020-06-15 format date " + date;
             //theme1.SetTheme(this, ic.theme);
             theme1.SetTheme(this, ic.theme);
             theme1.SetTheme(menuStrip1, ic.theme);

@@ -41,6 +41,7 @@
             this.menuReqOR = new System.Windows.Forms.ToolStripMenuItem();
             this.menuOrScreen = new System.Windows.Forms.ToolStripMenuItem();
             this.menuReqLabFormA = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuMiscView = new System.Windows.Forms.ToolStripMenuItem();
             this.menuLab = new System.Windows.Forms.ToolStripMenuItem();
             this.menuLabAccept = new System.Windows.Forms.ToolStripMenuItem();
             this.menuLabOpu = new System.Windows.Forms.ToolStripMenuItem();
@@ -92,7 +93,7 @@
             this.tC1 = new C1.Win.C1Command.C1DockingTab();
             this.PageS = new C1.Win.C1Command.C1DockingTabPage();
             this.theme1 = new C1.Win.C1Themes.C1ThemeController();
-            this.menuMiscView = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuCashierRefund = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tCC1)).BeginInit();
             this.tCC1.SuspendLayout();
@@ -142,19 +143,19 @@
             // menuPatient
             // 
             this.menuPatient.Name = "menuPatient";
-            this.menuPatient.Size = new System.Drawing.Size(145, 22);
+            this.menuPatient.Size = new System.Drawing.Size(180, 22);
             this.menuPatient.Text = "ประวัติคนไข้";
             // 
             // menuVisitNew
             // 
             this.menuVisitNew.Name = "menuVisitNew";
-            this.menuVisitNew.Size = new System.Drawing.Size(145, 22);
+            this.menuVisitNew.Size = new System.Drawing.Size(180, 22);
             this.menuVisitNew.Text = "ออก Visit";
             // 
             // menuAppn
             // 
             this.menuAppn.Name = "menuAppn";
-            this.menuAppn.Size = new System.Drawing.Size(145, 22);
+            this.menuAppn.Size = new System.Drawing.Size(180, 22);
             this.menuAppn.Text = "Appointment";
             // 
             // menuNurse
@@ -209,6 +210,12 @@
             this.menuReqLabFormA.Size = new System.Drawing.Size(182, 22);
             this.menuReqLabFormA.Text = "Request LAB Form A";
             this.menuReqLabFormA.Visible = false;
+            // 
+            // menuMiscView
+            // 
+            this.menuMiscView.Name = "menuMiscView";
+            this.menuMiscView.Size = new System.Drawing.Size(182, 22);
+            this.menuMiscView.Text = "เบิกเบ็ดเตล็ด";
             // 
             // menuLab
             // 
@@ -286,7 +293,8 @@
             // menuCashier
             // 
             this.menuCashier.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuCashierDefault});
+            this.menuCashierDefault,
+            this.menuCashierRefund});
             this.menuCashier.Name = "menuCashier";
             this.menuCashier.Size = new System.Drawing.Size(58, 20);
             this.menuCashier.Text = "Cashier";
@@ -294,7 +302,7 @@
             // menuCashierDefault
             // 
             this.menuCashierDefault.Name = "menuCashierDefault";
-            this.menuCashierDefault.Size = new System.Drawing.Size(151, 22);
+            this.menuCashierDefault.Size = new System.Drawing.Size(180, 22);
             this.menuCashierDefault.Text = "Cashier Screen";
             // 
             // menuMedicalRecord
@@ -589,11 +597,11 @@
             // 
             this.theme1.Theme = "BeigeOne";
             // 
-            // menuMiscView
+            // menuCashierRefund
             // 
-            this.menuMiscView.Name = "menuMiscView";
-            this.menuMiscView.Size = new System.Drawing.Size(182, 22);
-            this.menuMiscView.Text = "เบิกเบ็ดเตล็ด";
+            this.menuCashierRefund.Name = "menuCashierRefund";
+            this.menuCashierRefund.Size = new System.Drawing.Size(180, 22);
+            this.menuCashierRefund.Text = "Refund";
             // 
             // MainMenu
             // 
@@ -685,5 +693,6 @@
         private System.Windows.Forms.ToolStripMenuItem menuConfig;
         private System.Windows.Forms.ToolStripMenuItem menuItemMas;
         private System.Windows.Forms.ToolStripMenuItem menuMiscView;
+        private System.Windows.Forms.ToolStripMenuItem menuCashierRefund;
     }
 }
