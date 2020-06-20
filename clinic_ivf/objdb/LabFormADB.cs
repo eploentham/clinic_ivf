@@ -787,6 +787,28 @@ namespace clinic_ivf.objdb
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
+        public DataTable selectReportByHn(String hn)
+        {
+            DataTable dt = new DataTable();
+            String sql = "", wheredate = "", wherehnmale = "";
+
+            if (!hn.Equals(""))
+            {
+                wherehnmale = " " + lformA.hn_male + " like '%" + hn + "%' ";
+            }
+            
+            sql = "select lformA.*,CONCAT(IFNULL(sfn.patient_prefix_description,''),' ', ptt.patient_firstname_e ,' ',ptt.patient_lastname_e ) as name_male  " +
+                //",CONCAT(IFNULL(sfnm.SurfixName,''),' ', ptt_m.PName ,' ',ptt_m.PSurname ) as name_male, dtr.Name as doctor_name " +
+                "From " + lformA.table + " lformA " +
+                "Left Join t_patient as ptt on ptt.patient_hn = lformA.hn_male " +
+                "Left Join f_patient_prefix sfn on sfn.f_patient_prefix_id = ptt.f_patient_prefix_id " +
+                
+                "Where " +
+                " " + wherehnmale +
+                " and lformA." + lformA.active + "='1'";
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
         public DataTable selectByPk(String pttId)
         {
             DataTable dt = new DataTable();

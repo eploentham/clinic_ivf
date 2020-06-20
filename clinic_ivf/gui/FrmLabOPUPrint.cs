@@ -473,26 +473,8 @@ namespace clinic_ivf.gui
             if (dt == null) return "";
             try
             {
-                if ((chkEmbryoDev20.Checked) && chkEmbryoFreez2Col.Checked)
-                {
-                    rpt.Load("lab_opu_freeze_2_column.rpt");
-                }
-                else if ((!chkEmbryoDev20.Checked) && chkEmbryoFreez2Col.Checked)
-                {
-                    rpt.Load("lab_opu_freeze_2_column_more_20.rpt");
-                }
-                else if ((chkEmbryoDev20.Checked) && !chkEmbryoFreez2Col.Checked)   // one column
-                {
-                    rpt.Load("lab_opu.rpt");
-                }
-                else if ((!chkEmbryoDev20.Checked) && !chkEmbryoFreez2Col.Checked)   // one column
-                {
-                    rpt.Load("lab_opu_more_20.rpt");
-                }
-                else
-                {
-
-                }
+                String rptname = setRptName();
+                rpt.Load(rptname);
                 crv.ReportSource = rpt;
                 System.Threading.Thread.Sleep(200);
                 crv.Refresh();
@@ -553,6 +535,38 @@ namespace clinic_ivf.gui
             }
             return "";
         }
+        private String setRptName()
+        {
+            String rptname = "";
+            if (chkEmbryoDev20.Checked && chkEmbryoFreez2Col.Checked)// more20_oneday, two_column
+            {
+                //rpt.Load("lab_opu_freeze_2_column.rpt");
+                //rpt.Load("lab_opu_freeze_2_column_more_20.rpt");
+                rptname = "lab_opu_freeze_2_column_more_20.rpt";
+            }
+            else if (!chkEmbryoDev20.Checked && chkEmbryoFreez2Col.Checked)// two_day, two_column
+            {
+                //rpt.Load("lab_opu_freeze_2_column_more_20.rpt");
+                //rpt.Load("lab_opu_freeze_2_column.rpt");
+                rptname = "lab_opu_freeze_2_column.rpt";
+            }
+            else if (chkEmbryoDev20.Checked && !chkEmbryoFreez2Col.Checked)   // more20_oneday, one_column
+            {
+                //rpt.Load("lab_opu_more_20.rpt");
+                rptname = "lab_opu_more_20.rpt";
+            }
+            else if (!chkEmbryoDev20.Checked && !chkEmbryoFreez2Col.Checked)   // two_day, one_column
+            {
+                //rpt.Load("lab_opu_more_20.rpt");
+                //rpt.Load("lab_opu.rpt");
+                rptname = "lab_opu.rpt";
+            }
+            else
+            {
+
+            }
+            return rptname;
+        }
         private String setExportDay5(String flagPreview)
         {
             ReportDocument rpt;
@@ -566,26 +580,8 @@ namespace clinic_ivf.gui
             if (dt == null) return "";
             try
             {
-                if ((chkEmbryoDev20.Checked) && chkEmbryoFreez2Col.Checked)
-                {
-                    rpt.Load("lab_opu_freeze_2_column.rpt");
-                }
-                else if ((!chkEmbryoDev20.Checked) && chkEmbryoFreez2Col.Checked)
-                {
-                    rpt.Load("lab_opu_freeze_2_column_more_20.rpt");
-                }
-                else if ((chkEmbryoDev20.Checked) && !chkEmbryoFreez2Col.Checked)   // one column
-                {
-                    rpt.Load("lab_opu.rpt");
-                }
-                else if ((!chkEmbryoDev20.Checked) && !chkEmbryoFreez2Col.Checked)   // one column
-                {
-                    rpt.Load("lab_opu_more_20.rpt");
-                }
-                else
-                {
-
-                }
+                String rptname = setRptName();
+                rpt.Load(rptname);
                 crv.ReportSource = rpt;
                 System.Threading.Thread.Sleep(200);
                 crv.Refresh();
@@ -658,26 +654,8 @@ namespace clinic_ivf.gui
             dt = printOPUReport("");
             try
             {
-                if ((chkEmbryoDev20.Checked) && chkEmbryoFreez2Col.Checked)
-                {
-                    rpt.Load("lab_opu_freeze_2_column.rpt");
-                }
-                else if ((!chkEmbryoDev20.Checked) && chkEmbryoFreez2Col.Checked)
-                {
-                    rpt.Load("lab_opu_freeze_2_column_more_20.rpt");
-                }
-                else if ((chkEmbryoDev20.Checked) && !chkEmbryoFreez2Col.Checked)   // one column
-                {
-                    rpt.Load("lab_opu.rpt");
-                }
-                else if ((!chkEmbryoDev20.Checked) && !chkEmbryoFreez2Col.Checked)   // one column
-                {
-                    rpt.Load("lab_opu_more_20.rpt");
-                }
-                else
-                {
-
-                }
+                String rptname = setRptName();
+                rpt.Load(rptname);
                 crv.ReportSource = rpt;
                 System.Threading.Thread.Sleep(200);
                 crv.Refresh();

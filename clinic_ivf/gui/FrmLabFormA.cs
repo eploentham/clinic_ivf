@@ -1,5 +1,6 @@
 ﻿using C1.Win.C1Input;
 using C1.Win.C1SuperTooltip;
+using C1.Win.C1Themes;
 using clinic_ivf.control;
 using clinic_ivf.object1;
 using clinic_ivf.Properties;
@@ -28,7 +29,8 @@ namespace clinic_ivf.gui
 
         C1SuperTooltip stt;
         C1SuperErrorProvider sep;
-        String statusOPU = "", statusFET = "", flag="";
+        String statusOPU = "", statusFET = "", flag="", theme11;
+        
         [DllImport("winspool.drv", CharSet = CharSet.Auto, SetLastError = true)]
         public static extern bool SetDefaultPrinter(string Printer);
         public FrmLabFormA(IvfControl ic, String lformaId, String pttid, String vsid, String vn)
@@ -51,6 +53,19 @@ namespace clinic_ivf.gui
             this.pttid = pttid;
             this.vn = vn;
             this.flag = flag;
+            //this.reqid = reqid;
+            initConfig();
+        }
+        public FrmLabFormA(IvfControl ic, String lformaId, String pttid, String vsid, String vn, String flag, String theme1)
+        {
+            InitializeComponent();
+            this.ic = ic;
+            this.lformaId = lformaId;
+            this.vsid = vsid;
+            this.pttid = pttid;
+            this.vn = vn;
+            this.flag = flag;
+            this.theme11 = theme1;
             //this.reqid = reqid;
             initConfig();
         }
@@ -172,8 +187,80 @@ namespace clinic_ivf.gui
             //lbMessage.Hide();
             lbMessage1.Text = "";
             sB1.Text = "";
+            setTheme();
         }
-
+        private void setTheme()
+        {
+            if(theme11 != null)
+            {
+                theme1.SetTheme(this, theme11);
+                theme1.SetTheme(groupBox1, theme11);
+                theme1.SetTheme(groupBox2, theme11);
+                theme1.SetTheme(gbETFET, theme11);
+                theme1.SetTheme(gbSpermAnalysis, theme11);
+                theme1.SetTheme(gbSpermFreezing, theme11);
+                theme1.SetTheme(gbSpermPESA, theme11);
+                theme1.SetTheme(gbSpermIUI, theme11);
+                theme1.SetTheme(panel1, theme11);
+                theme1.SetTheme(panel3, theme11);
+                theme1.SetTheme(pnFreshSprem, theme11);
+                theme1.SetTheme(gbEmbryoFresh, theme11);
+                theme1.SetTheme(pnFET, theme11);
+                theme1.SetTheme(pnSpermFreezing, theme11);
+                foreach (Control c in groupBox1.Controls)
+                {
+                    theme1.SetTheme(c, theme11);
+                }
+                foreach (Control c in groupBox2.Controls)
+                {
+                    theme1.SetTheme(c, theme11);
+                }
+                foreach (Control c in gbETFET.Controls)
+                {
+                    theme1.SetTheme(c, theme11);
+                }
+                foreach (Control c in gbSpermAnalysis.Controls)
+                {
+                    theme1.SetTheme(c, theme11);
+                }
+                foreach (Control c in gbSpermFreezing.Controls)
+                {
+                    theme1.SetTheme(c, theme11);
+                }
+                foreach (Control c in gbSpermPESA.Controls)
+                {
+                    theme1.SetTheme(c, theme11);
+                }
+                foreach (Control c in gbSpermIUI.Controls)
+                {
+                    theme1.SetTheme(c, theme11);
+                }
+                foreach (Control c in panel1.Controls)
+                {
+                    theme1.SetTheme(c, theme11);
+                }
+                foreach (Control c in panel3.Controls)
+                {
+                    theme1.SetTheme(c, theme11);
+                }
+                foreach (Control c in pnFreshSprem.Controls)
+                {
+                    theme1.SetTheme(c, theme11);
+                }
+                foreach (Control c in gbEmbryoFresh.Controls)
+                {
+                    theme1.SetTheme(c, theme11);
+                }
+                foreach (Control c in pnFET.Controls)
+                {
+                    theme1.SetTheme(c, theme11);
+                }
+                foreach (Control c in pnSpermFreezing.Controls)
+                {
+                    theme1.SetTheme(c, theme11);
+                }
+            }
+        }
         private void BtnVoidSpSa_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();

@@ -1036,6 +1036,7 @@ namespace clinic_ivf.gui
             menuGw.MenuItems.Add("บันทึกข้อมูล", new EventHandler(ContextMenu_pkgpayperiod_save));
             grfPkgPayPeriod.ContextMenu = menuGw;
             grfPkgPayPeriod.AfterRowColChange += GrfPkgPayPeriod_AfterRowColChange;
+            grfPkgPayPeriod.KeyUp += GrfPkgPayPeriod_KeyUp;
 
             grfPkgPayPeriod.SubtotalPosition = SubtotalPositionEnum.BelowData;
             panel4.Controls.Add(grfPkgPayPeriod);
@@ -1044,25 +1045,52 @@ namespace clinic_ivf.gui
 
         }
 
+        private void GrfPkgPayPeriod_KeyUp(object sender, KeyEventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (grfPkgPayPeriod == null) return;
+                if (grfPkgPayPeriod.Row < 1) return;
+                if (grfPkgPayPeriod.Col < 0) return;
+                if (grfPkgPayPeriod[grfPkgPayPeriod.Row, 1] == null) return;
+                if (grfPkgPayPeriod[grfPkgPayPeriod.Row, 2] == null) return;
+                if (grfPkgPayPeriod[grfPkgPayPeriod.Row, 3] == null) return;
+                if (grfPkgPayPeriod[grfPkgPayPeriod.Row, 4] == null) return;
+
+                Decimal amt = 0, period1 = 0, period2 = 0, period3 = 0, period4 = 0, pkgamt = 0;
+                Decimal.TryParse(grfPkgPayPeriod[grfPkgPayPeriod.Row, 1].ToString(), out period1);
+                Decimal.TryParse(grfPkgPayPeriod[grfPkgPayPeriod.Row, 2].ToString(), out period2);
+                Decimal.TryParse(grfPkgPayPeriod[grfPkgPayPeriod.Row, 3].ToString(), out period3);
+                Decimal.TryParse(grfPkgPayPeriod[grfPkgPayPeriod.Row, 4].ToString(), out period4);
+                Decimal.TryParse(grfPkgPayPeriod[grfPkgPayPeriod.Row, 8].ToString(), out pkgamt);
+                if (grfPkgPayPeriod.Col == 1)
+                {
+                    period2 = pkgamt - period1;
+                    grfPkgPayPeriod[grfPkgPayPeriod.Row, 2] = period2.ToString();
+                    grfPkgPayPeriod[grfPkgPayPeriod.Row, 3] = "0";
+                    grfPkgPayPeriod[grfPkgPayPeriod.Row, 4] = "0";
+                }
+                else if (grfPkgPayPeriod.Col == 2)
+                {
+                    period3 = pkgamt - period1- period2;
+                    grfPkgPayPeriod[grfPkgPayPeriod.Row, 3] = period3.ToString();
+                    grfPkgPayPeriod[grfPkgPayPeriod.Row, 4] = "0";
+                }
+                else if (grfPkgPayPeriod.Col == 3)
+                {
+                    period4 = pkgamt - period1- period2- period3;
+                    grfPkgPayPeriod[grfPkgPayPeriod.Row, 4] = period4.ToString();
+                }
+                amt = period1 + period2 + period3 + period4;
+                grfPkgPayPeriod[grfPkgPayPeriod.Row, 5] = amt;
+            }
+        }
+
         private void GrfPkgPayPeriod_AfterRowColChange(object sender, RangeEventArgs e)
         {
             //throw new NotImplementedException();
-            if (grfPkgPayPeriod == null) return;
-            if (grfPkgPayPeriod.Row < 1) return;
-            if (grfPkgPayPeriod.Col < 0) return;
-            if (grfPkgPayPeriod[grfPkgPayPeriod.Row, 1] == null) return;
-            if (grfPkgPayPeriod[grfPkgPayPeriod.Row, 2] == null) return;
-            if (grfPkgPayPeriod[grfPkgPayPeriod.Row, 3] == null) return;
-            if (grfPkgPayPeriod[grfPkgPayPeriod.Row, 4] == null) return;
-
-            Decimal amt = 0, period1 = 0, period2 = 0, period3 = 0, period4 = 0;
-            Decimal.TryParse(grfPkgPayPeriod[grfPkgPayPeriod.Row, 1].ToString(), out period1);
-            Decimal.TryParse(grfPkgPayPeriod[grfPkgPayPeriod.Row, 2].ToString(), out period2);
-            Decimal.TryParse(grfPkgPayPeriod[grfPkgPayPeriod.Row, 3].ToString(), out period3);
-            Decimal.TryParse(grfPkgPayPeriod[grfPkgPayPeriod.Row, 4].ToString(), out period4);
-
-            amt = period1 + period2 + period3 + period4;
-            grfPkgPayPeriod[grfPkgPayPeriod.Row, 5] = amt;
+            
         }
 
         private void ContextMenu_pkgpayperiod_save(object sender, System.EventArgs e)
@@ -1120,7 +1148,7 @@ namespace clinic_ivf.gui
         {
             DataTable dt = new DataTable();
             grfPkgPayPeriod.Rows.Count = 1;
-            grfPkgPayPeriod.Cols.Count = 8;
+            grfPkgPayPeriod.Cols.Count = 9;
             grfPkgPayPeriod.Cols[1].Width = 100;
             grfPkgPayPeriod.Cols[2].Width = 100;
             grfPkgPayPeriod.Cols[3].Width = 100;
@@ -1148,6 +1176,7 @@ namespace clinic_ivf.gui
                 
                 row1[6] = row["Status"].ToString();
                 row1[7] = row["PCKSID"].ToString();
+                row1[8] = row["Price"].ToString();
                 int period1 = 0, period2 = 0, period3 = 0, period4 = 0;
                 if(int.TryParse(row["P1BDetailID"].ToString(), out period1))
                 {

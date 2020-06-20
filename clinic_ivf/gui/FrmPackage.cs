@@ -124,10 +124,10 @@ namespace clinic_ivf.gui
                 MessageBox.Show("ไม่พบจำนวน ", "");
                 return;
             }
-            FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
-            frm.ShowDialog(this);
-            if (!ic.cStf.staff_id.Equals(""))
-            {
+            //FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+            //frm.ShowDialog(this);
+            //if (!ic.cStf.staff_id.Equals(""))
+            //{
                 OldPackageDetail oPkgD = new OldPackageDetail();
                 oPkgD.ID = "";
                 oPkgD.PCKID = txtID.Text;
@@ -137,7 +137,7 @@ namespace clinic_ivf.gui
                 oPkgD.QTY = qty;
                 ic.ivfDB.oPkgdDB.insertPackageDetail(oPkgD, ic.cStf.staff_id);
                 setGrfPkgD(txtID.Text);
-            }
+            //}
         }
         private void BtnEdit_Click(object sender, EventArgs e)
         {
@@ -241,6 +241,7 @@ namespace clinic_ivf.gui
             name = grfDrug[grfDrug.Row, colName] != null ? grfDrug[grfDrug.Row, colName].ToString() : "";
             txtDrugId.Value = id;
             txtDrugName.Value = name;
+            txtDrugQty.Value = "1";
         }
 
         private void setGrfDrug()
@@ -308,6 +309,7 @@ namespace clinic_ivf.gui
             name = grfSe[grfSe.Row, colName] != null ? grfSe[grfSe.Row, colName].ToString() : "";
             txtSeId.Value = id;
             txtSeName.Value = name;
+            txtSeQty.Value = "1";
         }
 
         private void setGrfSe()
@@ -380,6 +382,7 @@ namespace clinic_ivf.gui
             name = grfLab[grfLab.Row, colName] != null ? grfLab[grfLab.Row, colName].ToString() : "";
             txtLabId.Value = id;
             txtLabName.Value = name;
+            txtLabQty.Value = "1";
         }
         private void ContextMenu_grflab_select(object sender, System.EventArgs e)
         {
@@ -398,7 +401,7 @@ namespace clinic_ivf.gui
         {
             //grfDept.Rows.Count = 7;
 
-            grfLab.DataSource = ic.ivfDB.oLabiDB.selectAll1();
+            grfLab.DataSource = ic.ivfDB.oLabiDB.selectAll3();
             grfLab.Cols.Count = 5;
 
             grfLab.Cols[colID].Width = 80;
@@ -462,7 +465,7 @@ namespace clinic_ivf.gui
             //grdFlex.Cols[colID].Caption = "no";
             //grfDept.Cols[colCode].Caption = "รหัส";
             ContextMenu menuGw = new ContextMenu();
-            menuGw.MenuItems.Add("&แก้ไข Image", new EventHandler(ContextMenu_pkgd_delete));
+            menuGw.MenuItems.Add("Void detail Package", new EventHandler(ContextMenu_pkgd_delete));
             grfPkgD.ContextMenu = menuGw;
 
             grfPkgD.Cols[coldID].Caption = "รหัส";

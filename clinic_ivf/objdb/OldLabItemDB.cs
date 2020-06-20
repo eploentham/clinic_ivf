@@ -118,6 +118,17 @@ namespace clinic_ivf.objdb
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
+        public DataTable selectAll3()
+        {
+            DataTable dt = new DataTable();
+            String sql = "select labI.LID, labI.LName, labI.Price " +
+                "From " + labI.table + " labI " +
+                "Left Join LabItemGroup labg on labI." + labI.LGID + "=labg.LGID " +
+                "Where labI." + labI.active + " ='1' " +
+                "Order By " + labI.LName;
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
         public DataTable selectByPk(String pttId)
         {
             DataTable dt = new DataTable();

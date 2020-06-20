@@ -1762,3 +1762,26 @@ ADD COLUMN `qty_use` DECIMAL(17,2) NULL DEFAULT 0 AFTER `active`;
 
 
 Day1 06-06-2020 Mr. Tong Mingfu & Mrs. Meng Mi
+
+
+UPDATE `ivf`.`SpecialItem` SET `SID` = '2640000074' WHERE (`SID` = '2640000001');
+UPDATE `ivf`.`SpecialItem` SET `SID` = '2640000117' WHERE (`SID` = '2640000002');
+UPDATE `ivf`.`SpecialItem` SET `SID` = '2640000147' WHERE (`SID` = '2640000003');
+UPDATE `ivf`.`SpecialItem` SET `SID` = '2640000148' WHERE (`SID` = '2640000004');
+UPDATE `ivf`.`SpecialItem` SET `SID` = '2640000004' WHERE (`SID` = '2640000005');
+
+update StockDrug set DUID = 2217000217
+
+ where DUID = 217;
+
+update JobPxDetail set DUID = 2217000217
+
+where DUID = 217;
+
+
+update BillDetail set item_id =   2217000217
+
+where item_id = 217
+ 
+ and status = 'special';
+ 

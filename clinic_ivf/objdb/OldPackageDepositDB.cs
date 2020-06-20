@@ -236,8 +236,26 @@ namespace clinic_ivf.objdb
             String sql = "";
             int chk = 0;
             sql = "Update " + oPkgdp.table + " Set " +
-                " " + oPkgdp.active + " = '3'" +
+                " " + oPkgdp.active + " = '3' " +
                 "Where " + oPkgdp.PID + "='" + pid + "'";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+            return re;
+        }
+        public String voidPackageDepositByPkgsId(String pkgsid)
+        {
+            String re = "";
+            String sql = "";
+            int chk = 0;
+            sql = "Update " + oPkgdp.table + " Set " +
+                " " + oPkgdp.active + " = '3' " +
+                "Where " + oPkgdp.PCKSID + "='" + pkgsid + "'";
             try
             {
                 re = conn.ExecuteNonQuery(conn.conn, sql);

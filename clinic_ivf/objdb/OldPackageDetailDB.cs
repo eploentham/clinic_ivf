@@ -29,6 +29,12 @@ namespace clinic_ivf.objdb
             oPkgD.QTY= "QTY";
             oPkgD.active = "active";
             oPkgD.qty_use = "qty_use";
+            oPkgD.date_create = "date_create";
+            oPkgD.date_modi = "date_modi";
+            oPkgD.date_cancel = "date_cancel";
+            oPkgD.user_create = "user_create";
+            oPkgD.user_modi = "user_modi";
+            oPkgD.user_cancel = "user_cancel";
 
             oPkgD.table = "PackageDetail";
             oPkgD.pkField = "ID";
