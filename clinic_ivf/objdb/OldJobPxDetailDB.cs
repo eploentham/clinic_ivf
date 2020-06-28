@@ -57,7 +57,7 @@ namespace clinic_ivf.objdb
             p.ID = long.TryParse(p.ID, out chk) ? chk.ToString() : "0";
             p.VN = long.TryParse(p.VN, out chk) ? chk.ToString() : "0";
             p.DUID = long.TryParse(p.DUID, out chk) ? chk.ToString() : "0";
-            p.QTY = long.TryParse(p.QTY, out chk) ? chk.ToString() : "0";
+            p.QTY = long.TryParse(p.QTY.Replace(".00",""), out chk) ? chk.ToString() : "0";
             p.Extra = long.TryParse(p.Extra, out chk) ? chk.ToString() : "0";
             p.Status = long.TryParse(p.Status, out chk) ? chk.ToString() : "0";
             p.PID = long.TryParse(p.PID, out chk) ? chk.ToString() : "0";

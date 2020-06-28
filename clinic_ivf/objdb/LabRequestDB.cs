@@ -280,7 +280,7 @@ namespace clinic_ivf.objdb
                 "Left Join t_visit vs on lreq.visit_id = vs.t_visit_id  " +
                 "Left Join LabItem litem on lreq.item_id = litem.LID " +
                 "Where  vs.t_patient_id = '" + pttid + "'  and lreq.active= '1' " +
-                //"and lreq.item_id in ('14','18','66') " +
+                //"and lreq.item_id in ('2630000014','2630000018','2630000066') " +
                 "Order By lreq.req_id ";
             dt = conn.selectData(conn.conn, sql);
             return dt;
@@ -294,7 +294,7 @@ namespace clinic_ivf.objdb
                 "Left Join LabItem litem on lreq.item_id = litem.LID " +
                 "Left Join lab_t_result lbres on lreq.req_id = lbres.req_id " +
                 "Where  lreq.vn = '" + vn + "'  and lreq.active= '1'  " +
-                //"and lreq.item_id in ('14','18','66') " +
+                //"and lreq.item_id in ('2630000014','2630000018','2630000066') " +
                 "Order By litem.sort1, lreq.req_id ";
             dt = conn.selectData(conn.conn, sql);
             return dt;
@@ -319,7 +319,9 @@ namespace clinic_ivf.objdb
                 //"Left Join Visit vsold on oJSd.VN = vsold.VN " +
                 //"Left Join lab_t_form_a lforma on vsold.form_a_id = lforma.form_a_id " +
                 "Where lreq.status_req in ('0','1','2') " +
-                "and lreq.item_id in ('14','18','66')  and lreq.form_a_id > 0 " +
+                //"and lreq.item_id in ('2630000014','2630000018','2630000066','26300000196')  " +
+                "and si.LGID in ('3')  " +
+                "and lreq.form_a_id > 0 " +
                 "Order By lreq.req_id ";
             dt = conn.selectData(conn.conn, sql);
             return dt;
@@ -344,7 +346,7 @@ namespace clinic_ivf.objdb
                 //"Left Join Visit vsold on oJSd.VN = vsold.VN " +
                 //"Left Join lab_t_form_a lforma on vsold.form_a_id = lforma.form_a_id " +
                 "Where  lreq.req_date >= '" + startdate + "' and lreq.req_date <='" + enddate + "' and lreq.status_req in ('0','1','2') " +
-                "and lreq.item_id in ('14','18','66') "+
+                "and lreq.item_id in ('2630000014','2630000018','2630000066','26300000196') " +
                 "Order By lreq.req_id ";
             dt = conn.selectData(conn.conn, sql);
             return dt;
@@ -369,7 +371,7 @@ namespace clinic_ivf.objdb
                 //"Left Join Visit vsold on oJSd.VN = vsold.VN " +
                 //"Left Join lab_t_form_a lforma on vsold.form_a_id = lforma.form_a_id " +
                 "Where  lreq.req_date >= '" + startdate + "' and lreq.req_date <='" + enddate + "' and lreq.status_req in ('0','1','2') " +
-                "and lreq.item_id in ('160') " +
+                "and lreq.item_id in ('2630000022') " +
                 //"Order By lforma.form_a_id ";
                 "Order By lforma.opu_date, lforma.opu_time ";
             dt = conn.selectData(conn.conn, sql);
@@ -395,7 +397,7 @@ namespace clinic_ivf.objdb
                 //"Left Join Visit vsold on oJSd.VN = vsold.VN " +
                 //"Left Join lab_t_form_a lforma on vsold.form_a_id = lforma.form_a_id " +
                 "Where lreq.status_req in ('0','1','2') " +
-                "and lreq.item_id in ('160') " +
+                "and lreq.item_id in ('2630000022') " +
                 //"Order By lforma.form_a_id ";
                 "Order By lreq.req_id ";
             dt = conn.selectData(conn.conn, sql);

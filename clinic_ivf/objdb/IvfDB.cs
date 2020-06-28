@@ -774,7 +774,7 @@ namespace clinic_ivf.objdb
             oJpxd.DUID = duid;
             oJpxd.QTY = qty;
             oJpxd.Extra = extra;
-            oJpxd.Price = price;
+            //oJpxd.Price = price;
             oJpxd.Status = "1";
             oJpxd.PID = pid;
             oJpxd.PIDS = pids;
@@ -784,6 +784,12 @@ namespace clinic_ivf.objdb
             oJpxd.EUsage = usagee;
             oJpxd.row1 = row1;
             oJpxd.pckdid = "";
+            //oJpxd.price1 = price;
+            decimal qty11 = 0, price11 = 0;
+            Decimal.TryParse(qty, out qty11);
+            Decimal.TryParse(price, out price11);
+            oJpxd.price1 = price;
+            oJpxd.Price = price;
             oJpxdDB.insert(oJpxd, "");
             //}
 
@@ -877,6 +883,7 @@ namespace clinic_ivf.objdb
             else
             {
                 oJpxd.Price = ostkD.Price;
+                oJpxd.price1 = ostkD.Price;
             }
             
             oJpxd.Status = "1";

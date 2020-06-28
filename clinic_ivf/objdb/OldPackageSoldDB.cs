@@ -43,6 +43,7 @@ namespace clinic_ivf.objdb
             opkgs.payment_times = "payment_times";
             opkgs.payment_name = "";
             opkgs.paymentperiod = "";
+            opkgs.status_package = "status_package";
 
             opkgs.table = "PackageSold";
             opkgs.pkField = "PCKSID";
@@ -62,6 +63,7 @@ namespace clinic_ivf.objdb
             p.Date = p.Date == null ? "" : p.Date;
             p.Status = p.Status == null ? "0" : p.Status;
             p.payment_times = p.payment_times == null ? "" : p.payment_times;
+            p.status_package = p.status_package == null ? "0" : p.status_package;
 
             p.PID = long.TryParse(p.PID, out chk1) ? chk1.ToString() : "0";
             p.SellThruID = long.TryParse(p.SellThruID, out chk1) ? chk1.ToString() : "0";
@@ -112,6 +114,7 @@ namespace clinic_ivf.objdb
                 "," + opkgs.VN + "= '" + p.VN + "'" +
                 "," + opkgs.row1 + "= '" + p.row1 + "'" +
                 "," + opkgs.payment_times + "= '" + p.PaymentTimes + "'" +
+                "," + opkgs.status_package + "= '1'" +
                 "";
             try
             {
@@ -122,6 +125,27 @@ namespace clinic_ivf.objdb
                 sql = ex.Message + " " + ex.InnerException;
             }
 
+            return re;
+        }
+        public String updateStatusPackageClosePackage(String pkgsid)
+        {
+            //$this->db->query("UPDATE PackageSold Set Status='3' Where PCKSID='".$PCKSID."'");
+            String re = "";
+            String sql = "";
+            int chk = 0;
+
+            sql = "Update " + opkgs.table + " Set " +
+                " " + opkgs.status_package + " = '2'" +
+                "Where " + opkgs.PCKSID + "='" + pkgsid + "'"
+                ;
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
             return re;
         }
         public String updateStatus2(String pkgsid)
@@ -574,6 +598,15 @@ namespace clinic_ivf.objdb
             String sql = "select opkgs.* " +
                 "From " + opkgs.table + " opkgs " +
                 "Where opkgs." + opkgs.PID + " ='" + pttId + "' and Status <> 3 ";
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
+        public DataTable selectByPIDStatusPackageON(String pttId)
+        {
+            DataTable dt = new DataTable();
+            String sql = "select opkgs.* " +
+                "From " + opkgs.table + " opkgs " +
+                "Where opkgs." + opkgs.PID + " ='" + pttId + "' and status_package = 1 ";
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }

@@ -364,7 +364,7 @@ namespace clinic_ivf.gui
         private void setGrfReq()
         {
             grfReq.DataSource = null;
-            grfReq.Clear();
+            //grfReq.Clear();
             DataTable dt = new DataTable();
             DateTime datestart, dateend;
             String datestart1 = "", dateend1 = "";

@@ -4795,7 +4795,8 @@ namespace clinic_ivf.gui
             ContextMenu menuGw = new ContextMenu();
             if (flagedit.Equals("edit"))
             {
-                menuGw.MenuItems.Add("ยกเลิกรายการ", new EventHandler(ContextMenu_or_void));
+                menuGw.MenuItems.Add("ยกเลิกรายการ", new EventHandler(ContextMenu_ord_void));
+                menuGw.MenuItems.Add("Close Package", new EventHandler(ContextMenu_ord_close_package));
             }
             //menuGw.MenuItems.Add("&แก้ไข", new EventHandler(ContextMenu_Gw_Edit));
             //menuGw.MenuItems.Add("&ยกเลิก", new EventHandler(ContextMenu_Gw_Cancel));
@@ -4805,25 +4806,79 @@ namespace clinic_ivf.gui
             theme1.SetTheme(grfOrder, "GreenHouse");
 
         }
-
-        private void GrfOrder_AfterDataRefresh(object sender, ListChangedEventArgs e)
-        {
-            //throw new NotImplementedException();
-            UpdateTotals();
-        }
-
-        private void ContextMenu_or_void(object sender, System.EventArgs e)
+        private void ContextMenu_ord_close_package(object sender, System.EventArgs e)
         {
             if (grfOrder.Row < 0) return;
             if (grfOrder[grfOrder.Row, colOrdid] == null) return;
-            String id = "", status = "", pkgsid="", qty="", itmid="";
+            String id = "", status = "", pkgsid = "", qty = "", itmid = "";
             rowOrder--;
-            
+
             id = grfOrder[grfOrder.Row, colOrdid].ToString();
             status = grfOrder[grfOrder.Row, colOrdstatus].ToString();
             pkgsid = grfOrder[grfOrder.Row, colOrdPkgSId].ToString();
             qty = grfOrder[grfOrder.Row, colOrdQty].ToString();
             itmid = grfOrder[grfOrder.Row, colOrditmid].ToString();
+            if (!status.Equals("package"))
+            {
+                MessageBox.Show("item is not package", "");
+                return;
+            }
+            String re = "";
+            re = ic.ivfDB.opkgsDB.updateStatusPackageClosePackage(pkgsid);
+            long chk = 0;
+            if(long.TryParse(re, out chk))
+            {
+                String re1 = ic.ivfDB.oPkgdpDB.voidPackageDepositByPkgsId(id);
+                if (re1.Length >= 1)
+                {
+                    foreach (Control tab in tcOrd.Controls)
+                    {
+                        if (tab is C1DockingTabPage)
+                        {
+                            String name = tab.Name;
+                            if (name.IndexOf("tabPkgUse_") >= 0)
+                            {
+                                if (name.Length > 10)
+                                {
+                                    name = name.Substring(name.Length - 10);
+                                    if (name.Equals(id))
+                                    {
+                                        tcOrd.Controls.Remove(tab);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    foreach (C1FlexGrid grf in lgrfPkg)
+                    {
+                        String name = grf.Name;
+                        if (name.IndexOf("grfPkg_") >= 0)
+                        {
+                            lgrfPkg.Remove(grf);
+                            break;
+                        }
+                    }
+                    setGrfOrder(txtVnOld.Text);
+                }
+            }
+        }
+        private void GrfOrder_AfterDataRefresh(object sender, ListChangedEventArgs e)
+        {
+            //throw new NotImplementedException();
+            UpdateTotals();
+        }
+        private void setVoidOrd(int row)
+        {
+            String id = "", status = "", pkgsid = "", qty = "", itmid = "";
+            id = grfOrder[row, colOrdid].ToString();
+            status = grfOrder[row, colOrdstatus].ToString();
+            pkgsid = grfOrder[row, colOrdPkgSId].ToString();
+            qty = grfOrder[row, colOrdQty].ToString();
+            itmid = grfOrder[row, colOrditmid].ToString();
+            if (pkgsid.Length > 0)
+            {
+                setPkgDId(itmid, "-" + qty);
+            }
             if (status.Equals("bloodlab") || status.Equals("Sperm Lab") || status.Equals("Embryo Lab") || status.Equals("Genetic Lab"))
             {
                 ic.ivfDB.oJlabdDB.deleteByPk(id);
@@ -4845,12 +4900,12 @@ namespace clinic_ivf.gui
                 String re = ic.ivfDB.oPkgdpDB.voidPackageDepositByPkgsId(id);
                 if (re.Length >= 1)
                 {
-                    foreach(Control tab in tcOrd.Controls)
+                    foreach (Control tab in tcOrd.Controls)
                     {
                         if (tab is C1DockingTabPage)
                         {
                             String name = tab.Name;
-                            if (name.IndexOf("tabPkgUse_")>=0)
+                            if (name.IndexOf("tabPkgUse_") >= 0)
                             {
                                 if (name.Length > 10)
                                 {
@@ -4863,7 +4918,7 @@ namespace clinic_ivf.gui
                             }
                         }
                     }
-                    foreach(C1FlexGrid grf in lgrfPkg)
+                    foreach (C1FlexGrid grf in lgrfPkg)
                     {
                         String name = grf.Name;
                         if (name.IndexOf("grfPkg_") >= 0)
@@ -4878,17 +4933,31 @@ namespace clinic_ivf.gui
                 ic.ivfDB.oJlabdDB.deleteByPkgsId(id);
                 ic.ivfDB.ojsdDB.deleteByPk(id);
             }
-
-            setGrfOrder(txtVnOld.Text);
+        }
+        private void ContextMenu_ord_void(object sender, System.EventArgs e)
+        {
+            if (grfOrder.Row < 0) return;
+            if (grfOrder[grfOrder.Row, colOrdid] == null) return;
+            String id = "", status = "", pkgsid="", qty="", itmid="";
             
-            foreach(C1FlexGrid grf in lgrfPkg)
+
+            CellRange cell = grfOrder.Selection;
+            //if (cell is null) return;
+            if (cell.TopRow<1) return;
+            for (int i = cell.TopRow; i <= cell.BottomRow; i++)
+            {
+                rowOrder--;
+                setVoidOrd(i);
+            }
+            setGrfOrder(txtVnOld.Text);
+
+            foreach (C1FlexGrid grf in lgrfPkg)
             {
                 if (grf.Name.Equals("grfPkg_" + pkgsid))
                 {
                     setGrfPgk(pkgsid, grf);
                 }
             }
-            
         }
         private void setGrfOrder(String vn)
         {
@@ -4905,6 +4974,7 @@ namespace clinic_ivf.gui
             dtpx = ic.ivfDB.oJpxdDB.selectByVN(vn);
             //dtpkg = ic.ivfDB.opkgsDB.selectByVN(vn);
             dtpkg = ic.ivfDB.opkgsDB.selectByPID(pid);    // ต้องดึงตาม HN เพราะ ถ้ามีงวดการชำระ 
+            dtpkg = ic.ivfDB.opkgsDB.selectByPIDStatusPackageON(pid);    // ต้องดึงตาม HN เพราะ ถ้ามีงวดการชำระ 
 
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             //grfEmbryo.Rows.Count = dt.Rows.Count + 1;
@@ -5702,15 +5772,15 @@ namespace clinic_ivf.gui
             //grfEmbryo.Rows.Count = dt.Rows.Count + 1;
             grfRxSet.DataSource = dt;
             grfRxSet.Cols.Count = 7;
-            C1TextBox txt = new C1TextBox();
-            C1CheckBox chk = new C1CheckBox();
-            chk.Text = "Include Package";
+            //C1TextBox txt = new C1TextBox();
+            //C1CheckBox chk = new C1CheckBox();
+            //chk.Text = "Include Package";
             //C1ComboBox cboproce = new C1ComboBox();
             //ic.ivfDB.itmDB.setCboItem(cboproce);
-            grfRxSet.Cols[colBlName].Editor = txt;
-            grfRxSet.Cols[colBlInclude].Editor = txt;
-            grfRxSet.Cols[colBlPrice].Editor = txt;
-            grfRxSet.Cols[colBlRemark].Editor = txt;
+            //grfRxSet.Cols[colBlName].Editor = txt;
+            //grfRxSet.Cols[colBlInclude].Editor = txt;
+            //grfRxSet.Cols[colBlPrice].Editor = txt;
+            //grfRxSet.Cols[colBlRemark].Editor = txt;
 
             grfRxSet.Cols[colBlName].Width = 320;
             grfRxSet.Cols[colBlInclude].Width = 120;
@@ -5868,8 +5938,11 @@ namespace clinic_ivf.gui
                     Decimal qty1 = 0, qtyext1 = 0;
                     Decimal.TryParse(qty, out qty1);
                     Decimal.TryParse(qtyext, out qtyext1);
-                    ic.ivfDB.PxAdd(drugid, (qty1 - qtyext1).ToString(), txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", grfOrder.Rows.Count.ToString(), usage, "old", pkgdid);
-                    ic.ivfDB.PxAdd(drugid, qtyext, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "1", grfOrder.Rows.Count.ToString(), usage, "old", "");
+                    if((qty1 - qtyext1)> 0)
+                    {
+                        ic.ivfDB.PxAdd(drugid, (qty1 - qtyext1).ToString(), txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", grfOrder.Rows.Count.ToString(), usage, pkgdid);
+                    }
+                    ic.ivfDB.PxAdd(drugid, qtyext, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "1", grfOrder.Rows.Count.ToString(), usage, "");
                 }
                 else
                 {

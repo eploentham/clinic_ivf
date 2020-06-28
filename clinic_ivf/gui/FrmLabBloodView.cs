@@ -655,8 +655,8 @@ namespace clinic_ivf.gui
         private void setGrfReq()
         {
             grfReq.DataSource = null;
-            grfReq.Clear();
-            grfReq.Rows.Count = 0;
+            //grfReq.Clear();
+            //grfReq.Rows.Count = 1;
             DataTable dt = new DataTable();
             
             //dt = ic.ivfDB.lbReqDB.selectByStatusReqAccept();

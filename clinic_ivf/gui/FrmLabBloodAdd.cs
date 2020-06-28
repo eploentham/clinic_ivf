@@ -636,6 +636,11 @@ namespace clinic_ivf.gui
         {
             //throw new NotImplementedException();
             ic.ivfDB.lbresDB.updateResultFinish(txtVsId.Text);
+            LabResult lbRes = new LabResult();
+            lbRes = ic.ivfDB.lbresDB.selectByPk(resId);
+            //lbRes.req_id
+            //req = ic.ivfDB.lbReqDB.selectByPk1(opu.req_id);
+            String re1 = ic.ivfDB.lbReqDB.UpdateStatusRequestResult(lbRes.req_id, ic.cStf.staff_id);
             tC.SelectedTab = tabEmail;
         }
 

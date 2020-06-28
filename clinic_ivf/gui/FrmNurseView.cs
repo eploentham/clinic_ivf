@@ -1043,14 +1043,14 @@ namespace clinic_ivf.gui
                 grfLab[i, colLPttNameMale] = row["name_male"].ToString();
                 grfLab[i, colLlabname] = row["LName"].ToString();
                 grfLab[i, colLLGID] = row["LGID"].ToString();
-                if (row["item_id"].ToString().Equals("18")){      //"Sperm Analysis" 
+                if (row["item_id"].ToString().Equals("2630000018")){      //"Sperm Analysis" 
                     grfLab[i, colLStatus] = "1";
                 }
-                else if (row["item_id"].ToString().Equals("14"))   //"Sperm Freezing" 
+                else if (row["item_id"].ToString().Equals("2630000014"))   //"Sperm Freezing" 
                 {
                     grfLab[i, colLStatus] = "2";
                 }
-                else if (row["item_id"].ToString().Equals("66"))
+                else if (row["item_id"].ToString().Equals("2630000066"))
                 {
                     grfLab[i, colLStatus] = "3";
                 }
@@ -1058,11 +1058,11 @@ namespace clinic_ivf.gui
                 {
                     grfLab[i, colLStatus] = "4";
                 }
-                else if (row["item_id"].ToString().Equals("112"))        //OPU
+                else if (row["item_id"].ToString().Equals("26300000197"))        //OPU
                 {
                     grfLab[i, colLStatus] = "5";
                 }
-                else if (row["item_id"].ToString().Equals("22"))        //FET
+                else if (row["item_id"].ToString().Equals("2630000022"))        //FET
                 {
                     grfLab[i, colLStatus] = "6";
                 }

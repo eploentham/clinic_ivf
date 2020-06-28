@@ -344,7 +344,7 @@ namespace clinic_ivf.gui
         private void setGrfReq()
         {
             grfReq.DataSource = null;
-            grfReq.Clear();
+            //grfReq.Clear();
             DataTable dt = new DataTable();
             //DateTime datestart, dateend;
             String datestart1 = "", dateend1 = "";
@@ -436,13 +436,13 @@ namespace clinic_ivf.gui
                 row1[colRqLabName] = row["LName"].ToString();
                 row1[colRqHnMale] = row["hn_male"].ToString();
                 row1[colRqNameMale] = row["name_male"].ToString();
-                //row1[colRqStatusSperm] = row["item_id"].ToString().Equals("14") ? "Sperm Analysis" 
+                //row1[colRqStatusSperm] = row["item_id"].ToString().Equals("2630000014") ? "Sperm Analysis" 
                 //    : row["item_id"].ToString().Equals("18") ? "Sperm Freezing"
-                //    : row["item_id"].ToString().Equals("66") ? "PESA/TESE"
+                //    : row["item_id"].ToString().Equals("2630000066") ? "PESA/TESE"
                 //    : row["item_id"].ToString().Equals("88") ? "IUI" : "";
-                row1[colRqStatusSperm] = row["item_id"].ToString().Equals("14") ? "2"   //"Sperm Freezing" 
-                    : row["item_id"].ToString().Equals("18") ? "1"      //"Sperm Analysis" 
-                    : row["item_id"].ToString().Equals("66") ? "3"
+                row1[colRqStatusSperm] = row["item_id"].ToString().Equals("2630000014") ? "2"   //"Sperm Freezing" 
+                    : row["item_id"].ToString().Equals("2630000018") ? "1"      //"Sperm Analysis" 
+                    : row["item_id"].ToString().Equals("2630000066") ? "3"
                     : row["item_id"].ToString().Equals("88") ? "4" : "";
                 if (row1[colRqStatusSperm].ToString().Equals("1"))      // sperm analysis
                 {
