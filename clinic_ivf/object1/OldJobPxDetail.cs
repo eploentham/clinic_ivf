@@ -24,5 +24,7 @@ namespace clinic_ivf.object1
         public String row1 { get; set; }
         public String price1 { get; set; }
         public String pckdid { get; set; }
+        public String status_print { get; set; }
+        public String status_up_stock { get; set; }
     }
 }

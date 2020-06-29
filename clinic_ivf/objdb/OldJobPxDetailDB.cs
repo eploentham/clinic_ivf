@@ -37,6 +37,8 @@ namespace clinic_ivf.objdb
             oJpxd.row1 = "row1";
             oJpxd.price1 = "price1";
             oJpxd.pckdid = "pckdid";
+            oJpxd.status_print = "status_print";
+            oJpxd.status_up_stock = "status_up_stock";
 
             oJpxd.table = "JobPxDetail";
             oJpxd.pkField = "ID";
@@ -46,13 +48,14 @@ namespace clinic_ivf.objdb
             long chk = 0;
             decimal chk1 = 0;
 
-
             p.PIDS = p.PIDS == null ? "" : p.PIDS;
             p.DUName = p.DUName == null ? "" : p.DUName;
             p.Comment = p.Comment == null ? "NULL" : p.Comment;
             p.TUsage = p.TUsage == null ? "" : p.TUsage;
             p.EUsage = p.EUsage == null ? "" : p.EUsage;
             p.Comment = p.Comment.Equals("")? "NULL" : p.Comment;
+            p.status_print = p.status_print == null ? "0" : p.status_print;
+            p.status_up_stock = p.status_up_stock == null ? "0" : p.status_up_stock;
 
             p.ID = long.TryParse(p.ID, out chk) ? chk.ToString() : "0";
             p.VN = long.TryParse(p.VN, out chk) ? chk.ToString() : "0";
@@ -94,6 +97,8 @@ namespace clinic_ivf.objdb
                 "," + oJpxd.row1 + "= '" + p.row1 + "'" +
                 "," + oJpxd.price1 + "= '" + p.price1 + "'" +
                 "," + oJpxd.pckdid + "= '" + p.pckdid + "'" +
+                "," + oJpxd.status_print + "= '" + p.status_print + "'" +
+                "," + oJpxd.status_up_stock + "= '" + p.status_up_stock + "'" +
                 "";
             try
             {
@@ -129,6 +134,78 @@ namespace clinic_ivf.objdb
             String re = "";
             String sql = "Delete From  " + oJpxd.table + " " +
                 "Where " + oJpxd.pckdid + "='" + pkgsid + "'";
+            //re = conn.ExecuteNonQuery(conn.conn, sql);
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+            return re;
+        }
+        public String updateStatusUpStockOKByVN(String vn)
+        {
+            DataTable dt = new DataTable();
+            String re = "";
+            String sql = "Update " + oJpxd.table + " " +
+                "Set " + oJpxd.status_up_stock + " = '1' " +
+                "Where " + oJpxd.VN + "='" + vn + "'";
+            //re = conn.ExecuteNonQuery(conn.conn, sql);
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+            return re;
+        }
+        public String updateStatusUpStockOKByID(String pxdid)
+        {
+            DataTable dt = new DataTable();
+            String re = "";
+            String sql = "Update " + oJpxd.table + " " +
+                "Set " + oJpxd.status_up_stock + " = '1' " +
+                "Where " + oJpxd.ID + "='" + pxdid + "'";
+            //re = conn.ExecuteNonQuery(conn.conn, sql);
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+            return re;
+        }
+        public String updateStatusPrintOKByVN(String vn)
+        {
+            DataTable dt = new DataTable();
+            String re = "";
+            String sql = "Update " + oJpxd.table + " " +
+                "Set " + oJpxd.status_print+" = '1' " +
+                "Where " + oJpxd.VN + "='" + vn + "'";
+            //re = conn.ExecuteNonQuery(conn.conn, sql);
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+            return re;
+        }
+        public String updateStatusPrintOKByID(String pxdid)
+        {
+            DataTable dt = new DataTable();
+            String re = "";
+            String sql = "Update " + oJpxd.table + " " +
+                "Set " + oJpxd.status_print + " = '1' " +
+                "Where " + oJpxd.ID + "='" + pxdid + "'";
             //re = conn.ExecuteNonQuery(conn.conn, sql);
             try
             {
@@ -187,6 +264,63 @@ namespace clinic_ivf.objdb
                 "From " + oJpxd.table + " oJpxd " +
                 "Where oJpxd." + oJpxd.VN + " ='" + copId + "' " +
                 "Order By oJpxd."+oJpxd.DUName;
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
+        public DataTable selectByVN1(String vn)
+        {
+            DataTable dt = new DataTable();
+            String wherehn = "";
+            //if (!vn.Equals(""))
+            //{
+            //    wherehn = " and jobpxD." + jobpxD.PIDS + " like '%" + vn + "%'";
+            //}
+            String sql = "SELECT CONCAT(IFNULL(SurfixName.SurfixName,''),' ', ptt.PName,' ',ptt.PSurname) as patient_name, jobpxD.PIDS as hn, DATE_FORMAT(now(),''), jobpxD.TUsage as frequency " +
+                ", jobpxD.DUName as drug_name, jobpxD.QTY as qty, jobpxD.DUID, JobPx.Date,StockDrug.UnitType as unit_name " +
+                "From " + oJpxd.table + " jobpxD " +
+                "left join JobPx on JobPx.VN = jobpxD.VN " +
+                "left join Patient ptt on ptt.PIDS = JobPx.PIDS " +
+                "left join SurfixName on SurfixName.SurfixID = ptt.SurfixID " +
+                "left join StockDrug on StockDrug.DUID =  jobpxD.DUID " +
+                "Where JobPx.VN = '" + vn + "' ";
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
+        public DataTable selectBypxid(String pxdid)
+        {
+            DataTable dt = new DataTable();
+            String wherehn = "";
+            //if (!vn.Equals(""))
+            //{
+            //    wherehn = " and jobpxD." + jobpxD.PIDS + " like '%" + vn + "%'";
+            //}
+            String sql = "SELECT CONCAT(IFNULL(SurfixName.SurfixName,''),' ', ptt.PName,' ',ptt.PSurname) as patient_name, jobpxD.PIDS as hn, DATE_FORMAT(now(),''), jobpxD.TUsage as frequency " +
+                ", jobpxD.DUName as drug_name, jobpxD.QTY as qty, jobpxD.DUID, JobPx.Date,StockDrug.UnitType as unit_name " +
+                "From " + oJpxd.table + " jobpxD " +
+                "left join JobPx on JobPx.VN = jobpxD.VN " +
+                "left join Patient ptt on ptt.PIDS = JobPx.PIDS " +
+                "left join SurfixName on SurfixName.SurfixID = ptt.SurfixID " +
+                "left join StockDrug on StockDrug.DUID =  jobpxD.DUID " +
+                "Where jobpxD.ID in ('" + pxdid + "') ";
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
+        public DataTable selectByVN2(String vn)
+        {
+            DataTable dt = new DataTable();
+            String wherehn = "";
+            //if (!vn.Equals(""))
+            //{
+            //    wherehn = " and jobpxD." + jobpxD.PIDS + " like '%" + vn + "%'";
+            //}
+            String sql = "SELECT CONCAT(IFNULL(SurfixName.SurfixName,''),' ', ptt.PName,' ',ptt.PSurname) as patient_name, jobpxD.PIDS as hn, DATE_FORMAT(now(),''), jobpxD.TUsage as frequency " +
+                ", jobpxD.DUName as drug_name, jobpxD.QTY as qty, jobpxD.DUID, JobPx.Date,StockDrug.DUName as unitname " +
+                "From " + oJpxd.table + " jobpxD " +
+                "left join JobPx on JobPx.VN = jobpxD.VN " +
+                "left join Patient ptt on ptt.PIDS = JobPx.PIDS " +
+                "left join SurfixName on SurfixName.SurfixID = ptt.SurfixID " +
+                "left join StockDrug on StockDrug.DUID =  jobpxD.DUID " +
+                "Where JobPx.VN = '" + vn + "' ";
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }

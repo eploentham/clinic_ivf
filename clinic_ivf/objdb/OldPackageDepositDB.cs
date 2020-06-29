@@ -196,7 +196,7 @@ namespace clinic_ivf.objdb
             String sql = "";
             //chkNull(p);
             sql = "Update " + oPkgdp.table + " Set " +
-                " " + oPkgdp.QTYused + " = " + oPkgdp.QTYused + " + " + qtyuse + " " +
+                " " + oPkgdp.QTYused + " = " + oPkgdp.QTYused + " + " + qtyuse.Replace(".00","") + " " +
                 //"," + oPkgD.user_cancel + " = '" + userId + "'" +
                 //"," + oPkgD.date_cancel + " = now() " +
                 "Where " + oPkgdp.pkField + "='" + id + "'";

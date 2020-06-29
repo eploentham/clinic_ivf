@@ -68,7 +68,7 @@ namespace clinic_ivf.objdb
             p.req_id = long.TryParse(p.req_id, out chk) ? chk.ToString() : "0";
             p.Extra = long.TryParse(p.Extra, out chk) ? chk.ToString() : "0";
             p.row1 = long.TryParse(p.row1, out chk) ? chk.ToString() : "0";
-            p.qty = long.TryParse(p.qty, out chk) ? chk.ToString() : "0";
+            p.qty = long.TryParse(p.qty.Replace(".00", ""), out chk) ? chk.ToString() : "0";
             p.bill_group_id = long.TryParse(p.bill_group_id, out chk) ? chk.ToString() : "0";
             p.pckdid = long.TryParse(p.pckdid, out chk) ? chk.ToString() : "0";
 
@@ -103,7 +103,7 @@ namespace clinic_ivf.objdb
                 "," + ojsd.status_req_accept + "= '" + p.status_req_accept.Replace("'", "''") + "'" +
                 "," + ojsd.req_id + "= '" + p.req_id.Replace("'", "''") + "'" +
                 "," + ojsd.row1 + "= '" + p.row1.Replace("'", "''") + "'" +
-                "," + ojsd.qty + "= '" + p.qty + "'" +
+                "," + ojsd.qty + "= '" + p.qty.Replace(".00","") + "'" +
                 "," + ojsd.bill_group_id + "= '" + p.bill_group_id + "'" +
                 "," + ojsd.price1 + "= '" + p.price1 + "'" +
                 "," + ojsd.pckdid + "= '" + p.pckdid + "'" +

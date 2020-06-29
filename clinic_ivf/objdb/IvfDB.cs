@@ -790,6 +790,8 @@ namespace clinic_ivf.objdb
             Decimal.TryParse(price, out price11);
             oJpxd.price1 = price;
             oJpxd.Price = price;
+            oJpxd.status_print = "0";
+            oJpxd.status_up_stock = "0";
             oJpxdDB.insert(oJpxd, "");
             //}
 
@@ -828,6 +830,8 @@ namespace clinic_ivf.objdb
             oJpxd.EUsage = usagee;
             oJpxd.row1 = row1;
             oJpxd.pckdid = "";
+            oJpxd.status_print = "0";
+            oJpxd.status_up_stock = "0";
             oJpxdDB.insert(oJpxd, "");
             //}
         }
@@ -856,6 +860,8 @@ namespace clinic_ivf.objdb
             oJpxd.EUsage = ostkD.EUsage;
             oJpxd.row1 = row1;
             oJpxd.pckdid = pckdid;
+            oJpxd.status_print = "0";
+            oJpxd.status_up_stock = "0";
             oJpxdDB.insert(oJpxd, "");
         }
         public void PxAdd(String duid, String qty, String pid, String pids, String vn, String extra, String row1, String usage, String flagOld, String pckdid)
@@ -895,6 +901,8 @@ namespace clinic_ivf.objdb
             oJpxd.EUsage = ostkD.EUsage;
             oJpxd.row1 = row1;
             oJpxd.pckdid = pckdid;
+            oJpxd.status_print = "0";
+            oJpxd.status_up_stock = "0";
             oJpxdDB.insert(oJpxd, "");
         }
         public void LabAdd(String lid, String qty, String pid, String pids, String vn, String extra, String sp1v, String sp2v, String sp3v, String sp4v, String sp5v, String sp6v, String sp7v, String row1, String lidordergrp, String status_amt, String status_order_group, String pckdid)

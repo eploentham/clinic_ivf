@@ -124,9 +124,9 @@ namespace clinic_ivf.gui
             String date = "", date1 = "";
             date = DateTime.Now.Year + "-" + DateTime.Now.ToString("MM-dd");
             DataTable dt = new DataTable();
-            date = "2018-11-05";
-            date1 = "05-11-2018";
-            dt = ic.ivfDB.jobpxdDB.selectByVN1(txtVn.Text);
+            //date = "2018-11-05";
+            //date1 = "05-11-2018";
+            dt = ic.ivfDB.oJpxdDB.selectByVN1(txtVn.Text);
             //if (dt.Rows.Count <= 0) return;
             foreach ( DataRow row in dt.Rows)
             {
@@ -136,7 +136,8 @@ namespace clinic_ivf.gui
                 row["unit_name"] = qty +" "+ unit;
                 //MessageBox.Show("unit "+ row["unit_name"].ToString(), "");
             }
-            
+            ic.ivfDB.oJpxdDB.updateStatusPrintOKByVN(txtVn.Text);
+            ic.ivfDB.oJpxdDB.updateStatusUpStockOKByVN(txtVn.Text);
             //PrinterSettings settings1 = new PrinterSettings();
             //settings1.DefaultPageSettings.PrinterSettings.PrinterName = ic.iniC.printerSticker;
             //settings1.PrinterName = ic.iniC.printerSticker;
@@ -149,18 +150,18 @@ namespace clinic_ivf.gui
         {
             vsOld = ic.ivfDB.ovsDB.selectByPk1(vsid);
             pttOld = ic.ivfDB.pttOldDB.selectByPk1(vsOld.PID);
-            vs = ic.ivfDB.vsDB.selectByVn(vsid);
-            ptt = ic.ivfDB.pttDB.selectByHn(vsOld.PIDS);
-            ptt.patient_birthday = pttOld.DateOfBirth;
-            txtHn.Value = vsOld.PIDS;
+            vs = ic.ivfDB.vsDB.selectByPk1(vsid);
+            ptt = ic.ivfDB.pttDB.selectByPk1(vs.t_patient_id);
             
-            txtVn.Value = vsOld.VN;
-            txtPttNameE.Value = vsOld.PName;
+            txtHn.Value = ptt.patient_hn;
+            
+            txtVn.Value = vs.visit_vn;
+            txtPttNameE.Value = ptt.Name;
             
             txtDob.Value = ic.datetoShow(pttOld.DateOfBirth) + " [" + ptt.AgeStringShort() + "]";
             txtAllergy.Value = ptt.allergy_description;
-            txtIdOld.Value = pttOld.PID;
-            txtVnOld.Value = vsOld.VN;
+            txtIdOld.Value = ptt.t_patient_id_old;
+            txtVnOld.Value = vs.visit_vn;
             txtVsId.Value = vs.t_visit_id;
             txtPttId.Value = ptt.t_patient_id;
             txtSex.Value = ptt.f_sex_id.Equals("1") ? "ชาย" : "หญิง";
@@ -233,6 +234,7 @@ namespace clinic_ivf.gui
             if (flagedit.Equals("edit"))
             {
                 menuGw.MenuItems.Add("ยกเลิกรายการ", new EventHandler(ContextMenu_or_void));
+                menuGw.MenuItems.Add("Print Sticker", new EventHandler(ContextMenu_print_sticker));
             }
             //menuGw.MenuItems.Add("&แก้ไข", new EventHandler(ContextMenu_Gw_Edit));
             //menuGw.MenuItems.Add("&ยกเลิก", new EventHandler(ContextMenu_Gw_Cancel));
@@ -242,7 +244,55 @@ namespace clinic_ivf.gui
             theme1.SetTheme(grfOrder, "GreenHouse");
 
         }
+        private void ContextMenu_print_sticker(object sender, System.EventArgs e)
+        {
+            if (grfOrder.Row < 0) return;
+            if (grfOrder[grfOrder.Row, colOrdid] == null) return;
+            String id = "", date = "";
+            date = DateTime.Now.Year + "-" + DateTime.Now.ToString("MM-dd");
+            CellRange cell = grfOrder.Selection;
+            //if (cell is null) return;
+            if (cell.TopRow < 1) return;
+            for (int i = cell.TopRow; i <= cell.BottomRow; i++)
+            {
+                String pxid = "", status = "";
+                pxid = grfOrder[i, colOrdid].ToString();
+                status = grfOrder[i, colOrdstatus].ToString();
+                if (status.Equals("px"))
+                {
+                    id += pxid+",";
+                }
+            }
+            if (id.Length > 0)
+            {
+                id = id.Substring(0, id.Length - 1);
+                PrinterSettings settings = new PrinterSettings();
+                printerOld = settings.PrinterName;
+                SetDefaultPrinter(ic.iniC.printerSticker);
 
+                DataTable dt = new DataTable();
+                dt = ic.ivfDB.oJpxdDB.selectBypxid(id);
+                if (dt.Rows.Count > 0)
+                {
+                    //if (dt.Rows.Count <= 0) return;
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        String qty = "", unit = "";
+                        qty = row["qty"] != null ? row["qty"].ToString() : " ";
+                        unit = row["unit_name"] != null ? row["unit_name"].ToString() : " ";
+                        row["unit_name"] = qty + " " + unit;
+                        //MessageBox.Show("unit "+ row["unit_name"].ToString(), "");
+                    }
+                    ic.ivfDB.oJpxdDB.updateStatusPrintOKByID(id);
+                    ic.ivfDB.oJpxdDB.updateStatusUpStockOKByID(id);
+                    FrmReport frm = new FrmReport(ic);
+                    frm.setStickerDrugReport(date, dt);
+                    frm.ShowDialog(this);
+                }
+                
+            }
+            
+        }
         private void GrfOrder_AfterDataRefresh(object sender, ListChangedEventArgs e)
         {
             //throw new NotImplementedException();

@@ -201,7 +201,7 @@ namespace clinic_ivf.gui
             DataTable dt = new DataTable();
             date = "2018-11-05";
             date1 = "05-11-2018";
-            dt = ic.ivfDB.jobpxdDB.selectByVN(vn);
+            dt = ic.ivfDB.oJpxdDB.selectByVN2(vn);
             //if (dt.Rows.Count <= 0) return;
 
             FrmReport frm = new FrmReport(ic);

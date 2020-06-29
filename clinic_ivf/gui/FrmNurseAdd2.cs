@@ -4875,7 +4875,7 @@ namespace clinic_ivf.gui
             pkgsid = grfOrder[row, colOrdPkgSId].ToString();
             qty = grfOrder[row, colOrdQty].ToString();
             itmid = grfOrder[row, colOrditmid].ToString();
-            if (pkgsid.Length > 0)
+            if (pkgsid.Length > 1)
             {
                 setPkgDId(itmid, "-" + qty);
             }
@@ -4931,7 +4931,7 @@ namespace clinic_ivf.gui
                 ic.ivfDB.opkgsDB.deleteByPk(id);
                 ic.ivfDB.oJpxdDB.deleteByPkgsId(id);
                 ic.ivfDB.oJlabdDB.deleteByPkgsId(id);
-                ic.ivfDB.ojsdDB.deleteByPk(id);
+                ic.ivfDB.ojsdDB.deleteByPkgsId(id);
             }
         }
         private void ContextMenu_ord_void(object sender, System.EventArgs e)
@@ -6247,23 +6247,59 @@ namespace clinic_ivf.gui
             {
                 if (ic.iniC.statusCashierOldProgram.Equals("1"))
                 {
-                    ic.ivfDB.SpecialAdd(labid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", "", "", "", "", grfOrder.Rows.Count.ToString(),"old", pkgdid);
+                    if (qtyext.Length > 0)
+                    {
+                        Decimal qty1 = 0, qtyext1 = 0;
+                        Decimal.TryParse(qty, out qty1);
+                        Decimal.TryParse(qtyext, out qtyext1);
+                        ic.ivfDB.SpecialAdd(labid, (qty1 - qtyext1).ToString(), txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", "", "", "", "", grfOrder.Rows.Count.ToString(), "old", pkgdid);
+                        ic.ivfDB.SpecialAdd(labid, qtyext, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "1", "", "", "", "", grfOrder.Rows.Count.ToString(), "old", "");
+                    }
+                    else
+                    {
+                        ic.ivfDB.SpecialAdd(labid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", "", "", "", "", grfOrder.Rows.Count.ToString(), "old", pkgdid);
+                    }
                 }
                 else
                 {
-                    ic.ivfDB.SpecialAdd(labid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", "", "", "", "", grfOrder.Rows.Count.ToString(), pkgdid);
+                    if (qtyext.Length > 0)
+                    {
+                        Decimal qty1 = 0, qtyext1 = 0;
+                        Decimal.TryParse(qty, out qty1);
+                        Decimal.TryParse(qtyext, out qtyext1);
+                        ic.ivfDB.SpecialAdd(labid, (qty1 - qtyext1).ToString(), txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", "", "", "", "", grfOrder.Rows.Count.ToString(), pkgdid);
+                        ic.ivfDB.SpecialAdd(labid, qtyext, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", "", "", "", "", grfOrder.Rows.Count.ToString(), pkgdid);
+                    }
+                    else
+                    {
+                        ic.ivfDB.SpecialAdd(labid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", "", "", "", "", grfOrder.Rows.Count.ToString(), pkgdid);
+                    }
                 }
-                    
             }
             else
             {
-                if (ic.iniC.statusCashierOldProgram.Equals("1"))
+                //if (ic.iniC.statusCashierOldProgram.Equals("1"))
+                //{
+                //    ic.ivfDB.SpecialAdd(labid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "1", "", "", "", "", grfOrder.Rows.Count.ToString(), "old", pkgdid);
+                //}
+                //else
+                //{
+                //    ic.ivfDB.SpecialAdd(labid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "1", "", "", "", "", grfOrder.Rows.Count.ToString(), pkgdid);
+                //}
+                if (qtyext.Length > 0)
                 {
-                    ic.ivfDB.SpecialAdd(labid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "1", "", "", "", "", grfOrder.Rows.Count.ToString(), "old", pkgdid);
+                    Decimal qty1 = 0, qtyext1 = 0;
+                    Decimal.TryParse(qty, out qty1);
+                    Decimal.TryParse(qtyext, out qtyext1);
+                    if ((qty1 - qtyext1) > 0)
+                    {
+                        ic.ivfDB.SpecialAdd(labid, (qty1 - qtyext1).ToString(), txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", "", "", "", "", grfOrder.Rows.Count.ToString(), pkgdid);
+                    }
+                    ic.ivfDB.SpecialAdd(labid, qtyext, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "1", "", "", "", "", grfOrder.Rows.Count.ToString(), "");
                 }
                 else
                 {
-                    ic.ivfDB.SpecialAdd(labid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "1", "", "", "", "", grfOrder.Rows.Count.ToString(), pkgdid);
+                    ic.ivfDB.SpecialAdd(labid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "1", "", "", "", "", grfOrder.Rows.Count.ToString(), "");
                 }
             }
 
@@ -6817,7 +6853,7 @@ namespace clinic_ivf.gui
                             pkgsid = row[colPkgsId].ToString();
                             row.StyleNew.BackColor = Color.Red;
                             row[colPkgUse] = (pkguse1 + qty1);
-                            ic.ivfDB.oPkgdpDB.upDateQtyUse(row[colPkgdId].ToString(), qty1.ToString());
+                            String re1 = ic.ivfDB.oPkgdpDB.upDateQtyUse(row[colPkgdId].ToString(), qty1.ToString());
                         }
                         else
                         {
@@ -6880,24 +6916,60 @@ namespace clinic_ivf.gui
             {
                 if (ic.iniC.statusCashierOldProgram.Equals("1"))
                 {
-                    ic.ivfDB.LabAdd(labid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), "0", "1", "0", "old", pkgdid);
+                    if (qtyext.Length > 0)
+                    {
+                        Decimal qty1 = 0, qtyext1 = 0;
+                        Decimal.TryParse(qty, out qty1);
+                        Decimal.TryParse(qtyext, out qtyext1);
+                        ic.ivfDB.LabAdd(labid, (qty1 - qtyext1).ToString(), txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), "0", "1", "0", "old", pkgdid);
+                        ic.ivfDB.LabAdd(labid, qtyext, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), "0", "1", "0", "old", pkgdid);
+                    }
+                    else
+                    {
+                        ic.ivfDB.LabAdd(labid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), "0", "1", "0", "old", pkgdid);
+                    }
                 }
                 else
                 {
-                    ic.ivfDB.LabAdd(labid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), "0", "1", "0", pkgdid);
+                    if (qtyext.Length > 0)
+                    {
+                        Decimal qty1 = 0, qtyext1 = 0;
+                        Decimal.TryParse(qty, out qty1);
+                        Decimal.TryParse(qtyext, out qtyext1);
+                        ic.ivfDB.LabAdd(labid, (qty1 - qtyext1).ToString(), txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), "0", "1", "0", pkgdid);
+                        ic.ivfDB.LabAdd(labid, qtyext, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), "0", "1", "0", pkgdid);
+                    }
+                    else
+                    {
+                        ic.ivfDB.LabAdd(labid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), "0", "1", "0", pkgdid);
+                    }
                 }
             }
             else
             {
-                if (ic.iniC.statusCashierOldProgram.Equals("1"))
+                //if (ic.iniC.statusCashierOldProgram.Equals("1"))
+                //{
+                //    ic.ivfDB.LabAdd(labid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "1", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), "0", "1", "0", "old", pkgdid);
+                //}
+                //else
+                //{
+                //    ic.ivfDB.LabAdd(labid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "1", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), "0", "1", "0", pkgdid);
+                //}
+                if (qtyext.Length > 0)
                 {
-                    ic.ivfDB.LabAdd(labid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "1", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), "0", "1", "0", "old", pkgdid);
+                    Decimal qty1 = 0, qtyext1 = 0;
+                    Decimal.TryParse(qty, out qty1);
+                    Decimal.TryParse(qtyext, out qtyext1);
+                    if ((qty1 - qtyext1) > 0)
+                    {
+                        ic.ivfDB.LabAdd(labid, (qty1 - qtyext1).ToString(), txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), "0", "1", "0", pkgdid);
+                    }
+                    ic.ivfDB.LabAdd(labid, qtyext, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "1", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), "0", "1", "0", pkgdid);
                 }
                 else
                 {
                     ic.ivfDB.LabAdd(labid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "1", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), "0", "1", "0", pkgdid);
                 }
-                    
             }
             if (ordergroup.Equals("1"))
             {

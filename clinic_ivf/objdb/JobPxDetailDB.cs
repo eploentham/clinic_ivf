@@ -51,7 +51,8 @@ namespace clinic_ivf.objdb
             p.DUName = p.DUName == null ? "" : p.DUName;
             p.Comment = p.Comment == null ? "" : p.Comment;
             p.TUsage = p.TUsage == null ? "" : p.TUsage;
-            p.EUsage = p.EUsage == null ? "" : p.EUsage;           
+            p.EUsage = p.EUsage == null ? "" : p.EUsage;
+            
 
             p.ID = long.TryParse(p.ID, out chk) ? chk.ToString() : "0";
             p.VN = long.TryParse(p.VN, out chk) ? chk.ToString() : "0";
