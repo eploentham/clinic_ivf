@@ -150,7 +150,7 @@ namespace clinic_ivf.gui
         {
             vsOld = ic.ivfDB.ovsDB.selectByPk1(vsid);
             pttOld = ic.ivfDB.pttOldDB.selectByPk1(vsOld.PID);
-            vs = ic.ivfDB.vsDB.selectByPk1(vsid);
+            vs = ic.ivfDB.vsDB.selectByVn(vsid);
             ptt = ic.ivfDB.pttDB.selectByPk1(vs.t_patient_id);
             
             txtHn.Value = ptt.patient_hn;
