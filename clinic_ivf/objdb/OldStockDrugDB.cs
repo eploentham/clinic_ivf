@@ -100,7 +100,7 @@ namespace clinic_ivf.objdb
             }
             return lstkD;
         }
-        public String getUnit(String stkid)
+        public String getUnitName(String stkid)
         {
             String name = "";
             foreach(OldStockDrug ostk in lstkD)
@@ -108,6 +108,19 @@ namespace clinic_ivf.objdb
                 if (ostk.DUID.Equals(stkid))
                 {
                     name = ostk.UnitType;
+                }
+            }
+
+            return name;
+        }
+        public String getDrugName(String stkid)
+        {
+            String name = "";
+            foreach (OldStockDrug ostk in lstkD)
+            {
+                if (ostk.DUID.Equals(stkid))
+                {
+                    name = ostk.DUName;
                 }
             }
 

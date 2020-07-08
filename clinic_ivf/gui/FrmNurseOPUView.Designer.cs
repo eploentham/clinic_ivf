@@ -341,14 +341,15 @@
             this.NormalSizeButton = new C1.Win.C1Ribbon.RibbonButton();
             this.ribbonTopToolBar1 = new C1.Win.C1Ribbon.RibbonTopToolBar();
             this.tabReportOPU = new C1.Win.C1Command.C1DockingTabPage();
-            this.tabReportEmbryo = new C1.Win.C1Command.C1DockingTabPage();
-            this.sB = new System.Windows.Forms.StatusStrip();
-            this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.cryEmbryo = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.cryOpu = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
+            this.tabReportEmbryo = new C1.Win.C1Command.C1DockingTabPage();
+            this.cryEmbryo = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.tabDay1 = new C1.Win.C1Command.C1DockingTabPage();
             this.tabDay3 = new C1.Win.C1Command.C1DockingTabPage();
             this.tabDay6 = new C1.Win.C1Command.C1DockingTabPage();
+            this.sB = new System.Windows.Forms.StatusStrip();
+            this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tabDay5 = new C1.Win.C1Command.C1DockingTabPage();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1SplitContainer1)).BeginInit();
             this.c1SplitContainer1.SuspendLayout();
@@ -1290,6 +1291,7 @@
             this.tCResult.Controls.Add(this.tabReportEmbryo);
             this.tCResult.Controls.Add(this.tabDay1);
             this.tCResult.Controls.Add(this.tabDay3);
+            this.tCResult.Controls.Add(this.tabDay5);
             this.tCResult.Controls.Add(this.tabDay6);
             this.tCResult.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tCResult.HotTrack = true;
@@ -5190,6 +5192,20 @@
             this.tabReportOPU.TabIndex = 5;
             this.tabReportOPU.Text = "Report OPU";
             // 
+            // cryOpu
+            // 
+            this.cryOpu.ActiveViewIndex = -1;
+            this.cryOpu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.cryOpu.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cryOpu.Cursor = System.Windows.Forms.Cursors.Default;
+            this.cryOpu.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cryOpu.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.cryOpu.Location = new System.Drawing.Point(0, 0);
+            this.cryOpu.Name = "cryOpu";
+            this.cryOpu.Size = new System.Drawing.Size(1342, 499);
+            this.cryOpu.TabIndex = 1;
+            this.theme1.SetTheme(this.cryOpu, "(default)");
+            // 
             // tabReportEmbryo
             // 
             this.tabReportEmbryo.Controls.Add(this.cryEmbryo);
@@ -5198,22 +5214,6 @@
             this.tabReportEmbryo.Size = new System.Drawing.Size(1342, 499);
             this.tabReportEmbryo.TabIndex = 6;
             this.tabReportEmbryo.Text = "Report Embryo";
-            // 
-            // sB
-            // 
-            this.sB.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.sB1});
-            this.sB.Location = new System.Drawing.Point(0, 675);
-            this.sB.Name = "sB";
-            this.sB.Size = new System.Drawing.Size(1344, 22);
-            this.sB.TabIndex = 11;
-            this.sB.Text = "statusStrip1";
-            // 
-            // sB1
-            // 
-            this.sB1.Name = "sB1";
-            this.sB1.Size = new System.Drawing.Size(118, 17);
-            this.sB1.Text = "toolStripStatusLabel1";
             // 
             // cryEmbryo
             // 
@@ -5228,20 +5228,6 @@
             this.cryEmbryo.Size = new System.Drawing.Size(1342, 499);
             this.cryEmbryo.TabIndex = 1;
             this.theme1.SetTheme(this.cryEmbryo, "(default)");
-            // 
-            // cryOpu
-            // 
-            this.cryOpu.ActiveViewIndex = -1;
-            this.cryOpu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.cryOpu.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.cryOpu.Cursor = System.Windows.Forms.Cursors.Default;
-            this.cryOpu.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cryOpu.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.cryOpu.Location = new System.Drawing.Point(0, 0);
-            this.cryOpu.Name = "cryOpu";
-            this.cryOpu.Size = new System.Drawing.Size(1342, 499);
-            this.cryOpu.TabIndex = 1;
-            this.theme1.SetTheme(this.cryOpu, "(default)");
             // 
             // tabDay1
             // 
@@ -5266,6 +5252,30 @@
             this.tabDay6.Size = new System.Drawing.Size(1342, 499);
             this.tabDay6.TabIndex = 9;
             this.tabDay6.Text = "Day6";
+            // 
+            // sB
+            // 
+            this.sB.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.sB1});
+            this.sB.Location = new System.Drawing.Point(0, 675);
+            this.sB.Name = "sB";
+            this.sB.Size = new System.Drawing.Size(1344, 22);
+            this.sB.TabIndex = 11;
+            this.sB.Text = "statusStrip1";
+            // 
+            // sB1
+            // 
+            this.sB1.Name = "sB1";
+            this.sB1.Size = new System.Drawing.Size(118, 17);
+            this.sB1.Text = "toolStripStatusLabel1";
+            // 
+            // tabDay5
+            // 
+            this.tabDay5.Location = new System.Drawing.Point(1, 24);
+            this.tabDay5.Name = "tabDay5";
+            this.tabDay5.Size = new System.Drawing.Size(1342, 499);
+            this.tabDay5.TabIndex = 10;
+            this.tabDay5.Text = "Day5";
             // 
             // FrmNurseOPUView
             // 
@@ -5783,5 +5793,6 @@
         private C1.Win.C1Command.C1DockingTabPage tabDay1;
         private C1.Win.C1Command.C1DockingTabPage tabDay3;
         private C1.Win.C1Command.C1DockingTabPage tabDay6;
+        private C1.Win.C1Command.C1DockingTabPage tabDay5;
     }
 }

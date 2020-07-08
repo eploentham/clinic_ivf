@@ -40,7 +40,7 @@ namespace clinic_ivf.gui
         int colBlId = 1, colBlName = 2, colBlQty = 3, colBlPrice = 4, colBlInclude = 5, colBlRemark = 6;
         int colRxdId = 1, colRxName = 2, colRxQty = 3, colRxPrice = 4, colRxInclude = 5, colRxRemark = 6, colRxUsE = 7, colRxUsT = 8, colRxId = 9, colRxItmId = 10;
         int colNoteId = 1, colNote = 2, colNoteStatusAll = 3;
-        int colOrdid = 1, colOrdlpid = 2, colOrdName = 3, colOrdPrice = 4, colOrdQty = 5, colOrdstatus = 6, colOrdrow1 = 7, colOrditmid = 8, colOrdInclude = 9, colOrdAmt = 10, colOrdUsE = 11, colOrdUsT = 12;
+        int colOrdid = 1, colOrdlpid = 2, colOrdName = 3, colOrdPrice = 4, colOrdQty = 5, colOrdstatus = 6, colOrdrow1 = 7, colOrditmid = 8, colOrdInclude = 9, colOrdAmt = 10, colOrdUsE = 11, colOrdUsT = 12, colOrdEdit=13;
 
         Font fEdit, fEditB;
         Color bg, fc;
@@ -113,7 +113,6 @@ namespace clinic_ivf.gui
             setGrfOrder(txtVn.Text);
             picPtt.SizeMode = PictureBoxSizeMode.StretchImage;
         }
-
         private void BtnPrnSticker_Click(object sender, EventArgs e)
         {
             // throw new NotImplementedException();
@@ -126,7 +125,36 @@ namespace clinic_ivf.gui
             DataTable dt = new DataTable();
             //date = "2018-11-05";
             //date1 = "05-11-2018";
-            dt = ic.ivfDB.oJpxdDB.selectByVN1(txtVn.Text);
+            foreach(Row row in grfOrder.Rows)
+            {
+                String pxid = "", status = "", re = "", edit = "", usage = "";
+                pxid = row[colOrdid] != null ? row[colOrdid].ToString() : "";
+                status = row[colOrdstatus] != null ? row[colOrdstatus].ToString() : "";
+                edit = row[colOrdEdit] != null ? row[colOrdEdit].ToString() : "";
+                if (edit.Equals("1"))
+                {
+                    if (cboLangSticker.Text.Trim().Equals("English"))
+                    {
+                        usage = row[colOrdUsE].ToString();
+                        re = ic.ivfDB.oJpxdDB.updateUsageEByID(pxid, usage);
+                    }
+                    else
+                    {
+                        usage = row[colOrdUsT].ToString();
+                        re = ic.ivfDB.oJpxdDB.updateUsageTByID(pxid, usage);
+                    }
+                }
+            }
+
+            if (cboLangSticker.Text.Trim().Equals("English"))
+            {
+                dt = ic.ivfDB.oJpxdDB.selectByVN1FreqEN(txtVn.Text);
+            }
+            else
+            {
+                dt = ic.ivfDB.oJpxdDB.selectByVN1FreqTH(txtVn.Text);
+            }
+            
             //if (dt.Rows.Count <= 0) return;
             foreach ( DataRow row in dt.Rows)
             {
@@ -142,7 +170,7 @@ namespace clinic_ivf.gui
             //settings1.DefaultPageSettings.PrinterSettings.PrinterName = ic.iniC.printerSticker;
             //settings1.PrinterName = ic.iniC.printerSticker;
             FrmReport frm = new FrmReport(ic);
-            frm.setStickerDrugReport(date, dt);
+            frm.setStickerDrugReport(date, dt, cboLangSticker.Text.Trim());
             frm.ShowDialog(this);
         }
 
@@ -227,6 +255,7 @@ namespace clinic_ivf.gui
             //FilterRow fr = new FilterRow(grfPackageD);
 
             grfOrder.AfterDataRefresh += GrfOrder_AfterDataRefresh;
+            grfOrder.ChangeEdit += GrfOrder_ChangeEdit;
             grfOrder.SubtotalPosition = SubtotalPositionEnum.BelowData;
             //grfOrder.mou
             //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
@@ -244,6 +273,16 @@ namespace clinic_ivf.gui
             theme1.SetTheme(grfOrder, "GreenHouse");
 
         }
+
+        private void GrfOrder_ChangeEdit(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (grfOrder == null) return;
+            if (grfOrder.Row <= 0) return;
+            if (grfOrder.Col <= 0) return;
+            grfOrder[grfOrder.Row, colOrdEdit] = "1";
+        }
+
         private void ContextMenu_print_sticker(object sender, System.EventArgs e)
         {
             if (grfOrder.Row < 0) return;
@@ -255,13 +294,32 @@ namespace clinic_ivf.gui
             if (cell.TopRow < 1) return;
             for (int i = cell.TopRow; i <= cell.BottomRow; i++)
             {
-                String pxid = "", status = "";
+                String pxid = "", status = "", re="", edit="", usage="";
                 pxid = grfOrder[i, colOrdid].ToString();
                 status = grfOrder[i, colOrdstatus].ToString();
+                edit = grfOrder[i, colOrdEdit].ToString();
                 if (status.Equals("px"))
                 {
-                    id += pxid+",";
+                    id += pxid + ",";
                 }
+                if (cboLangSticker.Text.Trim().Equals("English"))
+                {
+                    usage = grfOrder[i, colOrdUsE].ToString();
+                    if (edit.Equals("1"))
+                    {
+                        re = ic.ivfDB.oJpxdDB.updateUsageEByID(id, usage);
+                    }
+                }
+                else
+                {
+                    usage = grfOrder[i, colOrdUsT].ToString();
+                    if (edit.Equals("1"))
+                    {
+                        re = ic.ivfDB.oJpxdDB.updateUsageTByID(id, usage);
+                    }
+                }
+                
+                
             }
             if (id.Length > 0)
             {
@@ -269,9 +327,16 @@ namespace clinic_ivf.gui
                 PrinterSettings settings = new PrinterSettings();
                 printerOld = settings.PrinterName;
                 SetDefaultPrinter(ic.iniC.printerSticker);
-
+                
                 DataTable dt = new DataTable();
-                dt = ic.ivfDB.oJpxdDB.selectBypxid(id);
+                if (cboLangSticker.Text.Trim().Equals("English"))
+                {
+                    dt = ic.ivfDB.oJpxdDB.selectBypxidFreqEN(id);
+                }
+                else
+                {
+                    dt = ic.ivfDB.oJpxdDB.selectBypxidFreqTH(id);
+                }
                 if (dt.Rows.Count > 0)
                 {
                     //if (dt.Rows.Count <= 0) return;
@@ -286,19 +351,16 @@ namespace clinic_ivf.gui
                     ic.ivfDB.oJpxdDB.updateStatusPrintOKByID(id);
                     ic.ivfDB.oJpxdDB.updateStatusUpStockOKByID(id);
                     FrmReport frm = new FrmReport(ic);
-                    frm.setStickerDrugReport(date, dt);
+                    frm.setStickerDrugReport(date, dt, cboLangSticker.Text.Trim());
                     frm.ShowDialog(this);
                 }
-                
             }
-            
         }
         private void GrfOrder_AfterDataRefresh(object sender, ListChangedEventArgs e)
         {
             //throw new NotImplementedException();
             UpdateTotals();
         }
-
         private void ContextMenu_or_void(object sender, System.EventArgs e)
         {
             if (grfOrder.Row < 0) return;
@@ -354,6 +416,7 @@ namespace clinic_ivf.gui
             dtAll.Columns.Add("itmid", typeof(String));
             dtAll.Columns.Add("extra", typeof(String));
             dtAll.Columns.Add("usage", typeof(String));
+            dtAll.Columns.Add("usageE", typeof(String));
             int i = 0;
             foreach (DataRow row in dtbl.Rows)
             {
@@ -367,6 +430,7 @@ namespace clinic_ivf.gui
                 row1["row1"] = row["row1"];
                 row1["extra"] = row["Extra"];
                 row1["usage"] = "";
+                row1["usageE"] = "";
                 if (row["LGID"].ToString().Equals("1"))
                 {
                     row1["status"] = "bloodlab";
@@ -403,6 +467,7 @@ namespace clinic_ivf.gui
                 row1["row1"] = row["row1"];
                 row1["extra"] = row["Extra"];
                 row1["usage"] = "";
+                row1["usageE"] = "";
                 dtAll.Rows.InsertAt(row1, i);
                 i++;
             }
@@ -419,6 +484,7 @@ namespace clinic_ivf.gui
                 row1["row1"] = row["row1"];
                 row1["extra"] = row["Extra"];
                 row1["usage"] = row["TUsage"];
+                row1["usageE"] = row["EUsage"];
                 dtAll.Rows.InsertAt(row1, i);
                 i++;
 
@@ -471,6 +537,7 @@ namespace clinic_ivf.gui
                     row1["row1"] = row["row1"];
                     row1["extra"] = "0";
                     row1["usage"] = "";
+                    row1["usageE"] = "";
                     dtAll.Rows.InsertAt(row1, i);
                     i++;
                 }
@@ -480,7 +547,7 @@ namespace clinic_ivf.gui
             view.Sort = "row1 ASC";
             DataTable sortedDate = view.ToTable();
             //grfOrder.DataSource = dtAll;
-            grfOrder.Cols.Count = 13;
+            grfOrder.Cols.Count = 14;
             //C1TextBox txt = new C1TextBox();
             //C1CheckBox chk = new C1CheckBox();
             //chk.Text = "Include Package";
@@ -494,7 +561,10 @@ namespace clinic_ivf.gui
             grfOrder.Cols[colOrdName].Width = 280;
             grfOrder.Cols[colOrdPrice].Width = 120;
             grfOrder.Cols[colOrdQty].Width = 80;
-            grfOrder.Cols[colOrdUsT].Width = 100;
+            grfOrder.Cols[colOrdUsT].Width = 500;
+            grfOrder.Cols[colOrdUsE].Width = 500;
+            grfOrder.Cols[colOrdInclude].Width = 60;
+            grfOrder.Cols[colOrdstatus].Width = 60;
 
             grfOrder.ShowCursor = true;
             //grdFlex.Cols[colID].Caption = "no";
@@ -505,6 +575,7 @@ namespace clinic_ivf.gui
             grfOrder.Cols[colOrdQty].Caption = "QTY";
             grfOrder.Cols[colOrdInclude].Caption = "Include Package";
             grfOrder.Cols[colOrdUsT].Caption = "Usage";
+            grfOrder.Cols[colOrdUsE].Caption = "Usage";
             grfOrder.Cols[colOrdAmt].Caption = "Amount";
             //grfOrder.SubtotalPosition = SubtotalPositionEnum.BelowData;
             Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
@@ -524,7 +595,7 @@ namespace clinic_ivf.gui
                     row1[colOrdlpid] = row["lgid"].ToString();
                     row1[colOrdName] = row["name"].ToString();
                     row1[colOrdUsT] = row["usage"].ToString();
-                    //row1[colOrdQty] = row["qty"].ToString();
+                    row1[colOrdUsE] = row["usageE"].ToString();
                     row1[colOrdstatus] = row["status"].ToString();
                     row1[colOrdrow1] = row["row1"].ToString();
                     row1[colOrditmid] = row["itmid"].ToString();
@@ -546,6 +617,7 @@ namespace clinic_ivf.gui
                             inc += (price * qty);
                         }
                     }
+                    row1[colOrdEdit] = "";
                     //if (i % 2 == 0)
                     //    grfPtt.Rows[i].StyleNew.BackColor = color;
                     i++;
@@ -560,30 +632,21 @@ namespace clinic_ivf.gui
             grfOrder.Cols[colOrdrow1].Visible = false;
             grfOrder.Cols[colOrdlpid].Visible = false;
             grfOrder.Cols[colOrdid].Visible = false;
-            //grfOrder.Cols[colOrdstatus].Visible = false;
+            grfOrder.Cols[colOrdEdit].Visible = false;
             grfOrder.Cols[colOrditmid].Visible = false;
-
-            grfOrder.Cols[colOrdUsE].Visible = false;
-            //grfOrder.Cols[colOrderPID].Visible = false;
-            //grfOrder.Cols[colOrderPIDS].Visible = false;
-            //grfOrder.Cols[colOrderSP1V].Visible = false;
-            //grfOrder.Cols[colOrderSP2V].Visible = false;
-            //grfOrder.Cols[colOrderSP3V].Visible = false;
-            //grfOrder.Cols[colOrderSP4V].Visible = false;
-            //grfOrder.Cols[colOrderSP5V].Visible = false;
-            //grfOrder.Cols[colOrderSP6V].Visible = false;
-            //grfOrder.Cols[colOrderSP7V].Visible = false;
-            //grfOrder.Cols[colOrderSubItem].Visible = false;
-            //grfOrder.Cols[colOrderFileName].Visible = false;
-            //grfOrder.Cols[colOrderWorder1].Visible = false;
-            //grfOrder.Cols[colOrderWorker2].Visible = false;
-            //grfOrder.Cols[colOrderWorker3].Visible = false;
-            //grfOrder.Cols[colOrderWorkder4].Visible = false;
-            //grfOrder.Cols[colOrderWorker5].Visible = false;
-            //grfOrder.Cols[colOrderLGID].Visible = false;
-            //grfOrder.Cols[colOrderActive].Visible = false;
-            //grfOrder.Cols[colOrderLID].Visible = false;
-            grfOrder.Cols[colOrdUsT].AllowEditing = false;
+            if (cboLangSticker.Text.Trim().Equals("English"))
+            {
+                grfOrder.Cols[colOrdUsT].Visible = false;
+                grfOrder.Cols[colOrdUsE].Visible = true;
+            }
+            else
+            {
+                grfOrder.Cols[colOrdUsT].Visible = true;
+                grfOrder.Cols[colOrdUsE].Visible = false;
+            }
+            
+            grfOrder.Cols[colOrdUsT].AllowEditing = true;
+            grfOrder.Cols[colOrdUsE].AllowEditing = true;
             grfOrder.Cols[colOrdName].AllowEditing = false;
             grfOrder.Cols[colOrdPrice].AllowEditing = false;
             grfOrder.Cols[colOrdQty].AllowEditing = false;
@@ -645,7 +708,7 @@ namespace clinic_ivf.gui
             drugid = grfRx[grfRx.Row, colRxdId] != null ? grfRx[grfRx.Row, colRxdId].ToString() : "";
             qty = grfRx[grfRx.Row, colRxQty] != null ? grfRx[grfRx.Row, colRxQty].ToString() : "";
             include = grfRx[grfRx.Row, colRxInclude] != null ? grfRx[grfRx.Row, colRxInclude].ToString().Equals("True") ? "1" : "0" : "0";
-            if (cboLangSticker.Text.Equals("English"))
+            if (cboLangSticker.Text.Trim().Equals("English"))
             {
                 usage = grfRx[grfRx.Row, colRxUsE] != null ? grfRx[grfRx.Row, colRxUsE].ToString() : "";
             }
@@ -688,8 +751,8 @@ namespace clinic_ivf.gui
             grfRx.Cols[colRxInclude].Width = 60;
             grfRx.Cols[colRxPrice].Width = 80;
             grfRx.Cols[colRxRemark].Width = 100;
-            grfRx.Cols[colRxUsE].Width = 200;
-            grfRx.Cols[colRxUsT].Width = 200;
+            grfRx.Cols[colRxUsE].Width = 400;
+            grfRx.Cols[colRxUsT].Width = 400;
             grfRx.Cols[colRxQty].Width = 60;
 
             grfRx.ShowCursor = true;
@@ -752,7 +815,8 @@ namespace clinic_ivf.gui
             grfRx.Cols[colBlName].AllowEditing = false;
             grfRx.Cols[colBlPrice].AllowEditing = false;
             grfRx.Cols[colBlRemark].AllowEditing = true;
-            //grfRx.AllowFiltering = true;
+            grfRx.Cols[colRxUsE].AllowEditing = true;
+            grfRx.Cols[colRxUsT].AllowEditing = true;
 
             FilterRow fr = new FilterRow(grfRx);
             grfRx.AllowFiltering = true;
@@ -774,7 +838,7 @@ namespace clinic_ivf.gui
             //throw new NotImplementedException();
             decimal hei = 0;
             hei = tlpPatient.Height;
-            label19.Text = hei.ToString();
+            //label19.Text = hei.ToString();
 
         }
         private void BtnNoteAdd_Click(object sender, EventArgs e)
@@ -871,11 +935,13 @@ namespace clinic_ivf.gui
         private void CboLangSticker_SelectedIndexChanged(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            if (cboLangSticker.Text.Equals("English"))
+            if (cboLangSticker.Text.Trim().Equals("English"))
             {
                 grfRx.Cols[colRxUsT].Visible = false;
                 grfRx.Cols[colRxUsE].Visible = true;
 
+                grfOrder.Cols[colOrdUsE].Visible = true;
+                grfOrder.Cols[colOrdUsT].Visible = false;
                 //grfRxSetD.Cols[colRxUsT].Visible = false;
                 //grfRxSetD.Cols[colRxUsE].Visible = true;
             }
@@ -883,6 +949,9 @@ namespace clinic_ivf.gui
             {
                 grfRx.Cols[colRxUsT].Visible = true;
                 grfRx.Cols[colRxUsE].Visible = false;
+
+                grfOrder.Cols[colOrdUsE].Visible = false;
+                grfOrder.Cols[colOrdUsT].Visible = true;
                 //grfRxSetD.Cols[colRxUsT].Visible = true;
                 //grfRxSetD.Cols[colRxUsE].Visible = false;
             }
@@ -917,6 +986,7 @@ namespace clinic_ivf.gui
             PrinterSettings settings2 = new PrinterSettings();
 
             lbPrinterStickerName.Text = settings1.DefaultPageSettings.PrinterSettings.PrinterName;
+            c1SplitterPanel1.SizeRatio = 5;
         }
     }
 }

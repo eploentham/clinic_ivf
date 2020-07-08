@@ -1046,7 +1046,7 @@ namespace clinic_ivf.gui
                 MessageBox.Show("error " + ex.Message, "");
             }
         }
-        public void setStickerDrugReport(String date, DataTable dt)
+        public void setStickerDrugReport(String date, DataTable dt, String flaglang)
         {
             String chk = "", printerDefault="";
             ReportDocument rpt = new ReportDocument();
@@ -1072,11 +1072,21 @@ namespace clinic_ivf.gui
                 rpt.Load("sticker_drug.rpt");
 
                 rpt.SetDataSource(dt);
-                
+
                 //ic.cop = ic.ivfDB.copDB.selectByCode1("001");
-                rpt.SetParameterValue("line11", ic.cop.comp_name_t);
-                rpt.SetParameterValue("line12", "โทรศัพท์ "+ic.cop.tele);
-                rpt.SetParameterValue("date1", "" + date1);
+                if (flaglang.Equals("English"))
+                {
+                    rpt.SetParameterValue("line11", "Worldwide Fertility Center");
+                    rpt.SetParameterValue("line12", "โทรศัพท์ " + ic.cop.tele);
+                    rpt.SetParameterValue("date1", "" + date1);
+                }
+                else
+                {
+                    rpt.SetParameterValue("line11", "เวิลด์ไวด์คลินิกเวชกรรมเฉพาะทางสูตินรีเวช");
+                    rpt.SetParameterValue("line12", "โทรศัพท์ " + ic.cop.tele);
+                    rpt.SetParameterValue("date1", "" + date1);
+                }
+                
                 //rpt.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.
                 //rpt.PrintOptions.PrinterName = ic.iniC.printerSticker;
                 //rpt.PrintToPrinter(1, false, 1, 1);

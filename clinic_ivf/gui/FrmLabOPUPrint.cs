@@ -93,7 +93,7 @@ namespace clinic_ivf.gui
             }
             else if (opureport == opuReport.ResultDay3)
             {
-                pnEmail.Hide();
+                //pnEmail.Hide();
                 chkSendEmail.Hide();
                 //btnPrint.Hide();
                 btnExport.Text = "ส่งผล Day3";
@@ -110,7 +110,11 @@ namespace clinic_ivf.gui
             }
             else if (opureport == opuReport.ResultDay5)
             {
-                pnEmail.Hide();
+                //pnEmail.Hide();
+                if (!opu.status_opu.Equals("2"))
+                {
+                    pnEmail.Hide();
+                }
                 chkSendEmail.Hide();
                 //btnPrint.Hide();
                 btnExport.Text = "ส่งผล Day5";
@@ -120,7 +124,10 @@ namespace clinic_ivf.gui
             }
             else if (opureport == opuReport.ResultDay6)
             {
-                pnEmail.Hide();
+                if (!opu.status_opu.Equals("2"))
+                {
+                    pnEmail.Hide();
+                }
                 chkSendEmail.Hide();
                 //btnPrint.Hide();
                 btnExport.Text = "ส่งผล Day6";
@@ -194,6 +201,14 @@ namespace clinic_ivf.gui
                 else if (opureport == opuReport.OPUEmbryoDevReport)
                 {
                     dt = printOPUEmbryoDev("");
+                }
+                else
+                {
+                    FrmWaiting frmW = new FrmWaiting();
+                    frmW.Show();
+                    dt = printOPUReport("");
+                    frmW.Dispose();
+                    dtEmbryo = printOPUEmbryoDev("");
                 }
                 if (chkEmbryoFreez2Col.Checked && chkEmbryoDev20.Checked)
                 {
@@ -464,9 +479,10 @@ namespace clinic_ivf.gui
         {
             ReportDocument rpt;
             CrystalReportViewer crv = new CrystalReportViewer();
-            String filename = "", directory = "", ext = ".pdf";
+            String filename = "", directory = "", ext = ".pdf", datetick = "";
             directory = AppDomain.CurrentDomain.BaseDirectory;
-            filename = directory + "report\\" + DateTime.Now.Ticks.ToString() + ext;
+            datetick = DateTime.Now.Ticks.ToString();
+            filename = directory + "report\\" + datetick + ext;
             rpt = new ReportDocument();
             DataTable dt = new DataTable();
             dt = printOPUReport("");
@@ -527,6 +543,20 @@ namespace clinic_ivf.gui
                         }
                     }
                 }
+                //Report Embryo
+                filename = directory + "report\\" + datetick + "_embryo_day6" + ext;
+                DataTable dtEmbryo = new DataTable();
+                dtEmbryo = printOPUEmbryoDev("");
+                setEmailOPUPicEmbryo(dtEmbryo, filename);
+                Application.DoEvents();
+                System.Threading.Thread.Sleep(200);
+                if (File.Exists(filename))
+                {
+                    long chk1 = 0;
+                    String filename1 = Path.GetFileName(filename);
+                    ic.savePicOPUtoServer(txtOpuCode.Text, filename1, filename);
+
+                }
             }
             catch (Exception ex)
             {
@@ -571,9 +601,10 @@ namespace clinic_ivf.gui
         {
             ReportDocument rpt;
             CrystalReportViewer crv = new CrystalReportViewer();
-            String filename = "", directory = "", ext = ".pdf";
+            String filename = "", directory = "", ext = ".pdf", datetick = "";
             directory = AppDomain.CurrentDomain.BaseDirectory;
-            filename = directory + "report\\" + DateTime.Now.Ticks.ToString() + ext;
+            datetick = DateTime.Now.Ticks.ToString();
+            filename = directory + "report\\" + datetick + ext;
             rpt = new ReportDocument();
             DataTable dt = new DataTable();
             dt = printOPUReport("");
@@ -634,6 +665,20 @@ namespace clinic_ivf.gui
                         }
                     }
                 }
+                //Report Embryo
+                filename = directory + "report\\" + datetick + "_embryo_day5" + ext;
+                DataTable dtEmbryo = new DataTable();
+                dtEmbryo = printOPUEmbryoDev("");
+                setEmailOPUPicEmbryo(dtEmbryo, filename);
+                Application.DoEvents();
+                System.Threading.Thread.Sleep(200);
+                if (File.Exists(filename))
+                {
+                    long chk1 = 0;
+                    String filename1 = Path.GetFileName(filename);
+                    ic.savePicOPUtoServer(txtOpuCode.Text, filename1, filename);
+
+                }
             }
             catch (Exception ex)
             {
@@ -646,9 +691,10 @@ namespace clinic_ivf.gui
         {
             ReportDocument rpt;
             CrystalReportViewer crv = new CrystalReportViewer();
-            String filename = "", directory = "", ext = ".pdf";
+            String filename = "", directory = "", ext = ".pdf", datetick="";
             directory = AppDomain.CurrentDomain.BaseDirectory;
-            filename = directory + "report\\" + DateTime.Now.Ticks.ToString() + ext;
+            datetick = DateTime.Now.Ticks.ToString();
+            filename = directory + "report\\" + datetick + ext;
             rpt = new ReportDocument();
             DataTable dt = new DataTable();
             dt = printOPUReport("");
@@ -707,6 +753,20 @@ namespace clinic_ivf.gui
                             //btnApproveResult.Image = Resources.Female_user_accept_24;
                         }
                     }
+                }
+                //Report Embryo
+                filename = directory + "report\\" + datetick + "_embryo_day3" + ext;
+                DataTable dtEmbryo = new DataTable();
+                dtEmbryo = printOPUEmbryoDev("");
+                setEmailOPUPicEmbryo(dtEmbryo, filename);
+                Application.DoEvents();
+                System.Threading.Thread.Sleep(200);
+                if (File.Exists(filename))
+                {
+                    long chk1 = 0;
+                    String filename1 = Path.GetFileName(filename);
+                    ic.savePicOPUtoServer(txtOpuCode.Text, filename1, filename);
+
                 }
             }
             catch (Exception ex)
@@ -1143,6 +1203,10 @@ namespace clinic_ivf.gui
                 {
                     day = cboEmbryoDev1.SelectedItem == null ? "" : ((ComboBoxItem)cboEmbryoDev1.SelectedItem).Value;
                 }
+                else if (flagPrint.Equals("day3"))
+                {
+                    day = "3";
+                }
                 else
                 {
                     day = cboEmbryoDev3.SelectedItem == null ? "" : ((ComboBoxItem)cboEmbryoDev3.SelectedItem).Value;
@@ -1194,36 +1258,44 @@ namespace clinic_ivf.gui
                         if (!path_pic.Equals(""))
                         {
                             MemoryStream stream = ic.ftpC.download(path_pic);
-                            Image loadedImage = new Bitmap(stream);
-                            String[] ext = path_pic.Split('.');
-                            var extension = Path.GetExtension(path_pic);
-                            var name = Path.GetFileNameWithoutExtension(path_pic); // Get the name only
-                            //if (ext.Length > 0)
-                            //{
-                            String filename = name;
-                            String no = "", filename1 = "",st="";
-                            no = filename.Substring(filename.Length - 2);
-                            no = no.Replace("_", "");
-                            filename1 = "embryo_dev_" + no + extension;
-                            if (File.Exists(filename1))
+                            try
                             {
-                                File.Delete(filename1);
-                                System.Threading.Thread.Sleep(200);
+                                Image loadedImage = new Bitmap(stream);
+                                String[] ext = path_pic.Split('.');
+                                var extension = Path.GetExtension(path_pic);
+                                var name = Path.GetFileNameWithoutExtension(path_pic); // Get the name only
+                                                                                       //if (ext.Length > 0)
+                                                                                       //{
+                                String filename = name;
+                                String no = "", filename1 = "", st = "";
+                                no = filename.Substring(filename.Length - 2);
+                                no = no.Replace("_", "");
+                                filename1 = "embryo_dev_" + no + extension;
+                                if (File.Exists(filename1))
+                                {
+                                    File.Delete(filename1);
+                                    System.Threading.Thread.Sleep(200);
+                                }
+                                loadedImage.Save(filename1);
+                                row["no1_pathpic"] = System.IO.Directory.GetCurrentDirectory() + "\\" + filename1;
+                                //st = row["no1_desc2"].ToString();
+                                st = row["no1_desc3"].ToString();
+                                if (st.Length >= 1)
+                                {
+                                    row["no1_desc2"] = "st# " + st;
+                                }
+                                else
+                                {
+                                    row["no1_desc2"] = "";
+                                }
+                                row["no1_desc3"] = row["no1_desc4"].ToString();
+                                //}footer11
                             }
-                            loadedImage.Save(filename1);
-                            row["no1_pathpic"] = System.IO.Directory.GetCurrentDirectory() + "\\" + filename1;
-                            //st = row["no1_desc2"].ToString();
-                            st = row["no1_desc3"].ToString();
-                            if (st.Length >= 1)
+                            catch (Exception ex)
                             {
-                                row["no1_desc2"] = "st# " + st;
+
                             }
-                            else
-                            {
-                                row["no1_desc2"] = "";
-                            }
-                            row["no1_desc3"] = row["no1_desc4"].ToString();
-                            //}footer11
+                            
                         }
                         //row["footer11"] = opu.remark_day2;
                         //row["footer12"] = opu.remark_day3;

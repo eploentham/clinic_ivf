@@ -732,6 +732,8 @@
     <Compile Include="objdb\PatientAppointmentDB.cs" />
     <Compile Include="objdb\PatientAppointmentTextDB.cs" />
     <Compile Include="objdb\PatientMedicalHistoryDB.cs" />
+    <Compile Include="objdb\StockCardDB.cs" />
+    <Compile Include="objdb\StockCardEndYearDB.cs" />
     <Compile Include="objdb\StockDrawDB.cs" />
     <Compile Include="objdb\StockDrawDetailDB.cs" />
     <Compile Include="objdb\StockRecDB.cs" />
@@ -812,6 +814,8 @@
     <Compile Include="object1\PatientMedicalHistory.cs" />
     <Compile Include="object1\RDNIDWRAPPER.cs" />
     <Compile Include="object1\RecentDocumentList.cs" />
+    <Compile Include="object1\StockCard.cs" />
+    <Compile Include="object1\StockCardEndYear.cs" />
     <Compile Include="object1\StockDraw.cs" />
     <Compile Include="object1\StockDrawDetail.cs" />
     <Compile Include="object1\StockRec.cs" />

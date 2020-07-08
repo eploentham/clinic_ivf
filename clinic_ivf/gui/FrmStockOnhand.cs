@@ -1,4 +1,5 @@
 ﻿using C1.C1Excel;
+using C1.Win.C1Command;
 using C1.Win.C1FlexGrid;
 using C1.Win.C1SuperTooltip;
 using clinic_ivf.control;
@@ -31,7 +32,12 @@ namespace clinic_ivf.gui
         Image imgCorr, imgTran;
         Color color;
 
+        C1DockingTab tC1;
+        C1DockingTabPage tabOnhand;
+        List<C1FlexGrid> lgrfPkg;
+
         int colId = 1, colName = 2, colOnhand = 4, colUnit=3, colOrderPoint = 5, colOrderAmount = 6, colPrice = 7;
+        int colItmrecdrawjxpxid = 1, colItmDate=2, colItmDesc = 3, colItmQty = 4, colItmPrice = 5, colItmAmt = 6, colItmRemark = 7;
         Boolean pageLoad = false;
         public FrmStockOnhand(IvfControl ic)
         {
@@ -46,6 +52,7 @@ namespace clinic_ivf.gui
             pageLoad = true;
             fEdit = new Font(ic.iniC.grdViewFontName, ic.grdViewFontSize, FontStyle.Regular);
             fEditB = new Font(ic.iniC.grdViewFontName, ic.grdViewFontSize, FontStyle.Bold);
+            lgrfPkg = new List<C1FlexGrid>();
 
             //C1ThemeController.ApplicationTheme = ic.iniC.themeApplication;
             theme1.Theme = ic.iniC.themeApplication;
@@ -54,6 +61,33 @@ namespace clinic_ivf.gui
 
             ic.ivfDB.stknDB.setCboStockSubName(cboStkSubName);
             cboStkSubName.SelectedIndex = 0;
+            tC1 = new C1DockingTab();
+            tabOnhand = new C1DockingTabPage();
+            tC1.SuspendLayout();
+            tabOnhand.SuspendLayout();
+
+            tC1.Dock = System.Windows.Forms.DockStyle.Fill;
+            tC1.HotTrack = true;
+            tC1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            tC1.TabSizeMode = C1.Win.C1Command.TabSizeModeEnum.Fit;
+            tC1.TabsShowFocusCues = true;
+            tC1.Alignment = TabAlignment.Top;
+            tC1.SelectedTabBold = true;
+            tC1.Name = "tC1";
+            tC1.CanCloseTabs = true;
+            tabOnhand.Name = "tabOnhand";
+            tabOnhand.TabIndex = 0;
+            tabOnhand.Text = "Onhand";
+            theme1.SetTheme(tC1, ic.theme);
+            //theme1.SetTheme(groupBox1, theme2);
+
+            tC1.ResumeLayout(false);
+            tabOnhand.ResumeLayout(false);
+            tC1.PerformLayout();
+            tabOnhand.PerformLayout();
+
+            tC1.Controls.Add(tabOnhand);
+            pnStock.Controls.Add(tC1);
             initGrfStk();
 
             sB1.Text = "";
@@ -92,7 +126,7 @@ namespace clinic_ivf.gui
             //menuGw.MenuItems.Add("&แก้ไข", new EventHandler(ContextMenu_Gw_Edit));
             //menuGw.MenuItems.Add("&ยกเลิก", new EventHandler(ContextMenu_Gw_Cancel));
             grfStk.ContextMenu = menuGw;
-            pnStock.Controls.Add(grfStk);
+            tabOnhand.Controls.Add(grfStk);
 
             theme1.SetTheme(grfStk, "Office2010Red");
 
@@ -207,7 +241,6 @@ namespace clinic_ivf.gui
             //theme1.SetTheme(grfFinish, ic.theme);
 
         }
-
         private void GrfStk_AfterFilter(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
@@ -220,9 +253,90 @@ namespace clinic_ivf.gui
         private void GrfStk_DoubleClick(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
+            String id = "", name="";
+            if (grfStk[grfStk.Row, colId] == null) return;
+            id = grfStk[grfStk.Row, colId] != null ? grfStk[grfStk.Row, colId].ToString() : "";
+            name = grfStk[grfStk.Row, colName] != null ? grfStk[grfStk.Row, colName].ToString() : "";
+            C1DockingTabPage tabItem = new C1DockingTabPage();
+            tabItem.TabIndex = 0;
+            tabItem.Name = "tabItem";
+            tabItem.Text = name;
 
+            C1FlexGrid grf = new C1FlexGrid();
+            grf.Font = fEdit;
+            grf.Dock = DockStyle.Fill;
+            grf.Location = new Point(0, 0);
+            grf.Rows.Count = 1;
+            grf.Name = "grf_" + id;
+            theme1.SetTheme(grf, "VS2013Tan");
+
+            setGrfItem(id, grf);
+            tabItem.Controls.Add(grf);
+            lgrfPkg.Add(grf);
+            tC1.Controls.Add(tabItem);
         }
+        private void setGrfItem(String itmid, C1FlexGrid grf)
+        {
+            DataTable dt = new DataTable();
+            long chk = 0;
+            String re = "";
+            re = ic.ivfDB.stkcDB.genStockItem(itmid);
+            dt = ic.ivfDB.stkcDB.selectAll();
+            grf.Rows.Count = 1;
+            grf.Rows.Count = dt.Rows.Count+1;
+            grf.Cols.Count = 8;
 
+            grf.Cols[colItmDesc].Width = 200;
+            grf.Cols[colItmQty].Width = 80;
+            grf.Cols[colItmPrice].Width = 120;
+            grf.Cols[colItmAmt].Width = 120;
+            grf.Cols[colItmRemark].Width = 200;
+
+            grf.Cols[colItmDesc].Caption = "Description";
+            grf.Cols[colItmQty].Caption = "QTY";
+            grf.Cols[colItmPrice].Caption = "Price";
+            grf.Cols[colItmAmt].Caption = "Amount";
+            grf.Cols[colItmRemark].Caption = "Remark";
+
+            Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
+            int i = 1;
+            foreach (DataRow row in dt.Rows)
+            {
+                try
+                {
+                    Decimal chk1 = 0, qty = 0;
+                    grf[i, 0] = i;
+                    grf[i, colItmDesc] = row["status_rec_draw"].ToString().Equals("1") ? "รับเข้า " : row["status_rec_draw"].ToString().Equals("2") ? "ตัดจ่าย" : row["status_rec_draw"].ToString().Equals("3") ? "ขาย" : "";
+                    grf[i, colItmQty] = row["qty"].ToString();
+                    grf[i, colItmPrice] = row["price"].ToString();
+                    grf[i, colItmRemark] = row["remark"].ToString();
+                    grf[i, colItmrecdrawjxpxid] = row["stock_id"].ToString();
+                    grf[i, colItmDate] = ic.datetoShow(row["rec_draw_sale_date"].ToString());
+                    //grfPkg[i, colPkgUse] = row["QTYused"].ToString();
+                    //Decimal.TryParse(row["QTY"].ToString(), out qty);
+                    //Decimal.TryParse(row["QTYused"].ToString(), out chk);
+                    //if (chk < qty)
+                    //{
+                    //    grfPkg.Rows[i].StyleNew.BackColor = color;
+                    //    //grfPkg.Rows[i].StyleNew.BackColor = Color.Red;
+                    //}
+                    //else if (chk > 0)
+                    //{
+                    //    grfPkg.Rows[i].StyleNew.BackColor = Color.Red;
+                    //}
+                    ////if (i % 2 == 0)
+                    ////    grfPtt.Rows[i].StyleNew.BackColor = color;
+                    i++;
+                }
+                catch (Exception ex)
+                {
+                    String err = "";
+                }
+            }
+            CellNoteManager mgr = new CellNoteManager(grf);
+            grf.Cols[colItmAmt].Visible = false;
+            grf.Cols[colItmAmt].AllowEditing = false;
+        }
         private void FrmStockOnhand_Load(object sender, EventArgs e)
         {
             //ic.setC1Combo(cboStkSubName, "");

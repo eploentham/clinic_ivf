@@ -159,7 +159,7 @@ namespace clinic_ivf.gui
             sC.Panels.Add(scBill);
             
             sC.HeaderHeight = 20;
-            scOrder.SizeRatio = 30;
+            scOrder.SizeRatio = 2;
 
             scBill.ResumeLayout(false);
             scOrder.ResumeLayout(false);
@@ -1134,9 +1134,9 @@ namespace clinic_ivf.gui
             }
             String re1 = "", re2 = "", re3 = "", re4 = "";
             re1 = ic.ivfDB.opkgsDB.updatePayment1(pkgsid, period1.ToString());
-            re2 = ic.ivfDB.opkgsDB.updatePayment1(pkgsid, period2.ToString());
-            re3 = ic.ivfDB.opkgsDB.updatePayment1(pkgsid, period3.ToString());
-            re4 = ic.ivfDB.opkgsDB.updatePayment1(pkgsid, period4.ToString());
+            re2 = ic.ivfDB.opkgsDB.updatePayment2(pkgsid, period2.ToString());
+            re3 = ic.ivfDB.opkgsDB.updatePayment3(pkgsid, period3.ToString());
+            re4 = ic.ivfDB.opkgsDB.updatePayment4(pkgsid, period4.ToString());
             String re = ic.ivfDB.obildDB.updatePaymentPeriod(txtVn.Text, pkgsid, period1.ToString());
             long chk = 0;
             if(long.TryParse(re, out chk))

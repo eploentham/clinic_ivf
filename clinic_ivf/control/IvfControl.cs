@@ -25,6 +25,7 @@ using System.Diagnostics;
 using C1.Win.BarCode;
 using System.IO.Ports;
 using System.Data;
+using clinic_ivf.gui;
 
 namespace clinic_ivf.control
 {
@@ -578,6 +579,7 @@ namespace clinic_ivf.control
             item.Value = "Thai";
             item.Text = "Thai";
             c.Items.Add(item);
+            c.SelectedItem = "English";
         }
         public void setCboDay(C1ComboBox c, String selected)
         {
@@ -1623,9 +1625,9 @@ namespace clinic_ivf.control
         public C1ComboBox setCboYear(C1ComboBox c)
         {
             c.Items.Clear();
-            c.Items.Add(System.DateTime.Now.Year + 543);
-            c.Items.Add(System.DateTime.Now.Year + 543 - 1);
-            c.Items.Add(System.DateTime.Now.Year + 543 - 2);
+            c.Items.Add(System.DateTime.Now.Year );
+            c.Items.Add(System.DateTime.Now.Year - 1);
+            c.Items.Add(System.DateTime.Now.Year - 2);
             c.SelectedIndex = 0;
             return c;
         }
@@ -1636,6 +1638,141 @@ namespace clinic_ivf.control
         public Size MeasureString(Control c)
         {
             return TextRenderer.MeasureText(c.Text, c.Font, new Size(int.MaxValue, int.MaxValue), TextFormatFlags.SingleLine | TextFormatFlags.NoClipping | TextFormatFlags.PreserveGraphicsClipping);
+        }
+        public void setRptLabBloodInfectious(String vsid, Form frm1)
+        {
+            FrmReport frm = new FrmReport(this);
+            DataTable dt = new DataTable();
+            Visit vs = new Visit();
+            Patient ptt = new Patient();
+            LabResult lbRes = new LabResult();
+            vs = ivfDB.vsDB.selectByPk1(vsid);
+            ptt = ivfDB.pttDB.selectByPk1(vs.t_patient_id);
+            dt = ivfDB.lbresDB.selectLabBloodByVsIdInfectious(vsid);
+
+            lbRes = ivfDB.lbresDB.selectByVsId(vsid);
+
+            dt.Columns.Add("patient_name", typeof(String));
+            dt.Columns.Add("patient_hn", typeof(String));
+            dt.Columns.Add("patient_dob", typeof(String));
+            dt.Columns.Add("patient_sex", typeof(String));
+            dt.Columns.Add("line1", typeof(String));
+            dt.Columns.Add("line2", typeof(String));
+            dt.Columns.Add("line3", typeof(String));
+            dt.Columns.Add("sign_reporter", typeof(String));
+            dt.Columns.Add("sign_approved", typeof(String));
+            String date1 = "", collectdate = "", receivedate = "", reporter = "", approved = "", reportername = "", approvedname = "";
+            Staff stf = new Staff();
+            //reporter = ivfDB.stfDB.getIdByNameSurname(lbRes.staff_id_result);
+            //approved = ivfDB.stfDB.getIdByNameSurname(lbRes.staff_id_approve);
+            stf = ivfDB.stfDB.selectByPk1(lbRes.staff_id_result);
+            reportername = stf.prefix_name_t + " " + stf.staff_fname_e + " " + stf.staff_lname_e + " " + stf.doctor_id;
+            stf = ivfDB.stfDB.selectByPk1(lbRes.staff_id_approve);
+            approvedname = stf.prefix_name_t + " " + stf.staff_fname_e + " " + stf.staff_lname_e + " " + stf.doctor_id;
+            String dob = "", sex="";
+            dob = datetoShow(ptt.patient_birthday) + " [" + ptt.AgeStringShort() + "]";
+            sex = ptt.f_sex_id.Equals("1") ? "ชาย" : "หญิง";
+            foreach (DataRow row in dt.Rows)
+            {
+                collectdate = row[ivfDB.lbresDB.lbRes.req_date_time].ToString();
+                receivedate = row[ivfDB.lbresDB.lbRes.date_time_receive].ToString();
+                row["patient_hn"] = ptt.patient_hn;
+                row["patient_name"] = ptt.Name;
+                row["patient_dob"] = dob;
+                row["patient_sex"] = sex;
+                row["sign_reporter"] = System.IO.Directory.GetCurrentDirectory() + "\\" + reporter + ".jpg";
+                row["sign_approved"] = System.IO.Directory.GetCurrentDirectory() + "\\" + approved + ".jpg";
+                if (ptt.f_sex_id.Equals("2") && (!ptt.patient_hn_1.Equals("") && !ptt.patient_hn_2.Equals("")))     // เป็น female และ เป็น donor  ไม่ต้องพิมพ์ หัว บริษัท
+                {
+                    row["line1"] = "";
+                    row["line2"] = "";
+                    row["line3"] = "";
+                }
+                else
+                {
+                    row["line1"] = cop.comp_name_t;
+                    row["line2"] = cop.addr1;
+                    row["line3"] = cop.addr2;
+                }
+            }
+            frm.setLabBloodReportInfectious(dt, ptt.patient_hn, ptt.Name, dob, sex, reportername, approvedname, datetoShow(lbRes.date_time_result), datetoShow(lbRes.date_time_approve), datetimetoShow(collectdate), datetimetoShow(receivedate));
+            frm.ShowDialog(frm1);
+        }
+        public void setRptHormone(String vsid, Form frm1)
+        {
+            FrmReport frm = new FrmReport(this);
+            DataTable dt = new DataTable();
+            Visit vs = new Visit();
+            Patient ptt = new Patient();
+            LabResult lbRes = new LabResult();
+            vs = ivfDB.vsDB.selectByPk1(vsid);
+            ptt = ivfDB.pttDB.selectByPk1(vs.t_patient_id);
+            dt = ivfDB.lbresDB.selectLabBloodByVsIdHormone(vsid);
+            lbRes = ivfDB.lbresDB.selectByVsId(vsid);
+            
+            dt.Columns.Add("patient_name", typeof(String));
+            dt.Columns.Add("patient_hn", typeof(String));
+            dt.Columns.Add("patient_dob", typeof(String));
+            dt.Columns.Add("patient_sex", typeof(String));
+            dt.Columns.Add("line1", typeof(String));
+            dt.Columns.Add("line2", typeof(String));
+            dt.Columns.Add("line3", typeof(String));
+            dt.Columns.Add("sign_reporter", typeof(String));
+            dt.Columns.Add("sign_approved", typeof(String));
+            String amh = "", collectdate = "", receivedate = "", reporter = "", approved = "", reportername = "", approvedname = "";
+            Staff stf = new Staff();
+            //lbRes = ic.ivfDB.lbresDB.selectByPk(resId);
+            //reporter = ivfDB.stfDB.getIdByNameSurname(cboEmbryologistReport.Text);
+            //approved = ivfDB.stfDB.getIdByNameSurname(cboEmbryologistAppv.Text);
+            stf = ivfDB.stfDB.selectByPk1(lbRes.staff_id_result);
+            reportername = stf.prefix_name_t + " " + stf.staff_fname_e + " " + stf.staff_lname_e + " " + stf.doctor_id;
+            stf = ivfDB.stfDB.selectByPk1(lbRes.staff_id_approve);
+            approvedname = stf.prefix_name_t + " " + stf.staff_fname_e + " " + stf.staff_lname_e + " " + stf.doctor_id;
+            String dob = "", sex = "";
+            dob = datetoShow(ptt.patient_birthday) + " [" + ptt.AgeStringShort() + "]";
+            sex = ptt.f_sex_id.Equals("1") ? "ชาย" : "หญิง";
+            foreach (DataRow row in dt.Rows)
+            {
+                collectdate = row[ivfDB.lbresDB.lbRes.date_time_collect].ToString();
+                receivedate = row[ivfDB.lbresDB.lbRes.date_time_receive].ToString();
+                if (row["LID"].ToString().Equals("10"))
+                {
+                    amh = "1";
+                }
+                else
+                {
+                    //amh = "0";
+                }
+                row["patient_hn"] = ptt.patient_hn;
+                row["patient_name"] = ptt.Name.ToUpper();
+                row["patient_dob"] = dob;
+                row["patient_sex"] = sex;
+                row["sign_reporter"] = System.IO.Directory.GetCurrentDirectory() + "\\" + reporter + ".jpg";
+                row["sign_approved"] = System.IO.Directory.GetCurrentDirectory() + "\\" + approved + ".jpg";
+                if (ptt.f_sex_id.Equals("2") && (!ptt.patient_hn_1.Equals("") && !ptt.patient_hn_2.Equals("")))     // เป็น female และ เป็น donor  ไม่ต้องพิมพ์ หัว บริษัท
+                {
+                    row["line1"] = "";
+                    row["line2"] = "";
+                    row["line3"] = "";
+                }
+                else
+                {
+                    row["line1"] = cop.comp_name_t;
+                    row["line2"] = cop.addr1;
+                    row["line3"] = cop.addr2;
+                }
+            }
+            String date1 = "";
+            if (ptt.f_sex_id.Equals("2") && (!ptt.patient_hn_1.Equals("") && !ptt.patient_hn_2.Equals("")))     // เป็น female และ เป็น donor  ไม่ต้องพิมพ์ หัว บริษัท
+            {
+                frm.setLabBloodReportHormone(dt, ptt.patient_hn, ptt.Name.ToUpper(), dob, sex, reportername, approvedname, datetoShow(lbRes.date_time_result), datetoShow(lbRes.date_time_approve), "1", amh, datetimetoShow(collectdate), datetimetoShow(receivedate));
+            }
+            else
+            {
+                frm.setLabBloodReportHormone(dt, ptt.patient_hn, ptt.Name.ToUpper(), dob, sex, reportername, approvedname, datetoShow(lbRes.date_time_result), datetoShow(lbRes.date_time_approve), "", amh, datetimetoShow(collectdate), datetimetoShow(receivedate));
+            }
+
+            frm.ShowDialog(frm1);
         }
     }
 }

@@ -630,7 +630,7 @@ namespace clinic_ivf.gui
         private void FrmPharmaView_Load(object sender, EventArgs e)
         {
             tC.SelectedTab = tabWaiting;
-            chkAll.Checked = true;
+            chkAll.Checked = false;
             setGrfQue();
             setGrfFinish();
         }

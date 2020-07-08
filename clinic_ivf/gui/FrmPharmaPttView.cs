@@ -205,7 +205,7 @@ namespace clinic_ivf.gui
             //if (dt.Rows.Count <= 0) return;
 
             FrmReport frm = new FrmReport(ic);
-            frm.setStickerDrugReport(date, dt);
+            frm.setStickerDrugReport(date, dt,"");
             frm.ShowDialog(this);
         }
         private void FrmPharmaPttView_Load(object sender, EventArgs e)

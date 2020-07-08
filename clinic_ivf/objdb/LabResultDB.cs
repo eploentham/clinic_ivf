@@ -154,7 +154,6 @@ namespace clinic_ivf.objdb
                 "Where dsc." + lbRes.pkField + " ='" + id + "' " +
                 "Order By lis_id ";
             dt = conn.selectData(conn.conn, sql);
-
             return dt;
         }
         public DataTable selectByVn(String lab_id, String result, String vsDate)
@@ -167,8 +166,23 @@ namespace clinic_ivf.objdb
                 "Where dsc." + lbRes.lab_id + " ='" + lab_id + "' and dsc." + lbRes.result + "='" + result + "' and dsc." + lbRes.method + "='" + vsDate + "' and dsc." + lbRes.active + "='1'" +
                 "Order By lis_id ";
             dt = conn.selectData(conn.conn, sql);
-
             return dt;
+        }
+        public LabResult selectByVsId(String vsid)
+        {
+            LabResult cop1 = new LabResult();
+            DataTable dt = new DataTable();
+            String sql = "select * " +
+                "From " + lbRes.table + " dsc " +
+                //"Left Join f_patient_prefix pfx On stf.prefix_id = pfx.f_patient_prefix_id " +
+                "Where dsc." + lbRes.lab_id + " ='" + vsid + "' and dsc." + lbRes.active + "='1'" +
+                "Order By lis_id ";
+            dt = conn.selectData(conn.conn, sql);
+            if (dt.Rows.Count > 0)
+            {
+                cop1 = setLabResult(dt);
+            }
+            return cop1;
         }
         public DataTable selectByVn(String lab_id, String unit)
         {

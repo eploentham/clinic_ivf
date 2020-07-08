@@ -33,7 +33,7 @@
             this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtId = new C1.Win.C1Input.C1TextBox();
-            this.c1Button1 = new C1.Win.C1Input.C1Button();
+            this.btnRecStock = new C1.Win.C1Input.C1Button();
             this.cboStkSubName = new C1.Win.C1Input.C1ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.btnSave = new C1.Win.C1Input.C1Button();
@@ -47,11 +47,13 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtRecDoc = new C1.Win.C1Input.C1TextBox();
             this.pnItem = new System.Windows.Forms.Panel();
+            this.txtDescription = new C1.Win.C1Input.C1TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             this.sB.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtId)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1Button1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnRecStock)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboStkSubName)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSave)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnVoid)).BeginInit();
@@ -60,6 +62,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtRecDate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtRemark)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtRecDoc)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDescription)).BeginInit();
             this.SuspendLayout();
             // 
             // theme1
@@ -87,8 +90,10 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel1.Controls.Add(this.txtDescription);
+            this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.txtId);
-            this.panel1.Controls.Add(this.c1Button1);
+            this.panel1.Controls.Add(this.btnRecStock);
             this.panel1.Controls.Add(this.cboStkSubName);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.btnSave);
@@ -123,19 +128,19 @@
             this.txtId.Visible = false;
             this.txtId.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // c1Button1
+            // btnRecStock
             // 
-            this.c1Button1.Image = global::clinic_ivf.Properties.Resources.accept_database24;
-            this.c1Button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.c1Button1.Location = new System.Drawing.Point(912, 36);
-            this.c1Button1.Name = "c1Button1";
-            this.c1Button1.Size = new System.Drawing.Size(83, 39);
-            this.c1Button1.TabIndex = 936;
-            this.c1Button1.Text = "รับเข้าStock";
-            this.c1Button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.theme1.SetTheme(this.c1Button1, "(default)");
-            this.c1Button1.UseVisualStyleBackColor = true;
-            this.c1Button1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.btnRecStock.Image = global::clinic_ivf.Properties.Resources.accept_database24;
+            this.btnRecStock.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRecStock.Location = new System.Drawing.Point(912, 36);
+            this.btnRecStock.Name = "btnRecStock";
+            this.btnRecStock.Size = new System.Drawing.Size(83, 39);
+            this.btnRecStock.TabIndex = 936;
+            this.btnRecStock.Text = "รับเข้าStock";
+            this.btnRecStock.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnRecStock, "(default)");
+            this.btnRecStock.UseVisualStyleBackColor = true;
+            this.btnRecStock.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // cboStkSubName
             // 
@@ -297,7 +302,7 @@
             this.txtRemark.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtRemark.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtRemark.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtRemark.Location = new System.Drawing.Point(81, 51);
+            this.txtRemark.Location = new System.Drawing.Point(81, 64);
             this.txtRemark.Name = "txtRemark";
             this.txtRemark.Size = new System.Drawing.Size(368, 20);
             this.txtRemark.TabIndex = 827;
@@ -311,7 +316,7 @@
             this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label6.Location = new System.Drawing.Point(6, 53);
+            this.label6.Location = new System.Drawing.Point(6, 66);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(58, 16);
             this.label6.TabIndex = 826;
@@ -355,6 +360,32 @@
             this.pnItem.TabIndex = 0;
             this.theme1.SetTheme(this.pnItem, "(default)");
             // 
+            // txtDescription
+            // 
+            this.txtDescription.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtDescription.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtDescription.Location = new System.Drawing.Point(81, 38);
+            this.txtDescription.Name = "txtDescription";
+            this.txtDescription.Size = new System.Drawing.Size(368, 20);
+            this.txtDescription.TabIndex = 939;
+            this.txtDescription.Tag = null;
+            this.theme1.SetTheme(this.txtDescription, "(default)");
+            this.txtDescription.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label1.Location = new System.Drawing.Point(6, 40);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(65, 16);
+            this.label1.TabIndex = 938;
+            this.label1.Text = "รายละเอียด :";
+            this.theme1.SetTheme(this.label1, "(default)");
+            // 
             // FrmStockRec
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -372,7 +403,7 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtId)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1Button1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnRecStock)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboStkSubName)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSave)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnVoid)).EndInit();
@@ -381,6 +412,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtRecDate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtRemark)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtRecDoc)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDescription)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -405,7 +437,9 @@
         private C1.Win.C1Input.C1Button btnSave;
         private C1.Win.C1Input.C1ComboBox cboStkSubName;
         private System.Windows.Forms.Label label7;
-        private C1.Win.C1Input.C1Button c1Button1;
+        private C1.Win.C1Input.C1Button btnRecStock;
         private C1.Win.C1Input.C1TextBox txtId;
+        private C1.Win.C1Input.C1TextBox txtDescription;
+        private System.Windows.Forms.Label label1;
     }
 }

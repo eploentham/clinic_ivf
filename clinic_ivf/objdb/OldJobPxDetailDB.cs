@@ -217,6 +217,42 @@ namespace clinic_ivf.objdb
             }
             return re;
         }
+        public String updateUsageEByID(String pxdid, String usage)
+        {
+            DataTable dt = new DataTable();
+            String re = "";
+            String sql = "Update " + oJpxd.table + " " +
+                "Set " + oJpxd.EUsage + " = '"+usage.Replace("'","''")+"' " +
+                "Where " + oJpxd.ID + "='" + pxdid + "'";
+            //re = conn.ExecuteNonQuery(conn.conn, sql);
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+            return re;
+        }
+        public String updateUsageTByID(String pxdid, String usage)
+        {
+            DataTable dt = new DataTable();
+            String re = "";
+            String sql = "Update " + oJpxd.table + " " +
+                "Set " + oJpxd.TUsage + " = '" + usage.Replace("'", "''") + "' " +
+                "Where " + oJpxd.ID + "='" + pxdid + "'";
+            //re = conn.ExecuteNonQuery(conn.conn, sql);
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+            return re;
+        }
         public DataTable selectByPk(String copId)
         {
             DataTable dt = new DataTable();
@@ -267,7 +303,7 @@ namespace clinic_ivf.objdb
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
-        public DataTable selectByVN1(String vn)
+        public DataTable selectByVN1FreqTH(String vn)
         {
             DataTable dt = new DataTable();
             String wherehn = "";
@@ -286,7 +322,26 @@ namespace clinic_ivf.objdb
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
-        public DataTable selectBypxid(String pxdid)
+        public DataTable selectByVN1FreqEN(String vn)
+        {
+            DataTable dt = new DataTable();
+            String wherehn = "";
+            //if (!vn.Equals(""))
+            //{
+            //    wherehn = " and jobpxD." + jobpxD.PIDS + " like '%" + vn + "%'";
+            //}
+            String sql = "SELECT CONCAT(IFNULL(SurfixName.SurfixName,''),' ', ptt.PName,' ',ptt.PSurname) as patient_name, jobpxD.PIDS as hn, DATE_FORMAT(now(),''), jobpxD.EUsage as frequency " +
+                ", jobpxD.DUName as drug_name, jobpxD.QTY as qty, jobpxD.DUID, JobPx.Date,StockDrug.UnitType as unit_name " +
+                "From " + oJpxd.table + " jobpxD " +
+                "left join JobPx on JobPx.VN = jobpxD.VN " +
+                "left join Patient ptt on ptt.PIDS = JobPx.PIDS " +
+                "left join SurfixName on SurfixName.SurfixID = ptt.SurfixID " +
+                "left join StockDrug on StockDrug.DUID =  jobpxD.DUID " +
+                "Where JobPx.VN = '" + vn + "' ";
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
+        public DataTable selectBypxidFreqTH(String pxdid)
         {
             DataTable dt = new DataTable();
             String wherehn = "";
@@ -301,7 +356,26 @@ namespace clinic_ivf.objdb
                 "left join Patient ptt on ptt.PIDS = JobPx.PIDS " +
                 "left join SurfixName on SurfixName.SurfixID = ptt.SurfixID " +
                 "left join StockDrug on StockDrug.DUID =  jobpxD.DUID " +
-                "Where jobpxD.ID in ('" + pxdid + "') ";
+                "Where jobpxD.ID in (" + pxdid + ") ";
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
+        public DataTable selectBypxidFreqEN(String pxdid)
+        {
+            DataTable dt = new DataTable();
+            String wherehn = "";
+            //if (!vn.Equals(""))
+            //{
+            //    wherehn = " and jobpxD." + jobpxD.PIDS + " like '%" + vn + "%'";
+            //}
+            String sql = "SELECT CONCAT(IFNULL(SurfixName.SurfixName,''),' ', ptt.PName,' ',ptt.PSurname) as patient_name, jobpxD.PIDS as hn, DATE_FORMAT(now(),''), jobpxD.EUsage as frequency " +
+                ", jobpxD.DUName as drug_name, jobpxD.QTY as qty, jobpxD.DUID, JobPx.Date,StockDrug.UnitType as unit_name " +
+                "From " + oJpxd.table + " jobpxD " +
+                "left join JobPx on JobPx.VN = jobpxD.VN " +
+                "left join Patient ptt on ptt.PIDS = JobPx.PIDS " +
+                "left join SurfixName on SurfixName.SurfixID = ptt.SurfixID " +
+                "left join StockDrug on StockDrug.DUID =  jobpxD.DUID " +
+                "Where jobpxD.ID in (" + pxdid + ") ";
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }

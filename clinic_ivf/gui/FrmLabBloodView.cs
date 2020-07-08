@@ -550,7 +550,8 @@ namespace clinic_ivf.gui
                     if (long.TryParse(re1, out chk))
                     {
                         LabResult lbRes = new LabResult();
-
+                        OldLabItem labi = new OldLabItem();
+                        labi = ic.ivfDB.oLabiDB.selectByPk1(lbreq.item_id);
                         lbRes.result_id = "";
                         lbRes.lis_id = re1;
                         lbRes.req_id = lbreq.req_id;
@@ -573,7 +574,7 @@ namespace clinic_ivf.gui
                         lbRes.staff_id_approve = "";
                         lbRes.date_time_result = "";
                         lbRes.date_time_approve = "";
-                        lbRes.normal_value = "";
+                        lbRes.normal_value = labi.normal_vaule;
                         lbRes.interpret = "";
                         lbRes.status_result = "1";
                         lbRes.row1 = "0";

@@ -565,26 +565,33 @@ namespace clinic_ivf.gui
         {
             //throw new NotImplementedException();
             SetDefaultPrinter(ic.iniC.printerAppointment);      //A5
-            FrmReport frm = new FrmReport(ic);
-            DataTable dt = new DataTable();
-            dt = ic.ivfDB.lbresDB.selectLabBloodByVsIdInfectious(txtVsId.Text);
 
-            String date1 = "", collectdate = "", receivedate = "", reportdate = "", approvedate = "", stfreport = "", stfapprove = "";
-            foreach (DataRow row in dt.Rows)
-            {
-                collectdate = row[ic.ivfDB.lbresDB.lbRes.req_date_time].ToString();
-                receivedate = row[ic.ivfDB.lbresDB.lbRes.date_time_receive].ToString();
-                reportdate = row[ic.ivfDB.lbresDB.lbRes.date_time_result].ToString();
-                approvedate = row[ic.ivfDB.lbresDB.lbRes.date_time_approve].ToString();
-                stfapprove = row[ic.ivfDB.lbresDB.lbRes.staff_id_approve].ToString();
-                stfreport = row[ic.ivfDB.lbresDB.lbRes.staff_id_result].ToString();
-            }
-            reportdate = ic.datetimetoShow(reportdate);
-            approvedate = ic.datetimetoShow(approvedate);
-            stfapprove = ic.ivfDB.stfDB.getIdByName(stfapprove);
-            stfreport = ic.ivfDB.stfDB.getIdByName(stfreport);
-            frm.setLabBloodReportInfectious(dt, txtHn.Text, txtPttNameE.Text, txtDob.Text, txtSex.Text, stfreport, stfapprove, reportdate, approvedate, collectdate, receivedate);
-            frm.ShowDialog(this);
+
+
+            ic.setRptLabBloodInfectious(txtVsId.Text, this);
+
+
+
+            //FrmReport frm = new FrmReport(ic);
+            //DataTable dt = new DataTable();
+            //dt = ic.ivfDB.lbresDB.selectLabBloodByVsIdInfectious(txtVsId.Text);
+            //dt = ic.ivfDB.lbresDB.selectLabBloodByVsIdInfectious(txtVsId.Text);
+            //String date1 = "", collectdate = "", receivedate = "", reportdate = "", approvedate = "", stfreport = "", stfapprove = "";
+            //foreach (DataRow row in dt.Rows)
+            //{
+            //    collectdate = row[ic.ivfDB.lbresDB.lbRes.req_date_time].ToString();
+            //    receivedate = row[ic.ivfDB.lbresDB.lbRes.date_time_receive].ToString();
+            //    reportdate = row[ic.ivfDB.lbresDB.lbRes.date_time_result].ToString();
+            //    approvedate = row[ic.ivfDB.lbresDB.lbRes.date_time_approve].ToString();
+            //    stfapprove = row[ic.ivfDB.lbresDB.lbRes.staff_id_approve] != null ? row[ic.ivfDB.lbresDB.lbRes.staff_id_approve].ToString() : "";
+            //    stfreport = row[ic.ivfDB.lbresDB.lbRes.staff_id_result].ToString();
+            //}
+            //reportdate = ic.datetimetoShow(reportdate);
+            //approvedate = ic.datetimetoShow(approvedate);
+            //stfapprove = ic.ivfDB.stfDB.getIdByName(stfapprove);
+            //stfreport = ic.ivfDB.stfDB.getIdByName(stfreport);
+            //frm.setLabBloodReportInfectious(dt, txtHn.Text, txtPttNameE.Text, txtDob.Text, txtSex.Text, stfreport, stfapprove, reportdate, approvedate, collectdate, receivedate);
+            //frm.ShowDialog(this);
         }
 
         private void BtnPrintHormone_Click(object sender, EventArgs e)

@@ -29,7 +29,7 @@ namespace clinic_ivf.gui
         Label lbYear, lbStkSubName;
         C1ComboBox cboYear, cboStkSubName;
         MainMenu menu;
-        int colRecDoc = 1, colRecDate = 2, colRecRemark = 3;
+        int colRecDoc = 1, colRecDate = 2,colRecDesc=3, colRecStatus=4, colRecRemark = 5, colRecId=6;
         public FrmStockRecView(IvfControl ic, MainMenu m)
         {
             this.ic = ic;
@@ -132,7 +132,19 @@ namespace clinic_ivf.gui
             ic.setCboYear(cboYear);
             ic.ivfDB.stknDB.setCboStockSubName(cboStkSubName);
             initGrfStk();
+            cboStkSubName.SelectedIndexChanged += CboStkSubName_SelectedIndexChanged;
+            pageLoad = false;
         }
+
+        private void CboStkSubName_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (!pageLoad)
+            {
+                setGrfQue(cboStkSubName.Text.Trim());
+            }
+        }
+
         private void BtnNew_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
@@ -141,7 +153,7 @@ namespace clinic_ivf.gui
         private void openStockRec()
         {
             String name = "", txt = "";
-            FrmStockRec frm = new FrmStockRec(ic);
+            FrmStockRec frm = new FrmStockRec(ic, menu, this,"","");
             if (!name.Equals(""))
             {
                 txt = " " + name;
@@ -157,6 +169,8 @@ namespace clinic_ivf.gui
             grfStk.Font = fEdit;
             grfStk.Dock = System.Windows.Forms.DockStyle.Fill;
             grfStk.Location = new System.Drawing.Point(0, 0);
+            grfStk.Rows.Count = 1;
+            grfStk.Cols.Count = 6;
 
             //FilterRow2 fr = new FilterRow2(grfBloodLab);
             this.Load += FrmStockRecView_Load;
@@ -181,25 +195,40 @@ namespace clinic_ivf.gui
         private void GrfStk_DoubleClick(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
+            openNurseAdd1();
+        }
+        private void openNurseAdd1()
+        {
+            String chk = "", name = "", id = "", pttId = "", vn = "", pid = "";
 
+            id = grfStk[grfStk.Row, colRecId] != null ? grfStk[grfStk.Row, colRecId].ToString() : "";
+            FrmStockRec frm = new FrmStockRec(ic, menu, this, id, "");
+            String txt = "";
+            txt = grfStk[grfStk.Row, colRecDoc] != null ? "รับเข้า เลขที่ " + grfStk[grfStk.Row, colRecDoc].ToString() : "";
+
+            frm.FormBorderStyle = FormBorderStyle.None;
+            C1DockingTabPage tab = menu.AddNewTab(frm, txt);
+            frm.tab = tab;
         }
         private void setGrfQue(String search)
         {
             //grfDept.Rows.Count = 7;
-            grfStk.Clear();
-            grfStk.Rows.Count = 0;
-            DataTable dt = new DataTable();            
+            //grfStk.Clear();
+            grfStk.Rows.Count = 1;
+            DataTable dt = new DataTable();
             
-            dt = ic.ivfDB.ovsDB.selectByReceptionSend1();                
+            dt = ic.ivfDB.stkrDB.selectByYearId(cboYear.Text.Trim());                
 
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             grfStk.Rows.Count = dt.Rows.Count + 1;
-            grfStk.Cols.Count = 18;            
+            grfStk.Cols.Count = 7;
 
             grfStk.Cols[colRecDoc].Width = 120;
             grfStk.Cols[colRecDate].Width = 120;
             grfStk.Cols[colRecRemark].Width = 300;
-            
+            grfStk.Cols[colRecStatus].Width = 300;
+            grfStk.Cols[colRecDesc].Width = 300;
+
             grfStk.ShowCursor = true;
             //grdFlex.Cols[colID].Caption = "no";
             //grfDept.Cols[colCode].Caption = "รหัส";
@@ -207,6 +236,8 @@ namespace clinic_ivf.gui
             grfStk.Cols[colRecDoc].Caption = "Doc";
             grfStk.Cols[colRecDate].Caption = "Date";
             grfStk.Cols[colRecRemark].Caption = "Remark";
+            grfStk.Cols[colRecStatus].Caption = "Status";
+            grfStk.Cols[colRecDesc].Caption = "Decription";
 
             ContextMenu menuGw = new ContextMenu();
             //menuGw.MenuItems.Add("&receive operation", new EventHandler(ContextMenu_Apm));
@@ -223,10 +254,13 @@ namespace clinic_ivf.gui
                 try
                 {
                     grfStk[i, 0] = i;
-                    grfStk[i, colRecDoc] = row["id"].ToString();
-                    grfStk[i, colRecDate] = ic.showVN(row["VN"].ToString());
-                    grfStk[i, colRecRemark] = row["VN"].ToString();
-                    
+                    grfStk[i, colRecId] = row["rec_id"].ToString();
+                    grfStk[i, colRecDoc] = row["rec_doc"].ToString();
+                    grfStk[i, colRecDate] = ic.datetoShow(row["rec_date"].ToString());
+                    grfStk[i, colRecRemark] = row["remark"].ToString();
+                    grfStk[i, colRecStatus] = row["status_stock"].ToString().Equals("1") ? "add receive" : row["status_stock"].ToString().Equals("2") ? "gen stock" : "";
+                    grfStk[i, colRecDesc] = row["description"].ToString();
+
                     //if (i % 2 == 0)
                     //    grfPtt.Rows[i].StyleNew.BackColor = color;
                     i++;
@@ -240,11 +274,12 @@ namespace clinic_ivf.gui
             CellNoteManager mgr = new CellNoteManager(grfStk);
             //grfStk.Cols[colID].Visible = false;
             
-
             grfStk.Cols[colRecDoc].AllowEditing = false;
             grfStk.Cols[colRecDate].AllowEditing = false;
             grfStk.Cols[colRecRemark].AllowEditing = false;
-            
+            grfStk.Cols[colRecStatus].AllowEditing = false;
+            grfStk.Cols[colRecDesc].AllowEditing = false;
+
             //theme1.SetTheme(grfQue, ic.theme);
 
         }

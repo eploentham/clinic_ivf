@@ -686,7 +686,7 @@ namespace clinic_ivf.objdb
                 "Left Join t_visit on  vsold.VN = t_visit.visit_vn " +
                 "Left Join b_staff stf on t_visit.doctor_id = stf.doctor_id_old " +
                 "Left join f_patient_prefix fpp on fpp.f_patient_prefix_id = stf.prefix_id " +
-                "Where  vsold.VSID in('166')  " +//and t_visit.b_service_point_id = '" + bspid + "' " +
+                "Where  vsold.VSID in('166','160','165')  " +//and t_visit.b_service_point_id = '" + bspid + "' " +
                 "Order By vsold.VSID desc,vsold.VDate, vsold.VStartTime";
             dt = conn.selectData(conn.conn, sql);
 

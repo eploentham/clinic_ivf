@@ -112,6 +112,7 @@ namespace clinic_ivf.objdb
         public LabInterpretComboBoxDB lbinDB;
         public LabFormDay1DB lformDay1DB;
         public LabPrescriptionDB lPrescDB;
+        public StockCardDB stkcDB;
         public IvfDB(ConnectDB c)
         {
             conn = c;
@@ -211,6 +212,7 @@ namespace clinic_ivf.objdb
             lbinDB = new LabInterpretComboBoxDB(conn);
             lformDay1DB = new LabFormDay1DB(conn);
             lPrescDB = new LabPrescriptionDB(conn);
+            stkcDB = new StockCardDB(conn);
 
             Console.WriteLine("ivfDB end");
         }
@@ -1277,7 +1279,8 @@ namespace clinic_ivf.objdb
             billid = obilhDB.insertBillHeader(obillh, userId);
             //sql = "Select * from PackageSold Where PID='"+ ovs.PID+ "' and Status<>3'";
             //dt = opkgsDB.selectByVN1(vn);
-            dt = opkgsDB.selectByPID(ovs.PID);    // ต้องดึงตาม HN เพราะ ถ้ามีงวดการชำระ 
+            //dt = opkgsDB.selectByPID(ovs.PID);    // ต้องดึงตาม HN เพราะ ถ้ามีงวดการชำระ selectByPIDStatusPackageON
+            dt = opkgsDB.selectByPIDStatusPackageON(ovs.PID);
             if (dt.Rows.Count > 0)
             {
                 foreach(DataRow row in dt.Rows)

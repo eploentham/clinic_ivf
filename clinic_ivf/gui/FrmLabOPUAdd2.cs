@@ -1,4 +1,5 @@
-﻿using C1.Win.C1Document;
+﻿using C1.Win.C1Command;
+using C1.Win.C1Document;
 using C1.Win.C1FlexGrid;
 using C1.Win.C1Input;
 using C1.Win.C1SuperTooltip;
@@ -1230,14 +1231,44 @@ namespace clinic_ivf.gui
         }
         private void showResultDay(String day)
         {
+            LabOpu opu1 = new LabOpu();
+            opu1 = ic.ivfDB.opuDB.selectByPk1(txtID.Text.Trim());
             Form frm = new Form();
+            C1DockingTab tC1 = new C1DockingTab();
+            C1DockingTabPage tabDay = new C1DockingTabPage();
+            C1DockingTabPage tabEmbryo = new C1DockingTabPage();
             C1FlexViewer day1View = new C1FlexViewer();
+            C1FlexViewer day1Embryo = new C1FlexViewer();
+
+            tC1.SuspendLayout();
+            tabDay.SuspendLayout();
+            tabEmbryo.SuspendLayout();
+            day1View.SuspendLayout();
+            day1Embryo.SuspendLayout();
+
+            tC1.Dock = System.Windows.Forms.DockStyle.Fill;
+            tC1.HotTrack = true;
+            tC1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            tC1.TabSizeMode = C1.Win.C1Command.TabSizeModeEnum.Fit;
+            tC1.TabsShowFocusCues = true;
+            tC1.Alignment = TabAlignment.Top;
+            tC1.SelectedTabBold = true;
+            tC1.Name = "tC1";
+            tabDay.Name = "tabDay";
+            tabDay.TabIndex = 0;
+            tabDay.Text = "Report Day"+day;
+            tabEmbryo.Name = "tabEmbryo";
+            tabEmbryo.TabIndex = 0;
+            tabEmbryo.Text = "Embryo Day"+day;
+            tC1.Controls.Add(tabDay);
+            tC1.Controls.Add(tabEmbryo);
+
             day1View = new C1FlexViewer();
             day1View.AutoScrollMargin = new System.Drawing.Size(0, 0);
             day1View.AutoScrollMinSize = new System.Drawing.Size(0, 0);
             day1View.Dock = System.Windows.Forms.DockStyle.Fill;
             day1View.Location = new System.Drawing.Point(0, 0);
-            day1View.Name = "c1FlexViewer1";
+            day1View.Name = "day1View";
             day1View.Size = new System.Drawing.Size(1065, 790);
             day1View.TabIndex = 0;
             C1PdfDocumentSource pds = new C1PdfDocumentSource();
@@ -1246,27 +1277,83 @@ namespace clinic_ivf.gui
             //ftpC.upload(iniC.folderFTP + "/" + opuCode + "/" + filename, pathFile);
             if (day.Equals("1"))
             {
-                stream = ftpc.download(ic.iniC.folderFTP + "//" + opu.opu_code + "//" + opu.report_day1);
+                stream = ftpc.download(ic.iniC.folderFTP + "//" + opu1.opu_code + "//" + opu.report_day1);
             }
             else if (day.Equals("3"))
             {
-                stream = ftpc.download(ic.iniC.folderFTP + "//" + opu.opu_code + "//" + opu.report_day3);
+                stream = ftpc.download(ic.iniC.folderFTP + "//" + opu1.opu_code + "//" + opu.report_day3);
             }
             else if (day.Equals("5"))
             {
-                stream = ftpc.download(ic.iniC.folderFTP + "//" + opu.opu_code + "//" + opu.report_day5);
+                stream = ftpc.download(ic.iniC.folderFTP + "//" + opu1.opu_code + "//" + opu.report_day5);
             }
             else if (day.Equals("6"))
             {
-                stream = ftpc.download(ic.iniC.folderFTP + "//" + opu.opu_code + "//" + opu.report_day6);
+                stream = ftpc.download(ic.iniC.folderFTP + "//" + opu1.opu_code + "//" + opu.report_day6);
             }
             stream.Seek(0, SeekOrigin.Begin);
             pds.LoadFromStream(stream);
 
+            day1Embryo = new C1FlexViewer();
+            day1Embryo.AutoScrollMargin = new System.Drawing.Size(0, 0);
+            day1Embryo.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+            day1Embryo.Dock = System.Windows.Forms.DockStyle.Fill;
+            day1Embryo.Location = new System.Drawing.Point(0, 0);
+            day1Embryo.Name = "day1Embryo";
+            day1Embryo.Size = new System.Drawing.Size(1065, 790);
+            day1Embryo.TabIndex = 0;
+            C1PdfDocumentSource pdsEmbryo = new C1PdfDocumentSource();
+            MemoryStream streamEmbryo = null;
+            //FtpClient ftpc = new FtpClient(ic.iniC.hostFTP, ic.iniC.userFTP, ic.iniC.passFTP, ic.ftpUsePassive);
+            //ftpC.upload(iniC.folderFTP + "/" + opuCode + "/" + filename, pathFile);
+            if (day.Equals("1"))
+            {
+                streamEmbryo = ftpc.download(ic.iniC.folderFTP + "//" + opu1.opu_code + "//" + opu1.report_day1);
+            }
+            else if (day.Equals("3"))
+            {
+                String ext = "", filename = "";
+                ext = Path.GetExtension(opu1.report_day3);
+                filename = Path.GetFileNameWithoutExtension(opu1.report_day3);
+                streamEmbryo = ftpc.download(ic.iniC.folderFTP + "//" + opu1.opu_code + "//" + filename+ "_embryo_day3" + ext);
+            }
+            else if (day.Equals("5"))
+            {
+                String ext = "", filename = "";
+                ext = Path.GetExtension(opu1.report_day5);
+                filename = Path.GetFileNameWithoutExtension(opu1.report_day5);
+                streamEmbryo = ftpc.download(ic.iniC.folderFTP + "//" + opu1.opu_code + "//" + filename + "_embryo_day5" + ext);
+            }
+            else if (day.Equals("6"))
+            {
+                String ext = "", filename = "";
+                ext = Path.GetExtension(opu1.report_day6);
+                filename = Path.GetFileNameWithoutExtension(opu1.report_day6);
+                streamEmbryo = ftpc.download(ic.iniC.folderFTP + "//" + opu1.opu_code + "//" + filename + "_embryo_day6" + ext);
+            }
+            streamEmbryo.Seek(0, SeekOrigin.Begin);
+            pdsEmbryo.LoadFromStream(streamEmbryo);
+
             //pds.LoadFromFile(filename1);
 
+            tabDay.ResumeLayout(false);
+            tabEmbryo.ResumeLayout(false);
+            tC1.ResumeLayout(false);
+            day1View.ResumeLayout(false);
+            day1Embryo.ResumeLayout(false);
+
+            tabDay.PerformLayout();
+            tabEmbryo.PerformLayout();
+            tC1.PerformLayout();
+            day1View.PerformLayout();
+            day1Embryo.PerformLayout();
+            frm.PerformLayout();
+
             day1View.DocumentSource = pds;
-            frm.Controls.Add(day1View);
+            day1Embryo.DocumentSource = pdsEmbryo;
+            tabDay.Controls.Add(day1View);
+            tabEmbryo.Controls.Add(day1Embryo);
+            frm.Controls.Add(tC1);
             frm.WindowState = FormWindowState.Maximized;
             frm.ShowDialog(this);
         }

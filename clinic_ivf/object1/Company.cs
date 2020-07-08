@@ -85,5 +85,7 @@ namespace clinic_ivf.object1
         public String prefix_receipt1_doc { get; set; }
         public String form_day1_doc { get; set; }
         public String prefix_form_day1_doc { get; set; }
+        public String rec_doc { get; set; }
+        public String prefix_rec_doc { get; set; }
     }
 }

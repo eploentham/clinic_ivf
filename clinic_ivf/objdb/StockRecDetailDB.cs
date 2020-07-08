@@ -138,7 +138,7 @@ namespace clinic_ivf.objdb
             String sql = "select * " +
                 "From " + stkrd.table + " dsc " +
                 //"Left Join f_patient_prefix pfx On stf.prefix_id = pfx.f_patient_prefix_id " +
-                "Where dsc." + stkrd.qty + " ='" + recid + "' and dsc." + stkrd.active + "='1'" +
+                "Where dsc." + stkrd.rec_id + " ='" + recid + "' and dsc." + stkrd.active + "='1'" +
                 "Order By rec_id ";
             dt = conn.selectData(conn.conn, sql);
 

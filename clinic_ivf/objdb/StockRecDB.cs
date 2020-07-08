@@ -91,14 +91,14 @@ namespace clinic_ivf.objdb
 
             return dt;
         }
-        public DataTable selectByHn(String id)
+        public DataTable selectByYearId(String yearid)
         {
             //StockRec cop1 = new StockRec();
             DataTable dt = new DataTable();
             String sql = "select * " +
                 "From " + stkr.table + " dsc " +
                 //"Left Join f_patient_prefix pfx On stf.prefix_id = pfx.f_patient_prefix_id " +
-                "Where dsc." + stkr.inv_ex_date + " ='" + id + "' and dsc." + stkr.active + "='1'" +
+                "Where year(dsc." + stkr.rec_date + ") ='" + yearid + "' and dsc." + stkr.active + "='1'" +
                 "Order By rec_doc ";
             dt = conn.selectData(conn.conn, sql);
 
@@ -215,7 +215,7 @@ namespace clinic_ivf.objdb
             chkNull(p);
             sql = "Update " + stkr.table + " Set " +
                 //" " + dsc.rec_doc + " = '" + p.rec_doc + "'" +
-                "," + stkr.inv_ex + " = '" + p.inv_ex + "'" +
+                " " + stkr.inv_ex + " = '" + p.inv_ex + "'" +
                 "," + stkr.description + " = '" + p.description + "'" +
                 "," + stkr.rec_date + " = '" + p.rec_date + "'" +
                 "," + stkr.inv_ex_date + " = '" + p.inv_ex_date + "'" +
@@ -256,14 +256,16 @@ namespace clinic_ivf.objdb
 
             return re;
         }
-        public String updateImagepath(String rec_date, String id)
+        public String updateRecDoc(String id, String doc)
         {
             String re = "";
             String sql = "";
             int chk = 0;
             //chkNull(p);
+
             sql = "Update " + stkr.table + " Set " +
-                " " + stkr.rec_date + " = '" + rec_date + "'" +
+                " " + stkr.rec_doc + " = '" + doc + "'" +
+                "," + stkr.status_stock + " = '2'" +
                 "Where " + stkr.pkField + "='" + id + "'"
                 ;
             try
