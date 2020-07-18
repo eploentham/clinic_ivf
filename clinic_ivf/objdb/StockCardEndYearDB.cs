@@ -51,6 +51,7 @@ namespace clinic_ivf.objdb
             stkc.remark1 = "remark1";
             stkc.description = "description";
             stkc.doc_no = "doc_no";
+            stkc.unit_name = "unit_name";
 
             stkc.pkField = "stock_endyear_id";
             stkc.table = "t_stock_endyear";
@@ -58,9 +59,9 @@ namespace clinic_ivf.objdb
         public DataTable selectByYear(String yearId)
         {
             DataTable dt = new DataTable();
-            String sql = "select stkc.* " +
+            String sql = "select stkc.stock_endyear_id,stkc.item_id,stkc.onhand,stkc.unit_name,stkc.remark, drug.DUName " +
                 "From " + stkc.table + " stkc " +
-                //"Left Join t_ssdata_visit ssv On ssv.ssdata_visit_id = bd.ssdata_visit_id " +
+                "Left Join StockDrug drug On drug.DUID = stkc.item_id " +
                 "Where stkc." + stkc.year_id + " ='" + yearId + "' ";
             dt = conn.selectData(conn.conn, sql);
             return dt;
@@ -83,7 +84,7 @@ namespace clinic_ivf.objdb
             p.item_id = p.item_id == null ? "" : p.item_id;
 
             p.remark = p.remark == null ? "" : p.remark;
-            p.remark = p.remark == null ? "" : p.remark;
+            p.unit_name = p.unit_name == null ? "" : p.unit_name;
             p.remark = p.remark == null ? "" : p.remark;
             p.remark = p.remark == null ? "" : p.remark;
             p.remark = p.remark == null ? "" : p.remark;
@@ -115,8 +116,9 @@ namespace clinic_ivf.objdb
                 "," + stkc.host_id + " = '" + p.host_id + "' " +
                 "," + stkc.branch_id + " = '" + p.branch_id + "' " +
                 "," + stkc.device_id + " = '" + p.device_id + "' " +
-                "," + stkc.rec_draw_sale_id + " = '" + p.rec_draw_sale_id + "' " +
                 "," + stkc.sort1 + " = '" + p.sort1 + "' " +
+                "," + stkc.year_id + " = '" + p.year_id + "' " +
+                "," + stkc.unit_name + " = '" + p.unit_name + "' " +
                 " ";
             try
             {
@@ -172,6 +174,25 @@ namespace clinic_ivf.objdb
             else
             {
                 re = update(p, "");
+            }
+
+            return re;
+        }
+        public String DeleteAll(String userId)
+        {
+            String re = "";
+            String sql = "";
+            int chk = 0;
+            
+            sql = "Delete From  " + stkc.table + " "
+                ;
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
             }
 
             return re;

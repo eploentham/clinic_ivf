@@ -130,6 +130,7 @@ namespace clinic_ivf.gui
             {
                 setStockDrug();
                 String re = ic.ivfDB.stkrDB.insertStockRec(stkr, ic.user.staff_id);
+                //txtId.Value = re;
                 long chk = 0;
                 if (long.TryParse(re, out chk))
                 {
@@ -165,7 +166,8 @@ namespace clinic_ivf.gui
                         stkrd.unit_name = row[colUnit] != null ? row[colUnit].ToString() : "";
                         stkrd.date_expire = row[colExpDate] != null ? ic.datetoDB(row[colExpDate].ToString()) : "";
                         stkrd.lot_no = row[colLotNo] != null ? row[colLotNo].ToString() : "";
-                        ic.ivfDB.stkrdDB.insertDocScan(stkrd, ic.user.staff_id);
+                        String re1 = ic.ivfDB.stkrdDB.insertDocScan(stkrd, ic.user.staff_id);
+                        row[colId] = re1;
                     }
                     btnSave.Image = Resources.accept_database24;
                 }
@@ -259,9 +261,9 @@ namespace clinic_ivf.gui
         private void setGrfStockRec(String id)
         {
             //grfDept.Rows.Count = 7;
-                        
+            
             grfStk.Cols.Count = 12;
-            grfStk.Rows.Count = 1;
+            grfStk.Rows.Count = 2;
             grfStk.Cols[colCode].Width = 120;
 
             grfStk.Cols[colPrice].Width = 80;

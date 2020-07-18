@@ -33,5 +33,6 @@ namespace clinic_ivf.object1
         public String remark1 { get; set; }
         public String description { get; set; }
         public String doc_no { get; set; }
+        public String unit_name { get; set; }
     }
 }

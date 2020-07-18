@@ -521,7 +521,19 @@ namespace clinic_ivf.objdb
 
             return re;
         }
-        
+        public String updateClearNew(String pcksid, String payment)
+        {
+            DataTable dt = new DataTable();
+            String re = "";
+            String sql = "";
+            int chk = 0;
+                        
+            sql = "Update PackageSold set payment1='"+payment+ "',payment2=0,payment3=0,payment4=0, P1BDetailID=0, P2BDetailID=0, P3BDetailID=0, P4BDetailID=0 " +
+                "Where PCKSID='" + pcksid + "' ";
+            re = conn.ExecuteNonQuery(conn.conn, sql);
+            
+            return re;
+        }
         public String deleteByPk(String pkgid)
         {
             //$this->db->query('delete from PackageSold Where PCKSID="' . $ID . '"');

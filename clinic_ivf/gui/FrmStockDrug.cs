@@ -81,12 +81,15 @@ namespace clinic_ivf.gui
             //ostkD.active = "active";
             sdrk.DUID = "";
             sdrk.DUID = txtID.Text;
-            sdrk.DUName = txtDrgName.Text;
-            sdrk.EUsage = cboUsageE.Text;
-            sdrk.TUsage = cboUsageT.Text;
-            sdrk.UnitType = cboUnit.Text;
+            sdrk.DUName = txtDrgName.Text.Trim();
+            sdrk.EUsage = cboUsageE.Text.Trim();
+            sdrk.TUsage = cboUsageT.Text.Trim();
+            sdrk.UnitType = cboUnit.Text.Trim();
             sdrk.Price = txtPrice1.Text;
-            sdrk.Alert = txtPurchase.Text;
+            sdrk.Alert = txtPurchase.Text.Trim();
+            sdrk.trade_name = txtDrgTrade.Text.Trim();
+            sdrk.comm_name = txtDrgComm.Text.Trim();
+            sdrk.cust_id = cboCust.SelectedItem == null ? "" : ((ComboBoxItem)cboCust.SelectedItem).Value;
             //sdrk.status_doctor = chkStatusDoctor.Checked == true ? "1" : "0";
             //sdrk.status_embryologist = chkEmbryologist.Checked == true ? "1" : "0";
         }
@@ -160,6 +163,8 @@ namespace clinic_ivf.gui
             txtPurchase.Value = sdrk.Alert;
             txtPrice1.Value = sdrk.Price;
             txtDrgCode.Value = sdrk.DUID;
+            txtDrgTrade.Value = sdrk.trade_name;
+            txtDrgComm.Value = sdrk.comm_name;
         }
         private void setControlEnable(Boolean flag)
         {

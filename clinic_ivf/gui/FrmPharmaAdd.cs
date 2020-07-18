@@ -103,6 +103,7 @@ namespace clinic_ivf.gui
             btnNoteAdd.Click += BtnNoteAdd_Click;
             tlpPatient.Resize += TlpPatient_Resize;
             btnPrnSticker.Click += BtnPrnSticker_Click;
+            btnCalBack.Click += BtnCalBack_Click;
 
             setControl(vsid);
             initGrfRx();
@@ -113,6 +114,21 @@ namespace clinic_ivf.gui
             setGrfOrder(txtVn.Text);
             picPtt.SizeMode = PictureBoxSizeMode.StretchImage;
         }
+
+        private void BtnCalBack_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            //ic.ivfDB.accountsendtonurse(txtVn.Text, ic.userId);
+            //VisitOld ovs = new VisitOld();
+            //ovs = ic.ivfDB.ovsDB.selectByPk1(txtVnOld.Text);
+
+            ic.ivfDB.nurseFinish(txtVnOld.Text, ic.cStf.staff_id);
+            frmPharView.setGrfQuePublic();
+            frmPharView.setGrfFinishPublic();
+            menu.removeTab(tab);
+            //}
+        }
+
         private void BtnPrnSticker_Click(object sender, EventArgs e)
         {
             // throw new NotImplementedException();
@@ -215,6 +231,10 @@ namespace clinic_ivf.gui
                 Thread threadA = new Thread(new ParameterizedThreadStart(ExecuteA));
                 threadA.Start();
             }
+            if (!vsOld.VSID.Equals("166"))
+            {
+                btnPrnSticker.Enabled = false;
+            }
             //txtBg.Value = pttOld.b
             //txtAllergy.Value = 
         }
@@ -287,6 +307,11 @@ namespace clinic_ivf.gui
         {
             if (grfOrder.Row < 0) return;
             if (grfOrder[grfOrder.Row, colOrdid] == null) return;
+            if (!vsOld.VSID.Equals("166"))
+            {
+                MessageBox.Show("รอ รับชำระ ไม่สามารถพิมพ์ Sticker ได้", "");
+                return;
+            }
             String id = "", date = "";
             date = DateTime.Now.Year + "-" + DateTime.Now.ToString("MM-dd");
             CellRange cell = grfOrder.Selection;
@@ -984,8 +1009,15 @@ namespace clinic_ivf.gui
 
             Application.DoEvents();
             PrinterSettings settings2 = new PrinterSettings();
-
-            lbPrinterStickerName.Text = settings1.DefaultPageSettings.PrinterSettings.PrinterName;
+            if (!vsOld.VSID.Equals("166"))
+            {
+                lbPrinterStickerName.Text = settings1.DefaultPageSettings.PrinterSettings.PrinterName + "รอ รับชำระ ไม่สามารถพิมพ์ Sticker ได้";
+            }
+            else
+            {
+                lbPrinterStickerName.Text = settings1.DefaultPageSettings.PrinterSettings.PrinterName;
+            }
+            
             c1SplitterPanel1.SizeRatio = 5;
         }
     }

@@ -490,15 +490,29 @@ namespace clinic_ivf.gui
             //grfVs.row
             //grfExpnC.CellButtonClick += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellButtonClick);
             //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
-            //ContextMenu menuGw = new ContextMenu();
-            //menuGw.MenuItems.Add("&แก้ไข รายการเบิก", new EventHandler(ContextMenu_edit));
+            ContextMenu menuGw = new ContextMenu();
+            menuGw.MenuItems.Add("ต้องการลบข้อมูลมั้งหมด ของ รายการนี้", new EventHandler(ContextMenu_delete_opd_all));
             //menuGw.MenuItems.Add("&แก้ไข", new EventHandler(ContextMenu_Gw_Edit));
             //menuGw.MenuItems.Add("&ยกเลิก", new EventHandler(ContextMenu_Gw_Cancel));
-            //grfVs.ContextMenu = menuGw;
+            grfVs.ContextMenu = menuGw;
             panel2.Controls.Add(grfVs);
 
             theme1.SetTheme(grfVs, "ExpressionDark");
 
+        }
+        private void ContextMenu_delete_opd_all(object sender, System.EventArgs e)
+        {
+            String id = "", vn = "";
+            vn = grfVs[grfVs.Row, colVsVn].ToString();
+            if (MessageBox.Show("ต้องการลบข้อมูล ทั้งหมดของ VN " + vn, "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+            {
+                int chk = 0;
+                String re = ic.ivfDB.dscDB.voidDocScanVN(vn, "");
+                if (int.TryParse(re, out chk))
+                {
+                    setGrfScan(grfVs.Row);
+                }
+            }
         }
         private void ContextMenu_Gw_Cancel(object sender, System.EventArgs e)
         {
@@ -867,14 +881,15 @@ namespace clinic_ivf.gui
                 String id = "";
                 if (i == 0)
                 {
-                    id = row[colPic2].ToString();
+                    id = row[colPic2] != null ? row[colPic2].ToString() : "";
                     i = 1;
                 }
                 else
                 {
-                    id = row[colPic4].ToString();
+                    id = row[colPic4] != null ? row[colPic4].ToString() : "";
                     i = 0;
                 }
+                if (id == "") continue;
                 dsc_id = id;
                 MemoryStream strm = null;
                 foreach (listStream lstrmm in lStream)

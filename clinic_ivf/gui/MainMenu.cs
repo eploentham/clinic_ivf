@@ -116,6 +116,24 @@ namespace clinic_ivf.gui
             menuItemMas.Click += MenuItemMas_Click;
             menuMiscView.Click += MenuMiscView_Click;
             menuCashierRefund.Click += MenuCashierRefund_Click;
+            menuStockEndYear.Click += MenuStockEndYear_Click;
+            menuCust.Click += MenuCust_Click;
+        }
+
+        private void MenuCust_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            FrmCustomer frm = new FrmCustomer(ic);
+            frm.FormBorderStyle = FormBorderStyle.None;
+            AddNewTab(frm, menuCust.Text + " ");
+        }
+
+        private void MenuStockEndYear_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            FrmStockEndYear frm = new FrmStockEndYear(ic, this);
+            frm.FormBorderStyle = FormBorderStyle.None;
+            AddNewTab(frm, menuStockEndYear.Text + " ");
         }
 
         private void MenuCashierRefund_Click(object sender, EventArgs e)
@@ -692,8 +710,8 @@ namespace clinic_ivf.gui
         {
             String date = "";
             date = DateTime.Now.Year+"-"+ DateTime.Now.ToString("MM-dd");
-            this.Text = ic.iniC.statusAppDonor.Equals("1") ? "โปรแกรมClinic IVF Donor " +"สวัสดี คุณ "+ic.user.staff_fname_t +" "+ic.user.staff_lname_t+" Update 2020-07-04 "
-                : "โปรแกรมClinic IVF " + "สวัสดี คุณ " + ic.user.staff_fname_t + " " + ic.user.staff_lname_t + " Update 2020-07-04 format date " + date;
+            this.Text = ic.iniC.statusAppDonor.Equals("1") ? "โปรแกรมClinic IVF Donor " +"สวัสดี คุณ "+ic.user.staff_fname_t +" "+ic.user.staff_lname_t+" Update 2020-07-18 "
+                : "โปรแกรมClinic IVF " + "สวัสดี คุณ " + ic.user.staff_fname_t + " " + ic.user.staff_lname_t + " Update 2020-07-18 format date " + date;
             //theme1.SetTheme(this, ic.theme);
             theme1.SetTheme(this, ic.theme);
             theme1.SetTheme(menuStrip1, ic.theme);

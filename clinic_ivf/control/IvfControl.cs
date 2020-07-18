@@ -246,6 +246,7 @@ namespace clinic_ivf.control
                 iniC.printerA4 = iniF.getIni("app", "printerA4");
                 iniC.statusCashierOldProgram = iniF.getIni("app", "statusCashierOldProgram");
                 iniC.spermFreezingDecimal = iniF.getIni("app", "spermFreezingDecimal");
+                iniC.statusNurseOrderInclude = iniF.getIni("app", "statusNurseOrderInclude");
 
                 iniC.email_form = iniF.getIni("email", "email_form");
                 iniC.email_auth_user = iniF.getIni("email", "email_auth_user");
@@ -308,6 +309,7 @@ namespace clinic_ivf.control
                 iniC.pathChar = iniC.pathChar == null ? "\\" : iniC.pathChar.Equals("") ? "\\" : iniC.pathChar;
                 iniC.statusCashierOldProgram = iniC.statusCashierOldProgram == null ? "0" : iniC.statusCashierOldProgram.Equals("") ? "0" : iniC.statusCashierOldProgram;
                 iniC.spermFreezingDecimal = iniC.spermFreezingDecimal == null ? "0" : iniC.spermFreezingDecimal.Equals("") ? "0" : iniC.spermFreezingDecimal;
+                iniC.statusNurseOrderInclude = iniC.statusNurseOrderInclude == null ? "0" : iniC.statusNurseOrderInclude.Equals("") ? "0" : iniC.statusNurseOrderInclude;
 
                 int.TryParse(iniC.grdViewFontSize, out grdViewFontSize);
                 int.TryParse(iniC.spermFreezingDecimal, out spermFreezingDecimal);
@@ -910,7 +912,10 @@ namespace clinic_ivf.control
             {
                 File.Delete(@"temppic." + System.Drawing.Imaging.ImageFormat.Jpeg);
             }
+            String datetick = "";
+            datetick = DateTime.Now.Ticks.ToString();
             pic.Save(@"temppic." + System.Drawing.Imaging.ImageFormat.Jpeg, System.Drawing.Imaging.ImageFormat.Jpeg);
+            pic.Save(@"temppic_"+ datetick+"." + System.Drawing.Imaging.ImageFormat.Jpeg, System.Drawing.Imaging.ImageFormat.Jpeg);
             ftpC.createDirectory(iniC.folderFTP + "/" + filename);
             ftpC.upload(iniC.folderFTP + "/" + filename + "/" +filename+"." + System.Drawing.Imaging.ImageFormat.Jpeg, @"temppic" + "." + System.Drawing.Imaging.ImageFormat.Jpeg);
         }

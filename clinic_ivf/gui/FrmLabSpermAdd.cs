@@ -470,48 +470,63 @@ namespace clinic_ivf.gui
         private void TxtTail1_KeyUp(object sender, KeyEventArgs e)
         {
             //throw new NotImplementedException();
-            calMorphology();
+            if (flagEdit)
+            {
+                calMorphology();
+            }
         }
 
         private void TxtNeck1_KeyUp(object sender, KeyEventArgs e)
         {
             //throw new NotImplementedException();
-            calMorphology();
-            if (e.KeyCode == Keys.Enter)
+            if (flagEdit)
             {
-                txtTail1.Focus();
+                calMorphology();
+                if (e.KeyCode == Keys.Enter)
+                {
+                    txtTail1.Focus();
+                }
             }
         }
 
         private void TxtHead1_KeyUp(object sender, KeyEventArgs e)
         {
             //throw new NotImplementedException();
-            calMorphology();
-            if (e.KeyCode == Keys.Enter)
+            if (flagEdit)
             {
-                txtNeck1.Focus();
+                calMorphology();
+                if (e.KeyCode == Keys.Enter)
+                {
+                    txtNeck1.Focus();
+                }
             }
         }
 
         private void TxtMotility3_KeyUp(object sender, KeyEventArgs e)
         {
             //throw new NotImplementedException();
-            calMotility();
-            calMotile();
-            if (e.KeyCode == Keys.Enter)
+            if (flagEdit)
             {
-                txtMotility2.Focus();
+                calMotility();
+                calMotile();
+                if (e.KeyCode == Keys.Enter)
+                {
+                    txtMotility2.Focus();
+                }
             }
         }
 
         private void TxtMotility4_KeyUp(object sender, KeyEventArgs e)
         {
             //throw new NotImplementedException();
-            calMotility();
-            calMotile();
-            if (e.KeyCode == Keys.Enter)
+            if (flagEdit)
             {
-                txtMotility3.Focus();
+                calMotility();
+                calMotile();
+                if (e.KeyCode == Keys.Enter)
+                {
+                    txtMotility3.Focus();
+                }
             }
         }
 

@@ -37,5 +37,8 @@ namespace clinic_ivf.object1
         public String order_point_sub_3 { get; set; }
         public String order_amount_sub_3 { get; set; }
         public String item_code { get; set; }
+        public String trade_name { get; set; }
+        public String comm_name { get; set; }
+        public String cust_id { get; set; }
     }
 }

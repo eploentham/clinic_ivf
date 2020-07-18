@@ -33,7 +33,7 @@ namespace clinic_ivf.gui
         int colID = 1, colVNshow = 2, colVN = 12, colPttHn = 3, colPttName = 4, colVsDate = 5, colVsTime = 6, colVsEtime = 7, colVsAgent=8, colStatus = 9, colPttId = 10, colStatusNurse = 11, colStatusCashier = 12, colBillId=13, colAgentId=14;
         int colCldId = 1, colCldBillNo = 2, colCldReceiptNo = 3, colCldDate = 4, colCldHn = 5, colCldName = 6, colCldPkg1 = 7, colCldPkg2 = 8, colCldPkg3 = 9, colCldPkg4 = 10, colCldPkg5 = 11, colCldPkg6 = 12, colCldPkgFreezing = 13, colCldPkgOther=14, colCldDiscount = 15;
         int colCldExtraDay6 = 16, colCldLabAll = 17, colCldLabBlood = 18, colCldMedInc = 19, colCldMedExtra=20, colCldTVS = 21, colCldDtrfee = 22, colCldEquipment = 23, colCldOtherService = 24;
-        int colCldAmount = 25, colCldAmount1 = 26, colCldInc=27, colCldExt=28, colCldVn =29, colCldBillId=30;
+        int colCldAmount = 25, colCldAmount1 = 26, colCldInc=27, colCldExt=28, colCldVn =29, colCldBillId=30, colCldAgent=31;
         int colBildId = 1, colBildName = 2, colBildprice = 3, colBildqty = 4, colBildAmt = 5, colBildDiscount = 6, colBildNetAmt = 7, colBildGrpName = 8, colBildBilId = 9, colBildInclude = 10, colBildStatus = 11, colBildItmId=12;
         int colRptId = 1, colRptVnShow = 2, colRptVn = 3, colRptHn = 4, colRptPttName = 5, colRptVsDate = 6, colRptDOB = 7, colRptFormACode = 8, colRptOPU = 9, colRptFET = 10, colRptSpermAna = 11, colRptSpermFreezing = 12, colRptSpermIUI = 13, colRptSpermPESA = 14, colRptName_1 = 15, colRptName_2 = 16, colRptDtr = 17, colRptAgent = 18;
 
@@ -588,7 +588,6 @@ namespace clinic_ivf.gui
             //throw new NotImplementedException();
             calTotalCash();
         }
-
         private void BtnSaveCld_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
@@ -821,7 +820,7 @@ namespace clinic_ivf.gui
             dt = ic.ivfDB.obilhDB.selectByCloseDay();
 
             grfCld.Rows.Count = dt.Rows.Count + 1;
-            grfCld.Cols.Count = 31;
+            grfCld.Cols.Count = 32;
 
             grfCld.Cols[colCldBillNo].Width = 100;
             grfCld.Cols[colCldReceiptNo].Width = 100;
@@ -848,6 +847,7 @@ namespace clinic_ivf.gui
             grfCld.Cols[colCldAmount].Width = 90;
             grfCld.Cols[colCldAmount1].Width = 90;
             grfCld.Cols[colCldPkgOther].Width = 100;
+            grfCld.Cols[colCldAgent].Width = 200;
 
             grfCld.ShowCursor = true;
             //grdFlex.Cols[colID].Caption = "no";
@@ -880,6 +880,7 @@ namespace clinic_ivf.gui
             grfCld.Cols[colCldInc].Caption = "Include";
             grfCld.Cols[colCldExt].Caption = "Extra";
             grfCld.Cols[colCldPkgOther].Caption = "Package Other";
+            grfCld.Cols[colCldAgent].Caption = "Agent";
 
             //menuGw.MenuItems.Add("&receive operation", new EventHandler(ContextMenu_Apm));
             //menuGw.MenuItems.Add("receive operation", new EventHandler(ContextMenu_order));
@@ -1036,6 +1037,7 @@ namespace clinic_ivf.gui
                 grfCld[i, colCldExt] = extra1.ToString("#,###.00");
 
                 grfCld[i, colCldPkgOther] = pkgother1.ToString("#,###.00");
+                grfCld[i, colCldAgent] = row["AgentName"].ToString();
                 //grfCld[i, colBillId] = "";
                 //if (!row[ic.ivfDB.ovsDB.vsold.form_a_id].ToString().Equals("0"))
                 //{
@@ -1079,6 +1081,7 @@ namespace clinic_ivf.gui
             grfCld.Cols[colCldDiscount].AllowEditing = false;
             grfCld.Cols[colCldOtherService].AllowEditing = false;
             grfCld.Cols[colCldAmount].AllowEditing = false;
+            grfCld.Cols[colCldAgent].AllowEditing = false;
             grfCld.Cols[colCldAmount1].Visible = false;
             //theme1.SetTheme(grfQue, ic.theme);
         }

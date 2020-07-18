@@ -1129,7 +1129,16 @@ namespace clinic_ivf.gui
             folder = DateTime.Now.Year.ToString();
             image1 = picPtt.Image;
             //image1.Save(@"temppic.jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
-            ic.savePicPatienttoServer(txtIdOld.Text, image1);
+            if (txtIdOld.Text.Length > 0)
+            {
+                Patient ptt = new Patient();
+                ptt = ic.ivfDB.pttDB.selectByPID(txtIdOld.Text);
+                ic.savePicPatienttoServer(txtIdOld.Text, image1);
+            }
+            else
+            {
+                MessageBox.Show("ไม่พบ HN คนไข้", "");
+            }
             //ic.ftpC.upload("DefaultDocument.pdf", @"D:\\source\\ivf\\clinic_ivf\\clinic_ivf\\doc\\DefaultDocument.pdf");
         }
 
@@ -1350,6 +1359,7 @@ namespace clinic_ivf.gui
             //myPlayer.Play();
             //listView1.Items.Clear();
             //imageList1.Images.Clear();
+            if (img == null) return;
             image1 = (Image)img.Clone();
             if (image1 == null)
             {
@@ -1373,20 +1383,31 @@ namespace clinic_ivf.gui
 
         private void BtnWebCamOn_Click(object sender, EventArgs e)
         {
-            //throw new NotImplementedException();            
-            try
+            //throw new NotImplementedException();
+            if (txtIdOld.Text.Length > 0)
             {
-                ic.video = new VideoCaptureDevice(webcanDevice[0].MonikerString);
-                ic.video.NewFrame += Video_NewFrame;
-                ic.video.Start();
-                ic.posiID = "-";
-                btnCapture.Enabled = true;
-                btnSavePic.Enabled = false;
+                Patient ptt = new Patient();
+                ptt = ic.ivfDB.pttDB.selectByIDold(txtIdOld.Text);
+                try
+                {
+                    ic.video = new VideoCaptureDevice(webcanDevice[0].MonikerString);
+                    ic.video.NewFrame += Video_NewFrame;
+                    ic.video.Start();
+
+                    ic.posiID = "-";
+                    btnCapture.Enabled = true;
+                    btnSavePic.Enabled = false;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Sorry there is no camera Found\n" + ex.Message);
+                }
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show("Sorry there is no camera Found\n" + ex.Message);
+                MessageBox.Show("Sorry No HN", "");
             }
+            
         }
 
         private void Video_NewFrame(object sender, AForge.Video.NewFrameEventArgs eventArgs)

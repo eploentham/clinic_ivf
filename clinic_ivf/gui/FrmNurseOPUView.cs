@@ -90,9 +90,6 @@ namespace clinic_ivf.gui
             stt = new C1SuperTooltip();
             sep = new C1SuperErrorProvider();
             
-            
-            
-
             opu = new LabOpu();
             lbReq = new LabRequest();
             ic.setCboDayEmbryoDev(cboEmbryoDev1, "");

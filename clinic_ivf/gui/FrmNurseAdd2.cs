@@ -1205,7 +1205,7 @@ namespace clinic_ivf.gui
             //grfLab.Rows.Count = 1;
             //if(grfLab !=null) grfLab.Rows.Count = 0;
             if (pageLoad) return;
-            grfLab.Clear();
+            //grfLab.Clear();
             grfLab.DataSource = null;
             //grfLab.Rows.Count = 0;
             grfLab.Rows.Count = 1;
@@ -6052,6 +6052,14 @@ namespace clinic_ivf.gui
             grfRx.Cols[colBlName].AllowEditing = false;
             grfRx.Cols[colBlPrice].AllowEditing = false;
             grfRx.Cols[colBlRemark].AllowEditing = true;
+            if (ic.iniC.statusNurseOrderInclude.Equals("1"))
+            {
+                grfRx.Cols[colBlInclude].Visible = true;
+            }
+            else
+            {
+                grfRx.Cols[colBlInclude].Visible = false;
+            }
             //grfRx.AllowFiltering = true;
 
             FilterRow fr = new FilterRow(grfRx);
@@ -6203,6 +6211,14 @@ namespace clinic_ivf.gui
             grfSpecial.Cols[colBlName].AllowEditing = false;
             grfSpecial.Cols[colBlPrice].AllowEditing = false;
             grfSpecial.Cols[colBlRemark].AllowEditing = false;
+            if (ic.iniC.statusNurseOrderInclude.Equals("1"))
+            {
+                grfSpecial.Cols[colBlInclude].Visible = true;
+            }
+            else
+            {
+                grfSpecial.Cols[colBlInclude].Visible = false;
+            }
 
             FilterRow fr = new FilterRow(grfSpecial);
             grfSpecial.AllowFiltering = true;
@@ -6463,6 +6479,14 @@ namespace clinic_ivf.gui
             grfGenetic.Cols[colBlName].AllowEditing = false;
             grfGenetic.Cols[colBlPrice].AllowEditing = false;
             grfGenetic.Cols[colBlRemark].AllowEditing = false;
+            if (ic.iniC.statusNurseOrderInclude.Equals("1"))
+            {
+                grfGenetic.Cols[colBlInclude].Visible = true;
+            }
+            else
+            {
+                grfGenetic.Cols[colBlInclude].Visible = false;
+            }
 
             FilterRow fr = new FilterRow(grfGenetic);
             grfGenetic.AllowFiltering = true;
@@ -6622,6 +6646,14 @@ namespace clinic_ivf.gui
             grfEmbryo.Cols[colBlName].AllowEditing = false;
             grfEmbryo.Cols[colBlPrice].AllowEditing = false;
             grfEmbryo.Cols[colBlRemark].AllowEditing = false;
+            if (ic.iniC.statusNurseOrderInclude.Equals("1"))
+            {
+                grfEmbryo.Cols[colBlInclude].Visible = true;
+            }
+            else
+            {
+                grfEmbryo.Cols[colBlInclude].Visible = false;
+            }
 
             FilterRow fr = new FilterRow(grfEmbryo);
             grfEmbryo.AllowFiltering = true;
@@ -6786,6 +6818,14 @@ namespace clinic_ivf.gui
             grfSperm.Cols[colBlName].AllowEditing = false;
             grfSperm.Cols[colBlPrice].AllowEditing = false;
             grfSperm.Cols[colBlRemark].AllowEditing = false;
+            if (ic.iniC.statusNurseOrderInclude.Equals("1"))
+            {
+                grfSperm.Cols[colBlInclude].Visible = true;
+            }
+            else
+            {
+                grfSperm.Cols[colBlInclude].Visible = false;
+            }
             //theme1.SetTheme(grfFinish, ic.theme);
 
         }
@@ -7103,6 +7143,14 @@ namespace clinic_ivf.gui
             grfBloodLab.Cols[colBlName].AllowEditing = false;
             grfBloodLab.Cols[colBlPrice].AllowEditing = false;
             grfBloodLab.Cols[colBlRemark].AllowEditing = false;
+            if (ic.iniC.statusNurseOrderInclude.Equals("1"))
+            {
+                grfBloodLab.Cols[colBlInclude].Visible = true;
+            }
+            else
+            {
+                grfBloodLab.Cols[colBlInclude].Visible = false;
+            }
 
             FilterRow fr = new FilterRow(grfBloodLab);
             grfBloodLab.AllowFiltering = true;

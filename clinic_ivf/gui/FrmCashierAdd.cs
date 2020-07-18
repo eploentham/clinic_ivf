@@ -254,6 +254,7 @@ namespace clinic_ivf.gui
                 }
                 else
                 {
+                    
                     printReceipt("");
                     printReceipt("2");
                 }
@@ -1034,8 +1035,9 @@ namespace clinic_ivf.gui
             grfPkgPayPeriod.Cols[5].Caption = "รวม";
             ContextMenu menuGw = new ContextMenu();
             menuGw.MenuItems.Add("บันทึกข้อมูล", new EventHandler(ContextMenu_pkgpayperiod_save));
+            menuGw.MenuItems.Add("Clear ข้อมูล ใหม่", new EventHandler(ContextMenu_pkgpayperiod_clearnew));
             grfPkgPayPeriod.ContextMenu = menuGw;
-            grfPkgPayPeriod.AfterRowColChange += GrfPkgPayPeriod_AfterRowColChange;
+            grfPkgPayPeriod.AfterEdit += GrfPkgPayPeriod_AfterEdit;
             grfPkgPayPeriod.KeyUp += GrfPkgPayPeriod_KeyUp;
 
             grfPkgPayPeriod.SubtotalPosition = SubtotalPositionEnum.BelowData;
@@ -1045,10 +1047,10 @@ namespace clinic_ivf.gui
 
         }
 
-        private void GrfPkgPayPeriod_KeyUp(object sender, KeyEventArgs e)
+        private void GrfPkgPayPeriod_AfterEdit(object sender, RowColEventArgs e)
         {
             //throw new NotImplementedException();
-            if (e.KeyCode == Keys.Enter)
+            if (e.Col == 1 || e.Col == 2 || e.Col == 3 || e.Col == 4)
             {
                 if (grfPkgPayPeriod == null) return;
                 if (grfPkgPayPeriod.Row < 1) return;
@@ -1073,13 +1075,13 @@ namespace clinic_ivf.gui
                 }
                 else if (grfPkgPayPeriod.Col == 2)
                 {
-                    period3 = pkgamt - period1- period2;
+                    period3 = pkgamt - period1 - period2;
                     grfPkgPayPeriod[grfPkgPayPeriod.Row, 3] = period3.ToString();
                     grfPkgPayPeriod[grfPkgPayPeriod.Row, 4] = "0";
                 }
                 else if (grfPkgPayPeriod.Col == 3)
                 {
-                    period4 = pkgamt - period1- period2- period3;
+                    period4 = pkgamt - period1 - period2 - period3;
                     grfPkgPayPeriod[grfPkgPayPeriod.Row, 4] = period4.ToString();
                 }
                 amt = period1 + period2 + period3 + period4;
@@ -1087,12 +1089,25 @@ namespace clinic_ivf.gui
             }
         }
 
-        private void GrfPkgPayPeriod_AfterRowColChange(object sender, RangeEventArgs e)
+        private void GrfPkgPayPeriod_KeyUp(object sender, KeyEventArgs e)
         {
             //throw new NotImplementedException();
             
         }
-
+        private void ContextMenu_pkgpayperiod_clearnew(object sender, System.EventArgs e)
+        {
+            if (grfPkgPayPeriod == null) return;
+            if (grfPkgPayPeriod.Row <= 0) return;
+            if (grfPkgPayPeriod.Col <= 0) return;
+            String pkgsid = "", payment;
+            pkgsid = grfPkgPayPeriod[grfPkgPayPeriod.Row, 7].ToString();
+            payment = grfPkgPayPeriod[grfPkgPayPeriod.Row, 8].ToString();
+            String re1 = ic.ivfDB.opkgsDB.updateClearNew(pkgsid, payment);
+            String re = ic.ivfDB.obildDB.updatePaymentPeriod(txtVn.Text, pkgsid, payment);
+            setGrfPkgPayPeriod();
+            //setGrfBillD();
+            setControl();
+        }
         private void ContextMenu_pkgpayperiod_save(object sender, System.EventArgs e)
         {
             if (grfPkgPayPeriod == null) return;
@@ -1117,10 +1132,10 @@ namespace clinic_ivf.gui
             //if (pkgs.P2BDetailID.Length > 0) chkPayment = true;
             //if (pkgs.P3BDetailID.Length > 0) chkPayment = true;
             //if (pkgs.P4BDetailID.Length > 0) chkPayment = true;
-            if (Decimal.TryParse(pkgs.P1BDetailID, out payment1) && payment1>0) chkPayment = true;
-            if (Decimal.TryParse(pkgs.P2BDetailID, out payment1) && payment2 > 0) chkPayment = true;
-            if (Decimal.TryParse(pkgs.P3BDetailID, out payment1) && payment3 > 0) chkPayment = true;
-            if (Decimal.TryParse(pkgs.P4BDetailID, out payment1) && payment4 > 0) chkPayment = true;
+            if (Decimal.TryParse(pkgs.P1BDetailID, out payment1) && payment1 > 0) chkPayment = true;
+            if (Decimal.TryParse(pkgs.P2BDetailID, out payment2) && payment2 > 0) chkPayment = true;
+            if (Decimal.TryParse(pkgs.P3BDetailID, out payment3) && payment3 > 0) chkPayment = true;
+            if (Decimal.TryParse(pkgs.P4BDetailID, out payment4) && payment4 > 0) chkPayment = true;
 
             if (chkPayment)
             {
@@ -1132,7 +1147,9 @@ namespace clinic_ivf.gui
                 MessageBox.Show("ยอดรับชำระ น้อยกว่า ยอด BILL ", "");
                 return;
             }
-            String re1 = "", re2 = "", re3 = "", re4 = "";
+            String re1 = "", re2 = "", re3 = "", re4 = "", name = "", pkgname = "";
+            pkgname = grfPkgPayPeriod[grfPkgPayPeriod.Row, 9].ToString();
+            name = period4 > 0 ? pkgname + " 1/4" : period3 > 0 ? pkgname + " 1/3" : period2 > 0 ? pkgname + " 1/2" : pkgname;
             re1 = ic.ivfDB.opkgsDB.updatePayment1(pkgsid, period1.ToString());
             re2 = ic.ivfDB.opkgsDB.updatePayment2(pkgsid, period2.ToString());
             re3 = ic.ivfDB.opkgsDB.updatePayment3(pkgsid, period3.ToString());
@@ -1148,13 +1165,14 @@ namespace clinic_ivf.gui
         {
             DataTable dt = new DataTable();
             grfPkgPayPeriod.Rows.Count = 1;
-            grfPkgPayPeriod.Cols.Count = 9;
+            grfPkgPayPeriod.Cols.Count = 10;
             grfPkgPayPeriod.Cols[1].Width = 100;
             grfPkgPayPeriod.Cols[2].Width = 100;
             grfPkgPayPeriod.Cols[3].Width = 100;
             grfPkgPayPeriod.Cols[4].Width = 100;
             grfPkgPayPeriod.Cols[5].Width = 100;
             grfPkgPayPeriod.Cols[6].Width = 100;
+            grfPkgPayPeriod.Cols[9].Width = 200;
             grfPkgPayPeriod.Cols[1].Caption = "งวด 1";
             grfPkgPayPeriod.Cols[2].Caption = "งวด 2";
             grfPkgPayPeriod.Cols[3].Caption = "งวด 3";
@@ -1164,19 +1182,21 @@ namespace clinic_ivf.gui
             foreach (DataRow row in dt.Rows)
             {
                 Row row1 = grfPkgPayPeriod.Rows.Add();
-                Decimal pay = 0;
-                Decimal.TryParse(row["Payment1"].ToString(), out pay);
-                row1[1] = pay.ToString("#,###.00");
-                Decimal.TryParse(row["Payment2"].ToString(), out pay);
-                row1[2] = pay.ToString("#,###.00");
-                Decimal.TryParse(row["Payment3"].ToString(), out pay);
-                row1[3] = pay.ToString("#,###.00");
-                Decimal.TryParse(row["Payment4"].ToString(), out pay);
-                row1[4] = pay.ToString("#,###.00");
-                
+                Decimal pay1 = 0, pay2= 0, pay3= 0, pay4= 0;
+                Decimal.TryParse(row["Payment1"].ToString(), out pay1);
+                row1[1] = pay1.ToString("#,###.00");
+                Decimal.TryParse(row["Payment2"].ToString(), out pay2);
+                row1[2] = pay2.ToString("#,###.00");
+                Decimal.TryParse(row["Payment3"].ToString(), out pay3);
+                row1[3] = pay3.ToString("#,###.00");
+                Decimal.TryParse(row["Payment4"].ToString(), out pay4);
+                row1[4] = pay4.ToString("#,###.00");
+
+                row1[5] = (pay1 + pay2 + pay3 + pay4);
                 row1[6] = row["Status"].ToString();
                 row1[7] = row["PCKSID"].ToString();
                 row1[8] = row["Price"].ToString();
+                row1[9] = row["PackageName"].ToString();
                 int period1 = 0, period2 = 0, period3 = 0, period4 = 0;
                 if(int.TryParse(row["P1BDetailID"].ToString(), out period1))
                 {
@@ -1209,6 +1229,9 @@ namespace clinic_ivf.gui
             grfPkgPayPeriod.Cols[3].AllowSorting = false;
             grfPkgPayPeriod.Cols[4].AllowSorting = false;
             grfPkgPayPeriod.Cols[5].AllowSorting = false;
+            grfPkgPayPeriod.Cols[6].Visible = false;
+            grfPkgPayPeriod.Cols[7].Visible = false;
+            //grfPkgPayPeriod.Cols[8].Visible = false;
         }
         private void initGrfReceipt()
         {
@@ -1907,9 +1930,11 @@ namespace clinic_ivf.gui
             //sB1.Text = "Date " + ic.cop.day + "-" + ic.cop.month + "-" + ic.cop.year + " Server " + ic.iniC.hostDB + " FTP " + ic.iniC.hostFTP;
             sB1.Text = "Date " + ic.cop.day + "-" + ic.cop.month + "-" + ic.cop.year + " Server " + ic.iniC.hostDB + " FTP " + ic.iniC.hostFTP + "/" + ic.iniC.folderFTP;
             tC1.SelectedTab = tabBillItem;
+            int pn4width = 0;
+            pn4width = Screen.PrimaryScreen.Bounds.Width - panel4.Location.X;
             panel4.Height = panel2.Height;
             panel4.BackColor = Color.Khaki;
-            panel4.Width = 600;
+            panel4.Width = pn4width-50;
             panel4.Top = 0;
         }
     }

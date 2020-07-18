@@ -113,6 +113,9 @@ namespace clinic_ivf.objdb
         public LabFormDay1DB lformDay1DB;
         public LabPrescriptionDB lPrescDB;
         public StockCardDB stkcDB;
+        public StockCardEndYearDB stkeDB;
+        public CustomerDB custDB;
+        public AddressDB addrDB;
         public IvfDB(ConnectDB c)
         {
             conn = c;
@@ -213,6 +216,9 @@ namespace clinic_ivf.objdb
             lformDay1DB = new LabFormDay1DB(conn);
             lPrescDB = new LabPrescriptionDB(conn);
             stkcDB = new StockCardDB(conn);
+            stkeDB = new StockCardEndYearDB(conn);
+            custDB = new CustomerDB(conn);
+            addrDB = new AddressDB(conn);
 
             Console.WriteLine("ivfDB end");
         }
@@ -1238,6 +1244,7 @@ namespace clinic_ivf.objdb
              * }
              * 
              */
+
             DateTime dt11 = DateTime.Now;
             String date = "", time="";
             date = dt11.Year + "-" + dt11.ToString("MM-dd");

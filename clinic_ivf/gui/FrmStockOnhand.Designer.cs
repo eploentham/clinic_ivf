@@ -32,13 +32,15 @@
             this.sB = new System.Windows.Forms.StatusStrip();
             this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.pnStock = new System.Windows.Forms.Panel();
             this.cboStkSubName = new C1.Win.C1Input.C1ComboBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.pnStock = new System.Windows.Forms.Panel();
+            this.c1Button1 = new C1.Win.C1Input.C1Button();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             this.sB.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cboStkSubName)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1Button1)).BeginInit();
             this.SuspendLayout();
             // 
             // theme1
@@ -66,6 +68,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel1.Controls.Add(this.c1Button1);
             this.panel1.Controls.Add(this.cboStkSubName);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -75,17 +78,6 @@
             this.panel1.Size = new System.Drawing.Size(1112, 42);
             this.panel1.TabIndex = 531;
             this.theme1.SetTheme(this.panel1, "(default)");
-            // 
-            // pnStock
-            // 
-            this.pnStock.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.pnStock.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnStock.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.pnStock.Location = new System.Drawing.Point(0, 42);
-            this.pnStock.Name = "pnStock";
-            this.pnStock.Size = new System.Drawing.Size(1112, 650);
-            this.pnStock.TabIndex = 532;
-            this.theme1.SetTheme(this.pnStock, "(default)");
             // 
             // cboStkSubName
             // 
@@ -121,6 +113,28 @@
             this.label3.Text = "แผนก :";
             this.theme1.SetTheme(this.label3, "(default)");
             // 
+            // pnStock
+            // 
+            this.pnStock.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnStock.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnStock.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.pnStock.Location = new System.Drawing.Point(0, 42);
+            this.pnStock.Name = "pnStock";
+            this.pnStock.Size = new System.Drawing.Size(1112, 650);
+            this.pnStock.TabIndex = 532;
+            this.theme1.SetTheme(this.pnStock, "(default)");
+            // 
+            // c1Button1
+            // 
+            this.c1Button1.Location = new System.Drawing.Point(340, 10);
+            this.c1Button1.Name = "c1Button1";
+            this.c1Button1.Size = new System.Drawing.Size(75, 23);
+            this.c1Button1.TabIndex = 924;
+            this.c1Button1.Text = "c1Button1";
+            this.theme1.SetTheme(this.c1Button1, "(default)");
+            this.c1Button1.UseVisualStyleBackColor = true;
+            this.c1Button1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
             // FrmStockOnhand
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -130,7 +144,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.sB);
             this.Name = "FrmStockOnhand";
-            this.Text = "FrmStockOnhand";
+            this.Text = "คำนวณยอด";
             this.Load += new System.EventHandler(this.FrmStockOnhand_Load);
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).EndInit();
             this.sB.ResumeLayout(false);
@@ -138,6 +152,7 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cboStkSubName)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1Button1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -152,5 +167,6 @@
         private System.Windows.Forms.Panel pnStock;
         private C1.Win.C1Input.C1ComboBox cboStkSubName;
         private System.Windows.Forms.Label label3;
+        private C1.Win.C1Input.C1Button c1Button1;
     }
 }

@@ -39,6 +39,8 @@
             this.tC = new C1.Win.C1Command.C1DockingTab();
             this.tabDrug1 = new C1.Win.C1Command.C1DockingTabPage();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.label28 = new System.Windows.Forms.Label();
+            this.cboCust = new C1.Win.C1Input.C1ComboBox();
             this.cbpGrpSub = new C1.Win.C1Input.C1ComboBox();
             this.label25 = new System.Windows.Forms.Label();
             this.txtTMT = new C1.Win.C1Input.C1TextBox();
@@ -101,6 +103,8 @@
             this.txtID = new C1.Win.C1Input.C1TextBox();
             this.txtDrgCode = new C1.Win.C1Input.C1TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.txtPurchaseNum = new C1.Win.C1Input.C1TextBox();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sCMain)).BeginInit();
@@ -112,6 +116,7 @@
             this.tC.SuspendLayout();
             this.tabDrug1.SuspendLayout();
             this.panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cboCust)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbpGrpSub)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTMT)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDrgTrade)).BeginInit();
@@ -147,6 +152,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtDrgName)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtID)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDrgCode)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPurchaseNum)).BeginInit();
             this.SuspendLayout();
             // 
             // sB
@@ -278,11 +284,13 @@
             this.tabDrug1.Name = "tabDrug1";
             this.tabDrug1.Size = new System.Drawing.Size(703, 456);
             this.tabDrug1.TabIndex = 2;
-            this.tabDrug1.Text = "คุณลักณะยา";
+            this.tabDrug1.Text = "คุณลักษณะยา";
             // 
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel5.Controls.Add(this.label28);
+            this.panel5.Controls.Add(this.cboCust);
             this.panel5.Controls.Add(this.cbpGrpSub);
             this.panel5.Controls.Add(this.label25);
             this.panel5.Controls.Add(this.txtTMT);
@@ -302,6 +310,42 @@
             this.panel5.Size = new System.Drawing.Size(703, 456);
             this.panel5.TabIndex = 0;
             this.theme1.SetTheme(this.panel5, "(default)");
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label28.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label28.Location = new System.Drawing.Point(20, 259);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(63, 16);
+            this.label28.TabIndex = 690;
+            this.label28.Text = "บริษัทที่ซื้อ :";
+            this.theme1.SetTheme(this.label28, "(default)");
+            // 
+            // cboCust
+            // 
+            this.cboCust.AllowSpinLoop = false;
+            this.cboCust.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cboCust.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cboCust.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cboCust.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.cboCust.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboCust.GapHeight = 0;
+            this.cboCust.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.cboCust.ItemsDisplayMember = "";
+            this.cboCust.ItemsValueMember = "";
+            this.cboCust.Location = new System.Drawing.Point(117, 255);
+            this.cboCust.Name = "cboCust";
+            this.cboCust.Size = new System.Drawing.Size(328, 20);
+            this.cboCust.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.cboCust.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
+            this.cboCust.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboCust.TabIndex = 691;
+            this.cboCust.Tag = null;
+            this.theme1.SetTheme(this.cboCust, "(default)");
+            this.cboCust.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // cbpGrpSub
             // 
@@ -901,6 +945,8 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel3.Controls.Add(this.label29);
+            this.panel3.Controls.Add(this.txtPurchaseNum);
             this.panel3.Controls.Add(this.label27);
             this.panel3.Controls.Add(this.txtPurchase);
             this.panel3.Controls.Add(this.cboUnit);
@@ -1282,6 +1328,32 @@
             this.label1.Text = "รหัส :";
             this.theme1.SetTheme(this.label1, "(default)");
             // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.label29.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label29.Location = new System.Drawing.Point(20, 174);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(66, 16);
+            this.label29.TabIndex = 693;
+            this.label29.Text = "จำนวนที่ซื้อ :";
+            this.theme1.SetTheme(this.label29, "(default)");
+            // 
+            // txtPurchaseNum
+            // 
+            this.txtPurchaseNum.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPurchaseNum.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtPurchaseNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtPurchaseNum.Location = new System.Drawing.Point(117, 172);
+            this.txtPurchaseNum.Name = "txtPurchaseNum";
+            this.txtPurchaseNum.Size = new System.Drawing.Size(207, 20);
+            this.txtPurchaseNum.TabIndex = 694;
+            this.txtPurchaseNum.Tag = null;
+            this.theme1.SetTheme(this.txtPurchaseNum, "(default)");
+            this.txtPurchaseNum.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
             // FrmStockDrug
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1306,6 +1378,7 @@
             this.tabDrug1.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cboCust)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbpGrpSub)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTMT)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDrgTrade)).EndInit();
@@ -1343,6 +1416,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtDrgName)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtID)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDrgCode)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPurchaseNum)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1423,5 +1497,9 @@
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Label label27;
         private C1.Win.C1Input.C1TextBox txtPurchase;
+        private System.Windows.Forms.Label label28;
+        private C1.Win.C1Input.C1ComboBox cboCust;
+        private System.Windows.Forms.Label label29;
+        private C1.Win.C1Input.C1TextBox txtPurchaseNum;
     }
 }

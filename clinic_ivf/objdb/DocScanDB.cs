@@ -388,6 +388,30 @@ namespace clinic_ivf.objdb
 
             return re;
         }
+        public String voidDocScanVN(String id, String userId)
+        {
+            String re = "";
+            String sql = "";
+            int chk = 0;
+
+            sql = "Update " + dsc.table + " Set " +
+                " " + dsc.active + " = '3'" +
+                "," + dsc.date_cancel + " = getdate()" +
+                "," + dsc.user_cancel + " = '" + userId + "'" +
+                "Where " + dsc.vn + "='" + id + "'"
+                ;
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+                new LogWriter("e", "voidDocScanVN " + sql);
+            }
+
+            return re;
+        }
         public String voidDocScan(String id, String userId)
         {
             String re = "";

@@ -1841,7 +1841,7 @@
             // 
             // btnFinish
             // 
-            this.btnFinish.Image = global::clinic_ivf.Properties.Resources.Add_ticket_24;
+            this.btnFinish.Image = global::clinic_ivf.Properties.Resources.power24;
             this.btnFinish.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnFinish.Location = new System.Drawing.Point(927, 5);
             this.btnFinish.Name = "btnFinish";
@@ -2197,7 +2197,7 @@
             this.c1SplitterPanel1.Size = new System.Drawing.Size(783, 657);
             this.c1SplitterPanel1.TabIndex = 0;
             this.c1SplitterPanel1.Text = "Panel 1";
-            this.c1SplitterPanel1.Width = 790;
+            this.c1SplitterPanel1.Width = 783;
             // 
             // panel8
             // 

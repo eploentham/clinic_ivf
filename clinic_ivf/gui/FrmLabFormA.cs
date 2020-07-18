@@ -1381,10 +1381,18 @@ namespace clinic_ivf.gui
                     txtVsId.Value = vs.t_visit_id;
                     txtPttId.Value = vs.t_patient_id;
                 }
+                Patient ptt = new Patient();
+                ptt = ic.ivfDB.pttDB.selectByPk1(pttid);
+                if (!ptt.f_sex_id.Equals("1"))
+                {
+                    gbSpermAnalysis.Enabled = false;
+                    gbSpermFreezing.Enabled = false;
+                    gbSpermPESA.Enabled = false;
+                    gbSpermIUI.Enabled = false;
+                }
                 if (txtHnFeMale.Text.Equals("") && !txtHnMale.Text.Equals(""))
                 {
-                    Patient ptt = new Patient();
-                    ptt = ic.ivfDB.pttDB.selectByPk1(pttid);
+                    
                     Patient ptt2 = new Patient();
                     ptt2 = ic.ivfDB.pttDB.selectByHn(ptt.patient_hn_2);
                     txtHnFeMale.Value = ptt2.patient_hn;
@@ -1403,6 +1411,13 @@ namespace clinic_ivf.gui
                     txtPttId.Value = ptt.t_patient_id;
                     txtVsId.Value = vsid;
                     txtVnOld.Value = vn;
+                    if (!ptt.f_sex_id.Equals("1"))
+                    {
+                        gbSpermAnalysis.Enabled = false;
+                        gbSpermFreezing.Enabled = false;
+                        gbSpermPESA.Enabled = false;
+                        gbSpermIUI.Enabled = false;
+                    }
                     if (ic.iniC.statusAppDonor.Equals("1"))
                     {
                         if (ptt.f_sex_id.Equals("1"))//male
@@ -1445,37 +1460,7 @@ namespace clinic_ivf.gui
                                 txtDobFeMale.Value = ptt.patient_birthday;
                             }
                         }
-                        //if (!ptt.patient_hn_1.Equals("") && !ptt.patient_hn_2.Equals(""))    // record donor
-                        //{
-                        //    txtHnFeMale.Value = ptt.patient_hn_1;
-                        //    txtHnMale.Value = ptt.patient_hn_2;
-                        //    txtHnDonor.Value = ptt.patient_hn;
-                        //    txtNameDonor.Value = ptt.Name;
-                        //    Patient ptt1 = new Patient();
-                        //    ptt1 = ic.ivfDB.pttDB.selectByHn(ptt.patient_hn_1);
-                        //    txtNameFeMale.Value = ptt1.Name;
-                        //    Patient ptt2 = new Patient();
-                        //    ptt2 = ic.ivfDB.pttDB.selectByHn(ptt.patient_hn_2);
-                        //    txtNameMale.Value = ptt2.Name;
-                        //}
-                        //else if (!ptt.patient_hn_1.Equals("") && ptt.patient_hn_2.Equals(""))   // record female
-                        //{
-                        //    Patient ptt1 = new Patient();
-                        //    ptt1 = ic.ivfDB.pttDB.selectByHn(ptt.patient_hn_2);
-                        //    txtHnMale.Value = ptt.patient_hn_2;
-                        //    txtNameMale.Value = ptt1.Name;
-                        //    txtHnFeMale.Value = ptt.patient_hn;
-                        //    txtNameFeMale.Value = ptt.Name;
-                        //}
-                        //else if (ptt.patient_hn_1.Equals("") && !ptt.patient_hn_2.Equals(""))   // record male
-                        //{
-                        //    Patient ptt1 = new Patient();
-                        //    ptt1 = ic.ivfDB.pttDB.selectByHn(ptt.patient_hn_1);
-                        //    txtHnMale.Value = ptt.patient_hn;
-                        //    txtNameMale.Value = ptt.Name;
-                        //    txtHnFeMale.Value = ptt.patient_hn_1;
-                        //    txtNameFeMale.Value = ptt1.Name;
-                        //}
+                        
                     }
                     else
                     {
@@ -1502,48 +1487,10 @@ namespace clinic_ivf.gui
                             txtDobFeMale.Value = ptt.patient_birthday;
                         }
                     }
-                    //txtDobFeMale.Value = ptt.d
-                    //if (ptt.t_patient_id.Equals(""))
-                    //{
-                    //    PatientOld pttO = new PatientOld();
-                    //    Visit vs = new Visit();
-                    //    Patient pttD = new Patient();
-                    //    pttO = ic.ivfDB.pttOldDB.selectByPk1(pttid);
-                    //    vs = ic.ivfDB.vsDB.selectByPk1(vsid);
-                    //    if (vs.t_visit_id.Equals(""))
-                    //    {
-                    //        vs = ic.ivfDB.vsDB.selectByVn(vn);
-                    //        txtVsId.Value = vs.t_visit_id;
-                    //        txtPttId.Value = vs.t_patient_id;
-                    //    }
-                    //    txtHnFeMale.Value = pttO.PIDS;
-                    //    txtNameFeMale.Value = pttO.FullName;
-                    //    txtDobFeMale.Value = pttO.DateOfBirth;
-                    //    txtHnOld.Value = pttO.PIDS;
-                    //    txtVnOld.Value = vn;
-                    //    if (!vs.patient_hn_1.Equals(""))
-                    //    {
-                    //        pttD = ic.ivfDB.pttDB.selectExByPk1(vs.patient_hn_1);
-                    //        txtHnDonor.Value = vs.patient_hn_1;
-                    //        txtNameDonor.Value = pttD.patient_firstname_e + " " + pttD.patient_lastname_e;
-                    //    }
-                    //    else
-                    //    {
-
-                    //    }
-                    //}
+                    
                 }
             }
-            //gbOPU.Enabled = false;
-            //gbETFET.Enabled = false;
-
-            //String reqopuid = ic.ivfDB.oJsDB.selectByStatusFET(txtVnOld.Text);
-            //String reqfetid = ic.ivfDB.oJsDB.selectByStatusFET(txtVnOld.Text);
-            //String reqetid = ic.ivfDB.oJsDB.selectByStatusFET(txtVnOld.Text);
-            //String reqanaid = ic.ivfDB.oJsDB.selectByStatusFET(txtVnOld.Text);
-            //String reqfreezingid = ic.ivfDB.oJsDB.selectByStatusFET(txtVnOld.Text);
-            //String reqpesaid = ic.ivfDB.oJsDB.selectByStatusFET(txtVnOld.Text);
-            //String reqiuiid = ic.ivfDB.oJsDB.selectByStatusFET(txtVnOld.Text);
+            
             if (lFormA.status_opu_active.Equals("3"))
             {
                 lbMessage1.Text = "มี ยกเลิก OPU";

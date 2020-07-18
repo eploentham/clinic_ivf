@@ -37,7 +37,7 @@ namespace clinic_ivf.gui
         List<C1FlexGrid> lgrfPkg;
 
         int colId = 1, colName = 2, colOnhand = 4, colUnit=3, colOrderPoint = 5, colOrderAmount = 6, colPrice = 7;
-        int colItmrecdrawjxpxid = 1, colItmDate=2, colItmDesc = 3, colItmQty = 4, colItmPrice = 5, colItmAmt = 6, colItmRemark = 7;
+        int colItmrecdrawjxpxid = 1, colItmDate=2, colItmDesc = 3, colItmQty = 4, colItmOnhand=5, colItmPrice = 6, colItmAmt = 7, colItmRemark = 8;
         Boolean pageLoad = false;
         public FrmStockOnhand(IvfControl ic)
         {
@@ -284,20 +284,21 @@ namespace clinic_ivf.gui
             dt = ic.ivfDB.stkcDB.selectAll();
             grf.Rows.Count = 1;
             grf.Rows.Count = dt.Rows.Count+1;
-            grf.Cols.Count = 8;
+            grf.Cols.Count = 9;
 
             grf.Cols[colItmDesc].Width = 200;
             grf.Cols[colItmQty].Width = 80;
             grf.Cols[colItmPrice].Width = 120;
             grf.Cols[colItmAmt].Width = 120;
             grf.Cols[colItmRemark].Width = 200;
+            grf.Cols[colItmOnhand].Width = 80;
 
             grf.Cols[colItmDesc].Caption = "Description";
             grf.Cols[colItmQty].Caption = "QTY";
             grf.Cols[colItmPrice].Caption = "Price";
             grf.Cols[colItmAmt].Caption = "Amount";
             grf.Cols[colItmRemark].Caption = "Remark";
-
+            grf.Cols[colItmOnhand].Caption = "Onhand";
             Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
             int i = 1;
             foreach (DataRow row in dt.Rows)
@@ -306,12 +307,13 @@ namespace clinic_ivf.gui
                 {
                     Decimal chk1 = 0, qty = 0;
                     grf[i, 0] = i;
-                    grf[i, colItmDesc] = row["status_rec_draw"].ToString().Equals("1") ? "รับเข้า " : row["status_rec_draw"].ToString().Equals("2") ? "ตัดจ่าย" : row["status_rec_draw"].ToString().Equals("3") ? "ขาย" : "";
+                    grf[i, colItmDesc] = row["status_rec_draw"].ToString().Equals("1") ? "รับเข้า " : row["status_rec_draw"].ToString().Equals("2") ? "ตัดจ่าย" : row["status_rec_draw"].ToString().Equals("3") ? "ขาย" : row["status_rec_draw"].ToString().Equals("0") ? "ยกมา" : "" ;
                     grf[i, colItmQty] = row["qty"].ToString();
                     grf[i, colItmPrice] = row["price"].ToString();
                     grf[i, colItmRemark] = row["remark"].ToString();
                     grf[i, colItmrecdrawjxpxid] = row["stock_id"].ToString();
                     grf[i, colItmDate] = ic.datetoShow(row["rec_draw_sale_date"].ToString());
+                    grf[i, colItmOnhand] = row["onhand"].ToString();
                     //grfPkg[i, colPkgUse] = row["QTYused"].ToString();
                     //Decimal.TryParse(row["QTY"].ToString(), out qty);
                     //Decimal.TryParse(row["QTYused"].ToString(), out chk);
@@ -336,6 +338,11 @@ namespace clinic_ivf.gui
             CellNoteManager mgr = new CellNoteManager(grf);
             grf.Cols[colItmAmt].Visible = false;
             grf.Cols[colItmAmt].AllowEditing = false;
+            grf.Cols[colItmRemark].AllowEditing = false;
+            grf.Cols[colItmDate].AllowEditing = false;
+            grf.Cols[colOnhand].AllowEditing = false;
+            grf.Cols[colItmPrice].AllowEditing = false;
+            grf.Cols[colItmDesc].AllowEditing = false;
         }
         private void FrmStockOnhand_Load(object sender, EventArgs e)
         {

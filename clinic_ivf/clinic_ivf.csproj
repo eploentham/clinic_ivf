@@ -190,6 +190,9 @@
     <Compile Include="gui\FrmConvertData.Designer.cs">
       <DependentUpon>FrmConvertData.cs</DependentUpon>
     </Compile>
+    <Compile Include="gui\FrmCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="gui\FrmDepartment1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -610,6 +613,9 @@
     <Compile Include="gui\FrmStockDrug.Designer.cs">
       <DependentUpon>FrmStockDrug.cs</DependentUpon>
     </Compile>
+    <Compile Include="gui\FrmStockEndYear.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="gui\FrmStockOnhand.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -658,8 +664,10 @@
     <Compile Include="gui\PasswordForm.designer.cs">
       <DependentUpon>PasswordForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="objdb\AddressDB.cs" />
     <Compile Include="objdb\ClosedayDB.cs" />
     <Compile Include="objdb\ClosedayDetailDB.cs" />
+    <Compile Include="objdb\CustomerDB.cs" />
     <Compile Include="objdb\EggStiDayDB.cs" />
     <Compile Include="objdb\EggStiDB.cs" />
     <Compile Include="objdb\LabDataTypeComboBoxDB.cs" />
@@ -741,11 +749,13 @@
     <Compile Include="objdb\StockReturnDB.cs" />
     <Compile Include="objdb\StockReturnDetailDB.cs" />
     <Compile Include="objdb\StockSubNameDB.cs" />
+    <Compile Include="object1\Address.cs" />
     <Compile Include="object1\ASCII.cs" />
     <Compile Include="object1\CellNoteManager.cs" />
     <Compile Include="object1\Closeday.cs" />
     <Compile Include="object1\ClosedayDetail.cs" />
     <Compile Include="object1\CommunicationManager.cs" />
+    <Compile Include="object1\Customer.cs" />
     <Compile Include="object1\DocGroupScan.cs" />
     <Compile Include="object1\DocGroupSubScan.cs" />
     <Compile Include="object1\DocScan.cs" />

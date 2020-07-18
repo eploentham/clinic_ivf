@@ -54,6 +54,7 @@
             this.menuDrugPatient = new System.Windows.Forms.ToolStripMenuItem();
             this.menuCashier = new System.Windows.Forms.ToolStripMenuItem();
             this.menuCashierDefault = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuCashierRefund = new System.Windows.Forms.ToolStripMenuItem();
             this.menuMedicalRecord = new System.Windows.Forms.ToolStripMenuItem();
             this.menuMedicalRecordInit = new System.Windows.Forms.ToolStripMenuItem();
             this.menuDocGroupScan = new System.Windows.Forms.ToolStripMenuItem();
@@ -88,12 +89,12 @@
             this.menuStock = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStockRec = new System.Windows.Forms.ToolStripMenuItem();
             this.เบกออกรายการยาToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ปรบปรงยอดรายการยาToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStockEndYear = new System.Windows.Forms.ToolStripMenuItem();
             this.tCC1 = new C1.Win.C1Command.C1CommandDock();
             this.tC1 = new C1.Win.C1Command.C1DockingTab();
             this.PageS = new C1.Win.C1Command.C1DockingTabPage();
             this.theme1 = new C1.Win.C1Themes.C1ThemeController();
-            this.menuCashierRefund = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuCust = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tCC1)).BeginInit();
             this.tCC1.SuspendLayout();
@@ -143,19 +144,19 @@
             // menuPatient
             // 
             this.menuPatient.Name = "menuPatient";
-            this.menuPatient.Size = new System.Drawing.Size(180, 22);
+            this.menuPatient.Size = new System.Drawing.Size(145, 22);
             this.menuPatient.Text = "ประวัติคนไข้";
             // 
             // menuVisitNew
             // 
             this.menuVisitNew.Name = "menuVisitNew";
-            this.menuVisitNew.Size = new System.Drawing.Size(180, 22);
+            this.menuVisitNew.Size = new System.Drawing.Size(145, 22);
             this.menuVisitNew.Text = "ออก Visit";
             // 
             // menuAppn
             // 
             this.menuAppn.Name = "menuAppn";
-            this.menuAppn.Size = new System.Drawing.Size(180, 22);
+            this.menuAppn.Size = new System.Drawing.Size(145, 22);
             this.menuAppn.Text = "Appointment";
             // 
             // menuNurse
@@ -302,8 +303,14 @@
             // menuCashierDefault
             // 
             this.menuCashierDefault.Name = "menuCashierDefault";
-            this.menuCashierDefault.Size = new System.Drawing.Size(180, 22);
+            this.menuCashierDefault.Size = new System.Drawing.Size(151, 22);
             this.menuCashierDefault.Text = "Cashier Screen";
+            // 
+            // menuCashierRefund
+            // 
+            this.menuCashierRefund.Name = "menuCashierRefund";
+            this.menuCashierRefund.Size = new System.Drawing.Size(151, 22);
+            this.menuCashierRefund.Text = "Refund";
             // 
             // menuMedicalRecord
             // 
@@ -438,7 +445,8 @@
             this.menuSpecialItem,
             this.menuLabItem,
             this.memuAccCash,
-            this.menuItemMas});
+            this.menuItemMas,
+            this.menuCust});
             this.masterToolStripMenuItem.Name = "masterToolStripMenuItem";
             this.masterToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
             this.masterToolStripMenuItem.Text = "Master";
@@ -446,7 +454,7 @@
             // menuDrug
             // 
             this.menuDrug.Name = "menuDrug";
-            this.menuDrug.Size = new System.Drawing.Size(175, 22);
+            this.menuDrug.Size = new System.Drawing.Size(180, 22);
             this.menuDrug.Text = "แผนก Drug";
             // 
             // แผนกORToolStripMenuItem
@@ -456,7 +464,7 @@
             this.menuOrDiag,
             this.menuOrAnes});
             this.แผนกORToolStripMenuItem.Name = "แผนกORToolStripMenuItem";
-            this.แผนกORToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.แผนกORToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.แผนกORToolStripMenuItem.Text = "แผนก OR";
             // 
             // menuGrpDiag
@@ -480,25 +488,25 @@
             // menuSpecialItem
             // 
             this.menuSpecialItem.Name = "menuSpecialItem";
-            this.menuSpecialItem.Size = new System.Drawing.Size(175, 22);
+            this.menuSpecialItem.Size = new System.Drawing.Size(180, 22);
             this.menuSpecialItem.Text = "SpecialItem";
             // 
             // menuLabItem
             // 
             this.menuLabItem.Name = "menuLabItem";
-            this.menuLabItem.Size = new System.Drawing.Size(175, 22);
+            this.menuLabItem.Size = new System.Drawing.Size(180, 22);
             this.menuLabItem.Text = "LabItem";
             // 
             // memuAccCash
             // 
             this.memuAccCash.Name = "memuAccCash";
-            this.memuAccCash.Size = new System.Drawing.Size(175, 22);
+            this.memuAccCash.Size = new System.Drawing.Size(180, 22);
             this.memuAccCash.Text = "Account_Cash";
             // 
             // menuItemMas
             // 
             this.menuItemMas.Name = "menuItemMas";
-            this.menuItemMas.Size = new System.Drawing.Size(175, 22);
+            this.menuItemMas.Size = new System.Drawing.Size(180, 22);
             this.menuItemMas.Text = "Item Master Center";
             // 
             // menuAgent
@@ -525,7 +533,7 @@
             this.menuStock,
             this.menuStockRec,
             this.เบกออกรายการยาToolStripMenuItem,
-            this.ปรบปรงยอดรายการยาToolStripMenuItem});
+            this.menuStockEndYear});
             this.stockToolStripMenuItem.Name = "stockToolStripMenuItem";
             this.stockToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
             this.stockToolStripMenuItem.Text = "Stock";
@@ -533,26 +541,26 @@
             // menuStock
             // 
             this.menuStock.Name = "menuStock";
-            this.menuStock.Size = new System.Drawing.Size(176, 22);
+            this.menuStock.Size = new System.Drawing.Size(172, 22);
             this.menuStock.Text = "Stock รายการทั้งหมด";
             // 
             // menuStockRec
             // 
             this.menuStockRec.Name = "menuStockRec";
-            this.menuStockRec.Size = new System.Drawing.Size(176, 22);
+            this.menuStockRec.Size = new System.Drawing.Size(172, 22);
             this.menuStockRec.Text = "รับเข้า รายการยา";
             // 
             // เบกออกรายการยาToolStripMenuItem
             // 
             this.เบกออกรายการยาToolStripMenuItem.Name = "เบกออกรายการยาToolStripMenuItem";
-            this.เบกออกรายการยาToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
+            this.เบกออกรายการยาToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.เบกออกรายการยาToolStripMenuItem.Text = "เบิกออก รายการยา";
             // 
-            // ปรบปรงยอดรายการยาToolStripMenuItem
+            // menuStockEndYear
             // 
-            this.ปรบปรงยอดรายการยาToolStripMenuItem.Name = "ปรบปรงยอดรายการยาToolStripMenuItem";
-            this.ปรบปรงยอดรายการยาToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
-            this.ปรบปรงยอดรายการยาToolStripMenuItem.Text = "ปรับปรุงยอด รายการยา";
+            this.menuStockEndYear.Name = "menuStockEndYear";
+            this.menuStockEndYear.Size = new System.Drawing.Size(172, 22);
+            this.menuStockEndYear.Text = "Stock End Year";
             // 
             // tCC1
             // 
@@ -597,11 +605,11 @@
             // 
             this.theme1.Theme = "BeigeOne";
             // 
-            // menuCashierRefund
+            // menuCust
             // 
-            this.menuCashierRefund.Name = "menuCashierRefund";
-            this.menuCashierRefund.Size = new System.Drawing.Size(180, 22);
-            this.menuCashierRefund.Text = "Refund";
+            this.menuCust.Name = "menuCust";
+            this.menuCust.Size = new System.Drawing.Size(180, 22);
+            this.menuCust.Text = "Customer/Vender";
             // 
             // MainMenu
             // 
@@ -687,12 +695,13 @@
         private System.Windows.Forms.ToolStripMenuItem menuStock;
         private System.Windows.Forms.ToolStripMenuItem menuStockRec;
         private System.Windows.Forms.ToolStripMenuItem เบกออกรายการยาToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem ปรบปรงยอดรายการยาToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem menuStockEndYear;
         private System.Windows.Forms.ToolStripMenuItem menuLabBlood;
         private System.Windows.Forms.ToolStripMenuItem memuAccCash;
         private System.Windows.Forms.ToolStripMenuItem menuConfig;
         private System.Windows.Forms.ToolStripMenuItem menuItemMas;
         private System.Windows.Forms.ToolStripMenuItem menuMiscView;
         private System.Windows.Forms.ToolStripMenuItem menuCashierRefund;
+        private System.Windows.Forms.ToolStripMenuItem menuCust;
     }
 }

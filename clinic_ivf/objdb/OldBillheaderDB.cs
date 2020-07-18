@@ -103,10 +103,11 @@ namespace clinic_ivf.objdb
         {
             String cnt = "";
             DataTable dt = new DataTable();
-            String sql = "select *  " +
+            String sql = "select obillh.*, Agent.AgentName " +
                 "From " + obillh.table + " obillh " +
+                "Left Join Agent on obillh.agent_id = Agent.AgentID " +
                 "Where obillh." + obillh.closeday_id + " ='0' and obillh." + obillh.active + " = '1' and obillh."+obillh.receipt_no +" is not null " +
-                "Order By "+ obillh.receipt_no;
+                "Order By obillh." + obillh.receipt_no;
             dt = conn.selectData(conn.conn, sql);
             //if (dt.Rows.Count >= 1)
             //{

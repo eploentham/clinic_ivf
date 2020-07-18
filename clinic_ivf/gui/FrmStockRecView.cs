@@ -103,7 +103,7 @@ namespace clinic_ivf.gui
 
             btnNew = new C1Button();
             btnNew.Name = "btnNew";
-            btnNew.Text = "Print";
+            btnNew.Text = "ป้อนรับเข้า";
             btnNew.Font = this.fEdit;
             size = ic.MeasureString(btnNew);
             btnNew.Size = new Size(60,40);

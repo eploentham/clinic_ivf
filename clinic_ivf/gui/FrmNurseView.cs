@@ -263,16 +263,16 @@ namespace clinic_ivf.gui
             }
             else
             {
-                if (txtSearch.Text.Length > 3)
+                if (txtSearch.Text.Trim().Length > 3)
                 {
                     if (chkLabFormA.Checked)
                     {
-                        setGrfSearch(txtSearch.Text);
+                        setGrfSearch(txtSearch.Text.Trim());
                     }
                     else
                     {
                         //setGrfQue(txtSearch.Text);    //62-08-15
-                        setGrfSearch(txtSearch.Text);    //62-08-15
+                        setGrfSearch(txtSearch.Text.Trim());    //62-08-15
                     }
                 }
             }
@@ -706,7 +706,7 @@ namespace clinic_ivf.gui
         {
             //grfDept.Rows.Count = 7;
             tC.SelectedTab = tabSearch;
-            grfSearch.Clear();
+            //grfSearch.Clear();
             DataTable dt1 = new DataTable();
             DataTable dt = new DataTable();
             
@@ -742,6 +742,7 @@ namespace clinic_ivf.gui
             }
 
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
+            grfSearch.Rows.Count = 1;
             grfSearch.Rows.Count = dt.Rows.Count + 1;
             grfSearch.Cols.Count = 26;
             //C1TextBox txt = new C1TextBox();
@@ -815,11 +816,14 @@ namespace clinic_ivf.gui
             //menuGw.MenuItems.Add("&receive operation", new EventHandler(ContextMenu_Apm));
             if (!chkPrnSticker.Checked)     // สั่ง LAB ไม่ได้ เพราะ ไม่มี visit_id
             {
-                menuGw.MenuItems.Add("&LAB request FORM A", new EventHandler(ContextMenu_LAB_req_formA_Ptt_search));
+                menuGw.MenuItems.Add("LAB request FORM A", new EventHandler(ContextMenu_LAB_req_formA_Ptt_search));
                 menuGw.MenuItems.Add("LAB Form Day1", new EventHandler(ContextMenu_Form_day1_grfSearch));
             }
-            //menuGw.MenuItems.Add("&Add Appointment", new EventHandler(ContextMenu_Apm_Ptt));
-            //menuGw.MenuItems.Add("&Cancel Receive", new EventHandler(ContextMenu_Apm_Ptt));
+            menuGw.MenuItems.Add("result lab OPU", new EventHandler(ContextMenu_result_lab_opu));
+            menuGw.MenuItems.Add("result lab Sperm Analysis", new EventHandler(ContextMenu_result_lab_sperm_analysis));
+            menuGw.MenuItems.Add("result lab Sperm Freezing", new EventHandler(ContextMenu_result_lab_sperm_freezing));
+            menuGw.MenuItems.Add("result lab Sperm PESA", new EventHandler(ContextMenu_result_lab_sperm_pesa));
+            menuGw.MenuItems.Add("result lab Sperm IUI", new EventHandler(ContextMenu_result_lab_sperm_iui));
             //menuGw.MenuItems.Add("&No Appointment Close Operation", new EventHandler(ContextMenu_NO_Apm_Ptt));
             MenuItem addDevice = new MenuItem("[Form Print]");
             menuGw.MenuItems.Add(addDevice);
@@ -905,13 +909,86 @@ namespace clinic_ivf.gui
             //theme1.SetTheme(grfQue, ic.theme);
 
         }
+        private void ContextMenu_result_lab_opu(object sender, System.EventArgs e)
+        {
+            String chk = "", name = "", vsid = "", pttId = "", vn = "", formaid="";
+            vn = grfSearch[grfSearch.Row, colVn] != null ? grfSearch[grfSearch.Row, colVn].ToString() : "";
+            formaid = grfSearch[grfSearch.Row, colFormAId] != null ? grfSearch[grfSearch.Row, colFormAId].ToString() : "";
+
+            
+
+        }
+        private void ContextMenu_result_lab_sperm_freezing(object sender, System.EventArgs e)
+        {
+            String chk = "", name = "", vsid = "", pttId = "", vn = "", formaid = "", reqid="", spermid="";
+            vn = grfSearch[grfSearch.Row, colVn] != null ? grfSearch[grfSearch.Row, colVn].ToString() : "";
+            formaid = grfSearch[grfSearch.Row, colFormAId] != null ? grfSearch[grfSearch.Row, colFormAId].ToString() : "";
+            LabFormA forma = new LabFormA();
+            forma = ic.ivfDB.lFormaDB.selectByPk1(formaid);
+            
+            reqid = forma.req_id_sperm_freezing;
+            LabSperm lsperm = new LabSperm();
+            lsperm = ic.ivfDB.lspermDB.selectByReqId(reqid);
+            
+            FrmLabSpermAdd frm = new FrmLabSpermAdd(ic, reqid, lsperm.sperm_id, "no");
+            frm.StartPosition = FormStartPosition.CenterScreen;
+            frm.ShowDialog(this);
+        }
+        private void ContextMenu_result_lab_sperm_analysis(object sender, System.EventArgs e)
+        {
+            String chk = "", name = "", vsid = "", pttId = "", vn = "", formaid = "", reqid = "", spermid = "";
+            vn = grfSearch[grfSearch.Row, colVn] != null ? grfSearch[grfSearch.Row, colVn].ToString() : "";
+            formaid = grfSearch[grfSearch.Row, colFormAId] != null ? grfSearch[grfSearch.Row, colFormAId].ToString() : "";
+            LabFormA forma = new LabFormA();
+            forma = ic.ivfDB.lFormaDB.selectByPk1(formaid);
+
+            reqid = forma.req_id_semem_analysis;
+            LabSperm lsperm = new LabSperm();
+            lsperm = ic.ivfDB.lspermDB.selectByReqId(reqid);
+
+            FrmLabSpermAdd frm = new FrmLabSpermAdd(ic, reqid, lsperm.sperm_id, "no");
+            frm.StartPosition = FormStartPosition.CenterScreen;
+            frm.ShowDialog(this);
+        }
+        private void ContextMenu_result_lab_sperm_pesa(object sender, System.EventArgs e)
+        {
+            String chk = "", name = "", vsid = "", pttId = "", vn = "", formaid = "", reqid = "", spermid = "";
+            vn = grfSearch[grfSearch.Row, colVn] != null ? grfSearch[grfSearch.Row, colVn].ToString() : "";
+            formaid = grfSearch[grfSearch.Row, colFormAId] != null ? grfSearch[grfSearch.Row, colFormAId].ToString() : "";
+            LabFormA forma = new LabFormA();
+            forma = ic.ivfDB.lFormaDB.selectByPk1(formaid);
+
+            reqid = forma.req_id_pesa_tese;
+            LabSperm lsperm = new LabSperm();
+            lsperm = ic.ivfDB.lspermDB.selectByReqId(reqid);
+
+            FrmLabSpermAdd frm = new FrmLabSpermAdd(ic, reqid, lsperm.sperm_id, "no");
+            frm.StartPosition = FormStartPosition.CenterScreen;
+            frm.ShowDialog(this);
+        }
+        private void ContextMenu_result_lab_sperm_iui(object sender, System.EventArgs e)
+        {
+            String chk = "", name = "", vsid = "", pttId = "", vn = "", formaid = "", reqid = "", spermid = "";
+            vn = grfSearch[grfSearch.Row, colVn] != null ? grfSearch[grfSearch.Row, colVn].ToString() : "";
+            formaid = grfSearch[grfSearch.Row, colFormAId] != null ? grfSearch[grfSearch.Row, colFormAId].ToString() : "";
+            LabFormA forma = new LabFormA();
+            forma = ic.ivfDB.lFormaDB.selectByPk1(formaid);
+
+            reqid = forma.req_id_iui;
+            LabSperm lsperm = new LabSperm();
+            lsperm = ic.ivfDB.lspermDB.selectByReqId(reqid);
+
+            FrmLabSpermAdd frm = new FrmLabSpermAdd(ic, reqid, lsperm.sperm_id, "no");
+            frm.StartPosition = FormStartPosition.CenterScreen;
+            frm.ShowDialog(this);
+        }
         private void ContextMenu_Form_day1_grfSearch(object sender, System.EventArgs e)
         {
             String chk = "", name = "", vsid = "", pttId = "", vn = "";
             if (grfFinish.Row <= 0) return;
             vsid = grfSearch[grfSearch.Row, colID] != null ? grfSearch[grfSearch.Row, colID].ToString() : "";
             pttId = grfSearch[grfSearch.Row, colPttId] != null ? grfSearch[grfSearch.Row, colPttId].ToString() : "";
-            vn = grfFinish[grfFinish.Row, colVn] != null ? grfFinish[grfFinish.Row, colVn].ToString() : "";
+            vn = grfSearch[grfSearch.Row, colVn] != null ? grfSearch[grfSearch.Row, colVn].ToString() : "";
             FrmLabFormDay1 frm = new FrmLabFormDay1(ic, "", pttId, vsid, vn);
             frm.ShowDialog(this);
         }

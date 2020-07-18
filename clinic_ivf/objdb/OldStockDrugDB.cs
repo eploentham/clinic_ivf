@@ -59,6 +59,9 @@ namespace clinic_ivf.objdb
             ostkD.user_create = "user_create";
             ostkD.user_modi = "user_modi";
             ostkD.remark = "remark";
+            ostkD.trade_name = "trade_name";
+            ostkD.comm_name = "comm_name";
+            ostkD.cust_id = "cust_id";
 
             ostkD.table = "StockDrug";
             ostkD.pkField = "DUID";
@@ -93,9 +96,9 @@ namespace clinic_ivf.objdb
                 itm1.user_modi = row[ostkD.user_modi].ToString();
                 itm1.instruction_id = row[ostkD.instruction_id].ToString();
                 itm1.frequency_id = row[ostkD.frequency_id].ToString();
-                //itm1.user_modi = row[ostkD.user_modi].ToString();
-                //itm1.user_modi = row[ostkD.user_modi].ToString();
-                //itm1.user_modi = row[ostkD.user_modi].ToString();
+                itm1.trade_name = row[ostkD.trade_name].ToString();
+                itm1.comm_name = row[ostkD.comm_name].ToString();
+                itm1.cust_id = row[ostkD.cust_id].ToString();
                 lstkD.Add(itm1);
             }
             return lstkD;
@@ -148,6 +151,8 @@ namespace clinic_ivf.objdb
             p.drug_description = p.drug_description == null ? "" : p.drug_description;
             p.drug_caution_e = p.drug_caution_e == null ? "" : p.drug_caution_e;
             p.drug_frequency_e = p.drug_frequency_e == null ? "" : p.drug_frequency_e;
+            p.trade_name = p.trade_name == null ? "" : p.trade_name;
+            p.comm_name = p.comm_name == null ? "" : p.comm_name;
 
             //p.Alert = p.Alert == null ? "0" : p.Alert;
             //p.QTY = p.QTY == null ? "0" : p.QTY;
@@ -160,6 +165,7 @@ namespace clinic_ivf.objdb
             p.instruction_id = long.TryParse(p.instruction_id, out chk) ? chk.ToString() : "0";
             p.frequency_id = long.TryParse(p.frequency_id, out chk) ? chk.ToString() : "0";
             p.item_sub_group_id = long.TryParse(p.item_sub_group_id, out chk) ? chk.ToString() : "0";
+            p.cust_id = long.TryParse(p.cust_id, out chk) ? chk.ToString() : "0";
 
             p.Price = Decimal.TryParse(p.Price, out chk1) ? chk1.ToString() : "0";
             p.on_hand = Decimal.TryParse(p.on_hand, out chk1) ? chk1.ToString() : "0";
@@ -216,7 +222,9 @@ namespace clinic_ivf.objdb
                 "," + ostkD.on_hand_sub_3 + "= '" + p.on_hand_sub_3 + "'" +
                 "," + ostkD.order_point_sub_3 + "= '" + p.order_point_sub_3 + "'" +
                 "," + ostkD.order_amount_sub_3 + "= '" + p.order_amount_sub_3 + "'" +
-
+                "," + ostkD.trade_name + "= '" + p.trade_name + "'" +
+                "," + ostkD.comm_name + "= '" + p.comm_name + "'" +
+                "," + ostkD.cust_id + "= '" + p.cust_id + "'" +
                 "";
             try
             {
@@ -251,7 +259,9 @@ namespace clinic_ivf.objdb
                 "," + ostkD.drug_caution_e + "= '" + p.drug_caution_e + "'" +
                 "," + ostkD.drug_frequency_e + "= '" + p.drug_frequency_e + "'" +
                 "," + ostkD.item_sub_group_id + "= '" + p.item_sub_group_id + "'" +
-                //"," + ostkD.drug_caution_e + "= '" + p.drug_caution_e + "'" +
+                "," + ostkD.trade_name + "= '" + p.trade_name + "'" +
+                "," + ostkD.comm_name + "= '" + p.comm_name + "'" +
+                "," + ostkD.cust_id + "= '" + p.cust_id + "'" +
                 "Where " +ostkD.pkField+"='"+p.DUID+"'";
 
             try
@@ -352,6 +362,16 @@ namespace clinic_ivf.objdb
         {
             DataTable dt = new DataTable();
             String sql = "select ostkD."+ostkD.DUID+" as id,"+ostkD.item_code+" as code,"+ostkD.DUName+" as name " +
+                "From " + ostkD.table + " ostkD " +
+                "Where ostkD." + ostkD.active + " ='1' " +
+                "Order By ostkD.DUName ";
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
+        public DataTable selectAllOnhand()
+        {
+            DataTable dt = new DataTable();
+            String sql = "select ostkD." + ostkD.DUID + " ," + ostkD.DUName + " ," + ostkD.on_hand + ", '' as status, '' remark, UnitType " +
                 "From " + ostkD.table + " ostkD " +
                 "Where ostkD." + ostkD.active + " ='1' " +
                 "Order By ostkD.DUName ";
@@ -543,6 +563,9 @@ namespace clinic_ivf.objdb
                 ostkd1.PendingQTY = dt.Rows[0][ostkD.PendingQTY].ToString();
                 ostkd1.Price = dt.Rows[0][ostkD.Price].ToString();
                 ostkd1.item_code = dt.Rows[0][ostkD.item_code].ToString();
+                ostkd1.trade_name = dt.Rows[0][ostkD.trade_name].ToString();
+                ostkd1.comm_name = dt.Rows[0][ostkD.comm_name].ToString();
+                ostkd1.cust_id = dt.Rows[0][ostkD.cust_id].ToString();
             }
             else
             {
@@ -562,7 +585,9 @@ namespace clinic_ivf.objdb
             stf1.PendingQTY = "";
             stf1.Price = "";
             stf1.item_code = "";
-
+            stf1.trade_name = "";
+            stf1.comm_name = "";
+            stf1.cust_id = "";
             return stf1;
         }
     }
