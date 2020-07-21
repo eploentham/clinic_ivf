@@ -64,9 +64,54 @@ namespace clinic_ivf.gui
             ic.ivfDB.oStkdDB.setCboUsageT(cboUsageT);
             btnNew.Click += BtnNew_Click;
             btnSave.Click += BtnSave_Click;
+            chkVoid.Click += ChkVoid_Click;
+            txtPasswordVoid.KeyUp += TxtPasswordVoid_KeyUp;
+            btnVoid.Click += BtnVoid_Click;
+
             initGrfStockDrug();
             setGrfStockDrug();
         }
+
+        private void BtnVoid_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            long chk = 0;
+            String re = "";
+            re = ic.ivfDB.oStkdDB.Void(txtID.Text, userIdVoid);
+            setGrfStockDrug();
+            chkVoid.Checked = false;
+        }
+
+        private void TxtPasswordVoid_KeyUp(object sender, KeyEventArgs e)
+        {
+            //throw new NotImplementedException();
+            if(e.KeyCode== Keys.Enter)
+            {
+                userIdVoid = "";
+                userIdVoid = ic.ivfDB.stfDB.selectByPasswordAdmin(txtPasswordVoid.Text.Trim());
+                if (userIdVoid.Length > 0)
+                {
+                    txtPasswordVoid.Hide();
+                    btnVoid.Show();
+                    //stt.Show("<p><b>ต้องการยกเลิก</b></p> <br> รหัสผ่านถูกต้อง", btnVoid);
+                }
+                else
+                {
+                    sep.SetError(txtPasswordVoid, "333");
+                }
+            }
+        }
+
+        private void ChkVoid_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (chkVoid.Checked)
+            {
+                txtPasswordVoid.Show();
+                txtPasswordVoid.Focus();
+            }
+        }
+
         private void setStockDrug()
         {
             //ostkD.DUID = "DUID";
@@ -165,6 +210,9 @@ namespace clinic_ivf.gui
             txtDrgCode.Value = sdrk.DUID;
             txtDrgTrade.Value = sdrk.trade_name;
             txtDrgComm.Value = sdrk.comm_name;
+            btnVoid.Hide();
+            txtPasswordVoid.Hide();
+            chkVoid.Checked = false;
         }
         private void setControlEnable(Boolean flag)
         {
@@ -191,6 +239,7 @@ namespace clinic_ivf.gui
             panel1.Controls.Add(this.grfDrug);
             FilterRow fr = new FilterRow(grfDrug);
             grfDrug.AllowFiltering = true;
+            grfDrug.AfterFilter += GrfDrug_AfterFilter;
             C1Theme theme = C1ThemeController.GetThemeByName("Office2013Red", false);
             C1ThemeController.ApplyThemeToObject(grfDrug, theme);
         }
@@ -220,7 +269,7 @@ namespace clinic_ivf.gui
             //grfDept.Cols[colCode].Caption = "รหัส";
 
             grfDrug.Cols[colID].Caption = "รหัส";
-            grfDrug.Cols[colName].Caption = "ชื่อPackage";
+            grfDrug.Cols[colName].Caption = "ชื่อ Drug";
             grfDrug.Cols[colPrice].Caption = "ราคา";
             //for (int col = 0; col < dt.Columns.Count; ++col)
             //{
@@ -243,6 +292,17 @@ namespace clinic_ivf.gui
             //grfAgn.Cols[colS].Visible = false;
             //grfAgn.Cols[colRemark].Visible = false;
         }
+
+        private void GrfDrug_AfterFilter(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            String id = "";
+            for (int col = grfDrug.Cols.Fixed; col < grfDrug.Cols.Count; ++col)
+            {
+                var filter = grfDrug.Cols[col].ActiveFilter;
+            }
+        }
+
         private void FrmStockDrug_Load(object sender, EventArgs e)
         {
             sCMain.HeaderHeight = 0;

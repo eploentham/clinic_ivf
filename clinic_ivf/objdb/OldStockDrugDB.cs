@@ -275,6 +275,30 @@ namespace clinic_ivf.objdb
 
             return re;
         }
+        public String Void(String id, String userId)
+        {
+            String re = "";
+            String sql = "";
+            //chkNull(p);
+
+            sql = "Update " + ostkD.table + " Set " +
+                " " + ostkD.active + " = '3'" +
+                "," + ostkD.user_cancel + "= '" + userId + "'" +
+                "," + ostkD.date_cancel + "= now() " +
+
+                "Where " + ostkD.pkField + "='" + id + "'";
+
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+
+            return re;
+        }
         public String updateCode(String id, String code, String userId)
         {
             String re = "";
