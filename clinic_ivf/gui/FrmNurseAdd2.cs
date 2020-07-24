@@ -6965,7 +6965,6 @@ namespace clinic_ivf.gui
                         {
                             ic.ivfDB.LabAdd(row[ic.ivfDB.logDB.log.lab_id].ToString(), qty3.ToString(), txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), labid, "0", "1", pkgdid);
                         }
-                            
                     }
                     else
                     {
@@ -6977,9 +6976,10 @@ namespace clinic_ivf.gui
                         {
                             ic.ivfDB.LabAdd(row[ic.ivfDB.logDB.log.lab_id].ToString(), qty3.ToString(), txtIdOld.Text, txtHn.Text, txtVnOld.Text, "1", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), labid, "0", "1", pkgdid);
                         }
-                            
                     }
                 }
+                //ic.ivfDB.LabAdd(labid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "1", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), labid, "0", "1", "old", pkgdid);
+                ic.ivfDB.LabAdd(labid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "1", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), labid, "1", "1", pkgdid);
             }
             else
             {

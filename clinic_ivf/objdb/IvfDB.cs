@@ -967,8 +967,17 @@ namespace clinic_ivf.objdb
                 decimal qty11 = 0, price11 = 0;
                 Decimal.TryParse(qty, out qty11);
                 Decimal.TryParse(olab.Price, out price11);
-                jlabD.Price = (qty11 * price11).ToString();
-                jlabD.price1 = olab.Price;
+                
+                //if (olab.status_order_group.Equals("1"))
+                //{
+                //    jlabD.Price = "0";
+                //    jlabD.price1 = "0";
+                //}
+                //else
+                //{
+                    jlabD.Price = (qty11 * price11).ToString();
+                    jlabD.price1 = olab.Price;
+                //}
             }
             else
             {
