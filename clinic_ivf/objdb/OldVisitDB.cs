@@ -649,7 +649,7 @@ namespace clinic_ivf.objdb
                 "From " + vsold.table + " vsold " +
                 "Left Join VStatus on  VStatus.VSID = vsold.VSID " +
                 "Left Join Patient on  vsold.PID = Patient.PID " +
-                "Where  vsold.VSID in('166')  " + wheredate + wherehn +
+                "Where  vsold.VSID in('166','999')  " + wheredate + wherehn +
                 "Order By vsold.VSID desc,vsold.VDate, vsold.VStartTime";
             dt = conn.selectData(conn.conn, sql);
 

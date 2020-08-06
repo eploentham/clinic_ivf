@@ -28,7 +28,7 @@ namespace clinic_ivf.gui
         MainMenu menu;
         public C1DockingTabPage tab;
         public FrmCashierView frmCashView;
-        String billid = "", pttid = "", vsid = "", vsidOld = "";
+        String billid = "", pttid = "", vsid = "", vsidOld = "", vnold = "", printerOld = "", receiptno = "", flagedit = "";
         OldBillheader obilh;
         VisitOld ovs;
         PatientOld optt;
@@ -36,11 +36,8 @@ namespace clinic_ivf.gui
         Visit vs;
 
         C1FlexGrid grfBillD, grfOrder, grfReceipt, grfPkgPayPeriod;
-        Font fEdit, fEditB;
-        Color bg, fc;
-        Font ff, ffB;
-        Color color;
-        String vnold = "", printerOld = "";
+        Font fEdit, fEditB, ff, ffB;
+        Color bg, fc, color;
 
         C1SuperTooltip stt;
         C1SuperErrorProvider sep;
@@ -57,6 +54,18 @@ namespace clinic_ivf.gui
             this.ic = ic;
             this.vnold = vnold;
             this.billid = billid;
+            this.flagedit = flagedit;
+            initConfig();
+        }
+        public FrmCashierAdd(IvfControl ic, MainMenu m, String billid, String vnold, String flagedit, String receiptno)
+        {
+            InitializeComponent();
+            menu = m;
+            this.ic = ic;
+            this.vnold = vnold;
+            this.billid = billid;
+            this.flagedit = flagedit;
+            this.receiptno = receiptno;
             initConfig();
         }
         private void initConfig()
@@ -66,6 +75,7 @@ namespace clinic_ivf.gui
             ovs = new VisitOld();
             optt = new PatientOld();
             ptt = new Patient();
+            obilh = new OldBillheader();
 
             //C1ThemeController.ApplicationTheme = ic.iniC.themeApplication;
             //theme1.Theme = C1ThemeController.ApplicationTheme;
@@ -253,8 +263,7 @@ namespace clinic_ivf.gui
                     printReceipt("");
                 }
                 else
-                {
-                    
+                {                    
                     printReceipt("");
                     printReceipt("2");
                 }
@@ -313,7 +322,8 @@ namespace clinic_ivf.gui
             
             //billnoex1 = ic.ivfDB.obilhDB.selectBillNoExByVN(ovs.VN);
             //new LogWriter("e", "printReceipt receiptno " + receiptno);
-            if (flagExtra.Equals("2")) receiptno = "";      //พิมพ์ ใบเสร็จ 2 ชุด
+
+            if (flagExtra.Equals("2") && !flagedit.Equals("noedit")) receiptno = "";      //พิมพ์ ใบเสร็จ 2 ชุด
             if (receiptno.Length <= 0)
             {
                 //new LogWriter("e", "printReceipt flagExtra "+ flagExtra);
@@ -371,12 +381,20 @@ namespace clinic_ivf.gui
                         }
                     }
                 }
-                
             }
             else
             {
-                billNo = receiptno;
-                billExtNo = billnoex1;
+                if (flagExtra.Equals("2") && flagedit.Equals("noedit"))
+                {
+                    billNo = obilh.receipt1_no;
+                    billExtNo = billnoex1;
+                }
+                else
+                {
+                    billNo = receiptno;
+                    billExtNo = billnoex1;
+                }
+                
             }
             //dtprn.Columns.Add("col1", typeof(String));
             //dtprn.Columns.Add("col2", typeof(String));
@@ -446,10 +464,14 @@ namespace clinic_ivf.gui
             day = ic.cop.day;
             month = ic.cop.month;
             year = ic.cop.year;
+
+            String billdate = ic.datetimetoShow(obilh.Date);
+
             btnPrnReceipt.Enabled = false;
             FrmReport frm = new FrmReport(ic);
             new LogWriter("e", "printReceipt billNo " + billNo);
-            frm.setPrintBill(dtprn, txtHn.Text, txtPttNameE.Text, amt2, amt.ToString("#,###.00"), billNo, day + "/" + month + "/" + year, payby, "ใบเสร็จ/Receipt", sumprice.ToString("#,###.00"), flagExtra);
+            //frm.setPrintBill(dtprn, txtHn.Text, txtPttNameE.Text, amt2, amt.ToString("#,###.00"), billNo, day + "/" + month + "/" + year, payby, "ใบเสร็จ/Receipt", sumprice.ToString("#,###.00"), flagExtra);
+            frm.setPrintBill(dtprn, txtHn.Text, txtPttNameE.Text, amt2, amt.ToString("#,###.00"), billNo, billdate, payby, "ใบเสร็จ/Receipt", sumprice.ToString("#,###.00"), flagExtra);
             frm.Show(this);
         }
         private void ChkDiscountPer_Click(object sender, EventArgs e)
@@ -987,7 +1009,7 @@ namespace clinic_ivf.gui
             optt = ic.ivfDB.pttOldDB.selectByPk1(ovs.PID);
             ptt = ic.ivfDB.pttDB.selectByHn(ovs.PIDS);
             vs = ic.ivfDB.vsDB.selectByVn(ovs.VN);
-            //obilh = ic.ivfDB.obilhDB.selectByVN(ovs.VN);
+            obilh = ic.ivfDB.obilhDB.selectByPk2(ovs.VN);
             ptt.patient_birthday = optt.DateOfBirth;
 
             txtHn.Value = optt.PIDS;
@@ -1007,6 +1029,20 @@ namespace clinic_ivf.gui
                 : ptt.f_patient_blood_group_id.Equals("2140000002") ? "A" : ptt.f_patient_blood_group_id.Equals("2140000003") ? "B"
                 : ptt.f_patient_blood_group_id.Equals("2140000004") ? "AB" : "ไม่ระบุ";
             txtAgent.Value = ic.ivfDB.oAgnDB.getAgentNameById(ptt.agent);
+            if (flagedit.Equals("noedit"))
+            {
+                txtTotalCash.Value = obilh.cash;
+                txtTotal.Value = obilh.Total;
+                txtDiscount.Value = obilh.Discount;
+                //txtAmt.Value = obilh.total1;
+                //cboAccCash.Text = "";
+                txtTotalCredit.Value = obilh.credit;
+                txtPayCreditCard.Value = "";
+                txtCreditCardNumber.Value = obilh.CreditCardNumber;
+                //cboAccCredit.Text = "";
+                ic.setC1Combo(cboAccCash, obilh.CashID);
+                ic.setC1Combo(cboAccCredit, obilh.CreditCardID);
+            }
 
             FrmLabPrescription frm = new FrmLabPrescription(ic, "", "", txtHn.Text);
             //frm.WindowState = FormWindowState.Maximized;

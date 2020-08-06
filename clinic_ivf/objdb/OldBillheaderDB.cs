@@ -76,12 +76,36 @@ namespace clinic_ivf.objdb
             obillh.table = "BillHeader";
             obillh.pkField = "VN";
         }
+        public OldBillheader selectByPk1(String copId)
+        {
+            OldBillheader cop1 = new OldBillheader();
+            DataTable dt = new DataTable();
+            String sql = "select obillh.* " +
+                "From " + obillh.table + " obillh " +
+                "Where obillh." + obillh.bill_id + " ='" + copId + "' ";
+            dt = conn.selectData(conn.conn, sql);
+            cop1 = setBill(dt);
+            return cop1;
+        }
+        public OldBillheader selectByPk2(String copId)
+        {
+            OldBillheader cop1 = new OldBillheader();
+            DataTable dt = new DataTable();
+            String sql = "select obillh.* " +
+                "From " + obillh.table + " obillh " +
+                "Where obillh." + obillh.pkField + " ='" + copId + "' " +
+                "and obillh.active = '1' ";
+            dt = conn.selectData(conn.conn, sql);
+            cop1 = setBill(dt);
+            return cop1;
+        }
         public DataTable selectByPk(String copId)
         {
             DataTable dt = new DataTable();
             String sql = "select obillh.* " +
                 "From " + obillh.table + " obillh " +
-                "Where obillh." + obillh.pkField + " ='" + copId + "' ";
+                "Where obillh." + obillh.pkField + " ='" + copId + "' " +
+                "and obillh.active = '1' ";
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
@@ -539,6 +563,118 @@ namespace clinic_ivf.objdb
                 sql = ex.Message + " " + ex.InnerException;
             }
             return re;
+        }
+        public OldBillheader setBill(DataTable dt)
+        {
+            OldBillheader vsold1 = new OldBillheader();
+            if (dt.Rows.Count > 0)
+            {
+                vsold1.bill_id = dt.Rows[0][obillh.bill_id].ToString();
+                vsold1.VN = dt.Rows[0][obillh.VN].ToString();
+                vsold1.BillNo = dt.Rows[0][obillh.BillNo].ToString();
+                vsold1.PName = dt.Rows[0][obillh.PName].ToString();
+                vsold1.Date = dt.Rows[0][obillh.Date].ToString();
+                vsold1.Time = dt.Rows[0][obillh.Time].ToString();
+                vsold1.PID = dt.Rows[0][obillh.PID].ToString();
+                vsold1.PIDS = dt.Rows[0][obillh.PIDS].ToString();
+                vsold1.Include_Pkg_Price = dt.Rows[0][obillh.Include_Pkg_Price].ToString();
+                vsold1.Extra_Pkg_Price = dt.Rows[0][obillh.Extra_Pkg_Price].ToString();
+                vsold1.Total = dt.Rows[0][obillh.Total].ToString();
+                vsold1.Discount = dt.Rows[0][obillh.Discount].ToString();
+                vsold1.CreditCardType = dt.Rows[0][obillh.CreditCardType].ToString();
+                vsold1.CreditCardNumber = dt.Rows[0][obillh.CreditCardNumber].ToString();
+                vsold1.Status = dt.Rows[0][obillh.Status].ToString();
+                vsold1.CreditAgent = dt.Rows[0][obillh.CreditAgent].ToString();
+                vsold1.OName = dt.Rows[0][obillh.OName].ToString();
+                vsold1.BID = dt.Rows[0][obillh.BID].ToString();
+                vsold1.PaymentBy = dt.Rows[0][obillh.PaymentBy].ToString();
+                vsold1.CashID = dt.Rows[0][obillh.CashID].ToString();
+                vsold1.CreditCardID = dt.Rows[0][obillh.CreditCardID].ToString();
+                vsold1.SepCash = dt.Rows[0][obillh.SepCash].ToString();
+                vsold1.SepCredit = dt.Rows[0][obillh.SepCredit].ToString();
+                vsold1.ExtBillNo = dt.Rows[0][obillh.ExtBillNo].ToString();
+                vsold1.IntLock = dt.Rows[0][obillh.IntLock].ToString();
+                vsold1.receipt_cover_no = dt.Rows[0][obillh.receipt_cover_no].ToString();
+                vsold1.receipt_no = dt.Rows[0][obillh.receipt_no].ToString();
+
+                vsold1.active = dt.Rows[0][obillh.active].ToString();
+                vsold1.remark = dt.Rows[0][obillh.remark].ToString();
+                vsold1.date_cancel = dt.Rows[0][obillh.date_cancel].ToString();
+                vsold1.date_create = dt.Rows[0][obillh.date_create].ToString();
+                vsold1.date_modi = dt.Rows[0][obillh.date_modi].ToString();
+                vsold1.user_cancel = dt.Rows[0][obillh.user_cancel].ToString();
+                vsold1.user_create = dt.Rows[0][obillh.user_create].ToString();
+                vsold1.user_modi = dt.Rows[0][obillh.user_modi].ToString();
+                vsold1.cash = dt.Rows[0][obillh.cash].ToString();
+                vsold1.credit = dt.Rows[0][obillh.credit].ToString();
+                vsold1.closeday_id = dt.Rows[0][obillh.closeday_id].ToString();
+                vsold1.receipt1_no = dt.Rows[0][obillh.receipt1_no].ToString();
+                vsold1.include_lab = dt.Rows[0][obillh.include_lab].ToString();
+                vsold1.ext_lab = dt.Rows[0][obillh.ext_lab].ToString();
+                vsold1.include_special = dt.Rows[0][obillh.include_special].ToString();
+                vsold1.ext_special = dt.Rows[0][obillh.ext_special].ToString();
+                vsold1.include_package = dt.Rows[0][obillh.include_package].ToString();
+                vsold1.ext_package = dt.Rows[0][obillh.ext_package].ToString();
+                vsold1.total1 = dt.Rows[0][obillh.total1].ToString();
+                vsold1.agent_id = dt.Rows[0][obillh.agent_id].ToString();
+            }
+            else
+            {
+                setBill(vsold1);
+            }
+            return vsold1;
+        }
+        private OldBillheader setBill(OldBillheader stf1)
+        {
+            stf1.bill_id = "";
+            stf1.VN = "";
+            stf1.BillNo = "";
+            stf1.PName = "";
+            stf1.Date = "";
+            stf1.Time = "";
+            stf1.PID = "";
+            stf1.PIDS = "";
+            stf1.Include_Pkg_Price = "";
+            stf1.Extra_Pkg_Price = "";
+            stf1.Total = "";
+            stf1.Discount = "";
+            stf1.CreditCardType = "";
+            stf1.CreditCardNumber = "";
+            stf1.Status = "";
+            stf1.CreditAgent = "";
+            stf1.OName = "";
+            stf1.BID = "";
+            stf1.PaymentBy = "";
+            stf1.CashID = "";
+            stf1.CreditCardID = "";
+            stf1.SepCash = "";
+            stf1.SepCredit = "";
+            stf1.ExtBillNo = "";
+            stf1.IntLock = "";
+            stf1.receipt_cover_no = "";
+            stf1.receipt_no = "";
+
+            stf1.active = "";
+            stf1.remark = "";
+            stf1.date_cancel = "";
+            stf1.date_create = "";
+            stf1.date_modi = "";
+            stf1.user_cancel = "";
+            stf1.user_create = "";
+            stf1.user_modi = "";
+            stf1.cash = "";
+            stf1.credit = "";
+            stf1.closeday_id = "";
+            stf1.receipt1_no = "";
+            stf1.include_lab = "";
+            stf1.ext_lab = "";
+            stf1.include_special = "";
+            stf1.ext_special = "";
+            stf1.include_package = "";
+            stf1.ext_package = "";
+            stf1.total1 = "";
+            stf1.agent_id = "";
+            return stf1;
         }
     }
 }

@@ -481,6 +481,7 @@ namespace clinic_ivf.objdb
                     "Where " + cop.pkField + "='" + cop1.comp_id + "'";
                 conn.ExecuteNonQuery(conn.conn, sql);
                 cop1.receipt_doc = "00000";
+                cop1.receipt1_doc = "00000";
             }
 
             int chk = 0;

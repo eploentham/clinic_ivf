@@ -1480,11 +1480,12 @@ namespace clinic_ivf.gui
         private void setGrfSearch()
         {
             //grfDept.Rows.Count = 7;
-            grfSearch.Clear();
+            //grfSearch.Clear();
             DataTable dt1 = new DataTable();
             DataTable dt = new DataTable();
             String date = "";
-            
+            grfSearch.Rows.Count = 1;
+            if ((txtSearch.Text.Trim().Length <= 0) && (txtDateStart.Text.Trim().Length <= 0)) return;
             dt = ic.ivfDB.ovsDB.selectByStatusCashierSearch(txtSearch.Text, ic.datetoDB(txtDateStart.Text));
             //if (search.Equals(""))
             //{
@@ -1792,7 +1793,7 @@ namespace clinic_ivf.gui
 
             id = grfSearch[grfSearch.Row, colID] != null ? grfSearch[grfSearch.Row, colID].ToString() : "";
             name = grfSearch[grfSearch.Row, colPttName] != null ? grfSearch[grfSearch.Row, colPttName].ToString() : "";
-            billid = grfSearch[grfSearch.Row, colPttName] != null ? grfSearch[grfSearch.Row, colPttName].ToString() : "";
+            billid = grfSearch[grfSearch.Row, colID] != null ? grfSearch[grfSearch.Row, colID].ToString() : "";
 
             openBillNew(id, name, "noedit", billid);
         }

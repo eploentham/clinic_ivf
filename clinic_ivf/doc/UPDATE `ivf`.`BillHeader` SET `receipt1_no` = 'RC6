@@ -1,0 +1,17 @@
+UPDATE `ivf`.`BillHeader` SET `receipt1_no` = 'RC630700002' WHERE (`bill_id` = '2390062528');
+UPDATE `ivf`.`BillHeader` SET `receipt1_no` = 'RC630700003' WHERE (`bill_id` = '2390062533');
+UPDATE `ivf`.`BillHeader` SET `receipt1_no` = 'RC630700004' WHERE (`bill_id` = '2390062550');
+UPDATE `ivf`.`BillHeader` SET `receipt1_no` = 'RC630700005' WHERE (`bill_id` = '2390062551');
+UPDATE `ivf`.`BillHeader` SET `receipt1_no` = 'RC630700006' WHERE (`bill_id` = '2390062600');
+UPDATE `ivf`.`BillHeader` SET `receipt1_no` = 'RC630700007' WHERE (`bill_id` = '2390062644');
+UPDATE `ivf`.`BillHeader` SET `receipt1_no` = 'RC630700008' WHERE (`bill_id` = '2390062645');
+UPDATE `ivf`.`BillHeader` SET `receipt1_no` = 'RC630700009' WHERE (`bill_id` = '2390062646');
+UPDATE `ivf`.`BillHeader` SET `receipt1_no` = 'RC630700010' WHERE (`bill_id` = '2390062647');
+UPDATE `ivf`.`BillHeader` SET `receipt1_no` = 'RC630700011' WHERE (`bill_id` = '2390062648');
+UPDATE `ivf`.`BillHeader` SET `receipt1_no` = 'RC630700012' WHERE (`bill_id` = '2390062649');
+UPDATE `ivf`.`BillHeader` SET `receipt1_no` = 'RC630700013' WHERE (`bill_id` = '2390062650');
+UPDATE `ivf`.`BillHeader` SET `receipt1_no` = 'RC630700014' WHERE (`bill_id` = '2390062651');
+UPDATE `ivf`.`BillHeader` SET `receipt1_no` = 'RC630700015' WHERE (`bill_id` = '2390062659');
+UPDATE `ivf`.`BillHeader` SET `receipt1_no` = 'RC630700016' WHERE (`bill_id` = '2390062660');
+UPDATE `ivf`.`BillHeader` SET `receipt1_no` = 'RC630700017' WHERE (`bill_id` = '2390062663');
+UPDATE `ivf`.`BillHeader` SET `receipt1_no` = 'RC630700018' WHERE (`bill_id` = '2390062664');
