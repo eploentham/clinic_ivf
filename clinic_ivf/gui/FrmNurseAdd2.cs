@@ -5723,7 +5723,7 @@ namespace clinic_ivf.gui
                 foreach (Row row in grfRxSetD.Rows)
                 {
                     if (row[colRxdId] == null) continue;
-                    String duid = "", include = "", qty = "", usaget = "", usagee = "", duname = "", price = "", usage = "";
+                    String duid = "", include = "", qty = "", usaget = "", usagee = "", duname = "", price = "", usage = "", pkgdid = "", qtyext = "";
                     duid = row[colRxdId].ToString();
                     usaget = row[colRxUsT].ToString();
                     usagee = row[colRxUsE].ToString();
@@ -5731,6 +5731,20 @@ namespace clinic_ivf.gui
                     price = row[colRxPrice].ToString();
                     include = row[colRxInclude] != null ? row[colRxInclude].ToString().Equals("True") ? "1" : "0" : "0";
                     qty = row[colBlQty] != null ? row[colBlQty].ToString() : "1";
+
+                    pkgdid = setPkgDId(duid, qty, "", "");
+                    String[] pkgdid1 = pkgdid.Split('#');
+                    if (pkgdid1.Length > 1)
+                    {
+                        qtyext = pkgdid1[1];
+                        pkgdid = pkgdid1[0];
+                    }
+                    else
+                    {
+                        include = pkgdid.Length > 0 ? "1" : "";
+                        qtyext = "";
+                    }
+
                     if (cboLangSticker.Text.Equals("English"))
                     {
                         usage = row[colRxUsE] != null ? row[colRxUsE].ToString() : "";

@@ -244,7 +244,7 @@ namespace clinic_ivf.objdb
             DataTable dt = new DataTable();
             String sql = "select pttI.* " +
                 "From " + pttI.table + " pttI " +
-                "Where pttI." + pttI.t_patient_id + " ='" + pttid + "' and status_image='1' ";
+                "Where pttI." + pttI.t_patient_id + " ='" + pttid + "' and status_image='1' and active = '1' ";
             dt = conn.selectData(conn.conn, sql);
             cop1 = setPatientImage(dt);
             return cop1;
@@ -255,7 +255,7 @@ namespace clinic_ivf.objdb
             DataTable dt = new DataTable();
             String sql = "select pttI.* " +
                 "From " + pttI.table + " pttI " +
-                "Where pttI." + pttI.t_patient_id + " ='" + pttid + "' and status_image='4' " +
+                "Where pttI." + pttI.t_patient_id + " ='" + pttid + "' and status_image='4' and active = '1' " +
                 "Order By pttI."+ pttI.patient_image_id;
             dt = conn.selectData(conn.conn, sql);
             cop1 = setPatientImage(dt);

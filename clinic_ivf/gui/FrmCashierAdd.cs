@@ -464,14 +464,21 @@ namespace clinic_ivf.gui
             day = ic.cop.day;
             month = ic.cop.month;
             year = ic.cop.year;
+            String datecreate = "", timecreate="";
+            datecreate = obilh.date_create;
+            DateTime dtdatecreate = new DateTime();
+            if(DateTime.TryParse(datecreate, out dtdatecreate))
+            {
+                timecreate = dtdatecreate.ToString("HH:mm");
+            }
 
-            String billdate = ic.datetimetoShow(obilh.Date);
+            String billdate = ic.datetoShow(obilh.Date);
 
             btnPrnReceipt.Enabled = false;
             FrmReport frm = new FrmReport(ic);
             new LogWriter("e", "printReceipt billNo " + billNo);
             //frm.setPrintBill(dtprn, txtHn.Text, txtPttNameE.Text, amt2, amt.ToString("#,###.00"), billNo, day + "/" + month + "/" + year, payby, "ใบเสร็จ/Receipt", sumprice.ToString("#,###.00"), flagExtra);
-            frm.setPrintBill(dtprn, txtHn.Text, txtPttNameE.Text, amt2, amt.ToString("#,###.00"), billNo, billdate, payby, "ใบเสร็จ/Receipt", sumprice.ToString("#,###.00"), flagExtra);
+            frm.setPrintBill(dtprn, txtHn.Text, txtPttNameE.Text, amt2, amt.ToString("#,###.00"), billNo, billdate+" "+ timecreate, payby, "ใบเสร็จ/Receipt", sumprice.ToString("#,###.00"), flagExtra);
             frm.Show(this);
         }
         private void ChkDiscountPer_Click(object sender, EventArgs e)

@@ -535,11 +535,17 @@ namespace clinic_ivf.gui
             {
                 cboBsp.SelectedIndex = 3;
             }
-            PatientImage pttI = new PatientImage();
-            pttI = ic.ivfDB.pttImgDB.selectByPttIDStatus4(txtID.Text);
-            filenamepic = pttI.image_path;
-            Thread threadA = new Thread(new ParameterizedThreadStart(ExecuteA));
-            threadA.Start();
+            if (txtID.Text.Length > 0)
+            {
+                PatientImage pttI = new PatientImage();
+                pttI = ic.ivfDB.pttImgDB.selectByPttIDStatus4(txtID.Text);
+                if (pttI.image_path.Length > 0)
+                {
+                    filenamepic = pttI.image_path;
+                    Thread threadA = new Thread(new ParameterizedThreadStart(ExecuteA));
+                    threadA.Start();
+                }
+            }
         }
         private void ExecuteA(Object obj)
         {
