@@ -535,7 +535,8 @@ namespace clinic_ivf.gui
                 txtEmailSubject.Value = "Routine LAB Result HN " + txtHn.Text.ToUpper() + " Name " + txtPttNameE.Text + " [VN " + txtVnShow.Text + "] Hormone Report Date " + System.DateTime.Now.ToString("dd/MM/") + System.DateTime.Now.Year;
             }
             
-            mail.From = new MailAddress(txtEmailTo.Text);
+            //mail.From = new MailAddress(txtEmailTo.Text); ic.iniC.email_form_lab_opu
+            mail.From = new MailAddress(ic.iniC.email_form);
             mail.To.Add(txtEmailTo.Text);
             mail.Subject = txtEmailSubject.Text;
             mail.Body = txtEmailBody.Text;

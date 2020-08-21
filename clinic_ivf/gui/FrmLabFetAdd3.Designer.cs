@@ -33,6 +33,7 @@
             this.cboEmbryoPicDay = new C1.Win.C1Input.C1ComboBox();
             this.btnSaveImg2 = new C1.Win.C1Input.C1Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnImg = new C1.Win.C1Input.C1Button();
             this.label72 = new System.Windows.Forms.Label();
             this.txtNameDonor = new C1.Win.C1Input.C1TextBox();
             this.btnDonorSearch = new C1.Win.C1Input.C1Button();
@@ -180,12 +181,13 @@
             this.txtDay2Date = new C1.Win.C1Input.C1DateEdit();
             this.sB = new System.Windows.Forms.StatusStrip();
             this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.btnImg = new C1.Win.C1Input.C1Button();
+            this.btnResultView = new C1.Win.C1Input.C1Button();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnDay2ImgRef)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboEmbryoPicDay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSaveImg2)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnImg)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNameDonor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnDonorSearch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHnDonor)).BeginInit();
@@ -273,7 +275,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.cboCheckedDay2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDay2Date)).BeginInit();
             this.sB.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnImg)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnResultView)).BeginInit();
             this.SuspendLayout();
             // 
             // theme1
@@ -375,6 +377,20 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Patient";
             this.theme1.SetTheme(this.groupBox1, "(default)");
+            // 
+            // btnImg
+            // 
+            this.btnImg.Image = global::clinic_ivf.Properties.Resources.Add_ticket_24;
+            this.btnImg.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnImg.Location = new System.Drawing.Point(1236, 65);
+            this.btnImg.Name = "btnImg";
+            this.btnImg.Size = new System.Drawing.Size(83, 39);
+            this.btnImg.TabIndex = 549;
+            this.btnImg.Text = "Image";
+            this.btnImg.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnImg, "(default)");
+            this.btnImg.UseVisualStyleBackColor = true;
+            this.btnImg.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // label72
             // 
@@ -2024,6 +2040,7 @@
             // groupBox7
             // 
             this.groupBox7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox7.Controls.Add(this.btnResultView);
             this.groupBox7.Controls.Add(this.btnApproveResult);
             this.groupBox7.Controls.Add(this.cboEmbryoForEtCatheter);
             this.groupBox7.Controls.Add(this.cboEtRemark);
@@ -2931,19 +2948,19 @@
             this.sB1.Size = new System.Drawing.Size(118, 17);
             this.sB1.Text = "toolStripStatusLabel1";
             // 
-            // btnImg
+            // btnResultView
             // 
-            this.btnImg.Image = global::clinic_ivf.Properties.Resources.Add_ticket_24;
-            this.btnImg.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnImg.Location = new System.Drawing.Point(1236, 65);
-            this.btnImg.Name = "btnImg";
-            this.btnImg.Size = new System.Drawing.Size(83, 39);
-            this.btnImg.TabIndex = 549;
-            this.btnImg.Text = "Image";
-            this.btnImg.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.theme1.SetTheme(this.btnImg, "(default)");
-            this.btnImg.UseVisualStyleBackColor = true;
-            this.btnImg.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.btnResultView.Image = global::clinic_ivf.Properties.Resources.ExportPdf_large;
+            this.btnResultView.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnResultView.Location = new System.Drawing.Point(7, 592);
+            this.btnResultView.Name = "btnResultView";
+            this.btnResultView.Size = new System.Drawing.Size(128, 39);
+            this.btnResultView.TabIndex = 561;
+            this.btnResultView.Text = "PDF Result";
+            this.btnResultView.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnResultView, "(default)");
+            this.btnResultView.UseVisualStyleBackColor = true;
+            this.btnResultView.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // FrmLabFetAdd3
             // 
@@ -2962,6 +2979,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnSaveImg2)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnImg)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNameDonor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnDonorSearch)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHnDonor)).EndInit();
@@ -3059,7 +3077,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtDay2Date)).EndInit();
             this.sB.ResumeLayout(false);
             this.sB.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnImg)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnResultView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3221,5 +3239,6 @@
         private CrystalDecisions.Windows.Forms.CrystalReportViewer cryLab;
         private C1.Win.C1Input.C1Button btnApproveResult;
         private C1.Win.C1Input.C1Button btnImg;
+        private C1.Win.C1Input.C1Button btnResultView;
     }
 }

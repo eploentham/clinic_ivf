@@ -587,12 +587,33 @@ namespace clinic_ivf.objdb
         public String updatePaymentPeriod(String vn, String pkgsid, String amt)
         {
             DataTable dt = new DataTable();
+            String sql = "", re = "";
+            //dt = selectByVN(vn);
+            sql = "Update " + obilld.table + " Set " +
+                " " + obilld.Price + "= '" + amt + "'" +
+                "," + obilld.price1 + "= '" + amt + "'" +
+                "," + obilld.Total + "= '" + amt + "'" +
+                "Where " + obilld.VN + "='" + vn + "' and " + obilld.pcksid + " = '" + pkgsid + "' ";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+            return re;
+        }
+        public String updatePaymentPeriod(String vn, String pkgsid, String amt, String name)
+        {
+            DataTable dt = new DataTable();
             String sql = "", re="";
             //dt = selectByVN(vn);
             sql = "Update " + obilld.table + " Set " +
                 " " + obilld.Price + "= '" + amt + "'" +
                 "," + obilld.price1 + "= '" + amt + "'" +
                 "," + obilld.Total + "= '" + amt + "'" +
+                "," + obilld.Name + "= '" + name + "'" +
                 "Where " + obilld.VN + "='" + vn + "' and "+obilld.pcksid +" = '"+pkgsid+"' ";
             try
             {

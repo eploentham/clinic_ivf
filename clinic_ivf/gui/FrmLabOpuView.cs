@@ -75,6 +75,7 @@ namespace clinic_ivf.gui
             //btnSearchA.Click += BtnSearchA_Click;
             txtSearch.KeyUp += TxtSearch_KeyUp;
             btnSearchF.Click += BtnSearchF_Click;
+            tcLabView.TabClick += TcLabView_TabClick;
             //btnOPU.Click += BtnOPU_Click;
             //btnFet.Click += BtnFet_Click;
 
@@ -85,6 +86,23 @@ namespace clinic_ivf.gui
             setGrfProc("");
             setGrfFinish();
             initGrfSearch();
+        }
+
+        private void TcLabView_TabClick(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if(tcLabView.SelectedTab == tabProcess)
+            {
+                setGrfProc("");
+            }
+            else if (tcLabView.SelectedTab == tabLabAccept)
+            {
+                setGrfReq();
+            }
+            else if (tcLabView.SelectedTab == tabLabAccept)
+            {
+                setGrfFinish();
+            }
         }
 
         private void BtnSearchF_Click(object sender, EventArgs e)
@@ -141,7 +159,7 @@ namespace clinic_ivf.gui
             grfSearch.Font = fEdit;
             grfSearch.Dock = System.Windows.Forms.DockStyle.Fill;
             grfSearch.Location = new System.Drawing.Point(0, 0);
-
+            grfSearch.Rows.Count = 1;
             //FilterRow fr = new FilterRow(grfExpn);
 
             grfSearch.AfterRowColChange += GrfSearch_AfterRowColChange;
@@ -170,18 +188,21 @@ namespace clinic_ivf.gui
         private void GrfSearch_AfterRowColChange(object sender, RangeEventArgs e)
         {
             //throw new NotImplementedException();
-
+            for (int col = grfSearch.Cols.Fixed; col < grfSearch.Cols.Count; ++col)
+            {
+                var filter = grfSearch.Cols[col].ActiveFilter;
+            }
         }
 
         private void setGrfSearch(String search)
         {
             grfSearch.DataSource = null;
-            grfSearch.Rows.Count = 0;
+            //grfSearch.Rows.Count = 0;
             DataTable dt = new DataTable();
 
             dt = ic.ivfDB.opuDB.selectBySearchHn(search);
 
-            //grfExpn.Rows.Count = dt.Rows.Count + 1;
+            grfSearch.Rows.Count = 1;
             if (dt.Rows.Count <= 1)
             {
                 grfSearch.Rows.Count = dt.Rows.Count + 2;
@@ -251,7 +272,7 @@ namespace clinic_ivf.gui
                 //row1[colRqRemark] = row[ic.ivfDB.lbReqDB.lbReq.remark].ToString();
                 //row1[colOpuId] = "";
                 //row1[colDtrName] = row["dtr_name"].ToString();
-                grfSearch[i, 0] = (i - 1);
+                grfSearch[i, 0] = (i);
 
             }
             grfSearch.Cols[colRqId].Visible = false;
@@ -608,12 +629,12 @@ namespace clinic_ivf.gui
         private void setGrfProc(String search)
         {
             grfProc.DataSource = null;
-            grfProc.Clear();
+            //grfProc.Clear();
             DataTable dt = new DataTable();
             
             dt = ic.ivfDB.opuDB.selectByStatusProcess1(search);
-            
-            //grfExpn.Rows.Count = dt.Rows.Count + 1;
+
+            grfProc.Rows.Count = 1;
             if (dt.Rows.Count <= 1)
             {
                 grfProc.Rows.Count = dt.Rows.Count + 2;
@@ -669,7 +690,7 @@ namespace clinic_ivf.gui
             foreach (DataRow row in dt.Rows)
             {
                 i++;
-                if (i == 1) continue;
+                //if (i == 1) continue;
                 //Row row1 = grfProc.Rows.Add();
                 grfProc[i, colPcId] = row[ic.ivfDB.opuDB.opu.opu_id].ToString();
                 grfProc[i, colPcOpuNum] = row[ic.ivfDB.opuDB.opu.opu_code].ToString();
@@ -802,13 +823,13 @@ namespace clinic_ivf.gui
         private void setGrfFinish()
         {
             grfFinish.DataSource = null;
-            grfFinish.Clear();
+            //grfFinish.Clear();
             DataTable dt = new DataTable();
             String datestart = "", dateend = "";
             datestart = ic.datetoDB(txtFiDateStart.Text);
             dateend = ic.datetoDB(txtFiDateEnd.Text);
             dt = ic.ivfDB.opuDB.selectByStatusFinish(datestart, dateend);
-            //grfExpn.Rows.Count = dt.Rows.Count + 1;
+            grfFinish.Rows.Count = 1;
             if (dt.Rows.Count <= 1)
             {
                 grfFinish.Rows.Count = dt.Rows.Count + 1;
@@ -863,6 +884,7 @@ namespace clinic_ivf.gui
             int i = 1;
             foreach (DataRow row in dt.Rows)
             {
+                i++;
                 //if (i == 1) continue;
                 //Row row1 = grfProc.Rows.Add();
                 grfFinish[i, colPcId] = row[ic.ivfDB.opuDB.opu.opu_id].ToString();
@@ -878,7 +900,7 @@ namespace clinic_ivf.gui
                 //row1[colOpuId] = "";
                 //row1[colDtrName] = row["dtr_name"].ToString();
                 grfFinish[i, 0] = (i - 1);
-                i++;
+                
 
             }
             grfFinish.Cols[colRqId].Visible = false;
@@ -895,14 +917,17 @@ namespace clinic_ivf.gui
             {
                 FilterRow fr = new FilterRow(grfFinish);
                 grfFinish.AllowFiltering = true;
-                grfFinish.AfterFilter += GrfFinish_AfterFilter;
+                //grfFinish.AfterFilter += GrfFinish_AfterFilter;
             }
         }
 
         private void GrfFinish_AfterFilter(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-
+            for (int col = grfFinish.Cols.Fixed; col < grfFinish.Cols.Count; ++col)
+            {
+                var filter = grfFinish.Cols[col].ActiveFilter;
+            }
         }
 
         private void BtnNew_Click(object sender, EventArgs e)

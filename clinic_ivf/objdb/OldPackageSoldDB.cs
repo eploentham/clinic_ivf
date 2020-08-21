@@ -381,6 +381,24 @@ namespace clinic_ivf.objdb
             }
             return re;
         }
+        public String updatePaymentTime(String pcksid, String time)
+        {
+            String re = "", sql = "";
+
+            sql = "Update " + opkgs.table + " set " +
+                "" + opkgs.payment_times + "='" + time + "' " +
+                //"," + opkgs.Payment1 + "='" + pay + "' " +
+                "Where " + opkgs.PCKSID + "='" + pcksid + "' ";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+            return re;
+        }
         public String updatePayment1(String pcksid, String amt)
         {
             String re = "", sql = "";

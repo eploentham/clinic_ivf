@@ -406,15 +406,17 @@ namespace clinic_ivf.objdb
         public DataTable selectByStatusResult(String startdate, String enddate, String hn)
         {
             DataTable dt = new DataTable();
-            String wheredate = "", wherehn = "";
+            String wheredate = "", wherehn = "", whereand="";
+            if ((hn.Length == 0) && (startdate.Length == 0) && (enddate.Length == 0)) return dt;
             if (hn.Length > 0)
             {
-                wherehn = " and lreq."+ lbReq.hn_female+" like '%"+hn+"%'";
+                wherehn = " lreq."+ lbReq.hn_female+" like '%"+hn+"%' ";
             }
             if (startdate.Length > 0)
             {
                 //wheredate = " and lreq.req_date >= '" + startdate + "' and lreq.req_date <= '" + enddate + "' ";
-                wheredate = " and lreq.result_date >= '" + startdate + " 00:00:00' and lreq.result_date <= '" + enddate + " 23:59:59' ";
+                wheredate = "  lreq.result_date >= '" + startdate + " 00:00:00' and lreq.result_date <= '" + enddate + " 23:59:59' ";
+                whereand = " and ";
             }
             String sql = "Select lreq.req_id, concat(fpp.patient_prefix_description,' ',pttf.patient_firstname_e,' ',pttf.patient_lastname_e) as name_female" +
                 ", concat(fppm.patient_prefix_description,' ',pttm.patient_firstname_e,' ',pttm.patient_lastname_e) as name_male" +
@@ -435,8 +437,10 @@ namespace clinic_ivf.objdb
                 //"Left Join lab_t_request lreq on lreq.request_id = oJSd.ID  " +
                 //"Left Join Visit vsold on oJSd.VN = vsold.VN " +
                 //"Left Join lab_t_form_a lforma on vsold.form_a_id = lforma.form_a_id " +
-                "Where  lreq.status_req = '5' " + wheredate + wherehn +
-                "Order By lforma.form_a_id ";
+                "Where " +
+                //" lreq.status_req = '5' " 
+                wheredate + whereand + wherehn +
+                "Order By lforma.form_a_id desc ";
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }

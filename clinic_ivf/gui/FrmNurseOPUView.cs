@@ -149,14 +149,17 @@ namespace clinic_ivf.gui
             //throw new NotImplementedException();
             if(tCResult.SelectedTab == tabDay3)
             {
+                if (scPnDay3 == null) return;
                 scPnDay3.SizeRatio = 0;
             }
             else if (tCResult.SelectedTab == tabDay5)
             {
+                if (scPnDay3 == null) return;
                 scPnDay5.SizeRatio = 0;
             }
             if (tCResult.SelectedTab == tabDay6)
             {
+                if (scPnDay6 == null) return;
                 scPnDay6.SizeRatio = 0;
             }
         }
@@ -899,9 +902,8 @@ namespace clinic_ivf.gui
             stream = ftpc.download(ic.iniC.folderFTP + "//" + opu.opu_code + "//" + opu.report_day1);
             stream.Seek(0, SeekOrigin.Begin);
             pds.LoadFromStream(stream);
-
+            day1View.Ribbon.Minimized = true;
             //pds.LoadFromFile(filename1);
-
             day1View.DocumentSource = pds;
             tabDay1.Controls.Add(day1View);
         }
@@ -1379,7 +1381,7 @@ namespace clinic_ivf.gui
             //MemoryStream stream;
             FtpClient ftpc = new FtpClient(ic.iniC.hostFTP, ic.iniC.userFTP, ic.iniC.passFTP, ic.ftpUsePassive);
             //ftpC.upload(iniC.folderFTP + "/" + opuCode + "/" + filename, pathFile);
-            streamDay5 = ftpc.download(ic.iniC.folderFTP + "//" + opu.opu_code + "//" + opu.report_day3);
+            streamDay5 = ftpc.download(ic.iniC.folderFTP + "//" + opu.opu_code + "//" + opu.report_day5);
             streamDay5.Seek(0, SeekOrigin.Begin);
             pds.LoadFromStream(streamDay5);
 

@@ -1099,7 +1099,7 @@ namespace clinic_ivf.gui
                         String dtrid = "";
                         dtrid = cboDoctor.SelectedItem == null ? "" : ((ComboBoxItem)cboDoctor.SelectedItem).Value;
                         reqid = ic.ivfDB.oJsDB.selectByStatusOPU(txtVnOld.Text);
-                        lbReq = ic.ivfDB.setLabRequest(txtReqOpuId.Text, txtNameFeMale.Text, txtVnOld.Text, dtrid, cboRemark.Text, txtHnOld.Text, ic.datetoDB(txtDobFeMale.Text), reqid, "26300000197", txtHnMale.Text, txtNameMale.Text, txtHnDonor.Text, txtNameDonor.Text, txtDonorDob.Text, txtVsId.Text);
+                        lbReq = ic.ivfDB.setLabRequest(txtReqOpuId.Text, txtNameFeMale.Text, txtVnOld.Text, dtrid, cboRemark.Text, txtHnFeMale.Text, ic.datetoDB(txtDobFeMale.Text), reqid, "26300000197", txtHnMale.Text, txtNameMale.Text, txtHnDonor.Text, txtNameDonor.Text, txtDonorDob.Text, txtVsId.Text);
                         lbReq.form_a_id = re;
                         String re1 = ic.ivfDB.lbReqDB.insertLabRequest(lbReq, txtStfConfirmID.Text);
                         String re2 = ic.ivfDB.lFormaDB.updateReqIdOPU(re, re1);

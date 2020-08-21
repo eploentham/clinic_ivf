@@ -565,9 +565,7 @@ namespace clinic_ivf.gui
         {
             //throw new NotImplementedException();
             SetDefaultPrinter(ic.iniC.printerAppointment);      //A5
-
-
-
+            
             ic.setRptLabBloodInfectious(txtVsId.Text, this);
 
 
@@ -601,8 +599,23 @@ namespace clinic_ivf.gui
             String date1 = "", reportdate="", approvedate="";
             FrmReport frm = new FrmReport(ic);
             DataTable dt = new DataTable();
-            dt = ic.ivfDB.lbresDB.selectLabBloodByVsIdHormone(txtVsId.Text);
-            String amh = "", collectdate = "", receivedate = "", stfreport="", stfapprove="";
+            //dt = ic.ivfDB.lbresDB.selectLabBloodByVsIdHormone(txtVsId.Text);
+            Visit vs = new Visit();
+            vs = ic.ivfDB.vsDB.selectByVn(cboLabVs.Text);
+            dt = ic.ivfDB.lbresDB.selectLabBloodByVsIdHormone(vs.t_visit_id);
+            String amh = "", collectdate = "", receivedate = "", stfreport="", stfapprove="", reporter = "", approved = "";
+            dt.Columns.Add("sign_reporter", typeof(String));
+            dt.Columns.Add("sign_approved", typeof(String));
+
+            dt.Columns.Add("patient_name", typeof(String));
+            dt.Columns.Add("patient_hn", typeof(String));
+            dt.Columns.Add("patient_dob", typeof(String));
+            dt.Columns.Add("patient_sex", typeof(String));
+            dt.Columns.Add("line1", typeof(String));
+            dt.Columns.Add("line2", typeof(String));
+            dt.Columns.Add("line3", typeof(String));
+            //dt.Columns.Add("sign_reporter", typeof(String));
+            //dt.Columns.Add("sign_approved", typeof(String));
             foreach (DataRow row in dt.Rows)
             {
                 collectdate = row[ic.ivfDB.lbresDB.lbRes.req_date_time].ToString();
@@ -618,6 +631,24 @@ namespace clinic_ivf.gui
                 else
                 {
                     amh = "0";
+                }
+                row["patient_hn"] = txtHn.Text;
+                row["patient_name"] = txtPttNameE.Text.ToUpper();
+                row["patient_dob"] = txtDob.Text;
+                row["patient_sex"] = txtSex.Text;
+                row["sign_reporter"] = System.IO.Directory.GetCurrentDirectory() + "\\" + stfreport + ".jpg";
+                row["sign_approved"] = System.IO.Directory.GetCurrentDirectory() + "\\" + stfapprove + ".jpg";
+                if (ptt.f_sex_id.Equals("2") && (!ptt.patient_hn_1.Equals("") && !ptt.patient_hn_2.Equals("")))     // เป็น female และ เป็น donor  ไม่ต้องพิมพ์ หัว บริษัท
+                {
+                    row["line1"] = "";
+                    row["line2"] = "";
+                    row["line3"] = "";
+                }
+                else
+                {
+                    row["line1"] = ic.cop.comp_name_t;
+                    row["line2"] = ic.cop.addr1;
+                    row["line3"] = ic.cop.addr2;
                 }
             }
             reportdate = ic.datetimetoShow(reportdate);
@@ -4980,7 +5011,7 @@ namespace clinic_ivf.gui
             dtse = ic.ivfDB.ojsdDB.selectByVN(vn);
             dtpx = ic.ivfDB.oJpxdDB.selectByVN(vn);
             //dtpkg = ic.ivfDB.opkgsDB.selectByVN(vn);
-            dtpkg = ic.ivfDB.opkgsDB.selectByPID(pid);    // ต้องดึงตาม HN เพราะ ถ้ามีงวดการชำระ 
+            //dtpkg = ic.ivfDB.opkgsDB.selectByPID(pid);    // ต้องดึงตาม HN เพราะ ถ้ามีงวดการชำระ 
             dtpkg = ic.ivfDB.opkgsDB.selectByPIDStatusPackageON(pid);    // ต้องดึงตาม HN เพราะ ถ้ามีงวดการชำระ 
 
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
@@ -5754,14 +5785,29 @@ namespace clinic_ivf.gui
                         usage = row[colRxUsT] != null ? row[colRxUsT].ToString() : "";
                     }
                     usaget = usage;
-                    if (include.Equals("1"))
-                    {
-                        ic.ivfDB.PxSetAdd(duid, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", grfOrder.Rows.Count.ToString(), qty, usaget, usagee, duname, price);
-                    }
-                    else
-                    {
-                        ic.ivfDB.PxSetAdd(duid, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "1", grfOrder.Rows.Count.ToString(), qty, usaget, usagee, duname, price);
-                    }
+                    //if (include.Equals("1"))
+                    //{
+                        if (qtyext.Length > 0)
+                        {
+                            Decimal qty1 = 0, qtyext1 = 0;
+                            Decimal.TryParse(qty, out qty1);
+                            Decimal.TryParse(qtyext, out qtyext1);
+                            if ((qty1 - qtyext1) > 0)
+                            {
+                                ic.ivfDB.PxAdd(duid, (qty1 - qtyext1).ToString(), txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", grfOrder.Rows.Count.ToString(), usage, pkgdid);
+                            }
+                            ic.ivfDB.PxAdd(duid, qtyext, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "1", grfOrder.Rows.Count.ToString(), usage, pkgdid);
+                        }
+                        else
+                        {
+                            //ic.ivfDB.PxSetAdd(duid,  txtHn.Text, txtVnOld.Text, "0", grfOrder.Rows.Count.ToString(), qty, usaget, usagee, duname, price, pkgdid);
+                            ic.ivfDB.PxAdd(duid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", grfOrder.Rows.Count.ToString(), usage, pkgdid);
+                        }
+                    //}
+                    //else
+                    //{
+                    //    ic.ivfDB.PxSetAdd(duid, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "1", grfOrder.Rows.Count.ToString(), qty, usaget, usagee, duname, price);
+                    //}
                 }
 
                 setGrfOrder(txtVnOld.Text);
@@ -6992,8 +7038,20 @@ namespace clinic_ivf.gui
                         }
                     }
                 }
+                pkgdid = setPkgDId(labid, qty, "", "");
+                String[] pkgdid11 = pkgdid.Split('#');
+                if (pkgdid11.Length > 1)
+                {
+                    qtyext = pkgdid11[1];
+                    pkgdid = pkgdid11[0];
+                }
+                else
+                {
+                    include = pkgdid.Length > 0 ? "1" : "";
+                    qtyext = "";
+                }
                 //ic.ivfDB.LabAdd(labid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "1", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), labid, "0", "1", "old", pkgdid);
-                ic.ivfDB.LabAdd(labid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "1", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), labid, "1", "1", pkgdid);
+                ic.ivfDB.LabAdd(labid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, include.Equals("1") ? "0" : "1", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), labid, "1", "1", pkgdid);
             }
             else
             {

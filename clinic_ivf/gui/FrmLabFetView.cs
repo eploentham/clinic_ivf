@@ -871,14 +871,14 @@ namespace clinic_ivf.gui
             for (int col = 0; col < dt.Columns.Count; ++col)
             {
                 grfFinish.Cols[col + 1].DataType = dt.Columns[col].DataType;
-                //grfProc.Cols[col + 1].Caption = dt.Columns[col].ColumnName;
+                grfFinish.Cols[col + 1].Caption = dt.Columns[col].ColumnName;
                 grfFinish.Cols[col + 1].Name = dt.Columns[col].ColumnName;
             }
             int i = 0;
             foreach (DataRow row in dt.Rows)
             {
                 i++;
-                if (i == 1) continue;
+                //if (i == 1) continue;
                 //Row row1 = grfProc.Rows.Add();
                 grfFinish[i, colPcId] = row[ic.ivfDB.fetDB.fet.fet_id].ToString();
                 grfFinish[i, colPcOpuNum] = row[ic.ivfDB.fetDB.fet.fet_code].ToString();

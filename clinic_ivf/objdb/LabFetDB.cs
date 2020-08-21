@@ -95,6 +95,7 @@ namespace clinic_ivf.objdb
             fet.remark1 = "remark1";
             fet.remark2 = "remark2";
             fet.freeze_date1 = "freeze_date1";
+            fet.report = "report";
 
             fet.table = "lab_t_fet";
             fet.pkField = "fet_id";
@@ -685,6 +686,26 @@ namespace clinic_ivf.objdb
 
             return re;
         }
+        public String updateReport(String fetid, String filename, String userid)
+        {
+            String re = "";
+            String sql = "";
+            int chk = 0;
+
+            sql = "Update " + fet.table + " Set " +
+                " " + fet.report + " = '"+ filename+"' " +
+                "Where " + fet.pkField + "='" + fetid + "'";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+
+            return re;
+        }
         public LabFet setLabFET(DataTable dt)
         {
             LabFet fet1 = new LabFet();
@@ -765,6 +786,7 @@ namespace clinic_ivf.objdb
                 fet1.embryo_pic_day = dt.Rows[0][fet.embryo_pic_day].ToString();
                 fet1.embryo_pic_day1 = dt.Rows[0][fet.embryo_pic_day1].ToString();
                 fet1.freeze_date1 = dt.Rows[0][fet.freeze_date1].ToString();
+                fet1.report = dt.Rows[0][fet.report].ToString();
             }
             else
             {
@@ -845,6 +867,7 @@ namespace clinic_ivf.objdb
                 fet1.remark1 = "";
                 fet1.remark2 = "";
                 fet1.freeze_date1 = "";
+                fet1.report = "";
             }
 
             return fet1;

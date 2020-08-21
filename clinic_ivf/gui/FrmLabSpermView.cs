@@ -73,6 +73,7 @@ namespace clinic_ivf.gui
             //btnNew.Click += BtnNew_Click;
             btnSearchF.Click += BtnSearchF_Click;
             txtSearch.KeyUp += TxtSearch_KeyUp;
+            tcLabView.TabClick += TcLabView_TabClick;
             //btnAna.Click += BtnAna_Click;
             //btnFreezing.Click += BtnFreezing_Click;
             //btnPesa.Click += BtnPesa_Click;
@@ -85,6 +86,23 @@ namespace clinic_ivf.gui
             setGrfProc();
             setGrfFinish();
             initGrfSearch();   //111
+        }
+
+        private void TcLabView_TabClick(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if(tcLabView.SelectedTab == tabProcess)
+            {
+                setGrfProc();
+            }
+            else if (tcLabView.SelectedTab == tabLabFinish)
+            {
+                setGrfFinish();
+            }
+            else if (tcLabView.SelectedTab == tabLabAccept)
+            {
+                setGrfReq();
+            }
         }
 
         private void BtnSearchF_Click(object sender, EventArgs e)

@@ -12,7 +12,7 @@ namespace clinic_ivf.objdb
     {
         public OldPackageDetail oPkgD;
         ConnectDB conn;
-
+        List<OldPackageDetail> loPkgD;
         public OldPackageDetailDB(ConnectDB c)
         {
             conn = c;
@@ -38,6 +38,7 @@ namespace clinic_ivf.objdb
 
             oPkgD.table = "PackageDetail";
             oPkgD.pkField = "ID";
+            loPkgD = new List<OldPackageDetail>();
         }
         private void chkNull(OldPackageDetail p)
         {
@@ -225,6 +226,33 @@ namespace clinic_ivf.objdb
                 "Order By oPkgD." + oPkgD.ItemType + ",oPkgD." + oPkgD.ItemName;
             dt = conn.selectData(conn.conn, sql);
             return dt;
+        }
+        public List<OldPackageDetail> selectListPackage(String pttId)
+        {
+            loPkgD.Clear();
+            DataTable dt = new DataTable();
+            String sql = "select oPkgD.*" + " " +
+                "From " + oPkgD.table + " oPkgD " +
+                "Where oPkgD." + oPkgD.PCKID + " ='" + pttId + "' and active = '1'" +
+                "Order By oPkgD." + oPkgD.ItemName;
+            dt = conn.selectData(conn.conn, sql);
+            if (dt.Rows.Count > 0)
+            {
+                foreach(DataRow row in dt.Rows)
+                {
+                    OldPackageDetail ostkd1 = new OldPackageDetail();
+                    ostkd1.ID = row[oPkgD.ID].ToString();
+                    ostkd1.PCKID = row[oPkgD.PCKID].ToString();
+                    ostkd1.ItemType = row[oPkgD.ItemType].ToString();
+                    ostkd1.ItemName = row[oPkgD.ItemName].ToString();
+                    ostkd1.ItemID = row[oPkgD.ItemID].ToString();
+                    ostkd1.QTY = row[oPkgD.QTY].ToString();
+                    ostkd1.active = row[oPkgD.active].ToString();
+                    ostkd1.qty_use = row[oPkgD.qty_use].ToString();
+                    loPkgD.Add(ostkd1);
+                }
+            }
+            return loPkgD;
         }
         public OldPackageDetail setNote(DataTable dt)
         {

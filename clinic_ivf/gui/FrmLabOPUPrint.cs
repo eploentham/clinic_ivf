@@ -859,12 +859,6 @@ namespace clinic_ivf.gui
                     }
                 }
             }
-
-
-
-
-
-
             return "";
         }
         private void setExportOPU()
@@ -1143,6 +1137,24 @@ namespace clinic_ivf.gui
         private DataTable printOPUReport(String flagPrint)
         {
             DataTable dt = new DataTable();
+            DataTable dtchkday2 = new DataTable();
+            if (cboEmbryoDev2.Text.Trim().Equals("3"))
+            {
+                dtchkday2 = ic.ivfDB.opuEmDevDB.selectByOpuFetId_Day(opuId, objdb.LabOpuEmbryoDevDB.Day1.Day3);
+            }
+            else if (cboEmbryoDev2.Text.Trim().Equals("5"))
+            {
+                dtchkday2 = ic.ivfDB.opuEmDevDB.selectByOpuFetId_Day(opuId, objdb.LabOpuEmbryoDevDB.Day1.Day5);
+            }
+            if (cboEmbryoDev2.Text.Trim().Equals("6"))
+            {
+                dtchkday2 = ic.ivfDB.opuEmDevDB.selectByOpuFetId_Day(opuId, objdb.LabOpuEmbryoDevDB.Day1.Day6);
+            }
+            //if (dtchkday2.Rows.Count <= 0)
+            //{
+            //    MessageBox.Show("Day2 no data ", "");
+            //    return dt;
+            //}
             FrmReport frm = new FrmReport(ic);
             dt = ic.ivfDB.setOPUReport(txtID.Text, cboEmbryoDev1.Text, cboEmbryoDev2.Text, chkEmbryoDev20.Checked);
             if (dt == null) return null;

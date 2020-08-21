@@ -89,6 +89,7 @@ namespace clinic_ivf.gui
             btnLabResultSearch.Click += BtnLabResultSearch_Click;
             btnRptOk.Click += BtnRptOk_Click;
             btnExcel.Click += BtnExcel_Click;
+            txtLabResultHn.KeyUp += TxtLabResultHn_KeyUp;
 
             ic.ivfDB.bspDB.setCboBsp(cboVisitBsp, ic.iniC.service_point_id);
             ic.setCboNurseReport(cboRpt);
@@ -111,6 +112,15 @@ namespace clinic_ivf.gui
             timer.Tick += Timer_Tick;
             timer.Enabled = true;
             pageLoad = false;
+        }
+
+        private void TxtLabResultHn_KeyUp(object sender, KeyEventArgs e)
+        {
+            //throw new NotImplementedException();
+            if(e.KeyCode == Keys.Enter)
+            {
+                setGrfLab(txtLabResultHn.Text);
+            }
         }
 
         private void BtnExcel_Click(object sender, EventArgs e)
@@ -914,9 +924,24 @@ namespace clinic_ivf.gui
             String chk = "", name = "", vsid = "", pttId = "", vn = "", formaid="";
             vn = grfSearch[grfSearch.Row, colVn] != null ? grfSearch[grfSearch.Row, colVn].ToString() : "";
             formaid = grfSearch[grfSearch.Row, colFormAId] != null ? grfSearch[grfSearch.Row, colFormAId].ToString() : "";
+            FrmWaiting frmW = new FrmWaiting();
+            frmW.Show();
 
-            
-
+            LabFormA lFormA = new LabFormA();
+            lFormA = ic.ivfDB.lFormaDB.selectByPk1(formaid);
+            LabOpu opu = new LabOpu();
+            opu = ic.ivfDB.opuDB.selectByReqID(lFormA.req_id_opu);
+            //FrmLabOPUAdd2 frm = new FrmLabOPUAdd2(ic,"", opu.opu_id);
+            FrmNurseOPUView frm = new FrmNurseOPUView(ic, "", opu.opu_id);
+            String txt = "";
+            //if (!name.Equals(""))
+            //{
+            txt = "ผลLAB OPU " + opu.name_female;
+            //}
+            frm.FormBorderStyle = FormBorderStyle.None;
+            menu.AddNewTab(frm, txt);
+            frmW.Hide();
+            frmW.Dispose();
         }
         private void ContextMenu_result_lab_sperm_freezing(object sender, System.EventArgs e)
         {

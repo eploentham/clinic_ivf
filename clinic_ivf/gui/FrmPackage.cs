@@ -55,6 +55,7 @@ namespace clinic_ivf.gui
             btnLab.Click += BtnLab_Click;
             btnSeAdd.Click += BtnSeAdd_Click;
             btnDrugAdd.Click += BtnDrugAdd_Click;
+            btnCopyFrom.Click += BtnCopyFrom_Click;
             //cboGrp.SelectedIndexChanged += CboGrp_SelectedIndexChanged;
 
             C1ThemeController.ApplicationTheme = ic.iniC.themeApplication;
@@ -74,6 +75,7 @@ namespace clinic_ivf.gui
             sep = new C1SuperErrorProvider();
 
             //ic.setCboPkgGrp(cboGrp);
+            ic.ivfDB.oPkgDB.setCboPackage(cboCopyFrom,"");
 
             initGrfPkg();
             initGrfPkgD();
@@ -84,6 +86,17 @@ namespace clinic_ivf.gui
             setGrfLab();
             setGrfSe();
             setGrfDrug();
+        }
+
+        private void BtnCopyFrom_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            List<OldPackageDetail> loPkgD;
+            loPkgD = ic.ivfDB.oPkgdDB.selectListPackage(cboCopyFrom.SelectedItem == null ? "" : ((ComboBoxItem)cboCopyFrom.SelectedItem).Value);
+            foreach(OldPackageDetail oPkgD in loPkgD)
+            {
+                setPackageDetail(oPkgD.ItemType, oPkgD.ItemName, oPkgD.ItemID, oPkgD.QTY);
+            }
         }
 
         private void BtnDrugAdd_Click(object sender, EventArgs e)

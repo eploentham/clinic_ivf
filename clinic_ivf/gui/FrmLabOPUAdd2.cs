@@ -45,7 +45,7 @@ namespace clinic_ivf.gui
         int colDay5ID = 1, colDay5Num = 2, colDay5Desc = 3, colDay5Desc1 = 4, colDay5Desc2 = 5, colDay5Edit = 6;
         int colDay6ID = 1, colDay6Num = 2, colDay6Desc = 3, colDay6Desc1 = 4, colDay6Desc2 = 5, colDay6Edit = 6;
 
-        int colDay2ImgId = 1, colDay2ImgPic = 3, colDay2ImgNun = 2, colDay2ImgDesc0 = 4, colDay2PathPic = 5, colDay2ImgDesc1 = 6, colDay2ImgEdit=8;
+        int colDay2ImgId = 1, colDay2ImgPic = 3, colDay2ImgNun = 2, colDay2ImgDesc0 = 4, colDay2PathPic = 5, colDay2ImgDesc1 = 6, colDay2ImgEdit=8, noofOPU=0;
 
         C1FlexGrid grfDay2, grfDay3, grfDay5, grfDay6, grfDay2Img, grfDay3Img, grfDay5Img, grfDay6Img;
         C1SuperTooltip stt;
@@ -231,10 +231,10 @@ namespace clinic_ivf.gui
             //throw new NotImplementedException();
             ic.cStf.staff_id = "";
             Boolean chkSave = false;
-            FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
-            frm.ShowDialog(this);
-            if (!ic.cStf.staff_id.Equals(""))
-            {
+            //FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+            //frm.ShowDialog(this);
+            //if (!ic.cStf.staff_id.Equals(""))
+            //{
                 ic.statusResultDay6 = "";
                 ic.opu_report_day6 = "";
                 FrmLabOPUPrint frmPrn = new FrmLabOPUPrint(ic, txtID.Text, FrmLabOPUPrint.opuReport.ResultDay6);
@@ -256,7 +256,7 @@ namespace clinic_ivf.gui
                         }
                     }
                 }
-            }
+            //}
         }
 
         private void BtnSaveDay6Copy_Click(object sender, EventArgs e)
@@ -463,12 +463,12 @@ namespace clinic_ivf.gui
             //frm.ShowDialog(this);
             //if (!ic.cStf.staff_id.Equals(""))
             //{
-            ic.cStf.staff_id = "";
-            Boolean chkSave = false;
-            FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
-            frm.ShowDialog(this);
-            if (!ic.cStf.staff_id.Equals(""))
-            {
+            //ic.cStf.staff_id = "";
+            //Boolean chkSave = false;
+            //FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+            //frm.ShowDialog(this);
+            //if (!ic.cStf.staff_id.Equals(""))
+            //{
                 ic.statusResultDay5 = "";
                 ic.opu_report_day5 = "";
                 FrmLabOPUPrint frmPrn = new FrmLabOPUPrint(ic, txtID.Text, FrmLabOPUPrint.opuReport.ResultDay5);
@@ -490,7 +490,7 @@ namespace clinic_ivf.gui
                         }
                     }
                 }
-            }            
+            //}
                 
                 //}
             //}
@@ -507,10 +507,10 @@ namespace clinic_ivf.gui
             //{
             ic.cStf.staff_id = "";
             Boolean chkSave = false;
-            FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
-            frm.ShowDialog(this);
-            if (!ic.cStf.staff_id.Equals(""))
-            {
+            //FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+            //frm.ShowDialog(this);
+            //if (!ic.cStf.staff_id.Equals(""))
+            //{
                 ic.statusResult = "";
                 ic.opu_report_day3 = "";
                 FrmLabOPUPrint frmPrn = new FrmLabOPUPrint(ic, txtID.Text, FrmLabOPUPrint.opuReport.ResultDay3);
@@ -532,7 +532,7 @@ namespace clinic_ivf.gui
                         }
                     }
                 }
-            }
+            //}
             //}
         }
         private String setExportDay1()
@@ -600,10 +600,10 @@ namespace clinic_ivf.gui
             //{
             ic.cStf.staff_id = "";
             Boolean chkSave = false;
-            FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
-            frm.ShowDialog(this);
-            if (!ic.cStf.staff_id.Equals(""))
-            {
+            //FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+            //frm.ShowDialog(this);
+            //if (!ic.cStf.staff_id.Equals(""))
+            //{
                 ic.statusResultDay1 = "";
                 ic.opu_report_day1 = "";
                 FrmLabOPUPrint frmPrn = new FrmLabOPUPrint(ic, txtID.Text, FrmLabOPUPrint.opuReport.ResultDay1);
@@ -635,13 +635,7 @@ namespace clinic_ivf.gui
                     //}
                     //frmW.Dispose();
                 }
-
-
-
-
-
-                
-            }
+            //}
             //}
         }
         private void BtnApproveResult_Click(object sender, EventArgs e)
@@ -651,24 +645,24 @@ namespace clinic_ivf.gui
             {
                 ic.cStf.staff_id = "";
                 Boolean chkSave = false;
-                FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
-                frm.ShowDialog(this);
-                if (!ic.cStf.staff_id.Equals(""))
+                //FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+                //frm.ShowDialog(this);
+                //if (!ic.cStf.staff_id.Equals(""))
+                //{
+                long chk1 = 0;
+                String re = ic.ivfDB.opuDB.updateStatusOPUApproveResult(txtID.Text, ic.user.staff_id);
+                if (long.TryParse(re, out chk1))
                 {
-                    long chk1 = 0;
-                    String re = ic.ivfDB.opuDB.updateStatusOPUApproveResult(txtID.Text, ic.user.staff_id);
-                    if (long.TryParse(re, out chk1))
+                    LabRequest req = new LabRequest();
+                    req = ic.ivfDB.lbReqDB.selectByPk1(opu.req_id);
+                    String re1 = ic.ivfDB.lbReqDB.UpdateStatusRequestResult(req.req_id, ic.cStf.staff_id);
+                    if (long.TryParse(re1, out chk1))
                     {
-                        LabRequest req = new LabRequest();
-                        req = ic.ivfDB.lbReqDB.selectByPk1(opu.req_id);
-                        String re1 = ic.ivfDB.lbReqDB.UpdateStatusRequestResult(req.req_id, ic.cStf.staff_id);
-                        if (long.TryParse(re1, out chk1))
-                        {
-                            MessageBox.Show("ส่งผล LAB OPU ให้ทางพยาบาล เรียบร้อย ", "");       //clinic_ivf.Properties.Resources.Female_user_accept_24
-                            btnApproveResult.Image = Resources.Female_user_accept_24;
-                        }
+                        MessageBox.Show("ส่งผล LAB OPU ให้ทางพยาบาล เรียบร้อย ", "");       //clinic_ivf.Properties.Resources.Female_user_accept_24
+                        btnApproveResult.Image = Resources.Female_user_accept_24;
                     }
                 }
+                //}
             }
         }
 
@@ -878,12 +872,12 @@ namespace clinic_ivf.gui
                     {
                         ic.cStf.staff_id = "";
                         Boolean chkSave = false;
-                        FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
-                        frm.ShowDialog(this);
-                        if (!ic.cStf.staff_id.Equals(""))
-                        {
+                        //FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+                        //frm.ShowDialog(this);
+                        //if (!ic.cStf.staff_id.Equals(""))
+                        //{
                             saveLabOPU();
-                        }
+                        //}
                     }
                         
                     // ... Process Shift+Ctrl+Alt+B ...
@@ -1163,22 +1157,27 @@ namespace clinic_ivf.gui
                 }
                 else if (sender.Equals(txtMaturaMii))
                 {
+                    calMaturation();
                     txtMaturaMi.Focus();
                 }
                 else if (sender.Equals(txtMaturaMi))
                 {
+                    calMaturation();
                     txtMaturaGv.Focus();
                 }
                 else if (sender.Equals(txtMaturaGv))
                 {
+                    calMaturation();
                     txtMaturaPostMat.Focus();
                 }
                 else if (sender.Equals(txtMaturaPostMat))
                 {
+                    calMaturation();
                     txtMaturaAbnor.Focus();
                 }
                 else if (sender.Equals(txtMaturaAbnor))
                 {
+                    calMaturation();
                     txtMaturaDead.Focus();
                 }
             }
@@ -1849,10 +1848,10 @@ namespace clinic_ivf.gui
                     if (MessageBox.Show("ต้องการ  Embryo Development new จำนวน " + embryoNo + " Embryo ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
                     {
                         ic.cStf.staff_id = "";
-                        FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
-                        frm.ShowDialog(this);
-                        if (!ic.cStf.staff_id.Equals(""))
-                        {
+                        //FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+                        //frm.ShowDialog(this);
+                        //if (!ic.cStf.staff_id.Equals(""))
+                        //{
                             FrmWaiting frmW = new FrmWaiting();
                             frmW.Show();
                             try
@@ -1918,7 +1917,7 @@ namespace clinic_ivf.gui
                             setGrfDay3Img();
                             setGrfDay5Img();
                             setGrfDay6Img();
-                        }
+                        //}
                         ic.ivfDB.opuDB.updateFertiliAdd(txtID.Text, embryoNo.ToString());
                     }
                     //}
@@ -1959,10 +1958,10 @@ namespace clinic_ivf.gui
                             if (MessageBox.Show("ต้องการ ให้เพิ่ม Embryo Development จำนวน " + embryoNo + " Embryo ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
                             {
                                 ic.cStf.staff_id = "";
-                                FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
-                                frm.ShowDialog(this);
-                                if (!ic.cStf.staff_id.Equals(""))
-                                {
+                                //FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+                                //frm.ShowDialog(this);
+                                //if (!ic.cStf.staff_id.Equals(""))
+                                //{
                                     FrmWaiting frmW = new FrmWaiting();
                                     frmW.Show();
                                     try
@@ -2073,7 +2072,7 @@ namespace clinic_ivf.gui
                                         frmW.Dispose();
                                     }
                                     setGrfAll();
-                                }
+                                //}
                         ic.ivfDB.opuDB.updateFertiliAdd(txtID.Text, embryoNo.ToString());
                             }
                         //}
@@ -2118,9 +2117,9 @@ namespace clinic_ivf.gui
                             {
                                 ic.cStf.staff_id = "";
                                 FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
-                                frm.ShowDialog(this);
-                                if (!ic.cStf.staff_id.Equals(""))
-                                {
+                                //frm.ShowDialog(this);
+                                //if (!ic.cStf.staff_id.Equals(""))
+                                //{
                                     FrmWaiting frmW = new FrmWaiting();
                                     frmW.Show();
                                     try
@@ -2186,7 +2185,7 @@ namespace clinic_ivf.gui
                                     setGrfDay3Img();
                                     setGrfDay5Img();
                                     setGrfDay6Img();
-                                }
+                                //}
                                 ic.ivfDB.opuDB.updateFertili(txtID.Text, embryoNo.ToString());
                                 ic.ivfDB.opuDB.updateFertiliAdd(txtID.Text, "0");
                             }
@@ -2852,10 +2851,10 @@ namespace clinic_ivf.gui
             //{
             ic.cStf.staff_id = "";
             Boolean chkSave = false;
-            FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
-            frm.ShowDialog(this);
-            if (!ic.cStf.staff_id.Equals(""))
-            {
+            //FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+            //frm.ShowDialog(this);
+            //if (!ic.cStf.staff_id.Equals(""))
+            //{
                 chkSave = saveDay6();
                 long chk1 = 0;
                 if (chkSave)
@@ -2868,7 +2867,7 @@ namespace clinic_ivf.gui
                     btnSaveDay5.Image = Resources.accept_database24;
                 }
                 
-            }
+            //}
             //}
         }
         private Boolean saveDay5()
@@ -2942,10 +2941,10 @@ namespace clinic_ivf.gui
             //{
             ic.cStf.staff_id = "";
             Boolean chkSave = false;
-            FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
-            frm.ShowDialog(this);
-            if (!ic.cStf.staff_id.Equals(""))
-            {
+            //FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+            //frm.ShowDialog(this);
+            //if (!ic.cStf.staff_id.Equals(""))
+            //{
                 chkSave = saveDay5();
                 long chk1 = 0;
                 if (chkSave)
@@ -2958,7 +2957,7 @@ namespace clinic_ivf.gui
                     btnSaveDay5.Image = Resources.accept_database24;
                 }
                 
-            }
+            //}
             //}
         }
         private Boolean saveDay3()
@@ -3036,10 +3035,10 @@ namespace clinic_ivf.gui
             //{
             ic.cStf.staff_id = "";
             Boolean chkSave = false;
-            FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
-            frm.ShowDialog(this);
-            if (!ic.cStf.staff_id.Equals(""))
-            {
+            //FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+            //frm.ShowDialog(this);
+            //if (!ic.cStf.staff_id.Equals(""))
+            //{
                 chkSave = saveDay3();
                 long chk1 = 0;
                 if (chkSave)
@@ -3052,7 +3051,7 @@ namespace clinic_ivf.gui
                     btnSaveDay3.Image = Resources.accept_database24;
                 }
                 
-            }
+            //}
             //}
         }
         private Boolean saveDay2()
@@ -3442,12 +3441,12 @@ namespace clinic_ivf.gui
             txtMaturaNoofOpu.Value = opu.matura_no_of_opu;
             try
             {
-                String[] ext = opu.matura_no_of_opu.Split(',');
+                String[] ext = opu.matura_no_of_opu.Split('[');
                 int rt = 0, lt = 0;
                 int.TryParse(ext[0], out rt);
-                int.TryParse(ext[1], out lt);
+                //int.TryParse(ext[1], out lt);
 
-                txtMaturaNoofOpu1.Value = rt + lt;
+                txtMaturaNoofOpu1.Value = rt;
             }
             catch (Exception ex)
             {
@@ -3550,6 +3549,64 @@ namespace clinic_ivf.gui
             btnResultDay1View.Visible = opu.status_approve_result_day1.Equals("1") ? true : false;
             btnResultDay3View.Visible = opu.status_approve_result_day3.Equals("1") ? true : false;
             txtFertili2PnAdd.Value = opu.fertili_2_pn_add;
+        }
+        private void calMaturation()
+        {
+            sep.Clear();
+            int mii = 0, mi = 0, gv = 0, postmat = 0, abnor = 0, dead = 0, noofopu=0, total=0;
+            int.TryParse(txtMaturaMii.Text, out mii);
+            int.TryParse(txtMaturaMi.Text, out mi);
+            int.TryParse(txtMaturaGv.Text, out gv);
+            int.TryParse(txtMaturaPostMat.Text, out postmat);
+            int.TryParse(txtMaturaAbnor.Text, out abnor);
+            int.TryParse(txtMaturaDead.Text, out dead);
+            String[] chk = txtMaturaNoofOpu1.Text.Split(',');
+            if (chk.Length > 1)
+            {
+                int chk1 = 0, chk2 = 0;
+                int.TryParse(chk[0], out chk1);
+                int.TryParse(chk[1], out chk2);
+                int.TryParse((chk1 + chk2).ToString(), out noofopu);
+            }
+            else
+            {
+                int.TryParse(txtMaturaNoofOpu1.Text, out noofopu);
+            }
+            if (noofopu < mii)
+            {
+                sep.SetError(txtMaturaMii, "aaa");
+                return;
+            }
+            if (noofopu < (mii + mi))
+            {
+                sep.SetError(txtMaturaMi, "aaa");
+                return;
+            }
+            if (noofopu < (mii+mi+gv))
+            {
+                sep.SetError(txtMaturaGv, "aaa");
+                return;
+            }
+            if (noofopu < (mii+mi+gv+postmat))
+            {
+                sep.SetError(txtMaturaPostMat, "aaa");
+                return;
+            }
+            if (noofopu < (mii+mi+gv+postmat+abnor))
+            {
+                sep.SetError(txtMaturaAbnor, "aaa");
+                return;
+            }
+            if (noofopu < (mii+mi+gv+postmat+abnor+dead))
+            {
+                sep.SetError(txtMaturaDead, "aaa");
+                return;
+            }
+            total = mii + mi + gv + postmat + abnor + dead;
+            if (noofopu < total)
+            {
+
+            }
         }
         private void setOPU()
         {
@@ -3766,10 +3823,10 @@ namespace clinic_ivf.gui
             //if (MessageBox.Show("ต้องการ บันทึกช้อมูล ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
             //{
             ic.cStf.staff_id = "";
-            FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
-            frm.ShowDialog(this);
-            if (!ic.cStf.staff_id.Equals(""))
-            {
+            //FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+            //frm.ShowDialog(this);
+            //if (!ic.cStf.staff_id.Equals(""))
+            //{
                 saveLabOPU();
                 //setOPU();
                 //String re = ic.ivfDB.opuDB.update(opu, ic.user.staff_id);
@@ -3782,7 +3839,7 @@ namespace clinic_ivf.gui
                 //{
                 //    btnSave.Image = Resources.accept_database24;
                 //}
-            }
+            //}
             //}
         }
         private void saveLabOPU()
@@ -4047,10 +4104,10 @@ namespace clinic_ivf.gui
                     if (no.Length > 0)
                     {
                         ic.cStf.staff_id = "";
-                        FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
-                        frm.ShowDialog(this);
-                        if (!ic.cStf.staff_id.Equals(""))
-                        {
+                        //FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+                        //frm.ShowDialog(this);
+                        //if (!ic.cStf.staff_id.Equals(""))
+                        //{
                             String filename = "", re = "";
                             String[] ext = pathfile.Split('.');
                             if (ext.Length > 1)
@@ -4065,7 +4122,7 @@ namespace clinic_ivf.gui
                                     setGrfDay2Img();
                                 }
                             }
-                        }
+                        //}
                     }
                 }
             //}
@@ -4078,12 +4135,12 @@ namespace clinic_ivf.gui
             //if (MessageBox.Show("ต้องการ บันทึกช้อมูล \n Number " + num + " description " + desc, "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
             //{
                 ic.cStf.staff_id = "";
-                FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
-                frm.ShowDialog(this);
-                if (!ic.cStf.staff_id.Equals(""))
-                {
+                //FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+                //frm.ShowDialog(this);
+                //if (!ic.cStf.staff_id.Equals(""))
+                //{
                     String re = ic.ivfDB.opuEmDevDB.updateNumDesc(id, num, desc, ic.user.staff_id);
-                }
+                //}
             //}
         }
         private void ContextMenu_grfday2_Cancel(object sender, System.EventArgs e)
@@ -4353,10 +4410,10 @@ namespace clinic_ivf.gui
                     if (no.Length > 0)
                     {
                         ic.cStf.staff_id = "";
-                        FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
-                        frm.ShowDialog(this);
-                        if (!ic.cStf.staff_id.Equals(""))
-                        {
+                        //FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+                        //frm.ShowDialog(this);
+                        //if (!ic.cStf.staff_id.Equals(""))
+                        //{
                             String filename = "", re = "";
                             String[] ext = pathfile.Split('.');
                             if (ext.Length > 1)
@@ -4371,7 +4428,7 @@ namespace clinic_ivf.gui
                                     setGrfDay3Img();
                                 }
                             }
-                        }
+                        //}
                     }
                 }
             //}
@@ -4384,12 +4441,12 @@ namespace clinic_ivf.gui
             //if (MessageBox.Show("ต้องการ บันทึกช้อมูล \n Number " + num + " description " + desc, "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
             //{
                 ic.cStf.staff_id = "";
-                FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
-                frm.ShowDialog(this);
-                if (!ic.cStf.staff_id.Equals(""))
-                {
+                //FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+                //frm.ShowDialog(this);
+                //if (!ic.cStf.staff_id.Equals(""))
+                //{
                     String re = ic.ivfDB.opuEmDevDB.updateNumDesc(id, num, desc, ic.user.staff_id);
-                }
+                //}
             //}
         }
         private void ContextMenu_grfday3_Cancel(object sender, System.EventArgs e)
@@ -4661,10 +4718,10 @@ namespace clinic_ivf.gui
                     if (no.Length > 0)
                     {
                         ic.cStf.staff_id = "";
-                        FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
-                        frm.ShowDialog(this);
-                        if (!ic.cStf.staff_id.Equals(""))
-                        {
+                        //FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+                        //frm.ShowDialog(this);
+                        //if (!ic.cStf.staff_id.Equals(""))
+                        //{
                             String filename = "", re = "";
                             String[] ext = pathfile.Split('.');
                             if (ext.Length > 1)
@@ -4679,7 +4736,7 @@ namespace clinic_ivf.gui
                                     setGrfDay5Img();
                                 }
                             }
-                        }
+                        //}
                     }
                 }
             //}
@@ -4692,12 +4749,12 @@ namespace clinic_ivf.gui
             //if (MessageBox.Show("ต้องการ บันทึกช้อมูล \n Number " + num + " description " + desc, "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
             //{
                 ic.cStf.staff_id = "";
-                FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
-                frm.ShowDialog(this);
-                if (!ic.cStf.staff_id.Equals(""))
-                {
+                //FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+                //frm.ShowDialog(this);
+                //if (!ic.cStf.staff_id.Equals(""))
+                //{
                     String re = ic.ivfDB.opuEmDevDB.updateNumDesc(id, num, desc, ic.user.staff_id);
-                }
+                //}
             //}
         }
         private void ContextMenu_grfday5_Cancel(object sender, System.EventArgs e)
@@ -4982,10 +5039,10 @@ namespace clinic_ivf.gui
                     if (no.Length > 0)
                     {
                         ic.cStf.staff_id = "";
-                        FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
-                        frm.ShowDialog(this);
-                        if (!ic.cStf.staff_id.Equals(""))
-                        {
+                        //FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+                        //frm.ShowDialog(this);
+                        //if (!ic.cStf.staff_id.Equals(""))
+                        //{
                             String filename = "", re = "";
                             String[] ext = pathfile.Split('.');
                             //var name = Path.GetFileNameWithoutExtension(fileFullName); // Get the name only
@@ -5002,7 +5059,7 @@ namespace clinic_ivf.gui
                                 setGrfDay6Img();
                             }
                             //}
-                        }
+                        //}
                     }
                 }
             //}
@@ -5015,12 +5072,12 @@ namespace clinic_ivf.gui
             //if (MessageBox.Show("ต้องการ บันทึกช้อมูล \n Number " + num + " description " + desc, "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
             //{
                 ic.cStf.staff_id = "";
-                FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
-                frm.ShowDialog(this);
-                if (!ic.cStf.staff_id.Equals(""))
-                {
+                //FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+                //frm.ShowDialog(this);
+                //if (!ic.cStf.staff_id.Equals(""))
+                //{
                     String re = ic.ivfDB.opuEmDevDB.updateNumDesc(id, num, desc, ic.user.staff_id);
-                }
+                //}
             //}
         }
         private void ContextMenu_grfday6_Cancel(object sender, System.EventArgs e)

@@ -1143,10 +1143,14 @@ namespace clinic_ivf.gui
             if (grfPkgPayPeriod.Row <= 0) return;
             if (grfPkgPayPeriod.Col <= 0) return;
             String pkgsid = "", payment;
+
             pkgsid = grfPkgPayPeriod[grfPkgPayPeriod.Row, 7].ToString();
             payment = grfPkgPayPeriod[grfPkgPayPeriod.Row, 8].ToString();
+            OldPackageSold opkgs = new OldPackageSold();
+            opkgs = ic.ivfDB.opkgsDB.selectByPk1(pkgsid);
             String re1 = ic.ivfDB.opkgsDB.updateClearNew(pkgsid, payment);
-            String re = ic.ivfDB.obildDB.updatePaymentPeriod(txtVn.Text, pkgsid, payment);
+
+            String re = ic.ivfDB.obildDB.updatePaymentPeriod(txtVn.Text, pkgsid, payment, opkgs.payment_name);
             setGrfPkgPayPeriod();
             //setGrfBillD();
             setControl();
@@ -1190,14 +1194,16 @@ namespace clinic_ivf.gui
                 MessageBox.Show("ยอดรับชำระ น้อยกว่า ยอด BILL ", "");
                 return;
             }
-            String re1 = "", re2 = "", re3 = "", re4 = "", name = "", pkgname = "";
+            String re1 = "", re2 = "", re3 = "", re4 = "", name = "", pkgname = "", time="", re5="";
             pkgname = grfPkgPayPeriod[grfPkgPayPeriod.Row, 9].ToString();
             name = period4 > 0 ? pkgname + " 1/4" : period3 > 0 ? pkgname + " 1/3" : period2 > 0 ? pkgname + " 1/2" : pkgname;
+            time = period4 > 0 ? "4" : period3 > 0 ? "3" : period2 > 0 ? "2" : "1";
             re1 = ic.ivfDB.opkgsDB.updatePayment1(pkgsid, period1.ToString());
             re2 = ic.ivfDB.opkgsDB.updatePayment2(pkgsid, period2.ToString());
             re3 = ic.ivfDB.opkgsDB.updatePayment3(pkgsid, period3.ToString());
             re4 = ic.ivfDB.opkgsDB.updatePayment4(pkgsid, period4.ToString());
-            String re = ic.ivfDB.obildDB.updatePaymentPeriod(txtVn.Text, pkgsid, period1.ToString());
+            re5 = ic.ivfDB.opkgsDB.updatePaymentTime(pkgsid, time);
+            String re = ic.ivfDB.obildDB.updatePaymentPeriod(txtVn.Text, pkgsid, period1.ToString(), name);
             long chk = 0;
             if(long.TryParse(re, out chk))
             {

@@ -957,6 +957,35 @@ namespace clinic_ivf.gui
 
             theme1.SetTheme(grfNote, "Office2016DarkGray");
         }
+        private void setChangeLanguage()
+        {
+            foreach (Row row in grfOrder.Rows)
+            {
+                String pxid = "", itmid = "", status = "", re = "", edit = "", usage = "";
+                pxid = row[colOrdid] != null ? row[colOrdid].ToString() : "";
+                if (pxid.Equals("")) continue;
+                itmid = row[colOrditmid] != null ? row[colOrditmid].ToString() : "";
+                status = row[colOrdstatus] != null ? row[colOrdstatus].ToString() : "";
+                if (status.Equals("px"))
+                {
+                    OldStockDrug ostkd = new OldStockDrug();
+                    ostkd = ic.ivfDB.oStkdDB.selectByPk1(itmid);
+                    if (ostkd.DUID.Length <= 0) continue;
+                    if (cboLangSticker.Text.Trim().Equals("English"))
+                    {
+                        row[colOrdUsE] = ostkd.EUsage;
+                        re = ic.ivfDB.oJpxdDB.updateUsageEByID(pxid, ostkd.EUsage);
+                    }
+                    else
+                    {
+                        row[colOrdUsT] = ostkd.TUsage;
+                        re = ic.ivfDB.oJpxdDB.updateUsageTByID(pxid, ostkd.TUsage);
+                    }
+                }
+                
+
+            }
+        }
         private void CboLangSticker_SelectedIndexChanged(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
@@ -980,6 +1009,7 @@ namespace clinic_ivf.gui
                 //grfRxSetD.Cols[colRxUsT].Visible = true;
                 //grfRxSetD.Cols[colRxUsE].Visible = false;
             }
+            setChangeLanguage();
         }
         private void BtnFinish_Click(object sender, EventArgs e)
         {
