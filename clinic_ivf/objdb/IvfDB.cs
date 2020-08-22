@@ -1296,7 +1296,8 @@ namespace clinic_ivf.objdb
             //sql = "Select * from PackageSold Where PID='"+ ovs.PID+ "' and Status<>3'";
             //dt = opkgsDB.selectByVN1(vn);
             //dt = opkgsDB.selectByPID(ovs.PID);    // ต้องดึงตาม HN เพราะ ถ้ามีงวดการชำระ selectByPIDStatusPackageON
-            dt = opkgsDB.selectByPIDStatusPackageON(ovs.PID);
+            //dt = opkgsDB.selectByPIDStatusPackageON(ovs.PID);
+            dt = opkgsDB.selectByPIDStatusPackageCashierON(ovs.PID);
             if (dt.Rows.Count > 0)
             {
                 foreach(DataRow row in dt.Rows)

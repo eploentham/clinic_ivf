@@ -279,6 +279,61 @@ namespace clinic_ivf.objdb
             try
             {
                 re = conn.ExecuteNonQuery(conn.conn, sql);
+                DataTable dt = new DataTable();
+                sql = "select P4BDetailID,P3BDetailID,P2BDetailID,P1BDetailID From " + opkgs.table + " " +
+                "Where " + opkgs.PCKSID + "= " +
+                "(select billd.pcksid " +
+                "from BillDetail billd inner join BillHeader billh on billd.bill_id = billh.bill_id " +
+                "where billh.bill_id = '" + pkgsid + "' and billd.status='package') ";
+                dt = conn.selectData(conn.conn, sql);
+                if (dt.Rows.Count > 0)
+                {
+                    long chk1 = 0, chk2 = 0, chk3 = 0, chk4 = 0;
+                    long.TryParse(dt.Rows[0]["P1BDetailID"].ToString(), out chk1);
+                    long.TryParse(dt.Rows[0]["P2BDetailID"].ToString(), out chk2);
+                    long.TryParse(dt.Rows[0]["P3BDetailID"].ToString(), out chk3);
+                    long.TryParse(dt.Rows[0]["P4BDetailID"].ToString(), out chk4);
+                    if (chk4 > 0)
+                    {
+                        sql = "Update " + opkgs.table + " Set " +
+                            " " + opkgs.P4BDetailID + " = '0'" +
+                            "Where " + opkgs.PCKSID + "= " +
+                            "(select billd.pcksid " +
+                            "from BillDetail billd inner join BillHeader billh on billd.bill_id = billh.bill_id " +
+                            "where billh.bill_id = '" + pkgsid + "' and billd.status='package') ";
+                        re = conn.ExecuteNonQuery(conn.conn, sql);
+                    }
+                    else if (chk3 > 0)
+                    {
+                        sql = "Update " + opkgs.table + " Set " +
+                            " " + opkgs.P3BDetailID + " = '0'" +
+                            "Where " + opkgs.PCKSID + "= " +
+                            "(select billd.pcksid " +
+                            "from BillDetail billd inner join BillHeader billh on billd.bill_id = billh.bill_id " +
+                            "where billh.bill_id = '" + pkgsid + "' and billd.status='package') ";
+                        re = conn.ExecuteNonQuery(conn.conn, sql);
+                    }
+                    else if (chk2 > 0)
+                    {
+                        sql = "Update " + opkgs.table + " Set " +
+                            " " + opkgs.P2BDetailID + " = '0'" +
+                            "Where " + opkgs.PCKSID + "= " +
+                            "(select billd.pcksid " +
+                            "from BillDetail billd inner join BillHeader billh on billd.bill_id = billh.bill_id " +
+                            "where billh.bill_id = '" + pkgsid + "' and billd.status='package') ";
+                        re = conn.ExecuteNonQuery(conn.conn, sql);
+                    }
+                    else if (chk1 > 0)
+                    {
+                        sql = "Update " + opkgs.table + " Set " +
+                            " " + opkgs.P1BDetailID + " = '0'" +
+                            "Where " + opkgs.PCKSID + "= " +
+                            "(select billd.pcksid " +
+                            "from BillDetail billd inner join BillHeader billh on billd.bill_id = billh.bill_id " +
+                            "where billh.bill_id = '" + pkgsid + "' and billd.status='package') ";
+                        re = conn.ExecuteNonQuery(conn.conn, sql);
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -637,6 +692,15 @@ namespace clinic_ivf.objdb
             String sql = "select opkgs.* " +
                 "From " + opkgs.table + " opkgs " +
                 "Where opkgs." + opkgs.PID + " ='" + pttId + "' and status_package = 1 ";
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
+        public DataTable selectByPIDStatusPackageCashierON(String pttId)
+        {
+            DataTable dt = new DataTable();
+            String sql = "select opkgs.* " +
+                "From " + opkgs.table + " opkgs " +
+                "Where opkgs." + opkgs.PID + " ='" + pttId + "' and Status <> 3 ";
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }

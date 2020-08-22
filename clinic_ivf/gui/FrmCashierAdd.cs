@@ -1208,6 +1208,8 @@ namespace clinic_ivf.gui
             if(long.TryParse(re, out chk))
             {
                 setGrfBillD();
+                calTotal();
+                calTotalCredit();
             }
         }
         private void setGrfPkgPayPeriod()

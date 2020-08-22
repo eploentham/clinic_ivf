@@ -303,6 +303,17 @@ namespace clinic_ivf.objdb
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
+        public DataTable selectSumQtyByVN(String copId)
+        {
+            DataTable dt = new DataTable();
+            String sql = "select oJpxd.DUID,oJpxd.ID,oJpxd.DUName,oJpxd.Price,sum(oJpxd.QTY) as QTY,oJpxd.TUsage,oJpxd.EUsage,oJpxd.Extra,oJpxd.row1 " +
+                "From " + oJpxd.table + " oJpxd " +
+                "Where oJpxd." + oJpxd.VN + " ='" + copId + "' " +
+                "Group By oJpxd.DUID " +
+                "Order By oJpxd." + oJpxd.DUName;
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
         public DataTable selectByVN1FreqTH(String vn)
         {
             DataTable dt = new DataTable();
@@ -312,13 +323,14 @@ namespace clinic_ivf.objdb
             //    wherehn = " and jobpxD." + jobpxD.PIDS + " like '%" + vn + "%'";
             //}
             String sql = "SELECT CONCAT(IFNULL(SurfixName.SurfixName,''),' ', ptt.PName,' ',ptt.PSurname) as patient_name, jobpxD.PIDS as hn, DATE_FORMAT(now(),''), jobpxD.TUsage as frequency " +
-                ", jobpxD.DUName as drug_name, jobpxD.QTY as qty, jobpxD.DUID, JobPx.Date,StockDrug.UnitType as unit_name " +
+                ", jobpxD.DUName as drug_name, sum(jobpxD.QTY) as qty, jobpxD.DUID, JobPx.Date,StockDrug.UnitType as unit_name " +
                 "From " + oJpxd.table + " jobpxD " +
                 "left join JobPx on JobPx.VN = jobpxD.VN " +
                 "left join Patient ptt on ptt.PIDS = JobPx.PIDS " +
                 "left join SurfixName on SurfixName.SurfixID = ptt.SurfixID " +
                 "left join StockDrug on StockDrug.DUID =  jobpxD.DUID " +
-                "Where JobPx.VN = '" + vn + "' ";
+                "Where JobPx.VN = '" + vn + "' " +
+                "group by jobpxD.DUID ";
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
@@ -331,13 +343,14 @@ namespace clinic_ivf.objdb
             //    wherehn = " and jobpxD." + jobpxD.PIDS + " like '%" + vn + "%'";
             //}
             String sql = "SELECT CONCAT(IFNULL(SurfixName.SurfixName,''),' ', ptt.PName,' ',ptt.PSurname) as patient_name, jobpxD.PIDS as hn, DATE_FORMAT(now(),''), jobpxD.EUsage as frequency " +
-                ", jobpxD.DUName as drug_name, jobpxD.QTY as qty, jobpxD.DUID, JobPx.Date,StockDrug.UnitType as unit_name " +
+                ", jobpxD.DUName as drug_name, sum(jobpxD.QTY) as qty, jobpxD.DUID, JobPx.Date,StockDrug.UnitType as unit_name " +
                 "From " + oJpxd.table + " jobpxD " +
                 "left join JobPx on JobPx.VN = jobpxD.VN " +
                 "left join Patient ptt on ptt.PIDS = JobPx.PIDS " +
                 "left join SurfixName on SurfixName.SurfixID = ptt.SurfixID " +
                 "left join StockDrug on StockDrug.DUID =  jobpxD.DUID " +
-                "Where JobPx.VN = '" + vn + "' ";
+                "Where JobPx.VN = '" + vn + "' " +
+                "group by jobpxD.DUID ";
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }

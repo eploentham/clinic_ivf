@@ -583,6 +583,25 @@ namespace clinic_ivf.control
             c.Items.Add(item);
             c.SelectedItem = "English";
         }
+        public void setCboLangSticker(C1ComboBox c,String selected)
+        {
+            ComboBoxItem item = new ComboBoxItem();
+            //DataTable dt = selectWard();
+
+            item = new ComboBoxItem();
+            item.Value = "";
+            item.Text = "";
+            c.Items.Add(item);
+            item = new ComboBoxItem();
+            item.Value = "English";
+            item.Text = "English";
+            c.Items.Add(item);
+            item = new ComboBoxItem();
+            item.Value = "Thai";
+            item.Text = "Thai";
+            c.Items.Add(item);
+            c.SelectedItem = selected;
+        }
         public void setCboDay(C1ComboBox c, String selected)
         {
             ComboBoxItem item = new ComboBoxItem();

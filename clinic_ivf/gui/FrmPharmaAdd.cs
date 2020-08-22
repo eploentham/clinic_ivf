@@ -94,7 +94,7 @@ namespace clinic_ivf.gui
             imgCorr = Resources.red_checkmark_png_16;
             imgTran = Resources.red_checkmark_png_51;
 
-            ic.setCboLangSticker(cboLangSticker);
+            ic.setCboLangSticker(cboLangSticker,"Thai");
             ic.ivfDB.dtrOldDB.setCboDoctor(cboDoctor, "");
             ic.ivfDB.pttDB.setCboAllergy(cboAllergyDesc);
 
@@ -343,8 +343,6 @@ namespace clinic_ivf.gui
                         re = ic.ivfDB.oJpxdDB.updateUsageTByID(id, usage);
                     }
                 }
-                
-                
             }
             if (id.Length > 0)
             {
@@ -424,7 +422,8 @@ namespace clinic_ivf.gui
 
             dtbl = ic.ivfDB.oJlabdDB.selectByVN(vn);
             dtse = ic.ivfDB.ojsdDB.selectByVN(vn);
-            dtpx = ic.ivfDB.oJpxdDB.selectByVN(vn);
+            //dtpx = ic.ivfDB.oJpxdDB.selectByVN(vn);
+            dtpx = ic.ivfDB.oJpxdDB.selectSumQtyByVN(vn);
             //dtpkg = ic.ivfDB.opkgsDB.selectByVN(vn);
             dtpkg = ic.ivfDB.opkgsDB.selectByPID(pttId);    // ต้องดึงตาม HN เพราะ ถ้ามีงวดการชำระ 
 
@@ -643,6 +642,7 @@ namespace clinic_ivf.gui
                         }
                     }
                     row1[colOrdEdit] = "";
+                    row1[0] = (i);
                     //if (i % 2 == 0)
                     //    grfPtt.Rows[i].StyleNew.BackColor = color;
                     i++;
