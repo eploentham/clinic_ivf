@@ -4862,7 +4862,7 @@ namespace clinic_ivf.gui
                 return;
             }
             String re = "";
-            re = ic.ivfDB.opkgsDB.updateStatusPackageClosePackage(pkgsid);
+            re = ic.ivfDB.opkgsDB.updateStatusPackageClosePackage(id);
             long chk = 0;
             if(long.TryParse(re, out chk))
             {
