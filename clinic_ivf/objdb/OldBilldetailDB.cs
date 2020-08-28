@@ -60,6 +60,17 @@ namespace clinic_ivf.objdb
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
+        public OldBilldetail selectByPk1(String copId)
+        {
+            DataTable dt = new DataTable();
+            OldBilldetail obilld1 = new OldBilldetail();
+            String sql = "select obilld.* " +
+                "From " + obilld.table + " obilld " +
+                "Where obilld." + obilld.pkField + " ='" + copId + "' ";
+            dt = conn.selectData(conn.conn, sql);
+            obilld1 = setBillD(dt);
+            return obilld1;
+        }
         public DataTable selectByBillId(String bilid)
         {
             DataTable dt = new DataTable();
@@ -704,6 +715,75 @@ namespace clinic_ivf.objdb
             }
 
             return re;
+        }
+        public OldBilldetail setBillD(DataTable dt)
+        {
+            OldBilldetail obilld1 = new OldBilldetail();
+            if (dt.Rows.Count > 0)
+            {
+                obilld1 = new OldBilldetail();
+                obilld1.ID = dt.Rows[0][obilld.ID].ToString();
+                obilld1.VN = dt.Rows[0][obilld.VN].ToString();
+                obilld1.Name = dt.Rows[0][obilld.Name].ToString();
+                obilld1.Extra = dt.Rows[0][obilld.Extra].ToString();
+                obilld1.Price = dt.Rows[0][obilld.Price].ToString();
+                obilld1.Total = dt.Rows[0][obilld.Total].ToString();
+                obilld1.GroupType = dt.Rows[0][obilld.GroupType].ToString();
+                obilld1.Comment = dt.Rows[0][obilld.Comment].ToString();
+                obilld1.item_id = dt.Rows[0][obilld.item_id].ToString();
+                obilld1.status = dt.Rows[0][obilld.status].ToString();
+                obilld1.pcksid = dt.Rows[0][obilld.pcksid].ToString();
+                obilld1.price1 = dt.Rows[0][obilld.price1].ToString();
+                obilld1.qty = dt.Rows[0][obilld.qty].ToString();
+                obilld1.bill_id = dt.Rows[0][obilld.bill_id].ToString();
+                obilld1.active = dt.Rows[0][obilld.active].ToString();
+                obilld1.remark = dt.Rows[0][obilld.remark].ToString();
+                obilld1.sort1 = dt.Rows[0][obilld.sort1].ToString();
+                obilld1.date_cancel = dt.Rows[0][obilld.date_cancel].ToString();
+                obilld1.date_create = dt.Rows[0][obilld.date_create].ToString();
+                obilld1.date_modi = dt.Rows[0][obilld.date_modi].ToString();
+                obilld1.user_cancel = dt.Rows[0][obilld.user_cancel].ToString();
+                obilld1.user_create = dt.Rows[0][obilld.user_create].ToString();
+                obilld1.user_modi = dt.Rows[0][obilld.user_modi].ToString();
+                obilld1.closeday_id = dt.Rows[0][obilld.closeday_id].ToString();
+                obilld1.bill_group_id = dt.Rows[0][obilld.bill_group_id].ToString();
+                obilld1.pckid = dt.Rows[0][obilld.pckid].ToString();
+            }
+            else
+            {
+                setBillD(obilld1);
+            }
+            return obilld1;
+        }
+        private OldBilldetail setBillD(OldBilldetail obilld1)
+        {
+            obilld1.ID = "";
+            obilld1.VN = "";
+            obilld1.Name = "";
+            obilld1.Extra = "";
+            obilld1.Price = "";
+            obilld1.Total = "";
+            obilld1.GroupType = "";
+            obilld1.Comment = "";
+            obilld1.item_id = "";
+            obilld1.status = "";
+            obilld1.pcksid = "";
+            obilld1.price1 = "";
+            obilld1.qty = "";
+            obilld1.bill_id = "";
+            obilld1.active = "";
+            obilld1.remark = "";
+            obilld1.sort1 = "";
+            obilld1.date_cancel = "";
+            obilld1.date_create = "";
+            obilld1.date_modi = "";
+            obilld1.user_cancel = "";
+            obilld1.user_create = "";
+            obilld1.user_modi = "";
+            obilld1.closeday_id = "";
+            obilld1.bill_group_id = "";
+            obilld1.pckid = "";
+            return obilld1;
         }
     }
 }

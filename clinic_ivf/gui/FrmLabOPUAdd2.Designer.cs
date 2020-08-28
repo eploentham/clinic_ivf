@@ -4557,7 +4557,7 @@
             this.btnVoidEmbryo.Name = "btnVoidEmbryo";
             this.btnVoidEmbryo.Size = new System.Drawing.Size(83, 39);
             this.btnVoidEmbryo.TabIndex = 536;
-            this.btnVoidEmbryo.Text = "แก้ไขช้อมูล";
+            this.btnVoidEmbryo.Text = "ยกเลิกช้อมูล";
             this.btnVoidEmbryo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.theme1.SetTheme(this.btnVoidEmbryo, "(default)");
             this.btnVoidEmbryo.UseVisualStyleBackColor = true;

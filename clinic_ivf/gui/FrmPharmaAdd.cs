@@ -285,6 +285,11 @@ namespace clinic_ivf.gui
                 menuGw.MenuItems.Add("ยกเลิกรายการ", new EventHandler(ContextMenu_or_void));
                 menuGw.MenuItems.Add("Print Sticker", new EventHandler(ContextMenu_print_sticker));
             }
+            else
+            {
+                //menuGw.MenuItems.Add("ยกเลิกรายการ", new EventHandler(ContextMenu_or_void));
+                menuGw.MenuItems.Add("Print Sticker", new EventHandler(ContextMenu_print_sticker));
+            }
             //menuGw.MenuItems.Add("&แก้ไข", new EventHandler(ContextMenu_Gw_Edit));
             //menuGw.MenuItems.Add("&ยกเลิก", new EventHandler(ContextMenu_Gw_Cancel));
             grfOrder.ContextMenu = menuGw;
@@ -307,10 +312,10 @@ namespace clinic_ivf.gui
         {
             if (grfOrder.Row < 0) return;
             if (grfOrder[grfOrder.Row, colOrdid] == null) return;
-            if (!vsOld.VSID.Equals("166"))
+            if (!vsOld.VSID.Equals("166") && vsOld.VSID.Equals("999"))
             {
                 MessageBox.Show("รอ รับชำระ ไม่สามารถพิมพ์ Sticker ได้", "");
-                return;
+                //return;
             }
             String id = "", date = "";
             date = DateTime.Now.Year + "-" + DateTime.Now.ToString("MM-dd");
@@ -372,7 +377,10 @@ namespace clinic_ivf.gui
                         //MessageBox.Show("unit "+ row["unit_name"].ToString(), "");
                     }
                     ic.ivfDB.oJpxdDB.updateStatusPrintOKByID(id);
-                    ic.ivfDB.oJpxdDB.updateStatusUpStockOKByID(id);
+                    if (flagedit.Equals("edit"))
+                    {
+                        ic.ivfDB.oJpxdDB.updateStatusUpStockOKByID(id);
+                    }
                     FrmReport frm = new FrmReport(ic);
                     frm.setStickerDrugReport(date, dt, cboLangSticker.Text.Trim());
                     frm.ShowDialog(this);

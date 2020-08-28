@@ -830,14 +830,14 @@ namespace clinic_ivf.gui
             dateend = ic.datetoDB(txtFiDateEnd.Text);
             dt = ic.ivfDB.opuDB.selectByStatusFinish(datestart, dateend);
             grfFinish.Rows.Count = 1;
-            if (dt.Rows.Count <= 1)
-            {
-                grfFinish.Rows.Count = dt.Rows.Count + 1;
-            }
-            else
-            {
+            //if (dt.Rows.Count <= 1)
+            //{
+            //    grfFinish.Rows.Count = dt.Rows.Count + 1;
+            //}
+            //else
+            //{
                 grfFinish.Rows.Count = dt.Rows.Count + 2;
-            }
+            //}
             grfFinish.Cols.Count = 10;
             //C1TextBox txt = new C1TextBox();
             ////C1ComboBox cboproce = new C1ComboBox();

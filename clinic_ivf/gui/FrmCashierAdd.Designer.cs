@@ -800,6 +800,7 @@
             this.btnItmAdd.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.theme1.SetTheme(this.btnItmAdd, "(default)");
             this.btnItmAdd.UseVisualStyleBackColor = true;
+            this.btnItmAdd.Visible = false;
             this.btnItmAdd.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // btnPayPeriod
@@ -814,6 +815,7 @@
             this.btnPayPeriod.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.theme1.SetTheme(this.btnPayPeriod, "(default)");
             this.btnPayPeriod.UseVisualStyleBackColor = true;
+            this.btnPayPeriod.Visible = false;
             this.btnPayPeriod.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // btnDiscountAdd

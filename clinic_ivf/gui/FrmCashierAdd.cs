@@ -645,8 +645,8 @@ namespace clinic_ivf.gui
                     chkDiscount.Enabled = false;
                     txtDiscount.Enabled = false;
                     setGrfBillD();
-                    calTotal();
-                    calTotalCredit();
+                    calTotal("");
+                    calTotalCredit("");
                 }
             }
             else
@@ -675,8 +675,8 @@ namespace clinic_ivf.gui
                     }
                 }
                 setGrfBillD();
-                calTotal();
-                calTotalCredit();
+                calTotal("");
+                calTotalCredit("");
             }
         }
 
@@ -693,7 +693,7 @@ namespace clinic_ivf.gui
             obilld.Total = txtPayCreditCard.Text.Replace(",", "");
             obilld.Comment = "";
             obilld.pcksid = "0";
-            obilld.item_id = "98";            // form table specialitem
+            obilld.item_id = "2640000098";            // form table specialitem
             obilld.GroupType = "OtherService";
             obilld.status = "special";
             obilld.bill_group_id = "2650000102";            // form table billgroup
@@ -703,10 +703,9 @@ namespace clinic_ivf.gui
             setGrfBillD();
             Decimal credit = 0;
             Decimal.TryParse(txtTotalCredit.Text, out credit);
-            calTotal();
-            calTotalCredit();
-            //txtPayCreditCard.Value = "";
-
+            calTotal("charge");
+            calTotalCredit("charge");
+            txtPayCreditCard.Value = "";
         }
 
         private void BtnClose_Click(object sender, EventArgs e)
@@ -952,19 +951,31 @@ namespace clinic_ivf.gui
         private void TxtTotalCash_KeyUp(object sender, KeyEventArgs e)
         {
             //throw new NotImplementedException();
-            calTotalCredit();
+            if (e.KeyCode == Keys.Delete)
+            {
+                //calTotalCash();
+                txtTotalCash.Value = "0.00";
+                decimal txt = 0;
+                decimal.TryParse(txtTotal.Text, out txt);
+                txtTotalCredit.Value = txt;
+                calTotalCredit("");
+            }
+            else
+            {
+                calTotalCredit("");
+            }
         }
 
         private void TxtDiscount_KeyUp(object sender, KeyEventArgs e)
         {
             //throw new NotImplementedException();
-            calTotal();
+            calTotal("");
         }
 
         private void TxtAmt_KeyUp(object sender, KeyEventArgs e)
         {
             //throw new NotImplementedException();
-            calTotal();
+            calTotal("");
         }
 
         private void TxtDiscount_KeyPress(object sender, KeyPressEventArgs e)
@@ -1060,8 +1071,8 @@ namespace clinic_ivf.gui
             tabLabPrescription.Controls.Add(frm);
 
             setGrfBillD();
-            calTotal();
-            calTotalCredit();
+            calTotal("");
+            calTotalCredit("");
         }
         private void initGrfPkgPayPeriod()
         {
@@ -1208,8 +1219,8 @@ namespace clinic_ivf.gui
             if(long.TryParse(re, out chk))
             {
                 setGrfBillD();
-                calTotal();
-                calTotalCredit();
+                calTotal("");
+                calTotalCredit("");
             }
         }
         private void setGrfPkgPayPeriod()
@@ -1688,7 +1699,7 @@ namespace clinic_ivf.gui
             //grfExpnC.CellButtonClick += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellButtonClick);
             grfBillD.AfterDataRefresh += GrfBillD_AfterDataRefresh;
             ContextMenu menuGw = new ContextMenu();
-            menuGw.MenuItems.Add("ออก บิล", new EventHandler(ContextMenu_edit_bill));
+            menuGw.MenuItems.Add("ออก บิล", new EventHandler(ContextMenu_void_bill));
             menuGw.MenuItems.Add("ส่งกลับ", new EventHandler(ContextMenu_send_back));
             //menuGw.MenuItems.Add("&ยกเลิก", new EventHandler(ContextMenu_Gw_Cancel));
             grfBillD.ContextMenu = menuGw;
@@ -1707,7 +1718,7 @@ namespace clinic_ivf.gui
             //throw new NotImplementedException();
             UpdateTotals();
         }
-        private void ContextMenu_edit_bill(object sender, System.EventArgs e)
+        private void ContextMenu_void_bill(object sender, System.EventArgs e)
         {
             if (grfBillD.Row <= 0) return;
             String bildid = "";
@@ -1718,8 +1729,18 @@ namespace clinic_ivf.gui
             frm.ShowDialog(this);
             if (!ic.cStf.staff_id.Equals(""))
             {
+                OldBilldetail bild = new OldBilldetail();
+                bild = ic.ivfDB.obildDB.selectByPk1(bildid);
                 ic.ivfDB.obildDB.voidBillDetailBybildid(bildid, ic.cStf.staff_id);
                 setGrfBillD();
+                if (bild.item_id.Equals("2640000098"))      //OtherService service charge
+                {
+                    txtPayCreditCard.Value = "";
+                    decimal amt = 0;
+                    decimal.TryParse(txtAmt.Text, out amt);
+                    txtTotal.Value = amt;
+                    txtTotalCredit.Value = 0;
+                }
             }
         }
         private void ContextMenu_send_back(object sender, System.EventArgs e)
@@ -1752,7 +1773,7 @@ namespace clinic_ivf.gui
 
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             ContextMenu menuGw = new ContextMenu();
-            menuGw.MenuItems.Add("ยกเลิก รายการ", new EventHandler(ContextMenu_edit_bill));
+            menuGw.MenuItems.Add("ยกเลิก รายการ", new EventHandler(ContextMenu_void_bill));
             //menuGw.MenuItems.Add("&แก้ไข", new EventHandler(ContextMenu_Gw_Edit));
             //menuGw.MenuItems.Add("&ยกเลิก", new EventHandler(ContextMenu_Gw_Cancel));
             grfBillD.ContextMenu = menuGw;
@@ -1915,7 +1936,7 @@ namespace clinic_ivf.gui
             pnDiscount.Enabled = flag;
             panel3.Enabled = false;
         }
-        private void calTotal()
+        private void calTotal(String flagcharge)
         {
             Decimal amt = 0, total = 0, discount=0, total11=0;
             Decimal.TryParse(txtAmt.Text, out amt);
@@ -1929,22 +1950,24 @@ namespace clinic_ivf.gui
             creditid1 = cboAccCredit.SelectedItem == null ? "" : ((ComboBoxItem)cboAccCredit.SelectedItem).Value;
             if ((cashid1.Length > 0) && (creditid1.Length > 0))
             {
-                txtTotalCash.Value = total;
+                //txtTotalCash.Value = total;
                 //txtTotalCredit.Value = "0";
             }
-            else if (cashid1.Length > 0)
+            else if ((cashid1.Length > 0) && (creditid1.Length == 0))
             {
                 txtTotalCash.Value = total;
                 //txtTotalCredit.Value = "0";
             }
-            else if (creditid1.Length > 0)
+            else if ((creditid1.Length > 0) && (cashid1.Length == 0))
             {
                 //txtTotalCash.Value = "0";
-                txtTotalCredit.Value = total;
+                if (flagcharge.Length == 0)
+                {
+                    txtTotalCredit.Value = total;
+                }
             }
-            
         }
-        private void calTotalCredit()
+        private void calTotalCredit(String flagcharge)
         {
             Decimal total = 0, cash=0, credit=0, per=0, paycredit=0;
             Decimal.TryParse(txtTotal.Text, out total);
@@ -1953,11 +1976,14 @@ namespace clinic_ivf.gui
             Decimal.TryParse(txtCreditCharge.Text, out per);
             if (credit > 0)
             {
-                //credit = total - cash;
+                credit = total - cash;
                 paycredit = credit * per / 100;
                 txtTotalCredit.Value = credit.ToString("0.00");
                 txtPayCreditCard.Value = paycredit.ToString("0.00");
-                txtTotalCash.Value = total - credit;
+                if (flagcharge.Length == 0)
+                {
+                    txtTotalCash.Value = total - credit;
+                }
             }
         }
         private void calTotalCash()

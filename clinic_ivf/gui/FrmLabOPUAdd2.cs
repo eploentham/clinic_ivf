@@ -3381,6 +3381,7 @@ namespace clinic_ivf.gui
             btnSaveFertili.Enabled = flag;
             btnSaveSperm.Enabled = flag;
             btnSaveEmbryoFreezDay1.Enabled = false;
+            btnResultDay1.Enabled = flag;
         }
         private void setControl()
         {
