@@ -346,10 +346,11 @@
             this.cryEmbryo = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.tabDay1 = new C1.Win.C1Command.C1DockingTabPage();
             this.tabDay3 = new C1.Win.C1Command.C1DockingTabPage();
+            this.tabDay5 = new C1.Win.C1Command.C1DockingTabPage();
             this.tabDay6 = new C1.Win.C1Command.C1DockingTabPage();
             this.sB = new System.Windows.Forms.StatusStrip();
             this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.tabDay5 = new C1.Win.C1Command.C1DockingTabPage();
+            this.tabDay0 = new C1.Win.C1Command.C1DockingTabPage();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1SplitContainer1)).BeginInit();
             this.c1SplitContainer1.SuspendLayout();
@@ -836,6 +837,7 @@
             this.btnPrintOpuEmbryoDev.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.theme1.SetTheme(this.btnPrintOpuEmbryoDev, "(default)");
             this.btnPrintOpuEmbryoDev.UseVisualStyleBackColor = true;
+            this.btnPrintOpuEmbryoDev.Visible = false;
             this.btnPrintOpuEmbryoDev.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // btnPrint
@@ -850,6 +852,7 @@
             this.btnPrint.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.theme1.SetTheme(this.btnPrint, "(default)");
             this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.Visible = false;
             this.btnPrint.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // txtLabReqCode
@@ -1289,6 +1292,7 @@
             this.tCResult.Controls.Add(this.tabEmail);
             this.tCResult.Controls.Add(this.tabReportOPU);
             this.tCResult.Controls.Add(this.tabReportEmbryo);
+            this.tCResult.Controls.Add(this.tabDay0);
             this.tCResult.Controls.Add(this.tabDay1);
             this.tCResult.Controls.Add(this.tabDay3);
             this.tCResult.Controls.Add(this.tabDay5);
@@ -1314,6 +1318,7 @@
             this.tabOPU.Size = new System.Drawing.Size(1342, 499);
             this.tabOPU.TabIndex = 0;
             this.tabOPU.Text = "ผล OPU";
+            this.tabOPU.Visible = false;
             // 
             // panel1
             // 
@@ -5245,6 +5250,14 @@
             this.tabDay3.TabIndex = 8;
             this.tabDay3.Text = "Day3";
             // 
+            // tabDay5
+            // 
+            this.tabDay5.Location = new System.Drawing.Point(1, 24);
+            this.tabDay5.Name = "tabDay5";
+            this.tabDay5.Size = new System.Drawing.Size(1342, 499);
+            this.tabDay5.TabIndex = 10;
+            this.tabDay5.Text = "Day5";
+            // 
             // tabDay6
             // 
             this.tabDay6.Location = new System.Drawing.Point(1, 24);
@@ -5269,13 +5282,13 @@
             this.sB1.Size = new System.Drawing.Size(118, 17);
             this.sB1.Text = "toolStripStatusLabel1";
             // 
-            // tabDay5
+            // tabDay0
             // 
-            this.tabDay5.Location = new System.Drawing.Point(1, 24);
-            this.tabDay5.Name = "tabDay5";
-            this.tabDay5.Size = new System.Drawing.Size(1342, 499);
-            this.tabDay5.TabIndex = 10;
-            this.tabDay5.Text = "Day5";
+            this.tabDay0.Location = new System.Drawing.Point(1, 24);
+            this.tabDay0.Name = "tabDay0";
+            this.tabDay0.Size = new System.Drawing.Size(1342, 499);
+            this.tabDay0.TabIndex = 11;
+            this.tabDay0.Text = "Day 0";
             // 
             // FrmNurseOPUView
             // 
@@ -5794,5 +5807,6 @@
         private C1.Win.C1Command.C1DockingTabPage tabDay3;
         private C1.Win.C1Command.C1DockingTabPage tabDay6;
         private C1.Win.C1Command.C1DockingTabPage tabDay5;
+        private C1.Win.C1Command.C1DockingTabPage tabDay0;
     }
 }

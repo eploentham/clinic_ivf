@@ -154,6 +154,7 @@ namespace clinic_ivf.gui
             ChkSpermFreezing_CheckStateChanged(null, null);
             ChkSememPESA_CheckedChanged(null, null);
             ChkSpermIUI_CheckedChanged(null, null);
+            ChkFreshSprem_CheckStateChanged(null, null);
 
             chkOPUActive.CheckedChanged += ChkOPUActive_CheckedChanged;
             chkOPUUnActive.CheckedChanged += ChkOPUUnActive_CheckedChanged;
@@ -171,7 +172,8 @@ namespace clinic_ivf.gui
             chkOPUActive.Checked = true;
             chkFetActive.Checked = true;
             chkConfirmFetDate.Checked = true;
-            chkWaitOpuDate.Checked = true;
+            chkWaitOpuDate.Checked = false;
+            chkConfirmOpuDate.Checked = false;
             //statusOPU = ic.ivfDB.oJsDB.chkByOPU(vsidOld);
             //statusFET = ic.ivfDB.oJsDB.chkByFET(vsidOld);
             statusOPU = "-";
@@ -1045,6 +1047,7 @@ namespace clinic_ivf.gui
             lFormA.sperm_sa_remark = cboSpSaRemark.Text;
             lFormA.status_no_ngs = chkNoNgs.Checked ? "1" : "0";
             //lFormA.embryo txtEmbryoTranferTime.Text
+
         }
         private Boolean saveLabFormA()
         {
@@ -1308,12 +1311,18 @@ namespace clinic_ivf.gui
         {
             //throw new NotImplementedException();
             pnSpermFreezing.Enabled = chkSpermFreezing.CheckState == CheckState.Checked ? true : false;
+            cboSpFzRemark.Enabled = chkSpermFreezing.CheckState == CheckState.Checked ?  true : false;
+            label39.Enabled = chkSpermFreezing.CheckState == CheckState.Checked ? true : false;
+            chkVoidSpSf.Enabled = chkSpermFreezing.CheckState == CheckState.Checked ? true : false;
         }
 
         private void ChkSpermAnalysis_CheckStateChanged(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
             pnSpermAnalysis.Enabled = chkSememAnalysis.CheckState == CheckState.Checked ? true : false;
+            cboSpSaRemark.Enabled = chkSememAnalysis.CheckState == CheckState.Checked ? true : false;
+            label38.Enabled = chkSememAnalysis.CheckState == CheckState.Checked ? true : false;
+            chkVoidSpSa.Enabled = chkSememAnalysis.CheckState == CheckState.Checked ? true : false;
         }
 
         private void ChkFET_CheckedChanged(object sender, EventArgs e)
@@ -1460,7 +1469,6 @@ namespace clinic_ivf.gui
                                 txtDobFeMale.Value = ptt.patient_birthday;
                             }
                         }
-                        
                     }
                     else
                     {
@@ -1487,8 +1495,10 @@ namespace clinic_ivf.gui
                             txtDobFeMale.Value = ptt.patient_birthday;
                         }
                     }
-                    
                 }
+                chkOPUActive.Checked = false;
+                chkOPUUnActive.Checked = false;
+                chkOPUActiveWait.Checked = false;
             }
             
             if (lFormA.status_opu_active.Equals("3"))

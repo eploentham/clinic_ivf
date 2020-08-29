@@ -104,36 +104,45 @@ namespace clinic_ivf.gui
 
             ic.ivfDB.proceDB.setCboLabProce(cboOpuProce, objdb.LabProcedureDB.StatusLab.OPUProcedure);//cboEmbryoForEtDoctor
             ic.ivfDB.dtrOldDB.setCboDoctor(cboDoctor, "");
-            ic.ivfDB.dtrOldDB.setCboDoctor(cboEmbryoForEtDoctor, "");
-            ic.ivfDB.stfDB.setCboEmbryologist(cboEmbryoForEtEmbryologist, "");
-            ic.ivfDB.stfDB.setCboEmbryologist(cboEmbryologistAppv, "");
-            ic.ivfDB.stfDB.setCboEmbryologist(cboEmbryologistReport, "");
-            ic.ivfDB.stfDB.setCboEmbryologist(cboEmbryologistDay2, "");
-            ic.ivfDB.stfDB.setCboEmbryologist(cboEmbryologistDay3, "");
-            ic.ivfDB.stfDB.setCboEmbryologist(cboEmbryologistDay5, "");
-            ic.ivfDB.stfDB.setCboEmbryologist(cboEmbryologistDay6, "");
-            ic.ivfDB.stfDB.setCboEmbryologist(cboCheckedDay2, "");
-            ic.ivfDB.stfDB.setCboEmbryologist(cboCheckedDay3, "");
-            ic.ivfDB.stfDB.setCboEmbryologist(cboCheckedDay5, "");
-            ic.ivfDB.stfDB.setCboEmbryologist(cboCheckedDay6, "");
+            //ic.ivfDB.dtrOldDB.setCboDoctor(cboEmbryoForEtDoctor, "");
+            //ic.ivfDB.stfDB.setCboEmbryologist(cboEmbryoForEtEmbryologist, "");
+            //ic.ivfDB.stfDB.setCboEmbryologist(cboEmbryologistAppv, "");
+            //ic.ivfDB.stfDB.setCboEmbryologist(cboEmbryologistReport, "");
+            //ic.ivfDB.stfDB.setCboEmbryologist(cboEmbryologistDay2, "");
+            //ic.ivfDB.stfDB.setCboEmbryologist(cboEmbryologistDay3, "");
+            //ic.ivfDB.stfDB.setCboEmbryologist(cboEmbryologistDay5, "");
+            //ic.ivfDB.stfDB.setCboEmbryologist(cboEmbryologistDay6, "");
+            //ic.ivfDB.stfDB.setCboEmbryologist(cboCheckedDay2, "");
+            //ic.ivfDB.stfDB.setCboEmbryologist(cboCheckedDay3, "");
+            //ic.ivfDB.stfDB.setCboEmbryologist(cboCheckedDay5, "");
+            //ic.ivfDB.stfDB.setCboEmbryologist(cboCheckedDay6, "");
 
-            ic.ivfDB.fdtDB.setCboOPUMethod(cboEmbryoFreezMethod0);
-            ic.ivfDB.fdtDB.setCboOPUMethod(cboEmbryoFreezMethod1);
-            ic.ivfDB.fdtDB.setCboOPUStage(cboEmbryoFreezStage0, "");
-            ic.ivfDB.fdtDB.setCboOPUStage(cboEmbryoFreezStage1, "");
-            ic.ivfDB.fdtDB.setCboOPUFreezeMedia(cboEmbryoFreezMedia0);
-            ic.ivfDB.fdtDB.setCboOPUFreezeMedia(cboEmbryoFreezMedia1);
-            ic.setCboDay(CboEmbryoFreezDay0, "");
-            ic.setCboDay(CboEmbryoFreezDay1, "");
-            ic.ivfDB.opuDB.setCboRemark(cboRemark);
-            ic.ivfDB.opuDB.setCboRemark1(cboRemark1);
+            //ic.ivfDB.fdtDB.setCboOPUMethod(cboEmbryoFreezMethod0);
+            //ic.ivfDB.fdtDB.setCboOPUMethod(cboEmbryoFreezMethod1);
+            //ic.ivfDB.fdtDB.setCboOPUStage(cboEmbryoFreezStage0, "");
+            //ic.ivfDB.fdtDB.setCboOPUStage(cboEmbryoFreezStage1, "");
+            //ic.ivfDB.fdtDB.setCboOPUFreezeMedia(cboEmbryoFreezMedia0);
+            //ic.ivfDB.fdtDB.setCboOPUFreezeMedia(cboEmbryoFreezMedia1);
+            //ic.setCboDay(CboEmbryoFreezDay0, "");
+            //ic.setCboDay(CboEmbryoFreezDay1, "");
+            //ic.ivfDB.opuDB.setCboRemark(cboRemark);
+            //ic.ivfDB.opuDB.setCboRemark1(cboRemark1);
 
             //stt.BackgroundGradient = C1.Win.C1SuperTooltip.BackgroundGradient.Gold;
-            
+
             //initGrf();
             setControl();
             //setGrf();
-            setTheme();
+            theme1.SetTheme(tCResult, theme2);
+            theme1.SetTheme(groupBox1, theme2);
+            foreach (Control ctl in groupBox1.Controls)
+            {
+                theme1.SetTheme(ctl, theme2);
+            }
+            theme1.SetTheme(this, theme2);
+            theme1.SetTheme(c1SplitContainer1, theme2);
+            theme1.SetTheme(c1SplitContainer1, theme2);
+            //setTheme();
             char c = '\u00B5';
             label86.Text = c.ToString() + "l";
             btnSendEmail.Enabled = false;
@@ -142,6 +151,12 @@ namespace clinic_ivf.gui
                                 
 
             }
+            tCResult.TabPages[0].TabVisible = false;
+            tCResult.TabPages[1].TabVisible = false;
+            tCResult.TabPages[2].TabVisible = false;
+            tCResult.TabPages[3].TabVisible = false;
+            tCResult.TabPages[4].TabVisible = false;
+            //tCResult.ta
         }
 
         private void TCResult_SelectedIndexChanged(object sender, EventArgs e)
@@ -2455,85 +2470,85 @@ namespace clinic_ivf.gui
 
             }
 
-            txtMaturaDate.Value = opu.matura_date;
-            txtMaturaMii.Value = opu.matura_m_ii;
-            txtMaturaMi.Value = opu.matura_m_i;
-            txtMaturaGv.Value = opu.matura_gv;
-            txtMaturaPostMat.Value = opu.matura_post_mat;
-            txtMaturaAbnor.Value = opu.matura_abmormal;
-            txtMaturaDead.Value = opu.matura_dead;
+            //txtMaturaDate.Value = opu.matura_date;
+            //txtMaturaMii.Value = opu.matura_m_ii;
+            //txtMaturaMi.Value = opu.matura_m_i;
+            //txtMaturaGv.Value = opu.matura_gv;
+            //txtMaturaPostMat.Value = opu.matura_post_mat;
+            //txtMaturaAbnor.Value = opu.matura_abmormal;
+            //txtMaturaDead.Value = opu.matura_dead;
 
-            txtFertiliDate.Value = opu.fertili_date;
-            txtFertili2Pn.Value = opu.fertili_2_pn;
-            txtFertili1Pn.Value = opu.fertili_1_pn;
-            txtFertili3Pn.Value = opu.fertili_3_pn;
-            txtFertili4Pn.Value = opu.fertili_4_pn;
-            txtFertiliNoPn.Value = opu.fertili_no_pn;
-            txtFertiliDead.Value = opu.fertili_dead;
+            //txtFertiliDate.Value = opu.fertili_date;
+            //txtFertili2Pn.Value = opu.fertili_2_pn;
+            //txtFertili1Pn.Value = opu.fertili_1_pn;
+            //txtFertili3Pn.Value = opu.fertili_3_pn;
+            //txtFertili4Pn.Value = opu.fertili_4_pn;
+            //txtFertiliNoPn.Value = opu.fertili_no_pn;
+            //txtFertiliDead.Value = opu.fertili_dead;
 
-            txtSpermDate.Value = opu.sperm_date;
-            txtSpermVol.Value = opu.sperm_volume;
-            txtSpermCnt.Value = opu.sperm_count;
-            txtSpermTotalCnt.Value = opu.sperm_count_total;
-            txtSpermMoti.Value = opu.sperm_motile;
-            txtSpermMotiTotal.Value = opu.sperm_motile_total;
-            txtSpermMotility.Value = opu.sperm_motility;
-            chkSpermFresh.Value = opu.sperm_fresh_sperm.Equals("1") ? true : false;
-            chkSpermFrozen.Value = opu.sperm_frozen_sperm.Equals("1") ? true : false;
-            txtEmbryoForEtNO.Value = opu.embryo_for_et_no_of_et;
-            txtEmbryoForEtDay.Value = opu.embryo_for_et_day;
-            txtEmbryoForEtDate.Value = ic.datetoShow(opu.embryo_for_et_date);
-            txtEmbryoForEtAsseted.Value = opu.embryo_for_et_assisted;
-            txtEmbryoForEtVolume.Value = opu.embryo_for_et_volume;
-            txtEmbryoForEtCatheter.Value = opu.embryo_for_et_catheter;
-            //txtEmbryoForEtDoctor.Value = opu.embryo_for_et_doctor;
-            txtEmbryoForEtNumTran.Value = opu.embryo_for_et_number_of_transfer;
-            txtEmbryoForEtNumFreeze.Value = opu.embryo_for_et_number_of_freeze;
-            txtEmbryoForEtNumDiscard.Value = opu.embryo_for_et_number_of_discard;
-            //cboEmbryoForEtEmbryologist.Value = opu.embryo_for_et_embryologist_id;
-            //cboEmbryologistReport.Value = opu.embryologist_report_id;
-            //cboEmbryologistAppv.Value = opu.embryologist_approve_id;
-            ic.setC1Combo(cboEmbryologistAppv, opu.embryologist_approve_id);
-            ic.setC1Combo(cboEmbryologistReport, opu.embryologist_report_id);
-            ic.setC1Combo(cboEmbryoForEtEmbryologist, opu.embryo_for_et_embryologist_id);
-            ic.setC1Combo(CboEmbryoFreezDay0, opu.embryo_freez_day_0);
-            ic.setC1Combo(CboEmbryoFreezDay1, opu.embryo_freez_day_1);
-            txtEmbryoFreezDate0.Value = opu.embryo_freez_date_0;
-            txtEmbryoFreezDate1.Value = opu.embryo_freez_date_1;
-            //txtEmbryoFreezStage0.Value = opu.embryo_freez_stage_0;
-            ic.setC1Combo(cboEmbryoFreezStage0, opu.embryo_freez_stage_0);
-            //txtEmbryoFreezStage1.Value = opu.embryo_freez_stage_1;
-            ic.setC1Combo(cboEmbryoFreezStage1, opu.embryo_freez_stage_1);
-            txtEmbryoFreezNoOg0.Value = opu.embryo_freez_no_og_0;
-            txtEmbryoFreezNoOg1.Value = opu.embryo_freez_no_og_1;
-            txtEmbryoFreezNoStraw0.Value = opu.embryo_freez_no_of_straw_0;
-            txtEmbryoFreezNoStraw1.Value = opu.embryo_freez_no_of_straw_1;
-            txtEmbryoFreezPosi0.Value = opu.embryo_freez_position_0;
-            txtEmbryoFreezPosi1.Value = opu.embryo_freez_position_1;
-            //txtEmbryoFreezMethod0.Value = opu.embryo_freez_mothod_0;
-            //txtEmbryoFreezMethod1.Value = opu.embryo_freez_mothod_1;
-            ic.setC1Combo(cboEmbryoFreezMethod1, opu.embryo_freez_mothod_1);
-            ic.setC1Combo(cboEmbryoFreezMethod0, opu.embryo_freez_mothod_0);
-            ic.setC1Combo(cboEmbryoFreezMedia0, opu.embryo_freez_freeze_media_0);
-            ic.setC1Combo(cboEmbryoFreezMedia1, opu.embryo_freez_freeze_media_1);
-            //txtEmbryoFreezMedia0.Value = opu.embryo_freez_freeze_media_0;
-            //txtEmbryoFreezMedia1.Value = opu.embryo_freez_freeze_media_1;
+            //txtSpermDate.Value = opu.sperm_date;
+            //txtSpermVol.Value = opu.sperm_volume;
+            //txtSpermCnt.Value = opu.sperm_count;
+            //txtSpermTotalCnt.Value = opu.sperm_count_total;
+            //txtSpermMoti.Value = opu.sperm_motile;
+            //txtSpermMotiTotal.Value = opu.sperm_motile_total;
+            //txtSpermMotility.Value = opu.sperm_motility;
+            //chkSpermFresh.Value = opu.sperm_fresh_sperm.Equals("1") ? true : false;
+            //chkSpermFrozen.Value = opu.sperm_frozen_sperm.Equals("1") ? true : false;
+            //txtEmbryoForEtNO.Value = opu.embryo_for_et_no_of_et;
+            //txtEmbryoForEtDay.Value = opu.embryo_for_et_day;
+            //txtEmbryoForEtDate.Value = ic.datetoShow(opu.embryo_for_et_date);
+            //txtEmbryoForEtAsseted.Value = opu.embryo_for_et_assisted;
+            //txtEmbryoForEtVolume.Value = opu.embryo_for_et_volume;
+            //txtEmbryoForEtCatheter.Value = opu.embryo_for_et_catheter;
+            ////txtEmbryoForEtDoctor.Value = opu.embryo_for_et_doctor;
+            //txtEmbryoForEtNumTran.Value = opu.embryo_for_et_number_of_transfer;
+            //txtEmbryoForEtNumFreeze.Value = opu.embryo_for_et_number_of_freeze;
+            //txtEmbryoForEtNumDiscard.Value = opu.embryo_for_et_number_of_discard;
+            ////cboEmbryoForEtEmbryologist.Value = opu.embryo_for_et_embryologist_id;
+            ////cboEmbryologistReport.Value = opu.embryologist_report_id;
+            ////cboEmbryologistAppv.Value = opu.embryologist_approve_id;
+            //ic.setC1Combo(cboEmbryologistAppv, opu.embryologist_approve_id);
+            //ic.setC1Combo(cboEmbryologistReport, opu.embryologist_report_id);
+            //ic.setC1Combo(cboEmbryoForEtEmbryologist, opu.embryo_for_et_embryologist_id);
+            //ic.setC1Combo(CboEmbryoFreezDay0, opu.embryo_freez_day_0);
+            //ic.setC1Combo(CboEmbryoFreezDay1, opu.embryo_freez_day_1);
+            //txtEmbryoFreezDate0.Value = opu.embryo_freez_date_0;
+            //txtEmbryoFreezDate1.Value = opu.embryo_freez_date_1;
+            ////txtEmbryoFreezStage0.Value = opu.embryo_freez_stage_0;
+            //ic.setC1Combo(cboEmbryoFreezStage0, opu.embryo_freez_stage_0);
+            ////txtEmbryoFreezStage1.Value = opu.embryo_freez_stage_1;
+            //ic.setC1Combo(cboEmbryoFreezStage1, opu.embryo_freez_stage_1);
+            //txtEmbryoFreezNoOg0.Value = opu.embryo_freez_no_og_0;
+            //txtEmbryoFreezNoOg1.Value = opu.embryo_freez_no_og_1;
+            //txtEmbryoFreezNoStraw0.Value = opu.embryo_freez_no_of_straw_0;
+            //txtEmbryoFreezNoStraw1.Value = opu.embryo_freez_no_of_straw_1;
+            //txtEmbryoFreezPosi0.Value = opu.embryo_freez_position_0;
+            //txtEmbryoFreezPosi1.Value = opu.embryo_freez_position_1;
+            ////txtEmbryoFreezMethod0.Value = opu.embryo_freez_mothod_0;
+            ////txtEmbryoFreezMethod1.Value = opu.embryo_freez_mothod_1;
+            //ic.setC1Combo(cboEmbryoFreezMethod1, opu.embryo_freez_mothod_1);
+            //ic.setC1Combo(cboEmbryoFreezMethod0, opu.embryo_freez_mothod_0);
+            //ic.setC1Combo(cboEmbryoFreezMedia0, opu.embryo_freez_freeze_media_0);
+            //ic.setC1Combo(cboEmbryoFreezMedia1, opu.embryo_freez_freeze_media_1);
+            ////txtEmbryoFreezMedia0.Value = opu.embryo_freez_freeze_media_0;
+            ////txtEmbryoFreezMedia1.Value = opu.embryo_freez_freeze_media_1;
 
-            //txtRemark.Value = opu.remark;
-            ic.setC1ComboByName(cboRemark, opu.remark);
-            ic.setC1ComboByName(cboRemark1, opu.remark_1);
-            txtDatePicEmbryo.Value = opu.date_pic_embryo;
-            //CboEmbryoDay.Text = opu.emb
-            if (opu.status_opu.Equals("2"))
-            {                
-                String appr = "";
-                appr = ic.ivfDB.stfDB.getStaffNameBylStf(opu.approve_result_staff_id);
-                txtApproveResult.Value = appr;
-            }
-            else
-            {
-                
-            }
+            ////txtRemark.Value = opu.remark;
+            //ic.setC1ComboByName(cboRemark, opu.remark);
+            //ic.setC1ComboByName(cboRemark1, opu.remark_1);
+            //txtDatePicEmbryo.Value = opu.date_pic_embryo;
+            ////CboEmbryoDay.Text = opu.emb
+            //if (opu.status_opu.Equals("2"))
+            //{                
+            //    String appr = "";
+            //    appr = ic.ivfDB.stfDB.getStaffNameBylStf(opu.approve_result_staff_id);
+            //    txtApproveResult.Value = appr;
+            //}
+            //else
+            //{
+
+            //}
             txtOpuTime.Value = opu.opu_time;
         }
         private void sendHtmlEmail1(string from_Email, string to_Email, string from_Name, string Subject, DataTable dt, String day)
@@ -2821,7 +2836,7 @@ namespace clinic_ivf.gui
             c1SplitContainer1.HeaderHeight = 0;
             c1SplitContainer2.HeaderHeight = 0;
             c1SplitContainer3.HeaderHeight = 0;
-            tCResult.SelectedTab = tabOPU;
+            tCResult.SelectedTab = tabDay0;
         }
     }
 }
