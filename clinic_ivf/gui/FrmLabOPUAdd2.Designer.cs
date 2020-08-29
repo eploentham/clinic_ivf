@@ -4493,6 +4493,7 @@
             this.btnPrintOpuEmbryoDev.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.theme1.SetTheme(this.btnPrintOpuEmbryoDev, "(default)");
             this.btnPrintOpuEmbryoDev.UseVisualStyleBackColor = true;
+            this.btnPrintOpuEmbryoDev.Visible = false;
             this.btnPrintOpuEmbryoDev.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // btnPrint
@@ -4507,6 +4508,7 @@
             this.btnPrint.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.theme1.SetTheme(this.btnPrint, "(default)");
             this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.Visible = false;
             this.btnPrint.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // txtLabReqCode

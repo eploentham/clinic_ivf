@@ -932,7 +932,7 @@ namespace clinic_ivf.gui
             LabOpu opu = new LabOpu();
             opu = ic.ivfDB.opuDB.selectByReqID(lFormA.req_id_opu);
             //FrmLabOPUAdd2 frm = new FrmLabOPUAdd2(ic,"", opu.opu_id);
-            FrmNurseOPUView frm = new FrmNurseOPUView(ic, "", opu.opu_id);
+            FrmNurseOPUView1 frm = new FrmNurseOPUView1(ic, "", opu.opu_id);
             String txt = "";
             //if (!name.Equals(""))
             //{
@@ -2399,7 +2399,7 @@ namespace clinic_ivf.gui
                 LabOpu opu = new LabOpu();
                 opu = ic.ivfDB.opuDB.selectByReqID(req.req_id);
                 //FrmLabOPUAdd2 frm = new FrmLabOPUAdd2(ic,"", opu.opu_id);
-                FrmNurseOPUView frm = new FrmNurseOPUView(ic, "", opu.opu_id);
+                FrmNurseOPUView1 frm = new FrmNurseOPUView1(ic, "", opu.opu_id);
                 String txt = "";
                 if (!name.Equals(""))
                 {

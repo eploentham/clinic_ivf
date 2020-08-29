@@ -641,8 +641,8 @@ namespace clinic_ivf.gui
         private void BtnApproveResult_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            if (MessageBox.Show("ต้องการ ส่งผล LAB OPU ให้ทางพยาบาล  ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-            {
+            //if (MessageBox.Show("ต้องการ ส่งผล LAB OPU ให้ทางพยาบาล  ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+            //{
                 ic.cStf.staff_id = "";
                 Boolean chkSave = false;
                 //FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
@@ -658,12 +658,12 @@ namespace clinic_ivf.gui
                     String re1 = ic.ivfDB.lbReqDB.UpdateStatusRequestResult(req.req_id, ic.cStf.staff_id);
                     if (long.TryParse(re1, out chk1))
                     {
-                        MessageBox.Show("ส่งผล LAB OPU ให้ทางพยาบาล เรียบร้อย ", "");       //clinic_ivf.Properties.Resources.Female_user_accept_24
+                        //MessageBox.Show("ส่งผล LAB OPU ให้ทางพยาบาล เรียบร้อย ", "");       //clinic_ivf.Properties.Resources.Female_user_accept_24
                         btnApproveResult.Image = Resources.Female_user_accept_24;
                     }
                 }
                 //}
-            }
+            //}
         }
 
         private void setTheme()
@@ -3535,7 +3535,7 @@ namespace clinic_ivf.gui
             if (opu.status_opu.Equals("2"))
             {
                 btnApproveResult.Image = Resources.Female_user_accept_24;
-                btnApproveResult.Text = "รายงานผล เรียบร้อย";
+                btnApproveResult.Text = "Finish";
                 String appr = "";
                 appr = ic.ivfDB.stfDB.getStaffNameBylStf(opu.approve_result_staff_id);
                 txtApproveResult.Value = appr;
@@ -3543,7 +3543,7 @@ namespace clinic_ivf.gui
             else
             {
                 btnApproveResult.Image = Resources.Female_user_add_24;
-                btnApproveResult.Text = "รอ รายงานผล ";
+                btnApproveResult.Text = "Finish";
             }
             txtOpuTime.Value = opu.opu_time;
             

@@ -2210,11 +2210,25 @@ namespace clinic_ivf.objdb
             chk0 = stfDB.getStaffNameBylStf(checkedid);
             String[] stf01 = stf0.Split(' ');
             String[] chk01 = chk0.Split(' ');
-            if (stf0.Length > 0 && chk0.Length > 0)
+            if (stf0.Length > 0)
             {
-                stf0 = (stf01.Length > 0) ? stf01[0] + " " + stf01[1].Substring(0, 1) + "." : stf0;
-                chk0 = (chk01.Length > 0) ? chk01[0] + " " + chk01[1].Substring(0, 1) + "." : chk0;
+                if (stf01[1].Length > 0)
+                {
+                    if (stf0.Length > 0 && chk0.Length > 0)
+                    {
+                        stf0 = (stf01.Length > 0) ? stf01[0] + " " + stf01[1].Substring(0, 1) + "." : stf0;
+                        chk0 = (chk01.Length > 0) ? chk01[0] + " " + chk01[1].Substring(0, 1) + "." : chk0;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("staff invalid", "");
+                    stf0 = (stf01.Length > 0) ? stf01[0] + " " + stf01[1] + "." : stf0;
+                    chk0 = (chk01.Length > 0) ? chk01[0] + " " + chk01[1] + "." : chk0;
+                }
             }
+            
+            
             dt.Rows[0]["embryo_dev_0_staff_name"] = stf0;
             dt.Rows[0]["embryo_dev_0_checked_name"] = chk0;
             etName = dt.Rows[0]["embryo_for_et_embryologist_id"].ToString();
