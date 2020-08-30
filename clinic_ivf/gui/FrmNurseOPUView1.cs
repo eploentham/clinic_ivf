@@ -32,6 +32,7 @@ namespace clinic_ivf.gui
         String reqId = "", opuId = "";
         LabRequest lbReq;
         LabOpu opu;
+        LabFet fet;
 
         Font fEdit, fEditB;
         Color bg, fc;
@@ -48,27 +49,27 @@ namespace clinic_ivf.gui
         C1SuperErrorProvider sep;
         C1DockingTab tCday3, tCday5, tCday6;
         C1DockingTabPage tabDay3Rpt, tabDay3Embryo, tabDay5Rpt, tabDay5Embryo, tabDay6Rpt, tabDay6Embryo;
-        C1SplitterPanel scPnDay3, scTcDay3, scPnDay5, scTcDay5, scPnDay6, scTcDay6;
-        C1SplitContainer sCDay3, sCDay5, sCDay6;
-        Label lbDay3EmailTo, lbDay3EmailSubject, lbDay3EmailStatus, lbDay5EmailTo, lbDay5EmailSubject, lbDay5EmailStatus, lbDay6EmailTo, lbDay6EmailSubject, lbDay6EmailStatus;
-        C1TextBox txtDay3EmailTo, txtDay3EmailSubject, txtDay5EmailTo, txtDay5EmailSubject, txtDay6EmailTo, txtDay6EmailSubject;
-        MemoryStream streamDay3 = null, streamEmbryoDay3 = null, streamDay5 = null, streamEmbryoDay5 = null, streamDay6 = null, streamEmbryoDay6 = null;
+        C1SplitterPanel scPnDay0, scTcDay0, scPnDay1, scTcDay1, scPnDay2, scTcDay2, scPnDay3, scTcDay3, scPnDay5, scTcDay5, scPnDay6, scTcDay6;
+        C1SplitContainer sCDay0, sCDay1, sCDay2, sCDay3, sCDay5, sCDay6;
+        Label lbDay0EmailTo, lbDay0EmailSubject, lbDay0EmailStatus, lbDay1EmailTo, lbDay1EmailSubject, lbDay1EmailStatus, lbDay2EmailTo, lbDay2EmailSubject, lbDay2EmailStatus, lbDay3EmailTo, lbDay3EmailSubject, lbDay3EmailStatus, lbDay5EmailTo, lbDay5EmailSubject, lbDay5EmailStatus, lbDay6EmailTo, lbDay6EmailSubject, lbDay6EmailStatus;
+        C1TextBox txtDay0EmailTo, txtDay0EmailSubject, txtDay1EmailTo, txtDay1EmailSubject, txtDay2EmailTo, txtDay2EmailSubject, txtDay3EmailTo, txtDay3EmailSubject, txtDay5EmailTo, txtDay5EmailSubject, txtDay6EmailTo, txtDay6EmailSubject;
+        MemoryStream streamDay0 = null, streamDay1 = null, streamDay2 = null, streamDay3 = null, streamEmbryoDay3 = null, streamDay5 = null, streamEmbryoDay5 = null, streamDay6 = null, streamEmbryoDay6 = null;
 
         Color color;
         Boolean flagDay2Img = false, flagDay3Img = false, flagDay5Img = false, flagDay6Img = false;
         Boolean grf2Focus = false, grf3Focus = false, grf5Focus = false, grf6Focus = false;
         private bool prefixSeen;
         String theme2 = "Office2007Blue";       //Office2016Black       BeigeOne
-        String flagEdit = "", body="";
+        String flag = "", body="";
         List<LinkedResource> theEmailImage1 = new List<LinkedResource>();
         SmtpClient SmtpServer;
-        public FrmNurseOPUView1(IvfControl ic, String reqid, String opuid)
+        public FrmNurseOPUView1(IvfControl ic, String reqid, String opuid, String flag)
         {
             InitializeComponent();
             this.ic = ic;
             reqId = reqid;
             opuId = opuid;
-
+            this.flag = flag;
             initConfig();
         }
         private void initConfig()
@@ -146,10 +147,13 @@ namespace clinic_ivf.gui
             char c = '\u00B5';
             //label86.Text = c.ToString() + "l";
             //btnSendEmail.Enabled = false;
-            if (!ic.user.status_module_lab.Equals("1"))
+            if (flag.Equals("FET"))
             {
-                                
-
+                tCResult.TabPages[0].TabVisible = false;    //day0
+                tCResult.TabPages[2].TabVisible = false;    //day2
+                tCResult.TabPages[3].TabVisible = false;    //day3
+                tCResult.TabPages[4].TabVisible = false;    //day5
+                tCResult.TabPages[5].TabVisible = false;    //day6
             }
             //tCResult.TabPages[0].TabVisible = false;
             //tCResult.TabPages[1].TabVisible = false;
@@ -316,14 +320,26 @@ namespace clinic_ivf.gui
             {
                 if (!opuId.Equals(""))
                 {
-                    
-                    opu = ic.ivfDB.opuDB.selectByPk1(opuId);
-                    lbReq = ic.ivfDB.lbReqDB.selectByPk1(opu.req_id);
                     setControl1();
-                    setControlDay1();
-                    setControlDay3();
-                    setControlDay5();
-                    setControlDay6();
+                    if (flag.Equals("FET"))
+                    {
+                        //setControlDay0();
+                        setControlDay1();
+                        //setControlDay2();
+                        //setControlDay3();
+                        //setControlDay5();
+                        //setControlDay6();
+                    }
+                    else
+                    {
+                        setControlDay0();
+                        setControlDay1();
+                        setControlDay2();
+                        setControlDay3();
+                        setControlDay5();
+                        setControlDay6();
+                    }
+                    
                     DataTable dt = new DataTable();
                     dt = ic.ivfDB.opuEmDevDB.selectByOpuFetId_Day(txtID.Text, objdb.LabOpuEmbryoDevDB.Day1.Day2);
                     if (dt.Rows.Count > 0)
@@ -352,17 +368,435 @@ namespace clinic_ivf.gui
                 MessageBox.Show("" + ex.Message, "");
             }
         }
+        private void setControlDay0()
+        {
+
+            int gapY = 50, gapX = 20, gapLine = 0, gapColName = 120;
+            Size size = new Size();
+
+            C1Button btnEmailSendDay0, btnEmailListDay0;
+
+            C1FlexViewer day0View = new C1FlexViewer();
+            C1FlexViewer day0Embryo = new C1FlexViewer();
+
+            Panel pnEmailDay0 = new Panel();
+            
+            scPnDay0 = new C1.Win.C1SplitContainer.C1SplitterPanel();
+            scTcDay0 = new C1.Win.C1SplitContainer.C1SplitterPanel();
+            sCDay0 = new C1.Win.C1SplitContainer.C1SplitContainer();
+            
+            day0View.SuspendLayout();
+            sCDay0.SuspendLayout();
+            scTcDay0.SuspendLayout();
+            scPnDay0.SuspendLayout();
+            pnEmailDay0.SuspendLayout();
+            tabDay0.SuspendLayout();
+
+            lbDay0EmailTo = new Label();
+            lbDay0EmailTo.Text = "Email TO :";
+            lbDay0EmailTo.Font = fEdit;
+            lbDay0EmailTo.Location = new System.Drawing.Point(gapX, 5);
+            lbDay0EmailTo.AutoSize = true;
+            lbDay0EmailTo.Name = "lbDay0EmailTo";
+            txtDay0EmailTo = new C1TextBox();
+            txtDay0EmailTo.Font = fEdit;
+            txtDay0EmailTo.Name = "txtDay0EmailTo";
+            txtDay0EmailTo.Location = new System.Drawing.Point(gapColName, lbDay0EmailTo.Location.Y);
+            txtDay0EmailTo.Size = new Size(320, 20);
+            txtDay0EmailTo.Value = ic.iniC.email_to_lab_opu;
+            gapLine += gapY;
+            lbDay0EmailSubject = new Label();
+            lbDay0EmailSubject.Text = "Subject :";
+            lbDay0EmailSubject.Font = fEdit;
+            lbDay0EmailSubject.Location = new System.Drawing.Point(gapX, gapLine);
+            lbDay0EmailSubject.AutoSize = true;
+            lbDay0EmailSubject.Name = "lbDay0EmailSubject";
+            txtDay0EmailSubject = new C1TextBox();
+            txtDay0EmailSubject.Font = fEdit;
+            txtDay0EmailSubject.Name = "txtDay3EmailSubject";
+            txtDay0EmailSubject.Location = new System.Drawing.Point(gapColName, lbDay0EmailSubject.Location.Y);
+            txtDay0EmailSubject.Size = new Size(620, 20);
+
+            btnEmailListDay0 = new C1Button();
+            btnEmailListDay0.Image = null;
+            btnEmailListDay0.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            btnEmailListDay0.Location = new System.Drawing.Point(txtDay0EmailTo.Location.X + txtDay0EmailTo.Width + 20, lbDay0EmailTo.Location.Y);
+            btnEmailListDay0.Name = "btnEmailListDay0";
+            btnEmailListDay0.Size = new System.Drawing.Size(40, 25);
+            btnEmailListDay0.TabIndex = 761;
+            btnEmailListDay0.Text = "...";
+            btnEmailListDay0.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            theme1.SetTheme(btnEmailListDay0, "(default)");
+            btnEmailListDay0.UseVisualStyleBackColor = true;
+            btnEmailListDay0.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+
+            btnEmailSendDay0 = new C1Button();
+            btnEmailSendDay0.Image = global::clinic_ivf.Properties.Resources.download_database24;
+            btnEmailSendDay0.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            btnEmailSendDay0.Location = new System.Drawing.Point(btnEmailListDay0.Location.X + btnEmailListDay0.Width + 80, lbDay0EmailTo.Location.Y);
+            btnEmailSendDay0.Name = "btnEmailSendDay3";
+            btnEmailSendDay0.Size = new System.Drawing.Size(94, 45);
+            btnEmailSendDay0.TabIndex = 761;
+            btnEmailSendDay0.Text = "Send Email";
+            btnEmailSendDay0.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            theme1.SetTheme(btnEmailSendDay0, "(default)");
+            btnEmailSendDay0.UseVisualStyleBackColor = true;
+            btnEmailSendDay0.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            btnEmailSendDay0.Click += BtnEmailSendDay3_Click;
+
+            lbDay0EmailStatus = new Label();
+            lbDay0EmailStatus.Text = "...";
+            lbDay0EmailStatus.Font = fEdit;
+            lbDay0EmailStatus.Location = new System.Drawing.Point(btnEmailSendDay0.Location.X + btnEmailSendDay0.Width + 20, btnEmailSendDay0.Location.Y);
+            lbDay0EmailStatus.AutoSize = true;
+            lbDay0EmailStatus.Name = "lbDay3EmailStatus";
+
+            pnEmailDay0.Dock = DockStyle.Fill;
+            pnEmailDay0.Name = "pnEmailDay3";
+            pnEmailDay0.Controls.Add(lbDay0EmailTo);
+            pnEmailDay0.Controls.Add(txtDay0EmailTo);
+            pnEmailDay0.Controls.Add(lbDay0EmailSubject);
+            pnEmailDay0.Controls.Add(txtDay0EmailSubject);
+            pnEmailDay0.Controls.Add(btnEmailListDay0);
+            pnEmailDay0.Controls.Add(btnEmailSendDay0);
+            pnEmailDay0.Controls.Add(lbDay0EmailStatus);
+
+            scPnDay0.Collapsible = true;
+            scPnDay0.Dock = C1.Win.C1SplitContainer.PanelDockStyle.Bottom;
+            scPnDay0.Location = new System.Drawing.Point(0, 21);
+            scPnDay0.Name = "scPnDay0";
+            scPnDay0.Controls.Add(pnEmailDay0);
+            scPnDay0.ClientSize = new Size(20, 80);
+
+
+            scTcDay0.Collapsible = false;
+            scTcDay0.Dock = C1.Win.C1SplitContainer.PanelDockStyle.Top;
+            scTcDay0.Location = new System.Drawing.Point(0, 21);
+            scTcDay0.Name = "scTcDay0";
+            scTcDay0.Controls.Add(day0View);
+            sCDay0.AutoSizeElement = C1.Framework.AutoSizeElement.Both;
+            sCDay0.Name = "sCDay0";
+            sCDay0.Dock = System.Windows.Forms.DockStyle.Fill;
+            sCDay0.Panels.Add(scPnDay0);
+            sCDay0.Panels.Add(scTcDay0);
+
+            //pnEmai.BackColor = Color.Red;
+
+            sCDay0.HeaderHeight = 0;
+            scTcDay0.SizeRatio = 0;
+            
+            day0View = new C1FlexViewer();
+            day0View.AutoScrollMargin = new System.Drawing.Size(0, 0);
+            day0View.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+            day0View.Dock = System.Windows.Forms.DockStyle.Fill;
+            day0View.Location = new System.Drawing.Point(0, 0);
+            day0View.Name = "day3View";
+            day0View.Size = new System.Drawing.Size(1065, 790);
+            day0View.TabIndex = 0;
+            day0View.Ribbon.Minimized = true;
+            C1PdfDocumentSource pds = new C1PdfDocumentSource();
+            //MemoryStream stream;
+            FtpClient ftpc = new FtpClient(ic.iniC.hostFTP, ic.iniC.userFTP, ic.iniC.passFTP, ic.ftpUsePassive);
+            //ftpC.upload(iniC.folderFTP + "/" + opuCode + "/" + filename, pathFile);
+            streamDay0 = ftpc.download(ic.iniC.folderFTP + "//" + opu.opu_code + "//" + opu.report_day3);
+            streamDay0.Seek(0, SeekOrigin.Begin);
+            pds.LoadFromStream(streamDay0);
+            day0View.DocumentSource = pds;
+
+            //pds.LoadFromFile(filename1);
+            day0View.ResumeLayout(false);
+            pnEmailDay0.ResumeLayout(false);
+            scPnDay0.ResumeLayout(false);
+            scTcDay0.ResumeLayout(false);
+            sCDay0.ResumeLayout(false);
+            tabDay0.ResumeLayout(false);
+
+            day0View.PerformLayout();
+            pnEmailDay0.PerformLayout();
+            scPnDay0.PerformLayout();
+            scTcDay0.PerformLayout();
+            sCDay0.PerformLayout();
+            tabDay0.PerformLayout();
+            
+            tabDay0.Controls.Add(sCDay0);
+        }
         private void setControlDay1()
         {
+            int gapY = 35, gapX = 20, gapLine = 0, gapColName = 120;
+            Size size = new Size();
+            C1Button btnEmailSendDay1, btnEmailListDay1;
+            Panel pnEmailDay1 = new Panel();
+            scPnDay1 = new C1.Win.C1SplitContainer.C1SplitterPanel();
+            scTcDay1 = new C1.Win.C1SplitContainer.C1SplitterPanel();
+            sCDay1 = new C1.Win.C1SplitContainer.C1SplitContainer();
+            pnEmailDay1.SuspendLayout();
+            
             C1FlexViewer day1View = new C1FlexViewer();
             day1View = new C1FlexViewer();
+            day1View.SuspendLayout();
+            sCDay1.SuspendLayout();
+            scTcDay1.SuspendLayout();
+            scPnDay1.SuspendLayout();
+
+            lbDay1EmailTo = new Label();
+            lbDay1EmailTo.Text = "Email TO :";
+            lbDay1EmailTo.Font = fEdit;
+            lbDay1EmailTo.Location = new System.Drawing.Point(gapX, 5);
+            lbDay1EmailTo.AutoSize = true;
+            lbDay1EmailTo.Name = "lbDay1EmailTo";
+            txtDay1EmailTo = new C1TextBox();
+            txtDay1EmailTo.Font = fEdit;
+            txtDay1EmailTo.Name = "txtDay1EmailTo";
+            txtDay1EmailTo.Location = new System.Drawing.Point(gapColName, lbDay1EmailTo.Location.Y);
+            txtDay1EmailTo.Size = new Size(320, 20);
+            txtDay1EmailTo.Value = ic.iniC.email_to_lab_opu;
+            gapLine += gapY;
+            lbDay1EmailSubject = new Label();
+            lbDay1EmailSubject.Text = "Subject :";
+            lbDay1EmailSubject.Font = fEdit;
+            lbDay1EmailSubject.Location = new System.Drawing.Point(gapX, gapLine);
+            lbDay1EmailSubject.AutoSize = true;
+            lbDay1EmailSubject.Name = "lbDay1EmailSubject";
+            txtDay1EmailSubject = new C1TextBox();
+            txtDay1EmailSubject.Font = fEdit;
+            txtDay1EmailSubject.Name = "txtDay1EmailSubject";
+            txtDay1EmailSubject.Location = new System.Drawing.Point(gapColName, lbDay1EmailSubject.Location.Y);
+            txtDay1EmailSubject.Size = new Size(620, 20);
+
+            btnEmailListDay1 = new C1Button();
+            btnEmailListDay1.Image = null;
+            btnEmailListDay1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            btnEmailListDay1.Location = new System.Drawing.Point(txtDay1EmailTo.Location.X + txtDay1EmailTo.Width + 20, lbDay1EmailTo.Location.Y);
+            btnEmailListDay1.Name = "btnEmailListDay1";
+            btnEmailListDay1.Size = new System.Drawing.Size(40, 25);
+            btnEmailListDay1.TabIndex = 761;
+            btnEmailListDay1.Text = "...";
+            btnEmailListDay1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            theme1.SetTheme(btnEmailListDay1, "(default)");
+            btnEmailListDay1.UseVisualStyleBackColor = true;
+            btnEmailListDay1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+
+            btnEmailSendDay1 = new C1Button();
+            btnEmailSendDay1.Image = global::clinic_ivf.Properties.Resources.download_database24;
+            btnEmailSendDay1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            btnEmailSendDay1.Location = new System.Drawing.Point(txtDay1EmailSubject.Location.X + txtDay1EmailSubject.Width + 15, lbDay1EmailTo.Location.Y);
+            btnEmailSendDay1.Name = "btnEmailSendDay1";
+            btnEmailSendDay1.Size = new System.Drawing.Size(94, 45);
+            btnEmailSendDay1.TabIndex = 761;
+            btnEmailSendDay1.Text = "Send Email";
+            btnEmailSendDay1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            theme1.SetTheme(btnEmailSendDay1, "(default)");
+            btnEmailSendDay1.UseVisualStyleBackColor = true;
+            btnEmailSendDay1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            btnEmailSendDay1.Click += BtnEmailSendDay1_Click;
+
+            lbDay1EmailStatus = new Label();
+            lbDay1EmailStatus.Text = "...";
+            lbDay1EmailStatus.Font = fEdit;
+            lbDay1EmailStatus.Location = new System.Drawing.Point(btnEmailSendDay1.Location.X + btnEmailSendDay1.Width + 20, btnEmailSendDay1.Location.Y);
+            lbDay1EmailStatus.AutoSize = true;
+            lbDay1EmailStatus.Name = "lbDay5EmailStatus";
+
+            pnEmailDay1.Dock = DockStyle.Fill;
+            pnEmailDay1.Name = "pnEmailDay1";
+            pnEmailDay1.Controls.Add(lbDay1EmailTo);
+            pnEmailDay1.Controls.Add(txtDay1EmailTo);
+            pnEmailDay1.Controls.Add(lbDay1EmailSubject);
+            pnEmailDay1.Controls.Add(txtDay1EmailSubject);
+            pnEmailDay1.Controls.Add(btnEmailListDay1);
+            pnEmailDay1.Controls.Add(btnEmailSendDay1);
+            pnEmailDay1.Controls.Add(lbDay1EmailStatus);
+
+            scPnDay1.Collapsible = true;
+            scPnDay1.Dock = C1.Win.C1SplitContainer.PanelDockStyle.Bottom;
+            scPnDay1.Location = new System.Drawing.Point(0, 21);
+            scPnDay1.Name = "scPnDay1";
+            scPnDay1.Controls.Add(pnEmailDay1);
+            scPnDay1.ClientSize = new Size(20, 80);
+
+
+            scTcDay1.Collapsible = false;
+            scTcDay1.Dock = C1.Win.C1SplitContainer.PanelDockStyle.Top;
+            scTcDay1.Location = new System.Drawing.Point(0, 21);
+            scTcDay1.Name = "scTcDay1";
+            scTcDay1.Controls.Add(day1View);
+            sCDay1.AutoSizeElement = C1.Framework.AutoSizeElement.Both;
+            sCDay1.Name = "sCDay1";
+            sCDay1.Dock = System.Windows.Forms.DockStyle.Fill;
+            sCDay1.Panels.Add(scPnDay1);
+            sCDay1.Panels.Add(scTcDay1);
+
+            //pnEmai.BackColor = Color.Red;
+
+            sCDay1.HeaderHeight = 0;
+            scTcDay1.SizeRatio = 0;
+
             day1View.AutoScrollMargin = new System.Drawing.Size(0, 0);
             day1View.AutoScrollMinSize = new System.Drawing.Size(0, 0);
             day1View.Dock = System.Windows.Forms.DockStyle.Fill;
             day1View.Location = new System.Drawing.Point(0, 0);
-            day1View.Name = "c1FlexViewer1";
+            day1View.Name = "day1View";
             day1View.Size = new System.Drawing.Size(1065, 790);
             day1View.TabIndex = 0;
+            C1PdfDocumentSource pds = new C1PdfDocumentSource();
+            MemoryStream stream;
+            FtpClient ftpc = new FtpClient(ic.iniC.hostFTP, ic.iniC.userFTP, ic.iniC.passFTP, ic.ftpUsePassive);
+            //ftpC.upload(iniC.folderFTP + "/" + opuCode + "/" + filename, pathFile);
+            if (flag.Equals("FET"))
+            {
+                stream = ftpc.download(ic.iniC.folderFTP + "//" + fet.fet_code + "//" + fet.report);
+            }
+            else
+            {
+                stream = ftpc.download(ic.iniC.folderFTP + "//" + opu.opu_code + "//" + opu.report_day1);
+            }
+            
+            stream.Seek(0, SeekOrigin.Begin);
+            pds.LoadFromStream(stream);
+            day1View.Ribbon.Minimized = true;
+            //pds.LoadFromFile(filename1);
+            day1View.DocumentSource = pds;
+
+            day1View.ResumeLayout(false);
+            pnEmailDay1.ResumeLayout(false);
+            scPnDay1.ResumeLayout(false);
+            scTcDay1.ResumeLayout(false);
+            sCDay1.ResumeLayout(false);
+
+            day1View.PerformLayout();
+            pnEmailDay1.PerformLayout();
+            scPnDay1.PerformLayout();
+            scTcDay1.PerformLayout();
+            sCDay1.PerformLayout();
+            if (flag.Equals("FET"))
+            {
+                tCResult.ShowTabs = false;
+            }
+            tabDay1.Controls.Add(sCDay1);
+        }
+
+        private void BtnEmailSendDay1_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+
+        }
+        private void setControlDay2()
+        {
+            int gapY = 35, gapX = 20, gapLine = 0, gapColName = 120;
+            Size size = new Size();
+            C1Button btnEmailSendDay2, btnEmailListDay2;
+            Panel pnEmailDay2 = new Panel();
+            scPnDay2 = new C1.Win.C1SplitContainer.C1SplitterPanel();
+            scTcDay2 = new C1.Win.C1SplitContainer.C1SplitterPanel();
+            sCDay2 = new C1.Win.C1SplitContainer.C1SplitContainer();
+            pnEmailDay2.SuspendLayout();
+
+            C1FlexViewer day2View = new C1FlexViewer();
+            day2View = new C1FlexViewer();
+            day2View.SuspendLayout();
+            sCDay2.SuspendLayout();
+            scTcDay2.SuspendLayout();
+            scPnDay2.SuspendLayout();
+
+            lbDay2EmailTo = new Label();
+            lbDay2EmailTo.Text = "Email TO :";
+            lbDay2EmailTo.Font = fEdit;
+            lbDay2EmailTo.Location = new System.Drawing.Point(gapX, 5);
+            lbDay2EmailTo.AutoSize = true;
+            lbDay2EmailTo.Name = "lbDay1EmailTo";
+            txtDay2EmailTo = new C1TextBox();
+            txtDay2EmailTo.Font = fEdit;
+            txtDay2EmailTo.Name = "txtDay2EmailTo";
+            txtDay2EmailTo.Location = new System.Drawing.Point(gapColName, lbDay1EmailTo.Location.Y);
+            txtDay2EmailTo.Size = new Size(320, 20);
+            txtDay2EmailTo.Value = ic.iniC.email_to_lab_opu;
+            gapLine += gapY;
+            lbDay2EmailSubject = new Label();
+            lbDay2EmailSubject.Text = "Subject :";
+            lbDay2EmailSubject.Font = fEdit;
+            lbDay2EmailSubject.Location = new System.Drawing.Point(gapX, gapLine);
+            lbDay2EmailSubject.AutoSize = true;
+            lbDay2EmailSubject.Name = "lbDay2EmailSubject";
+            txtDay2EmailSubject = new C1TextBox();
+            txtDay2EmailSubject.Font = fEdit;
+            txtDay2EmailSubject.Name = "txtDay2EmailSubject";
+            txtDay2EmailSubject.Location = new System.Drawing.Point(gapColName, lbDay1EmailSubject.Location.Y);
+            txtDay2EmailSubject.Size = new Size(620, 20);
+
+            btnEmailListDay2 = new C1Button();
+            btnEmailListDay2.Image = null;
+            btnEmailListDay2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            btnEmailListDay2.Location = new System.Drawing.Point(txtDay1EmailTo.Location.X + txtDay1EmailTo.Width + 20, lbDay1EmailTo.Location.Y);
+            btnEmailListDay2.Name = "btnEmailListDay2";
+            btnEmailListDay2.Size = new System.Drawing.Size(40, 25);
+            btnEmailListDay2.TabIndex = 761;
+            btnEmailListDay2.Text = "...";
+            btnEmailListDay2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            theme1.SetTheme(btnEmailListDay2, "(default)");
+            btnEmailListDay2.UseVisualStyleBackColor = true;
+            btnEmailListDay2.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+
+            btnEmailSendDay2 = new C1Button();
+            btnEmailSendDay2.Image = global::clinic_ivf.Properties.Resources.download_database24;
+            btnEmailSendDay2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            btnEmailSendDay2.Location = new System.Drawing.Point(txtDay1EmailSubject.Location.X + txtDay1EmailSubject.Width + 15, lbDay1EmailTo.Location.Y);
+            btnEmailSendDay2.Name = "btnEmailSendDay2";
+            btnEmailSendDay2.Size = new System.Drawing.Size(94, 45);
+            btnEmailSendDay2.TabIndex = 761;
+            btnEmailSendDay2.Text = "Send Email";
+            btnEmailSendDay2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            theme1.SetTheme(btnEmailSendDay2, "(default)");
+            btnEmailSendDay2.UseVisualStyleBackColor = true;
+            btnEmailSendDay2.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            btnEmailSendDay2.Click += BtnEmailSendDay2_Click;
+
+            lbDay2EmailStatus = new Label();
+            lbDay2EmailStatus.Text = "...";
+            lbDay2EmailStatus.Font = fEdit;
+            lbDay2EmailStatus.Location = new System.Drawing.Point(btnEmailSendDay2.Location.X + btnEmailSendDay2.Width + 20, btnEmailSendDay2.Location.Y);
+            lbDay2EmailStatus.AutoSize = true;
+            lbDay2EmailStatus.Name = "lbDay2EmailStatus";
+
+            pnEmailDay2.Dock = DockStyle.Fill;
+            pnEmailDay2.Name = "pnEmailDay2";
+            pnEmailDay2.Controls.Add(lbDay2EmailTo);
+            pnEmailDay2.Controls.Add(txtDay2EmailTo);
+            pnEmailDay2.Controls.Add(lbDay2EmailSubject);
+            pnEmailDay2.Controls.Add(txtDay2EmailSubject);
+            pnEmailDay2.Controls.Add(btnEmailListDay2);
+            pnEmailDay2.Controls.Add(btnEmailSendDay2);
+            pnEmailDay2.Controls.Add(lbDay2EmailStatus);
+
+            scPnDay2.Collapsible = true;
+            scPnDay2.Dock = C1.Win.C1SplitContainer.PanelDockStyle.Bottom;
+            scPnDay2.Location = new System.Drawing.Point(0, 21);
+            scPnDay2.Name = "scPnDay1";
+            scPnDay2.Controls.Add(pnEmailDay2);
+            scPnDay2.ClientSize = new Size(20, 80);
+
+            scTcDay2.Collapsible = false;
+            scTcDay2.Dock = C1.Win.C1SplitContainer.PanelDockStyle.Top;
+            scTcDay2.Location = new System.Drawing.Point(0, 21);
+            scTcDay2.Name = "scTcDay1";
+            scTcDay2.Controls.Add(day2View);
+            sCDay2.AutoSizeElement = C1.Framework.AutoSizeElement.Both;
+            sCDay2.Name = "sCDay1";
+            sCDay2.Dock = System.Windows.Forms.DockStyle.Fill;
+            sCDay2.Panels.Add(scPnDay2);
+            sCDay2.Panels.Add(scTcDay2);
+
+            //pnEmai.BackColor = Color.Red;
+
+            sCDay2.HeaderHeight = 0;
+            scTcDay2.SizeRatio = 0;
+
+            day2View.AutoScrollMargin = new System.Drawing.Size(0, 0);
+            day2View.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+            day2View.Dock = System.Windows.Forms.DockStyle.Fill;
+            day2View.Location = new System.Drawing.Point(0, 0);
+            day2View.Name = "day1View";
+            day2View.Size = new System.Drawing.Size(1065, 790);
+            day2View.TabIndex = 0;
             C1PdfDocumentSource pds = new C1PdfDocumentSource();
             MemoryStream stream;
             FtpClient ftpc = new FtpClient(ic.iniC.hostFTP, ic.iniC.userFTP, ic.iniC.passFTP, ic.ftpUsePassive);
@@ -370,11 +804,30 @@ namespace clinic_ivf.gui
             stream = ftpc.download(ic.iniC.folderFTP + "//" + opu.opu_code + "//" + opu.report_day1);
             stream.Seek(0, SeekOrigin.Begin);
             pds.LoadFromStream(stream);
-            day1View.Ribbon.Minimized = true;
+            day2View.Ribbon.Minimized = true;
             //pds.LoadFromFile(filename1);
-            day1View.DocumentSource = pds;
-            tabDay1.Controls.Add(day1View);
+            day2View.DocumentSource = pds;
+
+            day2View.ResumeLayout(false);
+            scPnDay2.ResumeLayout(false);
+            scTcDay2.ResumeLayout(false);
+            sCDay2.ResumeLayout(false);
+            pnEmailDay2.ResumeLayout(false);
+
+            day2View.PerformLayout();
+            scPnDay2.PerformLayout();
+            scTcDay2.PerformLayout();
+            sCDay2.PerformLayout();
+            pnEmailDay2.PerformLayout();
+            tabDay2.Controls.Add(sCDay2);
         }
+
+        private void BtnEmailSendDay2_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+
+        }
+
         private void setControlDay3()
         {
             
@@ -597,6 +1050,7 @@ namespace clinic_ivf.gui
             {
                 lb = lbDay3EmailStatus;
                 lbDay3EmailStatus.Text = "เริ่มส่ง Email";
+                Application.DoEvents();
                 txtsubject = txtDay3EmailTo;
                 txtTo = txtDay3EmailTo;
                 if (streamDay3 != null)
@@ -617,6 +1071,8 @@ namespace clinic_ivf.gui
                     attachment.ContentDisposition.FileName = "opu_day3_embryo.pdf";
                     mail.Attachments.Add(attachment);
                 }
+                lbDay3EmailStatus.Text = "Attach File";
+                Application.DoEvents();
             }
             else if (flagDay.Equals("day5"))
             {
@@ -643,6 +1099,8 @@ namespace clinic_ivf.gui
                     attachment.ContentDisposition.FileName = "opu_day5_embryo.pdf";
                     mail.Attachments.Add(attachment);
                 }
+                lbDay5EmailStatus.Text = "Attach File";
+                Application.DoEvents();
             }
             else if (flagDay.Equals("day6"))
             {
@@ -669,12 +1127,14 @@ namespace clinic_ivf.gui
                     attachment.ContentDisposition.FileName = "opu_day6_embryo.pdf";
                     mail.Attachments.Add(attachment);
                 }
+                lbDay6EmailStatus.Text = "Attach File";
+                Application.DoEvents();
             }
             Application.DoEvents();
-            mail.To.Add(txtDay3EmailTo.Text);
-            mail.Subject = lbDay3EmailSubject.Text;
+            //mail.To.Add(txtDay3EmailTo.Text);
+            //mail.Subject = lbDay3EmailSubject.Text;
             
-            Application.DoEvents();
+            //Application.DoEvents();
                         
             mail.Body = "";
 
@@ -687,11 +1147,15 @@ namespace clinic_ivf.gui
             //{
             //    htmlView.LinkedResources.Add(linkimg);
             //}
-
+            lbDay6EmailStatus.Text = "Email Credentials";
+            Application.DoEvents();
             SmtpServer.Port = int.Parse(ic.iniC.email_port);
             SmtpServer.Credentials = new System.Net.NetworkCredential(ic.iniC.email_auth_user, ic.iniC.email_auth_pass);
+            
             //SmtpServer.UseDefaultCredentials = true;
             SmtpServer.EnableSsl = Boolean.Parse(ic.iniC.email_ssl);
+            lbDay6EmailStatus.Text = "Email Sending...";
+            Application.DoEvents();
             SmtpServer.Send(mail);
             
             lb.Text = "ส่ง Email เรียบร้อย";
@@ -699,7 +1163,7 @@ namespace clinic_ivf.gui
         }
         private void setControlDay5()
         {
-            int gapY = 50, gapX = 20, gapLine = 0, gapColName = 120;
+            int gapY = 35, gapX = 20, gapLine = 0, gapColName = 120;
             Size size = new Size();
 
             C1Button btnEmailSendDay5, btnEmailListDay5;
@@ -754,7 +1218,7 @@ namespace clinic_ivf.gui
             btnEmailListDay5 = new C1Button();
             btnEmailListDay5.Image = null;
             btnEmailListDay5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            btnEmailListDay5.Location = new System.Drawing.Point(txtDay3EmailTo.Location.X + txtDay3EmailTo.Width + 20, lbDay3EmailTo.Location.Y);
+            btnEmailListDay5.Location = new System.Drawing.Point(txtDay5EmailTo.Location.X + txtDay5EmailTo.Width + 20, lbDay5EmailTo.Location.Y);
             btnEmailListDay5.Name = "btnEmailListDay5";
             btnEmailListDay5.Size = new System.Drawing.Size(40, 25);
             btnEmailListDay5.TabIndex = 761;
@@ -767,7 +1231,7 @@ namespace clinic_ivf.gui
             btnEmailSendDay5 = new C1Button();
             btnEmailSendDay5.Image = global::clinic_ivf.Properties.Resources.download_database24;
             btnEmailSendDay5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            btnEmailSendDay5.Location = new System.Drawing.Point(btnEmailListDay5.Location.X + btnEmailListDay5.Width + 80, lbDay3EmailTo.Location.Y);
+            btnEmailSendDay5.Location = new System.Drawing.Point(txtDay5EmailSubject.Location.X + txtDay5EmailSubject.Width + 15, lbDay5EmailTo.Location.Y);
             btnEmailSendDay5.Name = "btnEmailSendDay5";
             btnEmailSendDay5.Size = new System.Drawing.Size(94, 45);
             btnEmailSendDay5.TabIndex = 761;
@@ -1117,42 +1581,69 @@ namespace clinic_ivf.gui
             //throw new NotImplementedException();
             sendEmail("day6");
         }
-        
-        
         private void setControl1()
         {
-            txtID.Value = opu.opu_id;
-            txtHnFeMale.Value = opu.hn_female;
-            txtHnMale.Value = opu.hn_male;
-            txtNameFeMale.Value = opu.name_female;
-            txtNameMale.Value = opu.name_male;
-            txtLabReqCode.Value = lbReq.req_code;
-            txtDobFeMale.Value = opu.dob_female;
-            txtDobMale.Value = opu.dob_male;
-            ic.setC1Combo(cboDoctor, opu.doctor_id);
-            //ic.setC1Combo(cboEmbryoForEtDoctor, opu.embryo_for_et_doctor);
-            txtOpuDate.Value = opu.opu_date;
-            ic.setC1Combo(cboOpuProce, opu.proce_id);
-            txtOpuCode.Value = opu.opu_code;
-            txtHnDonor.Value = opu.hn_donor;
-            txtNameDonor.Value = opu.name_donor;
-            txtDobDonor.Value = opu.dob_donor;
-
-            //txtMaturaNoofOpu.Value = opu.matura_no_of_opu;
-            try
+            if (flag.Equals("FET"))
             {
-                String[] ext = opu.matura_no_of_opu.Split(',');
-                int rt = 0, lt = 0;
-                int.TryParse(ext[0], out rt);
-                int.TryParse(ext[1], out lt);
-
+                fet = ic.ivfDB.fetDB.selectByPk1(opuId);
+                lbReq = ic.ivfDB.lbReqDB.selectByPk1(fet.req_id);
+                txtOpuTime.Value = fet.fet_time;
                 //txtMaturaNoofOpu1.Value = rt + lt;
+                txtID.Value = fet.fet_id;
+                txtHnFeMale.Value = fet.hn_female;
+                txtHnMale.Value = fet.hn_male;
+                txtNameFeMale.Value = fet.name_female;
+                txtNameMale.Value = fet.name_male;
+                txtLabReqCode.Value = lbReq.req_code;
+                txtDobFeMale.Value = fet.dob_female;
+                txtDobMale.Value = fet.dob_male;
+                ic.setC1Combo(cboDoctor, fet.doctor_id);
+                //ic.setC1Combo(cboEmbryoForEtDoctor, opu.embryo_for_et_doctor);
+                txtOpuDate.Value = ic.datetoShow(fet.fet_date);
+                ic.setC1Combo(cboOpuProce, fet.proce_id);
+                txtOpuCode.Value = fet.fet_code;
+                txtHnDonor.Value = fet.hn_donor;
+                txtNameDonor.Value = fet.name_donor;
+                txtDobDonor.Value = fet.dob_donor;
+                label31.Text = "Date of FET :";
+                label90.Text = "Time of FET :";
             }
-            catch (Exception ex)
+            else
             {
+                opu = ic.ivfDB.opuDB.selectByPk1(opuId);
+                lbReq = ic.ivfDB.lbReqDB.selectByPk1(opu.req_id);
+                try
+                {
+                    String[] ext = opu.matura_no_of_opu.Split(',');
+                    int rt = 0, lt = 0;
+                    int.TryParse(ext[0], out rt);
+                    int.TryParse(ext[1], out lt);
+                    txtOpuTime.Value = opu.opu_time;
+                    //txtMaturaNoofOpu1.Value = rt + lt;
+                    txtID.Value = opu.opu_id;
+                    txtHnFeMale.Value = opu.hn_female;
+                    txtHnMale.Value = opu.hn_male;
+                    txtNameFeMale.Value = opu.name_female;
+                    txtNameMale.Value = opu.name_male;
+                    txtLabReqCode.Value = lbReq.req_code;
+                    txtDobFeMale.Value = opu.dob_female;
+                    txtDobMale.Value = opu.dob_male;
+                    ic.setC1Combo(cboDoctor, opu.doctor_id);
+                    //ic.setC1Combo(cboEmbryoForEtDoctor, opu.embryo_for_et_doctor);
+                    txtOpuDate.Value = ic.datetoShow(opu.opu_date);
+                    ic.setC1Combo(cboOpuProce, opu.proce_id);
+                    txtOpuCode.Value = opu.opu_code;
+                    txtHnDonor.Value = opu.hn_donor;
+                    txtNameDonor.Value = opu.name_donor;
+                    txtDobDonor.Value = opu.dob_donor;
+                }
+                catch (Exception ex)
+                {
 
+                }
             }
-
+            //txtMaturaNoofOpu.Value = opu.matura_no_of_opu;
+            
             //txtMaturaDate.Value = opu.matura_date;
             //txtMaturaMii.Value = opu.matura_m_ii;
             //txtMaturaMi.Value = opu.matura_m_i;
@@ -1231,17 +1722,13 @@ namespace clinic_ivf.gui
             //else
             //{
 
-            //}
-            txtOpuTime.Value = opu.opu_time;
+            //}            
         }
-        
-
         private void SmtpServer_SendCompleted(object sender, AsyncCompletedEventArgs e)
         {
             //throw new NotImplementedException();
             MessageBox.Show("mail send");
         }
-
         protected void sendHtmlEmail(string from_Email, string to_Email, string from_Name, string Subject, DataTable dt)
         {
             //create an instance of new mail message
@@ -1334,6 +1821,7 @@ namespace clinic_ivf.gui
             c1SplitContainer1.HeaderHeight = 0;
             
             tCResult.SelectedTab = tabDay0;
+            if(scPnDay1 != null) scTcDay1.SizeRatio = 0;
         }
     }
 }

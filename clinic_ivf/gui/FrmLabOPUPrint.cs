@@ -1,4 +1,5 @@
-﻿using C1.Win.C1Document;
+﻿using C1.Win.C1Command;
+using C1.Win.C1Document;
 using C1.Win.C1Input;
 using C1.Win.C1SuperTooltip;
 using C1.Win.FlexViewer;
@@ -766,7 +767,6 @@ namespace clinic_ivf.gui
                     long chk1 = 0;
                     String filename1 = Path.GetFileName(filename);
                     ic.savePicOPUtoServer(txtOpuCode.Text, filename1, filename);
-
                 }
             }
             catch (Exception ex)
@@ -926,59 +926,21 @@ namespace clinic_ivf.gui
             }
             else if (opureport == opuReport.ResultDay6)
             {
-                String filename = "";
-                filename = setExportDay6("preview");
-                if (File.Exists(filename))
-                {
-                    Form frm = new Form();
-                    C1FlexViewer day1View = new C1FlexViewer();
-                    day1View = new C1FlexViewer();
-                    day1View.AutoScrollMargin = new System.Drawing.Size(0, 0);
-                    day1View.AutoScrollMinSize = new System.Drawing.Size(0, 0);
-                    day1View.Dock = System.Windows.Forms.DockStyle.Fill;
-                    day1View.Location = new System.Drawing.Point(0, 0);
-                    day1View.Name = "c1FlexViewer1";
-                    day1View.Size = new System.Drawing.Size(1065, 790);
-                    day1View.TabIndex = 0;
-                    C1PdfDocumentSource pds = new C1PdfDocumentSource();
-
-                    pds.LoadFromFile(filename);
-
-                    //pds.LoadFromFile(filename1);
-
-                    day1View.DocumentSource = pds;
-                    frm.Controls.Add(day1View);
-                    frm.WindowState = FormWindowState.Maximized;
-                    frm.ShowDialog(this);
-                }
+                //String filename = "";
+                //filename = setExportDay6("preview");
+                //if (File.Exists(filename))
+                //{
+                    ic.showResultDay(txtID.Text.Trim(),"6",this);
+                //}
             }
             else if (opureport == opuReport.ResultDay5)
             {
-                String filename = "";
-                filename = setExportDay5("preview");
-                if (File.Exists(filename))
-                {
-                    Form frm = new Form();
-                    C1FlexViewer day1View = new C1FlexViewer();
-                    day1View = new C1FlexViewer();
-                    day1View.AutoScrollMargin = new System.Drawing.Size(0, 0);
-                    day1View.AutoScrollMinSize = new System.Drawing.Size(0, 0);
-                    day1View.Dock = System.Windows.Forms.DockStyle.Fill;
-                    day1View.Location = new System.Drawing.Point(0, 0);
-                    day1View.Name = "c1FlexViewer1";
-                    day1View.Size = new System.Drawing.Size(1065, 790);
-                    day1View.TabIndex = 0;
-                    C1PdfDocumentSource pds = new C1PdfDocumentSource();
-
-                    pds.LoadFromFile(filename);
-
-                    //pds.LoadFromFile(filename1);
-
-                    day1View.DocumentSource = pds;
-                    frm.Controls.Add(day1View);
-                    frm.WindowState = FormWindowState.Maximized;
-                    frm.ShowDialog(this);
-                }
+                //String filename = "";
+                //filename = setExportDay5("preview");
+                //if (File.Exists(filename))
+                //{
+                    ic.showResultDay(txtID.Text.Trim(), "5", this);
+                //}
             }
             else if (opureport == opuReport.ResultDay3)
             {
@@ -986,26 +948,7 @@ namespace clinic_ivf.gui
                 filename = setExportDay3("preview");
                 if (File.Exists(filename))
                 {
-                    Form frm = new Form();
-                    C1FlexViewer day1View = new C1FlexViewer();
-                    day1View = new C1FlexViewer();
-                    day1View.AutoScrollMargin = new System.Drawing.Size(0, 0);
-                    day1View.AutoScrollMinSize = new System.Drawing.Size(0, 0);
-                    day1View.Dock = System.Windows.Forms.DockStyle.Fill;
-                    day1View.Location = new System.Drawing.Point(0, 0);
-                    day1View.Name = "c1FlexViewer1";
-                    day1View.Size = new System.Drawing.Size(1065, 790);
-                    day1View.TabIndex = 0;
-                    C1PdfDocumentSource pds = new C1PdfDocumentSource();
-                    
-                    pds.LoadFromFile(filename);
-
-                    //pds.LoadFromFile(filename1);
-
-                    day1View.DocumentSource = pds;
-                    frm.Controls.Add(day1View);
-                    frm.WindowState = FormWindowState.Maximized;
-                    frm.ShowDialog(this);
+                    createForm(filename);
                 }
                 //printFETEmbryoDev();
             }
@@ -1015,32 +958,36 @@ namespace clinic_ivf.gui
                 filename = setExportDay1("preview");
                 if (File.Exists(filename))
                 {
-                    Form frm = new Form();
-                    C1FlexViewer day1View = new C1FlexViewer();
-                    day1View = new C1FlexViewer();
-                    day1View.AutoScrollMargin = new System.Drawing.Size(0, 0);
-                    day1View.AutoScrollMinSize = new System.Drawing.Size(0, 0);
-                    day1View.Dock = System.Windows.Forms.DockStyle.Fill;
-                    day1View.Location = new System.Drawing.Point(0, 0);
-                    day1View.Name = "c1FlexViewer1";
-                    day1View.Size = new System.Drawing.Size(1065, 790);
-                    day1View.TabIndex = 0;
-                    C1PdfDocumentSource pds = new C1PdfDocumentSource();
-
-                    pds.LoadFromFile(filename);
-
-                    //pds.LoadFromFile(filename1);
-
-                    day1View.DocumentSource = pds;
-                    frm.Controls.Add(day1View);
-                    frm.WindowState = FormWindowState.Maximized;
-                    frm.ShowDialog(this);
+                    createForm(filename);
                 }
             }
             else if (opureport == opuReport.FETEmbryoDevReport)
             {
                 //printFETEmbryoDev();
             }
+        }
+        private void createForm(String filename)
+        {
+            Form frm = new Form();
+            C1FlexViewer day1View = new C1FlexViewer();
+            day1View = new C1FlexViewer();
+            day1View.AutoScrollMargin = new System.Drawing.Size(0, 0);
+            day1View.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+            day1View.Dock = System.Windows.Forms.DockStyle.Fill;
+            day1View.Location = new System.Drawing.Point(0, 0);
+            day1View.Name = "c1FlexViewer1";
+            day1View.Size = new System.Drawing.Size(1065, 790);
+            day1View.TabIndex = 0;
+            C1PdfDocumentSource pds = new C1PdfDocumentSource();
+
+            pds.LoadFromFile(filename);
+
+            //pds.LoadFromFile(filename1);
+
+            day1View.DocumentSource = pds;
+            frm.Controls.Add(day1View);
+            frm.WindowState = FormWindowState.Maximized;
+            frm.ShowDialog(this);
         }
         private void printFETEmbryoDev()
         {

@@ -994,7 +994,7 @@ namespace clinic_ivf.objdb
                 ", ptt.patient_hn_1 ,CONCAT(IFNULL(fpp_1.patient_prefix_description,''),' ', ptt_1.patient_firstname_e ,' ',ptt_1.patient_lastname_e ) as name_1" +
                 ", ptt.patient_hn_2 ,CONCAT(IFNULL(fpp_2.patient_prefix_description,''),' ', ptt_2.patient_firstname_e ,' ',ptt_2.patient_lastname_e ) as name_2 " +
                 ", CONCAT(IFNULL(fpp_stf.patient_prefix_description,''),' ', stf.staff_fname_e ,' ',stf.staff_lname_e ) as dtr_name " +
-                ", ptt.agent, agt.AgentName, forma.status_fet " +
+                ", ptt.agent, agt.AgentName, forma.status_fet, ifnull(ptt.f_sex_id,'') as f_sex_id " +
                 "From " + vs.table + " vs " +
                 "Left Join lab_t_form_a forma on  vs.t_visit_id = forma.t_visit_id and forma.active = '1' " +
                 "Left Join t_patient ptt on  vs.visit_hn = ptt.patient_hn " +

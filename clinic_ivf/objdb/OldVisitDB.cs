@@ -745,11 +745,11 @@ namespace clinic_ivf.objdb
         {
             DataTable dt = new DataTable();
             //String date = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd");
-            String sql = "select t_visit.t_visit_id as id,vsold.VN, vsold.PIDS, vsold.PName, vsold.VDate, vsold.VStartTime, vsold.VEndTime, VStatus.VName, vsold.VSID, vsold.PID, ptt.patient_birthday as dob" +
+            String sql = "select t_visit.t_visit_id as id,vsold.VN, vsold.PIDS, vsold.PName, vsold.VDate, vsold.VStartTime, vsold.VEndTime, VStatus.VName, vsold.VSID, ifnull(vsold.PID,'') as PID, ptt.patient_birthday as dob" +
                 ",vsold.form_a_id, CONCAT(IFNULL(fpp.patient_prefix_description,''),' ', stf.staff_fname_e ,' ',stf.staff_lname_e)  as dtrname, t_visit.status_nurse, t_visit.status_cashier " +
                  ", ptt.patient_hn_1 ,CONCAT(IFNULL(fpp_1.patient_prefix_description,''),' ', ptt_1.patient_firstname_e ,' ',ptt_1.patient_lastname_e ) as name_1" +
                 ", ptt.patient_hn_2 ,CONCAT(IFNULL(fpp_2.patient_prefix_description,''),' ', ptt_2.patient_firstname_e ,' ',ptt_2.patient_lastname_e ) as name_2 " +
-                ", ptt.agent, agt.AgentName " +
+                ", ptt.agent, agt.AgentName, ifnull(ptt.f_sex_id,'') as f_sex_id " +
                 "From " + vsold.table + " vsold " +
                 "Left Join VStatus on  VStatus.VSID = vsold.VSID " +
                 "Left Join t_visit on  vsold.VN = t_visit.visit_vn " +
@@ -788,11 +788,11 @@ namespace clinic_ivf.objdb
         {
             DataTable dt = new DataTable();
             //String date = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd");
-            String sql = "Select t_visit.t_visit_id as id,vsold.VN, vsold.PIDS, vsold.PName, vsold.VDate, vsold.VStartTime, vsold.VEndTime, VStatus.VName, vsold.VSID, vsold.PID, ptt.patient_birthday as dob" +
+            String sql = "Select t_visit.t_visit_id as id,vsold.VN, vsold.PIDS, vsold.PName, vsold.VDate, vsold.VStartTime, vsold.VEndTime, VStatus.VName, vsold.VSID, ifnull(vsold.PID,'') as PID, ptt.patient_birthday as dob" +
                 ",vsold.form_a_id, CONCAT(IFNULL(fpp.patient_prefix_description,''),' ', stf.staff_fname_e ,' ',stf.staff_lname_e)  as dtrname, t_visit.status_nurse, t_visit.status_cashier, ptt.t_patient_id " +
                 ", ptt.patient_hn_1 ,CONCAT(IFNULL(fpp_1.patient_prefix_description,''),' ', ptt_1.patient_firstname_e ,' ',ptt_1.patient_lastname_e ) as name_1" +
                 ", ptt.patient_hn_2 ,CONCAT(IFNULL(fpp_2.patient_prefix_description,''),' ', ptt_2.patient_firstname_e ,' ',ptt_2.patient_lastname_e ) as name_2 " +
-                ", ptt.agent, agt.AgentName " +
+                ", ptt.agent, agt.AgentName, ifnull(ptt.f_sex_id,'') as f_sex_id  " +
                 "From " + vsold.table + " vsold " +
                 "Left Join VStatus on  VStatus.VSID = vsold.VSID " +                
                 "Left Join t_visit on  vsold.VN = t_visit.visit_vn " +

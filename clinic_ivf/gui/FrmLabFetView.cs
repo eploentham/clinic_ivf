@@ -491,7 +491,7 @@ namespace clinic_ivf.gui
         private void setGrfSearch1()
         {
             grfSearch.DataSource = null;
-            grfSearch.Rows.Count = 0;
+            grfSearch.Rows.Count = 1;
             DataTable dt = new DataTable();
 
             dt = ic.ivfDB.fetDB.selectBySearchHn(txtSearch.Text.Trim());
@@ -551,7 +551,7 @@ namespace clinic_ivf.gui
             foreach (DataRow row in dt.Rows)
             {
                 i++;
-                //if (i == 1) continue;
+                if (i == 1) continue;
                 //Row row1 = grfSearch.Rows.Add();
                 grfSearch[i, colPcId] = row[ic.ivfDB.fetDB.fet.fet_id].ToString();
                 grfSearch[i, colPcOpuNum] = row[ic.ivfDB.fetDB.fet.fet_code].ToString();
@@ -565,7 +565,7 @@ namespace clinic_ivf.gui
                 //row1[colRqRemark] = row[ic.ivfDB.lbReqDB.lbReq.remark].ToString();
                 //row1[colOpuId] = "";
                 //row1[colDtrName] = row["dtr_name"].ToString();
-                grfSearch[i, 0] = (i - 1);
+                grfSearch[i, 0] = (i - 2);
 
             }
             grfSearch.Cols[colRqId].Visible = false;
@@ -774,6 +774,9 @@ namespace clinic_ivf.gui
             grfFinish.ContextMenu = menuGw;
             gbFinish.Controls.Add(grfFinish);
             grfFinish.Rows.Count = 2;
+            FilterRow fr = new FilterRow(grfFinish);
+            grfFinish.AllowFiltering = true;
+            grfFinish.AfterFilter += GrfFinish_AfterFilter;
             theme1.SetTheme(grfFinish, "Office2010Blue");
         }
         private void ContextMenu_grffinish_lab_form_a(object sender, System.EventArgs e)
@@ -816,7 +819,7 @@ namespace clinic_ivf.gui
         private void setGrfFinish()
         {
             grfFinish.DataSource = null;
-            grfFinish.Clear();
+            //grfFinish.Clear();
             DataTable dt = new DataTable();
             String datestart = "", dateend = "";
             datestart = ic.datetoDB(txtFiDateStart.Text);
@@ -829,7 +832,7 @@ namespace clinic_ivf.gui
             }
             else
             {
-                grfFinish.Rows.Count = dt.Rows.Count + 1;
+                grfFinish.Rows.Count = dt.Rows.Count + 2;
             }
             grfFinish.Cols.Count = 10;
             //C1TextBox txt = new C1TextBox();
@@ -874,7 +877,7 @@ namespace clinic_ivf.gui
                 grfFinish.Cols[col + 1].Caption = dt.Columns[col].ColumnName;
                 grfFinish.Cols[col + 1].Name = dt.Columns[col].ColumnName;
             }
-            int i = 0;
+            int i = 1;
             foreach (DataRow row in dt.Rows)
             {
                 i++;
@@ -905,18 +908,21 @@ namespace clinic_ivf.gui
             grfFinish.Cols[colPcNameMale].AllowEditing = false;
             grfFinish.Cols[colProceName].AllowEditing = false;
             //grfReq.Cols[coldt].Visible = false;
-            if (grfFinish.Rows.Count > 2)
-            {
-                FilterRow fr = new FilterRow(grfFinish);
-                grfFinish.AllowFiltering = true;
-                grfFinish.AfterFilter += GrfFinish_AfterFilter;
-            }
+            //if (grfFinish.Rows.Count > 2)
+            //{
+            //    FilterRow fr = new FilterRow(grfFinish);
+            //    grfFinish.AllowFiltering = true;
+            //    grfFinish.AfterFilter += GrfFinish_AfterFilter;
+            //}
         }
 
         private void GrfFinish_AfterFilter(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-
+            for (int col = grfFinish.Cols.Fixed; col < grfFinish.Cols.Count; ++col)
+            {
+                var filter = grfFinish.Cols[col].ActiveFilter;
+            }
         }
 
         private void BtnNew_Click(object sender, EventArgs e)

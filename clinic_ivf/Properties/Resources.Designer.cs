@@ -133,16 +133,6 @@ namespace clinic_ivf.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Accept_Male_User24 {
-            get {
-                object obj = ResourceManager.GetObject("Accept_Male_User24", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap ad24 {
             get {
                 object obj = ResourceManager.GetObject("ad24", resourceCulture);
@@ -1156,6 +1146,16 @@ namespace clinic_ivf.Properties {
         internal static System.Drawing.Bitmap maintenance48 {
             get {
                 object obj = ResourceManager.GetObject("maintenance48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Male_user_accept_24 {
+            get {
+                object obj = ResourceManager.GetObject("Male_user_accept_24", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

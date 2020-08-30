@@ -30,7 +30,7 @@ namespace clinic_ivf.gui
         Color bg, fc;
         Font ff, ffB;
 
-        int colID = 1, colVNshow = 2, colPttHn = 3, colPttName = 4, colPttHn1=5, colPttName1=6, colPttHn2=7, colPttName2=8, colVsAgent=9, colVsDate = 10, colVsTime = 11, colVsEtime = 12, colStatus = 13, colPttId=14, colVn=15, colDtr=16, colPID=17, colFormAId=18, colFormACode=19, colStatusOPU=20, colStatusFet=21, colStatusAna=22, colStatusFreezing=23, colStatusPesa=24, colStatusIUI=25;
+        int colID = 1, colPic=2, colVNshow = 3, colPttHn = 4, colPttName = 5, colPttHn1=6, colPttName1=7, colPttHn2=8, colPttName2=9, colVsAgent=10, colVsDate = 11, colVsTime = 12, colVsEtime = 13, colStatus = 14, colPttId=15, colVn=16, colDtr=17, colPID=18, colFormAId=19, colFormACode=20, colStatusOPU=21, colStatusFet=22, colStatusAna=23, colStatusFreezing=24, colStatusPesa=25, colStatusIUI=26;
         int colSID = 1, colSVN = 2, colSPttHn = 3, colSPttName = 4, colSVsDate = 5, colSVsTime = 6, colSVsEtime = 7, colSStatus = 8, colSPttId = 9;
         int colRID = 1, colRVN = 2, colRPttHn = 3, colRPttName = 4, colRVsDate = 5, colRPttId = 6;
         int colLID = 1, colLVNShow = 2, colLPttHnFemale = 3, colLPttNameFemale = 4, colLPttHnMale = 5, colLPttNameMale = 6, colLlabname = 7, colLStatus = 8, colLLGID=9;
@@ -41,7 +41,9 @@ namespace clinic_ivf.gui
         C1SuperErrorProvider sep;
         Timer timer;
         String printerOld = "",txtSb1="";
-
+        Image imgM = Resources.Male_user_accept_24;
+        Image imgF = Resources.Female_user_accept_24;
+        Image imgN = Resources.Female_user_accept_24;
         Boolean pageLoad = false;
         Image imgCorr, imgTran, imgFinish;
         [DllImport("winspool.drv", CharSet = CharSet.Auto, SetLastError = true)]
@@ -702,6 +704,7 @@ namespace clinic_ivf.gui
             grfSearch.ContextMenu = menuGw;
             pnSearch.Controls.Add(grfSearch);
             grfSearch.Rows.Count = 1;
+            grfSearch.SelectionMode = SelectionModeEnum.Row;
             theme1.SetTheme(pnSearch, "Office2010Red");
 
         }
@@ -754,7 +757,7 @@ namespace clinic_ivf.gui
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             grfSearch.Rows.Count = 1;
             grfSearch.Rows.Count = dt.Rows.Count + 1;
-            grfSearch.Cols.Count = 26;
+            grfSearch.Cols.Count = 27;
             //C1TextBox txt = new C1TextBox();
             //C1ComboBox cboproce = new C1ComboBox();
             //ic.ivfDB.itmDB.setCboItem(cboproce);
@@ -773,7 +776,10 @@ namespace clinic_ivf.gui
             colPesa.DataType = typeof(Image);
             Column colIUI = grfSearch.Cols[colStatusIUI];
             colIUI.DataType = typeof(Image);
+            Column col = grfSearch.Cols[colPic];
+            col.DataType = typeof(Image);
 
+            grfSearch.Cols[colPic].Width = 30;
             grfSearch.Cols[colVNshow].Width = 80;
             grfSearch.Cols[colPttHn].Width = 100;
             grfSearch.Cols[colPttName].Width = 270;
@@ -830,6 +836,7 @@ namespace clinic_ivf.gui
                 menuGw.MenuItems.Add("LAB Form Day1", new EventHandler(ContextMenu_Form_day1_grfSearch));
             }
             menuGw.MenuItems.Add("result lab OPU", new EventHandler(ContextMenu_result_lab_opu));
+            menuGw.MenuItems.Add("result lab FET", new EventHandler(ContextMenu_result_lab_fet));
             menuGw.MenuItems.Add("result lab Sperm Analysis", new EventHandler(ContextMenu_result_lab_sperm_analysis));
             menuGw.MenuItems.Add("result lab Sperm Freezing", new EventHandler(ContextMenu_result_lab_sperm_freezing));
             menuGw.MenuItems.Add("result lab Sperm PESA", new EventHandler(ContextMenu_result_lab_sperm_pesa));
@@ -886,6 +893,7 @@ namespace clinic_ivf.gui
                     CellRange rg = grfSearch.GetCellRange(i, colVNshow);
                     rg.UserData = note;
                 }
+                grfSearch[i, colPic] = row["f_sex_id"].ToString().Equals("1") ? imgM : row["f_sex_id"].ToString().Equals("2") ? imgF : imgN;
                 //if (i % 2 == 0)
                 //    grfPtt.Rows[i].StyleNew.BackColor = color;
                 i++;
@@ -932,11 +940,35 @@ namespace clinic_ivf.gui
             LabOpu opu = new LabOpu();
             opu = ic.ivfDB.opuDB.selectByReqID(lFormA.req_id_opu);
             //FrmLabOPUAdd2 frm = new FrmLabOPUAdd2(ic,"", opu.opu_id);
-            FrmNurseOPUView1 frm = new FrmNurseOPUView1(ic, "", opu.opu_id);
+            FrmNurseOPUView1 frm = new FrmNurseOPUView1(ic, "", opu.opu_id,"OPU");
             String txt = "";
             //if (!name.Equals(""))
             //{
             txt = "ผลLAB OPU " + opu.name_female;
+            //}
+            frm.FormBorderStyle = FormBorderStyle.None;
+            menu.AddNewTab(frm, txt);
+            frmW.Hide();
+            frmW.Dispose();
+        }
+        private void ContextMenu_result_lab_fet(object sender, System.EventArgs e)
+        {
+            String chk = "", name = "", vsid = "", pttId = "", vn = "", formaid = "";
+            vn = grfSearch[grfSearch.Row, colVn] != null ? grfSearch[grfSearch.Row, colVn].ToString() : "";
+            formaid = grfSearch[grfSearch.Row, colFormAId] != null ? grfSearch[grfSearch.Row, colFormAId].ToString() : "";
+            FrmWaiting frmW = new FrmWaiting();
+            frmW.Show();
+
+            LabFormA lFormA = new LabFormA();
+            lFormA = ic.ivfDB.lFormaDB.selectByPk1(formaid);
+            LabFet fet = new LabFet();
+            fet = ic.ivfDB.fetDB.selectByReqID(lFormA.req_id_fet);
+            //FrmLabOPUAdd2 frm = new FrmLabOPUAdd2(ic,"", opu.opu_id);
+            FrmNurseOPUView1 frm = new FrmNurseOPUView1(ic, "", fet.fet_id, "FET");
+            String txt = "";
+            //if (!name.Equals(""))
+            //{
+            txt = "ผลLAB FET " + fet.name_female;
             //}
             frm.FormBorderStyle = FormBorderStyle.None;
             menu.AddNewTab(frm, txt);
@@ -1542,9 +1574,11 @@ namespace clinic_ivf.gui
         }
         private void setGrfQue(String search)
         {
+            timer.Enabled = false;
             //grfDept.Rows.Count = 7;
-            grfQue.Clear();
-            DataTable dt1 = new DataTable();
+            //grfQue.Clear();27
+            //DataTable dt1 = new DataTable();
+            
             DataTable dt = new DataTable();
             if (search.Equals(""))
             {
@@ -1567,15 +1601,18 @@ namespace clinic_ivf.gui
             }
 
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
+            grfQue.Rows.Count = 1;
             grfQue.Rows.Count = dt.Rows.Count + 1;
-            grfQue.Cols.Count = 18;
-            C1TextBox txt = new C1TextBox();
+            grfQue.Cols.Count = 27;
+            Column col = grfQue.Cols[colPic];
+            col.DataType = typeof(Image);
+            //C1TextBox txt = new C1TextBox();
             //C1ComboBox cboproce = new C1ComboBox();
             //ic.ivfDB.itmDB.setCboItem(cboproce);
             //grfQue.Cols[colPttHn].Editor = txt;
             //grfQue.Cols[colPttName].Editor = txt;
             //grfQue.Cols[colVsDate].Editor = txt;
-
+            grfQue.Cols[colPic].Width = 30;
             grfQue.Cols[colVNshow].Width = 80;
             grfQue.Cols[colPttHn].Width = 120;
             grfQue.Cols[colPttName].Width = 300;
@@ -1659,9 +1696,11 @@ namespace clinic_ivf.gui
                         CellRange rg = grfQue.GetCellRange(i, colVNshow);
                         rg.UserData = note;
                     }
-                    //if (i % 2 == 0)
-                    //    grfPtt.Rows[i].StyleNew.BackColor = color;
-                    i++;
+                    grfQue[i, colPic] = row["f_sex_id"].ToString().Equals("1") ? imgM : row["f_sex_id"].ToString().Equals("2") ? imgF : imgN;
+                    
+                        //if (i % 2 == 0)
+                        //    grfPtt.Rows[i].StyleNew.BackColor = color;
+                        i++;
                 }
                 catch(Exception ex)
                 {
@@ -1674,6 +1713,17 @@ namespace clinic_ivf.gui
             grfQue.Cols[colVn].Visible = false;
             grfQue.Cols[colPttId].Visible = false;
 
+            grfQue.Cols[colPID].Visible = false;
+            grfQue.Cols[colFormAId].Visible = false;
+            grfQue.Cols[colFormACode].Visible = false;
+            grfQue.Cols[colStatusOPU].Visible = false;
+            grfQue.Cols[colStatusFet].Visible = false;
+            grfQue.Cols[colStatusAna].Visible = false;
+            grfQue.Cols[colStatusFreezing].Visible = false;
+            grfQue.Cols[colStatusPesa].Visible = false;
+            grfQue.Cols[colStatusIUI].Visible = false;
+
+            grfQue.Cols[colPic].AllowEditing = false;
             grfQue.Cols[colVNshow].AllowEditing = false;
             grfQue.Cols[colPttHn].AllowEditing = false;
             grfQue.Cols[colPttName].AllowEditing = false;
@@ -1686,7 +1736,7 @@ namespace clinic_ivf.gui
             grfQue.Cols[colPttName2].AllowEditing = false;
             grfQue.Cols[colVsAgent].AllowEditing = false;
             //theme1.SetTheme(grfQue, ic.theme);
-
+            timer.Enabled = true;
         }
         private void ContextMenu_egg_sti(object sender, System.EventArgs e)
         {
@@ -2399,7 +2449,7 @@ namespace clinic_ivf.gui
                 LabOpu opu = new LabOpu();
                 opu = ic.ivfDB.opuDB.selectByReqID(req.req_id);
                 //FrmLabOPUAdd2 frm = new FrmLabOPUAdd2(ic,"", opu.opu_id);
-                FrmNurseOPUView1 frm = new FrmNurseOPUView1(ic, "", opu.opu_id);
+                FrmNurseOPUView1 frm = new FrmNurseOPUView1(ic, "", opu.opu_id,"OPU");
                 String txt = "";
                 if (!name.Equals(""))
                 {

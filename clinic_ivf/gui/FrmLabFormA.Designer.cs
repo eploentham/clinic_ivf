@@ -122,6 +122,7 @@
             this.txtEmbryoTranferDate = new C1.Win.C1Input.C1DateEdit();
             this.label14 = new System.Windows.Forms.Label();
             this.gbSpermFreezing = new System.Windows.Forms.GroupBox();
+            this.cboSpFzRemark = new C1.Win.C1Input.C1ComboBox();
             this.label39 = new System.Windows.Forms.Label();
             this.txtPasswordVoidSpFz = new C1.Win.C1Input.C1TextBox();
             this.btnVoidSpFz = new C1.Win.C1Input.C1Button();
@@ -197,6 +198,7 @@
             this.chkFrozenSperm = new C1.Win.C1Input.C1CheckBox();
             this.chkFreshSprem = new C1.Win.C1Input.C1CheckBox();
             this.gbSpermAnalysis = new System.Windows.Forms.GroupBox();
+            this.cboSpSaRemark = new C1.Win.C1Input.C1ComboBox();
             this.label38 = new System.Windows.Forms.Label();
             this.txtPasswordVoidSpSa = new C1.Win.C1Input.C1TextBox();
             this.btnVoidSpSa = new C1.Win.C1Input.C1Button();
@@ -212,8 +214,6 @@
             this.txtSpermAnalysisDateStart = new C1.Win.C1Input.C1DateEdit();
             this.chkSememAnalysis = new C1.Win.C1Input.C1CheckBox();
             this.btnPrintSperm = new C1.Win.C1Input.C1Button();
-            this.cboSpSaRemark = new C1.Win.C1Input.C1ComboBox();
-            this.cboSpFzRemark = new C1.Win.C1Input.C1ComboBox();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -276,6 +276,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtFETNo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEmbryoTranferDate)).BeginInit();
             this.gbSpermFreezing.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cboSpFzRemark)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPasswordVoidSpFz)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnVoidSpFz)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkVoidSpSf)).BeginInit();
@@ -322,6 +323,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.chkFrozenSperm)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkFreshSprem)).BeginInit();
             this.gbSpermAnalysis.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cboSpSaRemark)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPasswordVoidSpSa)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnVoidSpSa)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkVoidSpSa)).BeginInit();
@@ -332,8 +334,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtSpermAnalysisDateStart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkSememAnalysis)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPrintSperm)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cboSpSaRemark)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cboSpFzRemark)).BeginInit();
             this.SuspendLayout();
             // 
             // sB
@@ -342,7 +342,7 @@
             this.sB1});
             this.sB.Location = new System.Drawing.Point(0, 856);
             this.sB.Name = "sB";
-            this.sB.Size = new System.Drawing.Size(1163, 22);
+            this.sB.Size = new System.Drawing.Size(1188, 22);
             this.sB.TabIndex = 10;
             this.sB.Text = "statusStrip1";
             // 
@@ -397,7 +397,7 @@
             this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1163, 105);
+            this.groupBox1.Size = new System.Drawing.Size(1188, 105);
             this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Patient";
@@ -981,7 +981,7 @@
             this.groupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.groupBox2.Location = new System.Drawing.Point(0, 105);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1163, 751);
+            this.groupBox2.Size = new System.Drawing.Size(1188, 751);
             this.groupBox2.TabIndex = 12;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Description";
@@ -2027,6 +2027,27 @@
             this.gbSpermFreezing.TabStop = false;
             this.gbSpermFreezing.Text = "Sperm Freezing";
             this.theme1.SetTheme(this.gbSpermFreezing, "(default)");
+            // 
+            // cboSpFzRemark
+            // 
+            this.cboSpFzRemark.AllowSpinLoop = false;
+            this.cboSpFzRemark.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cboSpFzRemark.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.cboSpFzRemark.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboSpFzRemark.GapHeight = 0;
+            this.cboSpFzRemark.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.cboSpFzRemark.ItemsDisplayMember = "";
+            this.cboSpFzRemark.ItemsValueMember = "";
+            this.cboSpFzRemark.Location = new System.Drawing.Point(355, 40);
+            this.cboSpFzRemark.Name = "cboSpFzRemark";
+            this.cboSpFzRemark.Size = new System.Drawing.Size(463, 20);
+            this.cboSpFzRemark.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.cboSpFzRemark.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
+            this.cboSpFzRemark.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboSpFzRemark.TabIndex = 757;
+            this.cboSpFzRemark.Tag = null;
+            this.theme1.SetTheme(this.cboSpFzRemark, "(default)");
+            this.cboSpFzRemark.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // label39
             // 
@@ -3340,6 +3361,27 @@
             this.gbSpermAnalysis.Text = "Sperm Analysis";
             this.theme1.SetTheme(this.gbSpermAnalysis, "(default)");
             // 
+            // cboSpSaRemark
+            // 
+            this.cboSpSaRemark.AllowSpinLoop = false;
+            this.cboSpSaRemark.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cboSpSaRemark.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.cboSpSaRemark.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboSpSaRemark.GapHeight = 0;
+            this.cboSpSaRemark.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.cboSpSaRemark.ItemsDisplayMember = "";
+            this.cboSpSaRemark.ItemsValueMember = "";
+            this.cboSpSaRemark.Location = new System.Drawing.Point(355, 39);
+            this.cboSpSaRemark.Name = "cboSpSaRemark";
+            this.cboSpSaRemark.Size = new System.Drawing.Size(463, 20);
+            this.cboSpSaRemark.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.cboSpSaRemark.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
+            this.cboSpSaRemark.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboSpSaRemark.TabIndex = 755;
+            this.cboSpSaRemark.Tag = null;
+            this.theme1.SetTheme(this.cboSpSaRemark, "(default)");
+            this.cboSpSaRemark.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
             // label38
             // 
             this.label38.AutoSize = true;
@@ -3597,53 +3639,11 @@
             this.btnPrintSperm.UseVisualStyleBackColor = true;
             this.btnPrintSperm.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // cboSpSaRemark
-            // 
-            this.cboSpSaRemark.AllowSpinLoop = false;
-            this.cboSpSaRemark.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.cboSpSaRemark.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.cboSpSaRemark.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.cboSpSaRemark.GapHeight = 0;
-            this.cboSpSaRemark.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.cboSpSaRemark.ItemsDisplayMember = "";
-            this.cboSpSaRemark.ItemsValueMember = "";
-            this.cboSpSaRemark.Location = new System.Drawing.Point(355, 39);
-            this.cboSpSaRemark.Name = "cboSpSaRemark";
-            this.cboSpSaRemark.Size = new System.Drawing.Size(463, 20);
-            this.cboSpSaRemark.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.cboSpSaRemark.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
-            this.cboSpSaRemark.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.cboSpSaRemark.TabIndex = 755;
-            this.cboSpSaRemark.Tag = null;
-            this.theme1.SetTheme(this.cboSpSaRemark, "(default)");
-            this.cboSpSaRemark.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // cboSpFzRemark
-            // 
-            this.cboSpFzRemark.AllowSpinLoop = false;
-            this.cboSpFzRemark.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.cboSpFzRemark.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.cboSpFzRemark.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.cboSpFzRemark.GapHeight = 0;
-            this.cboSpFzRemark.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.cboSpFzRemark.ItemsDisplayMember = "";
-            this.cboSpFzRemark.ItemsValueMember = "";
-            this.cboSpFzRemark.Location = new System.Drawing.Point(355, 40);
-            this.cboSpFzRemark.Name = "cboSpFzRemark";
-            this.cboSpFzRemark.Size = new System.Drawing.Size(463, 20);
-            this.cboSpFzRemark.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.cboSpFzRemark.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
-            this.cboSpFzRemark.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.cboSpFzRemark.TabIndex = 757;
-            this.cboSpFzRemark.Tag = null;
-            this.theme1.SetTheme(this.cboSpFzRemark, "(default)");
-            this.cboSpFzRemark.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
             // FrmLabFormA
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1163, 878);
+            this.ClientSize = new System.Drawing.Size(1188, 878);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.sB);
@@ -3721,6 +3721,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtEmbryoTranferDate)).EndInit();
             this.gbSpermFreezing.ResumeLayout(false);
             this.gbSpermFreezing.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cboSpFzRemark)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPasswordVoidSpFz)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnVoidSpFz)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkVoidSpSf)).EndInit();
@@ -3776,6 +3777,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.chkFreshSprem)).EndInit();
             this.gbSpermAnalysis.ResumeLayout(false);
             this.gbSpermAnalysis.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cboSpSaRemark)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPasswordVoidSpSa)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnVoidSpSa)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkVoidSpSa)).EndInit();
@@ -3787,8 +3789,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtSpermAnalysisDateStart)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkSememAnalysis)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPrintSperm)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cboSpSaRemark)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cboSpFzRemark)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

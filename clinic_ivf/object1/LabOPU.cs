@@ -74,7 +74,6 @@ namespace clinic_ivf.object1
         public String user_cancel { get; set; }
         public String active { get; set; }
         public String remark { get; set; }
-
         public String embryo_freez_date_1 { get; set; }
         public String embryo_freez_day_1 { get; set; }
         public String embryo_freez_no_og_1 { get; set; }
@@ -164,5 +163,9 @@ namespace clinic_ivf.object1
         public String status_approve_result_day6 { get; set; }
         public String approve_result_day6_staff_id { get; set; }
         public String approve_result_day6_date { get; set; }
+        public String report_day2 { get; set; }
+        public String report_day0 { get; set; }
+        public String status_approve_result_day2 { get; set; }
+        public String status_approve_result_day0 { get; set; }
     }
 }

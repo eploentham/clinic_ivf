@@ -12,6 +12,7 @@ using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -26,11 +27,13 @@ namespace clinic_ivf.gui
         String lformaId = "", pttid="", vsid="", vn="", userIdVoid="";
         LabFormA lFormA;
         LabRequest reqSpSa, reqSpFz, reqPesa, reqIUI, reqOpu, reqFet;
+        static String filenamepic = "";
 
         C1SuperTooltip stt;
         C1SuperErrorProvider sep;
         String statusOPU = "", statusFET = "", flag="", theme11;
-        
+        Patient ptt;
+        C1PictureBox picPtt;
         [DllImport("winspool.drv", CharSet = CharSet.Auto, SetLastError = true)]
         public static extern bool SetDefaultPrinter(string Printer);
         public FrmLabFormA(IvfControl ic, String lformaId, String pttid, String vsid, String vn)
@@ -78,6 +81,16 @@ namespace clinic_ivf.gui
             reqIUI = new LabRequest();
             reqOpu = new LabRequest();
             reqFet = new LabRequest();
+            ptt = new Patient();
+            picPtt = new C1.Win.C1Input.C1PictureBox();
+            picPtt.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            picPtt.Dock = System.Windows.Forms.DockStyle.None;
+            picPtt.Location = new System.Drawing.Point(btnEdit.Location.X + btnEdit.Width + 5, btnEdit.Location.Y);
+            picPtt.Name = "picPtt";
+            picPtt.Size = new System.Drawing.Size(127, 133);
+            picPtt.TabIndex = 847;
+            picPtt.TabStop = false;
+
             reqSpSa = ic.ivfDB.lbReqDB.setLabRequest(reqSpSa);
             reqSpFz = ic.ivfDB.lbReqDB.setLabRequest(reqSpFz);
             reqPesa = ic.ivfDB.lbReqDB.setLabRequest(reqPesa);
@@ -1352,6 +1365,7 @@ namespace clinic_ivf.gui
         private void setControl()
         {
             lFormA = ic.ivfDB.lFormaDB.selectByPk1(lformaId);
+            ptt = ic.ivfDB.pttDB.selectByPk1(pttid);
             if (lFormA.form_a_id.Equals(""))
             {
                 lFormA = ic.ivfDB.lFormaDB.selectByVnOld(vn);
@@ -1594,6 +1608,59 @@ namespace clinic_ivf.gui
                     }
                 }
             }
+            if (ptt.f_sex_id.Equals("1"))// male
+            {
+                gbOPU.Enabled = false;
+                gbETFET.Enabled = false;
+                gbSpermAnalysis.Enabled = true;
+                gbSpermFreezing.Enabled = true;
+                gbSpermPESA.Enabled = true;
+                gbSpermIUI.Enabled = true;
+            }
+            else if (ptt.f_sex_id.Equals("2"))// female
+            {
+                gbOPU.Enabled = true;
+                gbETFET.Enabled = true;
+                gbSpermAnalysis.Enabled = false;
+                gbSpermFreezing.Enabled = false;
+                gbSpermPESA.Enabled = false;
+                gbSpermIUI.Enabled = false;
+            }
+            if (!ptt.t_patient_id.Equals(""))
+            {
+                PatientImage pttI = new PatientImage();
+                pttI = ic.ivfDB.pttImgDB.selectByPttIDStatus4(ptt.t_patient_id);
+                filenamepic = pttI.image_path;
+                Thread threadA = new Thread(new ParameterizedThreadStart(ExecuteA));
+                
+                threadA.Start();
+                threadA.Join();
+            }
+            this.Text = "HN " + ptt.patient_hn + " Name " + ptt.Name;
+        }
+        private void ExecuteA(Object obj)
+        {
+            //Console.WriteLine("Executing parameterless thread!");
+            try
+            {
+                String aaa = ic.iniC.folderFTP + "/" + ptt.t_patient_id_old + "/" + ptt.t_patient_id_old + "." + System.Drawing.Imaging.ImageFormat.Jpeg;
+                //setPic(new Bitmap(ic.ftpC.download(filenamepic)));
+                //setPic(new Bitmap(ic.ftpC.download(aaa)));
+                Bitmap bitmap = new Bitmap(ic.ftpC.download(aaa));
+                picPtt.Image = bitmap;
+                picPtt.SizeMode = PictureBoxSizeMode.StretchImage;
+                groupBox1.Controls.Add(picPtt);
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+        private void setPic(Bitmap bitmap)
+        {
+            picPtt.Image = bitmap;
+            picPtt.SizeMode = PictureBoxSizeMode.StretchImage;
+            groupBox1.Controls.Add(picPtt);
         }
         private void setControl1()
         {

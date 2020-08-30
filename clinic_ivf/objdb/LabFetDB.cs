@@ -235,6 +235,19 @@ namespace clinic_ivf.objdb
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
+        public LabFet selectByReqID(String copId)
+        {
+            LabFet lbReq1 = new LabFet();
+            DataTable dt = new DataTable();
+            String sql = "select opu.*,dtr.Name, proce.proce_name_t " +
+                "From " + fet.table + " opu " +
+                "Left Join Doctor dtr on dtr.ID = opu." + fet.doctor_id + " " +
+                "LEft Join lab_b_procedure proce on proce.proce_id = opu.proce_id " +
+                "Where opu." + fet.req_id + " ='" + copId + "' ";
+            dt = conn.selectData(conn.conn, sql);
+            lbReq1 = setLabFET(dt);
+            return lbReq1;
+        }
         public C1ComboBox setCboEtCatheter(C1ComboBox c)
         {
             ComboBoxItem item = new ComboBoxItem();
