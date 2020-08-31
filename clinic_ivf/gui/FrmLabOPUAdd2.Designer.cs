@@ -295,6 +295,8 @@
             this.txtHnMale = new C1.Win.C1Input.C1TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtHnFeMale = new C1.Win.C1Input.C1TextBox();
+            this.btnResultDay0 = new C1.Win.C1Input.C1Button();
+            this.btnResultDay2 = new C1.Win.C1Input.C1Button();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1CommandDock2)).BeginInit();
@@ -474,6 +476,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnHnSearch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHnMale)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHnFeMale)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnResultDay0)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnResultDay2)).BeginInit();
             this.SuspendLayout();
             // 
             // sB
@@ -1975,7 +1979,7 @@
             // 
             this.btnResultDay1View.Image = global::clinic_ivf.Properties.Resources.ExportPdf_large;
             this.btnResultDay1View.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnResultDay1View.Location = new System.Drawing.Point(397, 82);
+            this.btnResultDay1View.Location = new System.Drawing.Point(395, 82);
             this.btnResultDay1View.Name = "btnResultDay1View";
             this.btnResultDay1View.Size = new System.Drawing.Size(128, 39);
             this.btnResultDay1View.TabIndex = 553;
@@ -2232,6 +2236,7 @@
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox2.Controls.Add(this.btnResultDay0);
             this.groupBox2.Controls.Add(this.txtMaturaNoofOpu1);
             this.groupBox2.Controls.Add(this.btnSaveMatura);
             this.groupBox2.Controls.Add(this.txtMaturaDead);
@@ -2628,6 +2633,7 @@
             // pn2
             // 
             this.pn2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pn2.Controls.Add(this.btnResultDay2);
             this.pn2.Controls.Add(this.label91);
             this.pn2.Controls.Add(this.cboRemarkDay2);
             this.pn2.Controls.Add(this.label82);
@@ -4968,6 +4974,34 @@
             this.theme1.SetTheme(this.txtHnFeMale, "(default)");
             this.txtHnFeMale.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
+            // btnResultDay0
+            // 
+            this.btnResultDay0.Image = global::clinic_ivf.Properties.Resources.Female_user_add_24;
+            this.btnResultDay0.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnResultDay0.Location = new System.Drawing.Point(395, 147);
+            this.btnResultDay0.Name = "btnResultDay0";
+            this.btnResultDay0.Size = new System.Drawing.Size(128, 39);
+            this.btnResultDay0.TabIndex = 553;
+            this.btnResultDay0.Text = "ส่ง ผล Day0";
+            this.btnResultDay0.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnResultDay0, "(default)");
+            this.btnResultDay0.UseVisualStyleBackColor = true;
+            this.btnResultDay0.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // btnResultDay2
+            // 
+            this.btnResultDay2.Image = global::clinic_ivf.Properties.Resources.Female_user_add_24;
+            this.btnResultDay2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnResultDay2.Location = new System.Drawing.Point(281, 35);
+            this.btnResultDay2.Name = "btnResultDay2";
+            this.btnResultDay2.Size = new System.Drawing.Size(69, 28);
+            this.btnResultDay2.TabIndex = 555;
+            this.btnResultDay2.Text = "รายงานผล";
+            this.btnResultDay2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnResultDay2, "(default)");
+            this.btnResultDay2.UseVisualStyleBackColor = true;
+            this.btnResultDay2.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
             // FrmLabOPUAdd2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -5170,6 +5204,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnHnSearch)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHnMale)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHnFeMale)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnResultDay0)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnResultDay2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -5444,5 +5480,7 @@
         private C1.Win.C1Input.C1Button btnResultDay6View;
         private C1.Win.C1Input.C1Button btnResultDay6;
         private C1.Win.C1Command.C1DockingTabPage tabPresc;
+        private C1.Win.C1Input.C1Button btnResultDay0;
+        private C1.Win.C1Input.C1Button btnResultDay2;
     }
 }

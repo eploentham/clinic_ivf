@@ -1220,8 +1220,33 @@ namespace clinic_ivf.gui
             btnResultDay5.Click += BtnResultDay5_Click;
             btnResultDay1View.Click += BtnResultDay1View;
             btnResultDay3View.Click += BtnResultDay3View_Click;
+            btnResultDay0.Click += BtnResultDay0_Click;
+            btnResultDay2.Click += BtnResultDay2_Click;
         }
-        
+
+        private void BtnResultDay2_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+
+        }
+
+        private void BtnResultDay0_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            ic.cStf.staff_id = "";
+            Boolean chkSave = false;
+            ic.statusResultDay1 = "";
+            ic.opu_report_day1 = "";
+            FrmLabOPUPrint frmPrn = new FrmLabOPUPrint(ic, txtID.Text, FrmLabOPUPrint.opuReport.ResultDay0);
+            frmPrn.ShowDialog(this);
+            if (ic.statusResultDay1.Equals("1"))
+            {
+                long chk1 = 0;
+                MessageBox.Show("ส่งผล LAB OPU Day1 ให้ทางพยาบาล เรียบร้อย ", "");       //clinic_ivf.Properties.Resources.Female_user_accept_24
+                btnApproveResult.Image = Resources.Female_user_accept_24;
+            }
+        }
+
         private void BtnResultDay1View(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
