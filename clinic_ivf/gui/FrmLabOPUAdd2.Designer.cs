@@ -140,6 +140,7 @@
             this.txtFertili2Pn = new C1.Win.C1Input.C1TextBox();
             this.label26 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnResultDay0 = new C1.Win.C1Input.C1Button();
             this.txtMaturaNoofOpu1 = new C1.Win.C1Input.C1TextBox();
             this.btnSaveMatura = new C1.Win.C1Input.C1Button();
             this.txtMaturaDead = new C1.Win.C1Input.C1TextBox();
@@ -164,6 +165,7 @@
             this.gbDay2 = new System.Windows.Forms.GroupBox();
             this.pn2Grf = new System.Windows.Forms.Panel();
             this.pn2 = new System.Windows.Forms.Panel();
+            this.btnResultDay2 = new C1.Win.C1Input.C1Button();
             this.label91 = new System.Windows.Forms.Label();
             this.cboRemarkDay2 = new C1.Win.C1Input.C1ComboBox();
             this.label82 = new System.Windows.Forms.Label();
@@ -295,8 +297,7 @@
             this.txtHnMale = new C1.Win.C1Input.C1TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtHnFeMale = new C1.Win.C1Input.C1TextBox();
-            this.btnResultDay0 = new C1.Win.C1Input.C1Button();
-            this.btnResultDay2 = new C1.Win.C1Input.C1Button();
+            this.chkDay1EmbryoFreezing = new C1.Win.C1Input.C1CheckBox();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1CommandDock2)).BeginInit();
@@ -371,6 +372,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtFertiliDate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtFertili2Pn)).BeginInit();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnResultDay0)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaturaNoofOpu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSaveMatura)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaturaDead)).BeginInit();
@@ -391,6 +393,7 @@
             this.splitContainer3.SuspendLayout();
             this.gbDay2.SuspendLayout();
             this.pn2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnResultDay2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboRemarkDay2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDay2Date)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboCheckedDay2)).BeginInit();
@@ -476,8 +479,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnHnSearch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHnMale)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHnFeMale)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnResultDay0)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnResultDay2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkDay1EmbryoFreezing)).BeginInit();
             this.SuspendLayout();
             // 
             // sB
@@ -1912,6 +1914,7 @@
             // groupBox3
             // 
             this.groupBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox3.Controls.Add(this.chkDay1EmbryoFreezing);
             this.groupBox3.Controls.Add(this.label95);
             this.groupBox3.Controls.Add(this.txtFertili2PnAdd);
             this.groupBox3.Controls.Add(this.btnResultDay1View);
@@ -2007,7 +2010,7 @@
             // 
             this.btnSaveFertili.Image = global::clinic_ivf.Properties.Resources.download_database24;
             this.btnSaveFertili.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSaveFertili.Location = new System.Drawing.Point(240, 122);
+            this.btnSaveFertili.Location = new System.Drawing.Point(240, 92);
             this.btnSaveFertili.Name = "btnSaveFertili";
             this.btnSaveFertili.Size = new System.Drawing.Size(83, 39);
             this.btnSaveFertili.TabIndex = 537;
@@ -2265,6 +2268,20 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Maturation";
             this.theme1.SetTheme(this.groupBox2, "(default)");
+            // 
+            // btnResultDay0
+            // 
+            this.btnResultDay0.Image = global::clinic_ivf.Properties.Resources.Female_user_add_24;
+            this.btnResultDay0.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnResultDay0.Location = new System.Drawing.Point(395, 147);
+            this.btnResultDay0.Name = "btnResultDay0";
+            this.btnResultDay0.Size = new System.Drawing.Size(128, 39);
+            this.btnResultDay0.TabIndex = 553;
+            this.btnResultDay0.Text = "ส่ง ผล Day0";
+            this.btnResultDay0.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnResultDay0, "(default)");
+            this.btnResultDay0.UseVisualStyleBackColor = true;
+            this.btnResultDay0.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // txtMaturaNoofOpu1
             // 
@@ -2650,6 +2667,20 @@
             this.pn2.Size = new System.Drawing.Size(302, 97);
             this.pn2.TabIndex = 0;
             this.theme1.SetTheme(this.pn2, "(default)");
+            // 
+            // btnResultDay2
+            // 
+            this.btnResultDay2.Image = global::clinic_ivf.Properties.Resources.Female_user_add_24;
+            this.btnResultDay2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnResultDay2.Location = new System.Drawing.Point(281, 35);
+            this.btnResultDay2.Name = "btnResultDay2";
+            this.btnResultDay2.Size = new System.Drawing.Size(69, 28);
+            this.btnResultDay2.TabIndex = 555;
+            this.btnResultDay2.Text = "รายงานผล";
+            this.btnResultDay2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnResultDay2, "(default)");
+            this.btnResultDay2.UseVisualStyleBackColor = true;
+            this.btnResultDay2.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // label91
             // 
@@ -4974,33 +5005,23 @@
             this.theme1.SetTheme(this.txtHnFeMale, "(default)");
             this.txtHnFeMale.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // btnResultDay0
+            // chkDay1EmbryoFreezing
             // 
-            this.btnResultDay0.Image = global::clinic_ivf.Properties.Resources.Female_user_add_24;
-            this.btnResultDay0.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnResultDay0.Location = new System.Drawing.Point(395, 147);
-            this.btnResultDay0.Name = "btnResultDay0";
-            this.btnResultDay0.Size = new System.Drawing.Size(128, 39);
-            this.btnResultDay0.TabIndex = 553;
-            this.btnResultDay0.Text = "ส่ง ผล Day0";
-            this.btnResultDay0.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.theme1.SetTheme(this.btnResultDay0, "(default)");
-            this.btnResultDay0.UseVisualStyleBackColor = true;
-            this.btnResultDay0.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // btnResultDay2
-            // 
-            this.btnResultDay2.Image = global::clinic_ivf.Properties.Resources.Female_user_add_24;
-            this.btnResultDay2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnResultDay2.Location = new System.Drawing.Point(281, 35);
-            this.btnResultDay2.Name = "btnResultDay2";
-            this.btnResultDay2.Size = new System.Drawing.Size(69, 28);
-            this.btnResultDay2.TabIndex = 555;
-            this.btnResultDay2.Text = "รายงานผล";
-            this.btnResultDay2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.theme1.SetTheme(this.btnResultDay2, "(default)");
-            this.btnResultDay2.UseVisualStyleBackColor = true;
-            this.btnResultDay2.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.chkDay1EmbryoFreezing.BackColor = System.Drawing.Color.Transparent;
+            this.chkDay1EmbryoFreezing.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkDay1EmbryoFreezing.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.chkDay1EmbryoFreezing.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chkDay1EmbryoFreezing.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkDay1EmbryoFreezing.Location = new System.Drawing.Point(237, 137);
+            this.chkDay1EmbryoFreezing.Name = "chkDay1EmbryoFreezing";
+            this.chkDay1EmbryoFreezing.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.chkDay1EmbryoFreezing.Size = new System.Drawing.Size(152, 24);
+            this.chkDay1EmbryoFreezing.TabIndex = 556;
+            this.chkDay1EmbryoFreezing.Text = "แสดง Embryo Freezing";
+            this.theme1.SetTheme(this.chkDay1EmbryoFreezing, "(default)");
+            this.chkDay1EmbryoFreezing.UseVisualStyleBackColor = true;
+            this.chkDay1EmbryoFreezing.Value = null;
+            this.chkDay1EmbryoFreezing.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // FrmLabOPUAdd2
             // 
@@ -5093,6 +5114,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtFertili2Pn)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnResultDay0)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaturaNoofOpu1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSaveMatura)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaturaDead)).EndInit();
@@ -5114,6 +5136,7 @@
             this.gbDay2.ResumeLayout(false);
             this.pn2.ResumeLayout(false);
             this.pn2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnResultDay2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboRemarkDay2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDay2Date)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboCheckedDay2)).EndInit();
@@ -5204,8 +5227,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnHnSearch)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHnMale)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHnFeMale)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnResultDay0)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnResultDay2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkDay1EmbryoFreezing)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -5482,5 +5504,6 @@
         private C1.Win.C1Command.C1DockingTabPage tabPresc;
         private C1.Win.C1Input.C1Button btnResultDay0;
         private C1.Win.C1Input.C1Button btnResultDay2;
+        private C1.Win.C1Input.C1CheckBox chkDay1EmbryoFreezing;
     }
 }

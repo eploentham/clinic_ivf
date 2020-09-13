@@ -1235,14 +1235,14 @@ namespace clinic_ivf.gui
             //throw new NotImplementedException();
             ic.cStf.staff_id = "";
             Boolean chkSave = false;
-            ic.statusResultDay1 = "";
-            ic.opu_report_day1 = "";
+            ic.statusResultDay0 = "";
+            ic.opu_report_day0 = "";
             FrmLabOPUPrint frmPrn = new FrmLabOPUPrint(ic, txtID.Text, FrmLabOPUPrint.opuReport.ResultDay0);
             frmPrn.ShowDialog(this);
-            if (ic.statusResultDay1.Equals("1"))
+            if (ic.statusResultDay0.Equals("1"))
             {
                 long chk1 = 0;
-                MessageBox.Show("ส่งผล LAB OPU Day1 ให้ทางพยาบาล เรียบร้อย ", "");       //clinic_ivf.Properties.Resources.Female_user_accept_24
+                MessageBox.Show("ส่งผล LAB OPU Day0 ให้ทางพยาบาล เรียบร้อย ", "");       //clinic_ivf.Properties.Resources.Female_user_accept_24
                 btnApproveResult.Image = Resources.Female_user_accept_24;
             }
         }

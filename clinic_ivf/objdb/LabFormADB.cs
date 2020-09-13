@@ -114,6 +114,7 @@ namespace clinic_ivf.objdb
             lformA.sperm_freezing_remark = "sperm_freezing_remark";
             lformA.sperm_sa_remark = "sperm_sa_remark";
             lformA.status_no_ngs = "status_no_ngs";
+            lformA.form_a_id_female = "form_a_id_female";
 
             lformA.pkField = "form_a_id";
             lformA.table = "lab_t_form_a";
@@ -218,6 +219,7 @@ namespace clinic_ivf.objdb
             p.staff_req_id = long.TryParse(p.staff_req_id, out chk) ? chk.ToString() : "0";
             p.req_id_sperm_freezing = long.TryParse(p.req_id_sperm_freezing, out chk) ? chk.ToString() : "0";
             p.req_id_semem_analysis = long.TryParse(p.req_id_semem_analysis, out chk) ? chk.ToString() : "0";
+            p.form_a_id_female = long.TryParse(p.form_a_id_female, out chk) ? chk.ToString() : "0";
 
         }
         public String insert(LabFormA p, String userId)
@@ -321,6 +323,7 @@ namespace clinic_ivf.objdb
                     "," + lformA.sperm_freezing_remark + "='" + p.sperm_freezing_remark.Replace("'", "''") + "' " +
                     "," + lformA.sperm_sa_remark + "='" + p.sperm_sa_remark.Replace("'", "''") + "' " +
                     "," + lformA.status_no_ngs + "='" + p.status_no_ngs.Replace("'", "''") + "' " +
+                    "," + lformA.form_a_id_female + "='" + p.form_a_id_female + "' " +
                     "";
                 re = conn.ExecuteNonQuery(conn.conn, sql);
             }
@@ -421,6 +424,7 @@ namespace clinic_ivf.objdb
                     "," + lformA.sperm_freezing_remark + "='" + p.sperm_freezing_remark.Replace("'", "''") + "' " +
                     "," + lformA.sperm_sa_remark + "='" + p.sperm_sa_remark.Replace("'", "''") + "' " +
                     "," + lformA.status_no_ngs + "='" + p.status_no_ngs.Replace("'", "''") + "' " +
+                    "," + lformA.form_a_id_female + "='" + p.form_a_id_female + "' " +
                 " Where " + lformA.pkField + " = '" + p.form_a_id + "' "
                 ;
             try
@@ -446,6 +450,47 @@ namespace clinic_ivf.objdb
                 re = update(p, userId);
             }
 
+            return re;
+        }
+        public String updateFemaleOPU(LabFormA p, String userId)
+        {
+            String re = "";
+            String sql = "";
+            p.active = "1";
+            //p.ssdata_id = "";
+            int chk = 0;
+
+            chkNull(p);
+            sql = "Update " + lformA.table + " " +
+                //" Set "+lformA.patient_appoint_date_time + "='"+p.patient_appoint_date_time + "' " +
+                "Set " + lformA.status_fresh_sperm + "='" + p.status_fresh_sperm + "'" +
+                "," + lformA.fresh_sperm_collect_time + "='" + p.fresh_sperm_collect_time + "' " +
+                "," + lformA.fresh_sperm_end_time + "='" + p.fresh_sperm_end_time + "' " +
+                "," + lformA.status_opu_time_modi + "='" + p.status_opu_time_modi + "' " +
+                "," + lformA.status_frozen_sperm + "='" + p.status_frozen_sperm + "'" +
+                "," + lformA.frozen_sperm_date + "='" + p.frozen_sperm_date + "' " +
+                "," + lformA.status_sperm_ha + "='" + p.status_sperm_ha + "'" +
+                    
+                "," + lformA.status_embryo_tranfer + "='" + p.status_embryo_tranfer + "'" +
+                "," + lformA.embryo_tranfer_fresh_cycle + "='" + p.embryo_tranfer_fresh_cycle + "'" +
+                "," + lformA.embryo_tranfer_frozen_cycle + "='" + p.embryo_tranfer_frozen_cycle + "'" +
+                "," + lformA.status_embryo_freezing + "='" + p.status_embryo_freezing + "'" +
+                "," + lformA.embryo_freezing_day + "='" + p.embryo_freezing_day + "'" +
+                "," + lformA.embryo_tranfer_date + "='" + p.embryo_tranfer_date + "'" +
+
+                "," + lformA.y_selection + "='" + p.y_selection + "' " +
+                "," + lformA.x_selection + "='" + p.x_selection + "' " +
+ 
+                " Where " + lformA.pkField + " = '" + p.form_a_id + "' "
+                ;
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
             return re;
         }
         public String updateDOBDonor(String id, String dobdonor)
@@ -862,6 +907,17 @@ namespace clinic_ivf.objdb
             cop1 = setLabFormA(dt);
             return cop1;
         }
+        public LabFormA selectMaxByPttId(String pttId)
+        {
+            LabFormA cop1 = new LabFormA();
+            DataTable dt = new DataTable();
+            String sql = "select lformA.* " +
+                "From " + lformA.table + " lformA " +
+                "Where lformA." + lformA.t_patient_id + " ='" + pttId + "' and lformA.t_visit_id = (Select max(t_visit_id) From  "+lformA.table+ " where lformA." + lformA.t_patient_id + " ='" + pttId + "')";
+            dt = conn.selectData(conn.conn, sql);
+            cop1 = setLabFormA(dt);
+            return cop1;
+        }
         public DataTable selectDistinctByRemark()
         {
             DataTable dt = new DataTable();
@@ -1151,6 +1207,7 @@ namespace clinic_ivf.objdb
                 vs1.sperm_freezing_remark = dt.Rows[0][lformA.sperm_freezing_remark].ToString();
                 vs1.sperm_sa_remark = dt.Rows[0][lformA.sperm_sa_remark].ToString();
                 vs1.status_no_ngs = dt.Rows[0][lformA.status_no_ngs].ToString();
+                vs1.form_a_id_female = dt.Rows[0][lformA.form_a_id_female].ToString();
             }
             else
             {
@@ -1252,6 +1309,7 @@ namespace clinic_ivf.objdb
             lforma1.sperm_sa_remark = "";
             lforma1.sperm_freezing_remark = "";
             lforma1.status_no_ngs = "";
+            lforma1.form_a_id_female = "";
             return lforma1;
         }
     }

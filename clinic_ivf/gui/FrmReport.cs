@@ -815,6 +815,34 @@ namespace clinic_ivf.gui
                 MessageBox.Show("error " + ex.Message, "err " + err);
             }
         }
+        public void setLabFormAOPUMaleReport(DataTable dt)
+        {
+            String chk = "", printerDefault = "", err = "";
+            ReportDocument rpt = new ReportDocument();
+            try
+            {
+                err = "00" + ic.iniC.statusAppDonor;
+
+                rpt.Load("lab_form_a_opu_male.rpt");
+
+                err = "01";
+                rpt.SetDataSource(dt);
+                err = "02";
+                rpt.SetParameterValue("line1", ic.cop.comp_name_t);
+                rpt.SetParameterValue("line2", ic.cop.comp_address_e + " " + ic.cop.tele);
+                rpt.SetParameterValue("report_name", " Laboratory Request Form OPU Sperm");
+                err = "03";
+                //rpt.SetParameterValue("age1", "" + age);
+                this.crystalReportViewer1.ReportSource = rpt;
+                err = "04";
+                this.crystalReportViewer1.Refresh();
+            }
+            catch (Exception ex)
+            {
+                chk = ex.Message.ToString();
+                MessageBox.Show("error " + ex.Message, "err " + err);
+            }
+        }
         public void setLabFormAOPUReport(DataTable dt)
         {
             String chk = "", printerDefault = "", err = "";

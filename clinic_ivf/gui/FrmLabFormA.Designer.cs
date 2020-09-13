@@ -214,6 +214,7 @@
             this.txtSpermAnalysisDateStart = new C1.Win.C1Input.C1DateEdit();
             this.chkSememAnalysis = new C1.Win.C1Input.C1CheckBox();
             this.btnPrintSperm = new C1.Win.C1Input.C1Button();
+            this.btnPrintOPUMale = new C1.Win.C1Input.C1Button();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -334,6 +335,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtSpermAnalysisDateStart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkSememAnalysis)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPrintSperm)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnPrintOPUMale)).BeginInit();
             this.SuspendLayout();
             // 
             // sB
@@ -2295,6 +2297,7 @@
             // gbOPU
             // 
             this.gbOPU.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.gbOPU.Controls.Add(this.btnPrintOPUMale);
             this.gbOPU.Controls.Add(this.txtReqOpuId);
             this.gbOPU.Controls.Add(this.txtPasswordVoidOPU);
             this.gbOPU.Controls.Add(this.chkVoidOPU);
@@ -3639,6 +3642,20 @@
             this.btnPrintSperm.UseVisualStyleBackColor = true;
             this.btnPrintSperm.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
+            // btnPrintOPUMale
+            // 
+            this.btnPrintOPUMale.Image = global::clinic_ivf.Properties.Resources.printer_orange24;
+            this.btnPrintOPUMale.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPrintOPUMale.Location = new System.Drawing.Point(914, 137);
+            this.btnPrintOPUMale.Name = "btnPrintOPUMale";
+            this.btnPrintOPUMale.Size = new System.Drawing.Size(112, 35);
+            this.btnPrintOPUMale.TabIndex = 750;
+            this.btnPrintOPUMale.Text = "Print OPU Male";
+            this.btnPrintOPUMale.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnPrintOPUMale, "(default)");
+            this.btnPrintOPUMale.UseVisualStyleBackColor = true;
+            this.btnPrintOPUMale.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
             // FrmLabFormA
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3789,6 +3806,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtSpermAnalysisDateStart)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkSememAnalysis)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPrintSperm)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnPrintOPUMale)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3982,5 +4000,6 @@
         private System.Windows.Forms.Label label39;
         private C1.Win.C1Input.C1ComboBox cboSpFzRemark;
         private C1.Win.C1Input.C1ComboBox cboSpSaRemark;
+        private C1.Win.C1Input.C1Button btnPrintOPUMale;
     }
 }

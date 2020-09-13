@@ -181,6 +181,7 @@ namespace clinic_ivf.objdb
             opu.report_day0 = "report_day0";
             opu.status_approve_result_day2 = "status_approve_result_day2";
             opu.status_approve_result_day0 = "status_approve_result_day0";
+            opu.status_day1_show_embryo_freezing = "status_day1_show_embryo_freezing";
 
             opu.table = "lab_t_opu";
             opu.pkField = "opu_id";
@@ -577,8 +578,21 @@ namespace clinic_ivf.objdb
             p.report_day6 = p.report_day6 == null ? "" : p.report_day6;
             p.report_day5 = p.report_day5 == null ? "" : p.report_day5;
             p.approve_result_day6_date = p.approve_result_day6_date == null ? "" : p.approve_result_day6_date;
+            //p.status_approve_result_day6 = p.status_approve_result_day6 == null ? "0" : p.status_approve_result_day6;
+            p.status_day1_show_embryo_freezing = p.status_day1_show_embryo_freezing == null ? "0" : p.status_day1_show_embryo_freezing;
+            p.report_day0 = p.report_day0 == null ? "" : p.report_day0;
+            p.report_day1 = p.report_day1 == null ? "" : p.report_day1;
+            p.report_day2 = p.report_day2 == null ? "" : p.report_day2;
+            p.report_day3 = p.report_day3 == null ? "" : p.report_day3;
+            p.report_day5 = p.report_day5 == null ? "" : p.report_day5;
+            p.report_day6 = p.report_day6 == null ? "" : p.report_day6;
+            p.status_approve_result_day0 = p.status_approve_result_day0 == null ? "0" : p.status_approve_result_day0;
+            p.status_approve_result_day1 = p.status_approve_result_day1 == null ? "0" : p.status_approve_result_day1;
+            p.status_approve_result_day2 = p.status_approve_result_day2 == null ? "0" : p.status_approve_result_day2;
+            p.status_approve_result_day3 = p.status_approve_result_day3 == null ? "0" : p.status_approve_result_day3;
+            p.status_approve_result_day5 = p.status_approve_result_day5 == null ? "0" : p.status_approve_result_day5;
             p.status_approve_result_day6 = p.status_approve_result_day6 == null ? "0" : p.status_approve_result_day6;
-            
+
             p.doctor_id = long.TryParse(p.doctor_id, out chk) ? chk.ToString() : "0";
             p.proce_id = long.TryParse(p.proce_id, out chk) ? chk.ToString() : "0";
             p.req_id = long.TryParse(p.req_id, out chk) ? chk.ToString() : "0";
@@ -634,6 +648,15 @@ namespace clinic_ivf.objdb
                 "," + opu.report_day3 + " = '" + p.report_day3 + "'" +
                 "," + opu.report_day6 + " = '" + p.report_day6 + "'" +
                 "," + opu.report_day5 + " = '" + p.report_day5 + "'" +
+                "," + opu.report_day0 + " = '" + p.report_day0 + "'" +
+                "," + opu.report_day2 + " = '" + p.report_day2 + "'" +
+                "," + opu.status_approve_result_day2 + " = '" + p.status_approve_result_day2 + "'" +
+                "," + opu.status_approve_result_day0 + " = '" + p.status_approve_result_day0 + "'" +
+                "," + opu.status_approve_result_day1 + " = '" + p.status_approve_result_day1 + "'" +
+                "," + opu.status_approve_result_day3 + " = '" + p.status_approve_result_day3 + "'" +
+                "," + opu.status_approve_result_day5 + " = '" + p.status_approve_result_day5 + "'" +
+                "," + opu.status_approve_result_day6 + " = '" + p.status_approve_result_day6 + "'" +
+                "," + opu.status_day1_show_embryo_freezing + " = '" + p.status_day1_show_embryo_freezing + "'" +
                "";
             try
             {
@@ -735,7 +758,7 @@ namespace clinic_ivf.objdb
                 "," + opu.fertili_4_pn + " = '" + p.fertili_4_pn.Replace("'", "''") + "'" +
                 "," + opu.fertili_no_pn + " = '" + p.fertili_no_pn.Replace("'", "''") + "'" +
                 "," + opu.fertili_dead + " = '" + p.fertili_dead + "'" +
-                //"," + opu.matura_post_mat + " = '" + p.matura_post_mat + "'" +
+                "," + opu.status_day1_show_embryo_freezing + " = '" + p.status_day1_show_embryo_freezing + "'" +
                 
                 "Where " + opu.pkField + "='" + p.opu_id + "'"
                 ;
@@ -1290,7 +1313,6 @@ namespace clinic_ivf.objdb
             {
                 sql = ex.Message + " " + ex.InnerException;
             }
-
             return re;
         }
         public LabOpu setLabOPU(DataTable dt)
@@ -1459,6 +1481,7 @@ namespace clinic_ivf.objdb
                 opu1.report_day0 = dt.Rows[0][opu.report_day0].ToString();
                 opu1.status_approve_result_day2 = dt.Rows[0][opu.status_approve_result_day2].ToString();
                 opu1.status_approve_result_day0 = dt.Rows[0][opu.status_approve_result_day0].ToString();
+                opu1.status_day1_show_embryo_freezing = dt.Rows[0][opu.status_day1_show_embryo_freezing].ToString();
             }
             else
             {
@@ -1621,6 +1644,7 @@ namespace clinic_ivf.objdb
                 opu1.report_day0 = "";
                 opu1.status_approve_result_day2 = "";
                 opu1.status_approve_result_day0 = "";
+                opu1.status_day1_show_embryo_freezing = "";
             }
 
             return opu1;

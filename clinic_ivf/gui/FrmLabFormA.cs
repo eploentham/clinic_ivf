@@ -158,6 +158,7 @@ namespace clinic_ivf.gui
             txtPasswordVoidSpSa.KeyUp += TxtPasswordVoidSpSa_KeyUp;
             btnVoidSpFz.Click += BtnVoidSpFz_Click;
             btnVoidSpSa.Click += BtnVoidSpSa_Click;
+            btnPrintOPUMale.Click += BtnPrintOPUMale_Click;
 
             ChkEmbryoTranfer_CheckStateChanged(null, null);
             //ChkNgs_CheckedChanged(null, null);
@@ -204,6 +205,9 @@ namespace clinic_ivf.gui
             sB1.Text = "";
             setTheme();
         }
+
+        
+
         private void setTheme()
         {
             if(theme11 != null)
@@ -705,7 +709,52 @@ namespace clinic_ivf.gui
             frm.setLabFormAFetReport(dt);
             frm.ShowDialog(this);
         }
-
+        private void BtnPrintOPUMale_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            SetDefaultPrinter(ic.iniC.printerA4);
+            FrmReport frm = new FrmReport(ic);
+            DataTable dt = new DataTable();
+            dt = ic.ivfDB.lFormaDB.selectReportByPk(txtID.Text);
+            String date1 = "", txt1 = "";
+            if (dt.Rows.Count <= 0) return;
+            date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.opu_date].ToString());
+            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.opu_date] = date1.Replace("-", "/");
+            //date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.embryo_freezing_day].ToString());
+            //dt.Rows[0][ic.ivfDB.lFormaDB.lformA.embryo_freezing_day] = date1.Replace("-", "/");
+            date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.embryo_tranfer_date].ToString());
+            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.embryo_tranfer_date] = date1.Replace("-", "/");
+            date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.fet1_no_date_freezing].ToString());
+            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.fet1_no_date_freezing] = date1.Replace("-", "/");
+            date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.dob_male].ToString());
+            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.dob_male] = date1.Replace("-", "/");
+            date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.dob_female].ToString());
+            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.dob_female] = date1.Replace("-", "/");
+            date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.sperm_freezing_date_start].ToString());
+            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.sperm_freezing_date_start] = date1.Replace("-", "/");
+            date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.sperm_freezing_date_end].ToString());
+            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.sperm_freezing_date_end] = date1.Replace("-", "/");
+            date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.iui_date].ToString());
+            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.iui_date] = date1.Replace("-", "/");
+            date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.pasa_tese_date].ToString());
+            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.pasa_tese_date] = date1.Replace("-", "/");
+            date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.sperm_analysis_date_start].ToString());
+            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.sperm_analysis_date_start] = date1.Replace("-", "/");
+            date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.sperm_analysis_date_end].ToString());
+            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.sperm_analysis_date_end] = date1.Replace("-", "/");
+            date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.fet_no_date_freezing].ToString());
+            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.fet_no_date_freezing] = date1.Replace("-", "/");
+            date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.frozen_sperm_date].ToString());
+            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.frozen_sperm_date] = date1.Replace("-", "/");
+            if (dt.Rows[0]["status_wait_confirm_opu_date"].ToString().Equals("1"))
+            {
+                txt1 = "รอ confirm วัน เวลา OPU จากทาง พยาบาล";
+            }
+            dt.Columns.Add("note1", typeof(String));
+            dt.Rows[0]["note1"] = txt1;
+            frm.setLabFormAOPUMaleReport(dt);
+            frm.ShowDialog(this);
+        }
         private void BtnPrintOPU_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
@@ -951,7 +1000,31 @@ namespace clinic_ivf.gui
             txtNameMale.Value = ic.sVsOld.PName;
             txtDobMale.Value = ic.sVsOld.dob;
         }
+        private LabFormA setLabFormAOPUMale(LabFormA lFormA)
+        {
+            //lFormA.t_patient_id = chkFreshSprem.Enabled;
+            //lFormA.t_patient_id = txtFreshSpermColTime.Enabled;
+            //lFormA.t_patient_id = txtFreshSpermEndTime.Enabled;
+            //lFormA.t_patient_id = chkOpuTimeModi.Enabled;
+            //lFormA.t_patient_id = chkFrozenSperm.Enabled;
+            //lFormA.t_patient_id = txtFrozenSpermDate.Enabled;
+            //lFormA.t_patient_id = chkSpermHa.Enabled;
+            //lFormA.t_patient_id = chkYselet.Enabled;
+            //lFormA.t_patient_id = chkXselet.Enabled;
 
+
+            lFormA.status_fresh_sperm = chkFreshSprem.Checked ? "1" : "0";
+            lFormA.fresh_sperm_collect_time = txtFreshSpermColTime.Text;
+            lFormA.fresh_sperm_end_time = txtFreshSpermEndTime.Text;
+            lFormA.status_opu_time_modi = chkOpuTimeModi.Checked ? "1" : "0";
+            lFormA.status_frozen_sperm = chkFrozenSperm.Checked ? "1" : "0";
+            lFormA.frozen_sperm_date = ic.datetoDB(txtFrozenSpermDate.Text);
+            lFormA.status_sperm_ha = chkSpermHa.Checked ? "1" : "0";
+            lFormA.y_selection = chkYselet.Checked ? "1" : "0";
+            lFormA.x_selection = chkXselet.Checked ? "1" : "0";
+            lFormA.form_a_id = this.lFormA.form_a_id_female;
+            return lFormA;
+        }
         private void setLabFormA()
         {
             // ไม่ได้ ตรวจ OPU
@@ -1064,7 +1137,7 @@ namespace clinic_ivf.gui
         }
         private Boolean saveLabFormA()
         {
-            Boolean chk1 = false;
+            Boolean chk1 = false, chkOPU=false;
             if (chkNgs.Checked && chkNgsDay3.Checked == false && chkNgsDay5.Checked == false)
             {
                 MessageBox.Show("กรุณาเลือก Biopsy Day", "");
@@ -1085,12 +1158,17 @@ namespace clinic_ivf.gui
                 MessageBox.Show("กรุณาเลือก Fresh Sperm", "");
                 //return;
             }
+            if ((txtNoofOocyteRt.Text.Length>0) || (txtNoofOocyteLt.Text.Length > 0) || chkFreshSprem.Checked || chkFrozenSperm.Checked || chkEmbryoTranfer.Checked || chkEmbryoFreezing.Checked || txtOPUDate.Text.Length>0)
+            {
+                chkOPU = true;
+                //return;
+            }
             //ic.cStf.staff_id = "";
             //FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
             //frm.ShowDialog(this);
             //if (!ic.cStf.staff_id.Equals(""))
             //{
-                txtUserReq.Value = ic.cStf.staff_fname_e + " " + ic.cStf.staff_lname_e;
+            txtUserReq.Value = ic.cStf.staff_fname_e + " " + ic.cStf.staff_lname_e;
                 txtStfConfirmID.Value = ic.cStf.staff_id;
                 btnSave.Text = "Confirm";
                 btnSave.Image = Resources.Add_ticket_24;
@@ -1101,7 +1179,10 @@ namespace clinic_ivf.gui
 
                 setLabFormA();
                 re = ic.ivfDB.lFormaDB.insertLabFormA(lFormA, ic.cStf.staff_id);
-                DateTime dt = new DateTime();
+            LabFormA lformafemale = new LabFormA();
+            lformafemale = setLabFormAOPUMale(lformafemale);
+            String re4 = ic.ivfDB.lFormaDB.updateFemaleOPU(lformafemale, ic.cStf.staff_id);
+            DateTime dt = new DateTime();
                 String dt1 = "";
                 //if(DateTime.TryParse(ic.datetoDB(txtOPUDate.Text), out dt))
                 //{
@@ -1110,7 +1191,7 @@ namespace clinic_ivf.gui
                 if (txtID.Text.Equals(""))
                 {
                     LabRequest lbReq = new LabRequest();
-                    if ((gbOPU.Enabled && chkWaitOpuDate.Checked) || (gbOPU.Enabled && chkConfirmOpuDate.Checked))
+                    if ((gbOPU.Enabled && chkWaitOpuDate.Checked) || (gbOPU.Enabled && chkConfirmOpuDate.Checked) || chkOPU)
                     {
                         String dtrid = "";
                         dtrid = cboDoctor.SelectedItem == null ? "" : ((ComboBoxItem)cboDoctor.SelectedItem).Value;
@@ -1361,7 +1442,54 @@ namespace clinic_ivf.gui
         //    //throw new NotImplementedException();
         //    gbNgs.Enabled = chkNgs1.Checked ? true : false;
         //}
-
+        private void setGbOPUEnable(Boolean flag)
+        {
+            txtOPUDate.Enabled = flag;
+            chkWaitOpuDate.Enabled = flag;
+            chkConfirmOpuDate.Enabled = flag;
+            txtOPUTime.Enabled = flag;
+            txtOPUTimeModi.Enabled = flag;
+            txtNoofOocyteRt.Enabled = flag;
+            txtNoofOocyteLt.Enabled = flag;
+            chkFreshSprem.Enabled = flag;
+            txtFreshSpermColTime.Enabled = flag;
+            txtFreshSpermEndTime.Enabled = flag;
+            chkOpuTimeModi.Enabled = flag;
+            chkFrozenSperm.Enabled = flag;
+            txtFrozenSpermDate.Enabled = flag;
+            chkSpermHa.Enabled = flag;
+            chkYselet.Enabled = flag;
+            chkXselet.Enabled = flag;
+            chkNoNgs.Enabled = flag;
+            chkPgs.Enabled = flag;
+            chkNgsDay3.Enabled = flag;
+            chkNgs.Enabled = flag;
+            chkNgsDay5.Enabled = flag;
+            chkWaitDay1.Enabled = flag;
+            chkEmbryoTranfer.Enabled = flag;
+            chkEmbryoTranferFresh.Enabled = flag;
+            chkEmbryoTranferFrozen.Enabled = flag;
+            txtOPURemark.Enabled = flag;
+            chkEmbryoFreezing.Enabled = flag;
+            chkEmbryoFreezingDay1.Enabled = flag;
+            chkEmbryoFreezingDay2.Enabled = flag;
+            chkEmbryoFreezingDay3.Enabled = flag;
+            chkEmbryoFreezingDay5.Enabled = flag;
+            groupBox3.Enabled = flag;
+            
+        }
+        private void setGbOPUMaleEnable(Boolean flag)
+        {
+            chkFreshSprem.Enabled = flag;
+            txtFreshSpermColTime.Enabled = flag;
+            txtFreshSpermEndTime.Enabled = flag;
+            chkOpuTimeModi.Enabled = flag;
+            chkFrozenSperm.Enabled = flag;
+            txtFrozenSpermDate.Enabled = flag;
+            chkSpermHa.Enabled = flag;
+            chkYselet.Enabled = flag;
+            chkXselet.Enabled = flag;
+        }
         private void setControl()
         {
             lFormA = ic.ivfDB.lFormaDB.selectByPk1(lformaId);
@@ -1434,13 +1562,13 @@ namespace clinic_ivf.gui
                     txtPttId.Value = ptt.t_patient_id;
                     txtVsId.Value = vsid;
                     txtVnOld.Value = vn;
-                    if (!ptt.f_sex_id.Equals("1"))
-                    {
-                        gbSpermAnalysis.Enabled = false;
-                        gbSpermFreezing.Enabled = false;
-                        gbSpermPESA.Enabled = false;
-                        gbSpermIUI.Enabled = false;
-                    }
+                    //if (!ptt.f_sex_id.Equals("1"))
+                    //{
+                    //    gbSpermAnalysis.Enabled = false;
+                    //    gbSpermFreezing.Enabled = false;
+                    //    gbSpermPESA.Enabled = false;
+                    //    gbSpermIUI.Enabled = false;
+                    //}
                     if (ic.iniC.statusAppDonor.Equals("1"))
                     {
                         if (ptt.f_sex_id.Equals("1"))//male
@@ -1610,12 +1738,30 @@ namespace clinic_ivf.gui
             }
             if (ptt.f_sex_id.Equals("1"))// male
             {
-                gbOPU.Enabled = false;
+                //gbOPU.Enabled = false;
+                setGbOPUEnable(false);
                 gbETFET.Enabled = false;
                 gbSpermAnalysis.Enabled = true;
                 gbSpermFreezing.Enabled = true;
                 gbSpermPESA.Enabled = true;
                 gbSpermIUI.Enabled = true;
+                btnPrintOPUMale.Enabled = true;
+                //เอาข้อมูล opu female มาแสดง
+                LabFormA lformAFemale = new LabFormA();
+                lformAFemale = ic.ivfDB.lFormaDB.selectByPk1(lFormA.form_a_id_female);
+                if (lformAFemale.form_a_id.Equals(""))
+                {
+                    String hn_female = ptt.patient_hn_1;
+                    Patient pttFemale = new Patient();
+                    pttFemale = ic.ivfDB.pttDB.selectByHn(hn_female);
+
+                    lformAFemale = ic.ivfDB.lFormaDB.selectMaxByPttId(pttFemale.t_patient_id);
+                    
+                    lFormA.form_a_id_female = lformAFemale.form_a_id;
+                }
+                
+                setGbOPU(lformAFemale);
+                setGbOPUMaleEnable(true);
             }
             else if (ptt.f_sex_id.Equals("2"))// female
             {
@@ -1625,6 +1771,7 @@ namespace clinic_ivf.gui
                 gbSpermFreezing.Enabled = false;
                 gbSpermPESA.Enabled = false;
                 gbSpermIUI.Enabled = false;
+                btnPrintOPUMale.Visible = true;
             }
             if (!ptt.t_patient_id.Equals(""))
             {
@@ -1661,6 +1808,47 @@ namespace clinic_ivf.gui
             picPtt.Image = bitmap;
             picPtt.SizeMode = PictureBoxSizeMode.StretchImage;
             groupBox1.Controls.Add(picPtt);
+        }
+        private void setGbOPU(LabFormA lFormA)
+        {
+            txtOPUDate.Value = lFormA.opu_date;
+            txtNoofOocyteLt.Value = lFormA.no_of_oocyte_lt;
+            txtNoofOocyteRt.Value = lFormA.no_of_oocyte_rt;
+            chkFreshSprem.Checked = lFormA.status_fresh_sperm.Equals("1") ? true : false;
+            txtFreshSpermColTime.Value = lFormA.fresh_sperm_collect_time;
+            txtFreshSpermEndTime.Value = lFormA.fresh_sperm_end_time;
+            chkFrozenSperm.Checked = lFormA.status_frozen_sperm.Equals("1") ? true : false;
+            chkSpermHa.Checked = lFormA.status_sperm_ha.Equals("1") ? true : false;
+            chkPgs.Checked = lFormA.status_pgs.Equals("1") ? true : false;
+            chkNgs.Checked = lFormA.status_ngs.Equals("1") ? true : false;
+            chkNgsDay3.Checked = lFormA.ngs_day.Equals("3") ? true : false;
+            chkNgsDay5.Checked = lFormA.ngs_day.Equals("5") ? true : false;
+            chkEmbryoTranfer.Checked = lFormA.status_embryo_tranfer.Equals("1") ? true : false;
+            chkEmbryoTranferFresh.Checked = lFormA.embryo_tranfer_fresh_cycle.Equals("1") ? true : false;
+            chkEmbryoTranferFrozen.Checked = lFormA.embryo_tranfer_fresh_cycle.Equals("2") ? true : false;
+            chkEmbryoFreezing.Checked = lFormA.status_embryo_freezing.Equals("1") ? true : false;
+            chkEmbryoFreezingDay1.Checked = lFormA.embryo_freezing_day.Equals("1") ? true : false;
+            chkEmbryoFreezingDay3.Checked = lFormA.embryo_freezing_day.Equals("3") ? true : false;
+            chkEmbryoFreezingDay5.Checked = lFormA.embryo_freezing_day.Equals("5") ? true : false;
+            chkEmbryoFreezingDay2.Checked = lFormA.embryo_freezing_day.Equals("2") ? true : false;
+
+
+            chkYselet.Checked = lFormA.y_selection.Equals("1") ? true : false;
+            chkXselet.Checked = lFormA.x_selection.Equals("1") ? true : false;
+            chkWaitDay1.Checked = lFormA.status_wait_confirm_day1.Equals("1") ? true : false;
+            chkWaitOpuDate.Checked = lFormA.status_wait_confirm_opu_date.Equals("1") ? true : false;
+            chkConfirmOpuDate.Checked = lFormA.status_wait_confirm_opu_date.Equals("2") ? true : false;
+            txtOPUTime.Value = lFormA.opu_time;
+
+            chkOPUActive.Checked = false;
+            chkOPUActiveWait.Checked = false;
+            chkOPUUnActive.Checked = false;
+            chkOPUActive.Checked = lFormA.status_opu_active.Equals("1") ? true : false;
+            chkOPUUnActive.Checked = lFormA.status_opu_active.Equals("3") ? true : false;
+            chkOPUActiveWait.Checked = lFormA.status_opu_active.Equals("2") ? true : false;
+
+            cboOPUWaitRemark.Value = lFormA.opu_wait_remark;
+            txtOPURemark.Value = lFormA.opu_remark;
         }
         private void setControl1()
         {
@@ -1699,27 +1887,7 @@ namespace clinic_ivf.gui
 
             //txtLabFormACode.Value = lFormA.form_a_code;
 
-            txtOPUDate.Value = lFormA.opu_date;
-            txtNoofOocyteLt.Value = lFormA.no_of_oocyte_lt;
-            txtNoofOocyteRt.Value = lFormA.no_of_oocyte_rt;
-            chkFreshSprem.Checked = lFormA.status_fresh_sperm.Equals("1") ? true : false;
-            txtFreshSpermColTime.Value = lFormA.fresh_sperm_collect_time;
-            txtFreshSpermEndTime.Value = lFormA.fresh_sperm_end_time;
-            chkFrozenSperm.Checked = lFormA.status_frozen_sperm.Equals("1") ? true : false;
-            chkSpermHa.Checked = lFormA.status_sperm_ha.Equals("1") ? true : false;
-            chkPgs.Checked = lFormA.status_pgs.Equals("1") ? true : false;
-            chkNgs.Checked = lFormA.status_ngs.Equals("1") ? true : false;
-            chkNgsDay3.Checked = lFormA.ngs_day.Equals("3") ? true : false;
-            chkNgsDay5.Checked = lFormA.ngs_day.Equals("5") ? true : false;
-            chkEmbryoTranfer.Checked = lFormA.status_embryo_tranfer.Equals("1") ? true : false;
-            chkEmbryoTranferFresh.Checked = lFormA.embryo_tranfer_fresh_cycle.Equals("1") ? true : false;
-            chkEmbryoTranferFrozen.Checked = lFormA.embryo_tranfer_fresh_cycle.Equals("2") ? true : false;
-            chkEmbryoFreezing.Checked = lFormA.status_embryo_freezing.Equals("1") ? true : false;
-            chkEmbryoFreezingDay1.Checked = lFormA.embryo_freezing_day.Equals("1") ? true : false;
-            chkEmbryoFreezingDay3.Checked = lFormA.embryo_freezing_day.Equals("3") ? true : false;
-            chkEmbryoFreezingDay5.Checked = lFormA.embryo_freezing_day.Equals("5") ? true : false;
-            chkEmbryoFreezingDay2.Checked = lFormA.embryo_freezing_day.Equals("2") ? true : false;
-
+            
             txtEmbryoTranferDate.Value = lFormA.embryo_tranfer_date;
             txtEmbryoTranferTime.Value = ic.timetoShow(lFormA.embryo_tranfer_date);
             chkETNotoTranfer.Checked = lFormA.status_et_no_to_tranfer.Equals("1") ? true : false;
@@ -1758,23 +1926,9 @@ namespace clinic_ivf.gui
             ic.setC1Combo(cboDoctor, lFormA.doctor_id);
             txtFormADate.Value = lFormA.form_a_date;
             cboRemark.Value = lFormA.remark;
-            
-            chkYselet.Checked = lFormA.y_selection.Equals("1") ? true : false;
-            chkXselet.Checked = lFormA.x_selection.Equals("1") ? true : false;
-            chkWaitDay1.Checked = lFormA.status_wait_confirm_day1.Equals("1") ? true : false;
-            chkWaitOpuDate.Checked = lFormA.status_wait_confirm_opu_date.Equals("1") ? true : false;
-            chkConfirmOpuDate.Checked = lFormA.status_wait_confirm_opu_date.Equals("2") ? true : false;
-            txtOPUTime.Value = lFormA.opu_time;
 
-            chkOPUActive.Checked = false;
-            chkOPUActiveWait.Checked = false;
-            chkOPUUnActive.Checked = false;
-            chkOPUActive.Checked = lFormA.status_opu_active.Equals("1") ? true : false;
-            chkOPUUnActive.Checked = lFormA.status_opu_active.Equals("3") ? true : false;
-            chkOPUActiveWait.Checked = lFormA.status_opu_active.Equals("2") ? true : false;
+            setGbOPU(lFormA);
 
-            cboOPUWaitRemark.Value = lFormA.opu_wait_remark;
-            txtOPURemark.Value = lFormA.opu_remark;
             txtFETRemark.Value = lFormA.fet_remark;
             chkFetActiveWait.Checked = lFormA.status_fet_active.Equals("2") ? true : false;     //chkWaitFetDate
             chkFetActive.Checked = lFormA.status_fet_active.Equals("1") ? true : false;

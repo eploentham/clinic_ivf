@@ -498,9 +498,10 @@ namespace clinic_ivf.gui
             //MemoryStream stream;
             FtpClient ftpc = new FtpClient(ic.iniC.hostFTP, ic.iniC.userFTP, ic.iniC.passFTP, ic.ftpUsePassive);
             //ftpC.upload(iniC.folderFTP + "/" + opuCode + "/" + filename, pathFile);
-            streamDay0 = ftpc.download(ic.iniC.folderFTP + "//" + opu.opu_code + "//" + opu.report_day3);
+            streamDay0 = ftpc.download(ic.iniC.folderFTP + "//" + opu.opu_code + "//" + opu.report_day0);
             streamDay0.Seek(0, SeekOrigin.Begin);
             pds.LoadFromStream(streamDay0);
+            day0View.Ribbon.Minimized = true;
             day0View.DocumentSource = pds;
 
             //pds.LoadFromFile(filename1);

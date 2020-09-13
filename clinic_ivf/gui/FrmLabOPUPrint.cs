@@ -480,7 +480,7 @@ namespace clinic_ivf.gui
             {
                 FrmWaiting frmW = new FrmWaiting();
                 frmW.Show();
-                setExportDay1("");
+                setExportDay0("");
                 frmW.Dispose();
                 Application.DoEvents();
                 System.Threading.Thread.Sleep(200);
@@ -848,9 +848,6 @@ namespace clinic_ivf.gui
             }
             if (flagPreview.Equals("preview")) return filename;
 
-
-
-
             if (File.Exists(filename))
             {
                 long chk1 = 0;
@@ -940,8 +937,8 @@ namespace clinic_ivf.gui
                 //new LogWriter("d", "FrmLabOPUPrint ic.savePicOPUtoServer(txtOpuCode.Text, filename1, filename); opu.opu_code, filename1 " + opu.opu_code+" " + filename1);
                 ic.savePicOPUtoServer(txtOpuCode.Text, filename1, filename);
                 String re = ic.ivfDB.opuDB.updateStatusOPUApproveResultDay0(txtID.Text, filename1, ic.user.staff_id);
-                opu.report_day1 = filename1;
-                ic.opu_report_day1 = filename1;
+                opu.report_day0 = filename1;
+                ic.opu_report_day0 = filename1;
                 if (long.TryParse(re, out chk1))
                 {
                     LabRequest req = new LabRequest();
@@ -950,7 +947,7 @@ namespace clinic_ivf.gui
 
                     if (long.TryParse(re1, out chk1))
                     {
-                        ic.statusResultDay1 = "1";
+                        ic.statusResultDay0 = "1";
                         //MessageBox.Show("ส่งผล LAB OPU Day3 ให้ทางพยาบาล เรียบร้อย ", "");       //clinic_ivf.Properties.Resources.Female_user_accept_24
                         //btnApproveResult.Image = Resources.Female_user_accept_24;
                     }
@@ -1474,6 +1471,35 @@ namespace clinic_ivf.gui
                 }
             }
             else if(opureport == opuReport.ResultDay1)
+            {
+                opu = ic.ivfDB.opuDB.selectByPk1(opuId);
+                txtID.Value = opu.opu_id;
+                txtHnFeMale.Value = opu.hn_female;
+                txtHnMale.Value = opu.hn_male;
+                txtNameFeMale.Value = opu.name_female;
+                txtNameMale.Value = opu.name_male;
+                txtOpuCode.Value = opu.opu_code;
+                txtEmailTo.Value = ic.iniC.email_to_lab_opu;
+                //txtEmailSubject.Value = "Result LAB OPU HN " + txtHnFeMale.Text + " Name " + txtNameFeMale.Text + " OPU Code " + txtOpuCode.Text + " ";
+                txtEmailSubject.Value = "Day1 " + ic.datetoShow(opu.fertili_date) + " " + txtNameMale.Text + " & " + txtNameFeMale.Text;
+
+                chkSendEmail.Checked = opu.status_opu.Equals("2") ? true : false;
+                if (chkSendEmail.Checked)
+                {
+                    pnEmail.Visible = true;
+                }
+                else
+                {
+                    pnEmail.Visible = false;
+                }
+                groupBox2.Hide();
+                groupBox3.Hide();
+                chkSendEmail.Checked = true;
+                pnEmail.Show();
+                cboEmbryoDev3.Hide();
+                label8.Hide();
+            }
+            else if (opureport == opuReport.ResultDay0)
             {
                 opu = ic.ivfDB.opuDB.selectByPk1(opuId);
                 txtID.Value = opu.opu_id;

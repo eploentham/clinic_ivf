@@ -241,7 +241,8 @@ namespace clinic_ivf.objdb
                 //"Left Join lab_t_request lreq on lreq.request_id = oJSd.ID  " +
                 //"Left Join Visit vsold on oJSd.VN = vsold.VN " +
                 //"Left Join lab_t_form_a lforma on vsold.form_a_id = lforma.form_a_id " +
-                "Where lreq.status_req in ('0','1','2') and lforma.status_opu_active ='1' " +
+                //"Where lreq.status_req in ('0','1','2') and lforma.status_opu_active ='1' " +
+                "Where lreq.status_req in ('0','1','2') and lforma.req_id_opu > 0 " +
                 //"Order By lforma.form_a_id ";
                 "Order By lforma.opu_date, lforma.opu_time ";
             dt = conn.selectData(conn.conn, sql);

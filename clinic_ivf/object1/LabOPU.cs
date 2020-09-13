@@ -166,6 +166,7 @@ namespace clinic_ivf.object1
         public String report_day2 { get; set; }
         public String report_day0 { get; set; }
         public String status_approve_result_day2 { get; set; }
-        public String status_approve_result_day0 { get; set; }
+        public String status_approve_result_day0 { get; set; }//
+        public String status_day1_show_embryo_freezing { get; set; }
     }
 }
