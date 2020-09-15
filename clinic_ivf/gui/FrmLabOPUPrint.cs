@@ -887,6 +887,12 @@ namespace clinic_ivf.gui
             try
             {
                 dt = ic.ivfDB.setOPUReport(txtID.Text, "2", "3", true);     //ต้องการดึงเพื่อส่ง day1 
+                foreach(DataRow drow in dt.Rows)
+                {
+                    drow["fertili_date"] = drow["fertili_date"] != null ? drow["fertili_date"].ToString().Equals("") ? "-" : drow["fertili_date"].ToString():"-";
+                    drow["sperm_date"] = drow["sperm_date"] != null ? drow["sperm_date"].ToString().Equals("") ? "-" : drow["sperm_date"].ToString() : "-";
+                    drow["embryo_freez_day_0"] = drow["embryo_freez_day_0"] != null ? drow["embryo_freez_day_0"].ToString().Equals("") ? "0" : drow["embryo_freez_day_0"].ToString() : "0";
+                }
                 rpt.Load("lab_opu_day0.rpt");
                 rpt.SetDataSource(dt);
                 rpt.SetParameterValue("line1", ic.cop.comp_name_t);

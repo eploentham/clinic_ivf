@@ -3444,8 +3444,8 @@ namespace clinic_ivf.gui
             }
             txtOpuTime.Value = opu.opu_time;
             
-            btnResultDay1View.Visible = opu.status_approve_result_day1.Equals("1") ? true : false;
-            btnResultDay3View.Visible = opu.status_approve_result_day3.Equals("1") ? true : false;
+            //btnResultDay1View.Visible = opu.status_approve_result_day1.Equals("1") ? true : false;
+            //btnResultDay3View.Visible = opu.status_approve_result_day3.Equals("1") ? true : false;
             txtFertili2PnAdd.Value = opu.fertili_2_pn_add;
         }
         private void calMaturation()

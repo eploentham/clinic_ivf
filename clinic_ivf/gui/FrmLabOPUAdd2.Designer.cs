@@ -120,6 +120,7 @@
             this.txtSpermVol = new C1.Win.C1Input.C1TextBox();
             this.label32 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.chkDay1EmbryoFreezing = new C1.Win.C1Input.C1CheckBox();
             this.label95 = new System.Windows.Forms.Label();
             this.txtFertili2PnAdd = new C1.Win.C1Input.C1NumericEdit();
             this.btnResultDay1View = new C1.Win.C1Input.C1Button();
@@ -297,7 +298,6 @@
             this.txtHnMale = new C1.Win.C1Input.C1TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtHnFeMale = new C1.Win.C1Input.C1TextBox();
-            this.chkDay1EmbryoFreezing = new C1.Win.C1Input.C1CheckBox();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1CommandDock2)).BeginInit();
@@ -360,6 +360,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtSpermDate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSpermVol)).BeginInit();
             this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkDay1EmbryoFreezing)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtFertili2PnAdd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnResultDay1View)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnResultDay1)).BeginInit();
@@ -479,7 +480,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnHnSearch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHnMale)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHnFeMale)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkDay1EmbryoFreezing)).BeginInit();
             this.SuspendLayout();
             // 
             // sB
@@ -1944,6 +1944,24 @@
             this.groupBox3.Text = "Fertilization";
             this.theme1.SetTheme(this.groupBox3, "(default)");
             // 
+            // chkDay1EmbryoFreezing
+            // 
+            this.chkDay1EmbryoFreezing.BackColor = System.Drawing.Color.Transparent;
+            this.chkDay1EmbryoFreezing.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkDay1EmbryoFreezing.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.chkDay1EmbryoFreezing.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chkDay1EmbryoFreezing.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkDay1EmbryoFreezing.Location = new System.Drawing.Point(237, 137);
+            this.chkDay1EmbryoFreezing.Name = "chkDay1EmbryoFreezing";
+            this.chkDay1EmbryoFreezing.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.chkDay1EmbryoFreezing.Size = new System.Drawing.Size(152, 24);
+            this.chkDay1EmbryoFreezing.TabIndex = 556;
+            this.chkDay1EmbryoFreezing.Text = "แสดง Embryo Freezing";
+            this.theme1.SetTheme(this.chkDay1EmbryoFreezing, "(default)");
+            this.chkDay1EmbryoFreezing.UseVisualStyleBackColor = true;
+            this.chkDay1EmbryoFreezing.Value = null;
+            this.chkDay1EmbryoFreezing.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
             // label95
             // 
             this.label95.AutoSize = true;
@@ -1990,6 +2008,7 @@
             this.btnResultDay1View.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.theme1.SetTheme(this.btnResultDay1View, "(default)");
             this.btnResultDay1View.UseVisualStyleBackColor = true;
+            this.btnResultDay1View.Visible = false;
             this.btnResultDay1View.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // btnResultDay1
@@ -2943,6 +2962,7 @@
             this.btnResultDay3View.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.theme1.SetTheme(this.btnResultDay3View, "(default)");
             this.btnResultDay3View.UseVisualStyleBackColor = true;
+            this.btnResultDay3View.Visible = false;
             this.btnResultDay3View.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // label92
@@ -3220,6 +3240,7 @@
             this.btnResultDay5View.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.theme1.SetTheme(this.btnResultDay5View, "(default)");
             this.btnResultDay5View.UseVisualStyleBackColor = true;
+            this.btnResultDay5View.Visible = false;
             this.btnResultDay5View.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // label93
@@ -5005,24 +5026,6 @@
             this.theme1.SetTheme(this.txtHnFeMale, "(default)");
             this.txtHnFeMale.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // chkDay1EmbryoFreezing
-            // 
-            this.chkDay1EmbryoFreezing.BackColor = System.Drawing.Color.Transparent;
-            this.chkDay1EmbryoFreezing.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.chkDay1EmbryoFreezing.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.chkDay1EmbryoFreezing.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.chkDay1EmbryoFreezing.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkDay1EmbryoFreezing.Location = new System.Drawing.Point(237, 137);
-            this.chkDay1EmbryoFreezing.Name = "chkDay1EmbryoFreezing";
-            this.chkDay1EmbryoFreezing.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
-            this.chkDay1EmbryoFreezing.Size = new System.Drawing.Size(152, 24);
-            this.chkDay1EmbryoFreezing.TabIndex = 556;
-            this.chkDay1EmbryoFreezing.Text = "แสดง Embryo Freezing";
-            this.theme1.SetTheme(this.chkDay1EmbryoFreezing, "(default)");
-            this.chkDay1EmbryoFreezing.UseVisualStyleBackColor = true;
-            this.chkDay1EmbryoFreezing.Value = null;
-            this.chkDay1EmbryoFreezing.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
             // FrmLabOPUAdd2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -5101,6 +5104,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtSpermVol)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkDay1EmbryoFreezing)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtFertili2PnAdd)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnResultDay1View)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnResultDay1)).EndInit();
@@ -5227,7 +5231,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnHnSearch)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHnMale)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHnFeMale)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkDay1EmbryoFreezing)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
