@@ -3493,6 +3493,7 @@
             this.btnResultDay6View.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.theme1.SetTheme(this.btnResultDay6View, "(default)");
             this.btnResultDay6View.UseVisualStyleBackColor = true;
+            this.btnResultDay6View.Visible = false;
             this.btnResultDay6View.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // btnResultDay6
@@ -3696,6 +3697,7 @@
             this.btnSaveDay6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.theme1.SetTheme(this.btnSaveDay6, "(default)");
             this.btnSaveDay6.UseVisualStyleBackColor = true;
+            this.btnSaveDay6.Visible = false;
             this.btnSaveDay6.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // groupBox7
