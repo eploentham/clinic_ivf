@@ -33,6 +33,7 @@
             this.btnPrint = new C1.Win.C1Input.C1SplitButton();
             this.btnPrnPtt = new C1.Win.C1Input.DropDownItem();
             this.btnPrnDonor = new C1.Win.C1Input.DropDownItem();
+            this.btnExcel = new C1.Win.C1Input.DropDownItem();
             this.label4 = new System.Windows.Forms.Label();
             this.txtSearch = new C1.Win.C1Input.C1TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -53,7 +54,6 @@
             this.pnAll = new System.Windows.Forms.Panel();
             this.sB = new System.Windows.Forms.StatusStrip();
             this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.btnExcel = new C1.Win.C1Input.DropDownItem();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnPrint)).BeginInit();
@@ -130,6 +130,10 @@
             // 
             this.btnPrnDonor.Image = global::clinic_ivf.Properties.Resources.printer_orange48;
             this.btnPrnDonor.Text = "Print Donor";
+            // 
+            // btnExcel
+            // 
+            this.btnExcel.Text = "Export Excel";
             // 
             // label4
             // 
@@ -461,10 +465,6 @@
             this.sB1.Name = "sB1";
             this.sB1.Size = new System.Drawing.Size(118, 17);
             this.sB1.Text = "toolStripStatusLabel1";
-            // 
-            // btnExcel
-            // 
-            this.btnExcel.Text = "Export Excel";
             // 
             // FrmAppointmentView
             // 

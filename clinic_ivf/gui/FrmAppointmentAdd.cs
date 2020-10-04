@@ -506,6 +506,7 @@ namespace clinic_ivf.gui
             chkPesa.Checked = pApm.pesa.Equals("1") ? true : false;
             chkSpermSA.Checked = pApm.sperm_sa.Equals("1") ? true : false;
             txtUserReq.Value = ic.ivfDB.stfDB.getStaffNameBylStf(pApm.patient_appointment_staff);
+            chkConsult.Checked = pApm.consult.Equals("1") ? true : false;
 
             txtOther.Value = pApm.other_remark;
             ic.setC1Combo(cboETTime, pApm.et_time);
@@ -1031,6 +1032,7 @@ namespace clinic_ivf.gui
             pApmO.PatientName = txtName.Text;
             pApmO.PName = txtName.Text;
             pApmO.PSurname = ptt.patient_firstname_e;
+            pApmO.consult = chkConsult.Checked ? "1" : "0";
         }
         private Boolean setPatientAppointment()
         {
@@ -1115,6 +1117,7 @@ namespace clinic_ivf.gui
             pApm.pesa = chkPesa.Checked ? "1" : "0";
             pApm.sperm_sa = chkSpermSA.Checked ? "1" : "0";
             pApm.opu_remark = txtOPURemark.Text.Trim();
+            pApm.consult = chkConsult.Checked ? "1" : "0";
             return chk;
         }
         private void FrmAppointmentAdd_Load(object sender, EventArgs e)

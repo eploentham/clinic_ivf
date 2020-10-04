@@ -456,6 +456,7 @@ namespace clinic_ivf.objdb
         public String genReceiptDoc(ref String year1, ref String month, ref String day, String flag)
         {
             String doc = "", year = "", sql = "";
+            Boolean chkmonth = false;
             Company cop1 = new Company();
             cop1 = selectByCode1("001");
             //year = DateTime.Now.ToString("yyyy");
@@ -482,6 +483,7 @@ namespace clinic_ivf.objdb
                 conn.ExecuteNonQuery(conn.conn, sql);
                 cop1.receipt_doc = "00000";
                 cop1.receipt1_doc = "00000";
+                chkmonth = true;
             }
 
             int chk = 0;
@@ -513,6 +515,13 @@ namespace clinic_ivf.objdb
                     "" + cop.receipt_doc + "=" + chk +
                     " Where " + cop.pkField + "='" + cop1.comp_id + "'";
                     conn.ExecuteNonQuery(conn.conn, sql);
+                    if (chkmonth)
+                    {
+                        sql = "Update " + cop.table + " Set " +
+                        "" + cop.receipt1_doc + "='0' "  +
+                        " Where " + cop.pkField + "='" + cop1.comp_id + "'";
+                        conn.ExecuteNonQuery(conn.conn, sql);
+                    }
                 }
             }
             

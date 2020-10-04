@@ -83,6 +83,18 @@ namespace clinic_ivf.objdb
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
+        public DataTable selectByBillId1(String bilid)
+        {
+            DataTable dt = new DataTable();
+            String wherehn = "";
+
+            String sql = "SELECT obilld.*  " +
+                " " +
+                "From " + obilld.table + " obilld " +
+                "Where obilld.bill_id = '" + bilid + "' ";
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
         public DataTable selectByDate(String datestart, String dateend)
         {
             DataTable dt = new DataTable();

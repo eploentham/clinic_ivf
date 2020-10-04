@@ -95,6 +95,7 @@ namespace clinic_ivf.objdb
             pApm.opu_remark = "opu_remark";
             pApm.status_convert = "status_convert";
             pApm.patient_hn_papm = "patient_hn_papm";
+            pApm.consult = "consult";
 
             pApm.pkField = "t_patient_appointment_id";
             pApm.table = "t_patient_appointment";
@@ -168,6 +169,7 @@ namespace clinic_ivf.objdb
             p.sperm_opu = p.sperm_opu == null ? "0" : p.sperm_opu;
             p.pesa = p.pesa == null ? "0" : p.pesa;
             p.sperm_sa = p.sperm_sa == null ? "0" : p.sperm_sa;
+            p.consult = long.TryParse(p.consult, out chk) ? chk.ToString() : "0";
 
             p.r_rp1853_aptype_id = long.TryParse(p.r_rp1853_aptype_id, out chk) ? chk.ToString() : "0";
             p.t_patient_id = long.TryParse(p.t_patient_id, out chk) ? chk.ToString() : "0";
@@ -214,7 +216,7 @@ namespace clinic_ivf.objdb
                 pApm.fet_time + "," + pApm.hormone_test + "," + pApm.other + "," +
                 pApm.beta_hgc + "," + pApm.other_remark + "," + pApm.sperm_collect + "," +
                 pApm.appoitment_id_old + "," + pApm.sperm_freezing + "," + pApm.sperm_opu + "," +
-                pApm.pesa + "," + pApm.sperm_sa + "," + pApm.opu_remark + "," + pApm.status_convert + "," + pApm.patient_hn_papm + " " +
+                pApm.pesa + "," + pApm.sperm_sa + "," + pApm.opu_remark + "," + pApm.status_convert + "," + pApm.patient_hn_papm + "," + pApm.consult + " " +
                 ") " +
                 "Values ('" + p.patient_appoint_date_time + "','" + p.patient_appointment_time.Replace("'", "''") + "','" + p.patient_appointment.Replace("'", "''") + "'," +
                 "'" + p.patient_appointment_doctor.Replace("'", "''") + "','" + p.patient_appointment_notice.Replace("'", "''") + "','" + p.patient_appointment_staff.Replace("'", "''") + "'," +
@@ -238,7 +240,7 @@ namespace clinic_ivf.objdb
                 "'" + p.fet_time + "','" + p.hormone_test + "','" + p.other + "'," +
                 "'" + p.beta_hgc + "','" + p.other_remark.Replace("'", "''") + "','" + p.sperm_collect.Replace("'", "''") + "'," +
                 "'" + p.appoitment_id_old + "','" + p.sperm_freezing.Replace("'", "''") + "','" + p.sperm_opu.Replace("'", "''") + "'," +
-                "'" + p.pesa + "','" + p.sperm_sa + "','" + p.opu_remark.Replace("'", "''") + "','" + p.status_convert.Replace("'", "''") + "','" + p.patient_hn_papm.Replace("'", "''") + "' " +
+                "'" + p.pesa + "','" + p.sperm_sa + "','" + p.opu_remark.Replace("'", "''") + "','" + p.status_convert.Replace("'", "''") + "','" + p.patient_hn_papm.Replace("'", "''") + "','" + p.consult.Replace("'", "''") + "' " +
                 ")";
 
                 re = conn.ExecuteNonQuery(conn.conn, sql);
@@ -333,6 +335,7 @@ namespace clinic_ivf.objdb
                 "," + pApm.pesa + "='" + p.pesa.Replace("'", "''") + "' " +
                 "," + pApm.sperm_sa + "='" + p.sperm_sa.Replace("'", "''") + "' " +
                 "," + pApm.opu_remark + "='" + p.opu_remark.Replace("'", "''") + "' " +
+                "," + pApm.consult + "='" + p.consult.Replace("'", "''") + "' " +
                 " Where " + pApm.pkField + " = '" + p.t_patient_appointment_id + "' "
                 ;
             try
@@ -607,7 +610,6 @@ namespace clinic_ivf.objdb
                 ptt1.visit_id_make_appointment = dt.Rows[0][pApm.visit_id_make_appointment].ToString();
                 ptt1.patient_appointment_clinic = dt.Rows[0][pApm.patient_appointment_clinic].ToString();
 
-
                 ptt1.date_cancel = dt.Rows[0][pApm.date_cancel].ToString();
                 ptt1.date_create = dt.Rows[0][pApm.date_create].ToString();
                 ptt1.date_modi = dt.Rows[0][pApm.date_modi].ToString();
@@ -648,6 +650,7 @@ namespace clinic_ivf.objdb
                 ptt1.pesa = dt.Rows[0][pApm.pesa].ToString();
                 ptt1.sperm_sa = dt.Rows[0][pApm.sperm_sa].ToString();
                 ptt1.opu_remark = dt.Rows[0][pApm.opu_remark].ToString();
+                ptt1.consult = dt.Rows[0][pApm.consult].ToString();
             }
             else
             {
@@ -728,6 +731,7 @@ namespace clinic_ivf.objdb
             stf1.pesa = "";
             stf1.sperm_sa = "";
             stf1.opu_remark = "";
+            stf1.consult = "";
             return stf1;
         }
     }

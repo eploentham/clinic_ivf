@@ -43,5 +43,6 @@ namespace clinic_ivf.object1
         public String et_time { get; set; }
         public String tvs_time { get; set; }
         public String sperm_colloect { get; set; }
+        public String consult { get; set; }
     }
 }

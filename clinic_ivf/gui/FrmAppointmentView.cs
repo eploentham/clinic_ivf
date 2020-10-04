@@ -42,7 +42,7 @@ namespace clinic_ivf.gui
 
         int colID = 1, colpttId = 2, colVsTime = 3, colPttHn = 4, colVsCode = 5, colVsPttName = 6, colVsDoctor = 7, colVsSperm = 8, colVsDay6 = 9, colVsDay7 = 10, colVsDay8 = 11, colVsDay9 = 12, colVsDay10 = 13, colVsDay11 = 14;
         int colVsTVS = 15, colVsPesa = 16, colVsSpermF = 17, colVsSpermSA = 18, colVsSpermOPU = 19, colVsOPU = 20, colVsET = 21, colVsFET = 22, colVsHCG = 23, colVsTrans = 24, colVsANC = 25, colVsAnes = 26;
-        int colVSE2 = 27, colVSLh = 28, colVSPrl = 29, colVSFsh = 30, colVsAgent = 31, colVsRemark = 32, colVsStatus = 33, colConn = 34, colStfCreate = 35, colStfModi = 36, colStfSave = 37;
+        int colVSE2 = 27, colVSLh = 28, colVSPrl = 29, colVSFsh = 30, colVsAgent = 31, colVsRemark = 32, colVsStatus = 33, colConn = 34, colStfCreate = 35, colStfModi = 36, colStfSave = 37, colConsult=38;
 
         int colpApmPttId = 1,colpApmPttName = 2;
 
@@ -885,7 +885,7 @@ namespace clinic_ivf.gui
         private void setGrfPtt1()
         {
             grfPtt.Rows.Count = 2;
-            grfPtt.Cols.Count = 38;
+            grfPtt.Cols.Count = 39;
             grfPtt.Rows.Fixed = 2;
             grfPtt.AllowMerging = C1.Win.C1FlexGrid.AllowMergingEnum.FixedOnly;
             grfPtt.AllowMergingFixed = C1.Win.C1FlexGrid.AllowMergingEnum.Free;
@@ -971,6 +971,8 @@ namespace clinic_ivf.gui
             colSpermOPU.DataType = typeof(Image);
             Column colSpermSA = grfPtt.Cols[colVsSpermSA];
             colSpermSA.DataType = typeof(Image);
+            Column colConsult1 = grfPtt.Cols[colConsult];
+            colConsult1.DataType = typeof(Image);
 
             grfPtt.Cols[colPttHn].Width = 100;
             grfPtt.Cols[colVsCode].Width = 60;
@@ -1005,6 +1007,7 @@ namespace clinic_ivf.gui
             grfPtt.Cols[colStfModi].Width = 80;
             grfPtt.Cols[colStfSave].Width = 80;
             grfPtt.Cols[colVsSpermSA].Width = 60;
+            grfPtt.Cols[colConsult].Width = 60;
 
             grfPtt.ShowCursor = true;
             //grdFlex.Cols[colID].Caption = "no";
@@ -1041,7 +1044,7 @@ namespace clinic_ivf.gui
             grfPtt.Cols[colVsFET].Caption = "FET";
             grfPtt.Cols[colVsAgent].Caption = "Agent";
             grfPtt.Cols[colVsSpermSA].Caption = "Sp.SA";
-            //grfPtt.Cols[colStfModi].Caption = "FET";
+            grfPtt.Cols[colConsult].Caption = "Consult";
             //grfPtt.Cols[celStfSave].Caption = "FET";
 
             CellRange rng1 = grfPtt.GetCellRange(0, colVsTime, 1, colVsTime);
@@ -1088,8 +1091,8 @@ namespace clinic_ivf.gui
             rng21.Data = "stf save";
             CellRange rng22 = grfPtt.GetCellRange(0, colVsSpermSA, 1, colVsSpermSA);
             rng22.Data = "Sp.SA";
-            //CellRange rng23 = grfPtt.GetCellRange(0, colVsPesa, 1, colVsPesa);
-            //rng22.Data = "PESA1";
+            //CellRange rng23 = grfPtt.GetCellRange(0, colConsult, 1, colConsult);
+            //rng22.Data = "Consult";
 
             grfPtt[1, colVsDoctor] = "Dr.";
             grfPtt[1, colVsSperm] = "Collect";
@@ -1101,7 +1104,7 @@ namespace clinic_ivf.gui
             grfPtt[1, colVsDay10] = "Bld/TVS";
             grfPtt[1, colVsDay11] = "Bld/TVS.";
             //grfPtt[1, colVsPesa] = "PESA";
-            grfPtt[1, colVsHCG] = "Scan";
+            grfPtt[1, colVsHCG] = "HCG";
             grfPtt[1, colVsTrans] = "Sperm";
             grfPtt[1, colVsSpermOPU] = "Sp OPU";
             grfPtt[1, colVsAgent] = "Agent";
@@ -1109,6 +1112,7 @@ namespace clinic_ivf.gui
             grfPtt[1, colStfModi] = "stf modi";
             grfPtt[1, colStfSave] = "stf save";
             grfPtt[1, colVsPesa] = "TESE";
+            grfPtt[1, colConsult] = "Consult";
         }
         private void setGrfPtt(ConnectDB con, DataTable dtApmOld, DataTable dtApm)
         {
@@ -1272,6 +1276,7 @@ namespace clinic_ivf.gui
                 row1[colVsRemark] = row[ic.ivfDB.pApmDB.pApm.patient_appointment].ToString();
                 row1[colVsAgent] = row["AgentName"].ToString();
                 row1[colVsSpermSA] = row[ic.ivfDB.pApmDB.pApm.sperm_sa].ToString().Equals("1") ? imgCorr : imgTran;
+                row1[colConsult] = row[ic.ivfDB.pApmDB.pApm.consult].ToString().Equals("1") ? imgCorr : imgTran;
                 String stf = "";
                 stf = row[ic.ivfDB.pApmDB.pApm.user_create].ToString();
                 if (stf.IndexOf("@") >= 0)
@@ -1391,6 +1396,7 @@ namespace clinic_ivf.gui
                 row1[colVsRemark] = row[ic.ivfDB.pApmDB.pApm.patient_appointment].ToString();
                 row1[colVsAgent] = row["AgentName"].ToString();
                 row1[colVsSpermSA] = row[ic.ivfDB.pApmDB.pApm.sperm_sa].ToString().Equals("1") ? imgCorr : imgTran;
+                row1[colConsult] = row[ic.ivfDB.pApmDB.pApm.consult].ToString().Equals("1") ? imgCorr : imgTran;
                 String stf = "";
                 stf = row[ic.ivfDB.pApmDB.pApm.user_create].ToString();
                 if (stf.IndexOf("@") >= 0)

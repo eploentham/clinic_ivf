@@ -1643,7 +1643,7 @@ namespace clinic_ivf.objdb
             re = conn.ExecuteNonQuery(conn.conn, sql);
             return billid;
         }
-        public DataTable printBill(String vn,ref Decimal amt1,ref String payby)
+        public DataTable printBill(String vn,ref Decimal amt1,ref String payby, String billid)
         {
             //$chk = "";
             //$sql = 'select VN, ExtBillNo, IntLock, Year(Date)+543 as F1, date_format(Date,"%m") as F2 from BillHeader Where VN="'. $_POST['VN']. '"';
@@ -1774,7 +1774,15 @@ namespace clinic_ivf.objdb
             //                };            };
             String pname = "", pids = "", wtotal = "", total = "", billno = "", billdoc="", billextno="", billextdoc="", cashid="", pay2="", creditid="";
             Decimal total1 = 0;
-            sql = "select * from BillHeader Where VN='"+vn+"' and active = '1'";
+            if (billid.Length > 0)
+            {
+                sql = "select * from BillHeader Where bill_id = '" + billid + "' ";
+            }
+            else
+            {
+                sql = "select * from BillHeader Where VN='" + vn + "' and active = '1'";
+            }
+            
             dt = conn.selectData(conn.conn, sql);
             if (dt.Rows.Count > 0)
             {
@@ -1850,7 +1858,15 @@ namespace clinic_ivf.objdb
 
                     id = row["ID"].ToString();
                     namedesc = row["Name"].ToString();
-                    sql = "Select sum(Total) as Total1, Name from BillDetail Where Total<>0 and VN='" + vn+ "' and bill_group_id='" + id + "' and active = '1' Group By Name ";
+                    if (billid.Length > 0)
+                    {
+                        sql = "Select sum(Total) as Total1, Name from BillDetail Where Total<>0 and bill_id = '" + billid + "' and bill_group_id='" + id + "' Group By Name ";
+                    }
+                    else
+                    {
+                        sql = "Select sum(Total) as Total1, Name from BillDetail Where Total<>0 and VN='" + vn + "' and bill_group_id='" + id + "' and active = '1' Group By Name ";
+                    }
+                    
                     dtb0 = conn.selectData(conn.conn, sql);
                     if (dtb0.Rows.Count > 0)
                     {
@@ -1899,7 +1915,15 @@ namespace clinic_ivf.objdb
                     id = row["ID"].ToString();
                     namedesc = row["Name"].ToString();
                     //sql = "Select sum(Total) as Total1, Name from BillDetail Where Total<>0 and VN='" + vn + "' and GroupType='" + grpname + "' Group By Name ";
-                    sql = "Select sum(Total) as Total1 from BillDetail Where Total<>0 and VN='" + vn + "' and bill_group_id='" + id + "'  and active = '1' and Extra = '1' ";
+                    if (billid.Length > 0)
+                    {
+                        sql = "Select sum(Total) as Total1 from BillDetail Where Total<>0 and bill_id = '" + billid + "' and bill_group_id='" + id + "'  and Extra = '1' ";
+                    }
+                    else
+                    {
+                        sql = "Select sum(Total) as Total1 from BillDetail Where Total<>0 and VN='" + vn + "' and bill_group_id='" + id + "'  and active = '1' and Extra = '1' ";
+                    }
+                    
                     dtb0 = conn.selectData(conn.conn, sql);
                     if (dtb0.Rows.Count > 0)
                     {
@@ -1950,7 +1974,15 @@ namespace clinic_ivf.objdb
 
                     id = row["ID"].ToString();
                     namedesc = row["Name"].ToString();
-                    sql = "Select sum(Total) as Total1, Name from BillDetail Where Total<>0 and VN='" + vn + "' and bill_group_id ='" + id + "' and active = '1'  Group By Name ";
+                    if (billid.Length > 0)
+                    {
+                        sql = "Select sum(Total) as Total1, Name from BillDetail Where Total <> 0 and bill_id ='" + billid + "' and bill_group_id ='" + id + "'  Group By Name ";
+                    }
+                    else
+                    {
+                        sql = "Select sum(Total) as Total1, Name from BillDetail Where Total <> 0 and VN='" + vn + "' and bill_group_id ='" + id + "' and active = '1'  Group By Name ";
+                    }
+                    
                     dtb0 = conn.selectData(conn.conn, sql);
                     if (dtb0.Rows.Count > 0)
                     {
@@ -1993,7 +2025,15 @@ namespace clinic_ivf.objdb
 
                     id = row["ID"].ToString();
                     namedesc = row["Name"].ToString();
-                    sql = "Select sum(Total) as Total1, Name from BillDetail Where Total<>0 and VN='" + vn + "' and bill_group_id='" + id + "' and active = '1' Group By Name ";
+                    if (billid.Length > 0)
+                    {
+                        sql = "Select sum(Total) as Total1, Name from BillDetail Where Total<>0 and bill_id ='" + billid + "' and bill_group_id='" + id + "' Group By Name ";
+                    }
+                    else
+                    {
+                        sql = "Select sum(Total) as Total1, Name from BillDetail Where Total<>0 and VN='" + vn + "' and bill_group_id='" + id + "' and active = '1' Group By Name ";
+                    }
+                    
                     dtb0 = conn.selectData(conn.conn, sql);
                     if (dtb0.Rows.Count > 0)
                     {

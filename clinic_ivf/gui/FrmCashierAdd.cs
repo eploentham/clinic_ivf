@@ -47,6 +47,20 @@ namespace clinic_ivf.gui
         int colOrdid = 1, colOrdDate = 2, colOrdlpid = 3, colOrdName = 4, colOrdPrice = 5, colOrdPrice1 = 6, colOrdQty = 7, colOrdstatus = 8, colOrdrow1 = 9, colOrditmid = 10, colOrdInclude = 11, colOrdAmt = 12, colOrdUsE = 13, colOrdUsT = 14, colOrdOrderId = 15, colOrdStatusAmt = 16, colOrdStatusOrdGrp = 17;
         [DllImport("winspool.drv", CharSet = CharSet.Auto, SetLastError = true)]
         public static extern bool SetDefaultPrinter(string Printer);
+        public static PrinterSettings Printer_Settings = new System.Drawing.Printing.PrinterSettings();
+        /// <summary>
+        /// Get or Sets the session's Default Printer
+        /// </summary>
+        public static string Session_DefaultPrinter
+        {
+            get { return Printer_Settings.PrinterName; }
+            set
+            {
+                SetDefaultPrinter(value);
+                Printer_Settings.DefaultPageSettings.PrinterSettings.PrinterName = value;
+                Printer_Settings.PrinterName = value;
+            }
+        }
         public FrmCashierAdd(IvfControl ic, MainMenu m, String billid, String vnold, String flagedit)
         {
             InitializeComponent();
@@ -307,24 +321,35 @@ namespace clinic_ivf.gui
             PrinterSettings settings = new PrinterSettings();
             printerOld = settings.PrinterName;
             SetDefaultPrinter(ic.iniC.printerBill);
+            settings.PrinterName = ic.iniC.printerBill;
+
+            string stashPrinterName = Session_DefaultPrinter;
+            Session_DefaultPrinter = ic.iniC.printerBill;
 
             DataTable dt = new DataTable();
             DataTable dtprn = new DataTable();
             DataTable dtpgk = new DataTable();
             Decimal amt = 0, sumprice = 0, price1 = 0, cash = 0, credit = 0;
             long amt1 = 0;
-            String amt2 = "", billNo = "", billExtNo = "", payby = "", date = "", year = "", month = "", day = "", billFormat = "";
+            String amt2 = "", billNo = "", billExtNo = "", payby = "", date = "", year = "", month = "", day = "", billFormat = "", receiptno11 = "", billnoex1 = "", agentId = "";
             long.TryParse(amt.ToString(), out amt1);
-            dt = ic.ivfDB.printBill(txtVn.Text, ref amt, ref payby);
-
-            String receiptno = "", billnoex1 = "", agentId="";
-            receiptno = ic.ivfDB.obilhDB.selectReceiptNoByVN(ovs.VN);
+            
+            if (receiptno.Length > 0)
+            {
+                dt = ic.ivfDB.printBill(txtVn.Text, ref amt, ref payby, txtBillId.Text);
+                receiptno11 = receiptno;
+            }
+            else
+            {
+                dt = ic.ivfDB.printBill(txtVn.Text, ref amt, ref payby, "");
+                receiptno11 = ic.ivfDB.obilhDB.selectReceiptNoByVN(ovs.VN);
+            }
             
             //billnoex1 = ic.ivfDB.obilhDB.selectBillNoExByVN(ovs.VN);
             //new LogWriter("e", "printReceipt receiptno " + receiptno);
 
-            if (flagExtra.Equals("2") && !flagedit.Equals("noedit")) receiptno = "";      //พิมพ์ ใบเสร็จ 2 ชุด
-            if (receiptno.Length <= 0)
+            if (flagExtra.Equals("2") && !flagedit.Equals("noedit")) receiptno11 = "";      //พิมพ์ ใบเสร็จ 2 ชุด
+            if (receiptno11.Length <= 0)
             {
                 //new LogWriter("e", "printReceipt flagExtra "+ flagExtra);
                 if(flagExtra.Length > 0)
@@ -391,7 +416,7 @@ namespace clinic_ivf.gui
                 }
                 else
                 {
-                    billNo = receiptno;
+                    billNo = receiptno11;
                     billExtNo = billnoex1;
                 }
                 
@@ -775,7 +800,7 @@ namespace clinic_ivf.gui
             PrinterSettings settings = new PrinterSettings();
             printerOld = settings.PrinterName;
             SetDefaultPrinter(ic.iniC.printerBill);
-
+            Application.DoEvents();
             DataTable dt = new DataTable();
             DataTable dtprn = new DataTable();
             DataTable dtpgk = new DataTable();
@@ -783,7 +808,7 @@ namespace clinic_ivf.gui
             long amt1 = 0;
             String amt2 = "", billNo="", billExtNo="", payby="", date="", year="", month="", day="", billFormat="";
             long.TryParse(amt.ToString(), out amt1);
-            dt = ic.ivfDB.printBill(txtVn.Text,ref amt, ref payby);
+            dt = ic.ivfDB.printBill(txtVn.Text,ref amt, ref payby,"");
 
             String billno1 = "", billnoex1="";
             billno1 = ic.ivfDB.obilhDB.selectBillNoByVN(ovs.VN);
@@ -1027,7 +1052,15 @@ namespace clinic_ivf.gui
             optt = ic.ivfDB.pttOldDB.selectByPk1(ovs.PID);
             ptt = ic.ivfDB.pttDB.selectByHn(ovs.PIDS);
             vs = ic.ivfDB.vsDB.selectByVn(ovs.VN);
-            obilh = ic.ivfDB.obilhDB.selectByPk2(ovs.VN);
+            if (receiptno.Length > 0)
+            {
+                obilh = ic.ivfDB.obilhDB.selectByPk1(txtBillId.Text);
+            }
+            else
+            {
+                obilh = ic.ivfDB.obilhDB.selectByPk2(ovs.VN);
+            }
+            
             ptt.patient_birthday = optt.DateOfBirth;
 
             txtHn.Value = optt.PIDS;
@@ -1319,7 +1352,15 @@ namespace clinic_ivf.gui
             grfReceipt.Cols.Count = 6;
             grfReceipt.Cols[1].Width = 300;
             grfReceipt.Cols[2].Width = 100;
-            dt = ic.ivfDB.printBill(txtVn.Text, ref amt, ref payby);
+            if (receiptno.Length > 0)
+            {
+                dt = ic.ivfDB.printBill(txtVn.Text, ref amt, ref payby,receiptno);
+            }
+            else
+            {
+                dt = ic.ivfDB.printBill(txtVn.Text, ref amt, ref payby,"");
+            }
+            
             foreach (DataRow row in dt.Rows)
             {
                 Row row1 = grfReceipt.Rows.Add();
@@ -1754,7 +1795,14 @@ namespace clinic_ivf.gui
             grfBillD.Clear();
             DataTable dt1 = new DataTable();
             DataTable dt = new DataTable();
-            dt = ic.ivfDB.obildDB.selectByVN(txtVnOld.Text);
+            if (receiptno.Length > 0)
+            {
+                dt = ic.ivfDB.obildDB.selectByBillId1(txtBillId.Text);
+            }
+            else
+            {
+                dt = ic.ivfDB.obildDB.selectByVN(txtVnOld.Text);
+            }
             //if (search.Equals(""))
             //{
             //    String date = "";

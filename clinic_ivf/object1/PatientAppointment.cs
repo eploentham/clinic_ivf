@@ -71,5 +71,6 @@ namespace clinic_ivf.object1
         public String opu_remark { get; set; }
         public String status_convert { get; set; }
         public String patient_hn_papm { get; set; }
+        public String consult { get; set; }
     }
 }

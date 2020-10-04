@@ -30,7 +30,7 @@ namespace clinic_ivf.gui
         Color bg, fc;
         Font ff, ffB;
 
-        int colID = 1, colVNshow = 2, colVN = 12, colPttHn = 3, colPttName = 4, colVsDate = 5, colVsTime = 6, colVsEtime = 7, colVsAgent=8, colStatus = 9, colPttId = 10, colStatusNurse = 11, colStatusCashier = 12, colBillId=13, colAgentId=14;
+        int colID = 1, colVNshow = 2, colVN = 12, colPttHn = 3, colPttName = 4, colVsDate = 5, colVsTime = 6, colVsEtime = 7, colVsAgent=8, colStatus = 9, colPttId = 10, colStatusNurse = 11, colStatusCashier = 12, colBillId=13, colAgentId=14, colBillAcc=15, colStatusBill=16, colReceiptNo=17, colReceiptNo1=18;
         int colCldId = 1, colCldBillNo = 2, colCldReceiptNo = 3, colCldDate = 4, colCldHn = 5, colCldName = 6, colCldPkg1 = 7, colCldPkg2 = 8, colCldPkg3 = 9, colCldPkg4 = 10, colCldPkg5 = 11, colCldPkg6 = 12, colCldPkgFreezing = 13, colCldPkgOther=14, colCldDiscount = 15;
         int colCldExtraDay6 = 16, colCldLabAll = 17, colCldLabBlood = 18, colCldMedInc = 19, colCldMedExtra=20, colCldTVS = 21, colCldDtrfee = 22, colCldEquipment = 23, colCldOtherService = 24;
         int colCldAmount = 25, colCldAmount1 = 26, colCldInc=27, colCldExt=28, colCldVn =29, colCldBillId=30, colCldAgent=31;
@@ -1511,7 +1511,7 @@ namespace clinic_ivf.gui
             grfSearch.ContextMenu = menuGw;
 
             grfSearch.Rows.Count = dt.Rows.Count + 1;
-            grfSearch.Cols.Count = 14;
+            grfSearch.Cols.Count = 19;
             C1TextBox txt = new C1TextBox();
             //C1ComboBox cboproce = new C1ComboBox();
             //ic.ivfDB.itmDB.setCboItem(cboproce);
@@ -1542,6 +1542,8 @@ namespace clinic_ivf.gui
             grfSearch.Cols[colPttId].Caption = "colPttId";
             grfSearch.Cols[colStatusNurse].Caption = "colStatusNurse";
             grfSearch.Cols[colStatusCashier].Caption = "colStatusCashier";
+            grfSearch.Cols[colStatusCashier].Caption = "colStatusCashier";
+            grfSearch.Cols[colStatusCashier].Caption = "colStatusCashier";
             //grfSearch.Cols[colVsAgent].Caption = "Agent";
 
             //menuGw.MenuItems.Add("&receive operation", new EventHandler(ContextMenu_Apm));
@@ -1570,7 +1572,21 @@ namespace clinic_ivf.gui
                 grfSearch[i, colVsEtime] = row["VEndTime"].ToString();
                 grfSearch[i, colStatus] = row["VName"].ToString();
                 grfSearch[i, colPttId] = row["PID"].ToString();
-                grfSearch[i, colBillId] = "";
+                grfSearch[i, colBillId] = row["bill_id"].ToString();
+
+                grfSearch[i, colStatusBill] = row[ic.ivfDB.obilhDB.obillh.active] != null ? row[ic.ivfDB.obilhDB.obillh.active].ToString().Equals("1") ? "active" : row[ic.ivfDB.obilhDB.obillh.active].ToString().Equals("3") ? "cancel" : row[ic.ivfDB.obilhDB.obillh.active].ToString() : "null";
+                grfSearch[i, colReceiptNo] = row[ic.ivfDB.obilhDB.obillh.receipt_no].ToString();
+                grfSearch[i, colReceiptNo1] = row[ic.ivfDB.obilhDB.obillh.receipt1_no].ToString();
+                long chk = 0;
+                long.TryParse(row["CashID"].ToString(), out chk);
+                if (chk > 0)
+                {
+                    grfSearch[i, colBillAcc] = row["CashName"].ToString();
+                }
+                else
+                {
+                    grfSearch[i, colBillAcc] = row["CreditCardName"].ToString();
+                }
                 if (!row[ic.ivfDB.ovsDB.vsold.form_a_id].ToString().Equals("0"))
                 {
                     //CellNote note = new CellNote("ส่ง Lab Request Foam A");
@@ -1789,13 +1805,14 @@ namespace clinic_ivf.gui
         }
         private void ContextMenu_edit_billSearch(object sender, System.EventArgs e)
         {
-            String billid = "", name = "", id = "";
+            String billid = "", name = "", id = "", receptno="";
 
             id = grfSearch[grfSearch.Row, colID] != null ? grfSearch[grfSearch.Row, colID].ToString() : "";
             name = grfSearch[grfSearch.Row, colPttName] != null ? grfSearch[grfSearch.Row, colPttName].ToString() : "";
-            billid = grfSearch[grfSearch.Row, colID] != null ? grfSearch[grfSearch.Row, colID].ToString() : "";
+            billid = grfSearch[grfSearch.Row, colBildId] != null ? grfSearch[grfSearch.Row, colBillId].ToString() : "";
+            receptno = grfSearch[grfSearch.Row, colReceiptNo] != null ? grfSearch[grfSearch.Row, colReceiptNo].ToString() : "";
 
-            openBillNew(id, name, "noedit", billid);
+            openBillNew(id, name, "noedit", billid, receptno);
         }
         private void ContextMenu_edit_billfinish(object sender, System.EventArgs e)
         {
@@ -1805,7 +1822,7 @@ namespace clinic_ivf.gui
             name = grfFinish[grfFinish.Row, colPttName] != null ? grfFinish[grfFinish.Row, colPttName].ToString() : "";
             billid = grfFinish[grfFinish.Row, colPttName] != null ? grfFinish[grfFinish.Row, colPttName].ToString() : "";
 
-            openBillNew(id, name, "noedit", billid);
+            openBillNew(id, name, "noedit", billid,"");
         }
         private void ContextMenu_edit_billVoid(object sender, System.EventArgs e)
         {
@@ -1840,7 +1857,7 @@ namespace clinic_ivf.gui
             agentid = grfQue[grfQue.Row, colAgentId] != null ? grfQue[grfQue.Row, colAgentId].ToString() : "";
             String billid = ic.getBillVN(id, agentid, ic.userId);
             String re1 = ic.ivfDB.vsDB.updateOpenStatusCashierByVn(id);
-            openBillNew(id, name,"edit", billid);
+            openBillNew(id, name,"edit", billid,"");
         }
         public void setGrfQuePublic()
         {
@@ -1967,9 +1984,9 @@ namespace clinic_ivf.gui
             //theme1.SetTheme(grfQue, ic.theme);
 
         }
-        private void openBillNew(String vnold, String name, String flag, String billid)
+        private void openBillNew(String vnold, String name, String flag, String billid, String receiptno)
         {
-            FrmCashierAdd frm = new FrmCashierAdd(ic, menu, billid, vnold, flag);
+            FrmCashierAdd frm = new FrmCashierAdd(ic, menu, billid, vnold, flag, receiptno);
             frm.FormBorderStyle = FormBorderStyle.None;
             C1DockingTabPage tab = menu.AddNewTab(frm, name);
             frm.tab = tab;

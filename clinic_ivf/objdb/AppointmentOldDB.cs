@@ -59,6 +59,7 @@ namespace clinic_ivf.objdb
             pApmO.et_time = "et_time";
             pApmO.tvs_time = "tvs_time";
             pApmO.sperm_colloect = "sperm_collect";
+            pApmO.consult = "consult";
 
             pApmO.table = "Appointment";
             pApmO.pkField = "ID";
@@ -112,7 +113,7 @@ namespace clinic_ivf.objdb
             p.lt_ovary = int.TryParse(p.lt_ovary, out chk) ? chk.ToString() : "0";
             p.et = int.TryParse(p.et, out chk) ? chk.ToString() : "0";
             p.sperm_colloect = int.TryParse(p.sperm_colloect, out chk) ? chk.ToString() : "0";
-            //p.item_billing_subgroop_id = int.TryParse(p.item_billing_subgroop_id, out chk) ? chk.ToString() : "0";
+            p.consult = int.TryParse(p.consult, out chk) ? chk.ToString() : "0";
         }
         public String insertAppointmentOld(AppointmentOld p, String userId)
         {
@@ -177,6 +178,7 @@ namespace clinic_ivf.objdb
                     pApmO.et_time + "='" + p.et_time + "'," +
                     pApmO.tvs_time + "='" + p.tvs_time + "'," +
                     pApmO.sperm_colloect + "='" + p.sperm_colloect + "' " +
+                    pApmO.consult + "='" + p.consult + "' " +
                     " ";
                 if (p.DateOfBirth.Equals(""))
                 {
@@ -235,6 +237,7 @@ namespace clinic_ivf.objdb
                 pApmO.et_time + "='" + p.et_time + "'," +
                 pApmO.tvs_time + "='" + p.tvs_time + "'," +
                 pApmO.sperm_colloect + "='" + p.sperm_colloect + "' " +
+                pApmO.consult + "='" + p.consult + "' " +
             " Where " + pApmO.pkField + " = '" + p.ID + "' ";
             if (p.DateOfBirth.Equals(""))
             {
@@ -386,6 +389,7 @@ namespace clinic_ivf.objdb
                 vsold1.et_time = dt.Rows[0][pApmO.et_time].ToString();
                 vsold1.tvs_time = dt.Rows[0][pApmO.tvs_time].ToString();
                 vsold1.sperm_colloect = dt.Rows[0][pApmO.sperm_colloect].ToString();
+                vsold1.consult = dt.Rows[0][pApmO.consult].ToString();
             }
             else
             {
@@ -430,6 +434,7 @@ namespace clinic_ivf.objdb
             stf1.et_time = "";
             stf1.tvs_time = "";
             stf1.sperm_colloect = "";
+            stf1.consult = "";
             return stf1;
         }
     }

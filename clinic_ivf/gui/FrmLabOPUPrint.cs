@@ -114,7 +114,7 @@ namespace clinic_ivf.gui
                 //pnEmail.Hide();
                 if (!opu.status_opu.Equals("2"))
                 {
-                    pnEmail.Hide();
+                    //pnEmail.Hide();
                 }
                 chkSendEmail.Hide();
                 //btnPrint.Hide();
@@ -127,7 +127,7 @@ namespace clinic_ivf.gui
             {
                 if (!opu.status_opu.Equals("2"))
                 {
-                    pnEmail.Hide();
+                    //pnEmail.Hide();
                 }
                 chkSendEmail.Hide();
                 //btnPrint.Hide();
@@ -1420,7 +1420,8 @@ namespace clinic_ivf.gui
                 //txtEmailSubject.Value = "Result LAB OPU HN " + txtHnFeMale.Text + " Name " + txtNameFeMale.Text + " OPU Code " + txtOpuCode.Text + " ";
                 txtEmailSubject.Value = "OPU Date " + DateTime.Now.ToString("dd/MM/") + DateTime.Now.Year + " " + txtNameMale.Text + " " + txtNameFeMale.Text ;
 
-                chkSendEmail.Checked = opu.status_opu.Equals("2") ? true : false;
+                //chkSendEmail.Checked = opu.status_opu.Equals("2") ? true : false;
+                chkSendEmail.Checked = true;
                 if (chkSendEmail.Checked)
                 {
                     pnEmail.Visible = true;
@@ -1443,7 +1444,8 @@ namespace clinic_ivf.gui
                 //txtEmailSubject.Value = "Result LAB OPU HN " + txtHnFeMale.Text + " Name " + txtNameFeMale.Text + " OPU Code " + txtOpuCode.Text + " ";
                 txtEmailSubject.Value = "OPU Date " + DateTime.Now.ToString("dd/MM/") + DateTime.Now.Year + " " + txtNameMale.Text + " " + txtNameFeMale.Text;
 
-                chkSendEmail.Checked = opu.status_opu.Equals("2") ? true : false;
+                //chkSendEmail.Checked = opu.status_opu.Equals("2") ? true : false;
+                chkSendEmail.Checked = true;
                 if (chkSendEmail.Checked)
                 {
                     pnEmail.Visible = true;
@@ -1466,7 +1468,8 @@ namespace clinic_ivf.gui
                 //txtEmailSubject.Value = "Result LAB OPU HN " + txtHnFeMale.Text + " Name " + txtNameFeMale.Text + " OPU Code " + txtOpuCode.Text + " ";
                 txtEmailSubject.Value = "OPU Date " + DateTime.Now.ToString("dd/MM/") + DateTime.Now.Year + " " + txtNameMale.Text + " " + txtNameFeMale.Text;
 
-                chkSendEmail.Checked = opu.status_opu.Equals("2") ? true : false;
+                //chkSendEmail.Checked = opu.status_opu.Equals("2") ? true : false;
+                chkSendEmail.Checked = true;
                 if (chkSendEmail.Checked)
                 {
                     pnEmail.Visible = true;
@@ -1489,7 +1492,8 @@ namespace clinic_ivf.gui
                 //txtEmailSubject.Value = "Result LAB OPU HN " + txtHnFeMale.Text + " Name " + txtNameFeMale.Text + " OPU Code " + txtOpuCode.Text + " ";
                 txtEmailSubject.Value = "Day1 " + ic.datetoShow(opu.fertili_date) + " " + txtNameMale.Text + " & " + txtNameFeMale.Text;
 
-                chkSendEmail.Checked = opu.status_opu.Equals("2") ? true : false;
+                //chkSendEmail.Checked = opu.status_opu.Equals("2") ? true : false;
+                chkSendEmail.Checked = true;
                 if (chkSendEmail.Checked)
                 {
                     pnEmail.Visible = true;
@@ -1500,7 +1504,7 @@ namespace clinic_ivf.gui
                 }
                 groupBox2.Hide();
                 groupBox3.Hide();
-                chkSendEmail.Checked = true;
+                
                 pnEmail.Show();
                 cboEmbryoDev3.Hide();
                 label8.Hide();
@@ -1518,7 +1522,8 @@ namespace clinic_ivf.gui
                 //txtEmailSubject.Value = "Result LAB OPU HN " + txtHnFeMale.Text + " Name " + txtNameFeMale.Text + " OPU Code " + txtOpuCode.Text + " ";
                 txtEmailSubject.Value = "Day1 " + ic.datetoShow(opu.fertili_date) + " " + txtNameMale.Text + " & " + txtNameFeMale.Text;
 
-                chkSendEmail.Checked = opu.status_opu.Equals("2") ? true : false;
+                //chkSendEmail.Checked = opu.status_opu.Equals("2") ? true : false;
+                chkSendEmail.Checked = true;
                 if (chkSendEmail.Checked)
                 {
                     pnEmail.Visible = true;
@@ -1529,7 +1534,7 @@ namespace clinic_ivf.gui
                 }
                 groupBox2.Hide();
                 groupBox3.Hide();
-                chkSendEmail.Checked = true;
+                
                 pnEmail.Show();
                 cboEmbryoDev3.Hide();
                 label8.Hide();

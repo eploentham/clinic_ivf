@@ -679,8 +679,8 @@ namespace clinic_ivf.gui
             stf.status_module_cashier = chkCashier.Checked ? "1" : "0";
             stf.status_module_medicalrecord = chkMedicalRecord.Checked ? "1" : "0";
             stf.status_doctor = chkStfDoctor.Checked ? "1" : "0";
-            stf.doctor_id = txtDoctorId.Text.Equals("") ? "99" : txtDoctorId.Text;
-            stf.doctor_id_old = chkStfDoctor.Checked ? txtDoctorOldId.Text : "99";
+            stf.doctor_id = txtDoctorId.Text.Equals("") ? "" : txtDoctorId.Text;
+            stf.doctor_id_old = chkStfDoctor.Checked ? txtDoctorOldId.Text : "";
             //txtCopCode.Value = xC.ivfDB.copDB.cop.comp_id;
         }
         //private void setEnable(Boolean flag)

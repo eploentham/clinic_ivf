@@ -726,6 +726,7 @@
             this.c1SplitterPanel4 = new C1.Win.C1SplitContainer.C1SplitterPanel();
             this.c1SplitterPanel5 = new C1.Win.C1SplitContainer.C1SplitterPanel();
             this.cPdf = new C1.Win.C1Document.C1PdfDocumentSource(this.components);
+            this.chkConsult = new C1.Win.C1Input.C1CheckBox();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sC)).BeginInit();
@@ -1137,6 +1138,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnSave)).BeginInit();
             this.c1SplitterPanel4.SuspendLayout();
             this.c1SplitterPanel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkConsult)).BeginInit();
             this.SuspendLayout();
             // 
             // sB
@@ -2195,7 +2197,7 @@
             this.c1SplitterPanel1.Size = new System.Drawing.Size(783, 657);
             this.c1SplitterPanel1.TabIndex = 0;
             this.c1SplitterPanel1.Text = "Panel 1";
-            this.c1SplitterPanel1.Width = 790;
+            this.c1SplitterPanel1.Width = 783;
             // 
             // panel8
             // 
@@ -3101,7 +3103,7 @@
             this.c1SplitterPanel6.SizeRatio = 28.02D;
             this.c1SplitterPanel6.TabIndex = 0;
             this.c1SplitterPanel6.Text = "Panel 1";
-            this.c1SplitterPanel6.Width = 436;
+            this.c1SplitterPanel6.Width = 443;
             // 
             // pnApmAll
             // 
@@ -3257,6 +3259,7 @@
             // 
             // tabApmPtt
             // 
+            this.tabApmPtt.Controls.Add(this.chkConsult);
             this.tabApmPtt.Controls.Add(this.chkApmSpermSA);
             this.tabApmPtt.Controls.Add(this.chkApmSpermOPU);
             this.tabApmPtt.Controls.Add(this.chkApmPesa);
@@ -11354,6 +11357,24 @@
             this.c1SplitterPanel5.TabIndex = 1;
             this.c1SplitterPanel5.Text = "Panel 2";
             // 
+            // chkConsult
+            // 
+            this.chkConsult.BackColor = System.Drawing.Color.Transparent;
+            this.chkConsult.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkConsult.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.chkConsult.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chkConsult.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkConsult.Location = new System.Drawing.Point(3, 5);
+            this.chkConsult.Name = "chkConsult";
+            this.chkConsult.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.chkConsult.Size = new System.Drawing.Size(64, 24);
+            this.chkConsult.TabIndex = 713;
+            this.chkConsult.Text = "Consult";
+            this.theme1.SetTheme(this.chkConsult, "(default)");
+            this.chkConsult.UseVisualStyleBackColor = true;
+            this.chkConsult.Value = null;
+            this.chkConsult.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
             // FrmNurseAdd2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -11835,6 +11856,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnSave)).EndInit();
             this.c1SplitterPanel4.ResumeLayout(false);
             this.c1SplitterPanel5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.chkConsult)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -12588,5 +12610,6 @@
         private C1.Win.C1Input.C1Button btnLabReq;
         private C1.Win.C1Input.C1CheckBox chkApmHCG;
         private C1.Win.C1Input.C1CheckBox chkApmHormoneTest;
+        private C1.Win.C1Input.C1CheckBox chkConsult;
     }
 }

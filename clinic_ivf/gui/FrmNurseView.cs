@@ -892,6 +892,9 @@ namespace clinic_ivf.gui
                     CellNote note = new CellNote("ส่ง Lab Request Foam A");
                     CellRange rg = grfSearch.GetCellRange(i, colVNshow);
                     rg.UserData = note;
+                    CellNote note1 = new CellNote(row["form_a_code"].ToString());
+                    CellRange rg1 = grfSearch.GetCellRange(i, colStatusOPU);
+                    rg1.UserData = note1;
                 }
                 grfSearch[i, colPic] = row["f_sex_id"].ToString().Equals("1") ? imgM : row["f_sex_id"].ToString().Equals("2") ? imgF : imgN;
                 //if (i % 2 == 0)
