@@ -1630,15 +1630,15 @@ namespace clinic_ivf.objdb
             }
             //sql = "update BillHeader Set Total=Extra_Pkg_Price Where VN='"+vn+"'";
             String pkgall = "", extra="";
-            Decimal pkgall1 = 0, extra1 = 0, total1=0;
+            Decimal pkgall1 = 0, extra1 = 0, total1=0, inclu=0;
             pkgall = obildDB.selectSumPriceByBilIdBillGroup(billid, "2650000000");
             extra = obildDB.selectSumPriceExtraByBilId(billid);
             Decimal.TryParse(pkgall, out pkgall1);
             Decimal.TryParse(extra, out extra1);
             total1 = pkgall1 + extra1;
             sql = "update BillHeader Set Total="+ total1 + " " +
-                ",Include_Pkg_Price ='"+ pkgall +"' "+
-                ",Extra_Pkg_Price ='" + extra +"' "+
+                ",Include_Pkg_Price ='"+ pkgall1 +"' "+
+                ",Extra_Pkg_Price ='" + extra1 + "' "+
                 "Where bill_id ='" + billid + "'";
             re = conn.ExecuteNonQuery(conn.conn, sql);
             return billid;
