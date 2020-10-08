@@ -1098,6 +1098,30 @@ namespace clinic_ivf.objdb
 
             return re;
         }
+        public String updateStatusOPUApproveResultDay2(String opuid, String userId)
+        {
+            String re = "";
+            String sql = "";
+            int chk = 0;
+
+            //chkNull(p);
+            sql = "Update " + opu.table + " Set " +
+                " " + opu.status_approve_result_day2 + " = '1'" +
+                //"," + opu.approve_result_day2_staff_id + " = '" + userId + "'" +
+                //"," + opu.approve_result_day2_date + " = now()" +
+                "Where " + opu.pkField + "='" + opuid + "'"
+                ;
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+
+            return re;
+        }
         public String updateStatusOPUApproveResultDay3(String opuid, String userId)
         {
             String re = "";
