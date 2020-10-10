@@ -223,7 +223,7 @@ namespace clinic_ivf.gui
         private void BtnResultDay6View_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            ic.showResultDay(txtID.Text.Trim(), "6", this);
+            ic.showResultDay(txtID.Text.Trim(), "6", this,"");
         }
 
         private void BtnResultDay6_Click(object sender, EventArgs e)
@@ -449,7 +449,7 @@ namespace clinic_ivf.gui
         private void BtnResultDay5View_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            ic.showResultDay(txtID.Text.Trim(), "5", this);
+            ic.showResultDay(txtID.Text.Trim(), "5", this, "");
         }
         private void BtnResultDay5_Click(object sender, EventArgs e)
         {
@@ -497,7 +497,7 @@ namespace clinic_ivf.gui
         private void BtnResultDay3View_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            ic.showResultDay(txtID.Text.Trim(), "3", this);
+            ic.showResultDay(txtID.Text.Trim(), "3", this, "");
         }
         private void BtnResultDay3_Click(object sender, EventArgs e)
         {
@@ -1271,7 +1271,7 @@ namespace clinic_ivf.gui
         private void BtnResultDay1View(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            ic.showResultDay(txtID.Text.Trim(),"1",this);
+            ic.showResultDay(txtID.Text.Trim(),"1",this, "");
         }
         
         private void BtnVoidEmbryo_Click(object sender, EventArgs e)

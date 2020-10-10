@@ -1800,8 +1800,19 @@ namespace clinic_ivf.control
 
             frm.ShowDialog(frm1);
         }
-        public void showResultDay(String opuid, String day, Form this1)
+        public void showResultDay(String opuid, String day, Form this1, String filename1)
         {
+            String filenameembryo = "", ext1 = "";
+            Boolean chk = false;
+            if (filename1.Length > 0)
+            {
+                ext1 = Path.GetExtension(filename1);
+                filenameembryo = filename1.Replace(ext1, "") + "_embryo_day" + day+ext1;
+                if (File.Exists(filename1))
+                {
+                    chk = true;
+                }
+            }
             LabOpu opu1 = new LabOpu();
             //opu1 = ic.ivfDB.opuDB.selectByPk1(txtID.Text.Trim());
             opu1 = ivfDB.opuDB.selectByPk1(opuid);
@@ -1845,26 +1856,84 @@ namespace clinic_ivf.control
             day1View.TabIndex = 0;
             C1PdfDocumentSource pds = new C1PdfDocumentSource();
             MemoryStream stream = null;
-            FtpClient ftpc = new FtpClient(iniC.hostFTP, iniC.userFTP, iniC.passFTP, ftpUsePassive);
-            //ftpC.upload(iniC.folderFTP + "/" + opuCode + "/" + filename, pathFile);
-            if (day.Equals("1"))
+            C1PdfDocumentSource pdsEmbryo = new C1PdfDocumentSource();
+
+
+            if (chk)
             {
-                stream = ftpc.download(iniC.folderFTP + "//" + opu1.opu_code + "//" + opu1.report_day1);
+                pds.LoadFromFile(filename1);
+                if (File.Exists(filenameembryo))
+                {
+                    pdsEmbryo.LoadFromFile(filenameembryo);
+                }
+                    
             }
-            else if (day.Equals("3"))
+            else
             {
-                stream = ftpc.download(iniC.folderFTP + "//" + opu1.opu_code + "//" + opu1.report_day3);
+                FtpClient ftpc = new FtpClient(iniC.hostFTP, iniC.userFTP, iniC.passFTP, ftpUsePassive);
+                //ftpC.upload(iniC.folderFTP + "/" + opuCode + "/" + filename, pathFile);
+                if (day.Equals("1"))
+                {
+                    stream = ftpc.download(iniC.folderFTP + "//" + opu1.opu_code + "//" + opu1.report_day1);
+                }
+                else if (day.Equals("2"))
+                {
+                    stream = ftpc.download(iniC.folderFTP + "//" + opu1.opu_code + "//" + opu1.report_day2);
+                }
+                else if (day.Equals("3"))
+                {
+                    stream = ftpc.download(iniC.folderFTP + "//" + opu1.opu_code + "//" + opu1.report_day3);
+                }
+                else if (day.Equals("5"))
+                {
+                    stream = ftpc.download(iniC.folderFTP + "//" + opu1.opu_code + "//" + opu1.report_day5);
+                }
+                else if (day.Equals("6"))
+                {
+                    stream = ftpc.download(iniC.folderFTP + "//" + opu1.opu_code + "//" + opu1.report_day6);
+                }
+                stream.Seek(0, SeekOrigin.Begin);
+                pds.LoadFromStream(stream);
+
+                MemoryStream streamEmbryo = null;
+                //FtpClient ftpc = new FtpClient(ic.iniC.hostFTP, ic.iniC.userFTP, ic.iniC.passFTP, ic.ftpUsePassive);
+                //ftpC.upload(iniC.folderFTP + "/" + opuCode + "/" + filename, pathFile);
+                if (day.Equals("1"))
+                {
+                    streamEmbryo = ftpc.download(iniC.folderFTP + "//" + opu1.opu_code + "//" + opu1.report_day1);
+                }
+                else if (day.Equals("2"))
+                {
+                    String ext = "", filename = "";
+                    ext = Path.GetExtension(opu1.report_day2);
+                    filename = Path.GetFileNameWithoutExtension(opu1.report_day2);
+                    streamEmbryo = ftpc.download(iniC.folderFTP + "//" + opu1.opu_code + "//" + filename + "_embryo_day2" + ext);
+                }
+                else if (day.Equals("3"))
+                {
+                    String ext = "", filename = "";
+                    ext = Path.GetExtension(opu1.report_day3);
+                    filename = Path.GetFileNameWithoutExtension(opu1.report_day3);
+                    streamEmbryo = ftpc.download(iniC.folderFTP + "//" + opu1.opu_code + "//" + filename + "_embryo_day3" + ext);
+                }
+                else if (day.Equals("5"))
+                {
+                    String ext = "", filename = "";
+                    ext = Path.GetExtension(opu1.report_day5);
+                    filename = Path.GetFileNameWithoutExtension(opu1.report_day5);
+                    streamEmbryo = ftpc.download(iniC.folderFTP + "//" + opu1.opu_code + "//" + filename + "_embryo_day5" + ext);
+                }
+                else if (day.Equals("6"))
+                {
+                    String ext = "", filename = "";
+                    ext = Path.GetExtension(opu1.report_day6);
+                    filename = Path.GetFileNameWithoutExtension(opu1.report_day6);
+                    streamEmbryo = ftpc.download(iniC.folderFTP + "//" + opu1.opu_code + "//" + filename + "_embryo_day6" + ext);
+                }
+                streamEmbryo.Seek(0, SeekOrigin.Begin);
+                pdsEmbryo.LoadFromStream(streamEmbryo);
             }
-            else if (day.Equals("5"))
-            {
-                stream = ftpc.download(iniC.folderFTP + "//" + opu1.opu_code + "//" + opu1.report_day5);
-            }
-            else if (day.Equals("6"))
-            {
-                stream = ftpc.download(iniC.folderFTP + "//" + opu1.opu_code + "//" + opu1.report_day6);
-            }
-            stream.Seek(0, SeekOrigin.Begin);
-            pds.LoadFromStream(stream);
+            
 
             day1Embryo = new C1FlexViewer();
             day1Embryo.AutoScrollMargin = new System.Drawing.Size(0, 0);
@@ -1874,37 +1943,8 @@ namespace clinic_ivf.control
             day1Embryo.Name = "day1Embryo";
             day1Embryo.Size = new System.Drawing.Size(1065, 790);
             day1Embryo.TabIndex = 0;
-            C1PdfDocumentSource pdsEmbryo = new C1PdfDocumentSource();
-            MemoryStream streamEmbryo = null;
-            //FtpClient ftpc = new FtpClient(ic.iniC.hostFTP, ic.iniC.userFTP, ic.iniC.passFTP, ic.ftpUsePassive);
-            //ftpC.upload(iniC.folderFTP + "/" + opuCode + "/" + filename, pathFile);
-            if (day.Equals("1"))
-            {
-                streamEmbryo = ftpc.download(iniC.folderFTP + "//" + opu1.opu_code + "//" + opu1.report_day1);
-            }
-            else if (day.Equals("3"))
-            {
-                String ext = "", filename = "";
-                ext = Path.GetExtension(opu1.report_day3);
-                filename = Path.GetFileNameWithoutExtension(opu1.report_day3);
-                streamEmbryo = ftpc.download(iniC.folderFTP + "//" + opu1.opu_code + "//" + filename + "_embryo_day3" + ext);
-            }
-            else if (day.Equals("5"))
-            {
-                String ext = "", filename = "";
-                ext = Path.GetExtension(opu1.report_day5);
-                filename = Path.GetFileNameWithoutExtension(opu1.report_day5);
-                streamEmbryo = ftpc.download(iniC.folderFTP + "//" + opu1.opu_code + "//" + filename + "_embryo_day5" + ext);
-            }
-            else if (day.Equals("6"))
-            {
-                String ext = "", filename = "";
-                ext = Path.GetExtension(opu1.report_day6);
-                filename = Path.GetFileNameWithoutExtension(opu1.report_day6);
-                streamEmbryo = ftpc.download(iniC.folderFTP + "//" + opu1.opu_code + "//" + filename + "_embryo_day6" + ext);
-            }
-            streamEmbryo.Seek(0, SeekOrigin.Begin);
-            pdsEmbryo.LoadFromStream(streamEmbryo);
+            
+            
 
             //pds.LoadFromFile(filename1);
 

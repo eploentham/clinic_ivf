@@ -109,6 +109,13 @@ namespace clinic_ivf.gui
                 //groupBox1.Controls.Add(btnPreview);
                 chkRptEmbryo = new CheckBox();
             }
+            else if (opureport == opuReport.ResultDay2)
+            {
+                chkSendEmail.Hide();
+                btnExport.Text = "ส่งผล Day2";
+                btnPrint.Text = "Preview Day2";
+                chkRptEmbryo = new CheckBox();
+            }
             else if (opureport == opuReport.ResultDay5)
             {
                 //pnEmail.Hide();
@@ -151,13 +158,7 @@ namespace clinic_ivf.gui
                 btnPrint.Text = "Preview Day0";
                 chkRptEmbryo = new CheckBox();
             }
-            else if (opureport == opuReport.ResultDay2)
-            {
-                chkSendEmail.Hide();
-                btnExport.Text = "ส่งผล Day2";
-                btnPrint.Text = "Preview Day2";
-                chkRptEmbryo = new CheckBox();
-            }
+            
             else
             {
                 groupBox2.Show();
@@ -525,7 +526,7 @@ namespace clinic_ivf.gui
                 String rptname = setRptName();
                 rpt.Load(rptname);
                 crv.ReportSource = rpt;
-                System.Threading.Thread.Sleep(200);
+                //System.Threading.Thread.Sleep(200);
                 crv.Refresh();
                 rpt.SetDataSource(dt);
                 rpt.SetParameterValue("line1", ic.cop.comp_name_t);
@@ -546,12 +547,18 @@ namespace clinic_ivf.gui
                     CrExportOptions.DestinationOptions = CrDiskFileDestinationOptions;
                     CrExportOptions.FormatOptions = CrFormatTypeOptions;
                 }
-                Application.DoEvents();
-                System.Threading.Thread.Sleep(200);
+                //Application.DoEvents();
+                //System.Threading.Thread.Sleep(200);
                 rpt.Export();
-                Application.DoEvents();
-                System.Threading.Thread.Sleep(200);
+                //Application.DoEvents();
+                //System.Threading.Thread.Sleep(200);
                 //new LogWriter("d", "FrmLabOPUPrint rpt.Export(); "+ filename);
+                String filenameembryo = directory + "report\\" + datetick + "_embryo_day6" + ext;
+                DataTable dtEmbryo = new DataTable();
+                dtEmbryo = printOPUEmbryoDev("");
+                setEmailOPUPicEmbryo(dtEmbryo, filenameembryo);
+                Application.DoEvents();
+                //System.Threading.Thread.Sleep(100);
                 if (flagPreview.Equals("preview")) return filename;
                 if (File.Exists(filename))
                 {
@@ -577,12 +584,7 @@ namespace clinic_ivf.gui
                     }
                 }
                 //Report Embryo
-                filename = directory + "report\\" + datetick + "_embryo_day6" + ext;
-                DataTable dtEmbryo = new DataTable();
-                dtEmbryo = printOPUEmbryoDev("");
-                setEmailOPUPicEmbryo(dtEmbryo, filename);
-                Application.DoEvents();
-                System.Threading.Thread.Sleep(200);
+                
                 if (File.Exists(filename))
                 {
                     long chk1 = 0;
@@ -647,7 +649,7 @@ namespace clinic_ivf.gui
                 String rptname = setRptName();
                 rpt.Load(rptname);
                 crv.ReportSource = rpt;
-                System.Threading.Thread.Sleep(200);
+                //System.Threading.Thread.Sleep(200);
                 crv.Refresh();
                 rpt.SetDataSource(dt);
                 rpt.SetParameterValue("line1", ic.cop.comp_name_t);
@@ -669,11 +671,17 @@ namespace clinic_ivf.gui
                     CrExportOptions.FormatOptions = CrFormatTypeOptions;
                 }
                 Application.DoEvents();
-                System.Threading.Thread.Sleep(200);
+                //System.Threading.Thread.Sleep(200);
                 rpt.Export();
-                Application.DoEvents();
-                System.Threading.Thread.Sleep(200);
+                //Application.DoEvents();
+                //System.Threading.Thread.Sleep(200);
                 //new LogWriter("d", "FrmLabOPUPrint rpt.Export(); "+ filename);
+                String filenameembryo = directory + "report\\" + datetick + "_embryo_day5" + ext;
+                DataTable dtEmbryo = new DataTable();
+                dtEmbryo = printOPUEmbryoDev("");
+                setEmailOPUPicEmbryo(dtEmbryo, filenameembryo);
+                Application.DoEvents();
+                //System.Threading.Thread.Sleep(100);
                 if (flagPreview.Equals("preview")) return filename;
                 if (File.Exists(filename))
                 {
@@ -699,17 +707,12 @@ namespace clinic_ivf.gui
                     }
                 }
                 //Report Embryo
-                filename = directory + "report\\" + datetick + "_embryo_day5" + ext;
-                DataTable dtEmbryo = new DataTable();
-                dtEmbryo = printOPUEmbryoDev("");
-                setEmailOPUPicEmbryo(dtEmbryo, filename);
-                Application.DoEvents();
-                System.Threading.Thread.Sleep(200);
-                if (File.Exists(filename))
+                
+                if (File.Exists(filenameembryo))
                 {
                     long chk1 = 0;
-                    String filename1 = Path.GetFileName(filename);
-                    ic.savePicOPUtoServer(txtOpuCode.Text, filename1, filename);
+                    String filename1 = Path.GetFileName(filenameembryo);
+                    ic.savePicOPUtoServer(txtOpuCode.Text, filename1, filenameembryo);
 
                 }
             }
@@ -736,7 +739,7 @@ namespace clinic_ivf.gui
                 String rptname = setRptName();
                 rpt.Load(rptname);
                 crv.ReportSource = rpt;
-                System.Threading.Thread.Sleep(200);
+                //System.Threading.Thread.Sleep(200);
                 crv.Refresh();
                 rpt.SetDataSource(dt);
                 rpt.SetParameterValue("line1", ic.cop.comp_name_t);
@@ -758,12 +761,21 @@ namespace clinic_ivf.gui
                     CrExportOptions.FormatOptions = CrFormatTypeOptions;
                 }
                 Application.DoEvents();
-                System.Threading.Thread.Sleep(200);
+                //System.Threading.Thread.Sleep(200);
                 rpt.Export();
-                Application.DoEvents();
-                System.Threading.Thread.Sleep(200);
+                //Application.DoEvents();
+                //System.Threading.Thread.Sleep(200);
                 //new LogWriter("d", "FrmLabOPUPrint rpt.Export(); "+ filename);
+
+
+                String filenameembryo = directory + "report\\" + datetick + "_embryo_day3" + ext;
+                DataTable dtEmbryo = new DataTable();
+                dtEmbryo = printOPUEmbryoDev("");
+                setEmailOPUPicEmbryo(dtEmbryo, filenameembryo);
+                //Application.DoEvents();
+                //System.Threading.Thread.Sleep(200);
                 if (flagPreview.Equals("preview")) return filename;
+                                
                 if (File.Exists(filename))
                 {
                     long chk1 = 0;
@@ -787,19 +799,15 @@ namespace clinic_ivf.gui
                         }
                     }
                 }
-                //Report Embryo
-                filename = directory + "report\\" + datetick + "_embryo_day3" + ext;
-                DataTable dtEmbryo = new DataTable();
-                dtEmbryo = printOPUEmbryoDev("");
-                setEmailOPUPicEmbryo(dtEmbryo, filename);
-                Application.DoEvents();
-                System.Threading.Thread.Sleep(200);
-                if (File.Exists(filename))
+                if (File.Exists(filenameembryo))
                 {
                     long chk1 = 0;
-                    String filename1 = Path.GetFileName(filename);
-                    ic.savePicOPUtoServer(txtOpuCode.Text, filename1, filename);
+                    String filename1 = Path.GetFileName(filenameembryo);
+                    ic.savePicOPUtoServer(txtOpuCode.Text, filename1, filenameembryo);
                 }
+
+                //Report Embryo
+
             }
             catch (Exception ex)
             {
@@ -824,7 +832,7 @@ namespace clinic_ivf.gui
                 String rptname = setRptName();
                 rpt.Load(rptname);
                 crv.ReportSource = rpt;
-                System.Threading.Thread.Sleep(200);
+                //System.Threading.Thread.Sleep(200);
                 crv.Refresh();
                 rpt.SetDataSource(dt);
                 rpt.SetParameterValue("line1", ic.cop.comp_name_t);
@@ -846,11 +854,21 @@ namespace clinic_ivf.gui
                     CrExportOptions.FormatOptions = CrFormatTypeOptions;
                 }
                 Application.DoEvents();
-                System.Threading.Thread.Sleep(200);
+                //System.Threading.Thread.Sleep(200);
                 rpt.Export();
-                Application.DoEvents();
-                System.Threading.Thread.Sleep(200);
+                //Application.DoEvents();
+                //System.Threading.Thread.Sleep(200);
                 //new LogWriter("d", "FrmLabOPUPrint rpt.Export(); "+ filename);
+
+                //Report Embryo
+                String filenameembryo = directory + "report\\" + datetick + "_embryo_day2" + ext;
+                DataTable dtEmbryo = new DataTable();
+                dtEmbryo = printOPUEmbryoDev("");
+                setEmailOPUPicEmbryo(dtEmbryo, filenameembryo);
+                //Application.DoEvents();
+                //System.Threading.Thread.Sleep(200);
+                
+
                 if (flagPreview.Equals("preview")) return filename;
                 if (File.Exists(filename))
                 {
@@ -875,18 +893,11 @@ namespace clinic_ivf.gui
                         }
                     }
                 }
-                //Report Embryo
-                filename = directory + "report\\" + datetick + "_embryo_day2" + ext;
-                DataTable dtEmbryo = new DataTable();
-                dtEmbryo = printOPUEmbryoDev("");
-                setEmailOPUPicEmbryo(dtEmbryo, filename);
-                Application.DoEvents();
-                System.Threading.Thread.Sleep(200);
-                if (File.Exists(filename))
+                if (File.Exists(filenameembryo))
                 {
                     long chk1 = 0;
-                    String filename1 = Path.GetFileName(filename);
-                    ic.savePicOPUtoServer(txtOpuCode.Text, filename1, filename);
+                    String filename1 = Path.GetFileName(filenameembryo);
+                    ic.savePicOPUtoServer(txtOpuCode.Text, filename1, filenameembryo);
                 }
             }
             catch (Exception ex)
@@ -1131,31 +1142,54 @@ namespace clinic_ivf.gui
             }
             else if (opureport == opuReport.ResultDay6)
             {
-                //String filename = "";
-                //filename = setExportDay6("preview");
-                //if (File.Exists(filename))
-                //{
-                    ic.showResultDay(txtID.Text.Trim(),"6",this);
-                //}
+                FrmWaiting frmW = new FrmWaiting();
+                frmW.Show();
+                String filename = "";
+                filename = setExportDay6("preview");
+                if (File.Exists(filename))
+                {
+                    ic.showResultDay(txtID.Text.Trim(),"6",this, filename);
+                }
+                frmW.Dispose();
             }
             else if (opureport == opuReport.ResultDay5)
             {
-                //String filename = "";
-                //filename = setExportDay5("preview");
-                //if (File.Exists(filename))
-                //{
-                    ic.showResultDay(txtID.Text.Trim(), "5", this);
-                //}
+                FrmWaiting frmW = new FrmWaiting();
+                frmW.Show();
+                String filename = "";
+                filename = setExportDay5("preview");
+                if (File.Exists(filename))
+                {
+                    ic.showResultDay(txtID.Text.Trim(), "5", this, filename);
+                }
+                frmW.Dispose();
             }
             else if (opureport == opuReport.ResultDay3)
             {
+                FrmWaiting frmW = new FrmWaiting();
+                frmW.Show();
                 String filename = "";
                 filename = setExportDay3("preview");
                 if (File.Exists(filename))
                 {
-                    createForm(filename);
+                    ic.showResultDay(txtID.Text.Trim(), "3", this, filename);
+                }
+                frmW.Dispose();
+
+                //ic.showResultDay(txtID.Text.Trim(), "3", this);
+            }
+            else if (opureport == opuReport.ResultDay2)
+            {
+                FrmWaiting frmW = new FrmWaiting();
+                frmW.Show();
+                String filename = "";
+                filename = setExportDay2("preview");
+                if (File.Exists(filename))
+                {
+                    ic.showResultDay(txtID.Text.Trim(), "2", this, filename);
                 }
                 //printFETEmbryoDev();
+                frmW.Dispose();
             }
             else if (opureport == opuReport.ResultDay1)
             {
@@ -1175,16 +1209,7 @@ namespace clinic_ivf.gui
                     createForm(filename);
                 }
             }
-            else if (opureport == opuReport.ResultDay2)
-            {
-                String filename = "";
-                filename = setExportDay2("preview");
-                if (File.Exists(filename))
-                {
-                    createForm(filename);
-                }
-                //printFETEmbryoDev();
-            }
+            
             else if (opureport == opuReport.FETEmbryoDevReport)
             {
                 //printFETEmbryoDev();
@@ -1550,6 +1575,30 @@ namespace clinic_ivf.gui
                     pnEmail.Visible = false;
                 }
             }
+            else if (opureport == opuReport.ResultDay2)
+            {
+                opu = ic.ivfDB.opuDB.selectByPk1(opuId);
+                txtID.Value = opu.opu_id;
+                txtHnFeMale.Value = opu.hn_female;
+                txtHnMale.Value = opu.hn_male;
+                txtNameFeMale.Value = opu.name_female;
+                txtNameMale.Value = opu.name_male;
+                txtOpuCode.Value = opu.opu_code;
+                txtEmailTo.Value = ic.iniC.email_to_lab_opu;
+                //txtEmailSubject.Value = "Result LAB OPU HN " + txtHnFeMale.Text + " Name " + txtNameFeMale.Text + " OPU Code " + txtOpuCode.Text + " ";
+                txtEmailSubject.Value = "OPU Date " + DateTime.Now.ToString("dd/MM/") + DateTime.Now.Year + " " + txtNameMale.Text + " " + txtNameFeMale.Text;
+
+                //chkSendEmail.Checked = opu.status_opu.Equals("2") ? true : false;
+                chkSendEmail.Checked = true;
+                if (chkSendEmail.Checked)
+                {
+                    pnEmail.Visible = true;
+                }
+                else
+                {
+                    pnEmail.Visible = false;
+                }
+            }
             else if (opureport == opuReport.ResultDay6)
             {
                 opu = ic.ivfDB.opuDB.selectByPk1(opuId);
@@ -1658,30 +1707,7 @@ namespace clinic_ivf.gui
                 cboEmbryoDev3.Hide();
                 label8.Hide();
             }
-            else if (opureport == opuReport.ResultDay2)
-            {
-                opu = ic.ivfDB.opuDB.selectByPk1(opuId);
-                txtID.Value = opu.opu_id;
-                txtHnFeMale.Value = opu.hn_female;
-                txtHnMale.Value = opu.hn_male;
-                txtNameFeMale.Value = opu.name_female;
-                txtNameMale.Value = opu.name_male;
-                txtOpuCode.Value = opu.opu_code;
-                txtEmailTo.Value = ic.iniC.email_to_lab_opu;
-                //txtEmailSubject.Value = "Result LAB OPU HN " + txtHnFeMale.Text + " Name " + txtNameFeMale.Text + " OPU Code " + txtOpuCode.Text + " ";
-                txtEmailSubject.Value = "OPU Date " + DateTime.Now.ToString("dd/MM/") + DateTime.Now.Year + " " + txtNameMale.Text + " " + txtNameFeMale.Text;
-
-                //chkSendEmail.Checked = opu.status_opu.Equals("2") ? true : false;
-                chkSendEmail.Checked = true;
-                if (chkSendEmail.Checked)
-                {
-                    pnEmail.Visible = true;
-                }
-                else
-                {
-                    pnEmail.Visible = false;
-                }
-            }
+            
             else
             {
                 fet = ic.ivfDB.fetDB.selectByPk1(opuId);

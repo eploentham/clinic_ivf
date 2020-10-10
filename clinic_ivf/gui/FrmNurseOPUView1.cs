@@ -47,13 +47,13 @@ namespace clinic_ivf.gui
         C1FlexGrid grfDay2, grfDay3, grfDay5, grfDay6, grfDay2Img, grfDay3Img, grfDay5Img, grfDay6Img;
         C1SuperTooltip stt;
         C1SuperErrorProvider sep;
-        C1DockingTab tCday3, tCday5, tCday6;
-        C1DockingTabPage tabDay3Rpt, tabDay3Embryo, tabDay5Rpt, tabDay5Embryo, tabDay6Rpt, tabDay6Embryo;
+        C1DockingTab tCday2, tCday3, tCday5, tCday6;
+        C1DockingTabPage tabDay2Rpt, tabDay2Embryo, tabDay3Rpt, tabDay3Embryo, tabDay5Rpt, tabDay5Embryo, tabDay6Rpt, tabDay6Embryo;
         C1SplitterPanel scPnDay0, scTcDay0, scPnDay1, scTcDay1, scPnDay2, scTcDay2, scPnDay3, scTcDay3, scPnDay5, scTcDay5, scPnDay6, scTcDay6;
         C1SplitContainer sCDay0, sCDay1, sCDay2, sCDay3, sCDay5, sCDay6;
         Label lbDay0EmailTo, lbDay0EmailSubject, lbDay0EmailStatus, lbDay1EmailTo, lbDay1EmailSubject, lbDay1EmailStatus, lbDay2EmailTo, lbDay2EmailSubject, lbDay2EmailStatus, lbDay3EmailTo, lbDay3EmailSubject, lbDay3EmailStatus, lbDay5EmailTo, lbDay5EmailSubject, lbDay5EmailStatus, lbDay6EmailTo, lbDay6EmailSubject, lbDay6EmailStatus;
         C1TextBox txtDay0EmailTo, txtDay0EmailSubject, txtDay1EmailTo, txtDay1EmailSubject, txtDay2EmailTo, txtDay2EmailSubject, txtDay3EmailTo, txtDay3EmailSubject, txtDay5EmailTo, txtDay5EmailSubject, txtDay6EmailTo, txtDay6EmailSubject;
-        MemoryStream streamDay0 = null, streamDay1 = null, streamDay2 = null, streamDay3 = null, streamEmbryoDay3 = null, streamDay5 = null, streamEmbryoDay5 = null, streamDay6 = null, streamEmbryoDay6 = null;
+        MemoryStream streamDay0 = null, streamDay1 = null, streamDay2 = null, streamEmbryoDay2 = null, streamDay3 = null, streamEmbryoDay3 = null, streamDay5 = null, streamEmbryoDay5 = null, streamDay6 = null, streamEmbryoDay6 = null;
 
         Color color;
         Boolean flagDay2Img = false, flagDay3Img = false, flagDay5Img = false, flagDay6Img = false;
@@ -839,14 +839,27 @@ namespace clinic_ivf.gui
             Size size = new Size();
             C1Button btnEmailSendDay2, btnEmailListDay2;
             Panel pnEmailDay2 = new Panel();
+            tCday2 = new C1DockingTab();
+            tabDay2Rpt = new C1DockingTabPage();
+            tabDay2Embryo = new C1DockingTabPage();
             scPnDay2 = new C1.Win.C1SplitContainer.C1SplitterPanel();
             scTcDay2 = new C1.Win.C1SplitContainer.C1SplitterPanel();
             sCDay2 = new C1.Win.C1SplitContainer.C1SplitContainer();
             pnEmailDay2.SuspendLayout();
 
             C1FlexViewer day2View = new C1FlexViewer();
+            C1FlexViewer day2Embryo = new C1FlexViewer();
+
             day2View = new C1FlexViewer();
             day2View.SuspendLayout();
+            day2Embryo = new C1FlexViewer();
+
+            pnEmailDay2.SuspendLayout();
+            tCday2.SuspendLayout();
+            tabDay2Rpt.SuspendLayout();
+            tabDay2Embryo.SuspendLayout();
+            day2View.SuspendLayout();
+            day2Embryo.SuspendLayout();
             sCDay2.SuspendLayout();
             scTcDay2.SuspendLayout();
             scPnDay2.SuspendLayout();
@@ -923,17 +936,17 @@ namespace clinic_ivf.gui
             scPnDay2.Collapsible = true;
             scPnDay2.Dock = C1.Win.C1SplitContainer.PanelDockStyle.Bottom;
             scPnDay2.Location = new System.Drawing.Point(0, 21);
-            scPnDay2.Name = "scPnDay1";
+            scPnDay2.Name = "scPnDay2";
             scPnDay2.Controls.Add(pnEmailDay2);
             scPnDay2.ClientSize = new Size(20, 80);
 
             scTcDay2.Collapsible = false;
             scTcDay2.Dock = C1.Win.C1SplitContainer.PanelDockStyle.Top;
             scTcDay2.Location = new System.Drawing.Point(0, 21);
-            scTcDay2.Name = "scTcDay1";
-            scTcDay2.Controls.Add(day2View);
+            scTcDay2.Name = "scTcDay2";
+            scTcDay2.Controls.Add(tCday2);
             sCDay2.AutoSizeElement = C1.Framework.AutoSizeElement.Both;
-            sCDay2.Name = "sCDay1";
+            sCDay2.Name = "sCDay2";
             sCDay2.Dock = System.Windows.Forms.DockStyle.Fill;
             sCDay2.Panels.Add(scPnDay2);
             sCDay2.Panels.Add(scTcDay2);
@@ -942,6 +955,23 @@ namespace clinic_ivf.gui
 
             sCDay2.HeaderHeight = 0;
             scTcDay2.SizeRatio = 0;
+
+            tCday2.Dock = System.Windows.Forms.DockStyle.Fill;
+            tCday2.HotTrack = true;
+            tCday2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            tCday2.TabSizeMode = C1.Win.C1Command.TabSizeModeEnum.Fit;
+            tCday2.TabsShowFocusCues = true;
+            tCday2.Alignment = TabAlignment.Top;
+            tCday2.SelectedTabBold = true;
+            tCday2.Name = "tCday2";
+            tabDay2Rpt.Name = "tabDay2Rpt";
+            tabDay2Rpt.TabIndex = 0;
+            tabDay2Rpt.Text = "Report Day2";
+            tabDay2Embryo.Name = "tabDay2Embryo";
+            tabDay2Embryo.TabIndex = 0;
+            tabDay2Embryo.Text = "Embryo Day32";
+            tCday2.Controls.Add(tabDay2Rpt);
+            tCday2.Controls.Add(tabDay2Embryo);
 
             day2View.AutoScrollMargin = new System.Drawing.Size(0, 0);
             day2View.AutoScrollMinSize = new System.Drawing.Size(0, 0);
@@ -959,19 +989,79 @@ namespace clinic_ivf.gui
             pds.LoadFromStream(stream);
             day2View.Ribbon.Minimized = true;
             //pds.LoadFromFile(filename1);
-            day2View.DocumentSource = pds;
+            
+
+            C1PdfDocumentSource pdsEmbryo = new C1PdfDocumentSource();
+            String ext = "", filename = "";
+            ext = Path.GetExtension(opu.report_day2);
+            filename = Path.GetFileNameWithoutExtension(opu.report_day2);
+            streamEmbryoDay2 = ftpc.download(ic.iniC.folderFTP + "//" + opu.opu_code + "//" + filename + "_embryo_day2" + ext);
+            streamEmbryoDay2.Seek(0, SeekOrigin.Begin);
+            pdsEmbryo.LoadFromStream(streamEmbryoDay2);
+            
+
+            day2Embryo = new C1FlexViewer();
+            day2Embryo.AutoScrollMargin = new System.Drawing.Size(0, 0);
+            day2Embryo.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+            day2Embryo.Dock = System.Windows.Forms.DockStyle.Fill;
+            day2Embryo.Location = new System.Drawing.Point(0, 0);
+            day2Embryo.Name = "day2Embryo";
+            day2Embryo.Size = new System.Drawing.Size(1065, 790);
+            day2Embryo.TabIndex = 0;
+            day2Embryo.Ribbon.Minimized = true;
+            
+            tabDay2Rpt.Controls.Add(day2View);
+            tabDay2Embryo.Controls.Add(day2Embryo);
 
             day2View.ResumeLayout(false);
+            day2Embryo.ResumeLayout(false);
+
+            tabDay2Rpt.ResumeLayout(false);
+            tabDay2Embryo.ResumeLayout(false);
+            tCday2.ResumeLayout(false);
+
+            scPnDay2.ResumeLayout(false);
+            scTcDay2.ResumeLayout(false);
+            sCDay2.ResumeLayout(false);
+            pnEmailDay2.ResumeLayout(false);
+
+            //day2View.ResumeLayout(false);
+            //day2Embryo.ResumeLayout(false);
+
+            tabDay2Rpt.ResumeLayout(false);
+            tabDay2Embryo.ResumeLayout(false);
+            tCday2.ResumeLayout(false);
+
             scPnDay2.ResumeLayout(false);
             scTcDay2.ResumeLayout(false);
             sCDay2.ResumeLayout(false);
             pnEmailDay2.ResumeLayout(false);
 
             day2View.PerformLayout();
+            day2Embryo.PerformLayout();
+
+            tabDay2Rpt.PerformLayout();
+            tabDay2Embryo.PerformLayout();
+            tCday2.PerformLayout();
+
             scPnDay2.PerformLayout();
             scTcDay2.PerformLayout();
             sCDay2.PerformLayout();
             pnEmailDay2.PerformLayout();
+            //day2View.PerformLayout();
+            //day2Embryo.PerformLayout();
+            //tabDay2Rpt.PerformLayout();
+            //tabDay2Embryo.PerformLayout();
+            //tCday2.PerformLayout();
+
+
+            //scPnDay2.PerformLayout();
+            //scTcDay2.PerformLayout();
+            //sCDay2.PerformLayout();
+            //pnEmailDay2.PerformLayout();
+
+            day2View.DocumentSource = pds;
+            day2Embryo.DocumentSource = pdsEmbryo;
             tabDay2.Controls.Add(sCDay2);
         }
 
