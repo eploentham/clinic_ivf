@@ -226,9 +226,13 @@ namespace clinic_ivf.gui
             //throw new NotImplementedException();
             if(tC.SelectedTab == tabFinish)
             {
-                setGrfQue();
-                setGrfDiag("");
+                //setGrfQue();
+                //setGrfDiag("");
                 setGrfFinish();
+            }
+            else if (tC.SelectedTab == tabWaiting)
+            {
+                setGrfQue();
             }
             else if(tC.SelectedTab == tabSearch)
             {

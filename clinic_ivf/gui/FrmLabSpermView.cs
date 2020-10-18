@@ -74,18 +74,40 @@ namespace clinic_ivf.gui
             btnSearchF.Click += BtnSearchF_Click;
             txtSearch.KeyUp += TxtSearch_KeyUp;
             tcLabView.TabClick += TcLabView_TabClick;
+            tcLabView.SelectedTabChanged += TcLabView_SelectedTabChanged;
             //btnAna.Click += BtnAna_Click;
             //btnFreezing.Click += BtnFreezing_Click;
             //btnPesa.Click += BtnPesa_Click;
             //btnIui.Click += BtnIui_Click;
-            
+
             initGrfReq();
             initGrfProc();
             initGrfFinish();
             setGrfReq();
-            setGrfProc();
-            setGrfFinish();
+            //setGrfProc();
+            //setGrfFinish();
             initGrfSearch();   //111
+        }
+
+        private void TcLabView_SelectedTabChanged(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (tcLabView.SelectedTab == tabLabAccept)
+            {
+                setGrfReq();
+            }
+            else if (tcLabView.SelectedTab == tabProcess)
+            {
+                setGrfProc();
+            }
+            else if (tcLabView.SelectedTab == tabLabFinish)
+            {
+                setGrfFinish();
+            }
+            else if (tcLabView.SelectedTab == tabSearch)
+            {
+                txtSearch.Focus();
+            }
         }
 
         private void TcLabView_TabClick(object sender, EventArgs e)
@@ -461,7 +483,7 @@ namespace clinic_ivf.gui
                 row1[colRqStatusSperm] = row["item_id"].ToString().Equals("2630000014") ? "2"   //"Sperm Freezing" 
                     : row["item_id"].ToString().Equals("2630000018") ? "1"      //"Sperm Analysis" 
                     : row["item_id"].ToString().Equals("2630000066") ? "3"
-                    : row["item_id"].ToString().Equals("88") ? "4" : "";
+                    : row["item_id"].ToString().Equals("26300000196") ? "4" : "";
                 if (row1[colRqStatusSperm].ToString().Equals("1"))      // sperm analysis
                 {
                     row1[colOPUDate] = ic.datetoShow(row[ic.ivfDB.lFormaDB.lformA.sperm_analysis_date_start].ToString());

@@ -3820,7 +3820,7 @@
             this.c1SplitterPanel1.SizeRatio = 42.265D;
             this.c1SplitterPanel1.TabIndex = 0;
             this.c1SplitterPanel1.Text = "Panel 1";
-            this.c1SplitterPanel1.Width = 642;
+            this.c1SplitterPanel1.Width = 635;
             // 
             // panel6
             // 
@@ -3854,10 +3854,10 @@
             this.txtEmailBody.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtEmailBody.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtEmailBody.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtEmailBody.Location = new System.Drawing.Point(0, 214);
+            this.txtEmailBody.Location = new System.Drawing.Point(0, 211);
             this.txtEmailBody.Multiline = true;
             this.txtEmailBody.Name = "txtEmailBody";
-            this.txtEmailBody.Size = new System.Drawing.Size(635, 540);
+            this.txtEmailBody.Size = new System.Drawing.Size(635, 543);
             this.txtEmailBody.TabIndex = 542;
             this.txtEmailBody.Tag = null;
             this.theme1.SetTheme(this.txtEmailBody, "(default)");
@@ -3875,7 +3875,7 @@
             this.panel5.Controls.Add(this.txtEmailTo);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.panel5.Location = new System.Drawing.Point(0, 146);
+            this.panel5.Location = new System.Drawing.Point(0, 143);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(635, 68);
             this.panel5.TabIndex = 2;
@@ -3984,7 +3984,7 @@
             this.c1Ribbon2.QatHolder = this.ribbonQat11;
             this.c1Ribbon2.QatItemsHolder.Add(this.UndoButton1);
             this.c1Ribbon2.QatItemsHolder.Add(this.RedoButton1);
-            this.c1Ribbon2.Size = new System.Drawing.Size(635, 146);
+            this.c1Ribbon2.Size = new System.Drawing.Size(635, 143);
             this.c1Ribbon2.Tabs.Add(this.HomeTab1);
             this.c1Ribbon2.Tabs.Add(this.ViewTab1);
             this.theme1.SetTheme(this.c1Ribbon2, "(default)");
@@ -6411,7 +6411,7 @@
             this.c1SplitterPanel7.SizeRatio = 42.528D;
             this.c1SplitterPanel7.TabIndex = 0;
             this.c1SplitterPanel7.Text = "Panel 1";
-            this.c1SplitterPanel7.Width = 639;
+            this.c1SplitterPanel7.Width = 646;
             // 
             // panel10
             // 
@@ -6445,10 +6445,10 @@
             this.c1TextBox3.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.c1TextBox3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.c1TextBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.c1TextBox3.Location = new System.Drawing.Point(0, 211);
+            this.c1TextBox3.Location = new System.Drawing.Point(0, 214);
             this.c1TextBox3.Multiline = true;
             this.c1TextBox3.Name = "c1TextBox3";
-            this.c1TextBox3.Size = new System.Drawing.Size(639, 543);
+            this.c1TextBox3.Size = new System.Drawing.Size(639, 540);
             this.c1TextBox3.TabIndex = 542;
             this.c1TextBox3.Tag = null;
             this.theme1.SetTheme(this.c1TextBox3, "(default)");
@@ -6465,7 +6465,7 @@
             this.panel12.Controls.Add(this.c1TextBox2);
             this.panel12.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.panel12.Location = new System.Drawing.Point(0, 143);
+            this.panel12.Location = new System.Drawing.Point(0, 146);
             this.panel12.Name = "panel12";
             this.panel12.Size = new System.Drawing.Size(639, 68);
             this.panel12.TabIndex = 3;
@@ -6561,7 +6561,7 @@
             this.c1Ribbon3.QatHolder = this.ribbonQat12;
             this.c1Ribbon3.QatItemsHolder.Add(this.UndoButton2);
             this.c1Ribbon3.QatItemsHolder.Add(this.RedoButton2);
-            this.c1Ribbon3.Size = new System.Drawing.Size(639, 143);
+            this.c1Ribbon3.Size = new System.Drawing.Size(639, 146);
             this.c1Ribbon3.Tabs.Add(this.HomeTab2);
             this.c1Ribbon3.Tabs.Add(this.ViewTab2);
             this.theme1.SetTheme(this.c1Ribbon3, "(default)");
@@ -7088,11 +7088,13 @@
             // 
             // txtIuiMotilePost
             // 
+            this.txtIuiMotilePost.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.txtIuiMotilePost.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtIuiMotilePost.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtIuiMotilePost.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.txtIuiMotilePost.Location = new System.Drawing.Point(439, 444);
             this.txtIuiMotilePost.Name = "txtIuiMotilePost";
+            this.txtIuiMotilePost.ReadOnly = true;
             this.txtIuiMotilePost.Size = new System.Drawing.Size(99, 20);
             this.txtIuiMotilePost.TabIndex = 863;
             this.txtIuiMotilePost.Tag = null;
@@ -7101,11 +7103,13 @@
             // 
             // txtIuiTotalCountPost
             // 
+            this.txtIuiTotalCountPost.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.txtIuiTotalCountPost.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtIuiTotalCountPost.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtIuiTotalCountPost.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.txtIuiTotalCountPost.Location = new System.Drawing.Point(439, 421);
             this.txtIuiTotalCountPost.Name = "txtIuiTotalCountPost";
+            this.txtIuiTotalCountPost.ReadOnly = true;
             this.txtIuiTotalCountPost.Size = new System.Drawing.Size(99, 20);
             this.txtIuiTotalCountPost.TabIndex = 862;
             this.txtIuiTotalCountPost.Tag = null;
@@ -7237,11 +7241,13 @@
             // 
             // txtIuiMotility2Post
             // 
+            this.txtIuiMotility2Post.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.txtIuiMotility2Post.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtIuiMotility2Post.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtIuiMotility2Post.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.txtIuiMotility2Post.Location = new System.Drawing.Point(428, 75);
             this.txtIuiMotility2Post.Name = "txtIuiMotility2Post";
+            this.txtIuiMotility2Post.ReadOnly = true;
             this.txtIuiMotility2Post.Size = new System.Drawing.Size(99, 20);
             this.txtIuiMotility2Post.TabIndex = 870;
             this.txtIuiMotility2Post.Tag = null;
@@ -7302,11 +7308,13 @@
             // 
             // txtIuiMotility2
             // 
+            this.txtIuiMotility2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.txtIuiMotility2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtIuiMotility2.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtIuiMotility2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.txtIuiMotility2.Location = new System.Drawing.Point(154, 75);
             this.txtIuiMotility2.Name = "txtIuiMotility2";
+            this.txtIuiMotility2.ReadOnly = true;
             this.txtIuiMotility2.Size = new System.Drawing.Size(99, 20);
             this.txtIuiMotility2.TabIndex = 859;
             this.txtIuiMotility2.Tag = null;
@@ -8104,11 +8112,13 @@
             // 
             // txtIuiMotile
             // 
+            this.txtIuiMotile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.txtIuiMotile.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtIuiMotile.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtIuiMotile.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.txtIuiMotile.Location = new System.Drawing.Point(141, 444);
             this.txtIuiMotile.Name = "txtIuiMotile";
+            this.txtIuiMotile.ReadOnly = true;
             this.txtIuiMotile.Size = new System.Drawing.Size(99, 20);
             this.txtIuiMotile.TabIndex = 791;
             this.txtIuiMotile.Tag = null;
@@ -8130,11 +8140,13 @@
             // 
             // txtIuiTotalCount
             // 
+            this.txtIuiTotalCount.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.txtIuiTotalCount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtIuiTotalCount.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtIuiTotalCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.txtIuiTotalCount.Location = new System.Drawing.Point(141, 421);
             this.txtIuiTotalCount.Name = "txtIuiTotalCount";
+            this.txtIuiTotalCount.ReadOnly = true;
             this.txtIuiTotalCount.Size = new System.Drawing.Size(99, 20);
             this.txtIuiTotalCount.TabIndex = 789;
             this.txtIuiTotalCount.Tag = null;
@@ -8183,7 +8195,6 @@
             // txtIuiVolume
             // 
             this.txtIuiVolume.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtIuiVolume.DataType = typeof(short);
             this.txtIuiVolume.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtIuiVolume.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.txtIuiVolume.Location = new System.Drawing.Point(141, 375);
@@ -9481,11 +9492,13 @@
             // 
             // txtPeMotility2
             // 
+            this.txtPeMotility2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.txtPeMotility2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPeMotility2.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtPeMotility2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.txtPeMotility2.Location = new System.Drawing.Point(154, 75);
             this.txtPeMotility2.Name = "txtPeMotility2";
+            this.txtPeMotility2.ReadOnly = true;
             this.txtPeMotility2.Size = new System.Drawing.Size(99, 20);
             this.txtPeMotility2.TabIndex = 859;
             this.txtPeMotility2.Tag = null;
@@ -10417,11 +10430,13 @@
             // 
             // txtPeViability
             // 
+            this.txtPeViability.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.txtPeViability.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPeViability.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtPeViability.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.txtPeViability.Location = new System.Drawing.Point(141, 352);
             this.txtPeViability.Name = "txtPeViability";
+            this.txtPeViability.ReadOnly = true;
             this.txtPeViability.Size = new System.Drawing.Size(99, 20);
             this.txtPeViability.TabIndex = 783;
             this.txtPeViability.Tag = null;

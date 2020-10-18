@@ -187,8 +187,20 @@ namespace clinic_ivf.gui
             txtPeAbstinenceday.KeyUp += TxtPeAbstinenceday_KeyUp;
             txtPeMotility4.KeyUp += TxtPeMotility4_KeyUp;
             txtPeMotility3.KeyUp += TxtPeMotility3_KeyUp;
-            //txtPeHead1.KeyUp += TxtPeHead1_KeyUp;
-            //txtPeNeck1.KeyUp += TxtPeNeck1_KeyUp;
+            txtIuiVolume.KeyUp += TxtIuiVolume_KeyUp;
+            txtIuiCount.KeyUp += TxtIuiCount_KeyUp;
+            txtIuiMotility4.KeyUp += TxtIuiMotility4_KeyUp;
+            txtIuiMotility3.KeyUp += TxtIuiMotility3_KeyUp;
+            txtIuiAbstinenceday.KeyUp += TxtIuiAbstinenceday_KeyUp;
+            txtIuiMotility.KeyUp += TxtIuiMotility_KeyUp;
+            txtPeMotility.KeyUp += TxtPeMotility_KeyUp;
+
+            txtIuiVolumePost.KeyUp += TxtIuiVolumePost_KeyUp;
+            txtIuiCountPost.KeyUp += TxtIuiCountPost_KeyUp;
+            txtIuiMotilityPost.KeyUp += TxtIuiMotilityPost_KeyUp;
+            txtIuiMotility4Post.KeyUp += TxtIuiMotility4Post_KeyUp;
+            txtIuiMotility3Post.KeyUp += TxtIuiMotility3Post_KeyUp;
+
             //txtPeTail1.KeyUp += TxtPeTail1_KeyUp;
             txtPePh.KeyUp += TxtPePh_KeyUp;
             //txtPeNormal.KeyUp += TxtPeNormal_KeyUp;
@@ -211,6 +223,7 @@ namespace clinic_ivf.gui
             btnSfApproveResult.Click += BtnSfApproveResult_Click;
             btnApproveResult.Click += BtnApproveResult_Click;
             btnIuiApproveResult.Click += BtnIuiApproveResult_Click;
+            btnPeApproveResult.Click += BtnPeApproveResult_Click;
 
             txtMotility4.KeyUp += TxtMotility4_KeyUp;
             txtMotility3.KeyUp += TxtMotility3_KeyUp;
@@ -218,6 +231,7 @@ namespace clinic_ivf.gui
             txtNeck1.KeyUp += TxtNeck1_KeyUp;
             txtTail1.KeyUp += TxtTail1_KeyUp;
             txtPh.KeyUp += TxtPh_KeyUp;
+
 
             stt = new C1SuperTooltip();
             sep = new C1SuperErrorProvider();
@@ -250,6 +264,156 @@ namespace clinic_ivf.gui
             //}
         }
 
+        private void BtnPeApproveResult_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            ic.cStf.staff_id = "";
+            FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+            frm.ShowDialog(this);
+            if (!ic.cStf.staff_id.Equals(""))
+            {
+                long chk = 0;
+                String re = "", re1 = "";
+                re = ic.ivfDB.lbReqDB.UpdateStatusRequestResult(lbReq.req_id, ic.cStf.staff_id);
+                re1 = ic.ivfDB.lspermDB.updateStatusLabFinish(lsperm.sperm_id, ic.cStf.staff_id);
+                if (long.TryParse(re, out chk))
+                {
+                    panel13.Enabled = true;
+                }
+            }
+        }
+
+        private void TxtIuiMotility3Post_KeyUp(object sender, KeyEventArgs e)
+        {
+            //throw new NotImplementedException();
+            Decimal pr = 0, nr = 0, motility = 0;
+            Decimal.TryParse(txtIuiMotility4Post.Text, out pr);
+            Decimal.TryParse(txtIuiMotility3Post.Text, out nr);
+            Decimal.TryParse(txtIuiMotilityPost.Text, out motility);
+            if ((pr + nr) != motility)
+            {
+                sep.SetError(txtIuiMotility3Post, "!= Motility");
+            }
+            if ((pr + nr) == motility)
+            {
+                sep.Clear();
+            }
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtIuiEjacula.Focus();
+            }
+            else if (e.KeyCode == Keys.Up)
+            {
+                txtIuiMotility4Post.Focus();
+            }
+        }
+
+        private void TxtIuiMotility4Post_KeyUp(object sender, KeyEventArgs e)
+        {
+            //throw new NotImplementedException();
+            Decimal pr = 0, nr = 0, motility = 0;
+            Decimal.TryParse(txtIuiMotility4Post.Text, out pr);
+            Decimal.TryParse(txtIuiMotility3Post.Text, out nr);
+            Decimal.TryParse(txtIuiMotilityPost.Text, out motility);
+            if ((pr + nr) != motility)
+            {
+                sep.SetError(txtIuiMotility4Post, "!= Motility");
+            }
+            if ((pr + nr) == motility)
+            {
+                sep.Clear();
+            }
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtIuiMotility3Post.Focus();
+            }
+            else if (e.KeyCode == Keys.Up)
+            {
+                txtIuiMotilityPost.Focus();
+            }
+        }
+
+        private void TxtIuiMotilityPost_KeyUp(object sender, KeyEventArgs e)
+        {
+            //throw new NotImplementedException();
+            calIUIMotilePost();
+            calIUIMotilityPost();
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtIuiMotility4Post.Focus();
+            }
+            else if (e.KeyCode == Keys.Up)
+            {
+                txtIuiCountPost.Focus();
+            }
+        }
+
+        private void TxtIuiCountPost_KeyUp(object sender, KeyEventArgs e)
+        {
+            //throw new NotImplementedException();
+            calIUITotalCountPost();
+            calIUIMotilePost();
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtIuiMotilityPost.Focus();
+            }
+        }
+
+        private void TxtIuiVolumePost_KeyUp(object sender, KeyEventArgs e)
+        {
+            //throw new NotImplementedException();
+            calIUITotalCountPost();
+            calIUIMotilePost();
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtIuiCountPost.Focus();
+            }
+        }
+
+        private void TxtPeMotility_KeyUp(object sender, KeyEventArgs e)
+        {
+            //throw new NotImplementedException();
+            //Decimal motility = 0, im=0;
+            //Decimal.TryParse(txtPeMotility.Text, out motility);
+            //im = 100 - motility;
+            //im = Math.Round(motility, ic.spermFreezingDecimal, MidpointRounding.AwayFromZero);
+            //txtPeMotility2.Value = im;
+            calPESAMotile();
+            calPESAMotility();
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtPeMotility4.Focus();
+            }
+            else if(e.KeyCode == Keys.Up)
+            {
+                txtPeCount.Focus();
+            }
+        }
+
+        private void TxtIuiMotility_KeyUp(object sender, KeyEventArgs e)
+        {
+            //throw new NotImplementedException();
+            calIUIMotile();
+            calIUIMotility();
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtIuiMotility4.Focus();
+            }
+            else if (e.KeyCode == Keys.Up)
+            {
+                txtIuiCount.Focus();
+            }
+        }
+
+        private void TxtIuiAbstinenceday_KeyUp(object sender, KeyEventArgs e)
+        {
+            //throw new NotImplementedException();
+            if ((e.KeyCode == Keys.Enter))
+            {
+                cboIuiAppearance.Focus();
+            }
+        }
+
         private void BtnIuiApproveResult_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
@@ -268,7 +432,6 @@ namespace clinic_ivf.gui
                 }
             }
         }
-
         private void BtnApproveResult_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
@@ -346,7 +509,58 @@ namespace clinic_ivf.gui
         private void BtnIuiSendEmail_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
+            FrmWaiting frmW = new FrmWaiting();
+            frmW.Show();
+            lbPeEmail.Show();
+            lbPeEmail.Text = "เตรียม Email";
+            Application.DoEvents();
+            String filename = "", datetick = "";
+            if (!Directory.Exists("report"))
+            {
+                Directory.CreateDirectory("report");
+            }
+            datetick = DateTime.Now.Ticks.ToString();
+            filename = "report\\sperm_iui_" + datetick + ".pdf";
+            lbPeEmail.Text = "เตรียม Email Report";
+            Application.DoEvents();
+            if (!setReportSpermIUI("", filename))
+            {
+                return;
+            }
+            frmW.Dispose();
 
+            MailMessage mail = new MailMessage();
+
+            mail.From = new MailAddress(ic.iniC.email_auth_user);
+            mail.To.Add(c1TextBox2.Text);
+            mail.Subject = c1TextBox1.Text;
+            mail.Body = c1TextBox3.Text;
+
+            mail.IsBodyHtml = true;
+            if (File.Exists(filename))
+            {
+                System.Net.Mail.Attachment attachment;
+                attachment = new System.Net.Mail.Attachment(filename);
+                mail.Attachments.Add(attachment);
+            }
+            lbPeEmail.Text = "เตรียม Email Attach File";
+            Application.DoEvents();
+            AlternateView htmlView = AlternateView.CreateAlternateViewFromString(body, null, "text/html");
+            mail.AlternateViews.Add(htmlView);
+
+            foreach (LinkedResource linkimg in theEmailImage1)
+            {
+                htmlView.LinkedResources.Add(linkimg);
+            }
+            lbPeEmail.Text = "Send Email";
+            Application.DoEvents();
+            SmtpServer.Port = 587;
+            SmtpServer.Credentials = new System.Net.NetworkCredential(ic.iniC.email_auth_user, ic.iniC.email_auth_pass);
+
+            SmtpServer.EnableSsl = true;
+            SmtpServer.Send(mail);
+            lbPeEmail.Text = "ส่ง Email เรียบร้อย";
+            Application.DoEvents();
         }
         private void BtnPeSendEmail_Click(object sender, EventArgs e)
         {
@@ -429,7 +643,7 @@ namespace clinic_ivf.gui
 
             MailMessage mail = new MailMessage();
 
-            mail.From = new MailAddress(txtEmailTo.Text);
+            mail.From = new MailAddress(ic.iniC.email_auth_user);
             mail.To.Add(txtEmailTo.Text);
             mail.Subject = txtEmailSubject.Text;
             mail.Body = txtEmailBody.Text;
@@ -686,7 +900,7 @@ namespace clinic_ivf.gui
 
             MailMessage mail = new MailMessage();
 
-            mail.From = new MailAddress(txtSfEmailTo.Text);
+            mail.From = new MailAddress(ic.iniC.email_auth_user);
             mail.To.Add(txtSfEmailTo.Text);
             mail.Subject = txtSfEmailSubject.Text;
             mail.Body = txtSfEmailBody.Text;
@@ -793,11 +1007,27 @@ namespace clinic_ivf.gui
         private void TxtPeMotility3_KeyUp(object sender, KeyEventArgs e)
         {
             //throw new NotImplementedException();
-            calPeMotility();
-            calPeMotile();
+            //calPeMotility();
+            //calPESAMotile();
+            Decimal pr = 0, nr = 0, motility = 0;
+            Decimal.TryParse(txtPeMotility4.Text, out pr);
+            Decimal.TryParse(txtPeMotility3.Text, out nr);
+            Decimal.TryParse(txtPeMotility.Text, out motility);
+            if ((pr + nr) != motility)
+            {
+                sep.SetError(txtPeMotility3, "!= Motility");
+            }
+            if ((pr + nr) == motility)
+            {
+                sep.Clear();
+            }
             if (e.KeyCode == Keys.Enter)
             {
-                txtPeMotility2.Focus();
+                txtPeVial.Focus();
+            }
+            else if (e.KeyCode == Keys.Up)
+            {
+                txtPeMotility4.Focus();
             }
         }
         private void TxtSfMotility3_KeyUp(object sender, KeyEventArgs e)
@@ -813,11 +1043,57 @@ namespace clinic_ivf.gui
         private void TxtPeMotility4_KeyUp(object sender, KeyEventArgs e)
         {
             //throw new NotImplementedException();
-            calPeMotility();
-            calPeMotile();
+            //calPeMotility();
+            //calPESAMotile();
+            Decimal pr = 0, nr = 0, motility = 0;
+            Decimal.TryParse(txtPeMotility4.Text, out pr);
+            Decimal.TryParse(txtPeMotility3.Text, out nr);
+            Decimal.TryParse(txtPeMotility.Text, out motility);
+            if((pr+nr) != motility)
+            {
+                sep.SetError(txtPeMotility4, "!= Motility");
+            }
+            if ((pr + nr) == motility)
+            {
+                sep.Clear();
+            }
             if (e.KeyCode == Keys.Enter)
             {
                 txtPeMotility3.Focus();
+            }
+            else if(e.KeyCode == Keys.Up)
+            {
+                txtPeMotility.Focus();
+            }
+        }
+        private void TxtIuiMotility3_KeyUp(object sender, KeyEventArgs e)
+        {
+            //throw new NotImplementedException();
+            //calIUIMotility();
+            //calIUIMotile();
+            //if (e.KeyCode == Keys.Enter)
+            //{
+            //    txtIuiMotility2.Focus();
+            //}
+            Decimal pr = 0, nr = 0, motility = 0;
+            Decimal.TryParse(txtIuiMotility4.Text, out pr);
+            Decimal.TryParse(txtIuiMotility3.Text, out nr);
+            Decimal.TryParse(txtIuiMotility.Text, out motility);
+            if ((pr + nr) != motility)
+            {
+                sep.SetError(txtIuiMotility3, "!= Motility");
+            }
+            if ((pr + nr) == motility)
+            {
+                sep.Clear();
+            }
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtIuiVolumePost.Focus();
+            }
+            else if (e.KeyCode == Keys.Up)
+            {
+                txtIuiMotility4.Focus();
             }
         }
         private void TxtSfMotility4_KeyUp(object sender, KeyEventArgs e)
@@ -830,11 +1106,49 @@ namespace clinic_ivf.gui
                 txtSfMotility3.Focus();
             }
         }
+        private void TxtIuiMotility4_KeyUp(object sender, KeyEventArgs e)
+        {
+            //throw new NotImplementedException();
+            //calIUIMotility();
+            //calIUIMotile();
+            //if (e.KeyCode == Keys.Enter)
+            //{
+            //    txtIuiMotility3.Focus();
+            //}
+            //else if (e.KeyCode == Keys.Up)
+            //{
+            //    txtIuiMotility.Focus();
+            //}
+            Decimal pr = 0, nr = 0, motility = 0;
+            Decimal.TryParse(txtIuiMotility4.Text, out pr);
+            Decimal.TryParse(txtIuiMotility3.Text, out nr);
+            Decimal.TryParse(txtIuiMotility.Text, out motility);
+            if ((pr + nr) != motility)
+            {
+                sep.SetError(txtIuiMotility4, "!= Motility");
+            }
+            if ((pr + nr) == motility)
+            {
+                sep.Clear();
+            }
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtIuiMotility3.Focus();
+            }
+            else if (e.KeyCode == Keys.Up)
+            {
+                txtIuiMotility.Focus();
+            }
+        }
         private void TxtPeCount_KeyUp(object sender, KeyEventArgs e)
         {
             //throw new NotImplementedException();
             calPESATotalCount();
             calPESAMotile();
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtPeMotility.Focus();
+            }
         }
 
         private void TxtPeVolume_KeyUp(object sender, KeyEventArgs e)
@@ -842,12 +1156,20 @@ namespace clinic_ivf.gui
             //throw new NotImplementedException();
             calPESATotalCount();
             calPESAMotile();
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtPeCount.Focus();
+            }
         }
         private void TxtSfCount_KeyUp(object sender, KeyEventArgs e)
         {
             //throw new NotImplementedException();
             calSfTotalCount();
             calSfMotile();
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtSfMotility4.Focus();
+            }
         }
 
         private void TxtSfVolume_KeyUp(object sender, KeyEventArgs e)
@@ -868,15 +1190,38 @@ namespace clinic_ivf.gui
             calMotile();
             if (e.KeyCode == Keys.Enter)
             {
-                txtSfCount.Focus();
+                txtMotility4.Focus();
             }
         }
-
+        private void TxtIuiCount_KeyUp(object sender, KeyEventArgs e)
+        {
+            //throw new NotImplementedException();
+            calIUITotalCount();
+            calIUIMotile();
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtIuiMotility.Focus();
+            }
+        }
         private void TxtVolume_KeyUp(object sender, KeyEventArgs e)
         {
             //throw new NotImplementedException();
             calTotalCount();
             calMotile();
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtCount.Focus();
+            }
+        }
+        private void TxtIuiVolume_KeyUp(object sender, KeyEventArgs e)
+        {
+            //throw new NotImplementedException();
+            calIUITotalCount();
+            calIUIMotile();
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtIuiCount.Focus();
+            }
         }
         //private void calPeMorphology()
         //{
@@ -1118,6 +1463,39 @@ namespace clinic_ivf.gui
             txtSfMotility.Value = motility1;
             txtSfViability.Value = motility1 + 7;
         }
+        private void calIUIMotilityPost()
+        {
+            //Decimal pr = 0, nr = 0, motility = 0;
+            //Decimal motility1 = 0;
+            //Decimal.TryParse(txtIuiMotility4.Text, out pr);
+            //Decimal.TryParse(txtIuiMotility3.Text, out nr);
+            //motility = pr + nr;
+            //Decimal.TryParse(motility.ToString(), out motility1);
+            //txtIuiMotility.Value = motility1;
+            //txtSfViability.Value = motility1 + 7;
+            Decimal motility = 0, im = 0;
+            Decimal.TryParse(txtIuiMotilityPost.Text, out motility);
+            im = 100 - motility;
+            im = Math.Round(im, ic.spermFreezingDecimal, MidpointRounding.AwayFromZero);
+            txtIuiMotility2Post.Value = im;
+        }
+        private void calIUIMotility()
+        {
+            //Decimal pr = 0, nr = 0, motility = 0;
+            //Decimal motility1 = 0;
+            //Decimal.TryParse(txtIuiMotility4.Text, out pr);
+            //Decimal.TryParse(txtIuiMotility3.Text, out nr);
+            //motility = pr + nr;
+            //Decimal.TryParse(motility.ToString(), out motility1);
+            //txtIuiMotility.Value = motility1;
+            //txtSfViability.Value = motility1 + 7;
+
+            Decimal motility = 0, im = 0;
+            Decimal.TryParse(txtIuiMotility.Text, out motility);
+            im = 100 - motility;
+            im = Math.Round(im, ic.spermFreezingDecimal, MidpointRounding.AwayFromZero);
+            txtIuiMotility2.Value = im;
+        }
         private void calMotility()
         {
             Decimal pr = 0, nr = 0, motility = 0;
@@ -1185,7 +1563,23 @@ namespace clinic_ivf.gui
             Decimal.TryParse(totalmotile.ToString(), out totalmotile1);
             txtSfTotalMotile.Value = totalmotile1;
         }
-        
+        private void calIuiMotile()
+        {
+            Decimal motilitysf = 0, cntsf = 0, motile = 0, vol = 0, totalmotile = 0;
+            Decimal motile1 = 0, totalmotile1 = 0;
+            Decimal.TryParse(txtIuiMotility.Text, out motilitysf);
+            Decimal.TryParse(txtIuiCount.Text, out cntsf);
+            Decimal.TryParse(txtIuiVolume.Text, out vol);
+            motile = (motilitysf * cntsf) / 100;
+            motile = Math.Round(motile, ic.spermFreezingDecimal, MidpointRounding.AwayFromZero);
+            Decimal.TryParse(motile.ToString(), out motile1);
+            txtIuiMotile.Value = motile1;
+
+            totalmotile = motile * vol;
+            totalmotile = Math.Round(totalmotile, ic.spermFreezingDecimal, MidpointRounding.AwayFromZero);
+            Decimal.TryParse(totalmotile.ToString(), out totalmotile1);
+            txtIuiTotalMotile.Value = totalmotile1;
+        }
         private void calPESAMotile()
         {
             Decimal motilityPe = 0, cntPe = 0, motile = 0, vol = 0, totalmotile = 0;
@@ -1205,14 +1599,43 @@ namespace clinic_ivf.gui
         }
         private void calPESAMotility()
         {
-            Decimal pr = 0, nr = 0, motility = 0;
+            Decimal pr = 0, nr = 0;
             Decimal motility2 = 0;
-            //Decimal.TryParse(txtPeMotility4.Text, out pr);
-            //Decimal.TryParse(txtPeMotility3.Text, out nr);
-            //motility = pr + nr;
-            Decimal.TryParse(txtPeMotility2.Text, out motility2);
-            txtPeMotility.Value = 100 - motility2;
-            //txtPeViability.Value = motility1 + 7;
+
+            Decimal motility = 0, im = 0;
+            Decimal.TryParse(txtPeMotility.Text, out motility);
+            im = 100 - motility;
+            im = Math.Round(im, ic.spermFreezingDecimal, MidpointRounding.AwayFromZero);
+            txtPeMotility2.Value = im;
+
+            Decimal.TryParse(txtPeMotility4.Text, out pr);
+            Decimal.TryParse(txtPeMotility3.Text, out nr);
+            motility2 = pr + nr;
+            //Decimal.TryParse(txtPeMotility2.Text, out motility2);
+            //txtPeMotility.Value = 100 - motility2;
+            txtPeViability.Value = motility + 7;
+        }
+        private void calIUITotalCountPost()
+        {
+            Decimal vol = 0, cnt = 0, totalcnt = 0;
+            Decimal totalcnt1 = 0;
+            Decimal.TryParse(txtIuiVolumePost.Text, out vol);
+            Decimal.TryParse(txtIuiCountPost.Text, out cnt);
+            totalcnt = vol * cnt;
+            totalcnt = Math.Round(totalcnt, ic.spermFreezingDecimal, MidpointRounding.AwayFromZero);
+            //Decimal.TryParse(totalcnt.ToString(), out totalcnt1);
+            txtIuiTotalCountPost.Value = totalcnt;
+        }
+        private void calIUITotalCount()
+        {
+            Decimal vol = 0, cnt = 0, totalcnt = 0;
+            Decimal totalcnt1 = 0;
+            Decimal.TryParse(txtIuiVolume.Text, out vol);
+            Decimal.TryParse(txtIuiCount.Text, out cnt);
+            totalcnt = vol * cnt;
+            totalcnt = Math.Round(totalcnt, ic.spermFreezingDecimal, MidpointRounding.AwayFromZero);
+            //Decimal.TryParse(totalcnt.ToString(), out totalcnt1);
+            txtIuiTotalCount.Value = totalcnt;
         }
         private void calTotalCount()
         {
@@ -1241,6 +1664,40 @@ namespace clinic_ivf.gui
             totalmotile = Math.Round(totalmotile, ic.spermFreezingDecimal, MidpointRounding.AwayFromZero);
             Decimal.TryParse(totalmotile.ToString(), out totalmotile1);
             txtTotalMotile.Value = totalmotile1;
+        }
+        private void calIUIMotile()
+        {
+            Decimal motilitysf = 0, cntsf = 0, motile = 0, vol = 0, totalmotile = 0;
+            Decimal motile1 = 0, totalmotile1 = 0;
+            Decimal.TryParse(txtIuiMotility.Text, out motilitysf);
+            Decimal.TryParse(txtIuiCount.Text, out cntsf);
+            Decimal.TryParse(txtIuiVolume.Text, out vol);
+            motile = (motilitysf * cntsf) / 100;
+            motile = Math.Round(motile, ic.spermFreezingDecimal, MidpointRounding.AwayFromZero);
+            Decimal.TryParse(motile.ToString(), out motile1);
+            txtIuiMotile.Value = motile1;
+
+            totalmotile = motile * vol;
+            totalmotile = Math.Round(totalmotile, ic.spermFreezingDecimal, MidpointRounding.AwayFromZero);
+            Decimal.TryParse(totalmotile.ToString(), out totalmotile1);
+            txtIuiTotalMotile.Value = totalmotile1;
+        }
+        private void calIUIMotilePost()
+        {
+            Decimal motilitysf = 0, cntsf = 0, motile = 0, vol = 0, totalmotile = 0;
+            Decimal motile1 = 0, totalmotile1 = 0;
+            Decimal.TryParse(txtIuiMotilityPost.Text, out motilitysf);
+            Decimal.TryParse(txtIuiCountPost.Text, out cntsf);
+            Decimal.TryParse(txtIuiVolumePost.Text, out vol);
+            motile = (motilitysf * cntsf) / 100;
+            motile = Math.Round(motile, ic.spermFreezingDecimal, MidpointRounding.AwayFromZero);
+            Decimal.TryParse(motile.ToString(), out motile1);
+            txtIuiMotilePost.Value = motile1;
+
+            totalmotile = motile * vol;
+            totalmotile = Math.Round(totalmotile, ic.spermFreezingDecimal, MidpointRounding.AwayFromZero);
+            Decimal.TryParse(totalmotile.ToString(), out totalmotile1);
+            txtIuiTotalMotilePost.Value = totalmotile1;
         }
         private void TxtAbstinenceday_KeyUp(object sender, KeyEventArgs e)
         {
@@ -1656,6 +2113,90 @@ namespace clinic_ivf.gui
                 {
                     ReportDocument rpt = new ReportDocument();
                     rpt.Load("lab_sperm_pesa.rpt");
+
+                    rpt.SetDataSource(dt);
+                    rpt.SetParameterValue("line1", ic.cop.comp_name_t);
+                    rpt.SetParameterValue("line2", ic.cop.addr1);
+                    rpt.SetParameterValue("line3", ic.cop.addr2);
+                    //rpt.SetParameterValue("report_name", " Summary of OPU Report");
+                    //rpt.SetParameterValue("date1", "" + date1);
+                    this.crySperm.ReportSource = rpt;
+                    this.crySperm.Refresh();
+
+                    if (File.Exists(filename))
+                    {
+                        File.Delete(filename);
+                        System.Threading.Thread.Sleep(200);
+                    }
+
+                    ExportOptions CrExportOptions;
+                    DiskFileDestinationOptions CrDiskFileDestinationOptions = new DiskFileDestinationOptions();
+                    PdfRtfWordFormatOptions CrFormatTypeOptions = new PdfRtfWordFormatOptions();
+                    CrDiskFileDestinationOptions.DiskFileName = filename;
+                    CrExportOptions = rpt.ExportOptions;
+                    {
+                        CrExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
+                        CrExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
+                        CrExportOptions.DestinationOptions = CrDiskFileDestinationOptions;
+                        CrExportOptions.FormatOptions = CrFormatTypeOptions;
+                    }
+
+                    rpt.Export();
+                }
+                catch (Exception ex)
+                {
+                    chk1 = false;
+                    chk = ex.Message.ToString();
+                    MessageBox.Show("error " + ex.Message, "");
+                }
+            }
+            return chk1;
+        }
+        private Boolean setReportSpermIUI(String flag, String filename)
+        {
+            Boolean chk1 = true;
+            DataTable dt = new DataTable();
+            dt = ic.ivfDB.lspermDB.selectByPk(txtIuiID.Text);
+            //FrmWaiting frmW = new FrmWaiting();
+            //frmW.Show();
+            String date1 = ic.datetoShow(dt.Rows[0]["date_report"].ToString());
+            String date2 = ic.datetoShow(dt.Rows[0]["date_approve"].ToString());
+            String datemale = dt.Rows[0]["dob_male"].ToString();
+            //date1 = ic.datetimetoShow(dt.Rows[0]["date_report"]);
+            //date2 = ic.datetimetoShow(dt.Rows[0]["date_approve"]);
+            dt.Rows[0]["date_report"] = date1;
+            dt.Rows[0]["date_approve"] = date2;
+            String noofvial = "";
+            noofvial = dt.Rows[0]["no_of_vail"].ToString();
+            dt.Rows[0]["no_of_vial"] = noofvial;
+
+            datemale = ic.datetoShow(dt.Rows[0]["dob_male"]);
+            dt.Rows[0]["dob_male"] = datemale;
+            String appearance = "", appearancetext = "", chk = "";
+            appearance = dt.Rows[0]["appearance"].ToString();
+            appearancetext = dt.Rows[0]["appearance_text"].ToString();
+            if (appearancetext.Length > 0)
+            {
+                //dt.Rows[0]["appearance"] = appearancetext;
+                dt.Rows[0]["doc_type_name_app"] = appearancetext;
+            }
+            String stf2 = "";
+            stf2 = dt.Rows[0]["doctorname"].ToString();
+            String[] stf22 = stf2.Split(' ');
+            stf2 = (stf22.Length > 2) ? stf22[0] + " " + stf22[1] + " " + stf22[2].Substring(0, 1) + "." : stf2;
+            dt.Rows[0]["doctorname"] = stf2;
+            if (flag.Equals("print"))
+            {
+                FrmReport frm = new FrmReport(ic);
+                frm.setSpermSa(dt);
+                frm.ShowDialog(this);
+            }
+            else
+            {
+                try
+                {
+                    ReportDocument rpt = new ReportDocument();
+                    rpt.Load("lab_sperm_iui.rpt");
 
                     rpt.SetDataSource(dt);
                     rpt.SetParameterValue("line1", ic.cop.comp_name_t);
@@ -2146,6 +2687,149 @@ namespace clinic_ivf.gui
             //}
 
         }
+        private void setControlSpermPESAReadOnly(Boolean flag)
+        {
+            //txtSfID.Value = lsperm.sperm_id;
+            txtPeHnFeMale.ReadOnly = !flag;
+            txtPeHnMale.ReadOnly = !flag;
+            txtPeNameFeMale.ReadOnly = !flag;
+            txtPeNameMale.ReadOnly = !flag;
+            txtPeLabReqCode.ReadOnly = !flag;
+            txtPeLabFormACode.ReadOnly = !flag;
+            txtPeDobFeMale.ReadOnly = !flag;
+            txtPeDobMale.ReadOnly = !flag;
+            cboPeDoctor.ReadOnly = !flag;
+            cboPeAppearance.ReadOnly = !flag;
+            cboPeLiquefaction.ReadOnly = !flag;
+            cboPeViscosity.ReadOnly = !flag;
+            cboPeEmbryologistAppv.ReadOnly = !flag;
+            cboPeEmbryologistReport.ReadOnly = !flag;
+            cboPeEmbryologistReport.ReadOnly = !flag;
+            //cboPeWbc.ReadOnly = !flag;
+            //cboPeNoofVail.ReadOnly = !flag;
+
+            txtPeSpermDate.ReadOnly = !flag;
+            txtPeAbstinenceday.ReadOnly = !flag;
+            txtPePh.ReadOnly = !flag;
+            //txtSfViability.ReadOnly = !flag;
+            txtPeVolume.ReadOnly = !flag;
+            txtPeCount.ReadOnly = !flag;
+            txtPeTotalCount.ReadOnly = !flag;
+            txtPeMotile.ReadOnly = !flag;
+            txtPeMotility.ReadOnly = !flag;
+            txtPeTotalMotile.ReadOnly = !flag;
+            txtPeMotility4.ReadOnly = !flag;
+            txtPeMotility3.ReadOnly = !flag;
+            txtPeMotility2.ReadOnly = !flag;
+            //txtSfVial.Value = lsperm.no_of_vail;
+            //txtSfWbc.Value = lsperm.wbc;
+            txtPeEjacula.ReadOnly = !flag;
+            txtPeRecive.ReadOnly = !flag;
+            txtPeExam.ReadOnly = !flag;
+            txtPeFinish.ReadOnly = !flag;
+            //txtPeNormal.ReadOnly = !flag;
+            //txtPeAbnormal.ReadOnly = !flag;
+            //txtPeHead.ReadOnly = !flag;
+            //txtPeNeck.ReadOnly = !flag;
+            //txtPeTail.ReadOnly = !flag;
+            txtPeApproveResult.ReadOnly = !flag;
+            txtPeApproveDate.ReadOnly = !flag;
+            //txtSpermTime.Value = lsperm.time;
+            cboPeRemark.ReadOnly = !flag; ;
+            //ic.setC1ComboByName(cboSfRemark, lsperm.remark);
+
+            //txtPeHead1.ReadOnly = !flag;
+            //txtPeNeck1.ReadOnly = !flag;
+            //txtPeTail1.ReadOnly = !flag;
+
+            btnPeSave.Visible = flag;
+            btnPeApproveResult.Visible = flag;
+            //txtSfEmailTo.ReadOnly = ic.iniC.email_to_sperm_freezing;
+            //txtSfEmailSubject.ReadOnly = "Result LAB Sperm Freezing HN " + txtSfHnMale.Text + " Name " + txtSfNameMale.Text + " [" + txtSfLabReqCode.Text + "]";
+
+            //if (!lsperm.status_lab.Equals("5"))
+            //{
+            //    pnEmailAddSubject.Enabled = false;
+            //}
+
+        }
+        private void setControlSpermIUIReadOnly(Boolean flag)
+        {
+            //txtSfID.Value = lsperm.sperm_id;
+            txtIuiHnFeMale.ReadOnly = !flag;
+            txtIuiHnMale.ReadOnly = !flag;
+            txtIuiNameFeMale.ReadOnly = !flag;
+            txtIuiNameMale.ReadOnly = !flag;
+            txtIuiLabReqCode.ReadOnly = !flag;
+            txtIuiLabFormACode.ReadOnly = !flag;
+            txtIuiDobFeMale.ReadOnly = !flag;
+            txtIuiDobMale.ReadOnly = !flag;
+            cboIuiDoctor.ReadOnly = !flag;
+            cboIuiAppearance.ReadOnly = !flag;
+            cboIuiLiquefaction.ReadOnly = !flag;
+            cboIuiViscosity.ReadOnly = !flag;
+            cboIuiEmbryologistAppv.ReadOnly = !flag;
+            cboIuiEmbryologistReport.ReadOnly = !flag;
+            cboIuiEmbryologistReport.ReadOnly = !flag;
+            //cboPeWbc.ReadOnly = !flag;
+            //cboPeNoofVail.ReadOnly = !flag;
+
+            txtIuiSpermDate.ReadOnly = !flag;
+            txtIuiAbstinenceday.ReadOnly = !flag;
+            //txtIuiPh.ReadOnly = !flag;
+            //txtSfViability.ReadOnly = !flag;
+            txtIuiVolume.ReadOnly = !flag;
+            txtIuiCount.ReadOnly = !flag;
+            txtIuiTotalCount.ReadOnly = !flag;
+            txtIuiMotile.ReadOnly = !flag;
+            txtIuiMotility.ReadOnly = !flag;
+            txtIuiTotalMotile.ReadOnly = !flag;
+            txtIuiMotility4.ReadOnly = !flag;
+            txtIuiMotility3.ReadOnly = !flag;
+            txtIuiMotility2.ReadOnly = !flag;
+
+            txtIuiVolumePost.ReadOnly = !flag;
+            txtIuiCountPost.ReadOnly = !flag;
+            txtIuiTotalCountPost.ReadOnly = !flag;
+            txtIuiMotilePost.ReadOnly = !flag;
+            txtIuiMotilityPost.ReadOnly = !flag;
+            txtIuiTotalMotilePost.ReadOnly = !flag;
+            txtIuiMotility4Post.ReadOnly = !flag;
+            txtIuiMotility3Post.ReadOnly = !flag;
+            txtIuiMotility2Post.ReadOnly = !flag;
+
+            //txtSfVial.Value = lsperm.no_of_vail;
+            //txtSfWbc.Value = lsperm.wbc;
+            txtIuiEjacula.ReadOnly = !flag;
+            txtIuiRecive.ReadOnly = !flag;
+            txtIuiExam.ReadOnly = !flag;
+            txtIuiFinish.ReadOnly = !flag;
+            //txtPeNormal.ReadOnly = !flag;
+            //txtPeAbnormal.ReadOnly = !flag;
+            //txtPeHead.ReadOnly = !flag;
+            //txtPeNeck.ReadOnly = !flag;
+            //txtPeTail.ReadOnly = !flag;
+            txtIuiApproveResult.ReadOnly = !flag;
+            txtIuiApproveDate.ReadOnly = !flag;
+            //txtSpermTime.Value = lsperm.time;
+            cboIuiRemark.ReadOnly = !flag; ;
+            //ic.setC1ComboByName(cboSfRemark, lsperm.remark);
+            //txtIuiEjacula.ReadOnly
+            //txtPeHead1.ReadOnly = !flag;
+            //txtPeNeck1.ReadOnly = !flag;
+            //txtPeTail1.ReadOnly = !flag;
+
+            btnIuiSave.Visible = flag;
+            btnIuiApproveResult.Visible = flag;
+            //txtSfEmailTo.ReadOnly = ic.iniC.email_to_sperm_freezing;
+            //txtSfEmailSubject.ReadOnly = "Result LAB Sperm Freezing HN " + txtSfHnMale.Text + " Name " + txtSfNameMale.Text + " [" + txtSfLabReqCode.Text + "]";
+
+            //if (!lsperm.status_lab.Equals("5"))
+            //{
+            //    pnEmailAddSubject.Enabled = false;
+            //}
+
+        }
         private void setControl()
         {
             lsperm = ic.ivfDB.lspermDB.selectByPk1(spermId);
@@ -2187,10 +2871,12 @@ namespace clinic_ivf.gui
             else if (lsperm.status_lab_sperm.Equals("3"))
             {
                 setControlPesa();
+                setControlSpermPESAReadOnly(flagEdit);
             }
             else if (lsperm.status_lab_sperm.Equals("4"))
             {
                 setControlIui();
+                setControlSpermIUIReadOnly(flagEdit);
             }
             initGrfImg();
             setGrfImg();
@@ -2466,6 +3152,8 @@ namespace clinic_ivf.gui
             txtIuiMotilityPost.Value = lsperm.post_motility;
             ic.ivfDB.lspermDB.setCboRemark(cboIuiRemark);
             ic.setC1ComboByName(cboIuiRemark, lsperm.remark);
+            c1TextBox2.Value = ic.iniC.email_to_sperm_freezing;
+            c1TextBox1.Value = "Report Sperm IUI " + DateTime.Now.ToString("dd/MM/") + DateTime.Now.Year + " " + txtIuiNameMale.Text;
         }
         private void setSperm()
         {
@@ -2774,34 +3462,36 @@ namespace clinic_ivf.gui
             }
             else if (lsperm.status_lab_sperm.Equals("4"))
             {
-                theme2 = "Office2007Blue";
+                theme2 = "BeigeOne";
+                theme1.SetTheme(sB, "BeigeOne");
+                theme1.SetTheme(this, theme2);
+                theme1.SetTheme(panel11, theme2);
+                theme1.SetTheme(panel12, theme2);
+                theme1.SetTheme(c1TextBox3, theme2);
+                theme1.SetTheme(pnIuiEmailView, theme2);
+                theme1.SetTheme(groupBox6, theme2);
+                theme1.SetTheme(c1Ribbon3, theme2);
+                foreach (Control ctl in panel11.Controls)
+                {
+                    if (ctl is C1PictureBox) continue;
+                    theme1.SetTheme(ctl, theme2);
+                }
+                foreach (Control ctl in groupBox6.Controls)
+                {
+                    if (ctl is C1PictureBox) continue;
+                    theme1.SetTheme(ctl, theme2);
+                }
+                foreach (Control ctl in c1Ribbon3.Controls)
+                {
+                    if (ctl is C1PictureBox) continue;
+                    theme1.SetTheme(ctl, theme2);
+                }
+                foreach (Control ctl in panel12.Controls)
+                {
+                    if (ctl is C1PictureBox) continue;
+                    //    theme1.SetTheme(ctl, theme2);
+                }
             }
-            theme1.SetTheme(sB, "BeigeOne");
-            //theme1.SetTheme(this, theme2);
-            //theme1.SetTheme(groupBox1, theme2);
-            //theme1.SetTheme(pnSememAnalysis, theme2);
-            //theme1.SetTheme(panel6, theme2);
-            //theme1.SetTheme(groupBox2, theme2);
-            //foreach (Control ctl in pnSememAnalysis.Controls)
-            //{
-            //    if (ctl is C1PictureBox) continue;
-            //    theme1.SetTheme(ctl, theme2);
-            //}
-            //foreach (Control ctl in groupBox1.Controls)
-            //{
-            //    if (ctl is C1PictureBox) continue;
-            //    theme1.SetTheme(ctl, theme2);
-            //}
-            //foreach (Control ctl in panel6.Controls)
-            //{
-            //    if (ctl is C1PictureBox) continue;
-            //    theme1.SetTheme(ctl, theme2);
-            //}
-            //foreach (Control ctl in groupBox2.Controls)
-            //{
-            //    if (ctl is C1PictureBox) continue;
-            //    theme1.SetTheme(ctl, theme2);
-            //}
         }
         private void initGrfImg()
         {
