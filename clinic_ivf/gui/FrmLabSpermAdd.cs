@@ -1,10 +1,13 @@
-﻿using C1.Win.C1FlexGrid;
+﻿using C1.Win.C1Document;
+using C1.Win.C1FlexGrid;
 using C1.Win.C1Input;
 using C1.Win.C1SuperTooltip;
+using C1.Win.FlexViewer;
 using clinic_ivf.control;
 using clinic_ivf.object1;
 using CrystalDecisions.CrystalReports.Engine;
 using CrystalDecisions.Shared;
+using CrystalDecisions.Windows.Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -276,6 +279,35 @@ namespace clinic_ivf.gui
                 String re = "", re1 = "";
                 re = ic.ivfDB.lbReqDB.UpdateStatusRequestResult(lbReq.req_id, ic.cStf.staff_id);
                 re1 = ic.ivfDB.lspermDB.updateStatusLabFinish(lsperm.sperm_id, ic.cStf.staff_id);
+                //setExport(txtPeID.Text, "");
+
+                String filename = "", datetick = "";
+                datetick = DateTime.Now.Ticks.ToString();
+                filename = "report\\sperm_pesa_" + datetick + ".pdf";
+                if (!Directory.Exists("report"))
+                {
+                    Directory.CreateDirectory("report");
+                }
+                if (!setReportSpermPESA1("", filename))
+                {
+                    return;
+                }
+                if (File.Exists(filename))
+                {
+                    long chk1 = 0;
+                    String filename1 = Path.GetFileName(filename);
+                    ic.savePicOPUtoServer("sperm_" + txtPeID.Text, filename1, filename);
+                    ic.ivfDB.lspermDB.updateReportFile(txtPeID.Text, filename1);
+                    createReport();
+                }
+
+                StringBuilder tip = new StringBuilder();
+                // append general 'get help' tip
+                tip.AppendFormat("<b>{0}</b> options.", "ได้ส่ง ผลLAB PESA ") ;
+                tip.Append("<hr noshade size=1 color=lightBlue>");
+                tip.AppendFormat("<table><tr><td><img src='{0}'><td>{1}</table>", "res://helpToolStripButton.Image", "Press <b>F1</b> for more help.");                
+                stt.SetToolTip(btnPeApproveResult, tip.ToString());
+
                 if (long.TryParse(re, out chk))
                 {
                     panel13.Enabled = true;
@@ -426,6 +458,34 @@ namespace clinic_ivf.gui
                 String re = "", re1 = "";
                 re = ic.ivfDB.lbReqDB.UpdateStatusRequestResult(lbReq.req_id, ic.cStf.staff_id);
                 re1 = ic.ivfDB.lspermDB.updateStatusLabFinish(lsperm.sperm_id, ic.cStf.staff_id);
+                //setExport(txtIuiID.Text, "");
+
+                String filename = "", datetick = "";
+                datetick = DateTime.Now.Ticks.ToString();
+                filename = "report\\sperm_iui_" + datetick + ".pdf";
+                if (!Directory.Exists("report"))
+                {
+                    Directory.CreateDirectory("report");
+                }
+                if (!setReportSpermIUI("", filename))
+                {
+                    return;
+                }
+                if (File.Exists(filename))
+                {
+                    long chk1 = 0;
+                    String filename1 = Path.GetFileName(filename);
+                    ic.savePicOPUtoServer("sperm_" + txtIuiID.Text, filename1, filename);
+                    ic.ivfDB.lspermDB.updateReportFile(txtIuiID.Text, filename1);
+                    createReport();
+                }
+
+                StringBuilder tip = new StringBuilder();
+                // append general 'get help' tip
+                tip.AppendFormat("<b>{0}</b> options.", "ได้ส่ง ผลLAB IUI ");
+                tip.Append("<hr noshade size=1 color=lightBlue>");
+                tip.AppendFormat("<table><tr><td><img src='{0}'><td>{1}</table>", "res://helpToolStripButton.Image", "Press <b>F1</b> for more help.");
+                stt.SetToolTip(btnIuiApproveResult, tip.ToString());
                 if (long.TryParse(re, out chk))
                 {
                     panel12.Enabled = true;
@@ -444,6 +504,31 @@ namespace clinic_ivf.gui
                 String re = "", re1 = "";
                 re = ic.ivfDB.lbReqDB.UpdateStatusRequestResult(lbReq.req_id, ic.cStf.staff_id);
                 re1 = ic.ivfDB.lspermDB.updateStatusLabFinish(lsperm.sperm_id, ic.cStf.staff_id);
+                String filename = "", datetick = "";
+                datetick = DateTime.Now.Ticks.ToString();
+                filename = "report\\sperm_analysis_" + datetick + ".pdf";
+                if (!Directory.Exists("report"))
+                {
+                    Directory.CreateDirectory("report");
+                }
+                if (!setReportSpermAnalysis1("", filename))
+                {
+                    return;
+                }
+                if (File.Exists(filename))
+                {
+                    long chk1 = 0;
+                    String filename1 = Path.GetFileName(filename);
+                    ic.savePicOPUtoServer("sperm_" + txtID.Text, filename1, filename);
+                    ic.ivfDB.lspermDB.updateReportFile(txtID.Text, filename1);
+                    createReport();
+                }
+                StringBuilder tip = new StringBuilder();
+                // append general 'get help' tip
+                tip.AppendFormat("<b>{0}</b> options.", "ได้ส่ง ผลLAB Sperm ");
+                tip.Append("<hr noshade size=1 color=lightBlue>");
+                tip.AppendFormat("<table><tr><td><img src='{0}'><td>{1}</table>", "res://helpToolStripButton.Image", "Press <b>F1</b> for more help.");
+                stt.SetToolTip(btnApproveResult, tip.ToString());
                 if (long.TryParse(re, out chk))
                 {
                     panel5.Enabled = true;
@@ -499,6 +584,34 @@ namespace clinic_ivf.gui
                 String re = "",re1="";
                 re = ic.ivfDB.lbReqDB.UpdateStatusRequestResult(lbReq.req_id, ic.cStf.staff_id);
                 re1 = ic.ivfDB.lspermDB.updateStatusLabFinish(lsperm.sperm_id, ic.cStf.staff_id);
+                //setExport(txtSfID.Text, "");
+
+                String filename = "", datetick = "";
+                datetick = DateTime.Now.Ticks.ToString();
+                filename = "report\\sperm_freezing_" + datetick + ".pdf";
+                if (!Directory.Exists("report"))
+                {
+                    Directory.CreateDirectory("report");
+                }
+                if (!setReportSpermFreezing1("", filename))
+                {
+                    return;
+                }
+                if (File.Exists(filename))
+                {
+                    long chk1 = 0;
+                    String filename1 = Path.GetFileName(filename);
+                    ic.savePicOPUtoServer("sperm_" + txtSfID.Text, filename1, filename);
+                    ic.ivfDB.lspermDB.updateReportFile(txtSfID.Text, filename1);
+                    createReport();
+                }
+
+                StringBuilder tip = new StringBuilder();
+                // append general 'get help' tip
+                tip.AppendFormat("<b>{0}</b> options.", "ได้ส่ง ผลLAB SF ");
+                tip.Append("<hr noshade size=1 color=lightBlue>");
+                tip.AppendFormat("<table><tr><td><img src='{0}'><td>{1}</table>", "res://helpToolStripButton.Image", "Press <b>F1</b> for more help.");
+                stt.SetToolTip(btnSfApproveResult, tip.ToString());
                 if (long.TryParse(re, out chk))
                 {
                     pnEmailAddSubject.Enabled = true;
@@ -2942,6 +3055,7 @@ namespace clinic_ivf.gui
                 }
             }
             lbSpSaRemark.Text = lforma.sperm_sa_remark;
+            txtSpermTime.Value = lsperm.sperm_time;
             //if (lsperm.appearance_text.Length > 0)
             //{
             //    cboAppearance.Text = lsperm.appearance_text;
@@ -3024,6 +3138,7 @@ namespace clinic_ivf.gui
             {
                 cboSfAppearance.Value = lsperm.appearance_text;
             }
+            txtSfSpermTime.Value = lsperm.sperm_time;
         }
         private void setControlPesa()
         {
@@ -3075,6 +3190,7 @@ namespace clinic_ivf.gui
             ic.setC1ComboByName(cboPeRemark, lsperm.remark);
             txtPeEmailTo.Value = ic.iniC.email_to_sperm_freezing;
             txtPeEmailSubject.Value = "Report Sperm PESA/TESE " + DateTime.Now.ToString("dd/MM/") + DateTime.Now.Year + " " + txtPeNameMale.Text;
+            //txtPeSpermTime.Value = lsperm.examination_time;
             if (!lsperm.status_lab.Equals("5"))
             {
                 if (flagEdit1.Equals(""))
@@ -3086,6 +3202,7 @@ namespace clinic_ivf.gui
                     //pnPeEmailAddSubject.Enabled = false;
                 }
             }
+            txtPeSpermTime.Value = lsperm.sperm_time;
         }
         private void setControlIui()
         {
@@ -3102,6 +3219,8 @@ namespace clinic_ivf.gui
             ic.setC1Combo(cboIuiAppearance, lsperm.appearance);
             ic.setC1Combo(cboIuiLiquefaction, lsperm.liquefaction);
             ic.setC1Combo(cboIuiViscosity, lsperm.viscosity);
+            ic.setC1Combo(cboIuiEmbryologistAppv, lsperm.staff_id_approve);
+            ic.setC1Combo(cboIuiEmbryologistReport, lsperm.staff_id_report);
 
             txtIuiSpermDate.Value = lsperm.sperm_date;
             txtIuiAbstinenceday.Value = lsperm.abstinence_day;
@@ -3154,6 +3273,7 @@ namespace clinic_ivf.gui
             ic.setC1ComboByName(cboIuiRemark, lsperm.remark);
             c1TextBox2.Value = ic.iniC.email_to_sperm_freezing;
             c1TextBox1.Value = "Report Sperm IUI " + DateTime.Now.ToString("dd/MM/") + DateTime.Now.Year + " " + txtIuiNameMale.Text;
+            txtIuiSpermTime.Value = lsperm.sperm_time;
         }
         private void setSperm()
         {
@@ -3208,6 +3328,7 @@ namespace clinic_ivf.gui
             //lsperm.wbc = cboSfWbc.SelectedItem == null ? "0" : ((ComboBoxItem)cboSfWbc.SelectedItem).Value;
             //lsperm.no_of_vail = cboSfNoofVail.SelectedItem == null ? "0" : ((ComboBoxItem)cboSfNoofVail.SelectedItem).Value;
             lsperm.wbc = bbb;
+            lsperm.sperm_time = txtSpermTime.Text;
         }
         private void setSpermFreezing()
         {
@@ -3267,6 +3388,7 @@ namespace clinic_ivf.gui
             lsperm.wbc = bbb;
             lsperm.no_of_vail = aaa;
             lsperm.appearance_text = cboSfAppearance.Text.Trim();
+            lsperm.sperm_time = txtSfSpermTime.Text;
         }
         private void setSpermPesa()
         {
@@ -3314,6 +3436,7 @@ namespace clinic_ivf.gui
             lsperm.date_approve = ic.datetoDB(txtPeApproveDate.Text);
             lsperm.date_report = ic.datetoDB(txtPeReportDate.Text);
             lsperm.remark = cboPeRemark.Text;
+            lsperm.sperm_time = txtPeSpermTime.Text;
         }
         private void setSpermIui()
         {
@@ -3344,15 +3467,15 @@ namespace clinic_ivf.gui
             lsperm.motility_rate_2 = txtIuiMotility2.Text;
             lsperm.total_motile = txtIuiTotalMotile.Text;
 
-            lsperm.volume1 = txtIuiVolumePost.Text;
-            lsperm.count1 = txtIuiCountPost.Text;
-            lsperm.total_count = txtIuiTotalCountPost.Text;
-            lsperm.motile = txtIuiMotilePost.Text;
-            lsperm.motility = txtIuiMotilityPost.Text;
-            lsperm.total_motile = txtIuiTotalMotilePost.Text;
-            lsperm.motility_rate_4 = txtIuiMotility4Post.Text;
-            lsperm.motility_rate_3 = txtIuiMotility3Post.Text;
-            lsperm.motility_rate_2 = txtIuiMotility2Post.Text;
+            //lsperm.volume1 = txtIuiVolumePost.Text;
+            //lsperm.count1 = txtIuiCountPost.Text;
+            //lsperm.total_count = txtIuiTotalCountPost.Text;
+            //lsperm.motile = txtIuiMotilePost.Text;
+            //lsperm.motility = txtIuiMotilityPost.Text;
+            //lsperm.total_motile = txtIuiTotalMotilePost.Text;
+            //lsperm.motility_rate_4 = txtIuiMotility4Post.Text;
+            //lsperm.motility_rate_3 = txtIuiMotility3Post.Text;
+            //lsperm.motility_rate_2 = txtIuiMotility2Post.Text;
             //lsperm.no_of_vail = txtSfVial.Text;
             //lsperm.wbc = txtIuiWbc.Text;
             lsperm.ejaculation_time = txtIuiEjacula.Text;
@@ -3366,8 +3489,8 @@ namespace clinic_ivf.gui
             //lsperm.morphology_tail_defect = txtIuiTail.Text;
             lsperm.staff_id_approve = txtIuiApproveResult.Text;
             lsperm.date_approve = txtIuiApproveDate.Text;
-            lsperm.staff_id_report = cboEmbryologistReport.SelectedItem == null ? "0" : ((ComboBoxItem)cboEmbryologistReport.SelectedItem).Value;
-            lsperm.staff_id_approve = cboEmbryologistAppv.SelectedItem == null ? "0" : ((ComboBoxItem)cboEmbryologistAppv.SelectedItem).Value;
+            lsperm.staff_id_report = cboIuiEmbryologistReport.SelectedItem == null ? "0" : ((ComboBoxItem)cboIuiEmbryologistReport.SelectedItem).Value;
+            lsperm.staff_id_approve = cboIuiEmbryologistAppv.SelectedItem == null ? "0" : ((ComboBoxItem)cboIuiEmbryologistAppv.SelectedItem).Value;
             lsperm.date_approve = ic.datetoDB(txtIuiApproveDate.Text);
             lsperm.date_report = ic.datetoDB(txtIuiReportDate.Text);
 
@@ -3381,6 +3504,7 @@ namespace clinic_ivf.gui
             lsperm.post_motility_rate_2 = txtIuiMotility2Post.Text;
             lsperm.post_motility = txtIuiMotilityPost.Text;
             lsperm.remark = cboIuiRemark.Text;
+            lsperm.sperm_time = txtIuiSpermTime.Text;
         }
         private void setTheme()
         {
@@ -3470,7 +3594,7 @@ namespace clinic_ivf.gui
                 theme1.SetTheme(c1TextBox3, theme2);
                 theme1.SetTheme(pnIuiEmailView, theme2);
                 theme1.SetTheme(groupBox6, theme2);
-                theme1.SetTheme(c1Ribbon3, theme2);
+                //theme1.SetTheme(c1Ribbon3, theme2);
                 foreach (Control ctl in panel11.Controls)
                 {
                     if (ctl is C1PictureBox) continue;
@@ -3481,11 +3605,11 @@ namespace clinic_ivf.gui
                     if (ctl is C1PictureBox) continue;
                     theme1.SetTheme(ctl, theme2);
                 }
-                foreach (Control ctl in c1Ribbon3.Controls)
-                {
-                    if (ctl is C1PictureBox) continue;
-                    theme1.SetTheme(ctl, theme2);
-                }
+                //foreach (Control ctl in c1Ribbon3.Controls)
+                //{
+                //    if (ctl is C1PictureBox) continue;
+                //    theme1.SetTheme(ctl, theme2);
+                //}
                 foreach (Control ctl in panel12.Controls)
                 {
                     if (ctl is C1PictureBox) continue;
@@ -3503,19 +3627,19 @@ namespace clinic_ivf.gui
             grfImg.DoubleClick += GrfImg_DoubleClick;
             if (lsperm.status_lab_sperm.Equals("1"))
             {
-                pnSfEmailView.Controls.Add(grfImg);
+                //pnSfEmailView.Controls.Add(grfImg);
             }
             else if (lsperm.status_lab_sperm.Equals("2"))
             {
-                pnEmailView.Controls.Add(grfImg);
+                //pnEmailView.Controls.Add(grfImg);
             }
             else if (lsperm.status_lab_sperm.Equals("3"))
             {
-                pnIuiEmailView.Controls.Add(grfImg);
+                //pnIuiEmailView.Controls.Add(grfImg);
             }
             else if (lsperm.status_lab_sperm.Equals("4"))
             {
-                pnSfEmailView.Controls.Add(grfImg);
+                //pnSfEmailView.Controls.Add(grfImg);
             }
             
 
@@ -3696,6 +3820,123 @@ namespace clinic_ivf.gui
             grfImg.AutoSizeCols();
             grfImg.AutoSizeRows();
         }
+        private String setExport(String spermid, String flagPreview)
+        {
+            ReportDocument rpt;
+            CrystalReportViewer crv = new CrystalReportViewer();
+            String filename = "", directory = "", ext = ".pdf", datetick = "";
+            directory = AppDomain.CurrentDomain.BaseDirectory;
+            datetick = DateTime.Now.Ticks.ToString();
+            filename = directory + "report\\" + datetick + ext;
+            rpt = new ReportDocument();
+            DataTable dt = new DataTable();
+            //dt = printOPUReport("");
+            dt = ic.ivfDB.lspermDB.selectByPk(spermid);
+            try
+            {
+                String rptname = "";
+                if (StatusSperm.Equals("1"))// sperm Freezing
+                {
+                    rptname = "lab_sperm_sf.rpt";
+                }
+                else if (StatusSperm.Equals("2"))// sperm analysis
+                {
+                    rptname = "lab_sperm_sa.rpt";
+                }
+                else if (StatusSperm.Equals("3"))// sperm Pesa
+                {
+                    rptname = "lab_sperm_pesa.rpt";
+                }
+                else if (StatusSperm.Equals("4"))// sperm IUI
+                {
+                    rptname = "lab_sperm_iui.rpt";
+                }
+                rpt.Load(rptname);
+                crv.ReportSource = rpt;
+                //System.Threading.Thread.Sleep(200);
+                crv.Refresh();
+                rpt.SetDataSource(dt);
+                rpt.SetParameterValue("line1", ic.cop.comp_name_t);
+                rpt.SetParameterValue("line2", "โทรศัพท์ " + ic.cop.tele);
+                rpt.SetParameterValue("line3", ic.cop.addr2);
+                Application.DoEvents();
+                if (File.Exists(filename))
+                    File.Delete(filename);
+
+                ExportOptions CrExportOptions;
+                DiskFileDestinationOptions CrDiskFileDestinationOptions = new DiskFileDestinationOptions();
+                PdfRtfWordFormatOptions CrFormatTypeOptions = new PdfRtfWordFormatOptions();
+                CrDiskFileDestinationOptions.DiskFileName = filename;
+                CrExportOptions = rpt.ExportOptions;
+                {
+                    CrExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
+                    CrExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
+                    CrExportOptions.DestinationOptions = CrDiskFileDestinationOptions;
+                    CrExportOptions.FormatOptions = CrFormatTypeOptions;
+                }
+                Application.DoEvents();
+                //System.Threading.Thread.Sleep(200);
+                rpt.Export();
+                
+                if (File.Exists(filename))
+                {
+                    long chk1 = 0;
+                    String filename1 = Path.GetFileName(filename);
+                    ic.savePicOPUtoServer(spermid, filename1, filename);
+                    ic.ivfDB.lspermDB.updateReportFile(spermid, filename1);
+                }
+            }
+            catch (Exception ex)
+            {
+                new LogWriter("e", "FrmLabOPUPrint BtnExport_Click " + ex.Message);
+                MessageBox.Show(ex.ToString());
+            }
+            return "";
+        }
+        private void createReport()
+        {
+            C1FlexViewer day1View = new C1FlexViewer();
+            day1View = new C1FlexViewer();
+            day1View.AutoScrollMargin = new System.Drawing.Size(0, 0);
+            day1View.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+            day1View.Dock = System.Windows.Forms.DockStyle.Fill;
+            day1View.Location = new System.Drawing.Point(0, 0);
+            day1View.Name = "c1FlexViewer1";
+            day1View.Size = new System.Drawing.Size(1065, 790);
+            day1View.TabIndex = 0;
+            day1View.Ribbon.Minimized = true;
+            C1PdfDocumentSource pds = new C1PdfDocumentSource();
+            if (lsperm.report.Length > 0)
+            {
+                MemoryStream stream = ic.ftpC.download(ic.iniC.folderFTP +"//sperm_"+lsperm.sperm_id+"//"+ lsperm.report);
+                pds.LoadFromStream(stream);
+            }
+
+            //pds.LoadFromFile(filename1);
+
+            day1View.DocumentSource = pds;
+
+            if (lsperm.status_lab_sperm.Equals("1"))      // sperm Freezing
+            {
+                panel14.Controls.Add(day1View);
+                panel14.Height = 800;
+            }
+            else if (lsperm.status_lab_sperm.Equals("2"))      // sperm analysis
+            {
+                pnEmailView.Controls.Add(day1View);
+                pnEmailView.Height = 800;
+            }
+            else if (lsperm.status_lab_sperm.Equals("3"))      // sperm Pesa
+            {
+                pnPeEmailView.Controls.Add(day1View);
+                pnPeEmailView.Height = 800;
+            }
+            else if (lsperm.status_lab_sperm.Equals("4"))      // sperm IUI
+            {
+                pnIuiEmailView.Controls.Add(day1View);
+                pnIuiEmailView.Height = 800;
+            }
+        }
         private void FrmLabSpermAdd_Load(object sender, EventArgs e)
         {
             tC.SelectedTab = tabSpermFreezing;
@@ -3721,6 +3962,7 @@ namespace clinic_ivf.gui
                 tC.SelectedTab = TabSpermIUI;
             }
             setTheme();
+            createReport();
         }
     }
 }

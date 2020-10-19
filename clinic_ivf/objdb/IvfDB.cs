@@ -636,6 +636,7 @@ namespace clinic_ivf.objdb
             opu.iui_date = lformA.iui_date;
             opu.pasa_tese_date = lformA.pasa_tese_date;
             opu.form_a_id = lformA.form_a_id;
+            //opu.doctor_id = lbreq.doctor_id;
 
             //opu.dob_female = lbreq.dob_female;
             return opu;

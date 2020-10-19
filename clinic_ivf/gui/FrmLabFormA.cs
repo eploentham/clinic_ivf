@@ -1550,11 +1550,21 @@ namespace clinic_ivf.gui
                     txtNameFeMale.Value = ptt2.Name;
                     txtDobFeMale.Value = ptt2.patient_birthday;
                 }
+                if (cboDoctor.Text.Equals(""))
+                {
+                    Visit vs = new Visit();
+                    vs = ic.ivfDB.vsDB.selectByPk1(txtVsId.Text);
+                    ic.setC1Combo(cboDoctor, vs.doctor_id);
+                }
             }
             else// Not found
             {
                 if (!pttid.Equals(""))
                 {
+                    Visit vs = new Visit();
+                    vs = ic.ivfDB.vsDB.selectByVn(vn);
+                    txtVsId.Value = vs.t_visit_id;
+                    ic.setC1Combo(cboDoctor, vs.doctor_id);
                     Patient ptt = new Patient();
                     ptt = ic.ivfDB.pttDB.selectByPk1(pttid);
                     txtHnFeMale.Value = ptt.patient_hn;

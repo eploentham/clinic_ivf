@@ -775,7 +775,7 @@ namespace clinic_ivf.gui
             Cursor curOld;
             curOld = this.Cursor;
             this.Cursor = Cursors.WaitCursor;
-            openLabOPUAdd(id, name, chk.Equals("2") ? " Analysis " : chk.Equals("1") ? " Freezing " : chk.Equals("3") ? " PESA " : " IUI ");
+            openLabOPUAdd(id, name, chk.Equals("2") ? " Analysis " : chk.Equals("1") ? " Freezing " : chk.Equals("3") ? " PESA " : " IUI ", chk);
             this.Cursor = curOld;
             //}
         }
@@ -816,7 +816,7 @@ namespace clinic_ivf.gui
             Cursor curOld;
             curOld = this.Cursor;
             this.Cursor = Cursors.WaitCursor;
-            openLabOPUAdd(id, name, chk.Equals("2") ? " Analysis " : chk.Equals("1") ? " Freezing " : chk.Equals("3") ? " PESA " : " IUI ");
+            openLabOPUAdd(id, name, chk.Equals("2") ? " Analysis " : chk.Equals("1") ? " Freezing " : chk.Equals("3") ? " PESA " : " IUI ", chk);
             this.Cursor = curOld;
         }
 
@@ -983,10 +983,10 @@ namespace clinic_ivf.gui
             opu.opu_date = DateTime.Now.Year.ToString() + "-" + System.DateTime.Now.ToString("MM-dd");
             opu.req_id = reqid;
         }
-        private void openLabOPUAdd(String opdId, String name, String labname)
+        private void openLabOPUAdd(String opdId, String name, String labname, String statusSperm)
         {
             //FrmLabOPUAdd frm = new FrmLabOPUAdd(ic, "", opdId);
-            FrmLabSpermAdd frm = new FrmLabSpermAdd(ic, "", opdId,"edit");
+            FrmLabSpermAdd frm = new FrmLabSpermAdd(ic, "", opdId, statusSperm, "edit");
             String txt = "";
             if (!name.Equals(""))
             {

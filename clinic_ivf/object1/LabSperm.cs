@@ -80,5 +80,7 @@ namespace clinic_ivf.object1
         public String staff_id_finish { get; set; }
         public String date_finish { get; set; }
         public String appearance_text { get; set; }
+        public String report { get; set; }
+        public String sperm_time { get; set; }
     }
 }

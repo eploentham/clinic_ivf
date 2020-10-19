@@ -1227,6 +1227,7 @@ namespace clinic_ivf.gui
             day1View.Name = "c1FlexViewer1";
             day1View.Size = new System.Drawing.Size(1065, 790);
             day1View.TabIndex = 0;
+            day1View.Ribbon.Minimized = true;
             C1PdfDocumentSource pds = new C1PdfDocumentSource();
 
             pds.LoadFromFile(filename);

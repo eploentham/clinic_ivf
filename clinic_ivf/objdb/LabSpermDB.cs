@@ -106,6 +106,8 @@ namespace clinic_ivf.objdb
             lsperm.staff_id_finish = "staff_id_finish";
             lsperm.date_finish = "date_finish";
             lsperm.appearance_text = "appearance_text";
+            lsperm.report = "report";
+            lsperm.sperm_time = "sperm_time";
 
             lsperm.pkField = "sperm_id";
             lsperm.table = "lab_t_sperm";
@@ -200,6 +202,8 @@ namespace clinic_ivf.objdb
             p.morphology_tail_defect1 = p.morphology_tail_defect1 == null ? "" : p.morphology_tail_defect1;
             p.date_finish = p.date_finish == null ? "" : p.date_finish;
             p.appearance_text = p.appearance_text == null ? "" : p.appearance_text;
+            p.report = p.report == null ? "" : p.report;
+            p.sperm_time = p.sperm_time == null ? "" : p.sperm_time;
 
             p.doctor_id = long.TryParse(p.doctor_id, out chk) ? chk.ToString() : "0";
             p.req_id = long.TryParse(p.req_id, out chk) ? chk.ToString() : "0";
@@ -442,6 +446,7 @@ namespace clinic_ivf.objdb
                     "," + lsperm.staff_id_finish + "='" + p.staff_id_finish + "'" +
                     "," + lsperm.date_finish + "=''" +
                     "," + lsperm.appearance_text + "='" + p.appearance_text.Replace("'", "''") + "'" +
+                    "," + lsperm.sperm_time + "='" + p.sperm_time.Replace("'", "''") + "'" +
                     "";
                 re = conn.ExecuteNonQuery(conn.conn, sql);
             }
@@ -539,6 +544,7 @@ namespace clinic_ivf.objdb
                     "," + lsperm.morphology_neck_defect1 + "='" + p.morphology_neck_defect1.Replace("'", "''") + "'" +
                     "," + lsperm.morphology_tail_defect1 + "='" + p.morphology_tail_defect1.Replace("'", "''") + "'" +
                     "," + lsperm.appearance_text + "='" + p.appearance_text.Replace("'", "''") + "'" +
+                    "," + lsperm.sperm_time + "='" + p.sperm_time.Replace("'", "''") + "'" +
                 " Where " + lsperm.pkField + " = '" + p.sperm_id + "' "
                 ;
             try
@@ -581,6 +587,30 @@ namespace clinic_ivf.objdb
                 "Set " + lsperm.staff_id_finish + "='" + userId + "' " +
                     "," + lsperm.date_finish + "= now() " +
                     "," + lsperm.status_lab + "='2' " +
+                " Where " + lsperm.pkField + " = '" + id + "' "
+                ;
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+            return re;
+        }
+        public String updateReportFile(String id, String filename)
+        {
+            String re = "";
+            String sql = "";
+            //p.active = "1";
+            //p.ssdata_id = "";
+            int chk = 0;
+
+            //chkNull(p);
+            sql = "Update " + lsperm.table + " " +
+                //" Set "+lformA.patient_appoint_date_time + "='"+p.patient_appoint_date_time + "' " +
+                "Set " + lsperm.report + "='" + filename + "' " +
                 " Where " + lsperm.pkField + " = '" + id + "' "
                 ;
             try
@@ -684,6 +714,8 @@ namespace clinic_ivf.objdb
                 vs1.staff_id_finish = dt.Rows[0][lsperm.staff_id_finish].ToString();
                 vs1.date_finish = dt.Rows[0][lsperm.date_finish].ToString();
                 vs1.appearance_text = dt.Rows[0][lsperm.appearance_text].ToString();
+                vs1.sperm_time = dt.Rows[0][lsperm.sperm_time].ToString();
+                vs1.report = dt.Rows[0][lsperm.report].ToString();
             }
             else
             {
@@ -779,6 +811,8 @@ namespace clinic_ivf.objdb
             lforma1.staff_id_finish = "";
             lforma1.date_finish = "";
             lforma1.appearance_text = "";
+            lforma1.sperm_time = "";
+            lforma1.report = "";
             return lforma1;
         }
     }
