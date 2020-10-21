@@ -883,8 +883,10 @@ namespace clinic_ivf.gui
                 grfSearch[i, colPttHn2] = row["patient_hn_2"].ToString();
                 grfSearch[i, colPttName2] = row["name_2"].ToString();
                 //grfSearch[i, colVsAgent] = row["AgentName"].ToString();
-
-                grfSearch[i, colStatusOPU] = row[ic.ivfDB.lFormaDB.lformA.status_opu_active].ToString().Equals("1") ? imgCorr : imgTran;
+                String reqidopu = "";
+                reqidopu = row[ic.ivfDB.lFormaDB.lformA.req_id_opu].ToString();
+                //grfSearch[i, colStatusOPU] = row[ic.ivfDB.lFormaDB.lformA.status_opu_active].ToString().Equals("1") ? imgCorr : imgTran;
+                grfSearch[i, colStatusOPU] = reqidopu.Length > 1 ? imgCorr : imgTran;
                 grfSearch[i, colStatusFet] = row[ic.ivfDB.lFormaDB.lformA.status_fet].ToString().Equals("1") ? imgCorr : imgTran;
                 grfSearch[i, colStatusAna] = row[ic.ivfDB.lFormaDB.lformA.status_sperm_analysis].ToString().Equals("1") ? imgCorr : imgTran;
                 grfSearch[i, colStatusFreezing] = row[ic.ivfDB.lFormaDB.lformA.status_sperm_freezing].ToString().Equals("1") ? imgCorr : imgTran;
