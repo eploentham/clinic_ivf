@@ -3983,7 +3983,8 @@ namespace clinic_ivf.gui
             {
                 if (ic.cop.comp_name_e.IndexOf("World Wide IVF") >= 0 || ic.cop.comp_name_e.IndexOf("IVF Worldwide Co., Ltd.") >= 0)
                 {
-                    vs.visit_vn = ic.ivfDB.copDB.genVNDocWW();
+                    //vs.visit_vn = ic.ivfDB.copDB.genVNDocWW();
+                    vs.visit_vn = ic.ivfDB.copDB.genVNDoc();        // no ww
                 }
                 else
                 {

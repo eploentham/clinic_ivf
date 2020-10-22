@@ -522,7 +522,7 @@ namespace clinic_ivf.gui
                     {
                         LabRequest req = new LabRequest();
                         req = ic.ivfDB.lbReqDB.selectByPk1(opu.req_id);
-                        String re1 = ic.ivfDB.lbReqDB.UpdateStatusRequestResult(req.req_id, ic.cStf.staff_id);
+                        String re1 = ic.ivfDB.lbReqDB.UpdateStatusRequestResult(req.req_id, ic.user.staff_id);
                         if (long.TryParse(re1, out chk1))
                         {
                             opu.report_day3 = ic.opu_report_day3;
@@ -654,7 +654,7 @@ namespace clinic_ivf.gui
                 {
                     LabRequest req = new LabRequest();
                     req = ic.ivfDB.lbReqDB.selectByPk1(opu.req_id);
-                    String re1 = ic.ivfDB.lbReqDB.UpdateStatusRequestResult(req.req_id, ic.cStf.staff_id);
+                    String re1 = ic.ivfDB.lbReqDB.UpdateStatusRequestResult(req.req_id, ic.user.staff_id);
                     if (long.TryParse(re1, out chk1))
                     {
                         //MessageBox.Show("ส่งผล LAB OPU ให้ทางพยาบาล เรียบร้อย ", "");       //clinic_ivf.Properties.Resources.Female_user_accept_24
@@ -1240,7 +1240,7 @@ namespace clinic_ivf.gui
                 {
                     LabRequest req = new LabRequest();
                     req = ic.ivfDB.lbReqDB.selectByPk1(opu.req_id);
-                    String re1 = ic.ivfDB.lbReqDB.UpdateStatusRequestResult(req.req_id, ic.cStf.staff_id);
+                    String re1 = ic.ivfDB.lbReqDB.UpdateStatusRequestResult(req.req_id, ic.user.staff_id);
                     if (long.TryParse(re1, out chk1))
                     {
                         opu.report_day3 = ic.opu_report_day3;
@@ -1282,7 +1282,7 @@ namespace clinic_ivf.gui
             frm.ShowDialog(this);
             if (!ic.cStf.staff_id.Equals(""))
             {
-                ic.ivfDB.opuEmDevDB.VoidLabOpuEmbryoDevByOPUFET(txtID.Text, ic.cStf.staff_id);
+                ic.ivfDB.opuEmDevDB.VoidLabOpuEmbryoDevByOPUFET(txtID.Text, ic.user.staff_id);
                 ic.ivfDB.opuDB.updateFertiliAdd(txtID.Text, "0");
                 setGrf();
             }
@@ -1309,7 +1309,7 @@ namespace clinic_ivf.gui
             txtSpermCnt.KeyPress += TxtMaturaMii_KeyPress;
             txtSpermTotalCnt.KeyPress += TxtMaturaMii_KeyPress;
             txtSpermMoti.KeyPress += TxtMaturaMii_KeyPress;
-            txtSpermMotiTotal.KeyPress += TxtMaturaMii_KeyPress;
+            //txtSpermMotiTotal.KeyPress += TxtMaturaMii_KeyPress;
             txtSpermMotility.KeyPress += TxtMaturaMii_KeyPress;
 
             txtEmbryoFreezNoOg0.KeyPress += TxtMaturaMii_KeyPress;
@@ -1461,7 +1461,7 @@ namespace clinic_ivf.gui
                             String filename = "";
 
                             filename = txtOpuCode.Text + "_day6_" + no + ext;
-                            String re = ic.ivfDB.opuEmDevDB.updatePathPic(id, no, ic.iniC.folderFTP + "/" + txtOpuCode.Text + "/" + filename, desc, desc1, ic.cStf.staff_id);
+                            String re = ic.ivfDB.opuEmDevDB.updatePathPic(id, no, ic.iniC.folderFTP + "/" + txtOpuCode.Text + "/" + filename, desc, desc1, ic.user.staff_id);
                             long chk = 0;
                             if (long.TryParse(re, out chk))
                             {
@@ -1588,7 +1588,7 @@ namespace clinic_ivf.gui
                             String filename = "";
 
                             filename = txtOpuCode.Text + "_day5_" + no + ext;
-                            String re = ic.ivfDB.opuEmDevDB.updatePathPic(id, no, ic.iniC.folderFTP + "/" + txtOpuCode.Text + "/" + filename, desc, desc1, ic.cStf.staff_id);
+                            String re = ic.ivfDB.opuEmDevDB.updatePathPic(id, no, ic.iniC.folderFTP + "/" + txtOpuCode.Text + "/" + filename, desc, desc1, ic.user.staff_id);
                             long chk = 0;
                             if (long.TryParse(re, out chk))
                             {
@@ -1792,7 +1792,7 @@ namespace clinic_ivf.gui
                                     opuEmDev.date_create = "";
                                     opuEmDev.date_modi = "";
                                     opuEmDev.date_cancel = "";
-                                    opuEmDev.user_create = ic.cStf.staff_id;
+                                    opuEmDev.user_create = ic.user.staff_id;
                                     opuEmDev.user_modi = "";
                                     opuEmDev.user_cancel = "";
                                     opuEmDev.desc1 = "";
@@ -1801,11 +1801,11 @@ namespace clinic_ivf.gui
                                     opuEmDev.day = "2";
                                     re = ic.ivfDB.opuEmDevDB.insertLabOpuEmbryoDev(opuEmDev, ic.cStf.staff_id);
                                     opuEmDev.day = "3";
-                                    re = ic.ivfDB.opuEmDevDB.insertLabOpuEmbryoDev(opuEmDev, ic.cStf.staff_id);
+                                    re = ic.ivfDB.opuEmDevDB.insertLabOpuEmbryoDev(opuEmDev, ic.user.staff_id);
                                     opuEmDev.day = "5";
-                                    re = ic.ivfDB.opuEmDevDB.insertLabOpuEmbryoDev(opuEmDev, ic.cStf.staff_id);
+                                    re = ic.ivfDB.opuEmDevDB.insertLabOpuEmbryoDev(opuEmDev, ic.user.staff_id);
                                     opuEmDev.day = "6";
-                                    re = ic.ivfDB.opuEmDevDB.insertLabOpuEmbryoDev(opuEmDev, ic.cStf.staff_id);
+                                    re = ic.ivfDB.opuEmDevDB.insertLabOpuEmbryoDev(opuEmDev, ic.user.staff_id);
                                     long chk = 0;
                                     if (long.TryParse(re, out chk))
                                     {
@@ -1903,7 +1903,7 @@ namespace clinic_ivf.gui
                                             opuEmDev.date_create = "";
                                             opuEmDev.date_modi = "";
                                             opuEmDev.date_cancel = "";
-                                            opuEmDev.user_create = ic.cStf.staff_id;
+                                            opuEmDev.user_create = ic.user.staff_id;
                                             opuEmDev.user_modi = "";
                                             opuEmDev.user_cancel = "";
                                             opuEmDev.desc1 = "";
@@ -1921,7 +1921,7 @@ namespace clinic_ivf.gui
                                     dateday3 = ic.dateTimetoDB1(dtday3);
                                     opuEmDev.embryo_dev_date = dateday3;
                                     opuEmDev.day = "2";
-                                            re = ic.ivfDB.opuEmDevDB.insertLabOpuEmbryoDev(opuEmDev, ic.cStf.staff_id);
+                                            re = ic.ivfDB.opuEmDevDB.insertLabOpuEmbryoDev(opuEmDev, ic.user.staff_id);
 
                                     staff_id = cboEmbryologistDay3.SelectedItem == null ? "" : ((ComboBoxItem)cboEmbryologistDay3.SelectedItem).Value;
                                     opuEmDev.staff_id = staff_id;
@@ -1935,7 +1935,7 @@ namespace clinic_ivf.gui
                                     dateday3 = ic.dateTimetoDB1(dtday3);
                                     opuEmDev.embryo_dev_date = dateday3;
                                     opuEmDev.day = "3";
-                                            re = ic.ivfDB.opuEmDevDB.insertLabOpuEmbryoDev(opuEmDev, ic.cStf.staff_id);
+                                            re = ic.ivfDB.opuEmDevDB.insertLabOpuEmbryoDev(opuEmDev, ic.user.staff_id);
 
                                     staff_id = cboEmbryologistDay5.SelectedItem == null ? "" : ((ComboBoxItem)cboEmbryologistDay5.SelectedItem).Value;
                                     opuEmDev.staff_id = staff_id;
@@ -1949,7 +1949,7 @@ namespace clinic_ivf.gui
                                     dateday3 = ic.dateTimetoDB1(dtday3);
                                     opuEmDev.embryo_dev_date = dateday3;
                                     opuEmDev.day = "5";
-                                            re = ic.ivfDB.opuEmDevDB.insertLabOpuEmbryoDev(opuEmDev, ic.cStf.staff_id);
+                                            re = ic.ivfDB.opuEmDevDB.insertLabOpuEmbryoDev(opuEmDev, ic.user.staff_id);
 
                                     staff_id = cboEmbryologistDay6.SelectedItem == null ? "" : ((ComboBoxItem)cboEmbryologistDay6.SelectedItem).Value;
                                     opuEmDev.staff_id = staff_id;
@@ -1963,7 +1963,7 @@ namespace clinic_ivf.gui
                                     dateday3 = ic.dateTimetoDB1(dtday3);
                                     opuEmDev.embryo_dev_date = dateday3;
                                     opuEmDev.day = "6";
-                                            re = ic.ivfDB.opuEmDevDB.insertLabOpuEmbryoDev(opuEmDev, ic.cStf.staff_id);
+                                            re = ic.ivfDB.opuEmDevDB.insertLabOpuEmbryoDev(opuEmDev, ic.user.staff_id);
                                             long chk = 0;
                                             if (long.TryParse(re, out chk))
                                             {
@@ -2060,20 +2060,20 @@ namespace clinic_ivf.gui
                                             opuEmDev.date_create = "";
                                             opuEmDev.date_modi = "";
                                             opuEmDev.date_cancel = "";
-                                            opuEmDev.user_create = ic.cStf.staff_id;
+                                            opuEmDev.user_create = ic.user.staff_id;
                                             opuEmDev.user_modi = "";
                                             opuEmDev.user_cancel = "";
                                             opuEmDev.desc1 = "";
                                             opuEmDev.desc2 = "";
                                             opuEmDev.desc3 = "";
                                             opuEmDev.day = "2";
-                                            re = ic.ivfDB.opuEmDevDB.insertLabOpuEmbryoDev(opuEmDev, ic.cStf.staff_id);
+                                            re = ic.ivfDB.opuEmDevDB.insertLabOpuEmbryoDev(opuEmDev, ic.user.staff_id);
                                             opuEmDev.day = "3";
-                                            re = ic.ivfDB.opuEmDevDB.insertLabOpuEmbryoDev(opuEmDev, ic.cStf.staff_id);
+                                            re = ic.ivfDB.opuEmDevDB.insertLabOpuEmbryoDev(opuEmDev, ic.user.staff_id);
                                             opuEmDev.day = "5";
-                                            re = ic.ivfDB.opuEmDevDB.insertLabOpuEmbryoDev(opuEmDev, ic.cStf.staff_id);
+                                            re = ic.ivfDB.opuEmDevDB.insertLabOpuEmbryoDev(opuEmDev, ic.user.staff_id);
                                             opuEmDev.day = "6";
-                                            re = ic.ivfDB.opuEmDevDB.insertLabOpuEmbryoDev(opuEmDev, ic.cStf.staff_id);
+                                            re = ic.ivfDB.opuEmDevDB.insertLabOpuEmbryoDev(opuEmDev, ic.user.staff_id);
                                             long chk = 0;
                                             if (long.TryParse(re, out chk))
                                             {
@@ -2190,8 +2190,8 @@ namespace clinic_ivf.gui
                                 if (ext.Length > 1)
                                 {
                                     filename = txtOpuCode.Text + "_day6_" + no + "." + ext[ext.Length - 1];
-                                    //re = ic.ivfDB.opuEmDevDB.updatePathPic(id, no, ic.iniC.folderFTP + "/" + txtOpuCode.Text + "/" + filename, desc, desc1, ic.cStf.staff_id);       // -0012
-                                    re = ic.ivfDB.opuEmDevDB.updatePathPicNoPic(id, no, desc, desc1, ic.cStf.staff_id, statusBio);       // +0012
+                                    //re = ic.ivfDB.opuEmDevDB.updatePathPic(id, no, ic.iniC.folderFTP + "/" + txtOpuCode.Text + "/" + filename, desc, desc1, ic.user.staff_id);       // -0012
+                                    re = ic.ivfDB.opuEmDevDB.updatePathPicNoPic(id, no, desc, desc1, ic.user.staff_id, statusBio);       // +0012
                                     long chk = 0;
                                     if (long.TryParse(re, out chk))
                                     {
@@ -2262,8 +2262,8 @@ namespace clinic_ivf.gui
                                 if (ext.Length > 1)
                                 {
                                     filename = txtOpuCode.Text + "_day5_" + no + "." + ext[ext.Length - 1];
-                                    //re = ic.ivfDB.opuEmDevDB.updatePathPic(id, no, ic.iniC.folderFTP + "/" + txtOpuCode.Text + "/" + filename, desc, desc1, ic.cStf.staff_id);       // -0012
-                                    re = ic.ivfDB.opuEmDevDB.updatePathPicNoPic(id, no, desc, desc1, ic.cStf.staff_id, statusBio);       // +0012
+                                    //re = ic.ivfDB.opuEmDevDB.updatePathPic(id, no, ic.iniC.folderFTP + "/" + txtOpuCode.Text + "/" + filename, desc, desc1, ic.user.staff_id);       // -0012
+                                    re = ic.ivfDB.opuEmDevDB.updatePathPicNoPic(id, no, desc, desc1, ic.user.staff_id, statusBio);       // +0012
                                     long chk = 0;
                                     if (long.TryParse(re, out chk))
                                     {
@@ -2326,8 +2326,8 @@ namespace clinic_ivf.gui
                                 if (ext.Length > 1)
                                 {
                                     filename = txtOpuCode.Text + "_day3_" + no + "." + ext[ext.Length - 1];
-                                    //re = ic.ivfDB.opuEmDevDB.updatePathPic(id, no, ic.iniC.folderFTP + "/" + txtOpuCode.Text + "/" + filename, desc, desc1, ic.cStf.staff_id);       // -0012
-                                    re = ic.ivfDB.opuEmDevDB.updatePathPicNoPic(id, no, desc, desc1, ic.cStf.staff_id, statusBio);       // +0012
+                                    //re = ic.ivfDB.opuEmDevDB.updatePathPic(id, no, ic.iniC.folderFTP + "/" + txtOpuCode.Text + "/" + filename, desc, desc1, ic.user.staff_id);       // -0012
+                                    re = ic.ivfDB.opuEmDevDB.updatePathPicNoPic(id, no, desc, desc1, ic.user.staff_id, statusBio);       // +0012
                                     long chk = 0;
                                     if (long.TryParse(re, out chk))
                                     {
@@ -2451,7 +2451,7 @@ namespace clinic_ivf.gui
                             String filename = "";
 
                             filename = txtOpuCode.Text + "_day3_" + no + ext;
-                            String re = ic.ivfDB.opuEmDevDB.updatePathPic(id, no, ic.iniC.folderFTP + "/" + txtOpuCode.Text + "/" + filename, desc, desc1, ic.cStf.staff_id);
+                            String re = ic.ivfDB.opuEmDevDB.updatePathPic(id, no, ic.iniC.folderFTP + "/" + txtOpuCode.Text + "/" + filename, desc, desc1, ic.user.staff_id);
                             long chk = 0;
                             if (long.TryParse(re, out chk))
                             {
@@ -2531,8 +2531,8 @@ namespace clinic_ivf.gui
                                 if (ext.Length > 1)
                                 {
                                     filename = txtOpuCode.Text + "_day2_" + no + "." + ext[ext.Length - 1];
-                                    //re = ic.ivfDB.opuEmDevDB.updatePathPic(id, no, ic.iniC.folderFTP + "/" + txtOpuCode.Text + "/" + filename, desc, desc1, ic.cStf.staff_id);       // -0012
-                                    re = ic.ivfDB.opuEmDevDB.updatePathPicNoPic(id, no, desc, desc1, ic.cStf.staff_id, statusBio);       // +0012
+                                    //re = ic.ivfDB.opuEmDevDB.updatePathPic(id, no, ic.iniC.folderFTP + "/" + txtOpuCode.Text + "/" + filename, desc, desc1, ic.user.staff_id);       // -0012
+                                    re = ic.ivfDB.opuEmDevDB.updatePathPicNoPic(id, no, desc, desc1, ic.user.staff_id, statusBio);       // +0012
                                     long chk = 0;
                                     if (long.TryParse(re, out chk))
                                     {
@@ -2652,7 +2652,7 @@ namespace clinic_ivf.gui
                             String filename = "";
 
                             filename = txtOpuCode.Text + "_day2_" + no + ext;
-                            String re = ic.ivfDB.opuEmDevDB.updatePathPic(id, no, ic.iniC.folderFTP + "/" + txtOpuCode.Text + "/" + filename, desc, desc1, ic.cStf.staff_id);
+                            String re = ic.ivfDB.opuEmDevDB.updatePathPic(id, no, ic.iniC.folderFTP + "/" + txtOpuCode.Text + "/" + filename, desc, desc1, ic.user.staff_id);
                             long chk = 0;
                             if (long.TryParse(re, out chk))
                             {
@@ -2749,7 +2749,7 @@ namespace clinic_ivf.gui
                     opuEmDev.staff_id = "";
                     opuEmDev.checked_id = "";
                     opuEmDev.embryo_dev_date = "";
-                    re = ic.ivfDB.opuEmDevDB.insertLabOpuEmbryoDev(opuEmDev, ic.cStf.staff_id);
+                    re = ic.ivfDB.opuEmDevDB.insertLabOpuEmbryoDev(opuEmDev, ic.user.staff_id);
                     long chk = 0;
                     if (long.TryParse(re, out chk))
                     {
@@ -2839,7 +2839,7 @@ namespace clinic_ivf.gui
                     opuEmDev.staff_id = staff_id;
                     opuEmDev.checked_id = check_id;
                     opuEmDev.embryo_dev_date = dateday5;
-                    re = ic.ivfDB.opuEmDevDB.insertLabOpuEmbryoDev(opuEmDev, ic.cStf.staff_id);
+                    re = ic.ivfDB.opuEmDevDB.insertLabOpuEmbryoDev(opuEmDev, ic.user.staff_id);
                     long chk = 0;
                     if (long.TryParse(re, out chk))
                     {
@@ -2929,7 +2929,7 @@ namespace clinic_ivf.gui
                     opuEmDev.staff_id = "";
                     opuEmDev.checked_id = "";
                     opuEmDev.embryo_dev_date = "";
-                    re = ic.ivfDB.opuEmDevDB.insertLabOpuEmbryoDev(opuEmDev, ic.cStf.staff_id);
+                    re = ic.ivfDB.opuEmDevDB.insertLabOpuEmbryoDev(opuEmDev, ic.user.staff_id);
                     long chk = 0;
                     if (long.TryParse(re, out chk))
                     {
@@ -3024,7 +3024,7 @@ namespace clinic_ivf.gui
                     opuEmDev.staff_id = "";
                     opuEmDev.checked_id = "";
                     opuEmDev.embryo_dev_date = "";
-                    re = ic.ivfDB.opuEmDevDB.insertLabOpuEmbryoDev(opuEmDev, ic.cStf.staff_id);
+                    re = ic.ivfDB.opuEmDevDB.insertLabOpuEmbryoDev(opuEmDev, ic.user.staff_id);
                     long chk = 0;
                     if (long.TryParse(re, out chk))
                     {

@@ -856,7 +856,7 @@ namespace clinic_ivf.objdb
                     chk++;
                 }
                 doc = chk.ToString();
-                //doc = "000" + doc;
+                doc = "000" + doc;
                 String doc1 = doc.Substring(doc.Length - 3);
                 sql = "Update " + cop.table + " Set " +
                     "" + cop.vn_doc + "=" + doc1 +

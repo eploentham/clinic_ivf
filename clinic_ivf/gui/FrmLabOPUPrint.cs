@@ -573,7 +573,7 @@ namespace clinic_ivf.gui
                     {
                         LabRequest req = new LabRequest();
                         req = ic.ivfDB.lbReqDB.selectByPk1(opu.req_id);
-                        String re1 = ic.ivfDB.lbReqDB.UpdateStatusRequestResult(req.req_id, ic.cStf.staff_id);
+                        String re1 = ic.ivfDB.lbReqDB.UpdateStatusRequestResult(req.req_id, ic.user.staff_id);
 
                         if (long.TryParse(re1, out chk1))
                         {
@@ -789,7 +789,7 @@ namespace clinic_ivf.gui
                     {
                         LabRequest req = new LabRequest();
                         req = ic.ivfDB.lbReqDB.selectByPk1(opu.req_id);
-                        String re1 = ic.ivfDB.lbReqDB.UpdateStatusRequestResult(req.req_id, ic.cStf.staff_id);
+                        String re1 = ic.ivfDB.lbReqDB.UpdateStatusRequestResult(req.req_id, ic.user.staff_id);
 
                         if (long.TryParse(re1, out chk1))
                         {
@@ -883,7 +883,7 @@ namespace clinic_ivf.gui
                     {
                         LabRequest req = new LabRequest();
                         req = ic.ivfDB.lbReqDB.selectByPk1(opu.req_id);
-                        String re1 = ic.ivfDB.lbReqDB.UpdateStatusRequestResult(req.req_id, ic.cStf.staff_id);
+                        String re1 = ic.ivfDB.lbReqDB.UpdateStatusRequestResult(req.req_id, ic.user.staff_id);
 
                         if (long.TryParse(re1, out chk1))
                         {
@@ -977,7 +977,7 @@ namespace clinic_ivf.gui
                 {
                     LabRequest req = new LabRequest();
                     req = ic.ivfDB.lbReqDB.selectByPk1(opu.req_id);
-                    String re1 = ic.ivfDB.lbReqDB.UpdateStatusRequestResult(req.req_id, ic.cStf.staff_id);
+                    String re1 = ic.ivfDB.lbReqDB.UpdateStatusRequestResult(req.req_id, ic.user.staff_id.Length<=0 ? "0": ic.user.staff_id);
 
                     if (long.TryParse(re1, out chk1))
                     {
@@ -1065,7 +1065,7 @@ namespace clinic_ivf.gui
                 {
                     LabRequest req = new LabRequest();
                     req = ic.ivfDB.lbReqDB.selectByPk1(opu.req_id);
-                    String re1 = ic.ivfDB.lbReqDB.UpdateStatusRequestResult(req.req_id, ic.cStf.staff_id);
+                    String re1 = ic.ivfDB.lbReqDB.UpdateStatusRequestResult(req.req_id, ic.user.staff_id);
 
                     if (long.TryParse(re1, out chk1))
                     {
