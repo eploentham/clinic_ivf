@@ -22,6 +22,7 @@ namespace clinic_ivf.gui
     /*
      * * 62-06-08  1  แก้นัด ให้ donor ไปใช้ของ patient
      * * 62-06-08  2  แก้ ให้ grfVisit ให้แสดง Patient Appointment คือให้ดึงตาม t_patient_id
+     *   63-10-27     0020        เรื่อง		เลิก insert table Visit
      */
     public partial class FrmAppointmentAdd : Form
     {
@@ -410,13 +411,13 @@ namespace clinic_ivf.gui
                 if (long.TryParse(re, out chk))
                 {
                     txtID.Value = txtID.Text.Equals("") ? re : txtID.Text;
-                    setAppointmentOld();
+                    //setAppointmentOld();          //-0020
                     //if (!ic.iniC.statusAppDonor.Equals("1"))
                     //{
-                    String re1 = ic.ivfDB.pApmOldDB.insertAppointmentOld(pApmO, txtStfConfirmID.Text);
-                    //txtIDOld.Value = re1;
-                    txtIDOld.Value = txtIDOld.Text.Equals("") ? re1 : txtIDOld.Text;
-                    String re2 = ic.ivfDB.pApmDB.updateAppointmentIdOld(txtID.Text, re1);
+                    //String re1 = ic.ivfDB.pApmOldDB.insertAppointmentOld(pApmO, txtStfConfirmID.Text);          //-0020
+                    //txtIDOld.Value = re1;          //-0020
+                    //txtIDOld.Value = txtIDOld.Text.Equals("") ? re1 : txtIDOld.Text;          //-0020
+                    //String re2 = ic.ivfDB.pApmDB.updateAppointmentIdOld(txtID.Text, re1);          //-0020
                     //if (int.TryParse(re1, out chk))
                     //{
                     //if (txtID.Text.Equals(""))
@@ -427,7 +428,7 @@ namespace clinic_ivf.gui
                     //    if (int.TryParse(re2, out chk))
                     //    {
                     //String re4 = ic.ivfDB.vsDB.updateCloseStatusNurse(txtVsId.Text);
-                    String re3 = ic.ivfDB.vsDB.updateStatusAppointment(txtVsId.Text, txtID.Text);
+                    //String re3 = ic.ivfDB.vsDB.updateStatusAppointment(txtVsId.Text, txtID.Text);               //-0020
 
                     btnSave.Text = "Save";
                     btnSave.Image = Resources.accept_database24;

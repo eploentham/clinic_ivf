@@ -602,7 +602,7 @@ namespace clinic_ivf.gui
             //grdFlex.Cols[colID].Caption = "no";
             //grfDept.Cols[colCode].Caption = "รหัส";
 
-            grfOrder.Cols[colOrdName].Caption = "Name";
+            grfOrder.Cols[colOrdName].Caption = "Name.";
             grfOrder.Cols[colOrdPrice].Caption = "Price";
             grfOrder.Cols[colOrdQty].Caption = "QTY";
             grfOrder.Cols[colOrdInclude].Caption = "Include Package";
@@ -808,7 +808,7 @@ namespace clinic_ivf.gui
             grfRx.Cols[colRxPrice].Caption = "Price";
             grfRx.Cols[colRxQty].Caption = "QTY";
             grfRx.Cols[colRxRemark].Caption = "Remark";
-            grfRx.Cols[colRxUsE].Caption = "Usage English";
+            grfRx.Cols[colRxUsE].Caption = "Usage English.";
             grfRx.Cols[colRxUsT].Caption = "Usage Thai";
             int i = 0;
             decimal aaa = 0;

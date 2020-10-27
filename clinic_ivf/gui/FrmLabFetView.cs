@@ -753,10 +753,11 @@ namespace clinic_ivf.gui
             //this.Cursor = Cursors.WaitCursor;
             //openLabOPUAdd(id, name);
             //this.Cursor = curOld;
+            if (grfProc.Row <= 0) return;
             String chk = "", name = "", id = "";
-            id = grfFinish[grfFinish.Row, colPcId] != null ? grfFinish[grfFinish.Row, colPcId].ToString() : "";
-            chk = grfFinish[grfFinish.Row, colPcOpuNum] != null ? grfFinish[grfFinish.Row, colPcOpuNum].ToString() : "";
-            name = grfFinish[grfFinish.Row, colPcPttName] != null ? grfFinish[grfFinish.Row, colPcPttName].ToString() : "";
+            id = grfProc[grfProc.Row, colPcId] != null ? grfProc[grfProc.Row, colPcId].ToString() : "";
+            chk = grfProc[grfProc.Row, colPcOpuNum] != null ? grfProc[grfProc.Row, colPcOpuNum].ToString() : "";
+            name = grfProc[grfProc.Row, colPcPttName] != null ? grfProc[grfProc.Row, colPcPttName].ToString() : "";
             //if (MessageBox.Show("ต้องการ ป้อน LAB OPU  \n  opu number " + chk + " \n name " + name, "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
             //{
             //grfReq.Rows.Remove(grfReq.Row);

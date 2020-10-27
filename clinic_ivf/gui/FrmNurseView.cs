@@ -21,6 +21,11 @@ using Timer = System.Windows.Forms.Timer;
 
 namespace clinic_ivf.gui
 {
+    /*
+     * เรื่อง		เลิก insert table Visit      เลขที่    0020
+     * 63-10-27     0020        เรื่อง		เลิก insert table Visit
+     * 
+     */
     public partial class FrmNurseView : Form
     {
         IvfControl ic;
@@ -97,14 +102,14 @@ namespace clinic_ivf.gui
             ic.setCboNurseReport(cboRpt);
 
             initGrfQue();
-            setGrfQue();
+            //setGrfQue();      tab_change is call 
             initGrfDiag();
-            setGrfDiag("");
+            //setGrfDiag("");
             initGrfFinish();
-            setGrfFinish();
+            //setGrfFinish();
             initGrfSearch();
             initGrfLab();
-            setGrfLab("");
+            //setGrfLab("");
             initGrfRpt();
 
             int timerlab = 0;
@@ -237,6 +242,10 @@ namespace clinic_ivf.gui
             else if(tC.SelectedTab == tabSearch)
             {
                 txtSearch.Focus();
+            }
+            else if (tC.SelectedTab == tabDiag)
+            {
+                setGrfDiag("");
             }
         }
 
@@ -477,15 +486,16 @@ namespace clinic_ivf.gui
             if (search.Equals(""))
             {
                 String date = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd");
-                //dt = ic.ivfDB.ovsDB.selectByStatusNurseFinish(ic.datetoDB(txtDateStart.Text));
-                dt = ic.ivfDB.ovsDB.selectByStatusNurseFinish(date);
+                //dt = ic.ivfDB.ovsDB.selectByStatusNurseFinish(ic.datetoDB(txtDateStart.Text));     //     -0020
+                dt = ic.ivfDB.vsDB.selectByStatusNurseFinish(date);     //      +0020
             }
             else
             {
                 //grfPtt.DataSource = ic.ivfDB.vsOldDB.selectCurrentVisit(search);
                 if (txtDateStart.Text.Equals(""))
                 {
-                    dt = ic.ivfDB.ovsDB.selectByStatusNurseFinishLike(search);
+                    //dt = ic.ivfDB.ovsDB.selectByStatusNurseFinishLike(search);     //     -0020
+                    dt = ic.ivfDB.vsDB.selectByStatusNurseFinishLike(search);    //      +0020
                 }
             }
 
@@ -558,7 +568,7 @@ namespace clinic_ivf.gui
                 grfFinish[i, colPttId] = row["PID"].ToString();
                 grfFinish[i, colVn] = row["VN"].ToString();
                 grfFinish[i, colPID] = row["PID"].ToString();
-                if (!row[ic.ivfDB.ovsDB.vsold.form_a_id].ToString().Equals("0"))
+                if (!row[ic.ivfDB.vsDB.vs.form_a_id].ToString().Equals("0"))
                 {
                     CellNote note = new CellNote("ส่ง Lab Request Foam A");
                     CellRange rg = grfFinish.GetCellRange(i, colVNshow);
@@ -623,7 +633,8 @@ namespace clinic_ivf.gui
             if (search.Equals(""))
             {
                 //String date = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd");
-                dt = ic.ivfDB.ovsDB.selectByStatusNurseDiag();
+                //dt = ic.ivfDB.ovsDB.selectByStatusNurseDiag();    //      -0020
+                dt = ic.ivfDB.vsDB.selectByStatusNurseDiag1();    //      +0020
             }
             else
             {
@@ -727,18 +738,19 @@ namespace clinic_ivf.gui
             DataTable dt1 = new DataTable();
             DataTable dt = new DataTable();
             
-            if (search.Equals(""))
-            {
-                String date = "";
-                DateTime dt11 = new DateTime();
-                if (DateTime.TryParse(txtDateStart.Text, out dt11))
-                {
-                    date = dt11.Year + "-" + dt11.ToString("MM-dd");
-                    dt = ic.ivfDB.ovsDB.selectByHnFormA(date);
-                }
-            }
-            else
-            {
+            //if (search.Equals(""))
+            //{
+            //    String date = "";
+            //    DateTime dt11 = new DateTime();
+            //    if (DateTime.TryParse(txtDateStart.Text, out dt11))
+            //    {
+            //        date = dt11.Year + "-" + dt11.ToString("MM-dd");
+            //        //dt = ic.ivfDB.ovsDB.selectByHnFormA(date);    //      -0020
+            //        dt = ic.ivfDB.vsDB.selectByHnFormA(date);    //      +0020
+            //    }
+            //}
+            //else
+            //{
                 //if (chkLabFormA.Checked)
                 //{
                 //dt = ic.ivfDB.ovsDB.selectByHNLike(search);
@@ -756,7 +768,7 @@ namespace clinic_ivf.gui
                 //    dt = ic.ivfDB.ovsDB.selectByHNLike(search);
                 //}
                 //grfPtt.DataSource = ic.ivfDB.vsOldDB.selectCurrentVisit(search);
-            }
+            //}
 
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             grfSearch.Rows.Count = 1;
@@ -1447,7 +1459,8 @@ namespace clinic_ivf.gui
         private void setGrfQueDonor(String search)
         {
             //grfDept.Rows.Count = 7;
-            grfQue.Clear();
+            //grfQue.Clear();
+            grfQue.Rows.Count = 1;
             DataTable dt = new DataTable();
             if (search.Equals(""))
             {
@@ -1458,11 +1471,13 @@ namespace clinic_ivf.gui
                 //dt = ic.ivfDB.vsDB.selectByStatusNurseWaiting(ic.datetoDB(txtDateStart.Text));
                 if (chkAll.Checked)
                 {
-                    dt = ic.ivfDB.ovsDB.selectByReceptionSend1();
+                    //dt = ic.ivfDB.ovsDB.selectByReceptionSend1();     //  -0020
+                    dt = ic.ivfDB.vsDB.selectByReceptionSend1();       //  +0020
                 }
                 else
                 {
-                    dt = ic.ivfDB.ovsDB.selectByReceptionSendBsp1(cboVisitBsp.SelectedItem == null ? "" : ((ComboBoxItem)cboVisitBsp.SelectedItem).Value);
+                    //dt = ic.ivfDB.ovsDB.selectByReceptionSendBsp1(cboVisitBsp.SelectedItem == null ? "" : ((ComboBoxItem)cboVisitBsp.SelectedItem).Value);     //  -0020
+                    dt = ic.ivfDB.vsDB.selectByReceptionSendBsp1(cboVisitBsp.SelectedItem == null ? "" : ((ComboBoxItem)cboVisitBsp.SelectedItem).Value);       //  +0020
                 }
             }
             else
@@ -1600,9 +1615,11 @@ namespace clinic_ivf.gui
                     //dt = ic.ivfDB.ovsDB.selectByDate(date);
                 }
                 if(chkAll.Checked)
-                    dt = ic.ivfDB.ovsDB.selectByReceptionSend1();
+                    //dt = ic.ivfDB.ovsDB.selectByReceptionSend1();     //  -0020
+                    dt = ic.ivfDB.vsDB.selectByReceptionSendBsp1("");        //  +0020
                 else
-                    dt = ic.ivfDB.ovsDB.selectByReceptionSendBsp1(cboVisitBsp.SelectedItem == null ? "" : ((ComboBoxItem)cboVisitBsp.SelectedItem).Value);
+                    //dt = ic.ivfDB.ovsDB.selectByReceptionSendBsp1(cboVisitBsp.SelectedItem == null ? "" : ((ComboBoxItem)cboVisitBsp.SelectedItem).Value);     //  -0020
+                    dt = ic.ivfDB.vsDB.selectByReceptionSendBsp1(cboVisitBsp.SelectedItem == null ? "" : ((ComboBoxItem)cboVisitBsp.SelectedItem).Value);        //  +0020
             }
             else
             {
@@ -1683,10 +1700,10 @@ namespace clinic_ivf.gui
                 {
                     grfQue[i, 0] = i;
                     grfQue[i, colID] = row["id"].ToString();
-                    grfQue[i, colVNshow] = ic.showVN(row["VN"].ToString());
-                    grfQue[i, colVn] = row["VN"].ToString();
+                    grfQue[i, colVNshow] = ic.showVN(row["visit_vn"].ToString());
+                    grfQue[i, colVn] = row["visit_vn"].ToString();
                     grfQue[i, colPttHn] = row["PIDS"].ToString();
-                    grfQue[i, colPttName] = row["PName"].ToString();
+                    grfQue[i, colPttName] = row["patient_name"].ToString();
                     grfQue[i, colVsDate] = ic.datetoShow(row["VDate"]);
                     grfQue[i, colVsTime] = row["VStartTime"].ToString();
                     grfQue[i, colVsEtime] = row["VEndTime"].ToString();
@@ -1699,7 +1716,7 @@ namespace clinic_ivf.gui
                     grfQue[i, colPttName2] = row["name_2"].ToString();
                     grfQue[i, colPID] = row["PID"].ToString();
                     grfQue[i, colVsAgent] = row["AgentName"].ToString();
-                    if (!row[ic.ivfDB.ovsDB.vsold.form_a_id].ToString().Equals("0"))
+                    if (!row[ic.ivfDB.vsDB.vs.form_a_id].ToString().Equals("0"))
                     {
                         CellNote note = new CellNote("ส่ง Lab Request Foam A");
                         CellRange rg = grfQue.GetCellRange(i, colVNshow);

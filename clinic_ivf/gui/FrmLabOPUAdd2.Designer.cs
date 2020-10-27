@@ -1727,6 +1727,8 @@
             // txtSpermMoti
             // 
             this.txtSpermMoti.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSpermMoti.DataType = typeof(decimal);
+            this.txtSpermMoti.DateTimeInput = false;
             this.txtSpermMoti.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtSpermMoti.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.txtSpermMoti.Location = new System.Drawing.Point(359, 78);

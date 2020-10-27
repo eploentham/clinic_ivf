@@ -593,7 +593,7 @@ namespace clinic_ivf.gui
             {
                 collectdate = row[ic.ivfDB.lbresDB.lbRes.date_time_collect].ToString();
                 receivedate = row[ic.ivfDB.lbresDB.lbRes.date_time_receive].ToString();
-                if (row["LID"].ToString().Equals("10"))
+                if (row["LID"].ToString().Equals("2630000010"))
                 {
                     amh =  "1";
                 }
@@ -641,7 +641,7 @@ namespace clinic_ivf.gui
             lbRes = ic.ivfDB.lbresDB.selectByPk(resId);
             //lbRes.req_id
             //req = ic.ivfDB.lbReqDB.selectByPk1(opu.req_id);
-            String re1 = ic.ivfDB.lbReqDB.UpdateStatusRequestResult(lbRes.req_id, ic.cStf.staff_id);
+            String re1 = ic.ivfDB.lbReqDB.UpdateStatusRequestResult(lbRes.req_id, ic.user.staff_id);
             tC.SelectedTab = tabEmail;
         }
 
@@ -765,8 +765,7 @@ namespace clinic_ivf.gui
             txtReceiveTime.Value = lbRes.date_time_receive;
             //}
             
-
-            txtEmailTo.Value = ic.iniC.email_to_sperm_freezing;
+            txtEmailTo.Value = ic.iniC.email_to_labblood;
             txtEmailSubject.Value = "Result LAB Blood HN " + txtHn.Text + " Name " + txtPttNameE.Text + "Sex "+txtSex.Text+ " [VN " + txtVnShow.Text + "]";
 
             if (ic.user.dept_id.Equals("1090000005"))
@@ -830,7 +829,7 @@ namespace clinic_ivf.gui
             frm.ShowDialog(this);
             if (!ic.cStf.staff_id.Equals(""))
             {
-                ic.ivfDB.VoidLabReult(resid, ic.cStf.staff_id);
+                ic.ivfDB.VoidLabReult(resid, ic.user.staff_id);
                 setGrfProc();
             }
         }

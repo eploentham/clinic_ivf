@@ -52,7 +52,7 @@ namespace clinic_ivf.gui
         C1SuperErrorProvider sep;
         Color color;
         Boolean flagDay2Img = false, flagDay3Img = false, flagDay5Img = false, flagDay6Img = false;
-        Boolean grf2Focus = false, grf3Focus = false, grf5Focus = false, grf6Focus = false;
+        Boolean grf2Focus = false, grf3Focus = false, grf5Focus = false, grf6Focus = false, flagSpermMotiEdit = true;
         private bool prefixSeen;
         String theme2 = "Office2007Blue";       //Office2016Black       BeigeOne
         String flagEdit = "";
@@ -1308,7 +1308,7 @@ namespace clinic_ivf.gui
             txtSpermVol.KeyPress += TxtMaturaMii_KeyPress;
             txtSpermCnt.KeyPress += TxtMaturaMii_KeyPress;
             txtSpermTotalCnt.KeyPress += TxtMaturaMii_KeyPress;
-            txtSpermMoti.KeyPress += TxtMaturaMii_KeyPress;
+            txtSpermMoti.KeyPress += TxtSpermMoti_KeyPress;
             //txtSpermMotiTotal.KeyPress += TxtMaturaMii_KeyPress;
             txtSpermMotility.KeyPress += TxtMaturaMii_KeyPress;
 
@@ -1322,6 +1322,12 @@ namespace clinic_ivf.gui
             txtSpermVol.KeyUp += TxtSpermVol_KeyUp;
             txtSpermCnt.KeyUp += TxtSpermCnt_KeyUp;
             txtSpermMotility.KeyUp += TxtSpermMotility_KeyUp;
+        }
+
+        private void TxtSpermMoti_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //throw new NotImplementedException();
+            flagSpermMotiEdit = true; 
         }
 
         private void TxtSpermMotility_KeyUp(object sender, KeyEventArgs e)
@@ -3763,7 +3769,10 @@ namespace clinic_ivf.gui
         }
         private void saveLabOPU()
         {
-            calMotile();
+            if (!flagSpermMotiEdit)
+            {
+                calMotile();
+            }
             calFertili();
             setOPU();
             String re = ic.ivfDB.opuDB.update(opu, ic.user.staff_id);

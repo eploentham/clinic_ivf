@@ -117,5 +117,8 @@ namespace clinic_ivf.object1
         public String nurse_finish_date_time { get; set; }
         public String cashier_finish_date_time { get; set; }
         public String agent_id { get; set; }
+        public String patient_name { get; set; }
+        public String form_a_id { get; set; }
+        public String vsid { get; set; }
     }
 }

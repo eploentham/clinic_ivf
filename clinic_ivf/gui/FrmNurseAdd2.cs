@@ -38,6 +38,7 @@ namespace clinic_ivf.gui
      * 63-01-11     0015        ลงโปรแกรมที่ ww แล้ว การเงิน คิดเงินผิด
      * 63-01-26     0016        ลงโปรแกรมที่ ww แล้ว การเงิน Package ที่พยาบาลป้อนไม่ขึ้น
      * 63-08-25     0019        ทำให้หน้าจอ FrmNurseAdd2 เร็วขึ้น
+     * 63-10-27     0020        เรื่อง		เลิก insert table Visit
      */
     public partial class FrmNurseAdd2 : Form
     {
@@ -3634,13 +3635,13 @@ namespace clinic_ivf.gui
                 if (long.TryParse(re, out chk))
                 {
                     txtApmID.Value = txtApmID.Text.Equals("") ? re : txtApmID.Text;
-                    setAppointmentOld();
+                    //setAppointmentOld();      //      -0020
                     //if (!ic.iniC.statusAppDonor.Equals("1"))
                     //{
-                    String re1 = ic.ivfDB.pApmOldDB.insertAppointmentOld(pApmO, txtStfConfirmID.Text);
+                    //String re1 = ic.ivfDB.pApmOldDB.insertAppointmentOld(pApmO, txtStfConfirmID.Text);              //      -0020
                     //txtIDOld.Value = re1;
-                    txtApmIDOld.Value = txtApmIDOld.Text.Equals("") ? re1 : txtApmIDOld.Text;
-                    String re2 = ic.ivfDB.pApmDB.updateAppointmentIdOld(txtApmID.Text, re1);
+                    //txtApmIDOld.Value = txtApmIDOld.Text.Equals("") ? re1 : txtApmIDOld.Text;           //      -0020
+                    //String re2 = ic.ivfDB.pApmDB.updateAppointmentIdOld(txtApmID.Text, re1);            //      -0020
                     //if (int.TryParse(re1, out chk))
                     //{
                     //if (txtID.Text.Equals(""))
@@ -3815,14 +3816,14 @@ namespace clinic_ivf.gui
                 {
                     //      0015
                     //ic.ivfDB.nurseFinish(txtVnOld.Text, ic.cStf.staff_id);        // -0015
-                    if (ic.iniC.statusCashierOldProgram.Equals("1"))        // +0015
-                    {        // +0015
-                        ic.ivfDB.nurseFinishCashierOldProgram(txtVnOld.Text, ic.cStf.staff_id);        // +0015
-                    }        // +0015
-                    else        // +0015
-                    {        // +0015
-                        ic.ivfDB.nurseFinish(txtVnOld.Text, ic.cStf.staff_id);        // +0015
-                    }        // +0015
+                    //if (ic.iniC.statusCashierOldProgram.Equals("1"))        // +0015      -0020
+                    //{        // +0015      -0020
+                    //ic.ivfDB.nurseFinishCashierOldProgram(txtVnOld.Text, ic.cStf.staff_id);        // +0015            -0020
+                    //}        // +0015          -0020
+                    //else        // +0015           -0020
+                    //{        // +0015      -0020
+                    ic.ivfDB.nurseFinish(txtVnOld.Text, ic.cStf.staff_id);        // +0015
+                    //}        // +0015            -0020
                     VisitOld ovs = new VisitOld();
                     ovs = ic.ivfDB.ovsDB.selectByPk1(txtVnOld.Text);
                     if (ovs.VSID.Equals("160"))
@@ -3904,7 +3905,8 @@ namespace clinic_ivf.gui
             }
             OldPackageSold opkgs = new OldPackageSold();
             opkgs.PCKSID = "";
-            opkgs.PID = txtIdOld.Text;
+            //opkgs.PID = txtIdOld.Text;
+            opkgs.PID = txtPttId.Text;
             opkgs.SellThruID = cboSellThruID.SelectedItem == null ? "" : ((ComboBoxItem)cboSellThruID.SelectedItem).Value;
             if ((opkgs.SellThruID.Length <= 0) || opkgs.SellThruID.Equals("000"))
             {

@@ -36,6 +36,7 @@ namespace clinic_ivf.gui
      * 62-06-08             1   แก้นัด ให้ donor ไปใช้ของ patient
      * 62-06-14     0002    2   แก้ รูปซ้ำระหว่าง Patient กับ Donor 
      * 62-06-26     0004        หน้าจอ patientview.cs แก้ เรื่อง patient ในการดึงข้อมูล ให้ใช้ method เหมือนของ donor ไม่ต้องแยก donor, ptt
+     * 63-10-23     0021    ให้เริ่ม HN ใหม่ แต่ให้ใช้ข้อมูลเก่า
      */
     public partial class FrmPatientAdd : Form
     {
@@ -2632,7 +2633,7 @@ namespace clinic_ivf.gui
         }
         private void setGrfVsDonor(String search)
         {
-            grfVs.Clear();
+            //grfVs.Clear();
             grfVs.Rows.Count = 1;
             grfVs.Cols.Count = 12;
             DataTable dt = ic.ivfDB.vsDB.selectByHN1(search);
@@ -2734,7 +2735,7 @@ namespace clinic_ivf.gui
         }
         private void setGrfVs(String search)
         {
-            grfVs.Clear();
+            //grfVs.Clear();
             grfVs.Rows.Count = 1;
             grfVs.Cols.Count = 12;
             DataTable dt = ic.ivfDB.vsDB.selectByHN(search);
@@ -3432,6 +3433,11 @@ namespace clinic_ivf.gui
             {
                 ptt.patient_hn = txtHn.Text.Trim();
             }
+            if (txtHn.Text.Trim().Length<=0)        //  +0021
+            {
+                txtHn.Value = ic.ivfDB.copDB.genHNDoc();        //  +0021
+                ptt.patient_hn = txtHn.Text.Trim();     //  +0021
+            }       //  +0021
             ptt.patient_firstname = txtPttName.Text.Trim();
             ptt.patient_lastname = txtPttLName.Text.Trim();
             ptt.remark = txtRemark.Text.Trim();
@@ -3512,7 +3518,7 @@ namespace clinic_ivf.gui
             ptt.patient_hn_1 = txtHn_1.Text;
             ptt.patient_hn_2 = txtHn_2.Text;
             ptt.lmp = ic.datetoDB(txtLmp.Text);
-            
+            ptt.patient_name = cboPrefix.Text + " " + txtPttNameE.Text + " " + txtPttLNameE.Text;
             //ptt.diagnosis_doc = txtDiagDoc.Text;
             //String[] name = txtEmerContact.Text.Split(' ');
             //if (name.Length > 0)
@@ -4017,6 +4023,8 @@ namespace clinic_ivf.gui
             vs.doctor_id = cboDoctor.SelectedItem == null ? "" : ((ComboBoxItem)cboDoctor.SelectedItem).Value;
             
             vs.patient_hn_2 = txtVisitHn_2.Text;
+            vs.vsid = "110";
+            vs.patient_name = cboPrefix.Text + " " + txtPttNameE.Text + " " + txtPttLNameE.Text;
         }
         private void FrmPatientAdd_Load(object sender, EventArgs e)
         {

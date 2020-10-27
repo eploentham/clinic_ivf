@@ -21,6 +21,8 @@ namespace clinic_ivf.gui
 {
     /*
      * 62-07-16     0007        Cashier	ลง table BillDetail ไม่ได้เอา bill_id ลงด้วย
+     * 63-10-27     0020        เรื่อง		เลิก insert table Visit
+     * 
      */
     public partial class FrmCashierAdd : Form
     {
@@ -458,7 +460,9 @@ namespace clinic_ivf.gui
                 dtprn.Rows.Add(row11);
             }
 
-            String re = ic.ivfDB.ovsDB.updateStatusCashierFinish(txtVn.Text);
+            //String re = ic.ivfDB.ovsDB.updateStatusCashierFinish(txtVn.Text);     // -0020
+            String re1 = ic.ivfDB.vsDB.updateCloseStatusCashier(txtVsId.Text);     // +0020
+
             amt2 = ic.NumberToCurrencyTextThaiBaht(amt, MidpointRounding.AwayFromZero);
             Decimal.TryParse(txtTotalCash.Text, out cash);
             Decimal.TryParse(txtTotalCredit.Text, out credit);
@@ -748,9 +752,11 @@ namespace clinic_ivf.gui
         {
             //throw new NotImplementedException();
             ic.ivfDB.accountsendtonurse(txtVn.Text, ic.userId);
-            VisitOld ovs = new VisitOld();
-            ovs = ic.ivfDB.ovsDB.selectByPk1(txtVnOld.Text);
-            if (ovs.VSID.Equals("115"))
+            //VisitOld ovs = new VisitOld();        // -0020
+            //ovs = ic.ivfDB.ovsDB.selectByPk1(txtVnOld.Text);      //      --0020
+            Visit vs = new Visit();     //  +0020
+            vs = ic.ivfDB.vsDB.selectByVn(txtVn.Text);     //  +0020
+            if (vs.vsid.Equals("115"))
             {
                 frmCashView.setGrfQuePublic();
                 frmCashView.setGrfFinishPublic();

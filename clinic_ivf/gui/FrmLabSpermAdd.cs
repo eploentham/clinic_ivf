@@ -208,7 +208,6 @@ namespace clinic_ivf.gui
             txtPePh.KeyUp += TxtPePh_KeyUp;
             //txtPeNormal.KeyUp += TxtPeNormal_KeyUp;
             
-
             txtSfVolume.KeyUp += TxtSfVolume_KeyUp;
             txtSfCount.KeyUp += TxtSfCount_KeyUp;
             txtSfAbstinenceday.KeyUp += TxtSfAbstinenceday_KeyUp;
@@ -234,6 +233,10 @@ namespace clinic_ivf.gui
             txtNeck1.KeyUp += TxtNeck1_KeyUp;
             txtTail1.KeyUp += TxtTail1_KeyUp;
             txtPh.KeyUp += TxtPh_KeyUp;
+            txtPeVial.KeyUp += TxtPeVial_KeyUp;
+            txtPeRecive.KeyUp += TxtPeRecive_KeyUp;
+            txtPeExam.KeyUp += TxtPeExam_KeyUp;
+            txtPeFinish.KeyUp += TxtPeFinish_KeyUp;
 
 
             stt = new C1SuperTooltip();
@@ -265,6 +268,41 @@ namespace clinic_ivf.gui
             //        //tC.SelectedTab = TabSpermIUI;
             //    }
             //}
+        }
+
+        private void TxtPeFinish_KeyUp(object sender, KeyEventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtPeApproveResult.Focus();
+            }
+        }
+
+        private void TxtPeExam_KeyUp(object sender, KeyEventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtPeFinish.Focus();
+            }
+        }
+        private void TxtPeRecive_KeyUp(object sender, KeyEventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtPeExam.Focus();
+            }
+        }
+
+        private void TxtPeVial_KeyUp(object sender, KeyEventArgs e)
+        {
+            //throw new NotImplementedException();
+            if(e.KeyCode == Keys.Enter)
+            {
+                txtPeEjacula.Focus();
+            }
         }
 
         private void BtnPeApproveResult_Click(object sender, EventArgs e)
@@ -355,6 +393,9 @@ namespace clinic_ivf.gui
             {
                 sep.Clear();
             }
+            calIUIMotilityPost();
+            calIUIMotilePost();
+            calIUIIMPost();
             if (e.KeyCode == Keys.Enter)
             {
                 txtIuiMotility3Post.Focus();
@@ -387,7 +428,8 @@ namespace clinic_ivf.gui
             calIUIMotilePost();
             if (e.KeyCode == Keys.Enter)
             {
-                txtIuiMotilityPost.Focus();
+                //txtIuiMotilityPost.Focus();
+                txtIuiMotility4Post.Focus();
             }
         }
 
@@ -1134,6 +1176,9 @@ namespace clinic_ivf.gui
             {
                 sep.Clear();
             }
+            calPeMotility();
+            calPESAMotile();
+            calPESAIM();
             if (e.KeyCode == Keys.Enter)
             {
                 txtPeVial.Focus();
@@ -1158,11 +1203,13 @@ namespace clinic_ivf.gui
             //throw new NotImplementedException();
             //calPeMotility();
             //calPESAMotile();
+
+
             Decimal pr = 0, nr = 0, motility = 0;
             Decimal.TryParse(txtPeMotility4.Text, out pr);
             Decimal.TryParse(txtPeMotility3.Text, out nr);
             Decimal.TryParse(txtPeMotility.Text, out motility);
-            if((pr+nr) != motility)
+            if ((pr + nr) != motility)
             {
                 sep.SetError(txtPeMotility4, "!= Motility");
             }
@@ -1170,11 +1217,14 @@ namespace clinic_ivf.gui
             {
                 sep.Clear();
             }
+            calPeMotility();
+            calPESAMotile();
+            calPESAIM();
             if (e.KeyCode == Keys.Enter)
             {
                 txtPeMotility3.Focus();
             }
-            else if(e.KeyCode == Keys.Up)
+            else if (e.KeyCode == Keys.Up)
             {
                 txtPeMotility.Focus();
             }
@@ -1200,6 +1250,9 @@ namespace clinic_ivf.gui
             {
                 sep.Clear();
             }
+            calIUIMotility();
+            calIUIMotile();
+            calIUIIM();
             if (e.KeyCode == Keys.Enter)
             {
                 txtIuiVolumePost.Focus();
@@ -1244,6 +1297,9 @@ namespace clinic_ivf.gui
             {
                 sep.Clear();
             }
+            calIUIMotility();
+            calIUIMotile();
+            calIUIIM();
             if (e.KeyCode == Keys.Enter)
             {
                 txtIuiMotility3.Focus();
@@ -1260,7 +1316,8 @@ namespace clinic_ivf.gui
             calPESAMotile();
             if (e.KeyCode == Keys.Enter)
             {
-                txtPeMotility.Focus();
+                //txtPeMotility.Focus();
+                txtPeMotility4.Focus();
             }
         }
 
@@ -1313,7 +1370,8 @@ namespace clinic_ivf.gui
             calIUIMotile();
             if (e.KeyCode == Keys.Enter)
             {
-                txtIuiMotility.Focus();
+                //txtIuiMotility.Focus();
+                txtIuiMotility4.Focus();
             }
         }
         private void TxtVolume_KeyUp(object sender, KeyEventArgs e)
@@ -1578,36 +1636,36 @@ namespace clinic_ivf.gui
         }
         private void calIUIMotilityPost()
         {
-            //Decimal pr = 0, nr = 0, motility = 0;
-            //Decimal motility1 = 0;
-            //Decimal.TryParse(txtIuiMotility4.Text, out pr);
-            //Decimal.TryParse(txtIuiMotility3.Text, out nr);
-            //motility = pr + nr;
-            //Decimal.TryParse(motility.ToString(), out motility1);
-            //txtIuiMotility.Value = motility1;
+            Decimal pr = 0, nr = 0, motility = 0;
+            Decimal motility1 = 0;
+            Decimal.TryParse(txtIuiMotility4Post.Text, out pr);
+            Decimal.TryParse(txtIuiMotility3Post.Text, out nr);
+            motility = pr + nr;
+            Decimal.TryParse(motility.ToString(), out motility1);
+            txtIuiMotilityPost.Value = motility1;
             //txtSfViability.Value = motility1 + 7;
-            Decimal motility = 0, im = 0;
-            Decimal.TryParse(txtIuiMotilityPost.Text, out motility);
-            im = 100 - motility;
-            im = Math.Round(im, ic.spermFreezingDecimal, MidpointRounding.AwayFromZero);
-            txtIuiMotility2Post.Value = im;
+            //Decimal motility = 0, im = 0;
+            //Decimal.TryParse(txtIuiMotilityPost.Text, out motility);
+            //im = 100 - motility;
+            //im = Math.Round(im, ic.spermFreezingDecimal, MidpointRounding.AwayFromZero);
+            //txtIuiMotility2Post.Value = im;
         }
         private void calIUIMotility()
         {
-            //Decimal pr = 0, nr = 0, motility = 0;
-            //Decimal motility1 = 0;
-            //Decimal.TryParse(txtIuiMotility4.Text, out pr);
-            //Decimal.TryParse(txtIuiMotility3.Text, out nr);
-            //motility = pr + nr;
-            //Decimal.TryParse(motility.ToString(), out motility1);
-            //txtIuiMotility.Value = motility1;
+            Decimal pr = 0, nr = 0, motility = 0;
+            Decimal motility1 = 0;
+            Decimal.TryParse(txtIuiMotility4.Text, out pr);
+            Decimal.TryParse(txtIuiMotility3.Text, out nr);
+            motility = pr + nr;
+            Decimal.TryParse(motility.ToString(), out motility1);
+            txtIuiMotility.Value = motility1;
             //txtSfViability.Value = motility1 + 7;
 
-            Decimal motility = 0, im = 0;
-            Decimal.TryParse(txtIuiMotility.Text, out motility);
-            im = 100 - motility;
-            im = Math.Round(im, ic.spermFreezingDecimal, MidpointRounding.AwayFromZero);
-            txtIuiMotility2.Value = im;
+            //Decimal motility = 0, im = 0;
+            //Decimal.TryParse(txtIuiMotility.Text, out motility);
+            //im = 100 - motility;
+            //im = Math.Round(im, ic.spermFreezingDecimal, MidpointRounding.AwayFromZero);
+            //txtIuiMotility2.Value = im;
         }
         private void calMotility()
         {
@@ -1724,6 +1782,53 @@ namespace clinic_ivf.gui
             Decimal.TryParse(txtPeMotility4.Text, out pr);
             Decimal.TryParse(txtPeMotility3.Text, out nr);
             motility2 = pr + nr;
+            //Decimal.TryParse(txtPeMotility2.Text, out motility2);
+            //txtPeMotility.Value = 100 - motility2;
+            txtPeViability.Value = motility + 7;
+        }
+        private void calIUIIM()
+        {
+            Decimal pr = 0, nr = 0;
+            Decimal motility2 = 0;
+
+            Decimal motility = 0, im = 0;
+            Decimal.TryParse(txtIuiMotility.Text, out motility);
+            im = 100 - motility;
+            im = Math.Round(im, ic.spermFreezingDecimal, MidpointRounding.AwayFromZero);
+            txtIuiMotility2.Value = im;
+
+            //Decimal.TryParse(txtPeMotility4.Text, out pr);
+            //Decimal.TryParse(txtPeMotility3.Text, out nr);
+            //motility2 = pr + nr;
+            ////Decimal.TryParse(txtPeMotility2.Text, out motility2);
+            //txtIuiMotility.Value = 100 - motility2;
+            //txtIuViability.Value = motility + /*7*/;
+        }
+        private void calIUIIMPost()
+        {
+            Decimal pr = 0, nr = 0;
+            Decimal motility2 = 0;
+
+            Decimal motility = 0, im = 0;
+            Decimal.TryParse(txtIuiMotilityPost.Text, out motility);
+            im = 100 - motility;
+            im = Math.Round(im, ic.spermFreezingDecimal, MidpointRounding.AwayFromZero);
+            txtIuiMotility2Post.Value = im;
+        }
+        private void calPESAIM()
+        {
+            Decimal pr = 0, nr = 0;
+            Decimal motility2 = 0;
+
+            Decimal motility = 0, im = 0;
+            Decimal.TryParse(txtPeMotility.Text, out motility);
+            im = 100 - motility;
+            im = Math.Round(im, ic.spermFreezingDecimal, MidpointRounding.AwayFromZero);
+            txtPeMotility2.Value = im;
+
+            //Decimal.TryParse(txtPeMotility4.Text, out pr);
+            //Decimal.TryParse(txtPeMotility3.Text, out nr);
+            //motility2 = pr + nr;
             //Decimal.TryParse(txtPeMotility2.Text, out motility2);
             //txtPeMotility.Value = 100 - motility2;
             txtPeViability.Value = motility + 7;

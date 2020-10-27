@@ -13,6 +13,7 @@ namespace clinic_ivf.objdb
 {
     /*
      * 63-01-11         0015        ลงโปรแกรมที่ ww แล้ว การเงิน คิดเงินผิด
+     * 63-10-27     0020        เรื่อง		เลิก insert table Visit
      * */
     public class IvfDB
     {
@@ -697,7 +698,7 @@ namespace clinic_ivf.objdb
             calIncludeExtraPricelab(vn);
             calIncludeExtraPriceSpecial(vn);
             vsDB.updateCloseStatusNurseByVN(vn, userid);
-            ovsDB.updateStatusNurseFinish(vn);
+            //ovsDB.updateStatusNurseFinish(vn);        // - 0020
         }
         public void nurseFinishCashierOldProgram(String vn, String userid)
         {
@@ -2104,7 +2105,8 @@ namespace clinic_ivf.objdb
                     opkgsDB.updateStatus2Payment1(pkg.PCKSID);
                 }
             }
-            ovsDB.updateStatusCashierbackNurse(vn);
+            //ovsDB.updateStatusCashierbackNurse(vn);          //  -0020
+            vsDB.updateStatusCashierbackNurse(vn);          //  +0020
         }
         public String updatePackagePaymentComplete(String pid, String pkgsid)
         {

@@ -158,6 +158,7 @@ namespace clinic_ivf.objdb
             ptt.patient_hn_2 = "patient_hn_2";
             ptt.status_diagnosis = "status_diagnosis";
             ptt.lmp = "lmp";
+            ptt.patient_name = "patient_name";
 
             ptt.pkField = "t_patient_id";
             ptt.table = "t_patient";
@@ -271,6 +272,7 @@ namespace clinic_ivf.objdb
             p.patient_hn_2 = p.patient_hn_2 == null ? "" : p.patient_hn_2;
             p.status_diagnosis = p.status_diagnosis == null ? "" : p.status_diagnosis;
             p.lmp = p.lmp == null ? "" : p.lmp;
+            p.patient_name = p.patient_name == null ? "" : p.patient_name;
 
             p.f_patient_prefix_id = long.TryParse(p.f_patient_prefix_id, out chk) ? chk.ToString() : "0";
             p.f_sex_id = long.TryParse(p.f_sex_id, out chk) ? chk.ToString() : "0";
@@ -363,7 +365,7 @@ namespace clinic_ivf.objdb
                 ptt.a + "," + ptt.g + "," + ptt.emercontact + "," +
                 ptt.patient_country + "," + ptt.patient_hn_couple + "," +
                 ptt.doctor_id + "," + ptt.patient_hn_1 + "," + ptt.patient_hn_2 + "," +
-                ptt.status_diagnosis + "," + ptt.lmp + " " +
+                ptt.status_diagnosis + "," + ptt.lmp + "," + ptt.patient_name + " " +
                 ") " +
                 "Values ('" + p.patient_hn + "','" + p.patient_firstname.Replace("'", "''") + "','" + p.patient_lastname.Replace("'", "''") + "'," +
                 "'" + p.patient_xn.Replace("'", "''") + "','" + p.patient_birthday.Replace("'", "''") + "','" + p.patient_house.Replace("'", "''") + "'," +
@@ -409,7 +411,7 @@ namespace clinic_ivf.objdb
                 "'" + p.a + "','" + p.g + "','" + p.emercontact + "'," +
                 "'" + p.patient_country + "','" + p.patient_hn_couple + "'," +
                 "'" + p.doctor_id + "','" + p.patient_hn_1 + "','" + p.patient_hn_2 + "'," +
-                "'" + p.status_diagnosis + "','" + p.lmp + "'" +
+                "'" + p.status_diagnosis + "','" + p.lmp + "','" + p.patient_name + "'" +
                 ")";
 
                 re = conn.ExecuteNonQuery(conn.conn, sql);
@@ -525,6 +527,7 @@ namespace clinic_ivf.objdb
                 "," + ptt.patient_hn_2 + "='" + p.patient_hn_2.Replace("'", "''") + "' " +
                 "," + ptt.lmp + "='" + p.lmp.Replace("'", "''") + "' " +
                 "," + ptt.patient_record_date_time + "=now() " +
+                "," + ptt.patient_name + "='" + p.patient_name.Replace("'", "''") + "' " +
                 " Where " +ptt.pkField + " = '" + p.t_patient_id + "' "
                 ;
             try
@@ -1232,6 +1235,7 @@ namespace clinic_ivf.objdb
                 ptt1.patient_hn_2 = dt.Rows[0][ptt.patient_hn_2].ToString();
                 ptt1.status_diagnosis = dt.Rows[0][ptt.status_diagnosis].ToString();
                 ptt1.lmp = dt.Rows[0][ptt.lmp].ToString();
+                ptt1.patient_name = dt.Rows[0][ptt.patient_name].ToString();
             }
             else
             {
@@ -1377,6 +1381,7 @@ namespace clinic_ivf.objdb
             stf1.patient_hn_2 = "";
             stf1.status_diagnosis = "";
             stf1.lmp = "";
+            stf1.patient_name = "";
             return stf1;
         }
     }

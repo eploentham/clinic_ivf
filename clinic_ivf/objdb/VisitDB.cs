@@ -11,6 +11,11 @@ namespace clinic_ivf.objdb
 {
     public class VisitDB
     {
+        /*
+         * เรื่อง		เลิก insert table Visit      เลขที่    0020
+         * 63-10-27     0020        เรื่อง		เลิก insert table Visit
+         * 
+         */
         public Visit vs;
         ConnectDB conn;
         public List<Visit> lVs;
@@ -139,6 +144,9 @@ namespace clinic_ivf.objdb
             vs.nurse_finish_date_time = "nurse_finish_date_time";
             vs.cashier_finish_date_time = "cashier_finish_date_time";
             vs.agent_id = "agent_id";
+            vs.patient_name = "patient_name";
+            vs.form_a_id = "form_a_id";
+            vs.vsid = "vsid";
 
             vs.table = "t_visit";
             vs.pkField = "t_visit_id";
@@ -236,6 +244,7 @@ namespace clinic_ivf.objdb
             p.nurse_finish_date_time = p.nurse_finish_date_time == null ? "" : p.nurse_finish_date_time;
             p.status_cashier = p.status_cashier == null ? "" : p.status_cashier;
             p.cashier_finish_date_time = p.cashier_finish_date_time == null ? "" : p.cashier_finish_date_time;
+            p.patient_name = p.patient_name == null ? "" : p.patient_name;
 
 
             p.t_visit_id = long.TryParse(p.t_visit_id, out chk) ? chk.ToString() : "0";
@@ -263,6 +272,8 @@ namespace clinic_ivf.objdb
             p.doctor_id = long.TryParse(p.doctor_id, out chk) ? chk.ToString() : "0";
             p.closeday_id = long.TryParse(p.closeday_id, out chk) ? chk.ToString() : "0";
             p.agent_id = long.TryParse(p.agent_id, out chk) ? chk.ToString() : "0";
+            p.form_a_id = long.TryParse(p.form_a_id, out chk) ? chk.ToString() : "0";
+            p.vsid = long.TryParse(p.vsid, out chk) ? chk.ToString() : "0";
         }
         public String insert(Visit p, String userId)
         {
@@ -367,6 +378,9 @@ namespace clinic_ivf.objdb
                     "," + vs.user_modi + "='' " +
                     "," + vs.user_cancel + "='' " +
                     "," + vs.agent_id + "='" + p.agent_id + "' " +
+                    "," + vs.patient_name + "='" + p.patient_name + "' " +
+                    "," + vs.form_a_id + "='" + p.form_a_id + "' " +
+                    "," + vs.vsid + "='" + p.vsid + "' " +
                     "";
                 re = conn.ExecuteNonQuery(conn.conn, sql);
             }
@@ -694,6 +708,7 @@ namespace clinic_ivf.objdb
             String sql = "update " + vs.table + " " +
                 "Set " + vs.status_nurse + " ='2' " +
                 "," + vs.nurse_finish_date_time + "= now()" +
+                "," + vs.vsid + "= '160' " +
                 "Where " + vs.visit_vn + " ='" + vn + "' ";
             try
             {
@@ -707,12 +722,32 @@ namespace clinic_ivf.objdb
 
             return re;
         }
+        public String updateStatusCashierbackNurse(String vn)
+        {
+            String re = "";
+            String sql = "";
+            int chk = 0;
+            try
+            {
+                sql = "Update " + vs.table + " Set " +
+                " " + vs.vsid + " = '115' " +
+                "Where " + vs.pkField + "='" + vn + "'";
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+            return re;
+        }
         public String updateCloseStatusNurseNoOperation(String vsid, String userid)
         {
             String re = "", err = "";
             String sql = "update " + vs.table + " " +
                 "Set " + vs.status_nurse + " ='2' " +
                 "," + vs.f_visit_status_id + " = '4' " +
+                "," + vs.vsid + " = '998' " +       //      +0021
                 "Where " + vs.pkField + " ='" + vsid + "' ";
             try
             {
@@ -752,6 +787,7 @@ namespace clinic_ivf.objdb
                 "Set " + vs.f_visit_status_id + " ='3' " +
                 "," + vs.date_cancel + " = now() " +
                 "," + vs.user_cancel + " = '"+ userid + "' " +
+                "," + vs.vsid + " = '998' " +
                 "Where " + vs.visit_vn + " ='" + vsid + "' ";
             try
             {
@@ -845,7 +881,7 @@ namespace clinic_ivf.objdb
                 ", vs.visit_begin_visit_time as VDate, vs.visit_begin_visit_time as VStartTime, vs.visit_financial_discharge_time as VEndTime, '' as VName, bsp.service_point_description as VSID, vs.t_patient_id as PID " +
                 ", vs.t_patient_appointment_id " +
                 ", IFNULL(papm.patient_appointment_date,'') as patient_appointment_date, IFNULL(papm.patient_appointment_time ,'') as patient_appointment_time" +
-                ", IFNULL(papm.patient_appointment,'') as patient_appointment, IFNULL(vs.visit_have_appointment,'') as visit_have_appointment " +
+                ", IFNULL(papm.patient_appointment,'') as patient_appointment, IFNULL(vs.visit_have_appointment,'') as visit_have_appointment, vs.form_a_id " +
                 "From " + vs.table + " vs " +
                 "Left Join t_patient ptt on  ptt.t_patient_id = vs." + vs.t_patient_id + " " +
                 "Left join f_patient_prefix fpp on fpp.f_patient_prefix_id = ptt.f_patient_prefix_id " +
@@ -1068,6 +1104,205 @@ namespace clinic_ivf.objdb
 
             return dt;
         }
+        public DataTable selectByReceptionSend1()//     -0020
+        {//     -0020
+            DataTable dt = new DataTable();
+            //String date = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd");
+            String sql = "Select vs.t_visit_id as id,vs.visit_vn , ptt.patient_hn as PIDS, vs.patient_name, vs.visit_begin_visit_time as VDate, vs.visit_begin_visit_time as VStartTime, vs.visit_financial_discharge_time as VEndTime, VStatus.VName, vs.visit_vn as VSID, ifnull(vs.t_patient_id,'') as PID, ptt.patient_birthday as dob" +
+                ",vs.form_a_id, CONCAT(IFNULL(fpp.patient_prefix_description,''),' ', stf.staff_fname_e ,' ',stf.staff_lname_e)  as dtrname, vs.status_nurse, vs.status_cashier, ptt.t_patient_id " +
+                ", ptt.patient_hn_1 ,CONCAT(IFNULL(fpp_1.patient_prefix_description,''),' ', ptt_1.patient_firstname_e ,' ',ptt_1.patient_lastname_e ) as name_1" +
+                ", ptt.patient_hn_2 ,CONCAT(IFNULL(fpp_2.patient_prefix_description,''),' ', ptt_2.patient_firstname_e ,' ',ptt_2.patient_lastname_e ) as name_2 " +
+                ", ptt.agent, agt.AgentName, ifnull(ptt.f_sex_id,'') as f_sex_id  " +
+                "From " + vs.table + " vs " +
+                "Left Join VStatus on  VStatus.VSID = vs.vsid " +
+                //"Left Join t_visit on  vsold.VN = t_visit.visit_vn " +
+                "Left Join t_patient ptt on  vs.t_patient_id = ptt.t_patient_id " +
+                "Left Join b_staff stf on vs.doctor_id = stf.doctor_id_old " +
+                "Left join f_patient_prefix fpp on fpp.f_patient_prefix_id = stf.prefix_id " +
+                "Left join t_patient ptt_1 on ptt.patient_hn_1 = ptt_1.patient_hn and ptt.patient_hn_1 <> '' and ptt.patient_hn_1 is not null " +
+                "Left join f_patient_prefix fpp_1 on fpp_1.f_patient_prefix_id = ptt_1.f_patient_prefix_id " +
+                "Left join t_patient ptt_2 on ptt.patient_hn_2 = ptt_2.patient_hn and ptt.patient_hn_2 <> '' and ptt.patient_hn_2 is not null " +
+                "Left join f_patient_prefix fpp_2 on fpp_2.f_patient_prefix_id = ptt_2.f_patient_prefix_id " +
+                "Left Join Agent agt on ptt.agent = agt.AgentID " +
+                "Where  vs.vsid in ('110','115') " +
+                "Order By vs.visit_begin_visit_time desc";
+            dt = conn.selectData(conn.conn, sql);
+
+            return dt;
+        }
+        public DataTable selectByReceptionSendBsp1(String bspid)//     -0020
+        {//     -0020
+            DataTable dt = new DataTable();
+            String wheresp = "";
+            if (bspid.Length > 0)
+            {
+                wheresp = " and  vs.b_service_point_id = '" + bspid + "' ";
+            }
+            //String date = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd");
+            //String sql = "select t_visit.t_visit_id as id,vsold.VN, vsold.PIDS, vsold.PName, vsold.VDate, vsold.VStartTime, vsold.VEndTime, VStatus.VName, vsold.VSID, ifnull(vsold.PID,'') as PID, ptt.patient_birthday as dob" +
+            String sql = "Select vs.t_visit_id as id,vs.visit_vn , ptt.patient_hn as PIDS, vs.patient_name, vs.visit_begin_visit_time as VDate, vs.visit_begin_visit_time as VStartTime, vs.visit_financial_discharge_time as VEndTime, VStatus.VName, vs.visit_vn as VSID, ifnull(vs.t_patient_id,'') as PID, ptt.patient_birthday as dob" +
+                ",vs.form_a_id, CONCAT(IFNULL(fpp.patient_prefix_description,''),' ', stf.staff_fname_e ,' ',stf.staff_lname_e)  as dtrname, vs.status_nurse, vs.status_cashier " +
+                 ", ptt.patient_hn_1 ,CONCAT(IFNULL(fpp_1.patient_prefix_description,''),' ', ptt_1.patient_firstname_e ,' ',ptt_1.patient_lastname_e ) as name_1" +
+                ", ptt.patient_hn_2 ,CONCAT(IFNULL(fpp_2.patient_prefix_description,''),' ', ptt_2.patient_firstname_e ,' ',ptt_2.patient_lastname_e ) as name_2 " +
+                ", ptt.agent, agt.AgentName, ifnull(ptt.f_sex_id,'') as f_sex_id, vs.t_patient_id " +
+                "From " + vs.table + " vs " +
+                "Left Join VStatus on  VStatus.VSID = vs.VSID " +
+                //"Left Join t_visit on  vsold.VN = t_visit.visit_vn " +
+                "Left Join t_patient ptt on  vs.t_patient_id = ptt.t_patient_id " +
+                "Left Join b_staff stf on vs.doctor_id = stf.doctor_id_old " +
+                "Left join f_patient_prefix fpp on fpp.f_patient_prefix_id = stf.prefix_id " +
+                "Left join t_patient ptt_1 on ptt.patient_hn_1 = ptt_1.patient_hn and ptt.patient_hn_1 <> '' and ptt.patient_hn_1 is not null " +
+                "Left join f_patient_prefix fpp_1 on fpp_1.f_patient_prefix_id = ptt_1.f_patient_prefix_id " +
+                "Left join t_patient ptt_2 on ptt.patient_hn_2 = ptt_2.patient_hn and ptt.patient_hn_2 <> '' and ptt.patient_hn_2 is not null " +
+                "Left join f_patient_prefix fpp_2 on fpp_2.f_patient_prefix_id = ptt_2.f_patient_prefix_id " +
+                "Left Join Agent agt on ptt.agent = agt.AgentID " +
+                "Where  vs.VSID in ('110','115')  "+ wheresp +
+                //"Order By vsold.VDate desc, vsold.VStartTime desc";
+                "Order By vs.visit_begin_visit_time desc";
+            dt = conn.selectData(conn.conn, sql);
+
+            return dt;
+        }
+        //public DataTable selectByStatusNurseFinish(String date)
+        //{
+        //    DataTable dt = new DataTable();
+        //    //String date = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd");
+        //    if (date.Equals(""))
+        //    {
+        //        dt = selectByStatusNurseFinish();
+        //    }
+        //    else
+        //    {
+        //        String sql = "select vsold.VN as id,vsold.VN, vsold.PIDS, vsold.PName, vsold.VDate, vsold.VStartTime, vsold.VEndTime, VStatus.VName, vsold.VSID, vsold.PID, Patient.DateOfBirth as dob " +
+        //        ",vsold.form_a_id " +
+        //        "From " + vsold.table + " vsold " +
+        //        "Left Join VStatus on  VStatus.VSID = vsold.VSID " +
+        //        "Left Join Patient on  vsold.PID = Patient.PID " +
+        //        "Where vsold." + vsold.VDate + " ='" + date + "' and vsold.VSID in ('999','166','165','998','160') " +
+        //        "Order By vsold.VDate, vsold.VStartTime";
+        //        dt = conn.selectData(conn.conn, sql);
+        //    }
+        //    return dt;
+        //}
+        public DataTable selectByStatusNurseFinish()
+        {
+            DataTable dt = new DataTable();
+            String date = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd");
+            String sql = "select vs.t_visit_id ass id, vs.visit_vn, vs.patient_hn as PIDS, vs.patient_name, vs.visit_begin_visit_time as VDate, vs.visit_begin_visit_time as VStartTime, vs.visit_financial_discharge_time as VEndTime, VStatus.VName, ifnull(t_visit.t_patient_id,'') as PID, Patient.DateOfBirth as dob " +
+                ",vs.form_a_id " +
+                "From " + vs.table + " vs " +
+                "Left Join VStatus on  VStatus.VSID = vs.vsid " +
+                "Left Join Patient on  vsold.PID = Patient.PID " +
+                "Where vs." + vs.visit_begin_visit_time + " >= '" + date + " 00:00:00' and vs." + vs.visit_begin_visit_time + " <=  '" + date + " 23:59:59' and vsold.VSID in ('999','166','165','998','160') " +
+                "Order By vsold.VDate, vsold.VStartTime";
+            dt = conn.selectData(conn.conn, sql);
+
+            return dt;
+        }
+        public DataTable selectByStatusNurseFinishLike(String search)//     -0020
+        {//     -0020
+            DataTable dt = new DataTable();
+            String whereHN = "", whereName = "", wherepid = "", wherepassport = "", wherenameE = "";
+            //String date = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd");
+            if (search.Equals(""))
+            {
+                dt = selectByStatusNurseFinish();
+            }
+            else
+            {
+                if (!search.Equals(""))
+                {
+                    whereHN = " ptt.patient_hn  like '%" + search.Trim().ToUpper() + "%'";
+                }
+                if (!search.Equals(""))
+                {
+                    String[] txt = search.Split(' ');
+                    if (txt.Length == 2)
+                    {
+                        whereName = " or ( lcase(ptt.patient_firstname_e) like '%" + txt[0].Trim().ToLower() + "%') and ( lcase(ptt.patient_lastname_e) like '%" + txt[1].Trim().ToLower() + "%')";
+                        //wherenameE = " or ( lcase(ptt.PName) like '%" + txt[0].Trim().ToLower() + "%') and ( lcase(ptt.PSurname) like '%" + txt[1].Trim().ToLower() + "%')";
+                        //wherenameE += " or ( lcase(ptt.PName) like '%" + txt[0].Trim().ToLower() + " " + txt[1].Trim().ToLower() + "%') ";
+                    }
+                    else if (txt.Length == 1)
+                    {
+                        whereName = " or ( lcase(ptt.patient_name) like '%" + txt[0].Trim().ToLower() + "%') or ( lcase(ptt.patient_name) like '%" + txt[0].Trim().ToLower() + "%')";
+                        //wherenameE = " or ( lcase(ptt.PName) like '%" + txt[0].Trim().ToLower() + "%') or ( lcase(ptt.PSurname) like '%" + txt[0].Trim().ToLower() + "%')";
+                    }
+                    else
+                    {
+                        whereName = " or ( lcase(ptt.patient_name) like '%" + search.Trim().ToLower() + "%') or ( lcase(ptt.patient_name) like '%" + search.Trim().ToLower() + "%')";
+                        //wherenameE = " or ( lcase(ptt.PName) like '%" + search.Trim().ToLower() + "%') or ( lcase(ptt.PSurname) like '%" + search.Trim().ToLower() + "%')";
+                    }
+                }
+                if (!search.Equals(""))
+                {
+                    wherepid = " or ( ptt.pid  like '%" + search.Trim() + "%' )";
+                }
+                if (!search.Equals(""))
+                {
+                    wherepassport = " or ( ptt.passport  like '%" + search.Trim() + "%' ) ";
+                }
+                String sql = "Select t_visit.t_visit_id as id,vs.visit_vn , vs.patient_hn as PIDS, vs.patient_name, vs.visit_begin_visit_time as VDate, vs.visit_begin_visit_time as VStartTime, vs.visit_financial_discharge_time as VEndTime, VStatus.VName, vs.visit_vn as VSID, ifnull(t_visit.t_patient_id,'') as PID, ptt.patient_birthday as dob " +
+                ",vs.form_a_id " +
+                "From " + vs.table + "  " +
+                "Left Join VStatus on  VStatus.VSID = t_visit.vsid " +
+                "Left Join t_patient ptt on  vs.t_patient_id = ptt.t_patient_id " +
+                //"Left join f_patient_prefix fpp on fpp.f_patient_prefix_id = ptt.f_patient_prefix_id " +
+                //"Where vsold." + vsold.VDate + " ='" + search + "' and vsold.VSID in ('999','166','165') " +
+                "Where " + whereHN + whereName + wherepid + wherenameE + wherepassport + "  and vsold.VSID in ('999','166','165')  " +
+                "Order By vs.visit_begin_visit_time desc ";
+                dt = conn.selectData(conn.conn, sql);
+            }
+            return dt;
+        }
+        public DataTable selectByStatusNurseDiag()
+        {
+            DataTable dt = new DataTable();
+            String date = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd");
+            String sql = "Select t_visit.t_visit_id as id,vs.visit_vn , vs.visit_hn as PIDS, vs.patient_name, vs.visit_begin_visit_time as VDate, vs.visit_begin_visit_time as VStartTime, vs.visit_financial_discharge_time as VEndTime" +
+                ", VStatus.VName, vs.visit_vn as VSID, ifnull(vs.t_patient_id,'') as PID, ptt.patient_birthday as dob " +
+                ",vs.form_a_id " +
+                "From " + vs.table + " vs " +
+                "Left Join VStatus on  VStatus.VSID = vs.VSID " +
+                "Left Join t_patient on  vs.t_patient_id = t_patient.t_patient_id " +
+                "Where vs." + vs.visit_begin_visit_time + " >= '" + date + " 00:00:00' and vs." + vs.visit_begin_visit_time + " <=  '" + date + " 23:59:59' and vsold.VSID in ('115','144','135','112','113','114') " +
+                "Order By vsold.VDate, vsold.VStartTime";
+            dt = conn.selectData(conn.conn, sql);
+
+            return dt;
+        }
+        public DataTable selectByStatusNurseDiag1()
+        {
+            DataTable dt = new DataTable();
+            String date = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd");
+            String sql = "Select vs.t_visit_id as id,vs.visit_vn , vs.visit_hn as PIDS, vs.patient_name, vs.visit_begin_visit_time as VDate, vs.visit_begin_visit_time as VStartTime, vs.visit_financial_discharge_time as VEndTime" +
+                ", VStatus.VName, vs.visit_vn as VSID, ifnull(vs.t_patient_id,'') as PID, t_patient.patient_birthday as dob " +
+                ",vs.form_a_id " +
+                "From " + vs.table + " vs " +
+                "Left Join VStatus on  VStatus.VSID = vs.VSID " +
+                "Left Join t_patient on  vs.t_patient_id = t_patient.t_patient_id " +
+                "Where vs." + vs.visit_begin_visit_time + " >= '" + date + " 00:00:00' and vs." + vs.visit_begin_visit_time + " <=  '" + date + " 23:59:59' and vs.VSID in ('115','144','135','112','113','114') " +
+                "Order By vs.visit_begin_visit_time desc ";
+            dt = conn.selectData(conn.conn, sql);
+
+            return dt;
+        }
+        public DataTable selectByHnFormA(String hn)
+        {
+            DataTable dt = new DataTable();
+            //String date = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd");
+            String sql = "select t_visit.t_visit_id as id,vs.visit_vn , vs.patient_hn as PIDS, vs.patient_name, vs.visit_begin_visit_time as VDate, vs.visit_begin_visit_time as VStartTime, vs.visit_financial_discharge_time as VEndTime, VStatus.VName, vs.visit_vn as VSID, ifnull(t_visit.t_patient_id,'') as PID, ptt.patient_birthday as dob " +
+                ",vs.form_a_id, lforma.status_fet " +
+                "From " + vs.table + " vs " +
+                "Left Join VStatus on  VStatus.VSID = vs.VSID " +
+                "Left Join t_patient on  vs.t_patient_id = t_patient.t_patient_id " +
+                "Left Join lab_t_form_a lforma on lforma.hn_female = t_patient.patient_hn " +
+                "Where vs." + vs.visit_hn + " like '%" + hn + "%' and vs.form_a_id <> 0 " +
+                "Order By vsold.VDate, vsold.VStartTime";
+            dt = conn.selectData(conn.conn, sql);
+
+            return dt;
+        }
         public Visit setVisit(DataTable dt)
         {
             Visit vs1 = new Visit();
@@ -1180,6 +1415,9 @@ namespace clinic_ivf.objdb
                 vs1.cashier_finish_date_time = dt.Rows[0][vs.cashier_finish_date_time].ToString();
                 vs1.nurse_finish_date_time = dt.Rows[0][vs.nurse_finish_date_time].ToString();
                 vs1.agent_id = dt.Rows[0][vs.agent_id].ToString();
+                vs1.patient_name = dt.Rows[0][vs.patient_name].ToString();
+                vs1.form_a_id = dt.Rows[0][vs.form_a_id].ToString();
+                vs1.vsid = dt.Rows[0][vs.vsid].ToString();
             }
             else
             {
@@ -1296,6 +1534,9 @@ namespace clinic_ivf.objdb
             stf1.cashier_finish_date_time = "";
             stf1.nurse_finish_date_time = "";
             stf1.agent_id = "";
+            stf1.patient_name = "";
+            stf1.form_a_id = "";
+            stf1.vsid = "";
             return stf1;
         }
     }
