@@ -153,20 +153,21 @@
             // c1ReportDesigner1
             // 
             this.c1ReportDesigner1.BackColor = System.Drawing.Color.White;
-            this.c1ReportDesigner1.BackColorEmpty = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.c1ReportDesigner1.BackColorSection = System.Drawing.Color.White;
-            this.c1ReportDesigner1.ColorFieldEdge = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(101)))), ((int)(((byte)(101)))));
-            this.c1ReportDesigner1.ColorReportEdge = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(101)))), ((int)(((byte)(101)))));
+            this.c1ReportDesigner1.BackColorEmpty = System.Drawing.Color.Gray;
+            this.c1ReportDesigner1.BackColorSection = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(87)))));
+            this.c1ReportDesigner1.ColorFieldEdge = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.c1ReportDesigner1.ColorReportEdge = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.c1ReportDesigner1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.c1ReportDesigner1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.c1ReportDesigner1.ForeColorGroup = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.c1ReportDesigner1.ForeColorSection = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.c1ReportDesigner1.ForeColorGroup = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.c1ReportDesigner1.ForeColorSection = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
             this.c1ReportDesigner1.Location = new System.Drawing.Point(0, 24);
             this.c1ReportDesigner1.Name = "c1ReportDesigner1";
-            this.c1ReportDesigner1.Ruler.BackColorEmpty = System.Drawing.SystemColors.AppWorkspace;
-            this.c1ReportDesigner1.Ruler.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(212)))), ((int)(((byte)(212)))));
-            this.c1ReportDesigner1.Ruler.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(118)))), ((int)(((byte)(135)))));
-            this.c1ReportDesigner1.Ruler.Highlight = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(118)))), ((int)(((byte)(135)))));
+            this.c1ReportDesigner1.Ruler.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.c1ReportDesigner1.Ruler.BackColorEmpty = System.Drawing.Color.Gray;
+            this.c1ReportDesigner1.Ruler.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.c1ReportDesigner1.Ruler.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.c1ReportDesigner1.Ruler.Highlight = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(162)))), ((int)(((byte)(162)))));
             this.c1ReportDesigner1.Size = new System.Drawing.Size(800, 402);
             this.c1ReportDesigner1.TabIndex = 518;
             this.c1ReportDesigner1.Text = "c1ReportDesigner1";
@@ -216,26 +217,34 @@
             this.c1FlexViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.c1FlexViewer1.Location = new System.Drawing.Point(0, 24);
             this.c1FlexViewer1.Name = "c1FlexViewer1";
-            this.c1FlexViewer1.OutlineBackColorHot = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(193)))), ((int)(((byte)(201)))));
-            this.c1FlexViewer1.OutlineBackColorHotSelected = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(118)))), ((int)(((byte)(135)))));
-            this.c1FlexViewer1.OutlineBackColorSelected = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(118)))), ((int)(((byte)(135)))));
-            this.c1FlexViewer1.OutlineButtonBackColorHot = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(193)))), ((int)(((byte)(201)))));
-            this.c1FlexViewer1.OutlineButtonBackColorPressed = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(118)))), ((int)(((byte)(135)))));
-            this.c1FlexViewer1.OutlineButtonForeColorHot = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(118)))), ((int)(((byte)(135)))));
-            this.c1FlexViewer1.OutlineButtonForeColorNormal = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.c1FlexViewer1.OutlineButtonForeColorPressed = System.Drawing.Color.White;
-            this.c1FlexViewer1.OutlineForeColorHot = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(118)))), ((int)(((byte)(135)))));
-            this.c1FlexViewer1.OutlineForeColorNormal = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.c1FlexViewer1.OutlineLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(212)))), ((int)(((byte)(212)))));
-            this.c1FlexViewer1.ParamHeaderBackColor = System.Drawing.Color.White;
-            this.c1FlexViewer1.ParamHeaderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(118)))), ((int)(((byte)(135)))));
+            this.c1FlexViewer1.OutlineAreaBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(87)))));
+            this.c1FlexViewer1.OutlineBackColorHot = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.c1FlexViewer1.OutlineBackColorHotSelected = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(163)))), ((int)(((byte)(163)))));
+            this.c1FlexViewer1.OutlineBackColorNormal = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(87)))));
+            this.c1FlexViewer1.OutlineBackColorSelected = System.Drawing.Color.FromArgb(((int)(((byte)(110)))), ((int)(((byte)(110)))), ((int)(((byte)(110)))));
+            this.c1FlexViewer1.OutlineButtonBackColorHot = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.c1FlexViewer1.OutlineButtonBackColorNormal = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(87)))));
+            this.c1FlexViewer1.OutlineButtonBackColorPressed = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(163)))), ((int)(((byte)(163)))));
+            this.c1FlexViewer1.OutlineButtonBorderColorHot = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(87)))));
+            this.c1FlexViewer1.OutlineButtonBorderColorNormal = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(87)))));
+            this.c1FlexViewer1.OutlineButtonBorderColorPressed = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(87)))));
+            this.c1FlexViewer1.OutlineButtonForeColorHot = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.c1FlexViewer1.OutlineButtonForeColorNormal = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.c1FlexViewer1.OutlineButtonForeColorPressed = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.c1FlexViewer1.OutlineForeColorHot = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.c1FlexViewer1.OutlineForeColorHotSelected = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.c1FlexViewer1.OutlineForeColorNormal = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.c1FlexViewer1.OutlineForeColorSelected = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.c1FlexViewer1.OutlineLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
+            this.c1FlexViewer1.ParamHeaderBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(87)))));
+            this.c1FlexViewer1.ParamHeaderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
             this.c1FlexViewer1.Size = new System.Drawing.Size(800, 402);
-            this.c1FlexViewer1.SplitterColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(212)))), ((int)(((byte)(212)))));
+            this.c1FlexViewer1.SplitterColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
             this.c1FlexViewer1.TabIndex = 516;
             this.c1ThemeController1.SetTheme(this.c1FlexViewer1, "(default)");
-            this.c1FlexViewer1.ThumbBackColorHot = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(193)))), ((int)(((byte)(201)))));
-            this.c1FlexViewer1.ThumbBackColorPressed = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(118)))), ((int)(((byte)(135)))));
-            this.c1FlexViewer1.ThumbBackColorSelected = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(118)))), ((int)(((byte)(135)))));
+            this.c1FlexViewer1.ThumbBackColorHot = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.c1FlexViewer1.ThumbBackColorPressed = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(163)))), ((int)(((byte)(163)))));
+            this.c1FlexViewer1.ThumbBackColorSelected = System.Drawing.Color.FromArgb(((int)(((byte)(110)))), ((int)(((byte)(110)))), ((int)(((byte)(110)))));
             // 
             // c1DockingTabPage4
             // 
@@ -279,19 +288,19 @@
             // 
             // 
             // 
-            this.txtReqDate.Calendar.ArrowColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(118)))), ((int)(((byte)(135)))));
-            this.txtReqDate.Calendar.BackColor = System.Drawing.Color.White;
-            this.txtReqDate.Calendar.DayNamesColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(118)))), ((int)(((byte)(135)))));
+            this.txtReqDate.Calendar.ArrowColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtReqDate.Calendar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(87)))));
+            this.txtReqDate.Calendar.DayNamesColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
             this.txtReqDate.Calendar.DayNamesFont = new System.Drawing.Font("Tahoma", 8F);
             this.txtReqDate.Calendar.Font = new System.Drawing.Font("Tahoma", 8F);
-            this.txtReqDate.Calendar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.txtReqDate.Calendar.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(118)))), ((int)(((byte)(135)))));
-            this.txtReqDate.Calendar.SelectionForeColor = System.Drawing.Color.White;
-            this.txtReqDate.Calendar.TitleBackColor = System.Drawing.Color.White;
+            this.txtReqDate.Calendar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtReqDate.Calendar.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(162)))), ((int)(((byte)(162)))));
+            this.txtReqDate.Calendar.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.txtReqDate.Calendar.TitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(87)))));
             this.txtReqDate.Calendar.TitleFont = new System.Drawing.Font("Tahoma", 8F);
-            this.txtReqDate.Calendar.TitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(118)))), ((int)(((byte)(135)))));
-            this.txtReqDate.Calendar.TodayBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(118)))), ((int)(((byte)(135)))));
-            this.txtReqDate.Calendar.TrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtReqDate.Calendar.TitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtReqDate.Calendar.TodayBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.txtReqDate.Calendar.TrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(172)))), ((int)(((byte)(172)))), ((int)(((byte)(172)))));
             this.txtReqDate.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             this.txtReqDate.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtReqDate.ImagePadding = new System.Windows.Forms.Padding(0);
@@ -445,7 +454,6 @@
             // c1SuperTooltip3
             // 
             this.c1SuperTooltip3.BackgroundGradient = C1.Win.C1SuperTooltip.BackgroundGradient.None;
-            this.c1SuperTooltip3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(101)))), ((int)(((byte)(101)))));
             this.c1SuperTooltip3.Font = new System.Drawing.Font("Tahoma", 8F);
             this.c1SuperTooltip3.RightToLeft = System.Windows.Forms.RightToLeft.Inherit;
             this.c1ThemeController1.SetTheme(this.c1SuperTooltip3, "(default)");

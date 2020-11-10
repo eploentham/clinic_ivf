@@ -286,14 +286,14 @@ namespace clinic_ivf.objdb
             p.closeday_id = long.TryParse(p.closeday_id, out chk) ? chk.ToString() : "0";
             p.agent_id = long.TryParse(p.agent_id, out chk) ? chk.ToString() : "0";
 
-            p.Include_Pkg_Price = decimal.TryParse(p.Include_Pkg_Price, out chk1) ? chk.ToString() : "0";
-            p.Extra_Pkg_Price = decimal.TryParse(p.Extra_Pkg_Price, out chk1) ? chk.ToString() : "0";
-            p.Total = decimal.TryParse(p.Total, out chk1) ? chk.ToString() : "0";
-            p.Discount = decimal.TryParse(p.Discount, out chk1) ? chk.ToString() : "0";
-            p.SepCash = decimal.TryParse(p.SepCash, out chk1) ? chk.ToString() : "0";
-            p.SepCredit = decimal.TryParse(p.SepCredit, out chk1) ? chk.ToString() : "0";
-            p.cash = decimal.TryParse(p.cash, out chk1) ? chk.ToString() : "0";
-            p.credit = decimal.TryParse(p.credit, out chk1) ? chk.ToString() : "0";
+            p.Include_Pkg_Price = decimal.TryParse(p.Include_Pkg_Price, out chk1) ? chk1.ToString() : "0";
+            p.Extra_Pkg_Price = decimal.TryParse(p.Extra_Pkg_Price, out chk1) ? chk1.ToString() : "0";
+            p.Total = decimal.TryParse(p.Total, out chk1) ? chk1.ToString() : "0";
+            p.Discount = decimal.TryParse(p.Discount, out chk1) ? chk1.ToString() : "0";
+            p.SepCash = decimal.TryParse(p.SepCash, out chk1) ? chk1.ToString() : "0";
+            p.SepCredit = decimal.TryParse(p.SepCredit, out chk1) ? chk1.ToString() : "0";
+            p.cash = decimal.TryParse(p.cash, out chk1) ? chk1.ToString() : "0";
+            p.credit = decimal.TryParse(p.credit, out chk1) ? chk1.ToString() : "0";
         }
         public String insert(OldBillheader p, String userId)
         {

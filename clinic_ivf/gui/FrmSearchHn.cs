@@ -88,14 +88,14 @@ namespace clinic_ivf.gui
             //throw new NotImplementedException();
             if(txtHnMale.Text.Length >= 4)
             {
-                setGrfHn(txtHnMale.Text);
+                setGrfHn(txtHnMale.Text.Trim());
             }
         }
 
         private void BtnSearch_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            setGrfHn(txtHnMale.Text);
+            setGrfHn(txtHnMale.Text.Trim());
         }
 
         private void BtnOk_Click(object sender, EventArgs e)
@@ -151,6 +151,10 @@ namespace clinic_ivf.gui
                     txtVn.Value = ic.sVsOld.VN;
                     txtDOB.Value = ic.sVsOld.dob;
                 }
+                else
+                {
+
+                }
             }
             else if(statussearchtable == StatusSearchTable.PttSearch)
             {
@@ -174,7 +178,7 @@ namespace clinic_ivf.gui
         private void setGrfHn(String hn)
         {
             //grfDept.Rows.Count = 7;
-            grfHn.Clear();
+            //grfHn.Clear();
             DataTable dt = new DataTable();
             grfHn.DataSource = null;
             ConnectDB con = new ConnectDB(ic.iniC);
@@ -185,18 +189,18 @@ namespace clinic_ivf.gui
                 //dt = ic.ivfDB.ovsDB.selectCurrentVisit(con.conn);
                 if (statussearchtable == StatusSearchTable.VisitSearch)
                 {
-                    dt = ic.ivfDB.ovsDB.selectLikeByHN(hn, con.conn);
+                    dt = ic.ivfDB.ovsDB.selectLikeByHN(hn, ic.conn.conn);
                 }
                 else
                 {
-                    dt = ic.ivfDB.pttOldDB.selectBySearch1(hn, con.conn);
+                    dt = ic.ivfDB.pttDB.selectBySearch1(hn);
                 }
             }
             else
             {
                 if (hn.Equals(""))
                 {
-                    dt = ic.ivfDB.ovsDB.selectCurrentVisit(con.conn);
+                    dt = ic.ivfDB.ovsDB.selectCurrentVisit(ic.conn.conn);
                 }
                 else
                 {
@@ -208,26 +212,29 @@ namespace clinic_ivf.gui
                     {
                         if (statussearchtable == StatusSearchTable.VisitSearch)
                         {
-                            dt = ic.ivfDB.ovsDB.selectLikeByHN(hn, con.conn);
+                            dt = ic.ivfDB.vsDB.selectLikeByHN(hn);
                         }
                         else
                         {
-                            dt = ic.ivfDB.pttOldDB.selectBySearch1(hn, con.conn);
+                            dt = ic.ivfDB.pttDB.selectBySearch1(hn);
                         }
                     }
                 }
             }
-
+            if (dt.Rows.Count <= 0)
+            {
+                dt = ic.ivfDB.pttDB.selectBySearch1(hn);
+            }
             //con.CloseConnectionEx();
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             grfHn.Rows.Count = 1;
             grfHn.Cols.Count = 8;
-            C1TextBox txt = new C1TextBox();
-            C1ComboBox cboproce = new C1ComboBox();
+            //C1TextBox txt = new C1TextBox();
+            //C1ComboBox cboproce = new C1ComboBox();
             //ic.ivfDB.itmDB.setCboItem(cboproce);
-            grfHn.Cols[colCuHn].Editor = txt;
-            grfHn.Cols[colCuVn1].Editor = txt;
-            grfHn.Cols[colCuName].Editor = txt;
+            //grfHn.Cols[colCuHn].Editor = txt;
+            //grfHn.Cols[colCuVn1].Editor = txt;
+            //grfHn.Cols[colCuName].Editor = txt;
 
             grfHn.Cols[colCuHn].Width = 100;
             grfHn.Cols[colCuVn1].Width = 100;

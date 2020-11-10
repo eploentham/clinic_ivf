@@ -141,6 +141,7 @@ namespace clinic_ivf.object1
         public String status_diagnosis { get; set; }
         public String lmp { get; set; }
         public String patient_name { get; set; }
+        public String patient_year { get; set; }
         public String AgeString()
         {            
             String re = "";

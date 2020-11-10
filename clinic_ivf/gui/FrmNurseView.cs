@@ -69,7 +69,7 @@ namespace clinic_ivf.gui
             //C1ThemeController.ApplicationTheme = ic.iniC.themeApplication;
             theme1.Theme = ic.iniC.themeApplication;
             theme1.SetTheme(sB, "BeigeOne");
-            theme1.SetTheme(tC, "Office2010Blue");
+            //theme1.SetTheme(tC, "Office2010Blue");
             sB1.Text = "";
             bg = txtSearch.BackColor;
             fc = txtSearch.ForeColor;
@@ -687,9 +687,9 @@ namespace clinic_ivf.gui
             {
                 grfDiag[i, 0] = i;
                 grfDiag[i, colID] = row["id"].ToString();
-                grfDiag[i, colVNshow] = row["VN"].ToString();
+                grfDiag[i, colVNshow] = row["visit_vn"].ToString();
                 grfDiag[i, colPttHn] = row["PIDS"].ToString();
-                grfDiag[i, colPttName] = row["PName"].ToString();
+                grfDiag[i, colPttName] = row["patient_name"].ToString();
                 grfDiag[i, colVsDate] = ic.datetoShow(row["VDate"]);
                 grfDiag[i, colVsTime] = row["VStartTime"].ToString();
                 grfDiag[i, colVsEtime] = row["VEndTime"].ToString();
@@ -2846,6 +2846,7 @@ namespace clinic_ivf.gui
             chkAll.Checked = true;
             txtSb1 = "Date " + ic.cop.day + "-" + ic.cop.month + "-" + ic.cop.year + " Server " + ic.iniC.hostDB + "/" + ic.iniC.nameDB + " FTP " + ic.iniC.hostFTP + "/" + ic.iniC.folderFTP;
             sB1.Text = txtSb1;
+            theme1.SetTheme(tC, ic.theme);
         }
     }
 }

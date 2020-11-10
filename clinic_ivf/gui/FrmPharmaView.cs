@@ -16,6 +16,9 @@ using System.Windows.Forms;
 
 namespace clinic_ivf.gui
 {
+    /*
+     * 63-10-27     0020        เรื่อง		เลิก insert table Visit
+     */
     public partial class FrmPharmaView : Form
     {
         IvfControl ic;
@@ -50,7 +53,7 @@ namespace clinic_ivf.gui
             //C1ThemeController.ApplicationTheme = ic.iniC.themeApplication;
             theme1.Theme = ic.iniC.themeApplication;
             theme1.SetTheme(sB, "BeigeOne");
-            theme1.SetTheme(tC, "Office2010Blue");
+            //theme1.SetTheme(tC, "Office2010Blue");
             sB1.Text = "";
             bg = txtSearch.BackColor;
             fc = txtSearch.ForeColor;
@@ -302,6 +305,11 @@ namespace clinic_ivf.gui
                 setGrfQue();
                 setGrfFinish();
             }
+            else if (tC.SelectedTab == tabWaiting)
+            {
+                setGrfQue();
+                //setGrfFinish();
+            }
         }
         public void setGrfQuePublic()
         {
@@ -316,7 +324,7 @@ namespace clinic_ivf.gui
         private void setGrfQue(String search)
         {
             //grfDept.Rows.Count = 7;
-            grfQue.Clear();
+            //grfQue.Clear();
             DataTable dt1 = new DataTable();
             DataTable dt = new DataTable();
             if (search.Equals(""))
@@ -330,16 +338,17 @@ namespace clinic_ivf.gui
                     //dt = ic.ivfDB.ovsDB.selectByDate(date);
                 }
                 if (chkAll.Checked)
-                    dt = ic.ivfDB.ovsDB.selectByReceptionSend();
-                else
-                    dt = ic.ivfDB.ovsDB.selectByStatusCashierFinish(cboVisitBsp.SelectedItem == null ? "" : ((ComboBoxItem)cboVisitBsp.SelectedItem).Value);
+                    dt = ic.ivfDB.ovsDB.selectByReceptionSend();      //      -0020   
+                                                                      //dt = ic.ivfDB.vsDB.selectByReceptionSend();        //      +0020                else
+                    //dt = ic.ivfDB.ovsDB.selectByStatusCashierFinish(cboVisitBsp.SelectedItem == null ? "" : ((ComboBoxItem)cboVisitBsp.SelectedItem).Value);      //      -0020
+                    dt = ic.ivfDB.vsDB.selectByStatusCashierFinish(cboVisitBsp.SelectedItem == null ? "" : ((ComboBoxItem)cboVisitBsp.SelectedItem).Value);        //      +0020
             }
             else
             {
                 //grfPtt.DataSource = ic.ivfDB.vsOldDB.selectCurrentVisit(search);
             }
 
-            //grfExpn.Rows.Count = dt.Rows.Count + 1;
+            grfQue.Rows.Count = 1;
             grfQue.Rows.Count = dt.Rows.Count + 1;
             grfQue.Cols.Count = 14;
             C1TextBox txt = new C1TextBox();
@@ -633,6 +642,7 @@ namespace clinic_ivf.gui
             chkAll.Checked = false;
             setGrfQue();
             setGrfFinish();
+            theme1.SetTheme(tC, ic.theme);
         }
     }
 }

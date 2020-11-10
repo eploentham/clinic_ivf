@@ -32,7 +32,7 @@ namespace clinic_ivf.gui
         public FrmCashierView frmCashView;
         String billid = "", pttid = "", vsid = "", vsidOld = "", vnold = "", printerOld = "", receiptno = "", flagedit = "";
         OldBillheader obilh;
-        VisitOld ovs;
+        //VisitOld ovs;
         PatientOld optt;
         Patient ptt;
         Visit vs;
@@ -88,7 +88,7 @@ namespace clinic_ivf.gui
         {
             fEdit = new Font(ic.iniC.grdViewFontName, ic.grdViewFontSize, FontStyle.Regular);
             fEditB = new Font(ic.iniC.grdViewFontName, ic.grdViewFontSize, FontStyle.Bold);
-            ovs = new VisitOld();
+            //ovs = new VisitOld();
             optt = new PatientOld();
             ptt = new Patient();
             obilh = new OldBillheader();
@@ -344,7 +344,8 @@ namespace clinic_ivf.gui
             else
             {
                 dt = ic.ivfDB.printBill(txtVn.Text, ref amt, ref payby, "");
-                receiptno11 = ic.ivfDB.obilhDB.selectReceiptNoByVN(ovs.VN);
+                //receiptno11 = ic.ivfDB.obilhDB.selectReceiptNoByVN(ovs.VN);           //      -0020
+                receiptno11 = ic.ivfDB.obilhDB.selectReceiptNoByVN(vs.visit_vn);             //      +0020
             }
             
             //billnoex1 = ic.ivfDB.obilhDB.selectBillNoExByVN(ovs.VN);
@@ -381,14 +382,16 @@ namespace clinic_ivf.gui
                     }
 
                     //dtpgk = ic.ivfDB.opkgsDB.selectByVN1(txtVn.Text);
-                    dtpgk = ic.ivfDB.opkgsDB.selectByPID(ovs.PID);    // ต้องดึงตาม HN เพราะ ถ้ามีงวดการชำระ 
+                    //dtpgk = ic.ivfDB.opkgsDB.selectByPID(ovs.PID);    // ต้องดึงตาม HN เพราะ ถ้ามีงวดการชำระ          //      -0020
+                    dtpgk = ic.ivfDB.opkgsDB.selectByPID(vs.t_patient_id);    // ต้องดึงตาม HN เพราะ ถ้ามีงวดการชำระ            //      +0020
                     foreach (DataRow row in dtpgk.Rows)
                     {
                         String times = "";
                         Decimal price = 0;
                         //row["PaymentTimes"].GetType()
                         times = row["payment_times"].ToString();
-                        ic.ivfDB.updatePackagePaymentComplete(ovs.PID, row["PCKSID"].ToString());
+                        //ic.ivfDB.updatePackagePaymentComplete(ovs.PID, row["PCKSID"].ToString());          //      -0020
+                        ic.ivfDB.updatePackagePaymentComplete(vs.t_patient_id, row["PCKSID"].ToString());            //      +0020
                         if (Decimal.TryParse(row["Payment1"].ToString(), out price) && row["P1BDetailID"].ToString().Equals("0"))
                         {
                             ic.ivfDB.opkgsDB.updateP1BillNo(row["PCKSID"].ToString(), billNo.Replace(ic.cop.prefix_receipt_doc, ""));
@@ -741,7 +744,7 @@ namespace clinic_ivf.gui
         {
             //throw new NotImplementedException();
             //txtVsId.Value = vs.t_visit_id;
-            String re = ic.ivfDB.ovsDB.updateStatusCashierFinish(txtVn.Text);
+            //String re = ic.ivfDB.ovsDB.updateStatusCashierFinish(txtVn.Text);         //      -0020
             String re1 = ic.ivfDB.vsDB.updateCloseStatusCashier(txtVsId.Text);
             frmCashView.setGrfQuePublic();
             frmCashView.setGrfFinishPublic();
@@ -763,7 +766,6 @@ namespace clinic_ivf.gui
                 menu.removeTab(tab);
             }
         }
-
         private void TxtCreditCharge_KeyUp(object sender, KeyEventArgs e)
         {
             //throw new NotImplementedException();
@@ -817,15 +819,18 @@ namespace clinic_ivf.gui
             dt = ic.ivfDB.printBill(txtVn.Text,ref amt, ref payby,"");
 
             String billno1 = "", billnoex1="";
-            billno1 = ic.ivfDB.obilhDB.selectBillNoByVN(ovs.VN);
-            billnoex1 = ic.ivfDB.obilhDB.selectBillNoExByVN(ovs.VN);
+            //billno1 = ic.ivfDB.obilhDB.selectBillNoByVN(ovs.VN);                  //      -0020
+            //billnoex1 = ic.ivfDB.obilhDB.selectBillNoExByVN(ovs.VN);                  //      -0020
+            billno1 = ic.ivfDB.obilhDB.selectBillNoByVN(vs.visit_vn);                    //          +0020
+            billnoex1 = ic.ivfDB.obilhDB.selectBillNoExByVN(vs.visit_vn);                    //          +0020
             if (billno1.Length <= 0)
             {
                 billNo = ic.ivfDB.copDB.genBillingDoc(ref year, ref month, ref day);
                 billExtNo = ic.ivfDB.copDB.genBillingExtDoc();
                 ic.ivfDB.obilhDB.updateBillNo(txtVn.Text, billNo);
 
-                dtpgk = ic.ivfDB.opkgsDB.selectByPID(ovs.PID);    // ต้องดึงตาม HN เพราะ ถ้ามีงวดการชำระ 
+                //dtpgk = ic.ivfDB.opkgsDB.selectByPID(ovs.PID);    // ต้องดึงตาม HN เพราะ ถ้ามีงวดการชำระ              //      -0020
+                dtpgk = ic.ivfDB.opkgsDB.selectByPID(vs.t_patient_id);    // ต้องดึงตาม HN เพราะ ถ้ามีงวดการชำระ                //      +0020
                 foreach (DataRow row in dtpgk.Rows)
                 {
                     String times = "";
@@ -849,7 +854,8 @@ namespace clinic_ivf.gui
                     {
                         ic.ivfDB.opkgsDB.updateP4BillNo(row["PCKSID"].ToString(), billNo.Replace(ic.cop.prefix_billing_doc, ""));
                     }
-                    ic.ivfDB.updatePackagePaymentComplete(ovs.PID, row["PCKSID"].ToString());
+                    //ic.ivfDB.updatePackagePaymentComplete(ovs.PID, row["PCKSID"].ToString());         //      -0020
+                    ic.ivfDB.updatePackagePaymentComplete(vs.t_patient_id, row["PCKSID"].ToString());           //      +0020
                 }
             }
             else
@@ -1054,32 +1060,43 @@ namespace clinic_ivf.gui
         private void setControl()
         {
             txtBillId.Value = billid;
-            ovs = ic.ivfDB.ovsDB.selectByPk1(vnold);
-            optt = ic.ivfDB.pttOldDB.selectByPk1(ovs.PID);
-            ptt = ic.ivfDB.pttDB.selectByHn(ovs.PIDS);
-            vs = ic.ivfDB.vsDB.selectByVn(ovs.VN);
+            //ovs = ic.ivfDB.ovsDB.selectByPk1(vnold);      //      -0020
+            vs = ic.ivfDB.vsDB.selectByVn(vnold);      //      +0020
+            //optt = ic.ivfDB.pttOldDB.selectByPk1(ovs.PID);      //      -0020
+            //ptt = ic.ivfDB.pttDB.selectByHn(ovs.PIDS);      //      -0020
+            ptt = ic.ivfDB.pttDB.selectByHn(vs.visit_hn);      //      +0020
+            //vs = ic.ivfDB.vsDB.selectByVn(ovs.VN);
             if (receiptno.Length > 0)
             {
                 obilh = ic.ivfDB.obilhDB.selectByPk1(txtBillId.Text);
             }
             else
             {
-                obilh = ic.ivfDB.obilhDB.selectByPk2(ovs.VN);
+                //obilh = ic.ivfDB.obilhDB.selectByPk2(ovs.VN);      //      -0020
+                obilh = ic.ivfDB.obilhDB.selectByPk2(vs.visit_vn);      //      +0020
             }
-            
-            ptt.patient_birthday = optt.DateOfBirth;
 
-            txtHn.Value = optt.PIDS;
-            txtPttNameE.Value = optt.FullName;
-            txtDob.Value = ic.datetoShow(optt.DateOfBirth) + " [" + ptt.AgeStringShort() + "]";
-            txtHnOld.Value = optt.PIDS;
-            txtVnOld.Value = vsidOld;
-            txtPttId.Value = optt.PID;
+            //ptt.patient_birthday = optt.DateOfBirth;      //      -0020
+
+            txtHn.Value = ptt.patient_hn;
+            txtPttNameE.Value = vs.patient_name;
+            txtDob.Value = ic.datetoShow(ptt.patient_birthday) + " [" + ptt.AgeStringShort() + "]";
+            //txtHnOld.Value = optt.PIDS;      //      -0020
+            //txtVnOld.Value = vsidOld;      //      -0020
+            txtHnOld.Value = ptt.t_patient_id;      //      +0020
+            txtVnOld.Value = vs.t_visit_id;      //      +0020
+            //txtPttId.Value = optt.PID;      //      -0020
+            txtPttId.Value = ptt.t_patient_id;      //      +0020
             txtVsId.Value = vs.t_visit_id;
-            txtVnOld.Value = ovs.VN;
-            txtHnOld.Value = ovs.PIDS;
-            txtVn.Value = ovs.VN;
-            txtVnShow.Value = ic.showVN(ovs.VN);
+            //txtVnOld.Value = ovs.VN;      //      -0020
+            //txtHnOld.Value = ovs.PIDS;      //      -0020
+            //txtVn.Value = ovs.VN;      //      -0020
+
+            txtVnOld.Value = vs.visit_vn;      //      +0020
+            txtHnOld.Value = vs.visit_hn;      //      +0020
+            txtVn.Value = vs.visit_vn;      //      +0020
+
+            txtVnShow.Value = ic.showVN(vs.visit_vn);
             txtAllergy.Value = ptt.allergy_description;
             txtSex.Value = ptt.f_sex_id.Equals("1") ? "ชาย" : "หญิง";
             txtBg.Value = ptt.f_patient_blood_group_id.Equals("2140000005") ? "O"
@@ -1279,7 +1296,8 @@ namespace clinic_ivf.gui
             grfPkgPayPeriod.Cols[3].Caption = "งวด 3";
             grfPkgPayPeriod.Cols[4].Caption = "งวด 4";
             grfPkgPayPeriod.Cols[5].Caption = "รวม";
-            dt = ic.ivfDB.opkgsDB.selectByPID1(ptt.t_patient_id_old);
+            //dt = ic.ivfDB.opkgsDB.selectByPID1(ptt.t_patient_id_old);         //      -0020
+            dt = ic.ivfDB.opkgsDB.selectByPID1(ptt.t_patient_id);           //      +0020
             foreach (DataRow row in dt.Rows)
             {
                 Row row1 = grfPkgPayPeriod.Rows.Add();
@@ -1798,7 +1816,7 @@ namespace clinic_ivf.gui
         private void setGrfBillD()
         {
             //grfDept.Rows.Count = 7;
-            grfBillD.Clear();
+            //grfBillD.Clear();
             DataTable dt1 = new DataTable();
             DataTable dt = new DataTable();
             if (receiptno.Length > 0)
@@ -1807,7 +1825,8 @@ namespace clinic_ivf.gui
             }
             else
             {
-                dt = ic.ivfDB.obildDB.selectByVN(txtVnOld.Text);
+                //dt = ic.ivfDB.obildDB.selectByVN(txtVnOld.Text);      //          -0020
+                dt = ic.ivfDB.obildDB.selectByVN(txtVn.Text);           //      +0020
             }
             //if (search.Equals(""))
             //{
@@ -1831,7 +1850,7 @@ namespace clinic_ivf.gui
             //menuGw.MenuItems.Add("&แก้ไข", new EventHandler(ContextMenu_Gw_Edit));
             //menuGw.MenuItems.Add("&ยกเลิก", new EventHandler(ContextMenu_Gw_Cancel));
             grfBillD.ContextMenu = menuGw;
-
+            grfBillD.Rows.Count = 1;
             grfBillD.Rows.Count = dt.Rows.Count + 2;
             grfBillD.Cols.Count = 12;
             //C1TextBox txt = new C1TextBox();

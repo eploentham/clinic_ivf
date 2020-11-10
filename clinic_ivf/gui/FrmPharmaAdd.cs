@@ -22,6 +22,9 @@ namespace clinic_ivf.gui
 {
     public partial class FrmPharmaAdd : Form
     {
+        /*
+         * 63-10-27     0020        เรื่อง		เลิก insert table Visit
+         */
         IvfControl ic;
         MainMenu menu;
         public C1DockingTabPage tab;
@@ -29,7 +32,7 @@ namespace clinic_ivf.gui
 
         String pttId = "", webcamname = "", vsid = "", flagedit = "", pApmId = "", printerOld="";
         Patient ptt;
-        VisitOld vsOld;
+        //VisitOld vsOld;
         Visit vs;
         PatientOld pttOld, pttO;
 
@@ -81,7 +84,7 @@ namespace clinic_ivf.gui
             fc = txtHn.ForeColor;
             ff = txtHn.Font;
 
-            vsOld = new VisitOld();
+            //vsOld = new VisitOld();
             vs = new Visit();
             ptt = new Patient();
             pttOld = new PatientOld();
@@ -192,9 +195,10 @@ namespace clinic_ivf.gui
 
         private void setControl(String vsid)
         {
-            vsOld = ic.ivfDB.ovsDB.selectByPk1(vsid);
-            pttOld = ic.ivfDB.pttOldDB.selectByPk1(vsOld.PID);
-            vs = ic.ivfDB.vsDB.selectByVn(vsid);
+            //vsOld = ic.ivfDB.ovsDB.selectByPk1(vsid);             //      -0020
+            //pttOld = ic.ivfDB.pttOldDB.selectByPk1(vsOld.PID);      //      -0020
+            //vs = ic.ivfDB.vsDB.selectByVn(vsid);              //      -0020
+            vs = ic.ivfDB.vsDB.selectByPk1(vsid);                //  +0020
             ptt = ic.ivfDB.pttDB.selectByPk1(vs.t_patient_id);
             
             txtHn.Value = ptt.patient_hn;
@@ -231,7 +235,8 @@ namespace clinic_ivf.gui
                 Thread threadA = new Thread(new ParameterizedThreadStart(ExecuteA));
                 threadA.Start();
             }
-            if (!vsOld.VSID.Equals("166"))
+            //if (!vsOld.VSID.Equals("166"))            //      -0020
+            if (!vs.vsid.Equals("166"))
             {
                 btnPrnSticker.Enabled = false;
             }
@@ -312,7 +317,8 @@ namespace clinic_ivf.gui
         {
             if (grfOrder.Row < 0) return;
             if (grfOrder[grfOrder.Row, colOrdid] == null) return;
-            if (!vsOld.VSID.Equals("166") && vsOld.VSID.Equals("999"))
+            //if (!vsOld.VSID.Equals("166") && vsOld.VSID.Equals("999"))        //      -0020
+            if (!vs.vsid.Equals("166") && vs.vsid.Equals("999"))                //      +0020
             {
                 MessageBox.Show("รอ รับชำระ ไม่สามารถพิมพ์ Sticker ได้", "");
                 //return;
@@ -1023,16 +1029,17 @@ namespace clinic_ivf.gui
         {
             //throw new NotImplementedException();
             //ic.ivfDB.nurseFinish(txtVnOld.Text);
-            ic.ivfDB.ovsDB.updateStatusPharmacyFinish(txtVnOld.Text);
-            VisitOld ovs = new VisitOld();
-            ovs = ic.ivfDB.ovsDB.selectByPk1(txtVnOld.Text);
-            if (ovs.VSID.Equals("999"))
-            {
+            //ic.ivfDB.ovsDB.updateStatusPharmacyFinish(txtVnOld.Text);
+            ic.ivfDB.vsDB.updateStatusPharmacyFinish(txtVn.Text);
+            //VisitOld ovs = new VisitOld();
+            //ovs = ic.ivfDB.ovsDB.selectByPk1(txtVnOld.Text);
+            //if (vs.VSID.Equals("999"))
+            //{
                 frmPharView.setGrfQuePublic();
                 frmPharView.setGrfFinishPublic();
                 menu.removeTab(tab);
                 //return;
-            }
+            //}
             //setGrfOrder(txtVn.Text);
         }
 
@@ -1047,7 +1054,8 @@ namespace clinic_ivf.gui
 
             Application.DoEvents();
             PrinterSettings settings2 = new PrinterSettings();
-            if (!vsOld.VSID.Equals("166"))
+            //if (!vsOld.VSID.Equals("166"))        //      -0020
+            if (!vs.vsid.Equals("166"))          //      +0020
             {
                 lbPrinterStickerName.Text = settings1.DefaultPageSettings.PrinterSettings.PrinterName + "รอ รับชำระ ไม่สามารถพิมพ์ Sticker ได้";
             }

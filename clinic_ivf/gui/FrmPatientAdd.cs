@@ -1130,11 +1130,11 @@ namespace clinic_ivf.gui
             folder = DateTime.Now.Year.ToString();
             image1 = picPtt.Image;
             //image1.Save(@"temppic.jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
-            if (txtIdOld.Text.Length > 0)
+            if (txtID.Text.Length > 0)
             {
                 Patient ptt = new Patient();
-                ptt = ic.ivfDB.pttDB.selectByPID(txtIdOld.Text);
-                ic.savePicPatienttoServer(txtIdOld.Text, image1);
+                ptt = ic.ivfDB.pttDB.selectByPk1(txtID.Text);
+                ic.savePicPatienttoServer(txtID.Text, image1);
             }
             else
             {
@@ -1385,7 +1385,7 @@ namespace clinic_ivf.gui
         private void BtnWebCamOn_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            if (txtIdOld.Text.Length > 0)
+            if (txtID.Text.Length > 0)
             {
                 Patient ptt = new Patient();
                 ptt = ic.ivfDB.pttDB.selectByIDold(txtIdOld.Text);
@@ -1559,18 +1559,19 @@ namespace clinic_ivf.gui
                     //    ptt.patient_contact_lastname = name[1];
                     //}
 
-                    String re = ic.ivfDB.pttOldDB.insertPatientOld(ptt, txtStfConfirmID.Text);
+                    //String re = ic.ivfDB.pttOldDB.insertPatientOld(ptt, txtStfConfirmID.Text);        //-0021
                     long chk = 0;
-                    if (long.TryParse(re, out chk))
-                    {
-                        if (re.Equals("1")) // ตอน update
-                        {
-                            re = ptt.t_patient_id_old;
-                        }
-                        if (!ic.iniC.statusAppDonor.Equals("1"))
-                        {
-                            //String re1 = ic.ivfDB.pttOldDB.insertPatientOld(ptt, txtStfConfirmID.Text);
-                            ptt.t_patient_id_old = "";
+                    String re = "";
+                    //if (long.TryParse(re, out chk))        //-0021
+                    //{        //+0021
+                    //if (re.Equals("1")) // ตอน update        //-0021
+                    //{        //+0021
+                    //    re = ptt.t_patient_id_old;        //-0021
+                    //}        //+0021
+                    //if (!ic.iniC.statusAppDonor.Equals("1"))        //-0021
+                    //    {        //-0021
+                    //String re1 = ic.ivfDB.pttOldDB.insertPatientOld(ptt, txtStfConfirmID.Text);
+                    //ptt.t_patient_id_old = "";
                             String re1 = ic.ivfDB.pttDB.insertPatient(ptt, txtStfConfirmID.Text);
                             if (long.TryParse(re1, out chk))
                             {
@@ -1578,7 +1579,6 @@ namespace clinic_ivf.gui
                                 {
                                     re1 = txtID.Text;
                                 }
-
                                 if (flagReadCard)
                                 {
                                     PatientImage ptti = new PatientImage();
@@ -1614,31 +1614,31 @@ namespace clinic_ivf.gui
                                     flagReadCard = false;
                                 }
 
-                                PatientOld pttOld = new PatientOld();
-                                pttOld = ic.ivfDB.pttOldDB.selectByPk1(re);
-                                String re2 = ic.ivfDB.pttDB.updatePID(re1, re, pttOld.PIDS);
-                                if (long.TryParse(re2, out chk))
-                                {
-                                    btnSave.Text = "Save";
+                        //        PatientOld pttOld = new PatientOld();        //-0021
+                        //pttOld = ic.ivfDB.pttOldDB.selectByPk1(re);        //-0021
+                        //String re2 = ic.ivfDB.pttDB.updatePID(re1, re, pttOld.PIDS);        //-0021
+                        //if (long.TryParse(re2, out chk))        //-0021
+                        //{        //-0021
+                            btnSave.Text = "Save";
                                     btnSave.Image = Resources.accept_database24;
                                     txtID.Value = re1;
                                     btnWebCamOn.Enabled = true;
 
                                     txtPid.Focus();
-                                    txtHn.Value = pttOld.PIDS;
+                                    //txtHn.Value = pttOld.PIDS;
                                     barcode.Text = txtHn.Text;
-                                    txtIdOld.Value = pttOld.PID;
+                                    //txtIdOld.Value = pttOld.PID;
                                     if (tabVisit.Enabled == false)
                                     {
                                         tabVisit.Enabled = true;
                                         flagHavOldPttNoPtt = false;
                                     }
                                 }
-                            }
-                        }
-                        //System.Threading.Thread.Sleep(2000);
-                        //this.Dispose();
-                        if (txtVisitID.Text.Equals(""))
+                    //}        //-0021
+                    //}        //-0021
+                    //System.Threading.Thread.Sleep(2000);
+                    //this.Dispose();
+                    if (txtVisitID.Text.Equals(""))
                         {
                             txtVisitHn_1.Value = txtHn_1.Text;
                             txtVisitHn_2.Value = txtHn_2.Text;
@@ -1646,7 +1646,7 @@ namespace clinic_ivf.gui
                             label59.Text = label78.Text;
                             label71.Text = label76.Text;
                         }
-                    }
+                    //}        //+0021
                 }
             }
             else
@@ -3406,7 +3406,7 @@ namespace clinic_ivf.gui
                 //picPtt.Image = bitmap;
                 //picPtt.SizeMode = PictureBoxSizeMode.StretchImage;
                 //setPic(bitmap);
-                String filename = ic.iniC.folderFTP + "/" + txtIdOld.Text + "/" + txtIdOld.Text + "." + System.Drawing.Imaging.ImageFormat.Jpeg;
+                String filename = ic.iniC.folderFTP + "/" + txtID.Text + "/" + txtID.Text + "." + System.Drawing.Imaging.ImageFormat.Jpeg;
                 Bitmap bitmap = null;
                 //bitmap = new Bitmap(ic.ftpC.download(filename));
                 //setPic(new Bitmap(ic.ftpC.download(filenamepic)));
@@ -3431,12 +3431,21 @@ namespace clinic_ivf.gui
             }
             else
             {
-                ptt.patient_hn = txtHn.Text.Trim();
+                //ptt.patient_hn = txtHn.Text.Trim();//  -0021
+                if (txtHn.Text.Length > 0)
+                {
+                    ptt.patient_hn = txtHn.Text.Trim().Replace(ptt.patient_year, "").Replace("/", "");//  +0021
+                }
+                
             }
             if (txtHn.Text.Trim().Length<=0)        //  +0021
             {
-                txtHn.Value = ic.ivfDB.copDB.genHNDoc();        //  +0021
-                ptt.patient_hn = txtHn.Text.Trim();     //  +0021
+                //txtHn.Value = ic.ivfDB.copDB.genHNDoc();        //  +0021
+                //ptt.patient_hn = txtHn.Text.Trim();     //  +0021
+                String year = year = String.Concat(DateTime.Now.Year + 543);
+                ptt.patient_year = year.Substring(year.Length - 2, 2);
+                ptt.patient_hn = ic.ivfDB.copDB.genHNDoc1();     //  +0021
+                txtHn.Value = ptt.patient_hn+"/"+ptt.patient_year;
             }       //  +0021
             ptt.patient_firstname = txtPttName.Text.Trim();
             ptt.patient_lastname = txtPttLName.Text.Trim();
@@ -4050,8 +4059,23 @@ namespace clinic_ivf.gui
             }
             else
             {
-                theme1.SetTheme(sB, "Office2010Red");
+                //theme1.SetTheme(sB, "Office2010Red");
+                theme1.SetTheme(sB, ic.theme);
+                theme1.SetTheme(this, ic.theme);
+                theme1.SetTheme(splitContainer2.Panel1, ic.theme);
+                theme1.SetTheme(groupBox2, ic.theme);
             }
+            foreach(Control c in splitContainer2.Panel1.Controls)
+            {
+                if (c is C1BarCode) continue;
+                theme1.SetTheme(c, ic.theme);
+            }
+            foreach (Control c in groupBox2.Controls)
+            {
+                if (c is C1BarCode) continue;
+                theme1.SetTheme(c, ic.theme);
+            }
+
             txtLat1.Value = System.DateTime.Now.Year.ToString();
             grfImg.AutoSizeCols();
             grfImg.AutoSizeRows();

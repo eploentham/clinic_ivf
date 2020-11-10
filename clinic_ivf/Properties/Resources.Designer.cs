@@ -71,6 +71,16 @@ namespace clinic_ivf.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon _1 {
+            get {
+                object obj = ResourceManager.GetObject("_1", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap _698929 {
@@ -211,6 +221,16 @@ namespace clinic_ivf.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon application {
+            get {
+                object obj = ResourceManager.GetObject("application", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap AppMenuArrow {
@@ -267,6 +287,16 @@ namespace clinic_ivf.Properties {
             get {
                 object obj = ResourceManager.GetObject("arrow_true1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon backup_restore {
+            get {
+                object obj = ResourceManager.GetObject("backup_restore", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
             }
         }
         
@@ -1221,6 +1251,16 @@ namespace clinic_ivf.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon Message_already_read {
+            get {
+                object obj = ResourceManager.GetObject("Message_already_read", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap microphone {
@@ -1237,6 +1277,16 @@ namespace clinic_ivf.Properties {
             get {
                 object obj = ResourceManager.GetObject("monitor", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon monitor1 {
+            get {
+                object obj = ResourceManager.GetObject("monitor1", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
             }
         }
         
@@ -1487,6 +1537,46 @@ namespace clinic_ivf.Properties {
             get {
                 object obj = ResourceManager.GetObject("pdf_symbol_80_2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon phone_blue {
+            get {
+                object obj = ResourceManager.GetObject("phone_blue", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon phone_green {
+            get {
+                object obj = ResourceManager.GetObject("phone_green", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon phone_grey {
+            get {
+                object obj = ResourceManager.GetObject("phone_grey", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon phone_red {
+            get {
+                object obj = ResourceManager.GetObject("phone_red", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
             }
         }
         
@@ -1951,6 +2041,16 @@ namespace clinic_ivf.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon signal_receiver {
+            get {
+                object obj = ResourceManager.GetObject("signal_receiver", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap SmartArt_large {
@@ -2317,6 +2417,16 @@ namespace clinic_ivf.Properties {
             get {
                 object obj = ResourceManager.GetObject("ValidateDocument_small", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon webpage {
+            get {
+                object obj = ResourceManager.GetObject("webpage", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
             }
         }
         

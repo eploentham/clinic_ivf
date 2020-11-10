@@ -21,6 +21,10 @@ using System.Windows.Forms;
 
 namespace clinic_ivf.gui
 {
+    /*
+     * 63-10-23     0021    ให้เริ่ม HN ใหม่ แต่ให้ใช้ข้อมูลเก่า
+     * 63-10-27     0020        เรื่อง		เลิก insert table Visit
+     */
     public partial class FrmCashierView : Form
     {
         IvfControl ic;
@@ -63,7 +67,7 @@ namespace clinic_ivf.gui
             //C1ThemeController.ApplicationTheme = ic.iniC.themeApplication;
             theme1.Theme = ic.iniC.themeApplication;
             theme1.SetTheme(sB, "BeigeOne");
-            theme1.SetTheme(tC, "Office2010Blue");
+            //theme1.SetTheme(tC, "Office2010Blue");
             sB1.Text = "";
             bg = txtSearch.BackColor;
             fc = txtSearch.ForeColor;
@@ -1855,9 +1859,12 @@ namespace clinic_ivf.gui
             vn = grfQue[grfQue.Row, colVN] != null ? grfQue[grfQue.Row, colVN].ToString() : "";
             name = grfQue[grfQue.Row, colPttName] != null ? grfQue[grfQue.Row, colPttName].ToString() : "";
             agentid = grfQue[grfQue.Row, colAgentId] != null ? grfQue[grfQue.Row, colAgentId].ToString() : "";
-            String billid = ic.getBillVN(id, agentid, ic.userId);
-            String re1 = ic.ivfDB.vsDB.updateOpenStatusCashierByVn(id);
-            openBillNew(id, name,"edit", billid,"");
+            //String billid = ic.getBillVN(id, agentid, ic.userId);         //  -0020
+            String billid = ic.getBillVN(vn, agentid, ic.userId);         //  +0020
+            //String re1 = ic.ivfDB.vsDB.updateOpenStatusCashierByVn(id);         //  -0020
+            String re1 = ic.ivfDB.vsDB.updateOpenStatusCashierByVn(vn);         //  +0020
+            //openBillNew(id, name,"edit", billid,"");         //  -0020
+            openBillNew(vn, name, "edit", billid, "");         //  +0020
         }
         public void setGrfQuePublic()
         {
@@ -1869,7 +1876,8 @@ namespace clinic_ivf.gui
             grfQue.Clear();
             DataTable dt1 = new DataTable();
             DataTable dt = new DataTable();
-            dt = ic.ivfDB.ovsDB.selectByStatusCashierWaiting1();
+            //dt = ic.ivfDB.ovsDB.selectByStatusCashierWaiting1();         //  -0020
+            dt = ic.ivfDB.vsDB.selectByStatusCashierWaiting1();         //  +0020
             //if (search.Equals(""))
             //{
             //    String date = "";
@@ -1999,6 +2007,7 @@ namespace clinic_ivf.gui
             c1SplitContainer3.HeaderHeight = 0;
             sB1.Text = "Date " + ic.cop.day + "-" + ic.cop.month + "-" + ic.cop.year + " Server " + ic.iniC.hostDB + "/" + ic.iniC.nameDB + " FTP " + ic.iniC.hostFTP + "/" + ic.iniC.folderFTP;
             tC.SelectedTab = tabQue;
+            theme1.SetTheme(tC, ic.theme);
         }
     }
 }

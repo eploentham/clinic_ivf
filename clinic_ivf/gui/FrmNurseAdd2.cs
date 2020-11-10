@@ -2113,7 +2113,7 @@ namespace clinic_ivf.gui
                 if (File.Exists(filePathName))
                 {
                     File.Delete(filePathName);
-                    System.Threading.Thread.Sleep(200);
+                    System.Threading.Thread.Sleep(100);
                 }
                 this.richTextBox1.SaveFile(filePathName, fileType);
                 this.recentDocuments.Update(filePathName);
@@ -2122,7 +2122,7 @@ namespace clinic_ivf.gui
                 //String ext = Path.GetExtension(filePathName);
                 //String filename = filePathName.Replace(ext, "");
                 //filename = filename+"_" + txtVn.Text + ext;
-                ic.savePicOPUtoServer(txtIdOld.Text, documentName, filePathName);
+                ic.savePicOPUtoServer(txtVn.Text.Trim(), documentName, filePathName);
             }
             catch(Exception ex)
             {
@@ -3663,7 +3663,7 @@ namespace clinic_ivf.gui
                     //}
                     //}
 
-                    System.Threading.Thread.Sleep(500);
+                    //System.Threading.Thread.Sleep(100);
                     //setGrfpApmAll();
                     setGrfpApmVisit();
                     setGrfpApmDay();
@@ -3824,9 +3824,10 @@ namespace clinic_ivf.gui
                     //{        // +0015      -0020
                     ic.ivfDB.nurseFinish(txtVnOld.Text, ic.cStf.staff_id);        // +0015
                     //}        // +0015            -0020
-                    VisitOld ovs = new VisitOld();
-                    ovs = ic.ivfDB.ovsDB.selectByPk1(txtVnOld.Text);
-                    if (ovs.VSID.Equals("160"))
+                    //VisitOld ovs = new VisitOld();            -0020
+                    Visit ovs = new Visit();          //   +0020
+                    ovs = ic.ivfDB.vsDB.selectByVn(txtVn.Text);
+                    if (ovs.vsid.Equals("160"))
                     {
                         frmNurView.setGrfQuePublic();
                         frmNurView.setGrfFinishPublic();
@@ -4866,17 +4867,25 @@ namespace clinic_ivf.gui
             vs = ic.ivfDB.vsDB.selectByVn(vsid);
             ptt = ic.ivfDB.pttDB.selectByHn(vsOld.PIDS);
             //ptt.patient_birthday = pttOld.DateOfBirth;        //bug ทำให้ year เกิดผิด
-            txtHn.Value = vsOld.PIDS;
-            txtApmHn.Value = vsOld.PIDS;
-            txtVn.Value = vsOld.VN;
-            txtVnShow.Value = ic.showVN(vsOld.VN);
-            txtPttNameE.Value = vsOld.PName;
-            txtApmName.Value = vsOld.PName;
+            //txtHn.Value = vsOld.PIDS;
+            txtHn.Value = vs.visit_hn;
+            //txtApmHn.Value = vsOld.PIDS;
+            txtApmHn.Value = vs.visit_hn;
+            //txtVn.Value = vsOld.VN;
+            txtVn.Value = vs.visit_vn;
+            //txtVnShow.Value = ic.showVN(vsOld.VN);
+            txtVnShow.Value = ic.showVN(vs.visit_vn);
+            //txtPttNameE.Value = vsOld.PName;
+            txtPttNameE.Value = vs.patient_name;
+            //txtApmName.Value = vsOld.PName;
+            txtApmName.Value = vs.patient_name;
             //txtDob.Value = ic.datetoShow(pttOld.DateOfBirth) + " [" + ptt.AgeStringShort() + "]";     //  bug ทำให้ year เกิดผิด
             txtDob.Value = ic.datetoShow(ptt.patient_birthday) + " [" + ptt.AgeStringShort() + "]";
             txtAllergy.Value = ptt.allergy_description;
-            txtIdOld.Value = pttOld.PID;
-            txtVnOld.Value = vsOld.VN;
+            //txtIdOld.Value = pttOld.PID;
+            txtIdOld.Value = ptt.t_patient_id;
+            //txtVnOld.Value = vsOld.VN;
+            txtVnOld.Value = vs.visit_vn;
             txtVsId.Value = vs.t_visit_id;
             txtPttId.Value = ptt.t_patient_id;
             txtSex.Value = ptt.f_sex_id.Equals("1") ? "ชาย" : "หญิง";
@@ -6445,9 +6454,6 @@ namespace clinic_ivf.gui
             {
                 grfSpecial.Cols[colBlInclude].Visible = false;
             }
-
-            
-            
             //theme1.SetTheme(grfFinish, ic.theme);
         }
         private void setOrderSpecial()
@@ -8030,7 +8036,7 @@ namespace clinic_ivf.gui
                 try
                 {
                     //String aaa = ic.iniC.folderFTP + "/" + txtIdOld.Text + "/" + filePathName;
-                    ftpRequest = (FtpWebRequest)FtpWebRequest.Create(host + "/" + ic.iniC.folderFTP + "/" + txtIdOld.Text);
+                    ftpRequest = (FtpWebRequest)FtpWebRequest.Create(host + "/" + ic.iniC.folderFTP + "/" + txtVn.Text.Trim());
                     ftpRequest.Credentials = new NetworkCredential(user, pass);
                     ftpRequest.UseBinary = true;
                     //ftpRequest.UsePassive = false;
@@ -8061,7 +8067,7 @@ namespace clinic_ivf.gui
                     }
                     catch (Exception ex)
                     {
-                        new LogWriter("e", "setGrfPg 1 " + ex.Message + "\n " + host + "/" + ic.iniC.folderFTP + "/" + txtIdOld.Text);
+                        new LogWriter("e", "setGrfPg 1 " + ex.Message + "\n " + host + "/" + ic.iniC.folderFTP + "/" + txtVn.Text);
                         //Console.WriteLine(ex.ToString());
                         //MessageBox.Show("setGrfPg 1 " + ex.Message + "\n " , "host " + ic.iniC.hostFTP + " user " + user + " pas  " + pass);
                     }
@@ -8076,12 +8082,12 @@ namespace clinic_ivf.gui
                     {
                         Row row = grfPg.Rows.Add();
                         row[colPgId] = aaa;
-                        row[colPgFilename] = aaa.Replace(txtIdOld.Text, "").Replace("/", "");
+                        row[colPgFilename] = aaa.Replace(txtVn.Text, "").Replace("/", "");
                     }
                 }
                 catch (Exception ex)
                 {
-                    new LogWriter("e", "setGrfPg 2 " + ex.Message + "\n " + host + "/" + ic.iniC.folderFTP + "/" + txtIdOld.Text);
+                    new LogWriter("e", "setGrfPg 2 " + ex.Message + "\n " + host + "/" + ic.iniC.folderFTP + "/" + txtVn.Text);
                     //Console.WriteLine(ex.ToString());
                     //MessageBox.Show("setGrfPg 2 " + ex.Message + "\n ", "host " + ic.iniC.hostFTP + " user " + user + " pas  " + pass);
                 }

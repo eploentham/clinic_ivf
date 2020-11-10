@@ -8,6 +8,9 @@ using clinic_ivf.object1;
 
 namespace clinic_ivf.objdb
 {
+    /*
+     * 63-10-23     0021    ให้เริ่ม HN ใหม่ แต่ให้ใช้ข้อมูลเก่า
+     */
     public class CompanyDB
     {
         public Company cop;
@@ -680,6 +683,26 @@ namespace clinic_ivf.objdb
             }
             year = String.Concat(DateTime.Now.Year +543);
             doc = cop1.prefix_hn_doc + year.Substring(year.Length - 2, 2) + doc;
+            return doc;
+        }
+        public String genHNDoc1()
+        {
+            String doc = "", year = "", sql = "";
+            Company cop1 = new Company();
+            cop1 = selectByCode1("001");
+            int chk = 0;
+            if (int.TryParse(cop1.hn_doc, out chk))
+            {
+                chk++;
+                doc = "00000" + chk;
+                doc = doc.Substring(doc.Length - 5, 5);
+                year = cop1.year_curr;
+
+                sql = "Update " + cop.table + " Set " +
+                "" + cop.hn_doc + "=" + chk +
+                " Where " + cop.pkField + "='" + cop1.comp_id + "'";
+                conn.ExecuteNonQuery(conn.conn, sql);
+            }
             return doc;
         }
         public String genBillingExtDoc()

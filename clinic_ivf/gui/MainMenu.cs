@@ -31,6 +31,7 @@ namespace clinic_ivf.gui
             InitializeComponent();
             tC1.TabPageClosing += TC1_TabPageClosing;
             login = new Login(ic, splash);
+            splash.Dispose();
             login.ShowDialog(this);
             new Thread(() =>
             {
@@ -39,7 +40,7 @@ namespace clinic_ivf.gui
                 ic.ivfDB = new objdb.IvfDB(ic.conn);
                 ic.getInit();
             }).Start();
-            splash.Dispose();
+            
             if (login.LogonSuccessful.Equals("1"))
             {
                 initConfig();
@@ -654,19 +655,21 @@ namespace clinic_ivf.gui
             tC1.TabPages.Add(tab);
 
             //frm.Location = new Point((tab.Width - frm.Width) / 2, (tab.Height - frm.Height) / 2);
+            //theme1.SetTheme(tab, ic.theme);
             frm.Location = new Point(0, 0);
-            tab.ResumeLayout();
+            tab.ResumeLayout(false);
+            tab.PerformLayout();
             tab.Refresh();
             tab.Text = label;
             tab.Closing += Tab_Closing;
-            if (ic.iniC.statusAppDonor.Equals("1"))
-            {
-                theme1.SetTheme(tC1, ic.iniC.themeDonor);
-            }
-            else
-            {
-                theme1.SetTheme(tC1, "Office2007Blue");
-            }
+            //if (ic.iniC.statusAppDonor.Equals("1"))
+            //{
+            //    theme1.SetTheme(tC1, ic.iniC.themeDonor);
+            //}
+            //else
+            //{
+            //    theme1.SetTheme(tC1, "Office2007Blue");
+            //}
             tC1.SelectedTab = tab;
             //theme1.SetTheme(tC1, "Office2010Blue");
             //theme1.SetTheme(tC1, "Office2010Green");
@@ -710,8 +713,8 @@ namespace clinic_ivf.gui
         {
             String date = "";
             date = DateTime.Now.Year+"-"+ DateTime.Now.ToString("MM-dd");
-            this.Text = ic.iniC.statusAppDonor.Equals("1") ? "โปรแกรมClinic IVF Donor " +"สวัสดี คุณ "+ic.user.staff_fname_t +" "+ic.user.staff_lname_t+" Update 2020-10-27 "
-                : "โปรแกรมClinic IVF " + "สวัสดี คุณ " + ic.user.staff_fname_t + " " + ic.user.staff_lname_t + " Update 2020-10-27 format date " + date;
+            this.Text = ic.iniC.statusAppDonor.Equals("1") ? "โปรแกรมClinic IVF Donor " +"สวัสดี คุณ "+ic.user.staff_fname_t +" "+ic.user.staff_lname_t+" Update 2020-11-09 "
+                : "โปรแกรมClinic IVF " + "สวัสดี คุณ " + ic.user.staff_fname_t + " " + ic.user.staff_lname_t + " Update 2020-11-09 format date " + date;
             //theme1.SetTheme(this, ic.theme);
             theme1.SetTheme(this, ic.theme);
             theme1.SetTheme(menuStrip1, ic.theme);

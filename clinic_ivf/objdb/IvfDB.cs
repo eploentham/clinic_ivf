@@ -1186,6 +1186,8 @@ namespace clinic_ivf.objdb
              */
             VisitOld ovs = new VisitOld();
             ovs = ovsDB.selectByPk1(vn);
+            Visit vs = new Visit();
+            vs = vsDB.selectByVn(vn);
             /* Step 4.
              * set Include_Pkg_Price, Extra_Pkg_Price
              * $query = $this->db->query('Select Include_Pkg_Price, Extra_Pkg_Price from JobLab Where VN="' . $VN . '"');
@@ -1263,11 +1265,14 @@ namespace clinic_ivf.objdb
             OldBillheader obillh = new OldBillheader();
             obillh.VN = vn;
             obillh.BillNo = "";
-            obillh.PName = ovs.PName;
+            //obillh.PName = ovs.PName;
+            obillh.PName = vs.patient_name;
             obillh.Date = date;
             obillh.Time = time;
-            obillh.PID = ovs.PID;
-            obillh.PIDS = ovs.PIDS;
+            //obillh.PID = ovs.PID;
+            //obillh.PIDS = ovs.PIDS;
+            obillh.PID = vs.t_patient_id;
+            obillh.PIDS = vs.visit_hn;
             obillh.Include_Pkg_Price = inc.ToString();
             obillh.Extra_Pkg_Price = ext.ToString();
             obillh.Total = "";
@@ -1275,8 +1280,9 @@ namespace clinic_ivf.objdb
             obillh.CreditCardType = "";
             obillh.CreditCardNumber = "";
             obillh.Status = "1";
-            obillh.CreditAgent = "CrediAgent";
-            obillh.OName = ovs.OName;
+            obillh.CreditAgent = "";
+            //obillh.OName = ovs.OName;
+            obillh.OName = "";
             obillh.BID = "";
             obillh.PaymentBy = "";
             obillh.CashID = "";
@@ -1299,7 +1305,8 @@ namespace clinic_ivf.objdb
             //dt = opkgsDB.selectByVN1(vn);
             //dt = opkgsDB.selectByPID(ovs.PID);    // ต้องดึงตาม HN เพราะ ถ้ามีงวดการชำระ selectByPIDStatusPackageON
             //dt = opkgsDB.selectByPIDStatusPackageON(ovs.PID);
-            dt = opkgsDB.selectByPIDStatusPackageCashierON(ovs.PID);
+            //dt = opkgsDB.selectByPIDStatusPackageCashierON(ovs.PID);          //      -0020
+            dt = opkgsDB.selectByPIDStatusPackageCashierON(vs.t_patient_id);    //      +0020
             if (dt.Rows.Count > 0)
             {
                 foreach(DataRow row in dt.Rows)
@@ -2078,9 +2085,12 @@ namespace clinic_ivf.objdb
             //$this->db->query('update Visit set VSID="115" Where VN="'.$VN.'"');
             Decimal price = 0;
             String pid = "", pkgid = "";
-            VisitOld vs = new VisitOld();
-            vs = ovsDB.selectByPk1(vn);
-            pid = vs.PID;
+            //VisitOld vs = new VisitOld();          //  -0020
+            //vs = ovsDB.selectByPk1(vn);          //  -0020
+            Visit vs = new Visit();          //  +0020
+            vs = vsDB.selectByVn(vn);          //  +0020
+            //pid = vs.PID;          //  -0020
+            pid = vs.t_patient_id;          //  +0020
             OldPackageSold pkg = new OldPackageSold();
             pkg = opkgsDB.selectByVN2(vn);
             //pkgid = pkg.PCKID;
@@ -2106,7 +2116,7 @@ namespace clinic_ivf.objdb
                 }
             }
             //ovsDB.updateStatusCashierbackNurse(vn);          //  -0020
-            vsDB.updateStatusCashierbackNurse(vn);          //  +0020
+            vsDB.updateStatusCashierbackNurse(vs.t_visit_id);          //  +0020
         }
         public String updatePackagePaymentComplete(String pid, String pkgsid)
         {

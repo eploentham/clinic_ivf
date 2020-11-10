@@ -4041,6 +4041,8 @@ namespace clinic_ivf.gui
                 pnIuiEmailView.Controls.Add(day1View);
                 pnIuiEmailView.Height = 800;
             }
+            day1View.Show();
+            day1View.BringToFront();
         }
         private void FrmLabSpermAdd_Load(object sender, EventArgs e)
         {
