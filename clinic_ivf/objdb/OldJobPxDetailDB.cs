@@ -323,12 +323,22 @@ namespace clinic_ivf.objdb
             //{
             //    wherehn = " and jobpxD." + jobpxD.PIDS + " like '%" + vn + "%'";
             //}
-            String sql = "SELECT CONCAT(IFNULL(SurfixName.SurfixName,''),' ', ptt.PName,' ',ptt.PSurname) as patient_name, jobpxD.PIDS as hn, DATE_FORMAT(now(),''), jobpxD.TUsage as frequency " +
+            //String sql = "SELECT CONCAT(IFNULL(SurfixName.SurfixName,''),' ', ptt.PName,' ',ptt.PSurname) as patient_name, jobpxD.PIDS as hn, DATE_FORMAT(now(),''), jobpxD.TUsage as frequency " +
+            //    ", jobpxD.DUName as drug_name, sum(jobpxD.QTY) as qty, jobpxD.DUID, JobPx.Date,StockDrug.UnitType as unit_name " +
+            //    "From " + oJpxd.table + " jobpxD " +
+            //    "left join JobPx on JobPx.VN = jobpxD.VN " +
+            //    "left join Patient ptt on ptt.PIDS = JobPx.PIDS " +
+            //    "left join SurfixName on SurfixName.SurfixID = ptt.SurfixID " +
+            //    "left join StockDrug on StockDrug.DUID =  jobpxD.DUID " +
+            //    "Where JobPx.VN = '" + vn + "' " +
+            //    "group by patient_name,hn,frequency, jobpxD.DUName , jobpxD.DUID, JobPx.Date, unit_name  ";
+            String sql = "SELECT ptt.patient_name, jobpxD.PIDS as hn, DATE_FORMAT(now(),''), jobpxD.TUsage as frequency " +
                 ", jobpxD.DUName as drug_name, sum(jobpxD.QTY) as qty, jobpxD.DUID, JobPx.Date,StockDrug.UnitType as unit_name " +
                 "From " + oJpxd.table + " jobpxD " +
                 "left join JobPx on JobPx.VN = jobpxD.VN " +
-                "left join Patient ptt on ptt.PIDS = JobPx.PIDS " +
-                "left join SurfixName on SurfixName.SurfixID = ptt.SurfixID " +
+                //"left join Patient ptt on ptt.PIDS = JobPx.PIDS " +
+                "left join Patient ptt on ptt.t_patient_id = JobPx.PID " +
+                //"left join SurfixName on SurfixName.SurfixID = ptt.SurfixID " +
                 "left join StockDrug on StockDrug.DUID =  jobpxD.DUID " +
                 "Where JobPx.VN = '" + vn + "' " +
                 "group by patient_name,hn,frequency, jobpxD.DUName , jobpxD.DUID, JobPx.Date, unit_name  ";
@@ -343,12 +353,22 @@ namespace clinic_ivf.objdb
             //{
             //    wherehn = " and jobpxD." + jobpxD.PIDS + " like '%" + vn + "%'";
             //}
-            String sql = "SELECT CONCAT(IFNULL(SurfixName.SurfixName,''),' ', ptt.PName,' ',ptt.PSurname) as patient_name, jobpxD.PIDS as hn, DATE_FORMAT(now(),''), jobpxD.EUsage as frequency " +
+            //String sql = "SELECT CONCAT(IFNULL(SurfixName.SurfixName,''),' ', ptt.PName,' ',ptt.PSurname) as patient_name, jobpxD.PIDS as hn, DATE_FORMAT(now(),''), jobpxD.EUsage as frequency " +
+            //    ", jobpxD.DUName as drug_name, sum(jobpxD.QTY) as qty, jobpxD.DUID, JobPx.Date,StockDrug.UnitType as unit_name " +
+            //    "From " + oJpxd.table + " jobpxD " +
+            //    "left join JobPx on JobPx.VN = jobpxD.VN " +
+            //    "left join Patient ptt on ptt.PIDS = JobPx.PIDS " +
+            //    "left join SurfixName on SurfixName.SurfixID = ptt.SurfixID " +
+            //    "left join StockDrug on StockDrug.DUID =  jobpxD.DUID " +
+            //    "Where JobPx.VN = '" + vn + "' " +
+            //    "group by jobpxD.DUName ";
+            String sql = "SELECT ptt.patient_name, jobpxD.PIDS as hn, DATE_FORMAT(now(),''), jobpxD.EUsage as frequency " +
                 ", jobpxD.DUName as drug_name, sum(jobpxD.QTY) as qty, jobpxD.DUID, JobPx.Date,StockDrug.UnitType as unit_name " +
                 "From " + oJpxd.table + " jobpxD " +
                 "left join JobPx on JobPx.VN = jobpxD.VN " +
-                "left join Patient ptt on ptt.PIDS = JobPx.PIDS " +
-                "left join SurfixName on SurfixName.SurfixID = ptt.SurfixID " +
+                //"left join Patient ptt on ptt.PIDS = JobPx.PIDS " +
+                "left join t_patient ptt on ptt.t_patient_id = JobPx.PID " +
+                //"left join SurfixName on SurfixName.SurfixID = ptt.SurfixID " +
                 "left join StockDrug on StockDrug.DUID =  jobpxD.DUID " +
                 "Where JobPx.VN = '" + vn + "' " +
                 "group by jobpxD.DUName ";

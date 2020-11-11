@@ -148,6 +148,7 @@ namespace clinic_ivf.objdb
             vs.form_a_id = "form_a_id";
             vs.vsid = "vsid";
             vs.lvsid = "lvsid";
+            vs.patient_year = "patient_year";
 
             vs.table = "t_visit";
             vs.pkField = "t_visit_id";
@@ -203,6 +204,7 @@ namespace clinic_ivf.objdb
             p.pulse = p.pulse == null ? "" : p.pulse;
             p.status_nurse = p.status_nurse == null ? "0" : p.status_nurse;
             p.patient_hn_2 = p.patient_hn_2 == null ? "" : p.patient_hn_2;
+            p.patient_year = p.patient_year == null ? "" : p.patient_year;
 
             p.ipd_discharge_doctor = p.ipd_discharge_doctor == null ? "" : p.ipd_discharge_doctor;
             p.visit_ipd_reverse_date_time = p.visit_ipd_reverse_date_time == null ? "" : p.visit_ipd_reverse_date_time;
@@ -384,6 +386,7 @@ namespace clinic_ivf.objdb
                     "," + vs.form_a_id + "='" + p.form_a_id + "' " +
                     "," + vs.vsid + "='" + p.vsid + "' " +
                     "," + vs.lvsid + "='" + p.lvsid + "' " +
+                    "," + vs.patient_year + "='" + p.patient_year + "' " +
                     "";
                 re = conn.ExecuteNonQuery(conn.conn, sql);
             }
@@ -1148,7 +1151,7 @@ namespace clinic_ivf.objdb
                 ",vs.form_a_id, CONCAT(IFNULL(fpp.patient_prefix_description,''),' ', stf.staff_fname_e ,' ',stf.staff_lname_e)  as dtrname, vs.status_nurse, vs.status_cashier " +
                  ", ptt.patient_hn_1 ,CONCAT(IFNULL(fpp_1.patient_prefix_description,''),' ', ptt_1.patient_firstname_e ,' ',ptt_1.patient_lastname_e ) as name_1" +
                 ", ptt.patient_hn_2 ,CONCAT(IFNULL(fpp_2.patient_prefix_description,''),' ', ptt_2.patient_firstname_e ,' ',ptt_2.patient_lastname_e ) as name_2 " +
-                ", ptt.agent, agt.AgentName, ifnull(ptt.f_sex_id,'') as f_sex_id, vs.t_patient_id " +
+                ", ptt.agent, agt.AgentName, ifnull(ptt.f_sex_id,'') as f_sex_id, vs.t_patient_id,ptt.patient_year " +
                 "From " + vs.table + " vs " +
                 "Left Join VStatus on  VStatus.VSID = vs.VSID " +
                 //"Left Join t_visit on  vsold.VN = t_visit.visit_vn " +
@@ -1160,7 +1163,7 @@ namespace clinic_ivf.objdb
                 "Left join t_patient ptt_2 on ptt.patient_hn_2 = ptt_2.patient_hn and ptt.patient_hn_2 <> '' and ptt.patient_hn_2 is not null " +
                 "Left join f_patient_prefix fpp_2 on fpp_2.f_patient_prefix_id = ptt_2.f_patient_prefix_id " +
                 "Left Join Agent agt on ptt.agent = agt.AgentID " +
-                "Where  vs.VSID in ('110','115')  "+ wheresp +
+                "Where  vs.VSID in ('110','115')  "+ wheresp + " and vs.f_visit_status_id = '1' " +
                 //"Order By vsold.VDate desc, vsold.VStartTime desc";
                 "Order By vs.visit_begin_visit_time desc";
             dt = conn.selectData(conn.conn, sql);
@@ -1523,6 +1526,7 @@ namespace clinic_ivf.objdb
                 vs1.patient_name = dt.Rows[0][vs.patient_name].ToString();
                 vs1.form_a_id = dt.Rows[0][vs.form_a_id].ToString();
                 vs1.vsid = dt.Rows[0][vs.vsid].ToString();
+                vs1.patient_year = dt.Rows[0][vs.patient_year].ToString();
             }
             else
             {
@@ -1642,6 +1646,7 @@ namespace clinic_ivf.objdb
             stf1.patient_name = "";
             stf1.form_a_id = "";
             stf1.vsid = "";
+            stf1.patient_year = "";
             return stf1;
         }
     }

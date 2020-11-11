@@ -160,6 +160,7 @@ namespace clinic_ivf.objdb
             ptt.lmp = "lmp";
             ptt.patient_name = "patient_name";
             ptt.patient_year = "patient_year";
+            ptt.patient_hn_old = "patient_hn_old";
 
             ptt.pkField = "t_patient_id";
             ptt.table = "t_patient";
@@ -275,6 +276,7 @@ namespace clinic_ivf.objdb
             p.lmp = p.lmp == null ? "" : p.lmp;
             p.patient_name = p.patient_name == null ? "" : p.patient_name;
             p.patient_year = p.patient_year == null ? "" : p.patient_year;
+            p.patient_hn_old = p.patient_hn_old == null ? "" : p.patient_hn_old;
 
             p.f_patient_prefix_id = long.TryParse(p.f_patient_prefix_id, out chk) ? chk.ToString() : "0";
             p.f_sex_id = long.TryParse(p.f_sex_id, out chk) ? chk.ToString() : "0";
@@ -976,12 +978,12 @@ namespace clinic_ivf.objdb
             DataTable dt = new DataTable();
             String whereHN = "", whereName = "", wherepid = "", wherepassport = "", wherenameE = "";
             
-            String sql = "select ptt." + ptt.t_patient_id + " as PID,ptt." + ptt.patient_hn + " as PIDS" +
+            String sql = "select ptt." + ptt.t_patient_id + " as PID, concat(ptt." + ptt.patient_hn + ",'/',ptt."+ptt.patient_year+") as PIDS" +
                 ",CONCAT(IFNULL(fpp.patient_prefix_description,''),' ', ptt." + ptt.patient_firstname_e + ",' ',ptt." + ptt.patient_lastname_e + ") as name" +
-                ",ptt." + ptt.remark + " as EmergencyPersonalContact " +
+                ", ptt.patient_birthday, ptt.patient_hn_old,ptt." + ptt.remark + " as EmergencyPersonalContact " +
                 ", ptt." + ptt.patient_hn_1 + ",CONCAT(IFNULL(fpp_1.patient_prefix_description,''),' ', ptt_1." + ptt.patient_firstname_e + ",' ',ptt_1." + ptt.patient_lastname_e + ") as name_1" +
                 ", ptt." + ptt.patient_hn_2 + ",CONCAT(IFNULL(fpp_2.patient_prefix_description,''),' ', ptt_2." + ptt.patient_firstname_e + ",' ',ptt_2." + ptt.patient_lastname_e + ") as name_2 " +
-                ", agt.AgentName Agent " +
+                ", agt.AgentName Agent,'' as c11,'' as c12 " +
                 "From " + ptt.table + " ptt " +
                 "Left join f_patient_prefix fpp on fpp.f_patient_prefix_id = ptt.f_patient_prefix_id " +
                 "Left join "+ptt.table+" ptt_1 on ptt."+ptt.patient_hn_1+"= ptt_1."+ptt.patient_hn+ "   and ptt.patient_hn_1 <> '' and ptt.patient_hn_1 is not null " +
@@ -998,7 +1000,7 @@ namespace clinic_ivf.objdb
         public DataTable selectBySearch(String search)
         {
             DataTable dt = new DataTable();
-            String whereHN = "", whereName="", wherepid="", wherepassport="", wherenameE="";
+            String whereHN = "", whereName="", wherepid="", wherepassport="", wherenameE="", wherehnold="";
             if (!search.Equals(""))
             {
                 whereHN = " ptt."+ptt.patient_hn+" like '%"+search.Trim().ToUpper()+"%'";
@@ -1030,14 +1032,18 @@ namespace clinic_ivf.objdb
             {
                 wherepassport = " or ( ptt." + ptt.passport + " like '%" + search.Trim() + "%' )";
             }
-            String sql = "select ptt." + ptt.t_patient_id + " as PID,ptt." + ptt.patient_hn + " as PIDS" +
+            if (!search.Equals(""))
+            {
+                wherehnold = " or ( ptt." + ptt.patient_hn_old + " like '%" + search.Trim() + "%' )";
+            }
+            String sql = "select ptt." + ptt.t_patient_id + " as PID, CONCAT(ptt." + ptt.patient_hn + ",'/',ptt."+ptt.patient_year+") as PIDS" +
                 ",CONCAT(IFNULL(fpp.patient_prefix_description,''),' ', ptt." + ptt.patient_firstname_e + ",' ',ptt." + ptt.patient_lastname_e + ") as name" +
-                ",ptt." + ptt.remark + " as EmergencyPersonalContact  "+
+                ", ptt.patient_birthday, ptt.patient_hn_old,ptt." + ptt.remark + " as EmergencyPersonalContact  "+
                 ", ptt." + ptt.patient_hn_1 + ",CONCAT(IFNULL(fpp_1.patient_prefix_description,''),' ', ptt_1." + ptt.patient_firstname_e + ",' ',ptt_1." + ptt.patient_lastname_e + ") as name_1" +
                 ", ptt." + ptt.patient_hn_2 + ", CONCAT(IFNULL(fpp_2.patient_prefix_description,''),' ', ptt_2." + ptt.patient_firstname_e + ",' ',ptt_2." + ptt.patient_lastname_e + ") as name_2 " +
                 ", agt.AgentName Agent" +
                 ", CONCAT(IFNULL(fpp_stf_c.patient_prefix_description,''),' ', stf_c.staff_fname_e,' ',stf_c.staff_lname_e) as crete_name " +
-                ", CONCAT(IFNULL(fpp_stf_m.patient_prefix_description,''),' ', stf_m.staff_fname_e,' ',stf_m.staff_lname_e) as modi_name " +
+                ", CONCAT(IFNULL(fpp_stf_m.patient_prefix_description,''),' ', stf_m.staff_fname_e,' ',stf_m.staff_lname_e) as modi_name,'' as c11,'' as c12 " +
                 "From " + ptt.table + " ptt " +
                 "Left join f_patient_prefix fpp on fpp.f_patient_prefix_id = ptt.f_patient_prefix_id " +
                 "Left join " + ptt.table + " ptt_1 on ptt." + ptt.patient_hn_1 + "= ptt_1." + ptt.patient_hn + " and ptt.patient_hn_1 <> '' and ptt.patient_hn_1 is not null " +
@@ -1049,7 +1055,7 @@ namespace clinic_ivf.objdb
                 "Left join f_patient_prefix fpp_stf_c on fpp_stf_c.f_patient_prefix_id = stf_c.prefix_id " +
                 "Left join b_staff stf_m on ptt." + ptt.user_modi + "= stf_m.staff_id  " +
                 "Left join f_patient_prefix fpp_stf_m on fpp_stf_m.f_patient_prefix_id = stf_m.prefix_id " +
-                "Where " + whereHN + whereName + wherepid+ wherenameE+ " and ptt."+ptt.active+ "='1'" +
+                "Where " + whereHN + whereName + wherepid+ wherenameE+ wherepassport+ wherehnold + " and ptt."+ptt.active+ "='1'" +
                 "Order By ptt." + ptt.t_patient_id;
             dt = conn.selectData(conn.conn, sql);
             return dt;
@@ -1288,6 +1294,7 @@ namespace clinic_ivf.objdb
                 ptt1.lmp = dt.Rows[0][ptt.lmp].ToString();
                 ptt1.patient_name = dt.Rows[0][ptt.patient_name].ToString();
                 ptt1.patient_year = dt.Rows[0][ptt.patient_year].ToString();
+                ptt1.patient_hn_old = dt.Rows[0][ptt.patient_hn_old].ToString();
             }
             else
             {
@@ -1435,6 +1442,7 @@ namespace clinic_ivf.objdb
             stf1.lmp = "";
             stf1.patient_name = "";
             stf1.patient_year = "";
+            stf1.patient_hn_old = "";
             return stf1;
         }
     }

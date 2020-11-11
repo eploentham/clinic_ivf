@@ -49,7 +49,7 @@ namespace clinic_ivf.gui
         Image imgM = Resources.Male_user_accept_24;
         Image imgF = Resources.Female_user_accept_24;
         Image imgN = Resources.Female_user_accept_24;
-        Boolean pageLoad = false;
+        Boolean pageLoad = true;
         Image imgCorr, imgTran, imgFinish;
         [DllImport("winspool.drv", CharSet = CharSet.Auto, SetLastError = true)]
         public static extern bool SetDefaultPrinter(string Printer);
@@ -1602,7 +1602,8 @@ namespace clinic_ivf.gui
             //grfDept.Rows.Count = 7;
             //grfQue.Clear();27
             //DataTable dt1 = new DataTable();
-            
+            //if (pageLoad == true)
+            //    return;
             DataTable dt = new DataTable();
             if (search.Equals(""))
             {
@@ -1702,7 +1703,7 @@ namespace clinic_ivf.gui
                     grfQue[i, colID] = row["id"].ToString();
                     grfQue[i, colVNshow] = ic.showVN(row["visit_vn"].ToString());
                     grfQue[i, colVn] = row["visit_vn"].ToString();
-                    grfQue[i, colPttHn] = row["PIDS"].ToString();
+                    grfQue[i, colPttHn] = ic.showHN(row["PIDS"].ToString(), row["patient_year"].ToString());
                     grfQue[i, colPttName] = row["patient_name"].ToString();
                     grfQue[i, colVsDate] = ic.datetoShow(row["VDate"]);
                     grfQue[i, colVsTime] = row["VStartTime"].ToString();
@@ -2237,7 +2238,8 @@ namespace clinic_ivf.gui
                 dt.Columns.Add("age", typeof(String));
                 dt.Columns.Add("vn", typeof(String));
                 DataRow row11 = dt.NewRow();
-                row11["hn"] = ptt.patient_hn;
+                //row11["hn"] = ptt.patient_hn;
+                row11["hn"] = ic.showHN(ptt.patient_hn, ptt.patient_year);
                 row11["name"] = ptt.Name;
                 row11["age"] = "Age " + ptt.AgeStringShort() + " [" + ic.datetoShow(ptt.patient_birthday) + "]";
                 row11["vn"] = vs.visit_vn;
@@ -2280,7 +2282,8 @@ namespace clinic_ivf.gui
                     dt.Columns.Add("age", typeof(String));
                     dt.Columns.Add("vn", typeof(String));
                     DataRow row11 = dt.NewRow();
-                    row11["hn"] = ptt.patient_hn;
+                    //row11["hn"] = ptt.patient_hn;
+                    row11["hn"] = ic.showHN(ptt.patient_hn, ptt.patient_year);
                     row11["name"] = ptt.Name;
                     String age = "";
                     //age = ptt.AgeStringShort();
@@ -2319,7 +2322,7 @@ namespace clinic_ivf.gui
                     dt.Columns.Add("age", typeof(String));
                     dt.Columns.Add("vn", typeof(String));
                     DataRow row11 = dt.NewRow();
-                    row11["hn"] = ptt.patient_hn;
+                    row11["hn"] = ic.showHN(ptt.patient_hn,ptt.patient_year);
                     row11["name"] = ptt.Name;
                     String age = "";
                     age = ptt.AgeStringShort();
@@ -2843,7 +2846,9 @@ namespace clinic_ivf.gui
         private void FrmNurseView_Load(object sender, EventArgs e)
         {
             tC.SelectedTab = tabWaiting;
+            pageLoad = true;
             chkAll.Checked = true;
+            pageLoad = false;
             txtSb1 = "Date " + ic.cop.day + "-" + ic.cop.month + "-" + ic.cop.year + " Server " + ic.iniC.hostDB + "/" + ic.iniC.nameDB + " FTP " + ic.iniC.hostFTP + "/" + ic.iniC.folderFTP;
             sB1.Text = txtSb1;
             theme1.SetTheme(tC, ic.theme);

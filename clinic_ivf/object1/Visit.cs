@@ -121,5 +121,6 @@ namespace clinic_ivf.object1
         public String form_a_id { get; set; }
         public String vsid { get; set; }
         public String lvsid { get; set; }
+        public String patient_year { get; set; }
     }
 }

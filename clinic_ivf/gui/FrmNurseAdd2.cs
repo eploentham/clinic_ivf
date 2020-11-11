@@ -39,6 +39,7 @@ namespace clinic_ivf.gui
      * 63-01-26     0016        ลงโปรแกรมที่ ww แล้ว การเงิน Package ที่พยาบาลป้อนไม่ขึ้น
      * 63-08-25     0019        ทำให้หน้าจอ FrmNurseAdd2 เร็วขึ้น
      * 63-10-27     0020        เรื่อง		เลิก insert table Visit
+     * 63-10-27     0021        ให้เริ่ม HN ใหม่ แต่ให้ใช้ข้อมูลเก่า
      */
     public partial class FrmNurseAdd2 : Form
     {
@@ -48,9 +49,9 @@ namespace clinic_ivf.gui
 
         String pttId = "", webcamname = "", vn = "", flagedit = "", pApmId = "", pid="";
         Patient ptt;
-        VisitOld vsOld;
+        //VisitOld vsOld;       //-0020
         Visit vs;
-        PatientOld pttOld, pttO;
+        //PatientOld pttOld, pttO;       //-0020
         PatientAppointment pApm;
         AppointmentOld pApmO;
         EggSti eggs;
@@ -142,11 +143,11 @@ namespace clinic_ivf.gui
             fc = txtHn.ForeColor;
             ff = txtHn.Font;
 
-            vsOld = new VisitOld();
+            //vsOld = new VisitOld();       //-0020
             vs = new Visit();
             ptt = new Patient();
-            pttOld = new PatientOld();
-            pttO = new PatientOld();
+            //pttOld = new PatientOld();       //-0020
+            //pttO = new PatientOld();       //-0020
             pApm = new PatientAppointment();
             pApmO = new AppointmentOld();
             eggs = new EggSti();
@@ -2629,10 +2630,11 @@ namespace clinic_ivf.gui
             ChkApmTvsDonor_CheckedChanged(null, null);
             ChkApmOpuDonor_CheckedChanged(null, null);
 
-            pttO = ic.ivfDB.pttOldDB.selectByPk1(pttId);
-            txtPttIdOld.Value = pttO.PID;
-            txtHn.Value = pttO.PIDS;
-            txtApmName.Value = pttO.FullName;
+            //pttO = ic.ivfDB.pttOldDB.selectByPk1(pttId);       //-0020
+            //txtPttIdOld.Value = pttO.PID;       //-0020
+            //txtHn.Value = pttO.PIDS;       //-0020
+            //txtApmName.Value = pttO.FullName;       //-0020
+            txtApmName.Value = ptt.patient_name;
             txtApmRemark.Value = ptt.remark;
             txtApmOPURemark.Value = pApm.opu_remark;
 
@@ -4057,27 +4059,33 @@ namespace clinic_ivf.gui
             //throw new NotImplementedException();
             if (tabOrder.SelectedTab == tabRx)
             {
-                ic.ivfDB.oJpxDB.setJobPx(txtVnOld.Text, txtHn.Text, txtIdOld.Text);
+                //ic.ivfDB.oJpxDB.setJobPx(txtVnOld.Text, txtHn.Text, txtIdOld.Text);//-0020
+                ic.ivfDB.oJpxDB.setJobPx(txtVnOld.Text, ptt.patient_hn, txtIdOld.Text);//+0020
             }
             else if (tabOrder.SelectedTab == tabSpecialItem)
             {
-                ic.ivfDB.oJsDB.setJobSpecial(txtVnOld.Text, txtHn.Text, txtIdOld.Text);
+                //ic.ivfDB.oJsDB.setJobSpecial(txtVnOld.Text, txtHn.Text, txtIdOld.Text);//-0020
+                ic.ivfDB.oJsDB.setJobSpecial(txtVnOld.Text, ptt.patient_hn, txtIdOld.Text);//+0020
             }
             else if (tabOrder.SelectedTab == tabGeneticLab)
             {
-                ic.ivfDB.oJlabDB.setJobLab(txtVnOld.Text, txtHn.Text, txtIdOld.Text);
+                //ic.ivfDB.oJlabDB.setJobLab(txtVnOld.Text, txtHn.Text, txtIdOld.Text);//-0020
+                ic.ivfDB.oJlabDB.setJobLab(txtVnOld.Text, ptt.patient_hn, txtIdOld.Text);//+0020
             }
             else if (tabOrder.SelectedTab == tabEmbryoLab)
             {
-                ic.ivfDB.oJlabDB.setJobLab(txtVnOld.Text, txtHn.Text, txtIdOld.Text);
+                //ic.ivfDB.oJlabDB.setJobLab(txtVnOld.Text, txtHn.Text, txtIdOld.Text);//-0020
+                ic.ivfDB.oJlabDB.setJobLab(txtVnOld.Text, ptt.patient_hn, txtIdOld.Text);//+0020
             }
             else if (tabOrder.SelectedTab == tabSpermLab)
             {
-                ic.ivfDB.oJlabDB.setJobLab(txtVnOld.Text, txtHn.Text, txtIdOld.Text);
+                //ic.ivfDB.oJlabDB.setJobLab(txtVnOld.Text, txtHn.Text, txtIdOld.Text);//-0020
+                ic.ivfDB.oJlabDB.setJobLab(txtVnOld.Text, ptt.patient_hn, txtIdOld.Text);//+0020
             }
             else if (tabOrder.SelectedTab == tabBloodLab)
             {
-                ic.ivfDB.oJlabDB.setJobLab(txtVnOld.Text, txtHn.Text, txtIdOld.Text);
+                //ic.ivfDB.oJlabDB.setJobLab(txtVnOld.Text, txtHn.Text, txtIdOld.Text);//-0020
+                ic.ivfDB.oJlabDB.setJobLab(txtVnOld.Text, ptt.patient_hn, txtIdOld.Text);//+0020
             }
             else if (tabOrder.SelectedTab == tabRxSet)
             {
@@ -4124,11 +4132,16 @@ namespace clinic_ivf.gui
             DataTable dtpx = new DataTable();
             DataTable dtpkg = new DataTable();
 
-            dtbl = ic.ivfDB.oJlabdDB.selectByPID(pttOld.PID);
-            dtse = ic.ivfDB.ojsdDB.selectByPID(pttOld.PID);
-            dtpx = ic.ivfDB.oJpxdDB.selectByPID(pttOld.PID);
-            //dtpkg = ic.ivfDB.opkgsDB.selectByVN(vn);
-            dtpkg = ic.ivfDB.opkgsDB.selectByPID1(pttOld.PID);    // ต้องดึงตาม HN เพราะ ถ้ามีงวดการชำระ 
+            //dtbl = ic.ivfDB.oJlabdDB.selectByPID(pttOld.PID);     //-0021
+            //dtse = ic.ivfDB.ojsdDB.selectByPID(pttOld.PID);     //-0021
+            //dtpx = ic.ivfDB.oJpxdDB.selectByPID(pttOld.PID);     //-0021
+            ////dtpkg = ic.ivfDB.opkgsDB.selectByVN(vn);     //-0021
+            //dtpkg = ic.ivfDB.opkgsDB.selectByPID1(pttOld.PID);    // ต้องดึงตาม HN เพราะ ถ้ามีงวดการชำระ      //-0021
+
+            dtbl = ic.ivfDB.oJlabdDB.selectByPID(ptt.t_patient_id);     //+0021
+            dtse = ic.ivfDB.ojsdDB.selectByPID(ptt.t_patient_id);     //+0021
+            dtpx = ic.ivfDB.oJpxdDB.selectByPID(ptt.t_patient_id);     //+0021
+            dtpkg = ic.ivfDB.opkgsDB.selectByPID1(ptt.t_patient_id);    // ต้องดึงตาม HN เพราะ ถ้ามีงวดการชำระ      //+0021
 
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             //grfEmbryo.Rows.Count = dt.Rows.Count + 1;
@@ -4466,7 +4479,7 @@ namespace clinic_ivf.gui
         }
         private void setGrfHistory()
         {
-            grfHis.Clear();
+            //grfHis.Clear();
             grfHis.Rows.Count = 1;
             grfHis.Cols.Count = 4;
             DataTable dt = ic.ivfDB.vsDB.selectByPttId1(txtPttId.Text);
@@ -4525,7 +4538,7 @@ namespace clinic_ivf.gui
         private void setGrfpApmAll(String date)
         {
             //grfDept.Rows.Count = 7;
-            grfpApmAll.Clear();
+            //grfpApmAll.Clear();
             DataTable dt = new DataTable();
 
             dt = ic.ivfDB.pApmDB.selectByDate1(date);
@@ -4714,7 +4727,7 @@ namespace clinic_ivf.gui
         }
         private void setGrfNote()
         {
-            grfNote.Clear();
+            //grfNote.Clear();
             grfNote.Rows.Count = 1;
             grfNote.Cols.Count = 4;
             DataTable dt = ic.ivfDB.noteDB.selectByPttId(ptt.t_patient_id);
@@ -4775,7 +4788,8 @@ namespace clinic_ivf.gui
         private void setGrfItminPkg()
         {
             //grfDept.Rows.Count = 7;
-            grfItminPkg.Clear();
+            //grfItminPkg.Clear();
+            grfItminPkg.Rows.Count = 1;
             DataTable dt = new DataTable();
             dt = ic.ivfDB.obildDB.selectByHn(txtHn.Text.Trim());
             grfItminPkg.Cols.Count = 9;
@@ -4862,13 +4876,15 @@ namespace clinic_ivf.gui
         }
         private void setControl(String vsid)
         {
-            vsOld = ic.ivfDB.ovsDB.selectByPk1(vsid);
-            pttOld = ic.ivfDB.pttOldDB.selectByPk1(vsOld.PID);
+            //vsOld = ic.ivfDB.ovsDB.selectByPk1(vsid);
+            //pttOld = ic.ivfDB.pttOldDB.selectByPk1(vsOld.PID);
             vs = ic.ivfDB.vsDB.selectByVn(vsid);
-            ptt = ic.ivfDB.pttDB.selectByHn(vsOld.PIDS);
+            //ptt = ic.ivfDB.pttDB.selectByHn(vsOld.PIDS);      //-0020
+            ptt = ic.ivfDB.pttDB.selectByHn(vs.visit_hn);        //+0020
             //ptt.patient_birthday = pttOld.DateOfBirth;        //bug ทำให้ year เกิดผิด
             //txtHn.Value = vsOld.PIDS;
-            txtHn.Value = vs.visit_hn;
+            //txtHn.Value = vs.visit_hn;      //-0020
+            txtHn.Value = ic.showHN(vs.visit_hn,ptt.patient_year);
             //txtApmHn.Value = vsOld.PIDS;
             txtApmHn.Value = vs.visit_hn;
             //txtVn.Value = vsOld.VN;
@@ -4882,8 +4898,8 @@ namespace clinic_ivf.gui
             //txtDob.Value = ic.datetoShow(pttOld.DateOfBirth) + " [" + ptt.AgeStringShort() + "]";     //  bug ทำให้ year เกิดผิด
             txtDob.Value = ic.datetoShow(ptt.patient_birthday) + " [" + ptt.AgeStringShort() + "]";
             txtAllergy.Value = ptt.allergy_description;
-            //txtIdOld.Value = pttOld.PID;
-            txtIdOld.Value = ptt.t_patient_id;
+            //txtIdOld.Value = pttOld.PID;      //-0020
+            txtIdOld.Value = ptt.t_patient_id;        //+0020
             //txtVnOld.Value = vsOld.VN;
             txtVnOld.Value = vs.visit_vn;
             txtVsId.Value = vs.t_visit_id;
@@ -5918,7 +5934,8 @@ namespace clinic_ivf.gui
                     usaget = usage;
                     if (includeGrf.Equals("1"))//   +0019
                     {
-                        ic.ivfDB.PxAdd(duid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", grfOrder.Rows.Count.ToString(), usage, pkgdid);
+                        //ic.ivfDB.PxAdd(duid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", grfOrder.Rows.Count.ToString(), usage, pkgdid);      //-0020
+                        ic.ivfDB.PxAdd(duid, qty, txtIdOld.Text, ptt.patient_hn, txtVnOld.Text, "0", grfOrder.Rows.Count.ToString(), usage, pkgdid);      //+0020
                         setGrfOrder(txtVnOld.Text);
                         return;   //ถ้า click include ที่หน้าจอ
                     }
@@ -5943,15 +5960,17 @@ namespace clinic_ivf.gui
                             Decimal.TryParse(qtyext, out qtyext1);
                             if ((qty1 - qtyext1) > 0)
                             {
-                                ic.ivfDB.PxAdd(duid, (qty1 - qtyext1).ToString(), txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", grfOrder.Rows.Count.ToString(), usage, pkgdid);
-                            }
-                            ic.ivfDB.PxAdd(duid, qtyext, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "1", grfOrder.Rows.Count.ToString(), usage, pkgdid);
+                            //ic.ivfDB.PxAdd(duid, (qty1 - qtyext1).ToString(), txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", grfOrder.Rows.Count.ToString(), usage, pkgdid);//-0020
+                            ic.ivfDB.PxAdd(duid, (qty1 - qtyext1).ToString(), txtIdOld.Text, ptt.patient_hn, txtVnOld.Text, "0", grfOrder.Rows.Count.ToString(), usage, pkgdid);//+0020
                         }
+                        //ic.ivfDB.PxAdd(duid, qtyext, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "1", grfOrder.Rows.Count.ToString(), usage, pkgdid);//-0020
+                        ic.ivfDB.PxAdd(duid, qtyext, txtIdOld.Text, ptt.patient_hn, txtVnOld.Text, "1", grfOrder.Rows.Count.ToString(), usage, pkgdid);//+0020
+                    }
                         else
                         {
-                            //ic.ivfDB.PxSetAdd(duid,  txtHn.Text, txtVnOld.Text, "0", grfOrder.Rows.Count.ToString(), qty, usaget, usagee, duname, price, pkgdid);
-                            ic.ivfDB.PxAdd(duid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", grfOrder.Rows.Count.ToString(), usage, pkgdid);
-                        }
+                        //ic.ivfDB.PxSetAdd(duid,  txtHn.Text, txtVnOld.Text, "0", grfOrder.Rows.Count.ToString(), qty, usaget, usagee, duname, price, pkgdid);//-0020
+                        ic.ivfDB.PxAdd(duid, qty, txtIdOld.Text, ptt.patient_hn, txtVnOld.Text, "0", grfOrder.Rows.Count.ToString(), usage, pkgdid);//+0020
+                    }
                     //}
                     //else
                     //{
@@ -5980,7 +5999,8 @@ namespace clinic_ivf.gui
         private void setGrfRxSet()
         {
             //grfDept.Rows.Count = 7;
-            grfRxSet.Clear();
+            //grfRxSet.Clear();
+            grfRxSet.Rows.Count = 1;
             DataTable dt = new DataTable();
             dt = ic.ivfDB.oGrpDb.selectByGrpDrugH1();
 
@@ -6096,7 +6116,8 @@ namespace clinic_ivf.gui
             }
             if (includeGrf.Equals("1"))//   +0019
             {
-                ic.ivfDB.PxAdd(drugid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", grfOrder.Rows.Count.ToString(), usage, "old", pkgdid);
+                //ic.ivfDB.PxAdd(drugid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", grfOrder.Rows.Count.ToString(), usage, "old", pkgdid);//-0020
+                ic.ivfDB.PxAdd(drugid, qty, txtIdOld.Text, ptt.patient_hn, txtVnOld.Text, "0", grfOrder.Rows.Count.ToString(), usage, "old", pkgdid);//+0020
                 setGrfOrder(txtVnOld.Text);
                 return;   //ถ้า click include ที่หน้าจอ
             }
@@ -6123,12 +6144,15 @@ namespace clinic_ivf.gui
                         Decimal qty1 = 0, qtyext1=0;
                         Decimal.TryParse(qty, out qty1);
                         Decimal.TryParse(qtyext, out qtyext1);
-                        ic.ivfDB.PxAdd(drugid, (qty1 - qtyext1).ToString(), txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", grfOrder.Rows.Count.ToString(), usage, "old", pkgdid);
-                        ic.ivfDB.PxAdd(drugid, qtyext, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "1", grfOrder.Rows.Count.ToString(), usage, "old", pkgdid);
+                        //ic.ivfDB.PxAdd(drugid, (qty1 - qtyext1).ToString(), txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", grfOrder.Rows.Count.ToString(), usage, "old", pkgdid);//-0020
+                        //ic.ivfDB.PxAdd(drugid, qtyext, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "1", grfOrder.Rows.Count.ToString(), usage, "old", pkgdid);//-0020
+                        ic.ivfDB.PxAdd(drugid, (qty1 - qtyext1).ToString(), txtIdOld.Text, ptt.patient_hn, txtVnOld.Text, "0", grfOrder.Rows.Count.ToString(), usage, "old", pkgdid);//+0020
+                        ic.ivfDB.PxAdd(drugid, qtyext, txtIdOld.Text, ptt.patient_hn, txtVnOld.Text, "1", grfOrder.Rows.Count.ToString(), usage, "old", pkgdid);//+0020
                     }
                     else
                     {
-                        ic.ivfDB.PxAdd(drugid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", grfOrder.Rows.Count.ToString(), usage, "old", pkgdid);
+                        //ic.ivfDB.PxAdd(drugid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", grfOrder.Rows.Count.ToString(), usage, "old", pkgdid);//-0020
+                        ic.ivfDB.PxAdd(drugid, qty, txtIdOld.Text, ptt.patient_hn, txtVnOld.Text, "0", grfOrder.Rows.Count.ToString(), usage, "old", pkgdid);//+0020
                     }
                 }
                 else
@@ -6138,12 +6162,15 @@ namespace clinic_ivf.gui
                         Decimal qty1 = 0, qtyext1 = 0;
                         Decimal.TryParse(qty, out qty1);
                         Decimal.TryParse(qtyext, out qtyext1);
-                        ic.ivfDB.PxAdd(drugid, (qty1 - qtyext1).ToString(), txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", grfOrder.Rows.Count.ToString(), usage, "old", pkgdid);
-                        ic.ivfDB.PxAdd(drugid, qtyext, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", grfOrder.Rows.Count.ToString(), usage, "old", pkgdid);
+                        //ic.ivfDB.PxAdd(drugid, (qty1 - qtyext1).ToString(), txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", grfOrder.Rows.Count.ToString(), usage, "old", pkgdid);//-0020
+                        //ic.ivfDB.PxAdd(drugid, qtyext, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", grfOrder.Rows.Count.ToString(), usage, "old", pkgdid);//-0020
+                        ic.ivfDB.PxAdd(drugid, (qty1 - qtyext1).ToString(), txtIdOld.Text, ptt.patient_hn, txtVnOld.Text, "0", grfOrder.Rows.Count.ToString(), usage, "old", pkgdid);//+0020
+                        ic.ivfDB.PxAdd(drugid, qtyext, txtIdOld.Text, ptt.patient_hn, txtVnOld.Text, "0", grfOrder.Rows.Count.ToString(), usage, "old", pkgdid);//+0020
                     }
                     else
                     {
-                        ic.ivfDB.PxAdd(drugid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", grfOrder.Rows.Count.ToString(), usage, pkgdid);
+                        //ic.ivfDB.PxAdd(drugid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", grfOrder.Rows.Count.ToString(), usage, pkgdid);//-0020
+                        ic.ivfDB.PxAdd(drugid, qty, txtIdOld.Text, ptt.patient_hn, txtVnOld.Text, "0", grfOrder.Rows.Count.ToString(), usage, pkgdid);//+0020
                     }
                 }
             }
@@ -6162,13 +6189,16 @@ namespace clinic_ivf.gui
                     Decimal.TryParse(qtyext, out qtyext1);
                     if((qty1 - qtyext1)> 0)
                     {
-                        ic.ivfDB.PxAdd(drugid, (qty1 - qtyext1).ToString(), txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", grfOrder.Rows.Count.ToString(), usage, pkgdid);
+                        //ic.ivfDB.PxAdd(drugid, (qty1 - qtyext1).ToString(), txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", grfOrder.Rows.Count.ToString(), usage, pkgdid);/-0020
+                        ic.ivfDB.PxAdd(drugid, (qty1 - qtyext1).ToString(), txtIdOld.Text, ptt.patient_hn, txtVnOld.Text, "0", grfOrder.Rows.Count.ToString(), usage, pkgdid);//+0020
                     }
-                    ic.ivfDB.PxAdd(drugid, qtyext, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "1", grfOrder.Rows.Count.ToString(), usage, "");
+                    //ic.ivfDB.PxAdd(drugid, qtyext, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "1", grfOrder.Rows.Count.ToString(), usage, "");/-0020
+                    ic.ivfDB.PxAdd(drugid, qtyext, txtIdOld.Text, ptt.patient_hn, txtVnOld.Text, "1", grfOrder.Rows.Count.ToString(), usage, "");//+0020
                 }
                 else
                 {
-                    ic.ivfDB.PxAdd(drugid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "1", grfOrder.Rows.Count.ToString(), usage, "");
+                    //ic.ivfDB.PxAdd(drugid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "1", grfOrder.Rows.Count.ToString(), usage, "");/-0020
+                    ic.ivfDB.PxAdd(drugid, qty, txtIdOld.Text, ptt.patient_hn, txtVnOld.Text, "1", grfOrder.Rows.Count.ToString(), usage, "");//+0020
                 }
                 //}
             }
@@ -6180,7 +6210,7 @@ namespace clinic_ivf.gui
         }
         private void setGrfRx()
         {
-            //grfDept.Rows.Count = 7;
+            grfRx.Rows.Count = 1;
             //grfRx.Clear();
             DataTable dt = new DataTable();
             dt = ic.ivfDB.oStkdDB.selectBySockDrug1();
@@ -6364,7 +6394,8 @@ namespace clinic_ivf.gui
         private void setGrfSpecial()
         {
             //grfDept.Rows.Count = 7;
-            grfSpecial.Clear();
+            //grfSpecial.Clear();
+            grfSpecial.Rows.Count = 1;
             DataTable dt = new DataTable();
             dt = ic.ivfDB.oSItmDB.selectBySpecialItem2();
 
@@ -6467,7 +6498,8 @@ namespace clinic_ivf.gui
             qty = grfSpecial[grfSpecial.Row, colBlQty] != null ? grfSpecial[grfSpecial.Row, colBlQty].ToString() : "1";
             if (includeGrf.Equals("1"))//   +0019
             {
-                ic.ivfDB.SpecialAdd(labid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", "", "", "", "", grfOrder.Rows.Count.ToString(), "old", pkgdid);
+                //ic.ivfDB.SpecialAdd(labid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", "", "", "", "", grfOrder.Rows.Count.ToString(), "old", pkgdid);//-0020
+                ic.ivfDB.SpecialAdd(labid, qty, txtIdOld.Text, ptt.patient_hn, txtVnOld.Text, "0", "", "", "", "", grfOrder.Rows.Count.ToString(), "old", pkgdid);//+0020
                 setGrfOrder(txtVnOld.Text);
                 return;   //ถ้า click include ที่หน้าจอ
             }
@@ -6493,12 +6525,15 @@ namespace clinic_ivf.gui
                         Decimal qty1 = 0, qtyext1 = 0;
                         Decimal.TryParse(qty, out qty1);
                         Decimal.TryParse(qtyext, out qtyext1);
-                        ic.ivfDB.SpecialAdd(labid, (qty1 - qtyext1).ToString(), txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", "", "", "", "", grfOrder.Rows.Count.ToString(), "old", pkgdid);
-                        ic.ivfDB.SpecialAdd(labid, qtyext, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "1", "", "", "", "", grfOrder.Rows.Count.ToString(), "old", "");
+                        //ic.ivfDB.SpecialAdd(labid, (qty1 - qtyext1).ToString(), txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", "", "", "", "", grfOrder.Rows.Count.ToString(), "old", pkgdid);//-0020
+                        //ic.ivfDB.SpecialAdd(labid, qtyext, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "1", "", "", "", "", grfOrder.Rows.Count.ToString(), "old", "");//-0020
+                        ic.ivfDB.SpecialAdd(labid, (qty1 - qtyext1).ToString(), txtIdOld.Text, ptt.patient_hn, txtVnOld.Text, "0", "", "", "", "", grfOrder.Rows.Count.ToString(), "old", pkgdid);//+0020
+                        ic.ivfDB.SpecialAdd(labid, qtyext, txtIdOld.Text, ptt.patient_hn, txtVnOld.Text, "1", "", "", "", "", grfOrder.Rows.Count.ToString(), "old", "");//+0020
                     }
                     else
                     {
-                        ic.ivfDB.SpecialAdd(labid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", "", "", "", "", grfOrder.Rows.Count.ToString(), "old", pkgdid);
+                        //ic.ivfDB.SpecialAdd(labid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", "", "", "", "", grfOrder.Rows.Count.ToString(), "old", pkgdid);//-0020
+                        ic.ivfDB.SpecialAdd(labid, qty, txtIdOld.Text, ptt.patient_hn, txtVnOld.Text, "0", "", "", "", "", grfOrder.Rows.Count.ToString(), "old", pkgdid);//+0020
                     }
                 }
                 else
@@ -6508,12 +6543,15 @@ namespace clinic_ivf.gui
                         Decimal qty1 = 0, qtyext1 = 0;
                         Decimal.TryParse(qty, out qty1);
                         Decimal.TryParse(qtyext, out qtyext1);
-                        ic.ivfDB.SpecialAdd(labid, (qty1 - qtyext1).ToString(), txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", "", "", "", "", grfOrder.Rows.Count.ToString(), pkgdid);
-                        ic.ivfDB.SpecialAdd(labid, qtyext, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", "", "", "", "", grfOrder.Rows.Count.ToString(), pkgdid);
+                        //ic.ivfDB.SpecialAdd(labid, (qty1 - qtyext1).ToString(), txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", "", "", "", "", grfOrder.Rows.Count.ToString(), pkgdid);//-0020
+                        //ic.ivfDB.SpecialAdd(labid, qtyext, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", "", "", "", "", grfOrder.Rows.Count.ToString(), pkgdid);//-0020
+                        ic.ivfDB.SpecialAdd(labid, (qty1 - qtyext1).ToString(), txtIdOld.Text, ptt.patient_hn, txtVnOld.Text, "0", "", "", "", "", grfOrder.Rows.Count.ToString(), pkgdid);//+0020
+                        ic.ivfDB.SpecialAdd(labid, qtyext, txtIdOld.Text, ptt.patient_hn, txtVnOld.Text, "0", "", "", "", "", grfOrder.Rows.Count.ToString(), pkgdid);//+0020
                     }
                     else
                     {
-                        ic.ivfDB.SpecialAdd(labid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", "", "", "", "", grfOrder.Rows.Count.ToString(), pkgdid);
+                        //ic.ivfDB.SpecialAdd(labid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", "", "", "", "", grfOrder.Rows.Count.ToString(), pkgdid);//-0020
+                        ic.ivfDB.SpecialAdd(labid, qty, txtIdOld.Text, ptt.patient_hn, txtVnOld.Text, "0", "", "", "", "", grfOrder.Rows.Count.ToString(), pkgdid);//+0020
                     }
                 }
             }
@@ -6534,13 +6572,16 @@ namespace clinic_ivf.gui
                     Decimal.TryParse(qtyext, out qtyext1);
                     if ((qty1 - qtyext1) > 0)
                     {
-                        ic.ivfDB.SpecialAdd(labid, (qty1 - qtyext1).ToString(), txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", "", "", "", "", grfOrder.Rows.Count.ToString(), pkgdid);
+                        //ic.ivfDB.SpecialAdd(labid, (qty1 - qtyext1).ToString(), txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", "", "", "", "", grfOrder.Rows.Count.ToString(), pkgdid);//-0020
+                        ic.ivfDB.SpecialAdd(labid, (qty1 - qtyext1).ToString(), txtIdOld.Text, ptt.patient_hn, txtVnOld.Text, "0", "", "", "", "", grfOrder.Rows.Count.ToString(), pkgdid);//+0020
                     }
-                    ic.ivfDB.SpecialAdd(labid, qtyext, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "1", "", "", "", "", grfOrder.Rows.Count.ToString(), "");
+                    //ic.ivfDB.SpecialAdd(labid, qtyext, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "1", "", "", "", "", grfOrder.Rows.Count.ToString(), "");//-0020
+                    ic.ivfDB.SpecialAdd(labid, qtyext, txtIdOld.Text, ptt.patient_hn, txtVnOld.Text, "1", "", "", "", "", grfOrder.Rows.Count.ToString(), "");//+0020
                 }
                 else
                 {
-                    ic.ivfDB.SpecialAdd(labid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "1", "", "", "", "", grfOrder.Rows.Count.ToString(), "");
+                    //ic.ivfDB.SpecialAdd(labid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "1", "", "", "", "", grfOrder.Rows.Count.ToString(), "");//-0020
+                    ic.ivfDB.SpecialAdd(labid, qty, txtIdOld.Text, ptt.patient_hn, txtVnOld.Text, "1", "", "", "", "", grfOrder.Rows.Count.ToString(), "");//+0020
                 }
             }
 
@@ -6603,7 +6644,8 @@ namespace clinic_ivf.gui
             qty = grfGenetic[grfGenetic.Row, colBlQty] != null ? grfGenetic[grfGenetic.Row, colBlQty].ToString() : "1";
             if (includeGrf.Equals("1"))//   +0019
             {
-                ic.ivfDB.LabAdd(labid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), "0", "1", "0", pkgdid);
+                //ic.ivfDB.LabAdd(labid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), "0", "1", "0", pkgdid);//-0020
+                ic.ivfDB.LabAdd(labid, qty, txtIdOld.Text, ptt.patient_hn, txtVnOld.Text, "0", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), "0", "1", "0", pkgdid);
                 setGrfOrder(txtVnOld.Text);
                 return;   //ถ้า click include ที่หน้าจอ
             }
@@ -6614,22 +6656,26 @@ namespace clinic_ivf.gui
             {
                 if (ic.iniC.statusCashierOldProgram.Equals("1"))
                 {
-                    ic.ivfDB.LabAdd(labid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), "0", "1", "0", "old", pkgdid);
+                    //ic.ivfDB.LabAdd(labid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), "0", "1", "0", "old", pkgdid);//-0020
+                    ic.ivfDB.LabAdd(labid, qty, txtIdOld.Text, ptt.patient_hn, txtVnOld.Text, "0", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), "0", "1", "0", "old", pkgdid);
                 }
                 else
                 {
-                    ic.ivfDB.LabAdd(labid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), "0", "1", "0", pkgdid);
+                    //ic.ivfDB.LabAdd(labid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), "0", "1", "0", pkgdid);//-0020
+                    ic.ivfDB.LabAdd(labid, qty, txtIdOld.Text, ptt.patient_hn, txtVnOld.Text, "0", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), "0", "1", "0", pkgdid);
                 }
             }
             else
             {
                 if (ic.iniC.statusCashierOldProgram.Equals("1"))
                 {
-                    ic.ivfDB.LabAdd(labid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "1", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), "0", "1", "0", "old", pkgdid);
+                    //ic.ivfDB.LabAdd(labid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "1", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), "0", "1", "0", "old", pkgdid);//-0020
+                    ic.ivfDB.LabAdd(labid, qty, txtIdOld.Text, ptt.patient_hn, txtVnOld.Text, "1", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), "0", "1", "0", "old", pkgdid);
                 }
                 else
                 {
-                    ic.ivfDB.LabAdd(labid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "1", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), "0", "1", "0", pkgdid);
+                    //ic.ivfDB.LabAdd(labid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "1", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), "0", "1", "0", pkgdid);//-0020
+                    ic.ivfDB.LabAdd(labid, qty, txtIdOld.Text, ptt.patient_hn, txtVnOld.Text, "1", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), "0", "1", "0", pkgdid);
                 }
             }
             setGrfOrder(txtVnOld.Text);
@@ -6768,7 +6814,8 @@ namespace clinic_ivf.gui
             qty = grfEmbryo[grfEmbryo.Row, colBlQty] != null ? grfEmbryo[grfEmbryo.Row, colBlQty].ToString() : "1";
             if (includeGrf.Equals("1"))//   +0019
             {
-                ic.ivfDB.LabAdd(labid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), "0", "1", "0", pkgdid);
+                //ic.ivfDB.LabAdd(labid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), "0", "1", "0", pkgdid);//-0020
+                ic.ivfDB.LabAdd(labid, qty, txtIdOld.Text, ptt.patient_hn, txtVnOld.Text, "0", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), "0", "1", "0", pkgdid);//+0020
                 setGrfOrder(txtVnOld.Text);
                 return;   //ถ้า click include ที่หน้าจอ
             }
@@ -6778,22 +6825,26 @@ namespace clinic_ivf.gui
             {
                 if (ic.iniC.statusCashierOldProgram.Equals("1"))
                 {
-                    ic.ivfDB.LabAdd(labid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), "0", "1", "0","old", pkgdid);
+                    //ic.ivfDB.LabAdd(labid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), "0", "1", "0","old", pkgdid);//-0020
+                    ic.ivfDB.LabAdd(labid, qty, txtIdOld.Text, ptt.patient_hn, txtVnOld.Text, "0", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), "0", "1", "0", "old", pkgdid);//+0020
                 }
                 else
                 {
-                    ic.ivfDB.LabAdd(labid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), "0", "1", "0", pkgdid);
+                    //ic.ivfDB.LabAdd(labid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), "0", "1", "0", pkgdid);//-0020
+                    ic.ivfDB.LabAdd(labid, qty, txtIdOld.Text, ptt.patient_hn, txtVnOld.Text, "0", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), "0", "1", "0", pkgdid);//+0020
                 }
             }
             else
             {
                 if (ic.iniC.statusCashierOldProgram.Equals("1"))
                 {
-                    ic.ivfDB.LabAdd(labid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "1", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), "0", "1", "0","old", pkgdid);
+                    //ic.ivfDB.LabAdd(labid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "1", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), "0", "1", "0","old", pkgdid);//-0020
+                    ic.ivfDB.LabAdd(labid, qty, txtIdOld.Text, ptt.patient_hn, txtVnOld.Text, "1", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), "0", "1", "0", "old", pkgdid);//+0020
                 }
                 else
                 {
-                    ic.ivfDB.LabAdd(labid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "1", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), "0", "1", "0", pkgdid);
+                    //ic.ivfDB.LabAdd(labid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "1", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), "0", "1", "0", pkgdid);//-0020
+                    ic.ivfDB.LabAdd(labid, qty, txtIdOld.Text, ptt.patient_hn, txtVnOld.Text, "1", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), "0", "1", "0", pkgdid);//+0020
                 }
             }
             setGrfOrder(txtVnOld.Text);
@@ -6949,7 +7000,8 @@ namespace clinic_ivf.gui
             qty = grfSperm[grfSperm.Row, colBlQty] != null ? grfSperm[grfSperm.Row, colBlQty].ToString() : "1";
             if (includeGrf.Equals("1"))//   +0019
             {
-                ic.ivfDB.LabAdd(labid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), "0", "1", "0", pkgdid);
+                //ic.ivfDB.LabAdd(labid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), "0", "1", "0", pkgdid);//-0020
+                ic.ivfDB.LabAdd(labid, qty, txtIdOld.Text, ptt.patient_hn, txtVnOld.Text, "0", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), "0", "1", "0", pkgdid);//+0020
                 setGrfOrder(txtVnOld.Text);
                 return;   //ถ้า click include ที่หน้าจอ
             }
@@ -6959,11 +7011,13 @@ namespace clinic_ivf.gui
             {
                 if (ic.iniC.statusCashierOldProgram.Equals("1"))
                 {
-                    ic.ivfDB.LabAdd(labid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), "0", "1", "0", "old", pkgdid);
+                    //ic.ivfDB.LabAdd(labid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), "0", "1", "0", "old", pkgdid);//-0020
+                    ic.ivfDB.LabAdd(labid, qty, txtIdOld.Text, ptt.patient_hn, txtVnOld.Text, "0", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), "0", "1", "0", "old", pkgdid);//+0020
                 }
                 else
                 {
-                    ic.ivfDB.LabAdd(labid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), "0", "1", "0", pkgdid);
+                    //ic.ivfDB.LabAdd(labid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), "0", "1", "0", pkgdid);//-0020
+                    ic.ivfDB.LabAdd(labid, qty, txtIdOld.Text, ptt.patient_hn, txtVnOld.Text, "0", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), "0", "1", "0", pkgdid);//+0020
                 }
                     
             }
@@ -6971,11 +7025,13 @@ namespace clinic_ivf.gui
             {
                 if (ic.iniC.statusCashierOldProgram.Equals("1"))
                 {
-                    ic.ivfDB.LabAdd(labid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "1", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), "0", "1", "0", "old", pkgdid);
+                    //ic.ivfDB.LabAdd(labid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "1", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), "0", "1", "0", "old", pkgdid);//-0020
+                    ic.ivfDB.LabAdd(labid, qty, txtIdOld.Text, ptt.patient_hn, txtVnOld.Text, "1", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), "0", "1", "0", "old", pkgdid);//+0020
                 }
                 else
                 {
-                    ic.ivfDB.LabAdd(labid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "1", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), "0", "1", "0", pkgdid);
+                    //ic.ivfDB.LabAdd(labid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "1", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), "0", "1", "0", pkgdid);//-0020
+                    ic.ivfDB.LabAdd(labid, qty, txtIdOld.Text, ptt.patient_hn, txtVnOld.Text, "1", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), "0", "1", "0", pkgdid);//+0020
                 }
             }
 
@@ -7185,7 +7241,8 @@ namespace clinic_ivf.gui
                     if (qty3 <= 0) qty3 = 1;
                     if (includeGrf.Equals("1"))//   +0019
                     {
-                        ic.ivfDB.LabAdd(row[ic.ivfDB.logDB.log.lab_id].ToString(), qty1.ToString(), txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), labid, "0", "1", pkgdid);
+                        //ic.ivfDB.LabAdd(row[ic.ivfDB.logDB.log.lab_id].ToString(), qty1.ToString(), txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), labid, "0", "1", pkgdid);//-0020
+                        ic.ivfDB.LabAdd(row[ic.ivfDB.logDB.log.lab_id].ToString(), qty1.ToString(), txtIdOld.Text, ptt.patient_hn, txtVnOld.Text, "0", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), labid, "0", "1", pkgdid);//+0020
                         continue;   //ถ้า click include ที่หน้าจอ
                     }
                     pkgdid = setPkgDId(row[ic.ivfDB.logDB.log.lab_id].ToString(), row[ic.ivfDB.logDB.log.qty].ToString(), ordergroup, labid);
@@ -7204,22 +7261,26 @@ namespace clinic_ivf.gui
                     {
                         if (ic.iniC.statusCashierOldProgram.Equals("1"))
                         {
-                            ic.ivfDB.LabAdd(row[ic.ivfDB.logDB.log.lab_id].ToString(), qty3.ToString(), txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), labid, "0", "1", "old", pkgdid);
+                            //ic.ivfDB.LabAdd(row[ic.ivfDB.logDB.log.lab_id].ToString(), qty3.ToString(), txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), labid, "0", "1", "old", pkgdid);//-0020
+                            ic.ivfDB.LabAdd(row[ic.ivfDB.logDB.log.lab_id].ToString(), qty3.ToString(), txtIdOld.Text, ptt.patient_hn, txtVnOld.Text, "0", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), labid, "0", "1", "old", pkgdid);//+0020
                         }
                         else
                         {
-                            ic.ivfDB.LabAdd(row[ic.ivfDB.logDB.log.lab_id].ToString(), qty3.ToString(), txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), labid, "0", "1", pkgdid);
+                            //ic.ivfDB.LabAdd(row[ic.ivfDB.logDB.log.lab_id].ToString(), qty3.ToString(), txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), labid, "0", "1", pkgdid);//-0020
+                            ic.ivfDB.LabAdd(row[ic.ivfDB.logDB.log.lab_id].ToString(), qty3.ToString(), txtIdOld.Text, ptt.patient_hn, txtVnOld.Text, "0", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), labid, "0", "1", pkgdid);//+0020
                         }
                     }
                     else
                     {
                         if (ic.iniC.statusCashierOldProgram.Equals("1"))
                         {
-                            ic.ivfDB.LabAdd(row[ic.ivfDB.logDB.log.lab_id].ToString(), qty3.ToString(), txtIdOld.Text, txtHn.Text, txtVnOld.Text, "1", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), labid, "0", "1", "old", pkgdid);
+                            //ic.ivfDB.LabAdd(row[ic.ivfDB.logDB.log.lab_id].ToString(), qty3.ToString(), txtIdOld.Text, txtHn.Text, txtVnOld.Text, "1", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), labid, "0", "1", "old", pkgdid);//-0020
+                            ic.ivfDB.LabAdd(row[ic.ivfDB.logDB.log.lab_id].ToString(), qty3.ToString(), txtIdOld.Text, ptt.patient_hn, txtVnOld.Text, "1", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), labid, "0", "1", "old", pkgdid);//+0020
                         }
                         else
                         {
-                            ic.ivfDB.LabAdd(row[ic.ivfDB.logDB.log.lab_id].ToString(), qty3.ToString(), txtIdOld.Text, txtHn.Text, txtVnOld.Text, "1", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), labid, "0", "1", pkgdid);
+                            //ic.ivfDB.LabAdd(row[ic.ivfDB.logDB.log.lab_id].ToString(), qty3.ToString(), txtIdOld.Text, txtHn.Text, txtVnOld.Text, "1", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), labid, "0", "1", pkgdid);//-0020
+                            ic.ivfDB.LabAdd(row[ic.ivfDB.logDB.log.lab_id].ToString(), qty3.ToString(), txtIdOld.Text, ptt.patient_hn, txtVnOld.Text, "1", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), labid, "0", "1", pkgdid);//+0020
                         }
                     }
                 }
@@ -7244,13 +7305,15 @@ namespace clinic_ivf.gui
                     qtyext = "";
                 }
                 //ic.ivfDB.LabAdd(labid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "1", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), labid, "0", "1", "old", pkgdid);
-                ic.ivfDB.LabAdd(labid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, include.Equals("1") ? "0" : "1", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), labid, "1", "1", pkgdid);
+                //ic.ivfDB.LabAdd(labid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, include.Equals("1") ? "0" : "1", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), labid, "1", "1", pkgdid);//-0020
+                ic.ivfDB.LabAdd(labid, qty, txtIdOld.Text, ptt.patient_hn, txtVnOld.Text, include.Equals("1") ? "0" : "1", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), labid, "1", "1", pkgdid);
             }
             else
             {
                 if (includeGrf.Equals("1"))//   +0019
                 {
-                    ic.ivfDB.LabAdd(labid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), "0", "1", "0", pkgdid);
+                    //ic.ivfDB.LabAdd(labid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), "0", "1", "0", pkgdid);//-0020
+                    ic.ivfDB.LabAdd(labid, qty, txtIdOld.Text, ptt.patient_hn, txtVnOld.Text, "0", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), "0", "1", "0", pkgdid);
                     setGrfOrder(txtVnOld.Text);
                     return;   //ถ้า click include ที่หน้าจอ
                 }
@@ -7279,12 +7342,15 @@ namespace clinic_ivf.gui
                             Decimal qty1 = 0, qtyext1 = 0;
                             Decimal.TryParse(qty, out qty1);
                             Decimal.TryParse(qtyext, out qtyext1);
-                            ic.ivfDB.LabAdd(labid, (qty1 - qtyext1).ToString(), txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), "0", "1", "0", "old", pkgdid);
-                            ic.ivfDB.LabAdd(labid, qtyext, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), "0", "1", "0", "old", pkgdid);
+                            //ic.ivfDB.LabAdd(labid, (qty1 - qtyext1).ToString(), txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), "0", "1", "0", "old", pkgdid);//-0020
+                            //ic.ivfDB.LabAdd(labid, qtyext, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), "0", "1", "0", "old", pkgdid);//-0020
+                            ic.ivfDB.LabAdd(labid, (qty1 - qtyext1).ToString(), txtIdOld.Text, ptt.patient_hn, txtVnOld.Text, "0", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), "0", "1", "0", "old", pkgdid);//+0020
+                            ic.ivfDB.LabAdd(labid, qtyext, txtIdOld.Text, ptt.patient_hn, txtVnOld.Text, "0", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), "0", "1", "0", "old", pkgdid);//+0020
                         }
                         else
                         {
-                            ic.ivfDB.LabAdd(labid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), "0", "1", "0", "old", pkgdid);
+                            //ic.ivfDB.LabAdd(labid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), "0", "1", "0", "old", pkgdid);//-0020
+                            ic.ivfDB.LabAdd(labid, qty, txtIdOld.Text, ptt.patient_hn, txtVnOld.Text, "0", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), "0", "1", "0", "old", pkgdid);//+0020
                         }
                     }
                     else
@@ -7294,12 +7360,15 @@ namespace clinic_ivf.gui
                             Decimal qty1 = 0, qtyext1 = 0;
                             Decimal.TryParse(qty, out qty1);
                             Decimal.TryParse(qtyext, out qtyext1);
-                            ic.ivfDB.LabAdd(labid, (qty1 - qtyext1).ToString(), txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), "0", "1", "0", pkgdid);
-                            ic.ivfDB.LabAdd(labid, qtyext, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), "0", "1", "0", pkgdid);
+                            //ic.ivfDB.LabAdd(labid, (qty1 - qtyext1).ToString(), txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), "0", "1", "0", pkgdid);//-0020
+                            //ic.ivfDB.LabAdd(labid, qtyext, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), "0", "1", "0", pkgdid);//-0020
+                            ic.ivfDB.LabAdd(labid, (qty1 - qtyext1).ToString(), txtIdOld.Text, ptt.patient_hn, txtVnOld.Text, "0", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), "0", "1", "0", pkgdid);//+0020
+                            ic.ivfDB.LabAdd(labid, qtyext, txtIdOld.Text, ptt.patient_hn, txtVnOld.Text, "0", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), "0", "1", "0", pkgdid);//+0020
                         }
                         else
                         {
-                            ic.ivfDB.LabAdd(labid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), "0", "1", "0", pkgdid);
+                            //ic.ivfDB.LabAdd(labid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), "0", "1", "0", pkgdid);//-0020
+                            ic.ivfDB.LabAdd(labid, qty, txtIdOld.Text, ptt.patient_hn, txtVnOld.Text, "0", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), "0", "1", "0", pkgdid);//+0020
                         }
                     }
                 }
@@ -7320,13 +7389,16 @@ namespace clinic_ivf.gui
                         Decimal.TryParse(qtyext, out qtyext1);
                         if ((qty1 - qtyext1) > 0)
                         {
-                            ic.ivfDB.LabAdd(labid, (qty1 - qtyext1).ToString(), txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), "0", "1", "0", pkgdid);
+                            //ic.ivfDB.LabAdd(labid, (qty1 - qtyext1).ToString(), txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), "0", "1", "0", pkgdid);//-0020
+                            ic.ivfDB.LabAdd(labid, (qty1 - qtyext1).ToString(), txtIdOld.Text, ptt.patient_hn, txtVnOld.Text, "0", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), "0", "1", "0", pkgdid);//+0020
                         }
-                        ic.ivfDB.LabAdd(labid, qtyext, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "1", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), "0", "1", "0", pkgdid);
+                        //ic.ivfDB.LabAdd(labid, qtyext, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "1", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), "0", "1", "0", pkgdid);//-0020
+                        ic.ivfDB.LabAdd(labid, qtyext, txtIdOld.Text, ptt.patient_hn, txtVnOld.Text, "1", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), "0", "1", "0", pkgdid);//+0020
                     }
                     else
                     {
-                        ic.ivfDB.LabAdd(labid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "1", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), "0", "1", "0", pkgdid);
+                        //ic.ivfDB.LabAdd(labid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "1", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), "0", "1", "0", pkgdid);//-0020
+                        ic.ivfDB.LabAdd(labid, qty, txtIdOld.Text, ptt.patient_hn, txtVnOld.Text, "1", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString(), "0", "1", "0", pkgdid);//+0020
                     }
                 }
             }
@@ -7748,8 +7820,9 @@ namespace clinic_ivf.gui
                                     : aa.Text.Equals("Upload OUT LAB 9") ? "39"
                                     : aa.Text.Equals("Upload OUT LAB 10") ? "40"
                                     : "";
-                                filename = txtHn.Text.Replace("-", "").Replace("/", "") + "_" + status + ext;
-                                PatientImage ptti = new PatientImage();
+                            //filename = txtHn.Text.Replace("-", "").Replace("/", "") + "_" + status + ext;//-0020
+                            filename = ptt.patient_hn.Replace("-", "").Replace("/", "") + "_" + status + ext;//+0020
+                            PatientImage ptti = new PatientImage();
                                 ptti.patient_image_id = id;
                                 ptti.t_patient_id = txtPttId.Text;
                                 ptti.t_visit_id = txtVsId.Text;
@@ -7765,16 +7838,18 @@ namespace clinic_ivf.gui
                                 ptti.user_create = "";
                                 ptti.user_modi = "";
                                 ptti.user_cancel = "";
-                                ptti.image_path = ic.iniC.folderFTP + "/" + txtHn.Text.Replace("-", "").Replace("/", "") + "/" + filename;
-                                ptti.status_image = status;
+                            //ptti.image_path = ic.iniC.folderFTP + "/" + txtHn.Text.Replace("-", "").Replace("/", "") + "/" + filename;//-0020
+                            ptti.image_path = ic.iniC.folderFTP + "/" + ptt.patient_hn.Replace("-", "").Replace("/", "") + "/" + filename;//+0020
+                            ptti.status_image = status;
                                 ptti.status_document = "2";
                                 ptti.dept_id = ic.user.dept_id;
                                 re = ic.ivfDB.pttImgDB.insertpatientImage(ptti, ic.cStf.staff_id);
                                 long chk = 0;
                                 if (long.TryParse(re, out chk))
                                 {
-                                    ic.savePicOPUtoServer(txtHn.Text.Replace("-", "").Replace("/", ""), filename, pathfile);
-                                    grfImgOutLab.Rows[grfImgOutLab.Row].StyleNew.BackColor = color;
+                                //ic.savePicOPUtoServer(txtHn.Text.Replace("-", "").Replace("/", ""), filename, pathfile);//-0020
+                                ic.savePicOPUtoServer(ptt.patient_hn.Replace("-", "").Replace("/", ""), filename, pathfile);//+0020
+                                grfImgOutLab.Rows[grfImgOutLab.Row].StyleNew.BackColor = color;
                                     setGrfImgOutLab();
                                 }
                             }
@@ -7795,7 +7870,8 @@ namespace clinic_ivf.gui
                 {
                     String pathfile = grfImgOutLab[grfImgOutLab.Row, colImgPathPic].ToString();
                     String re = ic.ivfDB.pttImgDB.updateVoid(id, ic.user.staff_id);
-                    ic.delPicOPUtoServer(txtHn.Text.Replace("-", "").Replace("/", ""), pathfile);
+                    //ic.delPicOPUtoServer(txtHn.Text.Replace("-", "").Replace("/", ""), pathfile);//-0020
+                    ic.delPicOPUtoServer(ptt.patient_hn.Replace("-", "").Replace("/", ""), pathfile);//+0020
                     setGrfImgOutLab();
                 }
             }

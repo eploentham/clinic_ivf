@@ -654,7 +654,7 @@ namespace clinic_ivf.gui
                 {
                     re = ic.ivfDB.ovsDB.updateStatusVoidVisit(txtVn.Text);
                     re1 = ic.ivfDB.vsDB.updateStatusVoidVisit(txtVisitID.Text, ic.cStf.staff_id);
-                    setGrfVs(txtHn.Text);
+                    setGrfVs(txtHn.Text.Replace(ic.hnspareyear,"").Replace(ptt.patient_year,""));
                 }
             }
         }
@@ -777,7 +777,7 @@ namespace clinic_ivf.gui
                     }
                     else
                     {
-                        setGrfVs(txtHn.Text);
+                        setGrfVs(txtHn.Text.Replace(ic.hnspareyear, "").Replace(ptt.patient_year, ""));
                     }
                         
                     //        txtID.Value = re;setGrfVsDonor
@@ -1515,14 +1515,14 @@ namespace clinic_ivf.gui
                         ptti.user_create = "";
                         ptti.user_modi = "";
                         ptti.user_cancel = "";
-                        ptti.image_path = ic.iniC.folderFTP + "/" + txtHn.Text.Replace("-", "") + "/" + picIDCard;
+                        ptti.image_path = ic.iniC.folderFTP + "/" + txtHn.Text.Replace(ic.hnspareyear, "").Replace(ptt.patient_year, "").Replace("-", "") + "/" + picIDCard;
                         ptti.status_image = "4";
                         String rere = ic.ivfDB.pttImgDB.insertpatientImage(ptti, ic.cStf.staff_id);
                         //long chk = 0;
                         if (long.TryParse(rere, out chk))
                         {
                             filename = picIDCard;
-                            ic.savePicOPUtoServer(txtHn.Text.Replace("-", ""), filename, picIDCard);
+                            ic.savePicOPUtoServer(txtHn.Text.Replace(ic.hnspareyear, "").Replace(ptt.patient_year, "").Replace("-", ""), filename, picIDCard);
                             grfImg.Rows[grfImg.Row].StyleNew.BackColor = color;
                             setGrfImg();
                             if (File.Exists(picIDCard))
@@ -1597,13 +1597,13 @@ namespace clinic_ivf.gui
                                     ptti.user_create = "";
                                     ptti.user_modi = "";
                                     ptti.user_cancel = "";
-                                    ptti.image_path = ic.iniC.folderFTP + "/" + txtHn.Text.Replace("-", "") + "/" + picIDCard;
+                                    ptti.image_path = ic.iniC.folderFTP + "/" + txtHn.Text.Replace(ic.hnspareyear, "").Replace(ptt.patient_year, "").Replace("-", "") + "/" + picIDCard;
                                     ptti.status_image = "4";
                                     String re3 = ic.ivfDB.pttImgDB.insertpatientImage(ptti, ic.cStf.staff_id);
                                     //long chk = 0;
                                     if (long.TryParse(re3, out chk))
                                     {
-                                        ic.savePicOPUtoServer(txtHn.Text.Replace("-", ""), filename, picIDCard);
+                                        ic.savePicOPUtoServer(txtHn.Text.Replace(ic.hnspareyear, "").Replace(ptt.patient_year, "").Replace("-", ""), filename, picIDCard);
                                         grfImg.Rows[grfImg.Row].StyleNew.BackColor = color;
                                         setGrfImg();
                                         if (File.Exists(picIDCard))
@@ -1672,7 +1672,7 @@ namespace clinic_ivf.gui
                 age = ptt.AgeStringShort();
                 //DateTime dt = txtDob.Text;
                 //createPDFSticker(txtHn.Text, cboPrefix.Text + " " + txtPttNameE.Text + " " + txtPttLNameE.Text + "\n  DOB " + ic.datetoDB(txtDob.Text) + "\n  AGE " + age);
-                createPDFSticker(txtHn.Text, cboPrefix.Text + " " + txtPttNameE.Text + " " + txtPttLNameE.Text + "\n  DOB " + dt.ToString("dd-MM-yyyy") + "\n  AGE " + age);
+                createPDFSticker(txtHn.Text.Replace(ic.hnspareyear, "").Replace(ptt.patient_year, ""), cboPrefix.Text + " " + txtPttNameE.Text + " " + txtPttLNameE.Text + "\n  DOB " + dt.ToString("dd-MM-yyyy") + "\n  AGE " + age);
                 FrmPrintPreview frm = new FrmPrintPreview(ic, filename);
                 frm.ShowDialog(this);
                 SetDefaultPrinter(printerOld);
@@ -2167,7 +2167,7 @@ namespace clinic_ivf.gui
                                     : aa.Text.Equals("Upload รูป ทะเบียนสมรส") ? "5"
                                     : aa.Text.Equals("Upload รูป อื่น1") ? "20"
                                     : aa.Text.Equals("Upload รูป อื่น2") ? "21" : "";
-                                filename =  txtHn.Text.Replace("-", "").Replace("/", "") + "_"+ status + ext;
+                                filename =  txtHn.Text.Replace(ic.hnspareyear, "").Replace(ptt.patient_year, "").Replace("-", "").Replace("/", "") + "_"+ status + ext;
                                 PatientImage ptti = new PatientImage();
                                 ptti.patient_image_id = id;
                                 ptti.t_patient_id = txtID.Text;
@@ -2184,7 +2184,7 @@ namespace clinic_ivf.gui
                                 ptti.user_create = "";
                                 ptti.user_modi = "";
                                 ptti.user_cancel = "";
-                                ptti.image_path = ic.iniC.folderFTP + "/" + txtHn.Text.Replace("-", "").Replace("/", "") + "/" + filename;
+                                ptti.image_path = ic.iniC.folderFTP + "/" + txtHn.Text.Replace(ic.hnspareyear, "").Replace(ptt.patient_year, "").Replace("-", "").Replace("/", "") + "/" + filename;
                                 ptti.status_image = status;
                                 ptti.status_document = "1";
                                 ptti.dept_id = ic.user.dept_id;
@@ -2192,7 +2192,7 @@ namespace clinic_ivf.gui
                                 long chk = 0;
                                 if (long.TryParse(re, out chk))
                                 {
-                                    ic.savePicOPUtoServer(txtHn.Text.Replace("-","").Replace("/", ""), filename, pathfile);
+                                    ic.savePicOPUtoServer(txtHn.Text.Replace(ic.hnspareyear, "").Replace(ptt.patient_year, "").Replace("-","").Replace("/", ""), filename, pathfile);
                                     grfImg.Rows[grfImg.Row].StyleNew.BackColor = color;
                                     setGrfImg();
                                 }
@@ -2214,7 +2214,7 @@ namespace clinic_ivf.gui
                 {
                     String pathfile = grfImg[grfImg.Row, colPathPic].ToString();
                     String re = ic.ivfDB.pttImgDB.updateVoid(id, ic.user.staff_id);
-                    ic.delPicOPUtoServer(txtHn.Text.Replace("-", "").Replace("/", ""), pathfile);
+                    ic.delPicOPUtoServer(txtHn.Text.Replace(ic.hnspareyear, "").Replace(ptt.patient_year, "").Replace("-", "").Replace("/", ""), pathfile);
                     setGrfImg();
                 }
             }
@@ -2616,7 +2616,7 @@ namespace clinic_ivf.gui
             //menuGw.MenuItems.Add("&ยกเลิก", new EventHandler(ContextMenu_Gw_Cancel));
             grfVs.ContextMenu = menuGw;
             pnVisit.Controls.Add(grfVs);
-
+            grfVs.Rows.Count = 1;
             theme1.SetTheme(grfVs, "Office2016DarkGray");
 
         }
@@ -2628,7 +2628,11 @@ namespace clinic_ivf.gui
             }
             else
             {
-                setGrfVs(txtHn.Text);
+                //setGrfVs(txtHn.Text.Replace(ic.hnspareyear, "").Replace(ptt.patient_year, ""));//-0020
+                if (ptt.patient_hn.Length > 0)
+                {
+                    setGrfVs(ptt.patient_hn.Replace(ic.hnspareyear, "").Replace(ptt.patient_year, ""));     //+0020
+                }
             }
         }
         private void setGrfVsDonor(String search)
@@ -3099,7 +3103,7 @@ namespace clinic_ivf.gui
         }
         private void setControlPatient(Patient ptt)
         {
-            txtHn.Value = ptt.patient_hn;
+            txtHn.Value = ptt.patient_hn+ic.hnspareyear+ptt.patient_year;
             txtID.Value = ptt.t_patient_id;
             txtPttName.Value = ptt.patient_firstname;
             txtPttLName.Value = ptt.patient_lastname;
@@ -3432,13 +3436,13 @@ namespace clinic_ivf.gui
             else
             {
                 //ptt.patient_hn = txtHn.Text.Trim();//  -0021
-                if (txtHn.Text.Length > 0)
+                if (txtHn.Text.Length > 1)
                 {
                     ptt.patient_hn = txtHn.Text.Trim().Replace(ptt.patient_year, "").Replace("/", "");//  +0021
                 }
                 
             }
-            if (txtHn.Text.Trim().Length<=0)        //  +0021
+            if (txtHn.Text.Trim().Length<=1)        //  +0021
             {
                 //txtHn.Value = ic.ivfDB.copDB.genHNDoc();        //  +0021
                 //ptt.patient_hn = txtHn.Text.Trim();     //  +0021
@@ -3989,7 +3993,7 @@ namespace clinic_ivf.gui
             vs = new Visit();
             vs = ic.ivfDB.vsDB.setVisit1(vs);
             vs.t_visit_id = txtVisitID.Text;
-            vs.visit_hn = txtHn.Text;
+            vs.visit_hn = txtHn.Text.Replace(ic.hnspareyear,"").Replace(ptt.patient_year,"");
             vs.t_patient_id = txtID.Text;
             vs.b_service_point_id = cboVisitBsp.SelectedItem == null ? "" : ((ComboBoxItem)cboVisitBsp.SelectedItem).Value;
             vs.visit_notice = txtVisitComment.Text;
@@ -4034,6 +4038,7 @@ namespace clinic_ivf.gui
             vs.patient_hn_2 = txtVisitHn_2.Text;
             vs.vsid = "110";
             vs.patient_name = cboPrefix.Text + " " + txtPttNameE.Text + " " + txtPttLNameE.Text;
+            vs.patient_year = ptt.patient_year;
         }
         private void FrmPatientAdd_Load(object sender, EventArgs e)
         {

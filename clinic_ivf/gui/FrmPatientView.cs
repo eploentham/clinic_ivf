@@ -27,7 +27,7 @@ namespace clinic_ivf.gui
         Color bg, fc;
         Font ff, ffB;
 
-        int colPttId = 1, colPttHn = 2, colPttName = 3, colPttRemark = 4, colHn_1 = 5, colName_1 = 6, colHn_2 = 7, colName_2 = 8, colStfCreate=8, colStfModi=9;
+        int colPttId = 1, colPttHn = 2, colPttName = 3, colPttDOB=4, colPttHnOld=5, colPttRemark = 6, colHn_1 = 7, colName_1 = 8, colHn_2 = 9, colName_2 = 10, colStfCreate=11, colStfModi=12;
 
         C1FlexGrid grfPtt;
         C1SuperTooltip stt;
@@ -117,7 +117,7 @@ namespace clinic_ivf.gui
             }
             else
             {
-                if (txtSearch.Text.Length >= 2)
+                if (txtSearch.Text.Length > 2)
                 {
                     flagReadCard = false;
                     setGrfPtt(txtSearch.Text);
@@ -166,7 +166,7 @@ namespace clinic_ivf.gui
         private void setGrfPtt(String search)
         {
             //grfDept.Rows.Count = 7;
-            grfPtt.Clear();
+            //grfPtt.Clear();
             grfPtt.DataSource = null;
             grfPtt.Rows.Count = 1;
             DataTable dt = new DataTable();
@@ -216,7 +216,9 @@ namespace clinic_ivf.gui
             grfPtt.Cols[colPttName].Width = 250;
             grfPtt.Cols[colPttHn].Width = 120;
             grfPtt.Cols[colPttRemark].Width = 300;
-            
+            grfPtt.Cols[colPttDOB].Width = 110;
+            grfPtt.Cols[colPttHnOld].Width = 110;
+
             grfPtt.ShowCursor = true;
             //grdFlex.Cols[colID].Caption = "no";
             //grfDept.Cols[colCode].Caption = "รหัส";
@@ -224,6 +226,8 @@ namespace clinic_ivf.gui
             grfPtt.Cols[colPttHn].Caption = "HN";
             grfPtt.Cols[colPttName].Caption = "Name";
             grfPtt.Cols[colPttRemark].Caption = "Remark";
+            grfPtt.Cols[colPttDOB].Caption = "DOB";
+            grfPtt.Cols[colPttHnOld].Caption = "HN Old";
 
             ContextMenu menuGw = new ContextMenu();
             menuGw.MenuItems.Add("&แก้ไข Patient", new EventHandler(ContextMenu_edit));

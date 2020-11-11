@@ -694,8 +694,8 @@ namespace clinic_ivf.objdb
             if (int.TryParse(cop1.hn_doc, out chk))
             {
                 chk++;
-                doc = "00000" + chk;
-                doc = doc.Substring(doc.Length - 5, 5);
+                doc = "000000" + chk;
+                doc = doc.Substring(doc.Length - 6, 6);
                 year = cop1.year_curr;
 
                 sql = "Update " + cop.table + " Set " +

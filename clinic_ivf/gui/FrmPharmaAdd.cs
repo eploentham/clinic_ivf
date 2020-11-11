@@ -34,7 +34,7 @@ namespace clinic_ivf.gui
         Patient ptt;
         //VisitOld vsOld;
         Visit vs;
-        PatientOld pttOld, pttO;
+        //PatientOld pttOld, pttO;
 
         C1FlexGrid grfRx, grfOrder, grfNote;
         C1SuperTooltip stt;
@@ -87,8 +87,8 @@ namespace clinic_ivf.gui
             //vsOld = new VisitOld();
             vs = new Visit();
             ptt = new Patient();
-            pttOld = new PatientOld();
-            pttO = new PatientOld();
+            //pttOld = new PatientOld();
+            //pttO = new PatientOld();
 
             stt = new C1SuperTooltip();
             sep = new C1SuperErrorProvider();
@@ -138,7 +138,7 @@ namespace clinic_ivf.gui
             PrinterSettings settings = new PrinterSettings();
             printerOld = settings.PrinterName;
             SetDefaultPrinter(ic.iniC.printerSticker);
-
+            ic.logw.WriteLog("d", "PrinterSticker " + ic.iniC.printerSticker);
             String date = "", date1 = "";
             date = DateTime.Now.Year + "-" + DateTime.Now.ToString("MM-dd");
             DataTable dt = new DataTable();
@@ -200,13 +200,13 @@ namespace clinic_ivf.gui
             //vs = ic.ivfDB.vsDB.selectByVn(vsid);              //      -0020
             vs = ic.ivfDB.vsDB.selectByPk1(vsid);                //  +0020
             ptt = ic.ivfDB.pttDB.selectByPk1(vs.t_patient_id);
-            
-            txtHn.Value = ptt.patient_hn;
-            
+
+            //txtHn.Value = ptt.patient_hn;//      -0020
+            txtHn.Value = ptt.patient_hn + ic.hnspareyear + ptt.patient_year;//  +0020
             txtVn.Value = vs.visit_vn;
             txtPttNameE.Value = ptt.Name;
             
-            txtDob.Value = ic.datetoShow(pttOld.DateOfBirth) + " [" + ptt.AgeStringShort() + "]";
+            txtDob.Value = ic.datetoShow(ptt.patient_birthday) + " [" + ptt.AgeStringShort() + "]";
             txtAllergy.Value = ptt.allergy_description;
             txtIdOld.Value = ptt.t_patient_id_old;
             txtVnOld.Value = vs.visit_vn;
@@ -758,11 +758,11 @@ namespace clinic_ivf.gui
             //sep.Clear();
             if (include.Equals("1"))
             {
-                ic.ivfDB.PxAdd(drugid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", grfOrder.Rows.Count.ToString(), usage,"");
+                ic.ivfDB.PxAdd(drugid, qty, txtIdOld.Text, ptt.patient_hn, txtVnOld.Text, "0", grfOrder.Rows.Count.ToString(), usage,"");
             }
             else
             {
-                ic.ivfDB.PxAdd(drugid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "1", grfOrder.Rows.Count.ToString(), usage,"");
+                ic.ivfDB.PxAdd(drugid, qty, txtIdOld.Text, ptt.patient_hn, txtVnOld.Text, "1", grfOrder.Rows.Count.ToString(), usage,"");
             }
 
             setGrfOrder(txtVnOld.Text);
