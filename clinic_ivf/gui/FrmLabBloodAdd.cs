@@ -737,7 +737,7 @@ namespace clinic_ivf.gui
             txtVsId.Value = vs.t_visit_id;
 
             txtVnShow.Value = ic.showVN(vs.visit_vn);
-            txtHn.Value = ptt.patient_hn;
+            txtHn.Value = ic.showHN(ptt.patient_hn,ptt.patient_year);
             txtPttNameE.Value = ptt.Name.ToUpper();
             txtDob.Value = ic.datetoShow(ptt.patient_birthday) + " [" + ptt.AgeStringShort() + "]";
             txtSex.Value = ptt.f_sex_id.Equals("1") ? "Male" : "Female";

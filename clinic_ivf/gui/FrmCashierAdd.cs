@@ -30,7 +30,7 @@ namespace clinic_ivf.gui
         MainMenu menu;
         public C1DockingTabPage tab;
         public FrmCashierView frmCashView;
-        String billid = "", pttid = "", vsid = "", vsidOld = "", vnold = "", printerOld = "", receiptno = "", flagedit = "";
+        String billid = "", pttid = "", vsid = "", vsidOld = "", vn = "", printerOld = "", receiptno = "", flagedit = "";
         OldBillheader obilh;
         //VisitOld ovs;
         PatientOld optt;
@@ -68,7 +68,7 @@ namespace clinic_ivf.gui
             InitializeComponent();
             menu = m;
             this.ic = ic;
-            this.vnold = vnold;
+            this.vn = vnold;
             this.billid = billid;
             this.flagedit = flagedit;
             initConfig();
@@ -78,7 +78,7 @@ namespace clinic_ivf.gui
             InitializeComponent();
             menu = m;
             this.ic = ic;
-            this.vnold = vnold;
+            this.vn = vnold;
             this.billid = billid;
             this.flagedit = flagedit;
             this.receiptno = receiptno;
@@ -1061,7 +1061,7 @@ namespace clinic_ivf.gui
         {
             txtBillId.Value = billid;
             //ovs = ic.ivfDB.ovsDB.selectByPk1(vnold);      //      -0020
-            vs = ic.ivfDB.vsDB.selectByVn(vnold);      //      +0020
+            vs = ic.ivfDB.vsDB.selectByVn(vn);      //      +0020
             //optt = ic.ivfDB.pttOldDB.selectByPk1(ovs.PID);      //      -0020
             //ptt = ic.ivfDB.pttDB.selectByHn(ovs.PIDS);      //      -0020
             ptt = ic.ivfDB.pttDB.selectByHn(vs.visit_hn);      //      +0020
@@ -1078,7 +1078,7 @@ namespace clinic_ivf.gui
 
             //ptt.patient_birthday = optt.DateOfBirth;      //      -0020
 
-            txtHn.Value = ptt.patient_hn;
+            txtHn.Value = ic.showHN(ptt.patient_hn, ptt.patient_year);
             txtPttNameE.Value = vs.patient_name;
             txtDob.Value = ic.datetoShow(ptt.patient_birthday) + " [" + ptt.AgeStringShort() + "]";
             //txtHnOld.Value = optt.PIDS;      //      -0020
@@ -1118,7 +1118,7 @@ namespace clinic_ivf.gui
                 ic.setC1Combo(cboAccCredit, obilh.CreditCardID);
             }
 
-            FrmLabPrescription frm = new FrmLabPrescription(ic, "", "", txtHn.Text);
+            FrmLabPrescription frm = new FrmLabPrescription(ic, "", "", ptt.patient_hn);
             //frm.WindowState = FormWindowState.Maximized;
             frm.FormBorderStyle = FormBorderStyle.None;
             frm.TopLevel = false;

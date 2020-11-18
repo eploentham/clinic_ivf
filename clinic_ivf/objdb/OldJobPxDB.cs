@@ -9,6 +9,10 @@ using System.Threading.Tasks;
 
 namespace clinic_ivf.objdb
 {
+    /*
+     * 63-10-27     0020    เรื่อง		เลิก insert table Visit
+     * 63-10-23     0021    ให้เริ่ม HN ใหม่ แต่ให้ใช้ข้อมูลเก่า
+     */
     public class OldJobPxDB
     {
         public OldJobPx jobpx;
@@ -85,12 +89,13 @@ namespace clinic_ivf.objdb
             {
                 wherehn = " and patient.PIDS like '%" + hn + "%'";
             }
-            String sql = "select jobpx.*, CONCAT( SurfixName.SurfixName  ,' ', Patient.PName  ,' ',Patient.PSurname ) as name, t_visit.status_nurse, t_visit.status_cashier  " +
+            String sql = "select jobpx.*, t_visit.patient_name, t_visit.status_nurse, t_visit.status_cashier  " +
                 "From " + jobpx.table + " jobpx " +
-                "Left Join Patient  on Patient.PID = jobpx.PID " +
-                "Left Join SurfixName on Patient.SurfixID = SurfixName.SurfixID " +
-                "Left Join t_patient on Patient.PID = t_patient.t_patient_id_old " +
-                "Left Join t_visit on t_patient.t_patient_id = t_visit.t_patient_id " +
+                //"Left Join Patient  on Patient.PID = jobpx.PID " +            //-0020
+                //"Left Join SurfixName on Patient.SurfixID = SurfixName.SurfixID " +       //-0020
+                //"Left Join t_patient on Patient.PID = t_patient.t_patient_id_old " +
+                //"Left Join t_visit on t_patient.t_patient_id = t_visit.t_patient_id " +       //-0020
+                "Left Join t_visit on jobpx.PID = t_visit.t_patient_id " +         //+0020
                 "Where jobpx.Date >= '" + startDate + "' and jobpx.Date <= '" + endDate + "' " + wherehn +
                 "Order By jobpx.Date, jobpx.VN";
             dt = conn.selectData(conn.conn, sql);

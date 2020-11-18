@@ -24,6 +24,9 @@ using System.Windows.Forms;
 
 namespace clinic_ivf.gui
 {
+    /*
+     * 63-10-27     0020        เรื่อง		เลิก insert table Visit
+     */
     public partial class FrmLabSpermAdd : Form
     {
         IvfControl ic;
@@ -45,6 +48,7 @@ namespace clinic_ivf.gui
         SmtpClient SmtpServer;
         List<LinkedResource> theEmailImage1 = new List<LinkedResource>();
         C1FlexGrid grfImg;
+        Patient pttMale, pttFemale;
 
         Boolean flagEdit = false, flagImg=false;
         public FrmLabSpermAdd(IvfControl ic, String reqid, String spermId, String flagEdit)
@@ -142,6 +146,9 @@ namespace clinic_ivf.gui
             btnAgentEmail.Click += BtnAgentEmail_Click;
             btnSfAgentEmail.Click += BtnSfAgentEmail_Click;
             btnPeSendEmail.Click += BtnPeSendEmail_Click;
+
+            pttFemale = new Patient();
+            pttMale = new Patient();
 
             sB1.Text = "";
             bg = txtHnFeMale.BackColor;
@@ -268,6 +275,15 @@ namespace clinic_ivf.gui
             //        //tC.SelectedTab = TabSpermIUI;
             //    }
             //}
+        }
+
+        private void TxtVolume_KeyUp1(object sender, KeyEventArgs e)
+        {
+            //throw new NotImplementedException();
+            if(e.KeyCode== Keys.Enter)
+            {
+                txtCount.Focus();
+            }
         }
 
         private void TxtPeFinish_KeyUp(object sender, KeyEventArgs e)
@@ -833,7 +849,10 @@ namespace clinic_ivf.gui
         private void TxtPh_KeyUp(object sender, KeyEventArgs e)
         {
             //throw new NotImplementedException();
-
+            if(e.KeyCode== Keys.Enter)
+            {
+                txtVolume.Focus();
+            }
         }
 
         private void TxtTail1_KeyUp(object sender, KeyEventArgs e)
@@ -2225,6 +2244,8 @@ namespace clinic_ivf.gui
             FrmReport frm = new FrmReport(ic);
             DataTable dt = new DataTable();
             dt = ic.ivfDB.lspermDB.selectByPk(txtIuiID.Text);
+            dt.Rows[0]["hn_male"] = txtHnMale.Value;       //+0020
+            dt.Rows[0]["hn_female"] = txtHnFeMale.Value + ic.datetoShow(pttFemale.patient_birthday);       //+0020
             //FrmWaiting frmW = new FrmWaiting();
             //frmW.Show();
             frm.setSpermIui(dt);
@@ -2251,6 +2272,8 @@ namespace clinic_ivf.gui
             dt.Rows[0]["date_approve"] = date2;
             datemale = ic.datetoShow(dt.Rows[0]["dob_male"]);
             dt.Rows[0]["dob_male"] = datemale;
+            dt.Rows[0]["hn_male"] = txtHnMale.Value;       //+0020
+            dt.Rows[0]["hn_female"] = txtHnFeMale.Value+ic.datetoShow(pttFemale.patient_birthday);       //+0020
             //FrmWaiting frmW = new FrmWaiting();
             //frmW.Show();
             frm.setSpermPesa(dt);
@@ -2275,6 +2298,8 @@ namespace clinic_ivf.gui
 
             datemale = ic.datetoShow(dt.Rows[0]["dob_male"]);
             dt.Rows[0]["dob_male"] = datemale;
+            dt.Rows[0]["hn_male"] = txtHnMale.Value;       //+0020
+            dt.Rows[0]["hn_female"] = txtHnFeMale.Value + ic.datetoShow(pttFemale.patient_birthday);       //+0020
             String appearance = "", appearancetext = "";
             appearance = dt.Rows[0]["appearance"].ToString();
             appearancetext = dt.Rows[0]["appearance_text"].ToString();
@@ -2306,6 +2331,8 @@ namespace clinic_ivf.gui
 
             datemale = ic.datetoShow(dt.Rows[0]["dob_male"]);
             dt.Rows[0]["dob_male"] = datemale;
+            dt.Rows[0]["hn_male"] = txtHnMale.Value;       //+0020
+            dt.Rows[0]["hn_female"] = txtHnFeMale.Value + ic.datetoShow(pttFemale.patient_birthday);       //+0020
             String appearance = "", appearancetext = "", chk = "";
             appearance = dt.Rows[0]["appearance"].ToString();
             appearancetext = dt.Rows[0]["appearance_text"].ToString();
@@ -2390,6 +2417,8 @@ namespace clinic_ivf.gui
 
             datemale = ic.datetoShow(dt.Rows[0]["dob_male"]);
             dt.Rows[0]["dob_male"] = datemale;
+            dt.Rows[0]["hn_male"] = txtHnMale.Value;       //+0020
+            dt.Rows[0]["hn_female"] = txtHnFeMale.Value + ic.datetoShow(pttFemale.patient_birthday);       //+0020
             String appearance = "", appearancetext = "", chk = "";
             appearance = dt.Rows[0]["appearance"].ToString();
             appearancetext = dt.Rows[0]["appearance_text"].ToString();
@@ -2471,6 +2500,8 @@ namespace clinic_ivf.gui
 
             datemale = ic.datetoShow(dt.Rows[0]["dob_male"]);
             dt.Rows[0]["dob_male"] = datemale;
+            dt.Rows[0]["hn_male"] = txtHnMale.Value;       //+0020
+            dt.Rows[0]["hn_female"] = txtHnFeMale.Value + ic.datetoShow(pttFemale.patient_birthday);       //+0020
             String appearance = "", appearancetext = "", chk="";
             appearance = dt.Rows[0]["appearance"].ToString();
             appearancetext = dt.Rows[0]["appearance_text"].ToString();
@@ -2550,6 +2581,8 @@ namespace clinic_ivf.gui
 
             datemale = ic.datetoShow(dt.Rows[0]["dob_male"]);
             dt.Rows[0]["dob_male"] = datemale;
+            dt.Rows[0]["hn_male"] = txtHnMale.Value;       //+0020
+            dt.Rows[0]["hn_female"] = txtHnFeMale.Value + ic.datetoShow(pttFemale.patient_birthday);       //+0020
             String appearance = "", appearancetext = "";
             appearance = dt.Rows[0]["appearance"].ToString();
             appearancetext = dt.Rows[0]["appearance_text"].ToString();
@@ -2632,6 +2665,8 @@ namespace clinic_ivf.gui
 
             datemale = ic.datetoShow(dt.Rows[0]["dob_male"]);
             dt.Rows[0]["dob_male"] = datemale;
+            dt.Rows[0]["hn_male"] = txtHnMale.Value;       //+0020
+            dt.Rows[0]["hn_female"] = txtHnFeMale.Value + ic.datetoShow(pttFemale.patient_birthday);       //+0020
             String appearance = "", appearancetext="";
             appearance = dt.Rows[0]["appearance"].ToString();
             appearancetext = dt.Rows[0]["appearance_text"].ToString();
@@ -3057,11 +3092,12 @@ namespace clinic_ivf.gui
             ic.setC1Combo(cboEmbryologistReport, lsperm.staff_id_approve);
 
             Visit vs = new Visit();
-            Patient ptt = new Patient();
+            //Patient ptt = new Patient();
             vs = ic.ivfDB.vsDB.selectByPk1(lbReq.visit_id);
-            ptt = ic.ivfDB.pttDB.selectByPk1(vs.t_patient_id);
+            pttMale = ic.ivfDB.pttDB.selectByPk1(vs.t_patient_id);
+            pttFemale = ic.ivfDB.pttDB.selectByHn(lsperm.hn_female);
             txtPttId.Value = vs.t_patient_id;
-            txtPttIdOld.Value = ptt.t_patient_id_old;
+            txtPttIdOld.Value = pttMale.t_patient_id_old;
 
             txtSfApproveDate.Value = lsperm.date_approve;
             txtSfReportDate.Value = lsperm.date_report;
@@ -3103,8 +3139,10 @@ namespace clinic_ivf.gui
         {
             txtID.Value = lsperm.sperm_id;
             //txtPttId.Value = lsperm.
-            txtHnFeMale.Value = lsperm.hn_female;
-            txtHnMale.Value = lsperm.hn_male;
+            //txtHnFeMale.Value = lsperm.hn_female;     //-0020
+            txtHnFeMale.Value = ic.showHN(pttFemale.patient_hn,pttFemale.patient_year);       //+0020
+            //txtHnMale.Value = lsperm.hn_male;     //-0020
+            txtHnMale.Value = ic.showHN(pttMale.patient_hn,pttMale.patient_year);       //+0020
             txtNameFeMale.Value = lsperm.name_female;
             txtNameMale.Value = lsperm.name_male;
             txtLabReqCode.Value = lbReq.req_code;
@@ -3169,8 +3207,11 @@ namespace clinic_ivf.gui
         private void setControlSpermFreezing()
         {
             txtSfID.Value = lsperm.sperm_id;
-            txtSfHnFeMale.Value = lsperm.hn_female;
-            txtSfHnMale.Value = lsperm.hn_male;
+            //txtSfHnFeMale.Value = lsperm.hn_female;       //-0020
+            //txtSfHnMale.Value = lsperm.hn_male;       //-0020
+            txtSfHnFeMale.Value = ic.showHN(pttFemale.patient_hn, pttFemale.patient_year);     //+0020
+            txtSfHnMale.Value = ic.showHN(pttMale.patient_hn, pttMale.patient_year);     //+0020
+
             txtSfNameFeMale.Value = lsperm.name_female;
             txtSfNameMale.Value = lsperm.name_male;
             txtSfLabReqCode.Value = lbReq.req_code;
@@ -3248,8 +3289,11 @@ namespace clinic_ivf.gui
         private void setControlPesa()
         {
             txtPeID.Value = lsperm.sperm_id;
-            txtPeHnFeMale.Value = lsperm.hn_female;
-            txtPeHnMale.Value = lsperm.hn_male;
+            //txtPeHnFeMale.Value = lsperm.hn_female;     //-0020
+            //txtPeHnMale.Value = lsperm.hn_male;     //-0020
+            txtPeHnFeMale.Value = ic.showHN(pttFemale.patient_hn, pttFemale.patient_year);       //+0020
+            txtPeHnMale.Value = ic.showHN(pttMale.patient_hn, pttMale.patient_year);       //+0020
+
             txtPeNameFeMale.Value = lsperm.name_female;
             txtPeNameMale.Value = lsperm.name_male;
             txtPeLabReqCode.Value = lbReq.req_code;
@@ -3312,8 +3356,11 @@ namespace clinic_ivf.gui
         private void setControlIui()
         {
             txtIuiID.Value = lsperm.sperm_id;
-            txtIuiHnFeMale.Value = lsperm.hn_female;
-            txtIuiHnMale.Value = lsperm.hn_male;
+            //txtIuiHnFeMale.Value = lsperm.hn_female;     //-0020
+            //txtIuiHnMale.Value = lsperm.hn_male;     //-0020
+            txtIuiHnFeMale.Value = ic.showHN(pttFemale.patient_hn, pttFemale.patient_year);       //+0020
+            txtIuiHnMale.Value = ic.showHN(pttMale.patient_hn, pttMale.patient_year);       //+0020
+
             txtIuiNameFeMale.Value = lsperm.name_female;
             txtIuiNameMale.Value = lsperm.name_male;
             txtIuiLabReqCode.Value = lbReq.req_code;

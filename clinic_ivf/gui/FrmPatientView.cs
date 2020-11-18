@@ -119,6 +119,10 @@ namespace clinic_ivf.gui
             {
                 if (txtSearch.Text.Length > 2)
                 {
+                    if (txtSearch.Text.Equals("000"))
+                    {
+                        return;//       many data
+                    }
                     flagReadCard = false;
                     setGrfPtt(txtSearch.Text);
                 }
@@ -240,6 +244,7 @@ namespace clinic_ivf.gui
             for (int i = 1; i <= grfPtt.Rows.Count - 1; i++)
             {
                 grfPtt[i, 0] = i;
+                grfPtt[i, colPttDOB] = ic.datetoShow(grfPtt[i, colPttDOB].ToString());
                 if (i % 2 == 0)
                     grfPtt.Rows[i].StyleNew.BackColor = color;
             }

@@ -302,7 +302,7 @@ namespace clinic_ivf.objdb
             p.patient_contact_f_patient_relation_id = long.TryParse(p.patient_contact_f_patient_relation_id, out chk) ? chk.ToString() : "0";
             p.patient_coulpe_f_patient_relation_id = long.TryParse(p.patient_coulpe_f_patient_relation_id, out chk) ? chk.ToString() : "0";
             p.b_contract_plans_id = long.TryParse(p.b_contract_plans_id, out chk) ? chk.ToString() : "0";
-            p.t_patient_id_old = long.TryParse(p.t_patient_id_old, out chk) ? chk.ToString() : "0";
+            p.t_patient_id_old = long.TryParse(p.t_patient_id_old, out chk) ? chk.ToString() : "-1";
             p.doctor_id = long.TryParse(p.doctor_id, out chk) ? chk.ToString() : "0";
 
             p.latitude = decimal.TryParse(p.latitude, out chk1) ? chk1.ToString() : "0";
@@ -702,7 +702,7 @@ namespace clinic_ivf.objdb
                 ", ptt.patient_hn_1 ,CONCAT(IFNULL(fpp_1.patient_prefix_description,''),' ', ptt_1.patient_firstname_e ,' ',ptt_1.patient_lastname_e ) as name_1" +
                 ", ptt.patient_hn_2 ,CONCAT(IFNULL(fpp_2.patient_prefix_description,''),' ', ptt_2.patient_firstname_e ,' ',ptt_2.patient_lastname_e ) as name_2 " +
                 ", '' as dtr_name " +
-                ", ptt.agent, agt.AgentName, '' as status_fet, ifnull(ptt.f_sex_id,'') as f_sex_id " +
+                ", ptt.agent, agt.AgentName, '' as status_fet, ifnull(ptt.f_sex_id,'') as f_sex_id, ptt.patient_year, ptt.patient_hn_old " +
                 "From t_patient ptt  " +
                 "Left join f_patient_prefix fpp on fpp.f_patient_prefix_id = ptt.f_patient_prefix_id " +
                 "Left join t_patient ptt_1 on ptt.patient_hn_1 = ptt_1.patient_hn and ptt.patient_hn_1 <> '' and ptt.patient_hn_1 is not null " +
@@ -1139,7 +1139,9 @@ namespace clinic_ivf.objdb
             //{
             //    wherepassport = " or ( ptt." + pttO.passport + " like '%" + search.Trim() + "%' )";
             //}
-            String sql = "select '' as id,'' as VN, '' as VDate, '' as VStartTime, '' as VEndTime, '' as VName, '' as VSID, ptt." + ptt.pid + ",ptt." + ptt.patient_hn + " as pids,CONCAT(IFNULL(fpp.patient_prefix_description,''),' ', ptt." + ptt.patient_firstname_e + ",' ',ptt." + ptt.patient_lastname_e + ") as PName,ptt." + ptt.contact_namet + " as EmergencyPersonalContact ,ptt.patient_birthday as dob " +
+            String sql = "select '' as id,'' as VN, '' as VDate, '' as VStartTime, '' as VEndTime, '' as VName, '' as VSID, ptt." + ptt.pid + ",ptt." + ptt.patient_hn + " as pids" +
+                ",CONCAT(IFNULL(fpp.patient_prefix_description,''),' ', ptt." + ptt.patient_firstname_e + ",' ',ptt." + ptt.patient_lastname_e + ") as PName" +
+                ",ptt." + ptt.contact_namet + " as EmergencyPersonalContact ,ptt.patient_birthday as dob, ptt.patient_year,ptt.patient_hn " +
                 "From " + ptt.table + " ptt " +
                 //"Left join SurfixName fpp on fpp.SurfixID = ptt.SurfixID " +
                 "Left join f_patient_prefix fpp on fpp.f_patient_prefix_id = ptt.f_patient_prefix_id " +

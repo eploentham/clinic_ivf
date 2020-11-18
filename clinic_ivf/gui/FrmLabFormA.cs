@@ -205,9 +205,6 @@ namespace clinic_ivf.gui
             sB1.Text = "";
             setTheme();
         }
-
-        
-
         private void setTheme()
         {
             if(theme11 != null)

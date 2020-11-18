@@ -9,6 +9,11 @@ using System.Threading.Tasks;
 
 namespace clinic_ivf.objdb
 {
+    /*
+     * 
+     * 63-10-27     0020    เรื่อง		เลิก insert table Visit
+     * 63-10-23     0021    ให้เริ่ม HN ใหม่ แต่ให้ใช้ข้อมูลเก่า
+     */
     public class LabFormADB
     {
         public LabFormA lformA;
@@ -782,18 +787,19 @@ namespace clinic_ivf.objdb
             }
             return re;
         }
-        public DataTable selectReportByPk(String pttId)
+        public DataTable selectReportByPk(String formaid)
         {
             DataTable dt = new DataTable();
-            String sql = "select lformA.*,CONCAT(IFNULL(sfn.SurfixName,''),' ', ptt_f.PName ,' ',ptt_f.PSurname ) as name_female  " +
-                ",CONCAT(IFNULL(sfnm.SurfixName,''),' ', ptt_m.PName ,' ',ptt_m.PSurname ) as name_male, dtr.Name as doctor_name " +
+            //String sql = "select lformA.*,CONCAT(IFNULL(sfn.SurfixName,''),' ', ptt_f.PName ,' ',ptt_f.PSurname ) as name_female  " +     //-0020
+            //    ",CONCAT(IFNULL(sfnm.SurfixName,''),' ', ptt_m.PName ,' ',ptt_m.PSurname ) as name_male, dtr.Name as doctor_name " +      //-0020
+            String sql = "select lformA.*  " +
                 "From " + lformA.table + " lformA " +
-                "Left Join Patient as ptt_f on ptt_f.PIDS = lformA.hn_female " +
-                "Left Join SurfixName sfn on sfn.SurfixID = ptt_f.SurfixID " +
-                "Left Join Patient as ptt_m on ptt_m.PIDS = lformA.hn_male " +
-                "Left Join SurfixName sfnm on sfnm.SurfixID = ptt_m.SurfixID " +
+                //"Left Join Patient as ptt_f on ptt_f.PIDS = lformA.hn_female " +     //-0020
+                //"Left Join SurfixName sfn on sfn.SurfixID = ptt_f.SurfixID " +     //-0020
+                //"Left Join Patient as ptt_m on ptt_m.PIDS = lformA.hn_male " +     //-0020
+                //"Left Join SurfixName sfnm on sfnm.SurfixID = ptt_m.SurfixID " +     //-0020
                 "Left Join Doctor as dtr on dtr.ID = lformA.doctor_id " +
-                "Where lformA." + lformA.pkField + " ='" + pttId + "' ";
+                "Where lformA." + lformA.pkField + " ='" + formaid + "' ";
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
@@ -818,8 +824,9 @@ namespace clinic_ivf.objdb
             {
                 wherehnfemale = wherehnfemale.Replace("and", "");
             }
-            sql = "select lformA.*,CONCAT(IFNULL(sfn.SurfixName,''),' ', ptt_f.PName ,' ',ptt_f.PSurname ) as name_female  " +
-                ",CONCAT(IFNULL(sfnm.SurfixName,''),' ', ptt_m.PName ,' ',ptt_m.PSurname ) as name_male, dtr.Name as doctor_name " +
+            //sql = "select lformA.*,CONCAT(IFNULL(sfn.SurfixName,''),' ', ptt_f.PName ,' ',ptt_f.PSurname ) as name_female  " +        //-0020
+            sql = "select lformA.*  " +          //+0020
+                //",CONCAT(IFNULL(sfnm.SurfixName,''),' ', ptt_m.PName ,' ',ptt_m.PSurname ) as name_male, dtr.Name as doctor_name " +  //-0020
                 "From " + lformA.table + " lformA " +
                 "Left Join Patient as ptt_f on ptt_f.PIDS = lformA.hn_female " +
                 "Left Join SurfixName sfn on sfn.SurfixID = ptt_f.SurfixID " +

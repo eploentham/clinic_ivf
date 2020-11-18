@@ -396,7 +396,7 @@ namespace clinic_ivf.objdb
         {
             DataTable dt = new DataTable();
             String sql = "select pApm.*,  bsp.service_point_description,dtr.Name  as Doctor " +
-                ",CONCAT(IFNULL(fpp.patient_prefix_description,'') , ' ' , ptt.patient_firstname_e ,' ',ptt.patient_lastname_e) as PatientName, ptt.patient_hn as hn " +
+                ",CONCAT(IFNULL(fpp.patient_prefix_description,'') , ' ' , ptt.patient_firstname_e ,' ',ptt.patient_lastname_e) as PatientName, concat(ptt.patient_hn,'/',ptt.patient_year) as hn " +
                 ", service_point_description as appointment_servicepoint, service_point_description as appointment_clinic " +
                 "From " + pApm.table + " pApm " +
                 "Left Join b_service_point bsp on bsp.b_service_point_id = pApm.patient_appointment_servicepoint " +
@@ -501,7 +501,7 @@ namespace clinic_ivf.objdb
             dateEnd = !date2.Equals("") ? date2 : date1;
 
             String sql = "select pApm.*,  bsp.service_point_description,dtr.Name  as dtr_name,CONCAT(IFNULL(fpp.patient_prefix_description,'') , ' ' , ptt.patient_firstname_e ,' ',ptt.patient_lastname_e) as PatientName" +
-                ", ptt.patient_hn, agt.AgentName " +
+                ", ptt.patient_hn, agt.AgentName, CONCAT(ptt.patient_hn ,'/',ptt.patient_year ) as pids " +
                 "From " + pApm.table + " pApm " +
                 "Left Join b_service_point bsp on bsp.b_service_point_id = pApm.patient_appointment_servicepoint " +
                 "Left Join Doctor  dtr on pApm.patient_appointment_doctor = dtr.ID " +

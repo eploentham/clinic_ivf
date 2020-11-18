@@ -828,8 +828,8 @@ namespace clinic_ivf.gui
         private void setGrfFinish()
         {
             grfFinish.DataSource = null;
-            grfFinish.Clear();
-            grfFinish.Rows.Count = 0;
+            //grfFinish.Clear();
+            //grfFinish.Rows.Count = 0;
             DataTable dt = new DataTable();
             String datestart = "", dateend = "";
             datestart = ic.datetoDB(txtFiDateStart.Text);

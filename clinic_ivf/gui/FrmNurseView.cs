@@ -24,7 +24,7 @@ namespace clinic_ivf.gui
     /*
      * เรื่อง		เลิก insert table Visit      เลขที่    0020
      * 63-10-27     0020        เรื่อง		เลิก insert table Visit
-     * 
+     * 63-10-27     0021        ให้เริ่ม HN ใหม่ แต่ให้ใช้ข้อมูลเก่า
      */
     public partial class FrmNurseView : Form
     {
@@ -35,7 +35,7 @@ namespace clinic_ivf.gui
         Color bg, fc;
         Font ff, ffB;
 
-        int colID = 1, colPic=2, colVNshow = 3, colPttHn = 4, colPttName = 5, colPttHn1=6, colPttName1=7, colPttHn2=8, colPttName2=9, colVsAgent=10, colVsDate = 11, colVsTime = 12, colVsEtime = 13, colStatus = 14, colPttId=15, colVn=16, colDtr=17, colPID=18, colFormAId=19, colFormACode=20, colStatusOPU=21, colStatusFet=22, colStatusAna=23, colStatusFreezing=24, colStatusPesa=25, colStatusIUI=26;
+        int colID = 1, colPic=2, colVNshow = 3, colPttHn = 4, colPttName = 5, colPttHn1=6, colPttName1=7, colPttHn2=8, colPttName2=9, colVsAgent=10, colVsDate = 11, colVsTime = 12, colVsEtime = 13, colStatus = 14, colPttId=15, colVn=16, colDtr=17, colPID=18, colFormAId=19, colFormACode=20, colStatusOPU=21, colStatusFet=22, colStatusAna=23, colStatusFreezing=24, colStatusPesa=25, colStatusIUI=26, colHnOld=27;
         int colSID = 1, colSVN = 2, colSPttHn = 3, colSPttName = 4, colSVsDate = 5, colSVsTime = 6, colSVsEtime = 7, colSStatus = 8, colSPttId = 9;
         int colRID = 1, colRVN = 2, colRPttHn = 3, colRPttName = 4, colRVsDate = 5, colRPttId = 6;
         int colLID = 1, colLVNShow = 2, colLPttHnFemale = 3, colLPttNameFemale = 4, colLPttHnMale = 5, colLPttNameMale = 6, colLlabname = 7, colLStatus = 8, colLLGID=9;
@@ -501,7 +501,7 @@ namespace clinic_ivf.gui
 
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             grfFinish.Rows.Count = dt.Rows.Count + 1;
-            grfFinish.Cols.Count = 25;
+            grfFinish.Cols.Count = 28;
             //C1TextBox txt = new C1TextBox();
             //C1ComboBox cboproce = new C1ComboBox();
             //ic.ivfDB.itmDB.setCboItem(cboproce);
@@ -562,12 +562,13 @@ namespace clinic_ivf.gui
                 grfFinish[i, colPttHn] = row["PIDS"].ToString();
                 grfFinish[i, colPttName] = row["PName"].ToString();
                 grfFinish[i, colVsDate] = ic.datetoShow(row["VDate"]);
-                grfFinish[i, colVsTime] = row["VStartTime"].ToString();
-                grfFinish[i, colVsEtime] = row["VEndTime"].ToString();
+                grfFinish[i, colVsTime] = ic.timetoShow(row["VStartTime"].ToString());
+                grfFinish[i, colVsEtime] = ic.timetoShow(row["VEndTime"].ToString());
                 grfFinish[i, colStatus] = row["VName"].ToString();
                 grfFinish[i, colPttId] = row["PID"].ToString();
                 grfFinish[i, colVn] = row["VN"].ToString();
                 grfFinish[i, colPID] = row["PID"].ToString();
+                grfFinish[i, colHnOld] = row["patient_hn_old"].ToString();
                 if (!row[ic.ivfDB.vsDB.vs.form_a_id].ToString().Equals("0"))
                 {
                     CellNote note = new CellNote("ส่ง Lab Request Foam A");
@@ -590,7 +591,7 @@ namespace clinic_ivf.gui
             grfFinish.Cols[colVsTime].AllowEditing = false;
             grfFinish.Cols[colVsEtime].AllowEditing = false;
             grfFinish.Cols[colStatus].AllowEditing = false;
-            //grfFinish.Cols[colVsEtime].AllowEditing = false;
+            grfFinish.Cols[colHnOld].AllowEditing = false;
             //theme1.SetTheme(grfFinish, ic.theme);
 
         }
@@ -773,7 +774,7 @@ namespace clinic_ivf.gui
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             grfSearch.Rows.Count = 1;
             grfSearch.Rows.Count = dt.Rows.Count + 1;
-            grfSearch.Cols.Count = 27;
+            grfSearch.Cols.Count = 28;
             //C1TextBox txt = new C1TextBox();
             //C1ComboBox cboproce = new C1ComboBox();
             //ic.ivfDB.itmDB.setCboItem(cboproce);
@@ -880,13 +881,14 @@ namespace clinic_ivf.gui
                 grfSearch[i, 0] = i;
                 grfSearch[i, colID] = row["id"].ToString();
                 grfSearch[i, colVNshow] = ic.showVN(row["VN"].ToString());
-                grfSearch[i, colPttHn] = row["PIDS"].ToString();
+                grfSearch[i, colPttHn] = ic.showHN(row["PIDS"].ToString(), row["patient_year"].ToString());
                 grfSearch[i, colPttName] = row["PName"].ToString();
                 grfSearch[i, colVsDate] = ic.datetoShow(row["VDate"]);
                 //grfSearch[i, colVsTime] = row["VStartTime"].ToString();
                 grfSearch[i, colDtr] = row["dtr_name"].ToString();
                 
                 grfSearch[i, colPttId] = row["t_patient_id"].ToString();
+                grfSearch[i, colPID] = row["t_patient_id"].ToString();
                 grfSearch[i, colVn] = row["VN"].ToString();
                 grfSearch[i, colFormAId] = row["form_a_id"].ToString();
                 grfSearch[i, colFormACode] = row["form_a_code"].ToString();
@@ -915,6 +917,7 @@ namespace clinic_ivf.gui
                     rg1.UserData = note1;
                 }
                 grfSearch[i, colPic] = row["f_sex_id"].ToString().Equals("1") ? imgM : row["f_sex_id"].ToString().Equals("2") ? imgF : imgN;
+                grfSearch[i, colHnOld] = row["patient_hn_old"].ToString();
                 //if (i % 2 == 0)
                 //    grfPtt.Rows[i].StyleNew.BackColor = color;
                 i++;
@@ -945,6 +948,7 @@ namespace clinic_ivf.gui
             grfSearch.Cols[colStatusPesa].AllowEditing = false;
             grfSearch.Cols[colStatusIUI].AllowEditing = false;
             grfSearch.Cols[colVsAgent].AllowEditing = false;
+            grfSearch.Cols[colHnOld].AllowEditing = false;
             //theme1.SetTheme(grfQue, ic.theme);
 
         }
@@ -1630,7 +1634,7 @@ namespace clinic_ivf.gui
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             grfQue.Rows.Count = 1;
             grfQue.Rows.Count = dt.Rows.Count + 1;
-            grfQue.Cols.Count = 27;
+            grfQue.Cols.Count = 28;
             Column col = grfQue.Cols[colPic];
             col.DataType = typeof(Image);
             //C1TextBox txt = new C1TextBox();
@@ -1717,6 +1721,7 @@ namespace clinic_ivf.gui
                     grfQue[i, colPttName2] = row["name_2"].ToString();
                     grfQue[i, colPID] = row["PID"].ToString();
                     grfQue[i, colVsAgent] = row["AgentName"].ToString();
+                    grfQue[i, colHnOld] = row["patient_hn_old"].ToString();
                     if (!row[ic.ivfDB.vsDB.vs.form_a_id].ToString().Equals("0"))
                     {
                         CellNote note = new CellNote("ส่ง Lab Request Foam A");
@@ -1762,6 +1767,7 @@ namespace clinic_ivf.gui
             grfQue.Cols[colPttHn2].AllowEditing = false;
             grfQue.Cols[colPttName2].AllowEditing = false;
             grfQue.Cols[colVsAgent].AllowEditing = false;
+            grfQue.Cols[colHnOld].AllowEditing = false;
             //theme1.SetTheme(grfQue, ic.theme);
             timer.Enabled = true;
         }
@@ -1815,7 +1821,8 @@ namespace clinic_ivf.gui
                 name = grfFinish[grfFinish.Row, colPttName] != null ? grfFinish[grfFinish.Row, colPttName].ToString() : "";
                 hn = grfFinish[grfFinish.Row, colPttHn] != null ? grfFinish[grfFinish.Row, colPttHn].ToString() : "";
                 Patient ptt = new Patient();
-                ptt = ic.ivfDB.pttDB.selectByHn(hn);
+                //ptt = ic.ivfDB.pttDB.selectByHn(hn);      //-0021
+                ptt = ic.ivfDB.pttDB.selectByPk1(pttId);        //+0021
                 Patient ptt2 = new Patient();
                 ptt2 = ic.ivfDB.pttDB.selectByHn(ptt.patient_hn_2);
                 FrmReport frm = new FrmReport(ic);
@@ -1849,7 +1856,6 @@ namespace clinic_ivf.gui
                 ic.logw.WriteLog("e", "Print Authen Sign (Queue) err" + ex.Message);
                 MessageBox.Show(ex.Message, "");
             }
-            
         }
         private void ContextMenu_prn_authen_sign_grfSearch(object sender, System.EventArgs e)
         {
@@ -1886,7 +1892,8 @@ namespace clinic_ivf.gui
                 hn = grfQue[grfQue.Row, colPttHn] != null ? grfQue[grfQue.Row, colPttHn].ToString() : "";
                 name = grfQue[grfQue.Row, colPttName] != null ? grfQue[grfQue.Row, colPttName].ToString() : "";
                 Patient ptt = new Patient();
-                ptt = ic.ivfDB.pttDB.selectByHn(hn);
+                //ptt = ic.ivfDB.pttDB.selectByHn(hn);      //-0021
+                ptt = ic.ivfDB.pttDB.selectByPk1(pttId);        //+0021
                 Patient ptt2 = new Patient();
                 ptt2 = ic.ivfDB.pttDB.selectByHn(ptt.patient_hn_2);
                 FrmReport frm = new FrmReport(ic);
@@ -1912,7 +1919,8 @@ namespace clinic_ivf.gui
                 pttId = grfSearch[grfSearch.Row, colPttId] != null ? grfSearch[grfSearch.Row, colPttId].ToString() : "";
                 name = grfSearch[grfSearch.Row, colPttName] != null ? grfSearch[grfSearch.Row, colPttName].ToString() : "";
                 Patient ptt = new Patient();
-                ptt = ic.ivfDB.pttDB.selectByHn(hn);
+                //ptt = ic.ivfDB.pttDB.selectByHn(hn);      //-0021
+                ptt = ic.ivfDB.pttDB.selectByPk1(pttId);        //+0021
                 Patient ptt2 = new Patient();
                 ptt2 = ic.ivfDB.pttDB.selectByHn(ptt.patient_hn_2);
                 FrmReport frm = new FrmReport(ic);
@@ -1939,7 +1947,8 @@ namespace clinic_ivf.gui
                 name = grfSearch[grfSearch.Row, colPttName] != null ? grfSearch[grfSearch.Row, colPttName].ToString() : "";
                 hn = grfSearch[grfSearch.Row, colPttHn] != null ? grfSearch[grfSearch.Row, colPttHn].ToString() : "";
                 Patient ptt = new Patient();
-                ptt = ic.ivfDB.pttDB.selectByHn(hn);
+                //ptt = ic.ivfDB.pttDB.selectByHn(hn);      //-0021
+                ptt = ic.ivfDB.pttDB.selectByPk1(pttId);        //+0021
                 FrmReport frm = new FrmReport(ic);
                 frm.setOpdOrderOPU(name, hn, ptt.AgeStringShort() + " [" + ic.datetoShow(ptt.patient_birthday) + "]");
                 frm.ShowDialog(this);
@@ -1964,7 +1973,8 @@ namespace clinic_ivf.gui
                 name = grfFinish[grfFinish.Row, colPttName] != null ? grfFinish[grfFinish.Row, colPttName].ToString() : "";
                 hn = grfFinish[grfFinish.Row, colPttHn] != null ? grfFinish[grfFinish.Row, colPttHn].ToString() : "";
                 Patient ptt = new Patient();
-                ptt = ic.ivfDB.pttDB.selectByHn(hn);
+                //ptt = ic.ivfDB.pttDB.selectByHn(hn);      //-0021
+                ptt = ic.ivfDB.pttDB.selectByPk1(pttId);        //+0021
                 FrmReport frm = new FrmReport(ic);
                 frm.setOpdOrderOPU(name, hn, ptt.AgeStringShort() + " [" + ic.datetoShow(ptt.patient_birthday) + "]");
                 frm.ShowDialog(this);
@@ -1989,7 +1999,8 @@ namespace clinic_ivf.gui
                 name = grfQue[grfQue.Row, colPttName] != null ? grfQue[grfQue.Row, colPttName].ToString() : "";
                 hn = grfQue[grfQue.Row, colPttHn] != null ? grfQue[grfQue.Row, colPttHn].ToString() : "";
                 Patient ptt = new Patient();
-                ptt = ic.ivfDB.pttDB.selectByHn(hn);
+                //ptt = ic.ivfDB.pttDB.selectByHn(hn);      //-0021
+                ptt = ic.ivfDB.pttDB.selectByPk1(pttId);        //+0021
                 FrmReport frm = new FrmReport(ic);
                 frm.setOpdOrderOPU(name, hn, ptt.AgeStringShort() + " [" + ic.datetoShow(ptt.patient_birthday) + "]");
                 frm.ShowDialog(this);
@@ -2014,7 +2025,8 @@ namespace clinic_ivf.gui
                 name = grfSearch[grfSearch.Row, colPttName] != null ? grfSearch[grfSearch.Row, colPttName].ToString() : "";
                 hn = grfSearch[grfSearch.Row, colPttHn] != null ? grfSearch[grfSearch.Row, colPttHn].ToString() : "";
                 Patient ptt = new Patient();
-                ptt = ic.ivfDB.pttDB.selectByHn(hn);
+                //ptt = ic.ivfDB.pttDB.selectByHn(hn);      //-0021
+                ptt = ic.ivfDB.pttDB.selectByPk1(pttId);        //+0021
                 FrmReport frm = new FrmReport(ic);
                 frm.setOpdOrderETFET(name, hn, ptt.AgeStringShort() + " [" + ic.datetoShow(ptt.patient_birthday) + "]");
                 frm.ShowDialog(this);
@@ -2039,7 +2051,8 @@ namespace clinic_ivf.gui
                 name = grfFinish[grfFinish.Row, colPttName] != null ? grfFinish[grfFinish.Row, colPttName].ToString() : "";
                 hn = grfFinish[grfFinish.Row, colPttHn] != null ? grfFinish[grfFinish.Row, colPttHn].ToString() : "";
                 Patient ptt = new Patient();
-                ptt = ic.ivfDB.pttDB.selectByHn(hn);
+                //ptt = ic.ivfDB.pttDB.selectByHn(hn);      //-0021
+                ptt = ic.ivfDB.pttDB.selectByPk1(pttId);        //+0021
                 FrmReport frm = new FrmReport(ic);
                 frm.setOpdOrderETFET(name, hn, ptt.AgeStringShort() + " [" + ic.datetoShow(ptt.patient_birthday) + "]");
                 frm.ShowDialog(this);
@@ -2064,7 +2077,8 @@ namespace clinic_ivf.gui
                 name = grfQue[grfQue.Row, colPttName] != null ? grfQue[grfQue.Row, colPttName].ToString() : "";
                 hn = grfQue[grfQue.Row, colPttHn] != null ? grfQue[grfQue.Row, colPttHn].ToString() : "";
                 Patient ptt = new Patient();
-                ptt = ic.ivfDB.pttDB.selectByHn(hn);
+                //ptt = ic.ivfDB.pttDB.selectByHn(hn);      //-0021
+                ptt = ic.ivfDB.pttDB.selectByPk1(pttId);        //+0021
                 FrmReport frm = new FrmReport(ic);
                 frm.setOpdOrderETFET(name, hn, ptt.AgeStringShort() + " [" + ic.datetoShow(ptt.patient_birthday) + "]");
                 frm.ShowDialog(this);
@@ -2103,7 +2117,8 @@ namespace clinic_ivf.gui
                 name = grfSearch[grfSearch.Row, colPttName] != null ? grfSearch[grfSearch.Row, colPttName].ToString() : "";
                 hn = grfSearch[grfSearch.Row, colPttHn] != null ? grfSearch[grfSearch.Row, colPttHn].ToString() : "";
                 Patient ptt = new Patient();
-                ptt = ic.ivfDB.pttDB.selectByHn(hn);
+                //ptt = ic.ivfDB.pttDB.selectByHn(hn);      //-0021
+                ptt = ic.ivfDB.pttDB.selectByPk1(pttId);        //+0021
                 FrmReport frm = new FrmReport(ic);
                 frm.setOpdpostoperationnote(name, hn, ptt.AgeStringShort() + " [" + ic.datetoShow(ptt.patient_birthday) + "]");
                 frm.ShowDialog(this);
@@ -2128,7 +2143,8 @@ namespace clinic_ivf.gui
                 name = grfFinish[grfFinish.Row, colPttName] != null ? grfFinish[grfFinish.Row, colPttName].ToString() : "";
                 hn = grfFinish[grfFinish.Row, colPttHn] != null ? grfFinish[grfFinish.Row, colPttHn].ToString() : "";
                 Patient ptt = new Patient();
-                ptt = ic.ivfDB.pttDB.selectByHn(hn);
+                //ptt = ic.ivfDB.pttDB.selectByHn(hn);      //-0021
+                ptt = ic.ivfDB.pttDB.selectByPk1(pttId);        //+0021
                 FrmReport frm = new FrmReport(ic);
                 frm.setOpdpostoperationnote(name, hn, ptt.AgeStringShort() + " [" + ic.datetoShow(ptt.patient_birthday) + "]");
                 frm.ShowDialog(this);
@@ -2153,7 +2169,8 @@ namespace clinic_ivf.gui
                 name = grfQue[grfQue.Row, colPttName] != null ? grfQue[grfQue.Row, colPttName].ToString() : "";
                 hn = grfQue[grfQue.Row, colPttHn] != null ? grfQue[grfQue.Row, colPttHn].ToString() : "";
                 Patient ptt = new Patient();
-                ptt = ic.ivfDB.pttDB.selectByHn(hn);
+                //ptt = ic.ivfDB.pttDB.selectByHn(hn);      //-0021
+                ptt = ic.ivfDB.pttDB.selectByPk1(pttId);        //+0021
                 FrmReport frm = new FrmReport(ic);
                 frm.setOpdpostoperationnote(name, hn, ptt.AgeStringShort() + " [" + ic.datetoShow(ptt.patient_birthday) + "]");
                 frm.ShowDialog(this);

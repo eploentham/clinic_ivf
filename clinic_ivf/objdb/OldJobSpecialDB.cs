@@ -51,10 +51,12 @@ namespace clinic_ivf.objdb
                 ", lreq.req_code " +
                 "From " + oJS.table + " oJS " +
                 "Left Join JobSpecialDetail oJSd on oJS.Vn = oJSd.Vn " +
-                "Left Join Patient ptt on ptt.PID = oJS.PID " +
-                "Left Join SurfixName on SurfixName.SurfixID = ptt.SurfixID " +
-                "Left Join JobDoctor on JobDoctor.VN = oJS.VN "+
-                "Left join Doctor on JobDoctor.DName = Doctor.Name " +
+                //"Left Join Patient ptt on ptt.PID = oJS.PID " +                   //-0020
+                //"Left Join SurfixName on SurfixName.SurfixID = ptt.SurfixID " +   //-0020
+                "Left Join t_patient ptt on ptt.t_patient_id = oJS.PID " +                 //+0020
+                //"Left Join JobDoctor on JobDoctor.VN = oJS.VN " +             //-0020
+                //"Left join Doctor on JobDoctor.DName = Doctor.Name " +        //-0020
+                "Left join Doctor on JobDoctor.DName = Doctor.ID " +          //+0020
                 "Left Join lab_t_request lreq on lreq.req_id = oJSd.req_id " +
                 "Left Join Visit vsold on oJSd.VN = vsold.VN " +
                 "Left Join lab_t_form_a lforma on vsold.form_a_id = lforma.form_a_id " +

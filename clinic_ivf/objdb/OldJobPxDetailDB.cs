@@ -8,6 +8,10 @@ using System.Threading.Tasks;
 
 namespace clinic_ivf.objdb
 {
+    /*
+     * 63-10-27     0020    เรื่อง		เลิก insert table Visit
+     * 63-10-23     0021    ให้เริ่ม HN ใหม่ แต่ให้ใช้ข้อมูลเก่า
+     */
     public class OldJobPxDetailDB
     {
         public OldJobPxDetail oJpxd;
@@ -337,7 +341,8 @@ namespace clinic_ivf.objdb
                 "From " + oJpxd.table + " jobpxD " +
                 "left join JobPx on JobPx.VN = jobpxD.VN " +
                 //"left join Patient ptt on ptt.PIDS = JobPx.PIDS " +
-                "left join Patient ptt on ptt.t_patient_id = JobPx.PID " +
+                //"left join Patient ptt on ptt.t_patient_id = JobPx.PID " +        //-0020
+                "left join t_patient ptt on ptt.t_patient_id = JobPx.PID " +          //+0020
                 //"left join SurfixName on SurfixName.SurfixID = ptt.SurfixID " +
                 "left join StockDrug on StockDrug.DUID =  jobpxD.DUID " +
                 "Where JobPx.VN = '" + vn + "' " +
@@ -383,12 +388,14 @@ namespace clinic_ivf.objdb
             //{
             //    wherehn = " and jobpxD." + jobpxD.PIDS + " like '%" + vn + "%'";
             //}
-            String sql = "SELECT CONCAT(IFNULL(SurfixName.SurfixName,''),' ', ptt.PName,' ',ptt.PSurname) as patient_name, jobpxD.PIDS as hn, DATE_FORMAT(now(),''), jobpxD.TUsage as frequency " +
+            //String sql = "SELECT CONCAT(IFNULL(SurfixName.SurfixName,''),' ', ptt.PName,' ',ptt.PSurname) as patient_name, jobpxD.PIDS as hn, DATE_FORMAT(now(),''), jobpxD.TUsage as frequency " +   //-0020
+            String sql = "SELECT ptt.patient_name, jobpxD.PIDS as hn, DATE_FORMAT(now(),''), jobpxD.TUsage as frequency " +     //+0020
                 ", jobpxD.DUName as drug_name, jobpxD.QTY as qty, jobpxD.DUID, JobPx.Date,StockDrug.UnitType as unit_name " +
                 "From " + oJpxd.table + " jobpxD " +
                 "left join JobPx on JobPx.VN = jobpxD.VN " +
-                "left join Patient ptt on ptt.PIDS = JobPx.PIDS " +
-                "left join SurfixName on SurfixName.SurfixID = ptt.SurfixID " +
+                //"left join Patient ptt on ptt.PIDS = JobPx.PIDS " +       //-0020
+                "left join t_patient ptt on ptt.t_patient_id = JobPx.PID " +         //+0020
+                //"left join SurfixName on SurfixName.SurfixID = ptt.SurfixID " +
                 "left join StockDrug on StockDrug.DUID =  jobpxD.DUID " +
                 "Where jobpxD.ID in (" + pxdid + ") ";
             dt = conn.selectData(conn.conn, sql);
@@ -402,12 +409,13 @@ namespace clinic_ivf.objdb
             //{
             //    wherehn = " and jobpxD." + jobpxD.PIDS + " like '%" + vn + "%'";
             //}
-            String sql = "SELECT CONCAT(IFNULL(SurfixName.SurfixName,''),' ', ptt.PName,' ',ptt.PSurname) as patient_name, jobpxD.PIDS as hn, DATE_FORMAT(now(),''), jobpxD.EUsage as frequency " +
+            String sql = "SELECT ptt.patient_name, jobpxD.PIDS as hn, DATE_FORMAT(now(),''), jobpxD.EUsage as frequency " +
                 ", jobpxD.DUName as drug_name, jobpxD.QTY as qty, jobpxD.DUID, JobPx.Date,StockDrug.UnitType as unit_name " +
                 "From " + oJpxd.table + " jobpxD " +
                 "left join JobPx on JobPx.VN = jobpxD.VN " +
-                "left join Patient ptt on ptt.PIDS = JobPx.PIDS " +
-                "left join SurfixName on SurfixName.SurfixID = ptt.SurfixID " +
+                //"left join Patient ptt on ptt.PIDS = JobPx.PIDS " +           //-0020
+                "left join t_patient ptt on ptt.PID = JobPx.PID " +             //+0020
+                //"left join SurfixName on SurfixName.SurfixID = ptt.SurfixID " +       //-0020
                 "left join StockDrug on StockDrug.DUID =  jobpxD.DUID " +
                 "Where jobpxD.ID in (" + pxdid + ") ";
             dt = conn.selectData(conn.conn, sql);
@@ -425,8 +433,9 @@ namespace clinic_ivf.objdb
                 ", jobpxD.DUName as drug_name, jobpxD.QTY as qty, jobpxD.DUID, JobPx.Date,StockDrug.DUName as unitname " +
                 "From " + oJpxd.table + " jobpxD " +
                 "left join JobPx on JobPx.VN = jobpxD.VN " +
-                "left join Patient ptt on ptt.PIDS = JobPx.PIDS " +
-                "left join SurfixName on SurfixName.SurfixID = ptt.SurfixID " +
+                //"left join Patient ptt on ptt.PIDS = JobPx.PIDS " +                   //-0020
+                "left join t_patient ptt on ptt.PID = JobPx.PID " +
+                //"left join SurfixName on SurfixName.SurfixID = ptt.SurfixID " +       //-0020
                 "left join StockDrug on StockDrug.DUID =  jobpxD.DUID " +
                 "Where JobPx.VN = '" + vn + "' ";
             dt = conn.selectData(conn.conn, sql);

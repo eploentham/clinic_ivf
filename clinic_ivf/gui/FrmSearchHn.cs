@@ -16,13 +16,16 @@ using System.Windows.Forms;
 
 namespace clinic_ivf.gui
 {
+    /*
+     * 63-10-23     0021    ให้เริ่ม HN ใหม่ แต่ให้ใช้ข้อมูลเก่า
+     */
     public partial class FrmSearchHn : Form
     {
         IvfControl ic;
         Font fEdit, fEditB;
         Color bg, fc;
         Font ff, ffB;
-        int colCuHn = 2, colCuVn1 = 1, colCuName = 3, colCuDate=4, colCuTime=5, colDept=6, colDOb=7;
+        int colCuHnShow = 2, colCuVnShow = 1, colCuName = 3, colCuDate=4, colCuTime=5, colDept=6, colDOb=7, colCuPttYear=8, colCuPttHn=9, colCuVn=10;
 
         C1FlexGrid grfCu, grfHn, grfDay5, grfDay6;
         C1SuperTooltip stt;
@@ -70,6 +73,7 @@ namespace clinic_ivf.gui
             btnSearch.Click += BtnSearch_Click;
             txtHnMale.KeyUp += TxtHnMale_KeyUp;
             tC1.Click += TC1_Click;
+            txtHnMale.Focus();
         }
 
         private void TC1_Click(object sender, EventArgs e)
@@ -106,6 +110,8 @@ namespace clinic_ivf.gui
             ic.sVsOld.VN = txtVn.Text;
             ic.sVsOld.PIDS = txtHn.Text;
             ic.sVsOld.dob = txtDOB.Text;
+            ic.sVsOld.patient_year = txtPttYear.Text;
+            ic.sVsOld.patient_hn = txtPttHn.Text;
             Close();
             //return true;
         }
@@ -137,19 +143,23 @@ namespace clinic_ivf.gui
 
             if (statussearchtable == StatusSearchTable.VisitSearch)
             {
-                vn = grfHn[e.NewRange.r1, colCuVn1] != null ? grfHn[e.NewRange.r1, colCuVn1].ToString() : "";
+                vn = grfHn[e.NewRange.r1, colCuVn] != null ? grfHn[e.NewRange.r1, colCuVn].ToString() : "";
                 if (!vn.Equals(""))
                 {
                     ic.sVsOld = new VisitOld();
                     ic.sVsOld.PName = grfHn[grfHn.Row, colCuName] != null ? grfHn[grfHn.Row, colCuName].ToString() : "";
-                    ic.sVsOld.VN = grfHn[grfHn.Row, colCuVn1] != null ? grfHn[grfHn.Row, colCuVn1].ToString() : "";
-                    ic.sVsOld.PIDS = grfHn[grfHn.Row, colCuHn] != null ? grfHn[grfHn.Row, colCuHn].ToString() : "";
+                    ic.sVsOld.VN = grfHn[grfHn.Row, colCuVn] != null ? grfHn[grfHn.Row, colCuVn].ToString() : "";
+                    ic.sVsOld.PIDS = grfHn[grfHn.Row, colCuHnShow] != null ? grfHn[grfHn.Row, colCuHnShow].ToString() : "";
                     ic.sVsOld.dob = grfHn[grfHn.Row, colDOb] != null ? grfHn[grfHn.Row, colDOb].ToString() : "";
+                    ic.sVsOld.patient_year = grfHn[grfHn.Row, colCuPttYear] != null ? grfHn[grfHn.Row, colCuPttYear].ToString() : "";
+                    ic.sVsOld.patient_hn = grfHn[grfHn.Row, colCuPttHn] != null ? grfHn[grfHn.Row, colCuPttHn].ToString() : "";
 
                     txtHn.Value = ic.sVsOld.PIDS;
                     txtName.Value = ic.sVsOld.PName;
                     txtVn.Value = ic.sVsOld.VN;
                     txtDOB.Value = ic.sVsOld.dob;
+                    txtPttHn.Value = ic.sVsOld.patient_hn;
+                    txtPttYear.Value = ic.sVsOld.patient_year;
                 }
                 else
                 {
@@ -158,19 +168,23 @@ namespace clinic_ivf.gui
             }
             else if(statussearchtable == StatusSearchTable.PttSearch)
             {
-                hn = grfHn[e.NewRange.r1, colCuHn] != null ? grfHn[e.NewRange.r1, colCuHn].ToString() : "";
+                hn = grfHn[e.NewRange.r1, colCuHnShow] != null ? grfHn[e.NewRange.r1, colCuHnShow].ToString() : "";
                 if (!hn.Equals(""))
                 {
                     ic.sVsOld = new VisitOld();
                     ic.sVsOld.PName = grfHn[grfHn.Row, colCuName] != null ? grfHn[grfHn.Row, colCuName].ToString() : "";
                     ic.sVsOld.VN = "";
-                    ic.sVsOld.PIDS = grfHn[grfHn.Row, colCuHn] != null ? grfHn[grfHn.Row, colCuHn].ToString() : "";
+                    ic.sVsOld.PIDS = grfHn[grfHn.Row, colCuHnShow] != null ? grfHn[grfHn.Row, colCuHnShow].ToString() : "";
                     ic.sVsOld.dob = grfHn[grfHn.Row, colDOb] != null ? grfHn[grfHn.Row, colDOb].ToString() : "";
+                    ic.sVsOld.patient_year = grfHn[grfHn.Row, colCuPttYear] != null ? grfHn[grfHn.Row, colCuPttYear].ToString() : "";
+                    ic.sVsOld.patient_hn = grfHn[grfHn.Row, colCuPttHn] != null ? grfHn[grfHn.Row, colCuPttHn].ToString() : "";
 
                     txtHn.Value = ic.sVsOld.PIDS;
                     txtName.Value = ic.sVsOld.PName;
                     txtVn.Value = ic.sVsOld.VN;
                     txtDOB.Value = ic.sVsOld.dob;
+                    txtPttHn.Value = ic.sVsOld.patient_hn;
+                    txtPttYear.Value = ic.sVsOld.patient_year;
                 }
             }
             //grfAddr.DataSource = xC.iniDB.addrDB.selectByTableId1(vn);
@@ -198,28 +212,29 @@ namespace clinic_ivf.gui
             }
             else
             {
-                if (hn.Equals(""))
-                {
-                    dt = ic.ivfDB.ovsDB.selectCurrentVisit(ic.conn.conn);
-                }
-                else
-                {
-                    if(statusconn == StatusConnection.hostEx)
-                    {
-                        dt = ic.ivfDB.vsDB.selectByHNEx(hn);
-                    }
-                    else
-                    {
-                        if (statussearchtable == StatusSearchTable.VisitSearch)
-                        {
-                            dt = ic.ivfDB.vsDB.selectLikeByHN(hn);
-                        }
-                        else
-                        {
-                            dt = ic.ivfDB.pttDB.selectBySearch1(hn);
-                        }
-                    }
-                }
+                //if (hn.Equals(""))         //-0021
+                //{         //-0021
+                //    dt = ic.ivfDB.ovsDB.selectCurrentVisit(ic.conn.conn);         //-0021
+                //}         //-0021
+                //else         //-0021
+                //{         //-0021
+                //if(statusconn == StatusConnection.hostEx)         //-0021
+                //{         //-0021
+                //    dt = ic.ivfDB.vsDB.selectByHNEx(hn);         //-0021
+                //}         //-0021
+                //else         //-0021
+                //{         //-0021
+                //    if (statussearchtable == StatusSearchTable.VisitSearch)         //-0021
+                //    {         //-0021
+                //        dt = ic.ivfDB.vsDB.selectLikeByHN(hn);         //-0021
+                //    }         //-0021
+                //    else         //-0021
+                //    {         //-0021
+                //        dt = ic.ivfDB.pttDB.selectBySearch1(hn);         //-0021
+                //    }         //-0021
+                //}         //-0021
+                dt = ic.ivfDB.vsDB.selectLikeByHN(hn);
+                //}         //-0021
             }
             if (dt.Rows.Count <= 0)
             {
@@ -228,7 +243,7 @@ namespace clinic_ivf.gui
             //con.CloseConnectionEx();
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             grfHn.Rows.Count = 1;
-            grfHn.Cols.Count = 8;
+            grfHn.Cols.Count = 11;
             //C1TextBox txt = new C1TextBox();
             //C1ComboBox cboproce = new C1ComboBox();
             //ic.ivfDB.itmDB.setCboItem(cboproce);
@@ -236,8 +251,8 @@ namespace clinic_ivf.gui
             //grfHn.Cols[colCuVn1].Editor = txt;
             //grfHn.Cols[colCuName].Editor = txt;
 
-            grfHn.Cols[colCuHn].Width = 100;
-            grfHn.Cols[colCuVn1].Width = 100;
+            grfHn.Cols[colCuHnShow].Width = 100;
+            grfHn.Cols[colCuVnShow].Width = 100;
             grfHn.Cols[colCuName].Width = 280;
             grfHn.Cols[colCuDate].Width = 100;
             grfHn.Cols[colCuTime].Width = 80;
@@ -248,8 +263,8 @@ namespace clinic_ivf.gui
             //grdFlex.Cols[colID].Caption = "no";
             //grfDept.Cols[colCode].Caption = "รหัส";
 
-            grfHn.Cols[colCuHn].Caption = "HN";
-            grfHn.Cols[colCuVn1].Caption = "VN";
+            grfHn.Cols[colCuHnShow].Caption = "HN";
+            grfHn.Cols[colCuVnShow].Caption = "VN";
             grfHn.Cols[colCuName].Caption = "Name";
             grfHn.Cols[colCuDate].Caption = "Date";
             grfHn.Cols[colCuTime].Caption = "Time";
@@ -263,21 +278,28 @@ namespace clinic_ivf.gui
             {
                 Row row = grfHn.Rows.Add();
                 row[0] = i;
-                row[colCuVn1] = dt.Rows[i]["VN"].ToString();
-                row[colCuHn] = dt.Rows[i]["PIDS"].ToString();
+                row[colCuVnShow] = ic.showVN(dt.Rows[i]["VN"].ToString());
+                row[colCuHnShow] = ic.showHN(dt.Rows[i]["PIDS"].ToString(), dt.Rows[i]["patient_year"].ToString());
                 row[colCuName] = dt.Rows[i]["PName"].ToString();
                 row[colCuDate] = ic.datetoShow(dt.Rows[i]["VDate"].ToString());
-                row[colCuTime] = dt.Rows[i]["VStartTime"].ToString();
+                row[colCuTime] = ic.timetoShow(dt.Rows[i]["VStartTime"].ToString());
                 row[colDept] = dt.Rows[i]["VName"].ToString();
                 row[colDOb] = ic.datetoShow(dt.Rows[i]["dob"].ToString());
+                row[colCuPttYear] = dt.Rows[i]["patient_year"].ToString();
+                row[colCuPttHn] = dt.Rows[i]["patient_hn"].ToString();
+                row[colCuVn] = dt.Rows[i]["VN"].ToString();
             }
-            grfHn.Cols[colCuHn].AllowEditing = false;
-            grfHn.Cols[colCuVn1].AllowEditing = false;
+            grfHn.Cols[colCuHnShow].AllowEditing = false;
+            grfHn.Cols[colCuVnShow].AllowEditing = false;
             grfHn.Cols[colCuName].AllowEditing = false;
             grfHn.Cols[colCuDate].AllowEditing = false;
             grfHn.Cols[colCuTime].AllowEditing = false;
             grfHn.Cols[colDept].AllowEditing = false;
-            grfHn.Cols[colDOb].Visible = false;
+            grfHn.Cols[colDOb].AllowEditing = false;
+            //grfHn.Cols[colDOb].Visible = false;
+            grfHn.Cols[colCuPttYear].Visible = false;
+            grfHn.Cols[colCuPttHn].Visible = false;
+            grfHn.Cols[colCuVn].Visible = false;
         }
         private void initGrfCu()
         {
@@ -305,60 +327,64 @@ namespace clinic_ivf.gui
             if (e.NewRange.r1 < 0) return;
             if (e.NewRange.Data == null) return;
             String vn = "", hn="";
-            vn = grfCu[e.NewRange.r1, colCuVn1] != null ? grfCu[e.NewRange.r1, colCuVn1].ToString() : "";
-            hn = grfCu[e.NewRange.r1, colCuHn] != null ? grfCu[e.NewRange.r1, colCuHn].ToString() : "";
+            vn = grfCu[e.NewRange.r1, colCuVn] != null ? grfCu[e.NewRange.r1, colCuVn].ToString() : "";
+            hn = grfCu[e.NewRange.r1, colCuHnShow] != null ? grfCu[e.NewRange.r1, colCuHnShow].ToString() : "";
             if (!hn.Equals(""))
             {
                 ic.sVsOld = new VisitOld();
                 ic.sVsOld.PName = grfCu[grfCu.Row, colCuName]!= null ? grfCu[grfCu.Row, colCuName].ToString() : "";
-                ic.sVsOld.VN = grfCu[grfCu.Row, colCuVn1] != null ? grfCu[grfCu.Row, colCuVn1].ToString() : "";
-                ic.sVsOld.PIDS = grfCu[grfCu.Row, colCuHn] != null ? grfCu[grfCu.Row, colCuHn].ToString() : "";
+                ic.sVsOld.VN = grfCu[grfCu.Row, colCuVn] != null ? grfCu[grfCu.Row, colCuVn].ToString() : "";
+                ic.sVsOld.PIDS = grfCu[grfCu.Row, colCuHnShow] != null ? grfCu[grfCu.Row, colCuHnShow].ToString() : "";
                 ic.sVsOld.dob = grfCu[grfCu.Row, colDOb] != null ? grfCu[grfCu.Row, colDOb].ToString() : "";
+                ic.sVsOld.patient_year = grfCu[grfCu.Row, colCuPttYear] != null ? grfCu[grfCu.Row, colCuPttYear].ToString() : "";
+                ic.sVsOld.patient_hn = grfCu[grfCu.Row, colCuPttHn] != null ? grfCu[grfCu.Row, colCuPttHn].ToString() : "";
 
                 txtHn.Value = ic.sVsOld.PIDS;
                 txtName.Value = ic.sVsOld.PName;
                 txtVn.Value = ic.sVsOld.VN;
                 txtDOB.Value = ic.sVsOld.dob;
+                txtPttHn.Value = ic.sVsOld.patient_hn;
+                txtPttYear.Value = ic.sVsOld.patient_year;
             }
             //grfAddr.DataSource = xC.iniDB.addrDB.selectByTableId1(vn);
         }
         private void setGrfCu()
         {
             //grfDept.Rows.Count = 7;
-            grfCu.Clear();
+            //grfCu.Clear();
             DataTable dt = new DataTable();
             grfCu.DataSource = null;
             ConnectDB con = new ConnectDB(ic.iniC);
-            //con.OpenConnectionEx();
-            if (ic.iniC.statusAppDonor.Equals("1"))
-            {
-                dt = ic.ivfDB.ovsDB.selectCurrentVisit(con.connEx);
-            }
-            else
-            {
-                if (statusconn == StatusConnection.hostEx)
-                {
-                    dt = ic.ivfDB.vsDB.selectCurrentVisitEx();
-                }
-                else
-                {
-                    dt = ic.ivfDB.ovsDB.selectCurrentVisit(con.conn);
-                }
-            }
-                
+            con.OpenConnectionEx();
+            //if (ic.iniC.statusAppDonor.Equals("1"))       //-0020
+            //{       //-0020
+            //    dt = ic.ivfDB.ovsDB.selectCurrentVisit(con.connEx);       //-0020
+            //}       //-0020
+            //else       //-0020
+            //{       //-0020
+            //if (statusconn == StatusConnection.hostEx)       //-0020
+            //{       //-0020
+            dt = ic.ivfDB.vsDB.selectCurrentVisitEx();
+            //}       //-0020
+            //else       //-0020
+            //{       //-0020
+            //    dt = ic.ivfDB.ovsDB.selectCurrentVisit(con.conn);       //-0020
+            //}       //-0020
+            //}       //-0020
+
             //con.CloseConnectionEx();
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             grfCu.Rows.Count = 1;
-            grfCu.Cols.Count = 8;
-            C1TextBox txt = new C1TextBox();
-            C1ComboBox cboproce = new C1ComboBox();
+            grfCu.Cols.Count = 11;
+            //C1TextBox txt = new C1TextBox();
+            //C1ComboBox cboproce = new C1ComboBox();
             //ic.ivfDB.itmDB.setCboItem(cboproce);
-            grfCu.Cols[colCuHn].Editor = txt;
-            grfCu.Cols[colCuVn1].Editor = txt;
-            grfCu.Cols[colCuName].Editor = txt;
+            //grfCu.Cols[colCuHn].Editor = txt;
+            //grfCu.Cols[colCuVn1].Editor = txt;
+            //grfCu.Cols[colCuName].Editor = txt;
 
-            grfCu.Cols[colCuHn].Width = 100;
-            grfCu.Cols[colCuVn1].Width = 100;
+            grfCu.Cols[colCuHnShow].Width = 100;
+            grfCu.Cols[colCuVnShow].Width = 100;
             grfCu.Cols[colCuName].Width = 280;
             grfCu.Cols[colCuDate].Width = 100;
             grfCu.Cols[colCuTime].Width = 80;
@@ -369,8 +395,8 @@ namespace clinic_ivf.gui
             //grdFlex.Cols[colID].Caption = "no";
             //grfDept.Cols[colCode].Caption = "รหัส";
 
-            grfCu.Cols[colCuHn].Caption = "HN";
-            grfCu.Cols[colCuVn1].Caption = "VN";
+            grfCu.Cols[colCuHnShow].Caption = "HN";
+            grfCu.Cols[colCuVnShow].Caption = "VN";
             grfCu.Cols[colCuName].Caption = "Name";
             grfCu.Cols[colCuDate].Caption = "Date";
             grfCu.Cols[colCuTime].Caption = "Time";
@@ -384,27 +410,35 @@ namespace clinic_ivf.gui
             {
                 Row row = grfCu.Rows.Add();
                 row[0] = i;
-                row[colCuVn1] = dt.Rows[i]["VN"].ToString();
-                row[colCuHn] = dt.Rows[i]["PIDS"].ToString();
+                row[colCuVnShow] = ic.showVN(dt.Rows[i]["VN"].ToString());
+                row[colCuHnShow] = ic.showHN( dt.Rows[i]["PIDS"].ToString(), dt.Rows[i]["patient_year"].ToString());
                 row[colCuName] = dt.Rows[i]["PName"].ToString();
                 row[colCuDate] =  ic.datetoShow(dt.Rows[i]["VDate"].ToString());
                 row[colCuTime] = dt.Rows[i]["VStartTime"].ToString();
                 row[colDept] = dt.Rows[i]["VName"].ToString();
                 row[colDOb] = ic.datetoShow(dt.Rows[i]["dob"].ToString());
+                row[colCuPttYear] = dt.Rows[i]["patient_year"].ToString();
+                row[colCuPttHn] = dt.Rows[i]["patient_hn"].ToString();
+                row[colCuVn] = dt.Rows[i]["VN"].ToString();
             }
-            grfCu.Cols[colCuHn].AllowEditing = false;
-            grfCu.Cols[colCuVn1].AllowEditing = false;
+            grfCu.Cols[colCuHnShow].AllowEditing = false;
+            grfCu.Cols[colCuVnShow].AllowEditing = false;
             grfCu.Cols[colCuName].AllowEditing = false;
             grfCu.Cols[colCuDate].AllowEditing = false;
             grfCu.Cols[colCuTime].AllowEditing = false;
             grfCu.Cols[colDept].AllowEditing = false;
             grfCu.Cols[colDOb].Visible = false;
+            grfCu.Cols[colCuPttYear].Visible = false;
+            grfCu.Cols[colCuPttHn].Visible = false;
+            grfCu.Cols[colCuVn].Visible = false;
         }
         private void FrmSearchHn_Load(object sender, EventArgs e)
         {
-            if(statussearchtable == StatusSearchTable.VisitSearch)
+            tC1.SelectedTab = tabSearch;
+            if (statussearchtable == StatusSearchTable.VisitSearch)
             {
                 tC1.SelectedTab = tabSearch;
+                txtHnMale.Focus();
             }
         }
     }

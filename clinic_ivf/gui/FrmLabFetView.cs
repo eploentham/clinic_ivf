@@ -24,7 +24,7 @@ namespace clinic_ivf.gui
         Font fEdit, fEditB;
         Color bg, fc;
         Font ff, ffB;
-        int colRqId = 1, colOPUDate = 2, colOPUTime = 3, colRqHnMale = 4, colRqNameMale = 5, colRqHn = 6, colRqName = 7, colRqHnDonor = 8, colRqNameDonor = 9, colDtrName = 10, colRqRemark = 11, colRqReqNum = 12, colRqDate = 13, colRqVn = 14, colRqLabName = 15, colOpuId = 16, colOPUTimeModi = 17;
+        int colRqId = 1, colOPUDate = 2, colOPUTime = 3, colRqHnMale = 4, colRqNameMale = 5, colRqHn = 6, colRqName = 7, colRqHnDonor = 8, colRqNameDonor = 9, colDtrName = 10, colRqRemark = 11, colRqReqNum = 12, colRqDate = 13, colRqVn = 14, colRqLabName = 15, colOpuId = 16, colOPUTimeModi = 17, colPttHnOld=18;
         //int colPcId = 1, colPcOpuNum = 2, colPcHn = 3, colPcPttName = 4, colPcDate = 5, colPcRemark = 6;
         int colPcId = 1, colPcDate = 2, colPcHnMale = 3, colPcNameMale = 4, colPcHn = 5, colPcPttName = 6, colProceName = 7, colPcRemark = 8, colPcOpuNum = 9;
         int colFiId = 1, colFiDate = 2, colFiHnMale = 3, colFiNameMale = 4, colFiHn = 5, colFiPttName = 6, colFiProceName = 7, colFiRemark = 8, colFiOpuNum = 9;
@@ -276,7 +276,7 @@ namespace clinic_ivf.gui
         private void setGrfReq()
         {
             grfReq.DataSource = null;
-            grfReq.Clear();
+            //grfReq.Clear();
             DataTable dt = new DataTable();
             DateTime datestart, dateend;
             String datestart1 = "", dateend1 = "";
@@ -367,6 +367,7 @@ namespace clinic_ivf.gui
                 row1[colRqNameMale] = row["name_male"].ToString();
                 row1[colRqHnDonor] = row["hn_donor"].ToString();
                 row1[colRqNameDonor] = row["name_donor"].ToString();
+                row1[colPttHnOld] = row["patient_hn_old"].ToString();
                 if (row["SName"].ToString().Trim().Equals("FET"))
                 {
                     row1[colRqRemark] = row["opu_remark"].ToString() + " " + row["form_a_remark"].ToString();
@@ -463,7 +464,7 @@ namespace clinic_ivf.gui
             grfSearch.Font = fEdit;
             grfSearch.Dock = System.Windows.Forms.DockStyle.Fill;
             grfSearch.Location = new System.Drawing.Point(0, 0);
-
+            grfSearch.Rows.Count = 1;
             //FilterRow fr = new FilterRow(grfExpn);
 
             //grfProc.AfterRowColChange += GrfProc_AfterRowColChange;
@@ -630,7 +631,7 @@ namespace clinic_ivf.gui
         private void setGrfProc()
         {
             grfProc.DataSource = null;
-            grfProc.Clear();
+            //grfProc.Clear();
             DataTable dt = new DataTable();
 
             dt = ic.ivfDB.fetDB.selectByStatusProcess1();
@@ -839,14 +840,14 @@ namespace clinic_ivf.gui
             dateend = ic.datetoDB(txtFiDateEnd.Text);
             dt = ic.ivfDB.fetDB.selectByStatusFinish(datestart, dateend);
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
-            if (dt.Rows.Count <= 1)
-            {
-                grfFinish.Rows.Count = dt.Rows.Count + 1;
-            }
-            else
-            {
+            //if (dt.Rows.Count <= 1)
+            //{
+            //    grfFinish.Rows.Count = dt.Rows.Count + 1;
+            //}
+            //else
+            //{
                 grfFinish.Rows.Count = dt.Rows.Count + 2;
-            }
+            //}
             grfFinish.Cols.Count = 10;
             //C1TextBox txt = new C1TextBox();
             ////C1ComboBox cboproce = new C1ComboBox();
@@ -890,7 +891,7 @@ namespace clinic_ivf.gui
                 grfFinish.Cols[col + 1].Caption = dt.Columns[col].ColumnName;
                 grfFinish.Cols[col + 1].Name = dt.Columns[col].ColumnName;
             }
-            int i = 1;
+            int i =1;
             foreach (DataRow row in dt.Rows)
             {
                 i++;

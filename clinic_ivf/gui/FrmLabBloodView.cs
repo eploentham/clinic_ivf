@@ -128,7 +128,7 @@ namespace clinic_ivf.gui
         private void setGrfFinish()
         {
             grfFinish.DataSource = null;
-            grfFinish.Clear();
+            //grfFinish.Clear();
             DataTable dt = new DataTable();
             String date1 = "", date2 = "";
             date1 = ic.datetoDB(txtFiDateStart.Text);
@@ -157,7 +157,7 @@ namespace clinic_ivf.gui
             grfFinish.Cols[colRsRemark].Width = 200;
             grfFinish.Cols[colRsHn].Width = 100;
             grfFinish.Cols[colRsPttName].Width = 200;
-            grfFinish.Cols[colRsReqDate].Width = 150;
+            grfFinish.Cols[colRsReqDate].Width = 160;
             grfFinish.ShowCursor = true;
             //grdFlex.Cols[colID].Caption = "no";
             //grfDept.Cols[colCode].Caption = "รหัส";
@@ -193,7 +193,7 @@ namespace clinic_ivf.gui
                 row1[colRsRemark] = row[ic.ivfDB.lbresDB.lbRes.remark].ToString();
                 row1[colRsLabId] = row[ic.ivfDB.lbresDB.lbRes.lab_id].ToString();
                 row1[colRsReqId] = row[ic.ivfDB.lbresDB.lbRes.req_id].ToString();
-                row1[colRsHn] = row["patient_hn"].ToString();
+                row1[colRsHn] = ic.showHN(row["patient_hn"].ToString(), row["patient_year"].ToString());
                 row1[colRsPttName] = row["pname"].ToString();
                 row1[colRsReqDate] = ic.datetimetoShow(row[ic.ivfDB.lbresDB.lbRes.req_date_time].ToString());
                 //row1[colOPUTimeModi] = row[ic.ivfDB.lFormaDB.lformA.opu_time_modi].ToString();
@@ -501,7 +501,6 @@ namespace clinic_ivf.gui
             frm1.ShowDialog(this);
             if (!ic.cStf.staff_id.Equals(""))
             {
-                
                 DataTable dtVs = new DataTable();
                 dtVs = ic.ivfDB.lbReqDB.selectLabBloodByVsid(vsid);
                 foreach(DataRow rowVs in dtVs.Rows)

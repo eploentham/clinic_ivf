@@ -338,10 +338,10 @@ namespace clinic_ivf.gui
                     //dt = ic.ivfDB.ovsDB.selectByDate(date);
                 }
                 if (chkAll.Checked)
-                    dt = ic.ivfDB.ovsDB.selectByReceptionSend();      //      -0020   
+                    //dt = ic.ivfDB.ovsDB.selectByReceptionSend();      //      -0020   
                                                                       //dt = ic.ivfDB.vsDB.selectByReceptionSend();        //      +0020                else
                     //dt = ic.ivfDB.ovsDB.selectByStatusCashierFinish(cboVisitBsp.SelectedItem == null ? "" : ((ComboBoxItem)cboVisitBsp.SelectedItem).Value);      //      -0020
-                    dt = ic.ivfDB.vsDB.selectByStatusCashierFinish(cboVisitBsp.SelectedItem == null ? "" : ((ComboBoxItem)cboVisitBsp.SelectedItem).Value);        //      +0020
+                    dt = ic.ivfDB.vsDB.selectByStatusCashierFinish();        //      +0020
             }
             else
             {
@@ -434,23 +434,24 @@ namespace clinic_ivf.gui
         private void setGrfFinish(String search)
         {
             //grfDept.Rows.Count = 7;
-            grfFinish.Clear();
+            //grfFinish.Clear();
             DataTable dt = new DataTable();
-            if (search.Equals(""))
-            {
-                //String date = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd");
-                dt = ic.ivfDB.ovsDB.selectByStatusNurseFinish(ic.datetoDB(txtDateStart.Text));
-            }
-            else
-            {
-                //grfPtt.DataSource = ic.ivfDB.vsOldDB.selectCurrentVisit(search);
-                if (txtDateStart.Text.Equals(""))
-                {
-                    dt = ic.ivfDB.ovsDB.selectByStatusNurseFinishLike(search);
-                }
-            }
+            //if (search.Equals(""))        //-0020
+            //{        //-0020
+            String date = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd");
+                //dt = ic.ivfDB.ovsDB.selectByStatusNurseFinish(ic.datetoDB(txtDateStart.Text));        //-0020
+            dt = ic.ivfDB.vsDB.selectByStatusPhamacyFinish(date);           //+0020
+            //}        //-0020
+            //else        //-0020
+            //{        //-0020
+            //    //grfPtt.DataSource = ic.ivfDB.vsOldDB.selectCurrentVisit(search);
+            //    if (txtDateStart.Text.Equals(""))        //-0020
+            //    {        //-0020
+            //        dt = ic.ivfDB.ovsDB.selectByStatusNurseFinishLike(search);        //-0020
+            //    }        //-0020
+            //}        //-0020
 
-            //grfExpn.Rows.Count = dt.Rows.Count + 1;
+            grfFinish.Rows.Count = 1;
             grfFinish.Rows.Count = dt.Rows.Count + 1;
             grfFinish.Cols.Count = 14;
             C1TextBox txt = new C1TextBox();

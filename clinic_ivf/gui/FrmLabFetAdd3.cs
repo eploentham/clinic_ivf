@@ -2811,7 +2811,7 @@ namespace clinic_ivf.gui
         }
         private void setGrfDay2Img()
         {
-            grfDay2Img.Clear();
+            //grfDay2Img.Clear();
             grfDay2Img.DataSource = null;
             grfDay2Img.Rows.Count = 1;
             grfDay2Img.Cols.Count = 8;

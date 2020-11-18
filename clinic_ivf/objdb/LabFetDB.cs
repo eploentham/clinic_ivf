@@ -197,6 +197,7 @@ namespace clinic_ivf.objdb
                 "From " + fet.table + " fet " +
                 "Left Join Doctor on Doctor.ID = fet.doctor_id " +
                 "Left Join lab_b_procedure on fet.proce_id = lab_b_procedure.proce_id " +
+                //"Left Join t_patient ptt on fet. "+
                 "Where fet." + fet.status_fet + " ='1' and fet." + fet.active + "='1' " +
                 //"Order By opu." + opu.opu_id + " " +
                 //"Union " +

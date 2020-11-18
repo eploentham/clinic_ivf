@@ -557,12 +557,14 @@ namespace clinic_ivf.gui
                         {
                             
                             //lbReq = ic.ivfDB.setLabRequest("", txtVnOld.Text, dtrid, remark, "", ic.datetoDB(txtDob.Text), oldjobd.ID, oldjobd.LID, txtHn.Text, txtPttNameE.Text, "", "", "", txtVsId.Text);
-                            lbReq = ic.ivfDB.setLabRequest("", txtVnOld.Text, dtrid, remark, "", ptt1.patient_birthday, oldjobd.ID, oldjobd.LID, txtHn.Text, txtPttNameE.Text, "", "", "", txtVsId.Text);
+                            //lbReq = ic.ivfDB.setLabRequest("", txtVnOld.Text, dtrid, remark, "", ptt1.patient_birthday, oldjobd.ID, oldjobd.LID, txtHn.Text, txtPttNameE.Text, "", "", "", txtVsId.Text);     //-0020
+                            lbReq = ic.ivfDB.setLabRequest("", txtVnOld.Text, dtrid, remark, "", ptt1.patient_birthday, oldjobd.ID, oldjobd.LID, ptt.patient_hn, txtPttNameE.Text, "", "", "", txtVsId.Text);       //+0020
                         }
                         else if (ptt.f_sex_id.Equals("2"))
                         {
                             //lbReq = ic.ivfDB.setLabRequest(txtPttNameE.Text, txtVnOld.Text, dtrid, remark, txtHn.Text, ic.datetoDB(txtDob.Text), oldjobd.ID, oldjobd.LID, "", "", "", "", "", txtVsId.Text);
-                            lbReq = ic.ivfDB.setLabRequest(txtPttNameE.Text, txtVnOld.Text, dtrid, remark, txtHn.Text, ptt1.patient_birthday, oldjobd.ID, oldjobd.LID, "", "", "", "", "", txtVsId.Text);
+                            //lbReq = ic.ivfDB.setLabRequest(txtPttNameE.Text, txtVnOld.Text, dtrid, remark, txtHn.Text, ptt1.patient_birthday, oldjobd.ID, oldjobd.LID, "", "", "", "", "", txtVsId.Text);     //-0020
+                            lbReq = ic.ivfDB.setLabRequest(txtPttNameE.Text, txtVnOld.Text, dtrid, remark, ptt.patient_hn, ptt1.patient_birthday, oldjobd.ID, oldjobd.LID, "", "", "", "", "", txtVsId.Text);       //+0020
                         }
                         long chk = 0;
                         String re = ic.ivfDB.lbReqDB.insertLabRequest(lbReq, ic.userId);
@@ -716,14 +718,11 @@ namespace clinic_ivf.gui
 
             frm.ShowDialog(this);
         }
-
         private void CboLabVs_SelectedIndexChanged(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
             setGrfLab();
         }
-                
-        
         private void RbPgPrint_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
@@ -1941,13 +1940,13 @@ namespace clinic_ivf.gui
             {
                 RichTextBoxStreamType fileType = RichTextBoxStreamType.RichText;
                 MemoryStream stream = new MemoryStream();
-                String filePathName = "progressnote" + "_" + txtVnProgressNote.Text + ".rtf";
+                String filePathName = "progressnote" + "_" + txtVn.Text + ".rtf";
                 if (File.Exists(filePathName))
                 {
                     File.Delete(filePathName);
                     System.Threading.Thread.Sleep(200);
                 }
-                String aaa = ic.iniC.folderFTP + "/" + txtIdOld.Text+"/" + filePathName;
+                String aaa = ic.iniC.folderFTP + "/" + txtVn.Text.Trim()+"/" + filePathName;
                 //setPic(new Bitmap(ic.ftpC.download(filenamepic)));
                 stream = ic.ftpC.download(aaa);
                 //File file1 = new File();
@@ -2368,7 +2367,7 @@ namespace clinic_ivf.gui
             DataTable dt = new DataTable();
             DataTable dtOld = new DataTable();
             dt = ic.ivfDB.pApmDB.selectAppointmentByPk(txtApmID.Text);
-            dtOld = ic.ivfDB.pApmOldDB.selectAppointmentByPk(txtApmID.Text);
+            //dtOld = ic.ivfDB.pApmOldDB.selectAppointmentByPk(txtApmID.Text);          //-0021
 
             String date1 = "";
             date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.pApmDB.pApm.patient_appointment_date].ToString());
@@ -8073,7 +8072,7 @@ namespace clinic_ivf.gui
         
         private void setGrfPg()
         {
-            grfPg.Clear();
+            //grfPg.Clear();
             grfPg.DataSource = null;
             grfPg.Rows.Count = 1;
             grfPg.Cols.Count = 3;
@@ -8156,9 +8155,18 @@ namespace clinic_ivf.gui
                     ftpRequest = null;
                     foreach (String aaa in filestxt)
                     {
-                        Row row = grfPg.Rows.Add();
-                        row[colPgId] = aaa;
-                        row[colPgFilename] = aaa.Replace(txtVn.Text, "").Replace("/", "");
+                        if (grfPg.InvokeRequired)
+                        {
+                            grfPg.Invoke(new EventHandler(delegate
+                            {
+                                Row row = grfPg.Rows.Add();
+                                row[colPgId] = aaa;
+                                //row[colPgFilename] = aaa.Replace(txtVn.Text, "").Replace("/", "");
+                                row[colPgFilename] = aaa;
+                            }));
+                        }
+                        //Row row = grfPg.Rows.Add();
+                        
                     }
                 }
                 catch (Exception ex)

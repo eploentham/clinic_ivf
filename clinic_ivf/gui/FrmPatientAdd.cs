@@ -56,7 +56,7 @@ namespace clinic_ivf.gui
         Image imgCorr, imgTran, imgFinish;
 
         //C1FlexGrid grfDay2, grfDay3, grfDay5, grfDay6;
-        C1SuperTooltip stt;
+        C1SuperTooltip stt, sttHnOld;
         C1SuperErrorProvider sep;
 
         FilterInfoCollection webcanDevice;
@@ -134,6 +134,7 @@ namespace clinic_ivf.gui
             ff1 = new FtpClient(ic.iniC.hostFTP, ic.iniC.userFTP, ic.iniC.passFTP,ic.ftpUsePassive, ic.iniC.pathChar);
 
             stt = new C1SuperTooltip();
+            sttHnOld = new C1SuperTooltip();
             sep = new C1SuperErrorProvider();
             ptt = new Patient();
             image1 = null;
@@ -2629,10 +2630,11 @@ namespace clinic_ivf.gui
             else
             {
                 //setGrfVs(txtHn.Text.Replace(ic.hnspareyear, "").Replace(ptt.patient_year, ""));//-0020
-                if (ptt.patient_hn.Length > 0)
-                {
-                    setGrfVs(ptt.patient_hn.Replace(ic.hnspareyear, "").Replace(ptt.patient_year, ""));     //+0020
-                }
+                //if (ptt.patient_hn.Length > 0)//-0020
+                //{//-0020
+                //    setGrfVs(ptt.patient_hn.Replace(ic.hnspareyear, "").Replace(ptt.patient_year, ""));     //+0020
+                //}//-0020
+                setGrfVs(ptt.t_patient_id);         //+0020
             }
         }
         private void setGrfVsDonor(String search)
@@ -2742,8 +2744,8 @@ namespace clinic_ivf.gui
             //grfVs.Clear();
             grfVs.Rows.Count = 1;
             grfVs.Cols.Count = 12;
-            DataTable dt = ic.ivfDB.vsDB.selectByHN(search);
-
+            //DataTable dt = ic.ivfDB.vsDB.selectByHN(search);      //-0020
+            DataTable dt = ic.ivfDB.vsDB.selectByPttId2(search);        //+0020
             grfVs.Rows.Count = dt.Rows.Count + 1;
             //grfCu.Rows.Count = 41;
             //grfCu.Cols.Count = 4;
@@ -3208,16 +3210,18 @@ namespace clinic_ivf.gui
 
             PatientOld pttO = new PatientOld();
             VisitOld vsOld = new VisitOld();
-            if (pttid.Equals(""))
+            if (pttid.Equals("") && vsoldId.Length>0)
             {
                 vsOld = ic.ivfDB.ovsDB.selectByPk1(vsoldId);
                 pttid = vsOld.PID;
             }
 
             //PatientOld pttO = new PatientOld();
-            pttO = ic.ivfDB.pttOldDB.selectByPk1(ptt.t_patient_id_old);     //      + 0004
+            if (ptt.t_patient_id_old.Length > 0)
+            {
+                pttO = ic.ivfDB.pttOldDB.selectByPk1(ptt.t_patient_id_old);     //      + 0004
+            }
             txtIdOld.Value = pttO.PID;      //      + 0004
-
 
             //pttO = ic.ivfDB.pttOldDB.selectByPk1(pttid);      //      - 0004
             if (pttO.PID.Equals(""))
@@ -3310,6 +3314,13 @@ namespace clinic_ivf.gui
             txtVisitHn_2.Value = ptt.patient_hn_2;
             txtVisitLMP.Value = ptt.lmp;
             txtAge.Value = ptt.AgeStringShort1();
+
+            if (ptt.patient_hn_old.Length > 0)
+            {
+                //stt.Show("<p>" + ptt.patient_hn_old + "</p>", txtHn);
+                CellNote note = new CellNote(ptt.patient_hn_old);
+                //txtHn.us
+            }
         }
         private void setControl()
         {
@@ -3442,15 +3453,19 @@ namespace clinic_ivf.gui
                 }
                 
             }
-            if (txtHn.Text.Trim().Length<=1)        //  +0021
+            if (txtHn.Text.Trim().Length <= 1)        //  +0021
             {
                 //txtHn.Value = ic.ivfDB.copDB.genHNDoc();        //  +0021
                 //ptt.patient_hn = txtHn.Text.Trim();     //  +0021
                 String year = year = String.Concat(DateTime.Now.Year + 543);
                 ptt.patient_year = year.Substring(year.Length - 2, 2);
                 ptt.patient_hn = ic.ivfDB.copDB.genHNDoc1();     //  +0021
-                txtHn.Value = ptt.patient_hn+"/"+ptt.patient_year;
+                txtHn.Value = ptt.patient_hn+ic.hnspareyear+ptt.patient_year;
             }       //  +0021
+            else
+            {
+                ptt.patient_hn = txtHn.Text.Trim().Replace(ic.hnspareyear, "").Replace(ptt.patient_year, "");
+            }
             ptt.patient_firstname = txtPttName.Text.Trim();
             ptt.patient_lastname = txtPttLName.Text.Trim();
             ptt.remark = txtRemark.Text.Trim();
@@ -3532,6 +3547,7 @@ namespace clinic_ivf.gui
             ptt.patient_hn_2 = txtHn_2.Text;
             ptt.lmp = ic.datetoDB(txtLmp.Text);
             ptt.patient_name = cboPrefix.Text + " " + txtPttNameE.Text + " " + txtPttLNameE.Text;
+            ptt.t_patient_id_old = "-1";        //
             //ptt.diagnosis_doc = txtDiagDoc.Text;
             //String[] name = txtEmerContact.Text.Split(' ');
             //if (name.Length > 0)

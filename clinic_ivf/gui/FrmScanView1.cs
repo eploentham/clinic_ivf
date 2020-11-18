@@ -21,6 +21,9 @@ using System.Runtime.InteropServices;
 
 namespace clinic_ivf.gui
 {
+    /*
+     * 63-10-23     0021    ให้เริ่ม HN ใหม่ แต่ให้ใช้ข้อมูลเก่า
+     */
     public partial class FrmScanView1 : Form
     {
         IvfControl ic;
@@ -432,17 +435,17 @@ namespace clinic_ivf.gui
             //throw new NotImplementedException();
             if(e.KeyCode == Keys.Enter)
             {
-                if (ic.cop.comp_name_e.IndexOf("World Wide IVF") >= 0 || ic.cop.comp_name_e.IndexOf("IVF Worldwide Co., Ltd.") >= 0)
-                {
-                    PatientOld ptto = new PatientOld();
-                    ptto = ic.ivfDB.pttOldDB.selectByHnLike1(txtHn.Text.Trim());
-                    ptt.Name = ptto.FullName;
-                    ptt.patient_hn = ptto.PIDS;
-                }
-                else
-                {
-                    ptt = ic.ivfDB.pttDB.selectByHnLike1(txtHn.Text.Trim());
-                }
+                //if (ic.cop.comp_name_e.IndexOf("World Wide IVF") >= 0 || ic.cop.comp_name_e.IndexOf("IVF Worldwide Co., Ltd.") >= 0)         //-0021
+                //{         //-0021
+                //    PatientOld ptto = new PatientOld();         //-0021
+                //    ptto = ic.ivfDB.pttOldDB.selectByHnLike1(txtHn.Text.Trim());         //-0021
+                //    ptt.Name = ptto.FullName;         //-0021
+                //    ptt.patient_hn = ptto.PIDS;         //-0021
+                //}         //-0021
+                //else         //-0021
+                //{         //-0021
+                ptt = ic.ivfDB.pttDB.selectByHnLike1(txtHn.Text.Trim());        //+0021
+                //}         //-0021
                 txtName.Value = ptt.Name;
                 txtHn.Value = ptt.patient_hn;
                 setGrfVs();
@@ -469,6 +472,9 @@ namespace clinic_ivf.gui
             frm.ShowDialog(this);
             txtHn.Value = ic.sVsOld.PIDS;
             txtName.Value = ic.sVsOld.PName;
+            txtPttYear.Value = ic.sVsOld.patient_year;
+            //ptt = ic.ivfDB.pttDB.selectByHn(txtHn.Text.Trim());       //-0021
+            ptt = ic.ivfDB.pttDB.selectByHn(ic.sVsOld.patient_hn);       //+0021
             setGrfVs();
         }
 
@@ -1042,14 +1048,15 @@ namespace clinic_ivf.gui
 
             DataTable dt = new DataTable();
             //MessageBox.Show("hn "+hn, "");
-            if (ic.cop.comp_name_e.IndexOf("World Wide IVF") >= 0 || ic.cop.comp_name_e.IndexOf("IVF Worldwide Co., Ltd.") >= 0)
-            {
-                dt = ic.ivfDB.ovsDB.selectByHN(txtHn.Text);
-            }
-            else
-            {
-                dt = ic.ivfDB.vsDB.selectByHN(txtHn.Text);
-            }
+            //if (ic.cop.comp_name_e.IndexOf("World Wide IVF") >= 0 || ic.cop.comp_name_e.IndexOf("IVF Worldwide Co., Ltd.") >= 0)         //-0021
+            //{         //-0021
+            //    dt = ic.ivfDB.ovsDB.selectByHN(txtHn.Text);         //-0021
+            //}         //-0021
+            //else         //-0021
+            //{         //-0021
+            //dt = ic.ivfDB.vsDB.selectByHN(txtHn.Text);      //+0021
+            dt = ic.ivfDB.vsDB.selectByHN(ptt.patient_hn);      //+0021
+            //}         //-0021
             int i = 1, j = 1, row = grfVs.Rows.Count;
             //txtVN.Value = dt.Rows.Count;
             //txtName.Value = "";

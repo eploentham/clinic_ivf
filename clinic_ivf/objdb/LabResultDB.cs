@@ -277,7 +277,7 @@ namespace clinic_ivf.objdb
         public DataTable selectLabBloodByFinish(String datestart, String dateend)
         {
             DataTable dt = new DataTable();
-            String sql = "select lbRes.*, LabItem.LName, ptt.patient_hn" +
+            String sql = "select lbRes.*, LabItem.LName, ptt.patient_hn, ptt.patient_year " +
                 ", CONCAT(IFNULL(fpp.patient_prefix_description,''),' ', ptt.patient_firstname_e ,' ',ptt.patient_lastname_e)  as pname " +
                 "From " + lbRes.table + " lbRes " +
                 "Left Join LabItem on lbRes." + lbRes.lab_id + " = LabItem.LID " +

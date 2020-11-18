@@ -20,6 +20,9 @@ using System.Windows.Forms;
 
 namespace clinic_ivf.gui
 {
+    /*
+     * 63-10-23     0021    ให้เริ่ม HN ใหม่ แต่ให้ใช้ข้อมูลเก่า
+     */
     public partial class FrmScanAdd : Form
     {
         IvfControl ic;
@@ -34,6 +37,7 @@ namespace clinic_ivf.gui
         int colPic1 = 1, colPic2 = 2, colPic3 = 3, colPic4 = 4;
         ArrayList array1,arrayImg;
         Timer timer1;
+        Patient ptt;
         public FrmScanAdd(IvfControl ic)
         {
             InitializeComponent();
@@ -261,7 +265,8 @@ namespace clinic_ivf.gui
                             dsc.active = "1";
                             dsc.doc_scan_id = "";
                             dsc.doc_group_id = dgss.doc_group_id;
-                            dsc.hn = txtHn.Text;
+                            //dsc.hn = txtHn.Text;          //-0021
+                            dsc.hn = txtHn.Text.Trim().Replace(ic.hnspareyear, "").Replace(txtPttYear.Text.Trim(), "");            //+0021
                             dsc.vn = txtVN.Text;
                             dsc.an = "";
                             dsc.visit_date = ic.datetoDB(txtVisitDate.Text);
@@ -335,7 +340,6 @@ namespace clinic_ivf.gui
                 {
                     MessageBox.Show("error delFile -> " + ex.Message, "");
                 }
-
             }
         }
         private void BtnHn_Click(object sender, EventArgs e)
@@ -359,6 +363,7 @@ namespace clinic_ivf.gui
             txtHn.Value = ic.sVsOld.PIDS;
             txtName.Value = ic.sVsOld.PName;
             txtVN.Value = ic.sVsOld.VN;
+            txtPttYear.Value = ic.sVsOld.patient_year;
             //txtVisitDate.Value = ic.sPtt.visitDate;
             //txtPreNo.Value = ic.sPtt.preno;
             

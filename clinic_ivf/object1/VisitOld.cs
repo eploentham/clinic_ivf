@@ -23,5 +23,7 @@ namespace clinic_ivf.object1
         public String dob { get; set; }
         public String form_a_id { get; set; }
         public String doctorname { get; set; }
+        public String patient_year { get; set; }
+        public String patient_hn { get; set; }
     }
 }
