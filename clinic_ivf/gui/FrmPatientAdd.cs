@@ -350,7 +350,6 @@ namespace clinic_ivf.gui
                     txtHn_2.Value = ic.sVsOld.PIDS;
                     label76.Text = ic.sVsOld.PName;
                 }
-                
             }
             else
             {
@@ -366,7 +365,6 @@ namespace clinic_ivf.gui
                     txtHn_2.Value = ic.sVsOld.PIDS;
                     label76.Text = ic.sVsOld.PName;
                 }
-                
             }
         }
 
@@ -3224,7 +3222,7 @@ namespace clinic_ivf.gui
             txtIdOld.Value = pttO.PID;      //      + 0004
 
             //pttO = ic.ivfDB.pttOldDB.selectByPk1(pttid);      //      - 0004
-            if (pttO.PID.Equals(""))
+            if (ptt.t_patient_id.Equals(""))
             {
                 btnWebCamOn.Enabled = false;
             }
@@ -3543,8 +3541,25 @@ namespace clinic_ivf.gui
             ptt.patient_country = cboCou.Text;
             ptt.patient_changwat = cboProv.Text;
             ptt.patient_amphur = cboAmpr.Text;
+            Patient ptt1 = new Patient();
+            String txt = "";
+            if (txtHn_1.Text.IndexOf("/") > 0)
+            {
+                txt = txtHn_1.Text.Trim().Substring(0, txtHn_1.Text.Trim().IndexOf("/"));
+            }
+            //txt = txtHn_1.Text.Trim();
+            ptt1 = ic.ivfDB.pttDB.selectByHn(txt);
             ptt.patient_hn_1 = txtHn_1.Text;
+            Patient ptt2 = new Patient();
+            if (txtHn_2.Text.IndexOf("/") > 0)
+            {
+                txt = txtHn_2.Text.Trim().Substring(0, txtHn_2.Text.Trim().IndexOf("/"));
+            }
+            ptt2 = ic.ivfDB.pttDB.selectByHn(txt);
             ptt.patient_hn_2 = txtHn_2.Text;
+
+            ptt.t_patient_id_1 = ptt1.t_patient_id;
+            ptt.t_patient_id_2 = ptt2.t_patient_id;
             ptt.lmp = ic.datetoDB(txtLmp.Text);
             ptt.patient_name = cboPrefix.Text + " " + txtPttNameE.Text + " " + txtPttLNameE.Text;
             ptt.t_patient_id_old = "-1";        //

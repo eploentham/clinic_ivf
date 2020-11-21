@@ -38,10 +38,11 @@ namespace clinic_ivf.gui
         {
             ptt = new Patient();
             vs = new Visit();
-            ptt = ic.ivfDB.pttDB.selectByHn(hn);
+            
             vs = ic.ivfDB.vsDB.selectByPk1(vsid);
-            txtPttNameE.Value = name;
-            txtHn.Value = hn;
+            ptt = ic.ivfDB.pttDB.selectByPk1(vs.t_patient_id);
+            txtPttNameE.Value = ptt.patient_name;
+            txtHn.Value = ic.showHN(ptt.patient_hn,ptt.patient_year);
             txtDob.Value = ptt.AgeStringShort() + " [" + ic.datetoShow(ptt.patient_birthday) + "]";
             ic.ivfDB.stfDB.setCboDoctor(cboDoctor, vs.doctor_id);
             ic.ivfDB.stfDB.setCboDoctor(cboAnes, "");
@@ -103,6 +104,7 @@ namespace clinic_ivf.gui
                 rpt.SetParameterValue("doctorname", cboDoctor.Text);
                 rpt.SetParameterValue("doctoranes", cboAnes.Text);
                 rpt.SetParameterValue("operation", cboOperation.Text);
+                //rpt.SetParameterValue("doctor", cboDoctor.Text);
                 rpt.PrintOptions.PrinterName = getprinterName.PrinterName;
                 rpt.PrintToPrinter(1, true, 0, 0);
                 lbPrinter.Text = "chkAuthenSign";
@@ -119,6 +121,7 @@ namespace clinic_ivf.gui
                 rpt.SetParameterValue("hn", txtHn.Text);
                 rpt.SetParameterValue("name", txtPttNameE.Text);
                 rpt.SetParameterValue("age", txtDob.Text);
+                rpt.SetParameterValue("doctor", cboDoctor.Text);
                 rpt.PrintOptions.PrinterName = getprinterName.PrinterName;
                 rpt.PrintToPrinter(1, true, 0, 0);
                 lbPrint1.Text = rpt.PrintOptions.PrinterName;
@@ -138,6 +141,7 @@ namespace clinic_ivf.gui
                 rpt.SetParameterValue("name", txtPttNameE.Text);
                 rpt.SetParameterValue("age", txtDob.Text);
                 rpt.SetParameterValue("date", date1);
+                rpt.SetParameterValue("doctor", cboDoctor.Text);
                 rpt.PrintOptions.PrinterName = getprinterName.PrinterName;
                 rpt.PrintToPrinter(1, true, 0, 0);
                 lbPrint1.Text = rpt.PrintOptions.PrinterName;
@@ -153,6 +157,7 @@ namespace clinic_ivf.gui
                 rpt.SetParameterValue("hn", txtHn.Text);
                 rpt.SetParameterValue("name", txtPttNameE.Text);
                 rpt.SetParameterValue("age", txtDob.Text);
+                rpt.SetParameterValue("doctor", cboDoctor.Text);
                 rpt.PrintOptions.PrinterName = getprinterName.PrinterName;
                 rpt.PrintToPrinter(1, true, 0, 0);
                 lbPrint1.Text = rpt.PrintOptions.PrinterName;

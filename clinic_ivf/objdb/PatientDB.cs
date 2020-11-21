@@ -161,6 +161,8 @@ namespace clinic_ivf.objdb
             ptt.patient_name = "patient_name";
             ptt.patient_year = "patient_year";
             ptt.patient_hn_old = "patient_hn_old";
+            ptt.t_patient_id_1 = "t_patient_id_1";
+            ptt.t_patient_id_2 = "t_patient_id_2";
 
             ptt.pkField = "t_patient_id";
             ptt.table = "t_patient";
@@ -304,6 +306,8 @@ namespace clinic_ivf.objdb
             p.b_contract_plans_id = long.TryParse(p.b_contract_plans_id, out chk) ? chk.ToString() : "0";
             p.t_patient_id_old = long.TryParse(p.t_patient_id_old, out chk) ? chk.ToString() : "-1";
             p.doctor_id = long.TryParse(p.doctor_id, out chk) ? chk.ToString() : "0";
+            p.t_patient_id_1 = long.TryParse(p.t_patient_id_1, out chk) ? chk.ToString() : "0";
+            p.t_patient_id_2 = long.TryParse(p.t_patient_id_2, out chk) ? chk.ToString() : "0";
 
             p.latitude = decimal.TryParse(p.latitude, out chk1) ? chk1.ToString() : "0";
             p.longitude = decimal.TryParse(p.longitude, out chk1) ? chk1.ToString() : "0";
@@ -370,7 +374,7 @@ namespace clinic_ivf.objdb
                 ptt.patient_country + "," + ptt.patient_hn_couple + "," +
                 ptt.doctor_id + "," + ptt.patient_hn_1 + "," + ptt.patient_hn_2 + "," +
                 ptt.status_diagnosis + "," + ptt.lmp + "," + ptt.patient_name + "," +
-                ptt.patient_year + " " +
+                ptt.patient_year + "," + ptt.t_patient_id_1 + "," + ptt.t_patient_id_2 + " " +
                 ") " +
                 "Values ('" + p.patient_hn + "','" + p.patient_firstname.Replace("'", "''") + "','" + p.patient_lastname.Replace("'", "''") + "'," +
                 "'" + p.patient_xn.Replace("'", "''") + "','" + p.patient_birthday.Replace("'", "''") + "','" + p.patient_house.Replace("'", "''") + "'," +
@@ -417,7 +421,7 @@ namespace clinic_ivf.objdb
                 "'" + p.patient_country + "','" + p.patient_hn_couple + "'," +
                 "'" + p.doctor_id + "','" + p.patient_hn_1 + "','" + p.patient_hn_2 + "'," +
                 "'" + p.status_diagnosis + "','" + p.lmp + "','" + p.patient_name + "'," +
-                "'" + p.patient_year + "' " +
+                "'" + p.patient_year + "','" + p.t_patient_id_1 + "','" + p.t_patient_id_2 + "' " +
                 ")";
 
                 re = conn.ExecuteNonQuery(conn.conn, sql);
@@ -536,6 +540,8 @@ namespace clinic_ivf.objdb
                 "," + ptt.patient_name + "='" + p.patient_name.Replace("'", "''") + "' " +
                 "," + ptt.patient_year + "='" + p.patient_year.Replace("'", "''") + "' " +
                 "," + ptt.patient_hn + "='" + p.patient_hn + "' " +
+                "," + ptt.t_patient_id_1 + "='" + p.t_patient_id_1 + "' " +
+                "," + ptt.t_patient_id_2 + "='" + p.t_patient_id_2 + "' " +
                 " Where " +ptt.pkField + " = '" + p.t_patient_id + "' "
                 ;
             try
@@ -695,6 +701,24 @@ namespace clinic_ivf.objdb
         {
             DataTable dt = new DataTable();
             //String date = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd");
+            //String sql = "select ptt.t_patient_id as id, ptt.t_patient_id as VN, ptt.patient_hn as PIDS " +
+            //    ", CONCAT(IFNULL(fpp.patient_prefix_description,''),' ', ptt.patient_firstname_e ,' ',ptt.patient_lastname_e)  as PName" +
+            //    ", '' as VDate, ptt.patient_hn as PID, ptt.patient_birthday as dob, ptt.t_patient_id " +
+            //    ",'' form_a_id, '' form_a_code,'' status_opu_active, '' status_fet_active, '' status_sperm_analysis, '' status_sperm_freezing, '' status_sperm_iui, '' status_sperm_pesa " +
+            //    ", ptt.patient_hn_1 ,CONCAT(IFNULL(fpp_1.patient_prefix_description,''),' ', ptt_1.patient_firstname_e ,' ',ptt_1.patient_lastname_e ) as name_1" +
+            //    ", ptt.patient_hn_2 ,CONCAT(IFNULL(fpp_2.patient_prefix_description,''),' ', ptt_2.patient_firstname_e ,' ',ptt_2.patient_lastname_e ) as name_2 " +
+            //    ", '' as dtr_name " +
+            //    ", ptt.agent, agt.AgentName, '' as status_fet, ifnull(ptt.f_sex_id,'') as f_sex_id, ptt.patient_year, ptt.patient_hn_old " +
+            //    "From t_patient ptt  " +
+            //    "Left join f_patient_prefix fpp on fpp.f_patient_prefix_id = ptt.f_patient_prefix_id " +
+            //    "Left join t_patient ptt_1 on ptt.patient_hn_1 = ptt_1.patient_hn and ptt.patient_hn_1 <> '' and ptt.patient_hn_1 is not null " +
+            //    "Left join f_patient_prefix fpp_1 on fpp_1.f_patient_prefix_id = ptt_1.f_patient_prefix_id " +
+            //    "Left join t_patient ptt_2 on ptt.patient_hn_2 = ptt_2.patient_hn and ptt.patient_hn_2 <> '' and ptt.patient_hn_2 is not null " +
+            //    "Left join f_patient_prefix fpp_2 on fpp_2.f_patient_prefix_id = ptt_2.f_patient_prefix_id " +
+            //    "Left Join Agent agt on ptt.agent = agt.AgentID " +
+            //    //"Left join f_patient_prefix fpp_stf on fpp_stf.f_patient_prefix_id = stf.prefix_id " +
+            //    "Where ptt." + ptt.patient_hn + " like '%" + hn + "%' " +
+            //    "Order By ptt.t_patient_id desc ";
             String sql = "select ptt.t_patient_id as id, ptt.t_patient_id as VN, ptt.patient_hn as PIDS " +
                 ", CONCAT(IFNULL(fpp.patient_prefix_description,''),' ', ptt.patient_firstname_e ,' ',ptt.patient_lastname_e)  as PName" +
                 ", '' as VDate, ptt.patient_hn as PID, ptt.patient_birthday as dob, ptt.t_patient_id " +
@@ -705,9 +729,9 @@ namespace clinic_ivf.objdb
                 ", ptt.agent, agt.AgentName, '' as status_fet, ifnull(ptt.f_sex_id,'') as f_sex_id, ptt.patient_year, ptt.patient_hn_old " +
                 "From t_patient ptt  " +
                 "Left join f_patient_prefix fpp on fpp.f_patient_prefix_id = ptt.f_patient_prefix_id " +
-                "Left join t_patient ptt_1 on ptt.patient_hn_1 = ptt_1.patient_hn and ptt.patient_hn_1 <> '' and ptt.patient_hn_1 is not null " +
+                "Left join t_patient ptt_1 on ptt_1.t_patient_id = ptt.t_patient_id_1 and ptt.patient_hn_1 <> '' and ptt.patient_hn_1 is not null " +
                 "Left join f_patient_prefix fpp_1 on fpp_1.f_patient_prefix_id = ptt_1.f_patient_prefix_id " +
-                "Left join t_patient ptt_2 on ptt.patient_hn_2 = ptt_2.patient_hn and ptt.patient_hn_2 <> '' and ptt.patient_hn_2 is not null " +
+                "Left join t_patient ptt_2 on ptt_2.t_patient_id = ptt.t_patient_id_2 and ptt.patient_hn_2 <> '' and ptt.patient_hn_2 is not null " +
                 "Left join f_patient_prefix fpp_2 on fpp_2.f_patient_prefix_id = ptt_2.f_patient_prefix_id " +
                 "Left Join Agent agt on ptt.agent = agt.AgentID " +
                 //"Left join f_patient_prefix fpp_stf on fpp_stf.f_patient_prefix_id = stf.prefix_id " +
@@ -978,7 +1002,23 @@ namespace clinic_ivf.objdb
             DataTable dt = new DataTable();
             String whereHN = "", whereName = "", wherepid = "", wherepassport = "", wherenameE = "";
             
-            String sql = "select ptt." + ptt.t_patient_id + " as PID, concat(ptt." + ptt.patient_hn + ",'/',ptt."+ptt.patient_year+") as PIDS" +
+            //String sql = "select ptt." + ptt.t_patient_id + " as PID, concat(ptt." + ptt.patient_hn + ",'/',ptt."+ptt.patient_year+") as PIDS" +
+            //    ",CONCAT(IFNULL(fpp.patient_prefix_description,''),' ', ptt." + ptt.patient_firstname_e + ",' ',ptt." + ptt.patient_lastname_e + ") as name" +
+            //    ", ptt.patient_birthday, ptt.patient_hn_old,ptt." + ptt.remark + " as EmergencyPersonalContact " +
+            //    ", ptt." + ptt.patient_hn_1 + ",CONCAT(IFNULL(fpp_1.patient_prefix_description,''),' ', ptt_1." + ptt.patient_firstname_e + ",' ',ptt_1." + ptt.patient_lastname_e + ") as name_1" +
+            //    ", ptt." + ptt.patient_hn_2 + ",CONCAT(IFNULL(fpp_2.patient_prefix_description,''),' ', ptt_2." + ptt.patient_firstname_e + ",' ',ptt_2." + ptt.patient_lastname_e + ") as name_2 " +
+            //    ", agt.AgentName Agent,'' as c11,'' as c12 " +
+            //    "From " + ptt.table + " ptt " +
+            //    "Left join f_patient_prefix fpp on fpp.f_patient_prefix_id = ptt.f_patient_prefix_id " +
+            //    "Left join "+ptt.table+" ptt_1 on ptt."+ptt.patient_hn_1+"= ptt_1."+ptt.patient_hn+ "   and ptt.patient_hn_1 <> '' and ptt.patient_hn_1 is not null " +
+            //    "Left join f_patient_prefix fpp_1 on fpp_1.f_patient_prefix_id = ptt_1.f_patient_prefix_id " +
+            //    "Left join " + ptt.table + " ptt_2 on ptt." + ptt.patient_hn_2 + "= ptt_2." + ptt.patient_hn + " and ptt.patient_hn_2 <> '' and ptt.patient_hn_2 is not null " +
+            //    "Left join f_patient_prefix fpp_2 on fpp_2.f_patient_prefix_id = ptt_2.f_patient_prefix_id " +
+            //    "left join Agent agt on ptt.agent = agt.AgentID " +
+            //    "Where ptt." + ptt.patient_record_date_time + " >='" + date + " 00:00:00' and ptt." + ptt.patient_record_date_time + " <='" + date + " 23:59:59' " +
+            //    " and ptt."+ptt.active + "='1'  " +
+            //    "Order By ptt." + ptt.t_patient_id;
+            String sql = "select ptt." + ptt.t_patient_id + " as PID, concat(ptt." + ptt.patient_hn + ",'/',ptt." + ptt.patient_year + ") as PIDS" +
                 ",CONCAT(IFNULL(fpp.patient_prefix_description,''),' ', ptt." + ptt.patient_firstname_e + ",' ',ptt." + ptt.patient_lastname_e + ") as name" +
                 ", ptt.patient_birthday, ptt.patient_hn_old,ptt." + ptt.remark + " as EmergencyPersonalContact " +
                 ", ptt." + ptt.patient_hn_1 + ",CONCAT(IFNULL(fpp_1.patient_prefix_description,''),' ', ptt_1." + ptt.patient_firstname_e + ",' ',ptt_1." + ptt.patient_lastname_e + ") as name_1" +
@@ -986,13 +1026,13 @@ namespace clinic_ivf.objdb
                 ", agt.AgentName Agent,'' as c11,'' as c12 " +
                 "From " + ptt.table + " ptt " +
                 "Left join f_patient_prefix fpp on fpp.f_patient_prefix_id = ptt.f_patient_prefix_id " +
-                "Left join "+ptt.table+" ptt_1 on ptt."+ptt.patient_hn_1+"= ptt_1."+ptt.patient_hn+ "   and ptt.patient_hn_1 <> '' and ptt.patient_hn_1 is not null " +
+                "Left join " + ptt.table + " ptt_1 on ptt." + ptt.t_patient_id_1 + "= ptt_1." + ptt.t_patient_id + "   and ptt.patient_hn_1 <> '' and ptt.patient_hn_1 is not null " +
                 "Left join f_patient_prefix fpp_1 on fpp_1.f_patient_prefix_id = ptt_1.f_patient_prefix_id " +
-                "Left join " + ptt.table + " ptt_2 on ptt." + ptt.patient_hn_2 + "= ptt_2." + ptt.patient_hn + " and ptt.patient_hn_2 <> '' and ptt.patient_hn_2 is not null " +
+                "Left join " + ptt.table + " ptt_2 on ptt." + ptt.t_patient_id_2 + "= ptt_2." + ptt.t_patient_id + " and ptt.patient_hn_2 <> '' and ptt.patient_hn_2 is not null " +
                 "Left join f_patient_prefix fpp_2 on fpp_2.f_patient_prefix_id = ptt_2.f_patient_prefix_id " +
                 "left join Agent agt on ptt.agent = agt.AgentID " +
                 "Where ptt." + ptt.patient_record_date_time + " >='" + date + " 00:00:00' and ptt." + ptt.patient_record_date_time + " <='" + date + " 23:59:59' " +
-                " and ptt."+ptt.active + "='1'  " +
+                " and ptt." + ptt.active + "='1'  " +
                 "Order By ptt." + ptt.t_patient_id;
             dt = conn.selectData(conn.conn, sql);
             return dt;
@@ -1036,9 +1076,30 @@ namespace clinic_ivf.objdb
             {
                 wherehnold = " or ( ptt." + ptt.patient_hn_old + " like '%" + search.Trim() + "%' )";
             }
-            String sql = "select ptt." + ptt.t_patient_id + " as PID, CONCAT(ptt." + ptt.patient_hn + ",'/',ptt."+ptt.patient_year+") as PIDS" +
+            //String sql = "select ptt." + ptt.t_patient_id + " as PID, CONCAT(ptt." + ptt.patient_hn + ",'/',ptt."+ptt.patient_year+") as PIDS" +
+            //    ",CONCAT(IFNULL(fpp.patient_prefix_description,''),' ', ptt." + ptt.patient_firstname_e + ",' ',ptt." + ptt.patient_lastname_e + ") as name" +
+            //    ", ptt.patient_birthday, ptt.patient_hn_old,ptt." + ptt.remark + " as EmergencyPersonalContact  "+
+            //    ", ptt." + ptt.patient_hn_1 + ",CONCAT(IFNULL(fpp_1.patient_prefix_description,''),' ', ptt_1." + ptt.patient_firstname_e + ",' ',ptt_1." + ptt.patient_lastname_e + ") as name_1" +
+            //    ", ptt." + ptt.patient_hn_2 + ", CONCAT(IFNULL(fpp_2.patient_prefix_description,''),' ', ptt_2." + ptt.patient_firstname_e + ",' ',ptt_2." + ptt.patient_lastname_e + ") as name_2 " +
+            //    ", agt.AgentName Agent" +
+            //    ", CONCAT(IFNULL(fpp_stf_c.patient_prefix_description,''),' ', stf_c.staff_fname_e,' ',stf_c.staff_lname_e) as crete_name " +
+            //    ", CONCAT(IFNULL(fpp_stf_m.patient_prefix_description,''),' ', stf_m.staff_fname_e,' ',stf_m.staff_lname_e) as modi_name,'' as c11,'' as c12 " +
+            //    "From " + ptt.table + " ptt " +
+            //    "Left join f_patient_prefix fpp on fpp.f_patient_prefix_id = ptt.f_patient_prefix_id " +
+            //    "Left join " + ptt.table + " ptt_1 on ptt." + ptt.patient_hn_1 + "= ptt_1." + ptt.patient_hn + " and ptt.patient_hn_1 <> '' and ptt.patient_hn_1 is not null " +
+            //    "Left join f_patient_prefix fpp_1 on fpp_1.f_patient_prefix_id = ptt_1.f_patient_prefix_id " +
+            //    "Left join " + ptt.table + " ptt_2 on ptt." + ptt.patient_hn_2 + "= ptt_2." + ptt.patient_hn + " and ptt.patient_hn_2 <> '' and ptt.patient_hn_2 is not null " +
+            //    "Left join f_patient_prefix fpp_2 on fpp_2.f_patient_prefix_id = ptt_2.f_patient_prefix_id " +
+            //    "left join Agent agt on ptt.agent = agt.AgentID " +
+            //    "Left join b_staff stf_c on ptt." + ptt.user_create + "= stf_c.staff_id  " +
+            //    "Left join f_patient_prefix fpp_stf_c on fpp_stf_c.f_patient_prefix_id = stf_c.prefix_id " +
+            //    "Left join b_staff stf_m on ptt." + ptt.user_modi + "= stf_m.staff_id  " +
+            //    "Left join f_patient_prefix fpp_stf_m on fpp_stf_m.f_patient_prefix_id = stf_m.prefix_id " +
+            //    "Where " + whereHN + whereName + wherepid+ wherenameE+ wherepassport+ wherehnold + " and ptt."+ptt.active+ "='1'" +
+            //    "Order By ptt." + ptt.t_patient_id;
+            String sql = "select ptt." + ptt.t_patient_id + " as PID, CONCAT(ptt." + ptt.patient_hn + ",'/',ptt." + ptt.patient_year + ") as PIDS" +
                 ",CONCAT(IFNULL(fpp.patient_prefix_description,''),' ', ptt." + ptt.patient_firstname_e + ",' ',ptt." + ptt.patient_lastname_e + ") as name" +
-                ", ptt.patient_birthday, ptt.patient_hn_old,ptt." + ptt.remark + " as EmergencyPersonalContact  "+
+                ", ptt.patient_birthday, ptt.patient_hn_old,ptt." + ptt.remark + " as EmergencyPersonalContact  " +
                 ", ptt." + ptt.patient_hn_1 + ",CONCAT(IFNULL(fpp_1.patient_prefix_description,''),' ', ptt_1." + ptt.patient_firstname_e + ",' ',ptt_1." + ptt.patient_lastname_e + ") as name_1" +
                 ", ptt." + ptt.patient_hn_2 + ", CONCAT(IFNULL(fpp_2.patient_prefix_description,''),' ', ptt_2." + ptt.patient_firstname_e + ",' ',ptt_2." + ptt.patient_lastname_e + ") as name_2 " +
                 ", agt.AgentName Agent" +
@@ -1046,16 +1107,16 @@ namespace clinic_ivf.objdb
                 ", CONCAT(IFNULL(fpp_stf_m.patient_prefix_description,''),' ', stf_m.staff_fname_e,' ',stf_m.staff_lname_e) as modi_name,'' as c11,'' as c12 " +
                 "From " + ptt.table + " ptt " +
                 "Left join f_patient_prefix fpp on fpp.f_patient_prefix_id = ptt.f_patient_prefix_id " +
-                "Left join " + ptt.table + " ptt_1 on ptt." + ptt.patient_hn_1 + "= ptt_1." + ptt.patient_hn + " and ptt.patient_hn_1 <> '' and ptt.patient_hn_1 is not null " +
+                "Left join " + ptt.table + " ptt_1 on ptt." + ptt.t_patient_id_1 + "= ptt_1." + ptt.t_patient_id + " and ptt.patient_hn_1 <> '' and ptt.patient_hn_1 is not null " +
                 "Left join f_patient_prefix fpp_1 on fpp_1.f_patient_prefix_id = ptt_1.f_patient_prefix_id " +
-                "Left join " + ptt.table + " ptt_2 on ptt." + ptt.patient_hn_2 + "= ptt_2." + ptt.patient_hn + " and ptt.patient_hn_2 <> '' and ptt.patient_hn_2 is not null " +
+                "Left join " + ptt.table + " ptt_2 on ptt." + ptt.t_patient_id_2 + "= ptt_2." + ptt.t_patient_id + " and ptt.patient_hn_2 <> '' and ptt.patient_hn_2 is not null " +
                 "Left join f_patient_prefix fpp_2 on fpp_2.f_patient_prefix_id = ptt_2.f_patient_prefix_id " +
                 "left join Agent agt on ptt.agent = agt.AgentID " +
                 "Left join b_staff stf_c on ptt." + ptt.user_create + "= stf_c.staff_id  " +
                 "Left join f_patient_prefix fpp_stf_c on fpp_stf_c.f_patient_prefix_id = stf_c.prefix_id " +
                 "Left join b_staff stf_m on ptt." + ptt.user_modi + "= stf_m.staff_id  " +
                 "Left join f_patient_prefix fpp_stf_m on fpp_stf_m.f_patient_prefix_id = stf_m.prefix_id " +
-                "Where " + whereHN + whereName + wherepid+ wherenameE+ wherepassport+ wherehnold + " and ptt."+ptt.active+ "='1'" +
+                "Where " + whereHN + whereName + wherepid + wherenameE + wherepassport + wherehnold + " and ptt." + ptt.active + "='1'" +
                 "Order By ptt." + ptt.t_patient_id;
             dt = conn.selectData(conn.conn, sql);
             return dt;

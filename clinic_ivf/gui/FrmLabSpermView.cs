@@ -75,6 +75,7 @@ namespace clinic_ivf.gui
             txtSearch.KeyUp += TxtSearch_KeyUp;
             tcLabView.TabClick += TcLabView_TabClick;
             tcLabView.SelectedTabChanged += TcLabView_SelectedTabChanged;
+            btnSearch.Click += BtnSearch_Click;
             //btnAna.Click += BtnAna_Click;
             //btnFreezing.Click += BtnFreezing_Click;
             //btnPesa.Click += BtnPesa_Click;
@@ -87,6 +88,12 @@ namespace clinic_ivf.gui
             //setGrfProc();
             //setGrfFinish();
             initGrfSearch();   //111
+        }
+
+        private void BtnSearch_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            setGrfSearch();
         }
 
         private void TcLabView_SelectedTabChanged(object sender, EventArgs e)
@@ -126,7 +133,6 @@ namespace clinic_ivf.gui
                 setGrfReq();
             }
         }
-
         private void BtnSearchF_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
@@ -206,11 +212,11 @@ namespace clinic_ivf.gui
             grfSearch.Font = fEdit;
             grfSearch.Dock = System.Windows.Forms.DockStyle.Fill;
             grfSearch.Location = new System.Drawing.Point(0, 0);
-
+            grfSearch.Rows.Count = 2;
             //FilterRow fr = new FilterRow(grfExpn);
 
             //grfSearch.AfterRowColChange += GrfReq_AfterRowColChange;
-            //grfSearch.DoubleClick += GrfReq_DoubleClick;
+            grfSearch.DoubleClick += GrfSearch_DoubleClick;
             //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
             //ContextMenu menuGw = new ContextMenu();
             //menuGw.MenuItems.Add("ป้อน LAB OPU/FET", new EventHandler(ContextMenu_edit));
@@ -221,16 +227,36 @@ namespace clinic_ivf.gui
 
             theme1.SetTheme(grfSearch, "Office2010Blue");
         }
+
+        private void GrfSearch_DoubleClick(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (grfSearch.Row <= 0) return;
+            if (grfSearch.Col <= 0) return;
+            String chk = "", name = "", id = "";
+            id = grfSearch[grfSearch.Row, colPcId] != null ? grfSearch[grfSearch.Row, colPcId].ToString() : "";
+            chk = grfSearch[grfSearch.Row, colPcStatusSperm] != null ? grfSearch[grfSearch.Row, colPcStatusSperm].ToString() : "";
+            name = grfSearch[grfSearch.Row, colPcNameMale] != null ? grfSearch[grfSearch.Row, colPcNameMale].ToString() : "";
+            //if (MessageBox.Show("ต้องการ ป้อน LAB OPU  \n  opu number " + chk + " \n name " + name, "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+            //{
+            //grfReq.Rows.Remove(grfReq.Row);
+            Cursor curOld;
+            curOld = this.Cursor;
+            this.Cursor = Cursors.WaitCursor;
+            openLabOPUAdd(id, name, chk.Equals("2") ? " Analysis " : chk.Equals("1") ? " Freezing " : chk.Equals("3") ? " PESA " : " IUI ", chk);
+            this.Cursor = curOld;
+        }
+
         private void setGrfSearch()
         {
             grfSearch.DataSource = null;
-            grfSearch.Clear();
+            //grfSearch.Clear();
             DataTable dt = new DataTable();
 
-            dt = ic.ivfDB.lspermDB.selectByStatusFinish("","");
+            dt = ic.ivfDB.lspermDB.selectByStatusFinishHN(txtSearch.Text.Trim());
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             grfSearch.Rows.Count = 1;
-            grfSearch.Cols.Count = 10;
+            grfSearch.Cols.Count = 16;
             C1TextBox txt = new C1TextBox();
             //C1ComboBox cboproce = new C1ComboBox();
             //ic.ivfDB.itmDB.setCboItem(cboproce);
@@ -241,7 +267,7 @@ namespace clinic_ivf.gui
             //grfSearch.Cols[colPcRemark].Editor = txt;
 
             grfSearch.Cols[colPcDate].Width = 120;
-            grfSearch.Cols[colPcHnMale].Width = 200;
+            grfSearch.Cols[colPcHnMale].Width = 120;
             grfSearch.Cols[colPcNameMale].Width = 200;
             grfSearch.Cols[colPcSpermName].Width = 200;
             grfSearch.Cols[colPcRemark].Width = 200;
@@ -293,7 +319,7 @@ namespace clinic_ivf.gui
                     row1[colPcDate] = ic.datetoShow(row[ic.ivfDB.lspermDB.lsperm.iui_date].ToString());
                     //row1[colOPUTime] = ic.timetoShow(row[ic.ivfDB.lspermDB.lsperm.sperm_analysis_date_start].ToString());
                 }
-                row1[colRqStatusSperm] = row[ic.ivfDB.lspermDB.lsperm.status_lab_sperm].ToString();
+                row1[colPcStatusSperm] = row[ic.ivfDB.lspermDB.lsperm.status_lab_sperm].ToString();
                 row1[colPcSpermName] = row[ic.ivfDB.lspermDB.lsperm.status_lab_sperm].ToString().Equals("1") ? "Sperm Freezing"
                     : row[ic.ivfDB.lspermDB.lsperm.status_lab_sperm].ToString().Equals("2") ? "Sperm Analysis"
                     : row[ic.ivfDB.lspermDB.lsperm.status_lab_sperm].ToString().Equals("3") ? " PESA"
@@ -858,7 +884,7 @@ namespace clinic_ivf.gui
             //grfFinish.Cols[colPcHn].Width = 120;
             //grfFinish.Cols[colPcPttName].Width = 280;
             grfFinish.Cols[colPcDate].Width = 120;
-            grfFinish.Cols[colPcHnMale].Width = 200;
+            grfFinish.Cols[colPcHnMale].Width = 120;
             grfFinish.Cols[colPcNameMale].Width = 200;
             grfFinish.Cols[colPcSpermName].Width = 200;
             grfFinish.Cols[colPcRemark].Width = 200;

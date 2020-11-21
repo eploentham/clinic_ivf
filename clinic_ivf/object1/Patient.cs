@@ -143,6 +143,8 @@ namespace clinic_ivf.object1
         public String patient_name { get; set; }
         public String patient_year { get; set; }
         public String patient_hn_old { get; set; }
+        public String t_patient_id_1 { get; set; }
+        public String t_patient_id_2 { get; set; }
         public String AgeString()
         {            
             String re = "";

@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lbPrint1 = new System.Windows.Forms.Label();
+            this.lbPrinter = new System.Windows.Forms.Label();
             this.btnFinish = new C1.Win.C1Input.C1Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.cboOperation = new C1.Win.C1Input.C1ComboBox();
@@ -50,8 +52,6 @@
             this.chkOrdOPU = new C1.Win.C1Input.C1CheckBox();
             this.chkAuthenSign = new C1.Win.C1Input.C1CheckBox();
             this.chkPrnCheckList = new C1.Win.C1Input.C1CheckBox();
-            this.lbPrinter = new System.Windows.Forms.Label();
-            this.lbPrint1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnFinish)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -96,6 +96,30 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "เลือกรายการ";
             // 
+            // lbPrint1
+            // 
+            this.lbPrint1.AutoSize = true;
+            this.lbPrint1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.lbPrint1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbPrint1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.lbPrint1.Location = new System.Drawing.Point(318, 104);
+            this.lbPrint1.Name = "lbPrint1";
+            this.lbPrint1.Size = new System.Drawing.Size(11, 16);
+            this.lbPrint1.TabIndex = 945;
+            this.lbPrint1.Text = ".";
+            // 
+            // lbPrinter
+            // 
+            this.lbPrinter.AutoSize = true;
+            this.lbPrinter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.lbPrinter.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbPrinter.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.lbPrinter.Location = new System.Drawing.Point(318, 77);
+            this.lbPrinter.Name = "lbPrinter";
+            this.lbPrinter.Size = new System.Drawing.Size(11, 16);
+            this.lbPrinter.TabIndex = 944;
+            this.lbPrinter.Text = ".";
+            // 
             // btnFinish
             // 
             this.btnFinish.Image = global::clinic_ivf.Properties.Resources.Add_ticket_24;
@@ -135,7 +159,7 @@
             this.cboOperation.ImagePadding = new System.Windows.Forms.Padding(0);
             this.cboOperation.Items.Add("OPU");
             this.cboOperation.Items.Add("PESA/TESE");
-            this.cboOperation.Items.Add(" ");
+            this.cboOperation.Items.Add("ET/FET");
             this.cboOperation.ItemsDisplayMember = "";
             this.cboOperation.ItemsValueMember = "";
             this.cboOperation.Location = new System.Drawing.Point(98, 71);
@@ -378,30 +402,6 @@
             this.chkPrnCheckList.Text = "Pre-Operation Check List";
             this.chkPrnCheckList.UseVisualStyleBackColor = true;
             this.chkPrnCheckList.Value = null;
-            // 
-            // lbPrinter
-            // 
-            this.lbPrinter.AutoSize = true;
-            this.lbPrinter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.lbPrinter.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbPrinter.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.lbPrinter.Location = new System.Drawing.Point(318, 77);
-            this.lbPrinter.Name = "lbPrinter";
-            this.lbPrinter.Size = new System.Drawing.Size(11, 16);
-            this.lbPrinter.TabIndex = 944;
-            this.lbPrinter.Text = ".";
-            // 
-            // lbPrint1
-            // 
-            this.lbPrint1.AutoSize = true;
-            this.lbPrint1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.lbPrint1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbPrint1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.lbPrint1.Location = new System.Drawing.Point(318, 104);
-            this.lbPrint1.Name = "lbPrint1";
-            this.lbPrint1.Size = new System.Drawing.Size(11, 16);
-            this.lbPrint1.TabIndex = 945;
-            this.lbPrint1.Text = ".";
             // 
             // FrmNurseFormPrint
             // 

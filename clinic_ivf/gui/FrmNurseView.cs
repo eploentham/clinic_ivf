@@ -185,13 +185,6 @@ namespace clinic_ivf.gui
             //    setGrfLab(txtLabResultHn.Text.Trim());
             //}
         }
-
-        private void TxtSearch_KeyUp1(object sender, KeyEventArgs e)
-        {
-            //throw new NotImplementedException();
-            
-        }
-
         private void BtnSearch_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
@@ -1668,7 +1661,7 @@ namespace clinic_ivf.gui
             grfQue.Cols[colVsEtime].Caption = "Time finish";
             grfQue.Cols[colStatus].Caption = "Status";
             grfQue.Cols[colPttHn1].Caption = "Hn 1";
-            grfQue.Cols[colPttName1].Caption = "Name Hn2";
+            grfQue.Cols[colPttName1].Caption = "Name Hn1";
             grfQue.Cols[colPttHn2].Caption = "Hn 2";
             grfQue.Cols[colPttName2].Caption = "Name Hn2";
 

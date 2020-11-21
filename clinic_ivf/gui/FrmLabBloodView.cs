@@ -72,6 +72,8 @@ namespace clinic_ivf.gui
             timer.Enabled = true;
             tcLabView.TabClick += TcLabView_TabClick;
             btnSearchFi.Click += BtnSearchFi_Click;
+            txtSearch.KeyUp += TxtSearch_KeyUp;
+            btnSearch.Click += BtnSearch_Click;
 
             initGrfReq();
             setGrfReq();
@@ -79,7 +81,24 @@ namespace clinic_ivf.gui
             setGrfProc();
             initGrfFinish();
             setGrfFinish();
+            initGrfSearch();
         }
+
+        private void BtnSearch_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            setGrfSearch();
+        }
+
+        private void TxtSearch_KeyUp(object sender, KeyEventArgs e)
+        {
+            //throw new NotImplementedException();
+            if(e.KeyCode == Keys.Enter)
+            {
+                setGrfSearch();
+            }
+        }
+
         private void BtnSearchFi_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
@@ -92,6 +111,134 @@ namespace clinic_ivf.gui
             {
                 setGrfProc();
             }
+        }
+        private void initGrfSearch()
+        {
+            grfSearch = new C1FlexGrid();
+            grfSearch.Font = fEdit;
+            grfSearch.Dock = System.Windows.Forms.DockStyle.Fill;
+            grfSearch.Location = new System.Drawing.Point(0, 0);
+            grfSearch.Rows.Count = 2;
+            //FilterRow fr = new FilterRow(grfExpn);
+
+            //grfSearch.AfterRowColChange += GrfReq_AfterRowColChange;
+            grfSearch.DoubleClick += GrfSearch_DoubleClick;
+            //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
+            //ContextMenu menuGw = new ContextMenu();
+            //menuGw.MenuItems.Add("ป้อน LAB OPU/FET", new EventHandler(ContextMenu_edit));
+            //menuGw.MenuItems.Add("รับทราบการเปลี่ยนแปลงเวลา", new EventHandler(ContextMenu_Gw_time_modi));
+            ////menuGw.MenuItems.Add("&ยกเลิก", new EventHandler(ContextMenu_Gw_Cancel));
+            //grfReq.ContextMenu = menuGw;
+            pnSearch.Controls.Add(grfSearch);
+
+            theme1.SetTheme(grfSearch, "Office2010Blue");
+        }
+
+        private void GrfSearch_DoubleClick(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (grfSearch.Row <= 0) return;
+            if (grfSearch.Col <= 0) return;
+            String id = "";
+            id = grfSearch[grfSearch.Row, colRsId] != null ? grfSearch[grfSearch.Row, colRsId].ToString() : "";
+            FrmLabBloodAdd frm = new FrmLabBloodAdd(ic, id);
+            frm.ShowDialog(this);
+        }
+
+        private void setGrfSearch()
+        {
+            grfSearch.DataSource = null;
+            //grfSearch.Clear();
+            DataTable dt = new DataTable();
+            String date1 = "", date2 = "";
+            date1 = ic.datetoDB(txtFiDateStart.Text);
+            date2 = ic.datetoDB(txtFiDateEnd.Text);
+            //dt = ic.ivfDB.lbReqDB.selectByStatusReqAccept();
+
+            //grfExpn.Rows.Count = dt.Rows.Count + 1;
+            grfSearch.Rows.Count = 1;
+            grfSearch.Cols.Count = 14;
+            if (txtFiDateStart.Text.Equals("")) return;
+            dt = ic.ivfDB.lbresDB.selectLabBloodBySearchHn(txtSearch.Text.Trim());
+            //C1TextBox txt = new C1TextBox();
+            //C1ComboBox cboproce = new C1ComboBox();
+            //ic.ivfDB.itmDB.setCboItem(cboproce);
+            //grfReq.Cols[colRqReqNum].Editor = txt;
+            //grfReq.Cols[colRqHn].Editor = txt;
+            //grfReq.Cols[colRqVn].Editor = txt;
+            //grfReq.Cols[colRqName].Editor = txt;
+
+            grfSearch.Cols[colRsLabName].Width = 200;
+            grfSearch.Cols[colRsMethod].Width = 100;
+            grfSearch.Cols[colRsResult].Width = 100;
+            grfSearch.Cols[colRsInterpret].Width = 100;
+            grfSearch.Cols[colRsUnit].Width = 80;
+            grfSearch.Cols[colRsNormal].Width = 100;
+            grfSearch.Cols[colRsRemark].Width = 200;
+            grfSearch.Cols[colRsHn].Width = 100;
+            grfSearch.Cols[colRsPttName].Width = 200;
+            grfSearch.Cols[colRsReqDate].Width = 160;
+            grfSearch.ShowCursor = true;
+            //grdFlex.Cols[colID].Caption = "no";
+            //grfDept.Cols[colCode].Caption = "รหัส";
+
+            grfSearch.Cols[colRsLabName].Caption = "Name";
+            grfSearch.Cols[colRsReqDate].Caption = "Request Date";
+            grfSearch.Cols[colRsMethod].Caption = "Method";
+            grfSearch.Cols[colRsResult].Caption = "Result";
+            grfSearch.Cols[colRsInterpret].Caption = "Interpret";
+            grfSearch.Cols[colRsUnit].Caption = "Unit";
+            grfSearch.Cols[colRsNormal].Caption = "Normal";
+            grfSearch.Cols[colRsRemark].Caption = "Remark";
+            grfSearch.Cols[colRsHn].Caption = "HN";
+            grfSearch.Cols[colRsPttName].Caption = "Patient Name";
+            Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
+            //CellRange rg1 = grfBank.GetCellRange(1, colE, grfBank.Rows.Count, colE);
+            //rg1.Style = grfBank.Styles["date"];
+            //grfCu.Cols[colID].Visible = false;
+            int i = 1;
+            String chk = "";
+            foreach (DataRow row in dt.Rows)
+            {
+                Row row1 = grfSearch.Rows.Add();
+                row1[colRsId] = row[ic.ivfDB.lbresDB.lbRes.result_id].ToString();
+                row1[colRsLabName] = row[ic.ivfDB.oLabiDB.labI.LName].ToString();
+
+                row1[colRsMethod] = row[ic.ivfDB.lbresDB.lbRes.method].ToString();
+                row1[colRsResult] = row[ic.ivfDB.lbresDB.lbRes.result].ToString();
+                row1[colRsInterpret] = row[ic.ivfDB.lbresDB.lbRes.interpret].ToString();
+
+                row1[colRsUnit] = row[ic.ivfDB.lbresDB.lbRes.unit].ToString();
+                row1[colRsNormal] = row[ic.ivfDB.lbresDB.lbRes.normal_value].ToString();
+                row1[colRsRemark] = row[ic.ivfDB.lbresDB.lbRes.remark].ToString();
+                row1[colRsLabId] = row[ic.ivfDB.lbresDB.lbRes.lab_id].ToString();
+                row1[colRsReqId] = row[ic.ivfDB.lbresDB.lbRes.req_id].ToString();
+                row1[colRsHn] = ic.showHN(row["patient_hn"].ToString(), row["patient_year"].ToString());
+                row1[colRsPttName] = row["pname"].ToString();
+                row1[colRsReqDate] = ic.datetimetoShow(row[ic.ivfDB.lbresDB.lbRes.req_date_time].ToString());
+                //row1[colOPUTimeModi] = row[ic.ivfDB.lFormaDB.lformA.opu_time_modi].ToString();
+                //row1[colRqLabName] = row["SName"].ToString();
+                //row1[colRqHnMale] = row["hn_male"].ToString();
+                //row1[colRqNameMale] = row["name_male"].ToString();
+                //row1[colRqHnDonor] = row["hn_donor"].ToString();
+                //row1[colRqNameDonor] = row["name_donor"].ToString();
+
+                i++;
+            }
+            grfSearch.Cols[colRsId].Visible = false;
+            grfSearch.Cols[colRsLabId].Visible = false;
+            grfSearch.Cols[colRsReqId].Visible = false;
+
+            grfSearch.Cols[colRsLabName].AllowEditing = false;
+            grfSearch.Cols[colRsMethod].AllowEditing = false;
+            grfSearch.Cols[colRsResult].AllowEditing = false;
+            grfSearch.Cols[colRsInterpret].AllowEditing = false;
+            grfSearch.Cols[colRsUnit].AllowEditing = false;
+            grfSearch.Cols[colRsNormal].AllowEditing = false;
+            grfSearch.Cols[colRsRemark].AllowEditing = false;
+            grfSearch.Cols[colRsHn].AllowEditing = false;
+            grfSearch.Cols[colRsPttName].AllowEditing = false;
+            //grfReq.Cols[coldt].Visible = false;
         }
         private void initGrfFinish()
         {
@@ -114,7 +261,6 @@ namespace clinic_ivf.gui
 
             theme1.SetTheme(grfFinish, "Office2010Blue");
         }
-
         private void GrfFinish_DoubleClick(object sender, EventArgs e)
         {
             //throw new NotImplementedException();

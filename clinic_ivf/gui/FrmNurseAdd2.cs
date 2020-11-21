@@ -3313,7 +3313,8 @@ namespace clinic_ivf.gui
             grfpApmVisit.Clear();
             DataTable dt = new DataTable();
 
-            dt = ic.ivfDB.pApmDB.selectByVisitId(vn);
+            //dt = ic.ivfDB.pApmDB.selectByVisitId(vn);
+            dt = ic.ivfDB.pApmDB.selectByPtt(ptt.t_patient_id);
             if (dt.Rows.Count <= 0)
             {
                 VisitOld vsOld = new VisitOld();
@@ -4913,10 +4914,15 @@ namespace clinic_ivf.gui
             txtVisitPulse.Value = vs.pulse;
             chkChronic.Checked = ptt.status_congenial.Equals("1") ? true : false;
             ic.setC1Combo(cboDoctor, vs.doctor_id);
-            Patient ptt1 = new Patient();
+            
             //ptt1 = ic.ivfDB.pttDB.selectByHn(vs.patient_hn_male);
-            ptt1 = ic.ivfDB.pttDB.selectByHn(ptt.patient_hn_1);
-            txtNameMale.Value = ptt1.Name;
+            if (ptt.patient_hn_1.Length > 0)
+            {
+                Patient ptt1 = new Patient();
+                ptt1 = ic.ivfDB.pttDB.selectByHn(ptt.patient_hn_1);
+                txtNameMale.Value = ptt1.Name;
+            }
+            
             stt.Show("<p><b>สวัสดี</b></p>คุณ " + ptt.congenital_diseases_description + "<br> กรุณา ป้อนรหัสผ่าน", chkChronic);
             txtCongenital.Value = ptt.congenital_diseases_description;
             //setControlPmh();
@@ -4928,10 +4934,12 @@ namespace clinic_ivf.gui
             txtAgent.Value = ic.ivfDB.oAgnDB.getAgentNameById(ptt.agent);
             txtLmp.Value = ptt.lmp;
             ic.ivfDB.vsDB.setCboVisit(cboLabVs, txtVsId.Text, txtPttId.Text);
-
-            Patient ptt2 = new Patient();
-            ptt2 = ic.ivfDB.pttDB.selectByHn(ptt.patient_hn_2);
-            txtName_2.Value = ptt2.Name;
+            if (ptt.patient_hn_2.Length > 0)
+            {
+                Patient ptt2 = new Patient();
+                ptt2 = ic.ivfDB.pttDB.selectByHn(ptt.patient_hn_2);
+                txtName_2.Value = ptt2.Name;
+            }
             if (!ptt.t_patient_id.Equals(""))
             {
                 PatientImage pttI = new PatientImage();

@@ -1068,6 +1068,27 @@ namespace clinic_ivf.objdb
         {
             DataTable dt = new DataTable();
             //String date = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd");
+            //String sql = "select vs.t_visit_id as id, vs.visit_vn as VN, vs.visit_hn as PIDS " +
+            //    ", CONCAT(IFNULL(fpp.patient_prefix_description,''),' ', ptt.patient_firstname_e ,' ',ptt.patient_lastname_e)  as PName" +
+            //    ", vs.visit_begin_visit_time as VDate, vs.visit_hn as PID, ptt.patient_birthday as dob, ptt.t_patient_id " +
+            //    ",forma.form_a_id, forma.form_a_code,forma.status_opu_active, forma.status_fet_active, forma.status_sperm_analysis, forma.status_sperm_freezing, forma.status_sperm_iui, forma.status_sperm_pesa " +
+            //    ", ptt.patient_hn_1 ,CONCAT(IFNULL(fpp_1.patient_prefix_description,''),' ', ptt_1.patient_firstname_e ,' ',ptt_1.patient_lastname_e ) as name_1" +
+            //    ", ptt.patient_hn_2 ,CONCAT(IFNULL(fpp_2.patient_prefix_description,''),' ', ptt_2.patient_firstname_e ,' ',ptt_2.patient_lastname_e ) as name_2 " +
+            //    ", CONCAT(IFNULL(fpp_stf.patient_prefix_description,''),' ', stf.staff_fname_e ,' ',stf.staff_lname_e ) as dtr_name " +
+            //    ", ptt.agent, agt.AgentName, forma.status_fet, ifnull(ptt.f_sex_id,'') as f_sex_id,forma.req_id_opu, ptt.patient_year, ptt.patient_hn_old " +
+            //    "From " + vs.table + " vs " +
+            //    "Left Join lab_t_form_a forma on  vs.t_visit_id = forma.t_visit_id and forma.active = '1' " +
+            //    "Left Join t_patient ptt on  vs.visit_hn = ptt.patient_hn " +
+            //    "Left join f_patient_prefix fpp on fpp.f_patient_prefix_id = ptt.f_patient_prefix_id " +
+            //    "Left join t_patient ptt_1 on ptt.patient_hn_1 = ptt_1.patient_hn and ptt.patient_hn_1 <> '' and ptt.patient_hn_1 is not null " +
+            //    "Left join f_patient_prefix fpp_1 on fpp_1.f_patient_prefix_id = ptt_1.f_patient_prefix_id " +
+            //    "Left join t_patient ptt_2 on ptt.patient_hn_2 = ptt_2.patient_hn and ptt.patient_hn_2 <> '' and ptt.patient_hn_2 is not null " +
+            //    "Left join f_patient_prefix fpp_2 on fpp_2.f_patient_prefix_id = ptt_2.f_patient_prefix_id " +
+            //    "Left join b_staff stf on vs.doctor_id = stf.staff_id " +
+            //    "Left join f_patient_prefix fpp_stf on fpp_stf.f_patient_prefix_id = stf.prefix_id " +
+            //    "Left Join Agent agt on ptt.agent = agt.AgentID " +
+            //    "Where vs." + vs.visit_hn + " like '%" + hn + "%' " +
+            //    "Order By vs.visit_vn desc ";
             String sql = "select vs.t_visit_id as id, vs.visit_vn as VN, vs.visit_hn as PIDS " +
                 ", CONCAT(IFNULL(fpp.patient_prefix_description,''),' ', ptt.patient_firstname_e ,' ',ptt.patient_lastname_e)  as PName" +
                 ", vs.visit_begin_visit_time as VDate, vs.visit_hn as PID, ptt.patient_birthday as dob, ptt.t_patient_id " +
@@ -1080,9 +1101,9 @@ namespace clinic_ivf.objdb
                 "Left Join lab_t_form_a forma on  vs.t_visit_id = forma.t_visit_id and forma.active = '1' " +
                 "Left Join t_patient ptt on  vs.visit_hn = ptt.patient_hn " +
                 "Left join f_patient_prefix fpp on fpp.f_patient_prefix_id = ptt.f_patient_prefix_id " +
-                "Left join t_patient ptt_1 on ptt.patient_hn_1 = ptt_1.patient_hn and ptt.patient_hn_1 <> '' and ptt.patient_hn_1 is not null " +
+                "Left join t_patient ptt_1 on ptt_1.t_patient_id = ptt.t_patient_id_1 and ptt.patient_hn_1 <> '' and ptt.patient_hn_1 is not null " +
                 "Left join f_patient_prefix fpp_1 on fpp_1.f_patient_prefix_id = ptt_1.f_patient_prefix_id " +
-                "Left join t_patient ptt_2 on ptt.patient_hn_2 = ptt_2.patient_hn and ptt.patient_hn_2 <> '' and ptt.patient_hn_2 is not null " +
+                "Left join t_patient ptt_2 on ptt_2.t_patient_id = ptt.t_patient_id_2 and ptt.patient_hn_2 <> '' and ptt.patient_hn_2 is not null " +
                 "Left join f_patient_prefix fpp_2 on fpp_2.f_patient_prefix_id = ptt_2.f_patient_prefix_id " +
                 "Left join b_staff stf on vs.doctor_id = stf.staff_id " +
                 "Left join f_patient_prefix fpp_stf on fpp_stf.f_patient_prefix_id = stf.prefix_id " +
@@ -1185,26 +1206,47 @@ namespace clinic_ivf.objdb
             }
             //String date = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd");
             //String sql = "select t_visit.t_visit_id as id,vsold.VN, vsold.PIDS, vsold.PName, vsold.VDate, vsold.VStartTime, vsold.VEndTime, VStatus.VName, vsold.VSID, ifnull(vsold.PID,'') as PID, ptt.patient_birthday as dob" +
+            //String sql = "Select vs.t_visit_id as id,vs.visit_vn , ptt.patient_hn as PIDS, vs.patient_name, vs.visit_begin_visit_time as VDate, vs.visit_begin_visit_time as VStartTime, vs.visit_financial_discharge_time as VEndTime, VStatus.VName" +
+            //    ", vs.visit_vn as VSID, ifnull(vs.t_patient_id,'') as PID, ptt.patient_birthday as dob" +
+            //    ",vs.form_a_id, CONCAT(IFNULL(fpp.patient_prefix_description,''),' ', stf.staff_fname_e ,' ',stf.staff_lname_e)  as dtrname, vs.status_nurse, vs.status_cashier " +
+            //     ", ptt.patient_hn_1 ,CONCAT(IFNULL(fpp_1.patient_prefix_description,''),' ', ptt_1.patient_firstname_e ,' ',ptt_1.patient_lastname_e ) as name_1" +
+            //    ", ptt.patient_hn_2 ,CONCAT(IFNULL(fpp_2.patient_prefix_description,''),' ', ptt_2.patient_firstname_e ,' ',ptt_2.patient_lastname_e ) as name_2 " +
+            //    ", ptt.agent, agt.AgentName, ifnull(ptt.f_sex_id,'') as f_sex_id, vs.t_patient_id,ptt.patient_year, ptt.patient_hn_old " +
+            //    "From " + vs.table + " vs " +
+            //    "Left Join VStatus on  VStatus.VSID = vs.VSID " +
+            //    //"Left Join t_visit on  vsold.VN = t_visit.visit_vn " +
+            //    "Left Join t_patient ptt on  vs.t_patient_id = ptt.t_patient_id " +
+            //    "Left Join b_staff stf on vs.doctor_id = stf.doctor_id_old " +
+            //    "Left join f_patient_prefix fpp on fpp.f_patient_prefix_id = stf.prefix_id " +
+            //    "Left join t_patient ptt_1 on ptt.patient_hn_1 = ptt_1.patient_hn and ptt.patient_hn_1 <> '' and ptt.patient_hn_1 is not null " +
+            //    "Left join f_patient_prefix fpp_1 on fpp_1.f_patient_prefix_id = ptt_1.f_patient_prefix_id " +
+            //    "Left join t_patient ptt_2 on ptt.patient_hn_2 = ptt_2.patient_hn and ptt.patient_hn_2 <> '' and ptt.patient_hn_2 is not null " +
+            //    "Left join f_patient_prefix fpp_2 on fpp_2.f_patient_prefix_id = ptt_2.f_patient_prefix_id " +
+            //    "Left Join Agent agt on ptt.agent = agt.AgentID " +
+            //    "Where  vs.VSID in ('110','115')  "+ wheresp + " and vs.f_visit_status_id = '1' " +
+            //    //"Order By vsold.VDate desc, vsold.VStartTime desc";
+            //    "Order By vs.visit_begin_visit_time desc";
+
             String sql = "Select vs.t_visit_id as id,vs.visit_vn , ptt.patient_hn as PIDS, vs.patient_name, vs.visit_begin_visit_time as VDate, vs.visit_begin_visit_time as VStartTime, vs.visit_financial_discharge_time as VEndTime, VStatus.VName" +
-                ", vs.visit_vn as VSID, ifnull(vs.t_patient_id,'') as PID, ptt.patient_birthday as dob" +
-                ",vs.form_a_id, CONCAT(IFNULL(fpp.patient_prefix_description,''),' ', stf.staff_fname_e ,' ',stf.staff_lname_e)  as dtrname, vs.status_nurse, vs.status_cashier " +
-                 ", ptt.patient_hn_1 ,CONCAT(IFNULL(fpp_1.patient_prefix_description,''),' ', ptt_1.patient_firstname_e ,' ',ptt_1.patient_lastname_e ) as name_1" +
-                ", ptt.patient_hn_2 ,CONCAT(IFNULL(fpp_2.patient_prefix_description,''),' ', ptt_2.patient_firstname_e ,' ',ptt_2.patient_lastname_e ) as name_2 " +
-                ", ptt.agent, agt.AgentName, ifnull(ptt.f_sex_id,'') as f_sex_id, vs.t_patient_id,ptt.patient_year, ptt.patient_hn_old " +
-                "From " + vs.table + " vs " +
-                "Left Join VStatus on  VStatus.VSID = vs.VSID " +
-                //"Left Join t_visit on  vsold.VN = t_visit.visit_vn " +
-                "Left Join t_patient ptt on  vs.t_patient_id = ptt.t_patient_id " +
-                "Left Join b_staff stf on vs.doctor_id = stf.doctor_id_old " +
-                "Left join f_patient_prefix fpp on fpp.f_patient_prefix_id = stf.prefix_id " +
-                "Left join t_patient ptt_1 on ptt.patient_hn_1 = ptt_1.patient_hn and ptt.patient_hn_1 <> '' and ptt.patient_hn_1 is not null " +
-                "Left join f_patient_prefix fpp_1 on fpp_1.f_patient_prefix_id = ptt_1.f_patient_prefix_id " +
-                "Left join t_patient ptt_2 on ptt.patient_hn_2 = ptt_2.patient_hn and ptt.patient_hn_2 <> '' and ptt.patient_hn_2 is not null " +
-                "Left join f_patient_prefix fpp_2 on fpp_2.f_patient_prefix_id = ptt_2.f_patient_prefix_id " +
-                "Left Join Agent agt on ptt.agent = agt.AgentID " +
-                "Where  vs.VSID in ('110','115')  "+ wheresp + " and vs.f_visit_status_id = '1' " +
-                //"Order By vsold.VDate desc, vsold.VStartTime desc";
-                "Order By vs.visit_begin_visit_time desc";
+               ", vs.visit_vn as VSID, ifnull(vs.t_patient_id,'') as PID, ptt.patient_birthday as dob" +
+               ",vs.form_a_id, CONCAT(IFNULL(fpp.patient_prefix_description,''),' ', stf.staff_fname_e ,' ',stf.staff_lname_e)  as dtrname, vs.status_nurse, vs.status_cashier " +
+                ", ptt.patient_hn_1 ,CONCAT(IFNULL(fpp_1.patient_prefix_description,''),' ', ptt_1.patient_firstname_e ,' ',ptt_1.patient_lastname_e ) as name_1" +
+               ", ptt.patient_hn_2 ,CONCAT(IFNULL(fpp_2.patient_prefix_description,''),' ', ptt_2.patient_firstname_e ,' ',ptt_2.patient_lastname_e ) as name_2 " +
+               ", ptt.agent, agt.AgentName, ifnull(ptt.f_sex_id,'') as f_sex_id, vs.t_patient_id,ptt.patient_year, ptt.patient_hn_old " +
+               "From " + vs.table + " vs " +
+               "Left Join VStatus on  VStatus.VSID = vs.VSID " +
+               //"Left Join t_visit on  vsold.VN = t_visit.visit_vn " +
+               "Left Join t_patient ptt on  vs.t_patient_id = ptt.t_patient_id " +
+               "Left Join b_staff stf on vs.doctor_id = stf.doctor_id_old " +
+               "Left join f_patient_prefix fpp on fpp.f_patient_prefix_id = stf.prefix_id " +
+               "Left join t_patient ptt_1 on ptt.t_patient_id_1 = ptt_1.t_patient_id and ptt.patient_hn_1 <> '' and ptt.patient_hn_1 is not null " +
+               "Left join f_patient_prefix fpp_1 on fpp_1.f_patient_prefix_id = ptt_1.f_patient_prefix_id " +
+               "Left join t_patient ptt_2 on ptt.t_patient_id_2 = ptt_2.t_patient_id and ptt.patient_hn_2 <> '' and ptt.patient_hn_2 is not null " +
+               "Left join f_patient_prefix fpp_2 on fpp_2.f_patient_prefix_id = ptt_2.f_patient_prefix_id " +
+               "Left Join Agent agt on ptt.agent = agt.AgentID " +
+               "Where  vs.VSID in ('110','115')  " + wheresp + " and vs.f_visit_status_id = '1' " +
+               //"Order By vsold.VDate desc, vsold.VStartTime desc";
+               "Order By vs.visit_begin_visit_time desc";
             dt = conn.selectData(conn.conn, sql);
 
             return dt;
@@ -1383,7 +1425,8 @@ namespace clinic_ivf.objdb
             String date = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd");
             String sql = "select vs.t_visit_id as id,vs.visit_vn as VN, vs.visit_hn as PIDS, vs.patient_name as PName, vs.visit_begin_visit_time as VDate, vs.visit_begin_visit_time as VStartTime, vs.visit_financial_discharge_time as VEndTime " +
                 ", VStatus.VName, vs.vsid, ifnull(vs.t_patient_id,'') as PID, t_patient.patient_birthday as dob " +
-                ",vs.form_a_id,CONCAT(IFNULL(fpp.patient_prefix_description,''),' ', stf.staff_fname_e ,' ',stf.staff_lname_e)  as dtrname,vs.status_nurse, vs.status_cashier, bilh.bill_id, CashAccount.CashName, CreditCardAccount.CreditCardName, BillHeader.CashID, BillHeader.CreditCardID" +
+                ",vs.form_a_id,CONCAT(IFNULL(fpp.patient_prefix_description,''),' ', stf.staff_fname_e ,' ',stf.staff_lname_e)  as dtrname,vs.status_nurse, vs.status_cashier, bilh.bill_id" +
+                ", ifnull(CashAccount.CashName,'') as CashName, ifnull(CreditCardAccount.CreditCardName,'') as CreditCardName, bilh.CashID, bilh.CreditCardID" +
                 ", t_patient.patient_hn_old, bilh.receipt_no, bilh.receipt1_no  " +
                 "From " + vs.table + " vs " +
                 "Left Join VStatus on  VStatus.VSID = vs.vsid " +
@@ -1392,6 +1435,8 @@ namespace clinic_ivf.objdb
                 "Left Join b_staff stf on vs.doctor_id = stf.doctor_id_old " +
                 "Left join f_patient_prefix fpp on fpp.f_patient_prefix_id = stf.prefix_id " +
                 "Left Join BillHeader bilh on vs.visit_vn = bilh.VN and bilh.active = '1' " +
+                "Left Join CashAccount on bilh.CashID = CashAccount.CashID " +
+                "Left Join CreditCardAccount on bilh.CreditCardID = CreditCardAccount.CreditCardID " +
                 //"Where  vs.vsid in('166','160','165')  " +//and t_visit.b_service_point_id = '" + bspid + "' " +
                 "Where  vs.status_cashier = '2' and bilh.Date = '" + date + "' " +
                 "Order By vs.vsid desc,vs.visit_begin_visit_time desc ";

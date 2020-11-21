@@ -682,7 +682,8 @@ namespace clinic_ivf.gui
             menuGw.MenuItems.Add("ต้องการ ยกเลิก ภาพนี้", new EventHandler(ContextMenu_Gw_Cancel));
             grfScan.ContextMenu = menuGw;
             DataTable dt = new DataTable();
-            dt = ic.ivfDB.dscDB.selectByVn(txtHn.Text, vn);
+            //dt = ic.ivfDB.dscDB.selectByVn(txtHn.Text, vn);
+            dt = ic.ivfDB.dscDB.selectByVn(ptt.patient_hn, vn);
             grfScan.Rows.Count = 0;
             if (dt.Rows.Count > 0)
             {

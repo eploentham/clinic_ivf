@@ -1759,11 +1759,11 @@ namespace clinic_ivf.gui
                 long.TryParse(row["CashID"].ToString(), out chk);
                 if (chk > 0)
                 {
-                    grfSearch[i, colBillAcc] = row["CashName"].ToString();
+                    grfFinish[i, colBillAcc] = row["CashName"].ToString();
                 }
                 else
                 {
-                    grfSearch[i, colBillAcc] = row["CreditCardName"].ToString();
+                    grfFinish[i, colBillAcc] = row["CreditCardName"] != null ? row["CreditCardName"].ToString() : "";
                 }
                 //if (i % 2 == 0)
                 //    grfPtt.Rows[i].StyleNew.BackColor = color;

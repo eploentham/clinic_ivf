@@ -979,7 +979,7 @@ namespace clinic_ivf.gui
             //txtEmailSubject.Value = "Routine LAB Result HN " + txtHnFeMale.Text + " Name " + txtNameFeMale.Text + " FET Code " + txtFetCode.Text + " Date " + System.DateTime.Now.ToString("dd/MM/") + System.DateTime.Now.Year;
             //txtEmailSubject.Value = "Routine LAB Result HN " + txtHnFeMale.Text + " Name " + txtNameFeMale.Text + " FET Code " + txtFetCode.Text + " Date " + System.DateTime.Now.ToString("dd/MM/") + System.DateTime.Now.Year;
 
-            mail.From = new MailAddress(ic.iniC.email_form_lab_opu);
+            mail.From = new MailAddress(ic.iniC.email_form_lab_fet);
             mail.To.Add(txtEmailTo.Text);
             mail.Subject = txtEmailSubject.Text;
             mail.Body = txtBody.Text;
@@ -1001,7 +1001,7 @@ namespace clinic_ivf.gui
             }
 
             SmtpServer.Port = 587;
-            SmtpServer.Credentials = new System.Net.NetworkCredential(ic.iniC.email_auth_user_lab_opu, ic.iniC.email_auth_pass_lab_opu);
+            SmtpServer.Credentials = new System.Net.NetworkCredential(ic.iniC.email_auth_user_lab_fet, ic.iniC.email_auth_pass_lab_fet);
 
             SmtpServer.EnableSsl = true;
             SmtpServer.Send(mail);
