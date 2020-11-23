@@ -336,7 +336,7 @@ namespace clinic_ivf.objdb
             //    "left join StockDrug on StockDrug.DUID =  jobpxD.DUID " +
             //    "Where JobPx.VN = '" + vn + "' " +
             //    "group by patient_name,hn,frequency, jobpxD.DUName , jobpxD.DUID, JobPx.Date, unit_name  ";
-            String sql = "SELECT ptt.patient_name, jobpxD.PIDS as hn, DATE_FORMAT(now(),''), jobpxD.TUsage as frequency " +
+            String sql = "SELECT ptt.patient_name, concat(jobpxD.PIDS,'/',ptt.patient_year) as hn, DATE_FORMAT(now(),''), jobpxD.TUsage as frequency " +
                 ", jobpxD.DUName as drug_name, sum(jobpxD.QTY) as qty, jobpxD.DUID, JobPx.Date,StockDrug.UnitType as unit_name " +
                 "From " + oJpxd.table + " jobpxD " +
                 "left join JobPx on JobPx.VN = jobpxD.VN " +
@@ -367,7 +367,7 @@ namespace clinic_ivf.objdb
             //    "left join StockDrug on StockDrug.DUID =  jobpxD.DUID " +
             //    "Where JobPx.VN = '" + vn + "' " +
             //    "group by jobpxD.DUName ";
-            String sql = "SELECT ptt.patient_name, jobpxD.PIDS as hn, DATE_FORMAT(now(),''), jobpxD.EUsage as frequency " +
+            String sql = "SELECT ptt.patient_name, concat(jobpxD.PIDS,'/',ptt.patient_year) as hn, DATE_FORMAT(now(),''), jobpxD.EUsage as frequency " +
                 ", jobpxD.DUName as drug_name, sum(jobpxD.QTY) as qty, jobpxD.DUID, JobPx.Date,StockDrug.UnitType as unit_name " +
                 "From " + oJpxd.table + " jobpxD " +
                 "left join JobPx on JobPx.VN = jobpxD.VN " +

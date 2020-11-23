@@ -714,9 +714,9 @@
             this.lbHn_2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.lbHn_2.Location = new System.Drawing.Point(181, 334);
             this.lbHn_2.Name = "lbHn_2";
-            this.lbHn_2.Size = new System.Drawing.Size(44, 16);
+            this.lbHn_2.Size = new System.Drawing.Size(72, 16);
             this.lbHn_2.TabIndex = 728;
-            this.lbHn_2.Text = "HN 2 :";
+            this.lbHn_2.Text = "HN not us :";
             this.theme1.SetTheme(this.lbHn_2, "(default)");
             // 
             // txtHn_2
@@ -764,9 +764,9 @@
             this.lbHn_1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.lbHn_1.Location = new System.Drawing.Point(181, 311);
             this.lbHn_1.Name = "lbHn_1";
-            this.lbHn_1.Size = new System.Drawing.Size(44, 16);
+            this.lbHn_1.Size = new System.Drawing.Size(80, 16);
             this.lbHn_1.TabIndex = 724;
-            this.lbHn_1.Text = "HN 1 :";
+            this.lbHn_1.Text = "HN Couple :";
             this.theme1.SetTheme(this.lbHn_1, "(default)");
             // 
             // txtHn_1

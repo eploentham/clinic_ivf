@@ -138,7 +138,7 @@ namespace clinic_ivf.gui
             PrinterSettings settings = new PrinterSettings();
             printerOld = settings.PrinterName;
             SetDefaultPrinter(ic.iniC.printerSticker);
-            ic.logw.WriteLog("d", "PrinterSticker " + ic.iniC.printerSticker);
+            //ic.logw.WriteLog("d", "PrinterSticker " + ic.iniC.printerSticker);
             String date = "", date1 = "";
             date = DateTime.Now.Year + "-" + DateTime.Now.ToString("MM-dd");
             DataTable dt = new DataTable();
@@ -202,7 +202,7 @@ namespace clinic_ivf.gui
             ptt = ic.ivfDB.pttDB.selectByPk1(vs.t_patient_id);
 
             //txtHn.Value = ptt.patient_hn;//      -0020
-            txtHn.Value = ptt.patient_hn + ic.hnspareyear + ptt.patient_year;//  +0020
+            txtHn.Value = ic.showHN(ptt.patient_hn, ptt.patient_year);//  +0020
             txtVn.Value = vs.visit_vn;
             txtPttNameE.Value = ptt.Name;
             

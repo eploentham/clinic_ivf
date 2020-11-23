@@ -1318,7 +1318,7 @@ namespace clinic_ivf.objdb
             //    "Order By vsold.VSID desc,vsold.VDate desc, vsold.VStartTime desc ";
             String sql = "select vs.t_visit_id as id,vs.visit_vn as vn, t_patient.patient_hn as PIDS, vs.patient_name as PName, vs.visit_begin_visit_time as VDate, vs.visit_begin_visit_time as VStartTime" +
                 ", vs.visit_financial_discharge_time as VEndTime, VStatus.VName, vs.vsid, ifnull(vs.t_patient_id,'') as PID, t_patient.patient_birthday as dob " +
-                ",vs.form_a_id, t_patient.agent, agt.AgentName, t_patient.patient_hn_old  " +
+                ",vs.form_a_id, t_patient.agent, agt.AgentName, t_patient.patient_hn_old,t_patient.patient_year  " +
                 "From " + vs.table + " vs " +
                 "Left Join VStatus on  VStatus.VSID = vs.vsid " +
                 //"Left Join Patient on  vsold.PID = Patient.PID " +
@@ -1427,7 +1427,7 @@ namespace clinic_ivf.objdb
                 ", VStatus.VName, vs.vsid, ifnull(vs.t_patient_id,'') as PID, t_patient.patient_birthday as dob " +
                 ",vs.form_a_id,CONCAT(IFNULL(fpp.patient_prefix_description,''),' ', stf.staff_fname_e ,' ',stf.staff_lname_e)  as dtrname,vs.status_nurse, vs.status_cashier, bilh.bill_id" +
                 ", ifnull(CashAccount.CashName,'') as CashName, ifnull(CreditCardAccount.CreditCardName,'') as CreditCardName, bilh.CashID, bilh.CreditCardID" +
-                ", t_patient.patient_hn_old, bilh.receipt_no, bilh.receipt1_no  " +
+                ", t_patient.patient_hn_old, bilh.receipt_no, bilh.receipt1_no,t_patient.patient_year  " +
                 "From " + vs.table + " vs " +
                 "Left Join VStatus on  VStatus.VSID = vs.vsid " +
                 "Left Join t_patient on  vs.t_patient_id = t_patient.t_patient_id " +
@@ -1460,7 +1460,7 @@ namespace clinic_ivf.objdb
             String sql = "select vs.t_visit_id as id,vs.visit_vn as VN, vs.visit_hn as PIDS, vs.patient_name as PName, vs.visit_begin_visit_time as VDate, vs.visit_begin_visit_time as VStartTime, vs.visit_financial_discharge_time as VEndTime" +
                 ", VStatus.VName, vs.vsid, t_patient.t_patient_id as PID, t_patient.patient_birthday as dob" +
                 ", vs.form_a_id, BillHeader.receipt_no, BillHeader.receipt1_no, BillHeader.active , CashAccount.CashName, CreditCardAccount.CreditCardName, BillHeader.CashID, BillHeader.CreditCardID" +
-                ",BillHeader.bill_id,t_patient.patient_hn_old " +
+                ",BillHeader.bill_id,t_patient.patient_hn_old,t_patient.patient_year " +
                 "From " + vs.table + " vs " +
                 "Left Join VStatus on  VStatus.VSID = vs.vsid " +
                 "Left Join t_patient on  vs.t_patient_id = t_patient.t_patient_id " +
@@ -1479,10 +1479,10 @@ namespace clinic_ivf.objdb
             String date = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd");
             String sql = "select vs.t_visit_id as id,vs.visit_vn as VN, vs.visit_hn as PIDS, vs.patient_name as PName, vs.visit_begin_visit_time as VDate, vs.visit_begin_visit_time as VStartTime, vs.visit_financial_discharge_time as VEndTime " +
                 ", VStatus.VName, vs.vsid, ifnull(vs.t_patient_id,'') as PID " +
-                ",vs.form_a_id,CONCAT(IFNULL(fpp.patient_prefix_description,''),' ', stf.staff_fname_e ,' ',stf.staff_lname_e)  as dtrname,vs.status_nurse, vs.status_cashier  " +
+                ",vs.form_a_id,CONCAT(IFNULL(fpp.patient_prefix_description,''),' ', stf.staff_fname_e ,' ',stf.staff_lname_e)  as dtrname,vs.status_nurse, vs.status_cashier,t_patient.patient_year  " +
                 "From " + vs.table + " vs " +
                 "Left Join VStatus on  VStatus.VSID = vs.vsid " +
-                //"Left Join t_patient on  vs.t_patient_id = t_patient.t_patient_id " +
+                "Left Join t_patient on  vs.t_patient_id = t_patient.t_patient_id " +
                 //"Left Join t_visit on  vsold.VN = t_visit.visit_vn " +
                 "Left Join b_staff stf on vs.doctor_id = stf.doctor_id_old " +
                 "Left join f_patient_prefix fpp on fpp.f_patient_prefix_id = stf.prefix_id " +

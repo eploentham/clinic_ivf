@@ -107,9 +107,9 @@ namespace clinic_ivf.gui
             initGrfQue();
             initGrfFinish();
             setGrfQue();
-            setGrfFinish();
+            //setGrfFinish();
             initGrfSearch();
-            setGrfSearch();
+            //setGrfSearch();
             initGrfCloseDay();
             initGrfBillD();
             initGrfRpt();
@@ -760,6 +760,10 @@ namespace clinic_ivf.gui
                 setGrfCloseDay();
 
                 frmW.Dispose();
+            }
+            else if (tC.SelectedTab == tabSearch)
+            {
+                setGrfSearch();
             }
         }
         private void calAmt()
@@ -1570,7 +1574,7 @@ namespace clinic_ivf.gui
                 grfSearch[i, colID] = row["id"].ToString();
                 grfSearch[i, colVNshow] = ic.showVN(row["VN"].ToString());
                 grfSearch[i, colVN] = row["VN"].ToString();
-                grfSearch[i, colPttHn] = row["PIDS"].ToString();
+                grfSearch[i, colPttHn] = ic.showHN(row["PIDS"].ToString(), row["patient_year"].ToString());
                 grfSearch[i, colPttName] = row["PName"].ToString();
                 grfSearch[i, colVsDate] = ic.datetoShow(row["VDate"]);
                 grfSearch[i, colVsTime] = row["VStartTime"].ToString();
@@ -1739,7 +1743,7 @@ namespace clinic_ivf.gui
                 grfFinish[i, colID] = row["id"].ToString();
                 grfFinish[i, colVNshow] = ic.showVN(row["VN"].ToString());
                 grfFinish[i, colVN] = row["VN"].ToString();
-                grfFinish[i, colPttHn] = row["PIDS"].ToString();
+                grfFinish[i, colPttHn] = ic.showHN(row["PIDS"].ToString(), row["patient_year"].ToString());
                 grfFinish[i, colPttName] = row["PName"].ToString();
                 grfFinish[i, colVsDate] = ic.datetoShow(row["VDate"]);
                 grfFinish[i, colVsTime] = ic.timetoShow(row["VStartTime"].ToString());
@@ -1980,7 +1984,7 @@ namespace clinic_ivf.gui
                 grfQue[i, colID] = row["id"].ToString();
                 grfQue[i, colVNshow] = ic.showVN(row["VN"].ToString());
                 grfQue[i, colVN] = row["VN"].ToString();
-                grfQue[i, colPttHn] = row["PIDS"].ToString();
+                grfQue[i, colPttHn] = ic.showHN(row["PIDS"].ToString(), row["patient_year"].ToString());
                 grfQue[i, colPttName] = row["PName"].ToString();
                 grfQue[i, colVsDate] = ic.datetoShow(row["VDate"]);
                 grfQue[i, colVsTime] = row["VStartTime"].ToString();
