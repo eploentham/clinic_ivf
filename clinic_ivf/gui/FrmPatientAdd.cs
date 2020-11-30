@@ -3449,7 +3449,6 @@ namespace clinic_ivf.gui
                 {
                     ptt.patient_hn = txtHn.Text.Trim().Replace(ptt.patient_year, "").Replace("/", "");//  +0021
                 }
-                
             }
             if (txtHn.Text.Trim().Length <= 1)        //  +0021
             {

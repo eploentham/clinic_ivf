@@ -1158,9 +1158,9 @@
             this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.label14.Location = new System.Drawing.Point(11, 71);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(64, 20);
+            this.label14.Size = new System.Drawing.Size(115, 20);
             this.label14.TabIndex = 703;
-            this.label14.Text = "คงเหลือ :";
+            this.label14.Text = "ยอดคงเหลือสุทธิ :";
             this.theme1.SetTheme(this.label14, "(default)");
             // 
             // txtTotal

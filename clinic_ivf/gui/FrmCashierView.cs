@@ -1964,6 +1964,9 @@ namespace clinic_ivf.gui
             grfQue.Cols[colStatusNurse].Caption = "Nurse";
             grfQue.Cols[colStatusCashier].Caption = "Cashier";
             grfQue.Cols[colVsAgent].Caption = "Agent";
+            grfQue.Cols[colReceiptNo].Caption = "receipt no";
+            grfQue.Cols[colPttHnOld].Caption = "HN OPD";
+            //grfQue.Cols[colBillAcc].Caption = "HN OPD";
 
             //menuGw.MenuItems.Add("&receive operation", new EventHandler(ContextMenu_Apm));
             //menuGw.MenuItems.Add("receive operation", new EventHandler(ContextMenu_order));

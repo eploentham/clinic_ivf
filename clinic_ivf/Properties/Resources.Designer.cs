@@ -2131,6 +2131,16 @@ namespace clinic_ivf.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon Subway_TokyoAsakusa {
+            get {
+                object obj = ResourceManager.GetObject("Subway_TokyoAsakusa", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap Superscript_small {

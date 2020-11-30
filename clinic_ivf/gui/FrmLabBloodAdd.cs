@@ -144,7 +144,6 @@ namespace clinic_ivf.gui
             SmtpServer.Send(mail);
             lbEmail.Text = "ส่ง Email เรียบร้อย";
         }
-
         private void BtnAgentEmail_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
@@ -154,7 +153,6 @@ namespace clinic_ivf.gui
             frm.ShowDialog(this);
             txtEmailTo.Value = ic.email;
         }
-
         private void BtnPrintInfectious_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
@@ -696,7 +694,7 @@ namespace clinic_ivf.gui
             String lotInput = "";
             foreach(Row row in grfProc.Rows)
             {
-                String id = "", edit = "", result="", interpret="", remark, lotinput="", reactive="";
+                String id = "", edit = "", result="", interpret="", remark, lotinput="", reactive="", method="";
                 id = row[colRsId] != null ? row[colRsId].ToString() : "";
                 if (id.Equals("")) continue;
                 edit = row[colRsEdit] != null ? row[colRsEdit].ToString() : "";
@@ -705,7 +703,8 @@ namespace clinic_ivf.gui
                 remark = row[colRsRemark] != null ? row[colRsRemark].ToString() : "";
                 lotinput = row[colRsLotInput] != null ? row[colRsLotInput].ToString() : "";
                 reactive = row[colRsReactive] != null ? row[colRsReactive].ToString() : "";
-                String re1 = ic.ivfDB.lbresDB.updateResultDate(stfapp, stfrpt, dateapp, daterpt, datecollect, datereceive, id);
+                method = row[colRsMethod] != null ? row[colRsMethod].ToString() : "";
+                String re1 = ic.ivfDB.lbresDB.updateResultDate(stfapp, stfrpt, dateapp, daterpt, datecollect, datereceive, id, method);
                 if (edit.Equals("1") && !result.Equals(""))
                 {
                     if (lotinput.Equals(""))
@@ -1019,7 +1018,8 @@ namespace clinic_ivf.gui
                     //Decimal.TryParse(row[ic.ivfDB.oLabiDB.labI.Price].ToString(), out aaa);
                     grfProc[i, colRsId] = row[ic.ivfDB.lbresDB.lbRes.result_id].ToString();
                     grfProc[i, colRsLabName] = row[ic.ivfDB.oLabiDB.labI.LName].ToString();
-                    grfProc[i, colRsMethod] =  ic.ivfDB.lbmDB.getNameById(row[ic.ivfDB.oLabiDB.labI.method_id].ToString());
+                    //grfProc[i, colRsMethod] =  ic.ivfDB.lbmDB.getNameById(row[ic.ivfDB.oLabiDB.labI.method_id].ToString());
+                    grfProc[i, colRsMethod] = row[ic.ivfDB.lbresDB.lbRes.method].ToString();
                     grfProc[i, colRsRemark] = row[ic.ivfDB.lbresDB.lbRes.remark].ToString();
                     grfProc[i, colRsLotInput] = row[ic.ivfDB.lbresDB.lbRes.lot_input].ToString();
                     if (row[ic.ivfDB.oLabiDB.labI.status_datatype_result].ToString().Equals("4"))       // combobox

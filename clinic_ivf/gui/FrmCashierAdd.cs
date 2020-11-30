@@ -1095,7 +1095,7 @@ namespace clinic_ivf.gui
             txtVnOld.Value = vs.visit_vn;      //      +0020
             txtHnOld.Value = vs.visit_hn;      //      +0020
             txtVn.Value = vs.visit_vn;      //      +0020
-
+            txtPttName.Value = ic.ivfDB.fpfDB.getList(ptt.f_patient_prefix_id) + " " + ptt.patient_firstname + " " + ptt.patient_lastname;
             txtVnShow.Value = ic.showVN(vs.visit_vn);
             txtAllergy.Value = ptt.allergy_description;
             txtSex.Value = ptt.f_sex_id.Equals("1") ? "ชาย" : "หญิง";
@@ -2074,8 +2074,8 @@ namespace clinic_ivf.gui
         {
             String date = "";
             date = DateTime.Now.Year + "-" + DateTime.Now.ToString("MM-dd");
-            menu.Text = ic.iniC.statusAppDonor.Equals("1") ? "โปรแกรมClinic IVF Donor " + "สวัสดี คุณ " + ic.user.staff_fname_t + " " + ic.user.staff_lname_t + " Update 2020-05-21 "
-                : "โปรแกรมClinic IVF " + "สวัสดี คุณ " + ic.user.staff_fname_t + " " + ic.user.staff_lname_t + " Update 2020-05-21 format date " + date
+            menu.Text = ic.iniC.statusAppDonor.Equals("1") ? "โปรแกรมClinic IVF Donor " + "สวัสดี คุณ " + ic.user.staff_fname_t + " " + ic.user.staff_lname_t + " Update 2020-11-26 "
+                : "โปรแกรมClinic IVF " + "สวัสดี คุณ " + ic.user.staff_fname_t + " " + ic.user.staff_lname_t + " Update 2020-11-26 format date " + date
                 + " [" + ic.ivfDB.copDB.cop.day + "-" + ic.ivfDB.copDB.cop.month + "-" + ic.ivfDB.copDB.cop.year + "]";
             //sB1.Text = "Date " + ic.cop.day + "-" + ic.cop.month + "-" + ic.cop.year + " Server " + ic.iniC.hostDB + " FTP " + ic.iniC.hostFTP;
             sB1.Text = "Date " + ic.cop.day + "-" + ic.cop.month + "-" + ic.cop.year + " Server " + ic.iniC.hostDB + " FTP " + ic.iniC.hostFTP + "/" + ic.iniC.folderFTP;

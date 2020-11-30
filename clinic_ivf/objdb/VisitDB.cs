@@ -1450,7 +1450,7 @@ namespace clinic_ivf.objdb
             String wherehn = "", wheredate = "";
             if (hn.Length > 0)
             {
-                wherehn = " and Patient.PIDS like '%" + hn + "%' ";
+                wherehn = " and t_patient.patient_hn like '%" + hn + "%' ";
             }
             if (visitdate.Length > 0)
             {

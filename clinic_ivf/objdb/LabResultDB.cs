@@ -228,8 +228,18 @@ namespace clinic_ivf.objdb
         public DataTable selectLabBloodByVsIdHormone(String vsid)
         {
             DataTable dt = new DataTable();
+            //String sql = "select lbRes.result,lbRes.interpret,lbRes.remark, LabItem.LName as lab_name,LabItem.lab_unit_id,LabItem.method_id,lab_b_unit.lab_unit_name as unit" +
+            //    ",lab_b_method.method_name as method, lbRes.reactive_message, LabItem.LID,lbRes.date_time_result,lbRes.date_time_approve, lbRes.req_date_time,lbRes.date_time_receive " +
+            //    ",LabItem.normal_vaule, dtr.Name as doctor,LabItem.normal_vaule,lbRes.date_time_collect,lbRes.staff_id_approve,lbRes.staff_id_result " +
+            //    "From " + lbRes.table + " lbRes " +
+            //    "Left Join LabItem on lbRes." + lbRes.lab_id + " = LabItem.LID " +
+            //    "Left Join lab_b_unit on LabItem.lab_unit_id = lab_b_unit.lab_unit_id " +
+            //    "Left Join lab_b_method on LabItem.method_id = lab_b_method.method_id " +
+            //    "Left Join Doctor dtr on dtr.ID = lbRes.doctor_id " +
+            //    "Where lbRes." + lbRes.status_result + " ='2'  and lbRes.visit_id = '" + vsid + "' and LabItem.lab_group_id = '2550000000'  and lbRes.active = '1' " +
+            //    "Order By LabItem.sort1, lbRes." + lbRes.req_id;
             String sql = "select lbRes.result,lbRes.interpret,lbRes.remark, LabItem.LName as lab_name,LabItem.lab_unit_id,LabItem.method_id,lab_b_unit.lab_unit_name as unit" +
-                ",lab_b_method.method_name as method, lbRes.reactive_message, LabItem.LID,lbRes.date_time_result,lbRes.date_time_approve, lbRes.req_date_time,lbRes.date_time_receive " +
+                ",lbRes.method, lbRes.reactive_message, LabItem.LID,lbRes.date_time_result,lbRes.date_time_approve, lbRes.req_date_time,lbRes.date_time_receive " +
                 ",LabItem.normal_vaule, dtr.Name as doctor,LabItem.normal_vaule,lbRes.date_time_collect,lbRes.staff_id_approve,lbRes.staff_id_result " +
                 "From " + lbRes.table + " lbRes " +
                 "Left Join LabItem on lbRes." + lbRes.lab_id + " = LabItem.LID " +
@@ -244,8 +254,18 @@ namespace clinic_ivf.objdb
         public DataTable selectLabBloodByVsIdInfectious(String vsid)
         {
             DataTable dt = new DataTable();
+            //String sql = "select lbRes.result,lbRes.interpret,lbRes.remark, LabItem.LName as lab_name,LabItem.lab_unit_id,LabItem.method_id,lab_b_unit.lab_unit_name as unit" +
+            //    ",lab_b_method.method_name as method, lbRes.reactive_message, LabItem.LID,lbRes.date_time_result,lbRes.date_time_approve, lbRes.req_date_time,lbRes.date_time_receive " +
+            //    ",LabItem.normal_vaule, dtr.Name as doctor,LabItem.normal_vaule,lbRes.date_time_collect " +
+            //    "From " + lbRes.table + " lbRes " +
+            //    "Left Join LabItem on lbRes." + lbRes.lab_id + " = LabItem.LID " +
+            //    "Left Join lab_b_unit on LabItem.lab_unit_id = lab_b_unit.lab_unit_id " +
+            //    "Left Join lab_b_method on LabItem.method_id = lab_b_method.method_id " +
+            //    "Left Join Doctor dtr on dtr.ID = lbRes.doctor_id " +
+            //    "Where lbRes." + lbRes.status_result + " ='2'  and lbRes.visit_id = '" + vsid + "' and LabItem.lab_group_id = '2550000001' and lbRes.active = '1' " +
+            //    "Order By LabItem.sort1, lbRes." + lbRes.req_id;
             String sql = "select lbRes.result,lbRes.interpret,lbRes.remark, LabItem.LName as lab_name,LabItem.lab_unit_id,LabItem.method_id,lab_b_unit.lab_unit_name as unit" +
-                ",lab_b_method.method_name as method, lbRes.reactive_message, LabItem.LID,lbRes.date_time_result,lbRes.date_time_approve, lbRes.req_date_time,lbRes.date_time_receive " +
+                ",lbRes.method, lbRes.reactive_message, LabItem.LID,lbRes.date_time_result,lbRes.date_time_approve, lbRes.req_date_time,lbRes.date_time_receive " +
                 ",LabItem.normal_vaule, dtr.Name as doctor,LabItem.normal_vaule,lbRes.date_time_collect " +
                 "From " + lbRes.table + " lbRes " +
                 "Left Join LabItem on lbRes." + lbRes.lab_id + " = LabItem.LID " +
@@ -541,7 +561,7 @@ namespace clinic_ivf.objdb
 
             return re;
         }
-        public String updateResultDate(String stfappid, String stfresid, String dateapp, String dateres, String datecollect, String datereceive, String resid)
+        public String updateResultDate(String stfappid, String stfresid, String dateapp, String dateres, String datecollect, String datereceive, String resid, String medthod)
         {
             String re = "";
             String sql = "";
@@ -553,6 +573,7 @@ namespace clinic_ivf.objdb
                 "," + lbRes.date_time_approve + " = '" + dateapp + "'" +
                 "," + lbRes.date_time_result + " = '" + dateres + "'" +                
                 "," + lbRes.date_time_collect + " = '" + datecollect.Replace("'", "''") + "'" +
+                "," + lbRes.method + " = '" + medthod.Replace("'", "''") + "'" +
                 //"," + lbRes.date_time_receive + " = now() " +
                 "," + lbRes.date_time_receive + " = '"+ datereceive + "'" +
                 "Where " + lbRes.pkField + "='" + resid + "'"

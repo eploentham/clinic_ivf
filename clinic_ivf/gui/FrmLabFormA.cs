@@ -1540,7 +1540,6 @@ namespace clinic_ivf.gui
                 }
                 if (txtHnFeMale.Text.Equals("") && !txtHnMale.Text.Equals(""))
                 {
-                    
                     Patient ptt2 = new Patient();
                     ptt2 = ic.ivfDB.pttDB.selectByHn(ptt.patient_hn_2);
                     txtHnFeMale.Value = ptt2.patient_hn;

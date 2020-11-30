@@ -1,41 +1,40 @@
-delete FROM ivf_101.Appointment;
-delete FROM ivf_101.ApproveDiscount;
-delete FROM ivf_101.BillHeader;
-delete FROM ivf_101.BillDetail;
-delete FROM ivf_101.DebtorHeader;
-delete FROM ivf_101.DebtorDetail;
-delete FROM ivf_101.FilePatient;
-delete from ivf_101.JobDoctor;
-delete from ivf_101.JobFETEmDev;
-delete FROM ivf_101.JobLab;
-delete FROM ivf_101.JobLabDetail;
-delete FROM ivf_101.JobPx;
-delete FROM ivf_101.JobPxDetail;
-delete FROM ivf_101.JobSpecial;
-delete FROM ivf_101.JobSpecialDetail;
-delete FROM ivf_101.PackageDeposit;
-delete FROM ivf_101.PackageDepositDetail;
-delete FROM ivf_101.PackageDetail;
-delete FROM ivf_101.PackageHeader;
-delete FROM ivf_101.PackageSold;
-delete FROM ivf_101.Patient;
-delete FROM ivf_101.Visit;
-delete FROM ivf_101.PR;
-delete FROM ivf_101.ReceivePO;
+truncate  ivf_ww_new.Appointment;
+truncate  ivf_ww_new.ApproveDiscount;
+truncate  ivf_ww_new.BillHeader;
+truncate  ivf_ww_new.BillDetail;
+truncate  ivf_ww_new.DebtorHeader;
+truncate  ivf_ww_new.DebtorDetail;
+truncate  ivf_ww_new.FilePatient;
+truncate ivf_ww_new.JobDoctor;
+truncate ivf_ww_new.JobFETEmDev;
+truncate  ivf_ww_new.JobLab;
+truncate  ivf_ww_new.JobLabDetail;
+truncate  ivf_ww_new.JobPx;
+truncate  ivf_ww_new.JobPxDetail;
+truncate  ivf_ww_new.JobSpecial;
+truncate  ivf_ww_new.JobSpecialDetail;
+truncate  ivf_ww_new.PackageDeposit;
+truncate  ivf_ww_new.PackageDepositDetail;
 
-delete From ivf_101.t_visit;
-delete From ivf_101.t_patient;
-delete From ivf_101.lab_t_form_a;
-delete From ivf_101.lab_t_fet;
-delete From ivf_101.lab_t_opu;
-delete From ivf_101.lab_t_opu_embryo_dev;
-delete From ivf_101.lab_t_request;
+truncate  ivf_ww_new.PackageSold;
+truncate  ivf_ww_new.Patient;
+truncate  ivf_ww_new.Visit;
+truncate  ivf_ww_new.PR;
+truncate  ivf_ww_new.ReceivePO;
 
-delete From ivf_101.t_doc_scan;
-delete From ivf_101.t_patient_appointment;
-delete From ivf_101.t_patient_appointment_text;
-delete From ivf_101.t_patient_image;
+truncate ivf_ww_new.t_visit;
+truncate ivf_ww_new.t_patient;
+truncate ivf_ww_new.lab_t_form_a;
+truncate ivf_ww_new.lab_t_fet;
+truncate ivf_ww_new.lab_t_opu;
+truncate ivf_ww_new.lab_t_opu_embryo_dev;
+truncate ivf_ww_new.lab_t_request;
+
+truncate ivf_ww_new.t_doc_scan;
+truncate ivf_ww_new.t_patient_appointment;
+truncate ivf_ww_new.t_patient_appointment_text;
+truncate ivf_ww_new.t_patient_image;
 
 
-mysqldump -u root -h localhost -p ivf_101 > ivf_10120190310.sql
-tar -czvf /root/ivf_10120190310.tar.gz ivf_10120190310.sql
+mysqldump -u root -h localhost -p ivf_ww_new > ivf_ww_new20190310.sql
+tar -czvf /root/ivf_ww_new20190310.tar.gz ivf_ww_new20190310.sql

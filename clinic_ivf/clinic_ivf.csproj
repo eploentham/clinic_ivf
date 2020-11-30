@@ -47,7 +47,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Resources\signal-receiver.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\Subway_TokyoAsakusa.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AForge, Version=2.2.5.0, Culture=neutral, PublicKeyToken=c1db6ff4eaa06aeb, processorArchitecture=MSIL">
@@ -2187,6 +2187,7 @@
     <None Include="Resources\%40.ico" />
     <None Include="Resources\backup-restore.ico" />
     <None Include="Resources\Message-already-read.ico" />
+    <None Include="Resources\Subway_TokyoAsakusa.ico" />
     <Content Include="TSCLIB.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

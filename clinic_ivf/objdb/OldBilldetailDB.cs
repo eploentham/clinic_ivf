@@ -429,7 +429,7 @@ namespace clinic_ivf.objdb
                 "From " + obilld.table + " obilld " +
                 //"Left Join Visit ovs on obilld." + obilld.VN + "=ovs.VN " +       //-0020
                 "Left Join t_visit vs on obilld." + obilld.VN + "= vs.visit_vn " +         //+0020
-                "Where ovs.PID='" + pid + "' and obilld." + obilld.pcksid + "='" + pkgsid + "' and obilld." + obilld.active + "='1'";
+                "Where vs.t_patient_id ='" + pid + "' and obilld." + obilld.pcksid + "='" + pkgsid + "' and obilld." + obilld.active + "='1'";
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }

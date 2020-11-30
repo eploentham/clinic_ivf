@@ -300,7 +300,7 @@ namespace clinic_ivf.gui
             dt = ic.ivfDB.lbReqDB.selectByStatusUnAccept4FET();
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             grfReq.Rows.Count = 1;
-            grfReq.Cols.Count = 18;
+            grfReq.Cols.Count = 19;
             C1TextBox txt = new C1TextBox();
             //C1ComboBox cboproce = new C1ComboBox();
             //ic.ivfDB.itmDB.setCboItem(cboproce);

@@ -4914,7 +4914,7 @@ namespace clinic_ivf.gui
             txtVisitPulse.Value = vs.pulse;
             chkChronic.Checked = ptt.status_congenial.Equals("1") ? true : false;
             ic.setC1Combo(cboDoctor, vs.doctor_id);
-            
+            txtPttName.Value = ic.ivfDB.fpfDB.getList(ptt.f_patient_prefix_id) +" "+ ptt.patient_firstname + " "+ptt.patient_lastname;
             //ptt1 = ic.ivfDB.pttDB.selectByHn(vs.patient_hn_male);
             if (ptt.patient_hn_1.Length > 0)
             {

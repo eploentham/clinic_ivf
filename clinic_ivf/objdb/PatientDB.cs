@@ -539,7 +539,7 @@ namespace clinic_ivf.objdb
                 "," + ptt.patient_record_date_time + "=now() " +
                 "," + ptt.patient_name + "='" + p.patient_name.Replace("'", "''") + "' " +
                 "," + ptt.patient_year + "='" + p.patient_year.Replace("'", "''") + "' " +
-                "," + ptt.patient_hn + "='" + p.patient_hn + "' " +
+                //"," + ptt.patient_hn + "='" + p.patient_hn + "' " +
                 "," + ptt.t_patient_id_1 + "='" + p.t_patient_id_1 + "' " +
                 "," + ptt.t_patient_id_2 + "='" + p.t_patient_id_2 + "' " +
                 " Where " +ptt.pkField + " = '" + p.t_patient_id + "' "
