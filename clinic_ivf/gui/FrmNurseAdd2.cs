@@ -700,6 +700,12 @@ namespace clinic_ivf.gui
                     row["line3"] = ic.cop.addr2;
                 }
             }
+            Staff stf = new Staff();
+            stf = ic.ivfDB.stfDB.selectByPk1(stfreport);
+            reporter = stf.prefix_name_t + " " + stf.staff_fname_e + " " + stf.staff_lname_e + " " + stf.doctor_id;
+            stf = ic.ivfDB.stfDB.selectByPk1(stfapprove);
+            approved = stf.prefix_name_t + " " + stf.staff_fname_e + " " + stf.staff_lname_e + " " + stf.doctor_id;
+
             reportdate = ic.datetimetoShow(reportdate);
             approvedate = ic.datetimetoShow(approvedate);
             stfapprove = ic.ivfDB.stfDB.getIdByName(stfapprove);
@@ -709,11 +715,11 @@ namespace clinic_ivf.gui
             if (ptt.f_sex_id.Equals("2") && (!ptt.patient_hn_1.Equals("") && !ptt.patient_hn_2.Equals("")))     // เป็น female และ เป็น donor  ไม่ต้องพิมพ์ หัว บริษัท
             {
 
-                frm.setLabBloodReportHormone(dt, txtHn.Text, txtPttNameE.Text, txtDob.Text, txtSex.Text, stfreport, stfapprove, reportdate, approvedate, "", amh, collectdate, receivedate);
+                frm.setLabBloodReportHormone(dt, txtHn.Text, txtPttNameE.Text, txtDob.Text, txtSex.Text, reporter, approved, reportdate, approvedate, "", amh, collectdate, receivedate);
             }
             else
             {
-                frm.setLabBloodReportHormone(dt, txtHn.Text, txtPttNameE.Text, txtDob.Text, txtSex.Text, stfreport, stfapprove, reportdate, approvedate, "", amh, collectdate, receivedate);
+                frm.setLabBloodReportHormone(dt, txtHn.Text, txtPttNameE.Text, txtDob.Text, txtSex.Text, reporter, approved, reportdate, approvedate, "", amh, collectdate, receivedate);
             }
 
             frm.ShowDialog(this);

@@ -141,7 +141,7 @@ namespace clinic_ivf.gui
             setChkDiscount(false);
             setControl();
             setGrfOrder(vs.visit_vn);
-            setGrfReceipt();
+            setGrfReceipt();        //ช้า
             setGrfPkgPayPeriod();
             //ic.ivfDB.copDB.cop = ic.ivfDB.copDB.selectByCode2("001");
             //year = DateTime.Now.ToString("yyyy");

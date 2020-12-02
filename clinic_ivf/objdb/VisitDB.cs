@@ -1288,7 +1288,7 @@ namespace clinic_ivf.objdb
 
             return dt;
         }
-        public DataTable selectLikeByHN(String hn)
+        public DataTable selectLikeByHNSearch(String hn)
         {
             DataTable dt = new DataTable();
             //String date = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd");
@@ -1297,7 +1297,8 @@ namespace clinic_ivf.objdb
                 "From " + vs.table + " vs " +
                 "Left Join VStatus on  VStatus.VSID = vs.vsid " +
                 "Left Join t_patient ptt on  vs.t_patient_id = ptt.t_patient_id  " +
-                "Where vs." + vs.visit_hn + " like ('%" + hn + "%') and vs." + vs.vsid + " <> '998' and vs.f_visit_status_id <> '4' " +
+                //"Where vs." + vs.visit_hn + " like ('%" + hn + "%') and vs." + vs.vsid + " <> '998' and vs.f_visit_status_id <> '4' " +
+                "Where vs." + vs.visit_hn + " like ('%" + hn + "%') " +
                 "Order By vs.visit_vn ";
             dt = conn.selectData(conn.conn, sql);
 
