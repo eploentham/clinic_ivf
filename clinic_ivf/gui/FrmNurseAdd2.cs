@@ -4922,11 +4922,13 @@ namespace clinic_ivf.gui
             ic.setC1Combo(cboDoctor, vs.doctor_id);
             txtPttName.Value = ic.ivfDB.fpfDB.getList(ptt.f_patient_prefix_id) +" "+ ptt.patient_firstname + " "+ptt.patient_lastname;
             //ptt1 = ic.ivfDB.pttDB.selectByHn(vs.patient_hn_male);
-            if (ptt.patient_hn_1.Length > 0)
+            if(ptt.patient_hn_1.IndexOf("/") > 0)
             {
-                Patient ptt1 = new Patient();
-                ptt1 = ic.ivfDB.pttDB.selectByHn(ptt.patient_hn_1);
-                txtNameMale.Value = ptt1.Name;
+                Patient pttcou = new Patient();
+                String hn = "", hnyr = "";
+                hn = ptt.patient_hn_1.Substring(0, ptt.patient_hn_1.IndexOf(ic.hnspareyear));
+                pttcou = ic.ivfDB.pttDB.selectByHn(hn);
+                txtNameMale.Value = pttcou.Name;
             }
             
             stt.Show("<p><b>สวัสดี</b></p>คุณ " + ptt.congenital_diseases_description + "<br> กรุณา ป้อนรหัสผ่าน", chkChronic);

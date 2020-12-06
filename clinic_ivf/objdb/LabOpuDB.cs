@@ -237,6 +237,32 @@ namespace clinic_ivf.objdb
             lbReq1 = setLabOPU(dt);
             return lbReq1;
         }
+        public LabOpu selectByHnMale(String hn)
+        {
+            LabOpu lbReq1 = new LabOpu();
+            DataTable dt = new DataTable();
+            String sql = "select opu.*,dtr.Name, proce.proce_name_t " +
+                "From " + opu.table + " opu " +
+                "Left Join Doctor dtr on dtr.ID = opu." + opu.doctor_id + " " +
+                "LEft Join lab_b_procedure proce on proce.proce_id = opu.proce_id " +
+                "Where opu." + opu.hn_male + " ='" + hn + "' ";
+            dt = conn.selectData(conn.conn, sql);
+            lbReq1 = setLabOPU(dt);
+            return lbReq1;
+        }
+        public LabOpu selectByHnFeMale(String hn)
+        {
+            LabOpu lbReq1 = new LabOpu();
+            DataTable dt = new DataTable();
+            String sql = "select opu.*,dtr.Name, proce.proce_name_t " +
+                "From " + opu.table + " opu " +
+                "Left Join Doctor dtr on dtr.ID = opu." + opu.doctor_id + " " +
+                "LEft Join lab_b_procedure proce on proce.proce_id = opu.proce_id " +
+                "Where opu." + opu.hn_female + " ='" + hn + "' ";
+            dt = conn.selectData(conn.conn, sql);
+            lbReq1 = setLabOPU(dt);
+            return lbReq1;
+        }
         public LabOpu selectByReqID(String copId)
         {
             LabOpu lbReq1 = new LabOpu();
@@ -877,9 +903,7 @@ namespace clinic_ivf.objdb
             sql = "Update " + opu.table + " Set " +
 
                 " " + opu.remark_day5 + " = '" + remark.Replace("'", "''") + "'" +
-                "Where " + opu.pkField + "='" + opuid + "'"
-                ;
-
+                "Where " + opu.pkField + "='" + opuid + "'";
             try
             {
                 re = conn.ExecuteNonQuery(conn.conn, sql);
@@ -888,7 +912,6 @@ namespace clinic_ivf.objdb
             {
                 sql = ex.Message + " " + ex.InnerException;
             }
-
             return re;
         }
         public String updateRemarkDay3(String opuid, String remark)
@@ -1329,6 +1352,46 @@ namespace clinic_ivf.objdb
                 "," + opu.report_day2 + " = '" + filename + "'" +
                 "Where " + opu.pkField + "='" + opuid + "'"
                 ;
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+            return re;
+        }
+        public String updateNameMaleDob(String opuid, String name, String dob)
+        {
+            String re = "";
+            String sql = "";
+            int chk = 0;
+
+            sql = "Update " + opu.table + " Set " +
+                " " + opu.name_male + " = '" + name.Replace("'", "''") + "'" +
+                "," + opu.dob_male + " = '" + dob.Replace("'", "''") + "'" +
+                "Where " + opu.pkField + "='" + opuid + "'";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+            return re;
+        }
+        public String updateNameFeMaleDob(String opuid, String name, String dob)
+        {
+            String re = "";
+            String sql = "";
+            int chk = 0;
+
+            sql = "Update " + opu.table + " Set " +
+                " " + opu.name_female + " = '" + name.Replace("'", "''") + "'" +
+                "," + opu.dob_female + " = '" + dob.Replace("'", "''") + "'" +
+                "Where " + opu.pkField + "='" + opuid + "'";
             try
             {
                 re = conn.ExecuteNonQuery(conn.conn, sql);

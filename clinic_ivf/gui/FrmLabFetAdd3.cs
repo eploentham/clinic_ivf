@@ -55,6 +55,9 @@ namespace clinic_ivf.gui
         Boolean grf2Focus = false, grf3Focus = false, grf5Focus = false, grf6Focus = false;
         private bool prefixSeen;
         SmtpClient SmtpServer;
+        Patient ptt;
+        Visit vs;
+
         List<LinkedResource> theEmailImage1 = new List<LinkedResource>();
         public FrmLabFetAdd3(IvfControl ic, String reqid, String fetid)
         {
@@ -727,6 +730,21 @@ namespace clinic_ivf.gui
                     txtEmailSubject.Value = "Summary FET " + DateTime.Now.ToString("dd/MM/") + DateTime.Now.Year + " " + txtNameMale.Text + " &  " + txtNameFeMale.Text + " ";
 
                     setControlFirstTime(false);
+                }
+                Patient pttcou = new Patient();
+                vs = ic.ivfDB.vsDB.selectByPk1(lbReq.visit_id);
+                ptt = ic.ivfDB.pttDB.selectByPk1(vs.t_patient_id);
+                if (ptt.patient_hn_1.IndexOf("/") > 0)
+                {
+                    String hn = "", hnyr = "";
+                    hn = ptt.patient_hn_1.Substring(0, ptt.patient_hn_1.IndexOf(ic.hnspareyear));
+                    pttcou = ic.ivfDB.pttDB.selectByHn(hn);
+                    if (pttcou.f_sex_id.Equals("1"))// male
+                    {
+                        txtHnMale.Value = lbReq.hn_male;
+                        txtNameMale.Value = lbReq.name_male;
+                        txtDobMale.Value = pttcou.patient_birthday;
+                    }
                 }
             }
             catch (Exception ex)

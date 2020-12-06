@@ -46,7 +46,7 @@ namespace clinic_ivf.gui
         PatientOld pttO1;
         //public FrmPatientView frmCashView;
 
-        Font fEdit, fEditB;
+        Font fEdit, fEditB, fEdit5B;
         Color bg, fc;
         Font ff, ffB;
         int colID = 1, colHn = 2, colImg = 3, colDesc = 4, colDesc2 = 5, colDesc3 = 6, colPathPic = 7, colBtn=8, colStatus=9, colDoctor=10;
@@ -58,6 +58,7 @@ namespace clinic_ivf.gui
         //C1FlexGrid grfDay2, grfDay3, grfDay5, grfDay6;
         C1SuperTooltip stt, sttHnOld;
         C1SuperErrorProvider sep;
+        Label lbLoading;
 
         FilterInfoCollection webcanDevice;
         FtpClient ff1;
@@ -123,7 +124,8 @@ namespace clinic_ivf.gui
         {
             fEdit = new Font(ic.iniC.grdViewFontName, ic.grdViewFontSize, FontStyle.Regular);
             fEditB = new Font(ic.iniC.grdViewFontName, ic.grdViewFontSize, FontStyle.Bold);
-            
+            fEdit5B = new Font(ic.iniC.grdViewFontName, ic.grdViewFontSize + 5, FontStyle.Bold);
+
             //theme1.SetTheme(sB, "BeigeOne");
             barcode.BackColor = this.BackColor;
 
@@ -264,6 +266,8 @@ namespace clinic_ivf.gui
             cboSex.SelectedIndexChanged += CboSex_SelectedIndexChanged;
             btnHn1.Click += BtnHn1_Click;
             btnHn2.Click += BtnHn2_Click;
+            btnUpdateAll.Click += BtnUpdateAll_Click;
+
             lbLmp.DoubleClick += LbLmp_DoubleClick;
             this.FormClosing += FrmPatientAdd_FormClosing;
             btnRefresh.Click += BtnRefresh_Click;
@@ -286,9 +290,24 @@ namespace clinic_ivf.gui
             //picPtt.Load("54158.jpg");
             picPtt.SizeMode = PictureBoxSizeMode.StretchImage;
             tabFamily.Hide();
+
+            lbLoading = new Label();
+            lbLoading.Font = fEdit5B;
+            lbLoading.BackColor = Color.WhiteSmoke;
+            lbLoading.ForeColor = Color.Black;
+            lbLoading.AutoSize = false;
+            lbLoading.Size = new Size(300, 60);
+            this.Controls.Add(lbLoading);
             //btnSavePic.Enabled = false;
         }
-
+        private void BtnUpdateAll_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            //showLbLoading();
+            //ptt = ic.ivfDB.pttDB.selectByPk1(txtID.Text);
+            //ic.ivfDB.updateNameDOB(ptt.t_patient_id, txtHn.Text, ptt.Name, ptt.patient_birthday);
+            //hideLbLoading();
+        }
         private void TxtDob_ValueChanged(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
@@ -4070,6 +4089,23 @@ namespace clinic_ivf.gui
             vs.patient_name = cboPrefix.Text + " " + txtPttNameE.Text + " " + txtPttLNameE.Text;
             vs.patient_year = ptt.patient_year;
         }
+        private void setTetxtLbLoading(String txt)
+        {
+            lbLoading.Text = txt; ;
+            lbLoading.BringToFront();
+            Application.DoEvents();
+        }
+        private void showLbLoading()
+        {
+            lbLoading.Show();
+            lbLoading.BringToFront();
+            Application.DoEvents();
+        }
+        private void hideLbLoading()
+        {
+            lbLoading.Hide();
+            Application.DoEvents();
+        }
         private void FrmPatientAdd_Load(object sender, EventArgs e)
         {
             if (ic.iniC.statusAppDonor.Equals("1"))
@@ -4120,6 +4156,10 @@ namespace clinic_ivf.gui
             btnHnSearch.Enabled = false;
             btnHnMaleSearch.Enabled = false;
             sB1.Text = "Date "+ic.cop.day + "-" + ic.cop.month + "-" + ic.cop.year+" Server "+ic.iniC.hostDB+" FTP "+ic.iniC.hostFTP+"/"+ic.iniC.folderFTP;
+
+            Rectangle screenRect = Screen.GetBounds(Bounds);
+            lbLoading.Location = new Point((screenRect.Width / 2) - 100, (screenRect.Height / 2) - 300);
+            lbLoading.Text = "กรุณารอซักครู่ ...";
             //_CardReaderTFK2700 = ic.ListCardReader();
             //theme1.SetTheme(splitContainer1, ic.theme);
             //theme1.SetTheme(splitContainer2, ic.theme);

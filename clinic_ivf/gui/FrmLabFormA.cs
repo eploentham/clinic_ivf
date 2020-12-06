@@ -1538,14 +1538,44 @@ namespace clinic_ivf.gui
                     gbSpermPESA.Enabled = false;
                     gbSpermIUI.Enabled = false;
                 }
-                if (txtHnFeMale.Text.Equals("") && !txtHnMale.Text.Equals(""))
+                //if (txtHnFeMale.Text.Equals("") && !txtHnMale.Text.Equals(""))
+                //{
+                //    Patient ptt2 = new Patient();
+                //    if (ptt.patient_hn_2.IndexOf("/") > 0)
+                //    {
+                //        String hn = "", hnyr = "";
+                //        hn = ptt.patient_hn_2.Substring(0, ptt.patient_hn_2.IndexOf(ic.hnspareyear));
+                //        ptt2 = ic.ivfDB.pttDB.selectByHn(hn);
+                //    }
+                //    else
+                //    {
+                //        ptt2 = ic.ivfDB.pttDB.selectByHn(ptt.patient_hn_2);
+                //    }
+                //    txtHnFeMale.Value = ptt2.patient_hn;
+                //    txtNameFeMale.Value = ptt2.Name;
+                //    txtDobFeMale.Value = ptt2.patient_birthday;
+                //}
+                // update couple
+                Patient pttcou = new Patient();
+                if (ptt.patient_hn_1.IndexOf("/") > 0)
                 {
-                    Patient ptt2 = new Patient();
-                    ptt2 = ic.ivfDB.pttDB.selectByHn(ptt.patient_hn_2);
-                    txtHnFeMale.Value = ptt2.patient_hn;
-                    txtNameFeMale.Value = ptt2.Name;
-                    txtDobFeMale.Value = ptt2.patient_birthday;
+                    String hn = "", hnyr = "";
+                    hn = ptt.patient_hn_1.Substring(0, ptt.patient_hn_1.IndexOf(ic.hnspareyear));
+                    pttcou = ic.ivfDB.pttDB.selectByHn(hn);
+                    if (pttcou.f_sex_id.Equals("1"))// male
+                    {
+                        txtHnMale.Value = pttcou.patient_hn;
+                        txtNameMale.Value = pttcou.Name;
+                        txtDobMale.Value = pttcou.patient_birthday;
+                    }
+                    else if (pttcou.f_sex_id.Equals("2"))// Female
+                    {
+                        txtHnFeMale.Value = pttcou.patient_hn;
+                        txtNameFeMale.Value = pttcou.Name;
+                        txtDobFeMale.Value = pttcou.patient_birthday;
+                    }
                 }
+                
                 if (cboDoctor.Text.Equals(""))
                 {
                     Visit vs = new Visit();
@@ -1580,7 +1610,16 @@ namespace clinic_ivf.gui
                         if (ptt.f_sex_id.Equals("1"))//male
                         {
                             Patient ptt1 = new Patient();
-                            ptt1 = ic.ivfDB.pttDB.selectByHn(ptt.patient_hn_1);
+                            if (ptt.patient_hn_1.IndexOf("/") > 0)
+                            {
+                                String hn = "", hnyr = "";
+                                hn = ptt.patient_hn_1.Substring(0, ptt.patient_hn_1.IndexOf(ic.hnspareyear));
+                                ptt1 = ic.ivfDB.pttDB.selectByHn(hn);
+                            }
+                            else
+                            {
+                                ptt1 = ic.ivfDB.pttDB.selectByHn(ptt.patient_hn_1);
+                            }
                             txtHnMale.Value = ptt.patient_hn;
                             txtNameMale.Value = ptt.Name;
                             txtHnFeMale.Value = ptt.patient_hn_1;
@@ -1597,10 +1636,31 @@ namespace clinic_ivf.gui
                                 txtHnDonor.Value = ptt.patient_hn;
                                 txtNameDonor.Value = ptt.Name;
                                 Patient ptt1 = new Patient();
-                                ptt1 = ic.ivfDB.pttDB.selectByHn(ptt.patient_hn_1);
+                                if (ptt.patient_hn_1.IndexOf("/") > 0)
+                                {
+                                    if (ptt.patient_hn_1.IndexOf("/") > 0)
+                                    {
+                                        String hn = "", hnyr = "";
+                                        hn = ptt.patient_hn_1.Substring(0, ptt.patient_hn_1.IndexOf(ic.hnspareyear));
+                                        ptt1 = ic.ivfDB.pttDB.selectByHn(hn);
+                                    }
+                                }
+                                else
+                                {
+                                    ptt1 = ic.ivfDB.pttDB.selectByHn(ptt.patient_hn_1);
+                                }
                                 txtNameFeMale.Value = ptt1.Name;
                                 Patient ptt2 = new Patient();
-                                ptt2 = ic.ivfDB.pttDB.selectByHn(ptt.patient_hn_2);
+                                if (ptt.patient_hn_2.IndexOf("/") > 0)
+                                {
+                                    String hn = "", hnyr = "";
+                                    hn = ptt.patient_hn_2.Substring(0, ptt.patient_hn_2.IndexOf(ic.hnspareyear));
+                                    ptt2 = ic.ivfDB.pttDB.selectByHn(hn);
+                                }
+                                else
+                                {
+                                    ptt2 = ic.ivfDB.pttDB.selectByHn(ptt.patient_hn_2);
+                                }                                
                                 txtNameMale.Value = ptt2.Name;
                                 txtDobFeMale.Value = ptt1.patient_birthday;
                                 txtDobMale.Value = ptt2.patient_birthday;
@@ -1608,7 +1668,16 @@ namespace clinic_ivf.gui
                             else if (ptt.patient_hn_1.Equals("") && !ptt.patient_hn_2.Equals(""))   // record female
                             {
                                 Patient ptt1 = new Patient();
-                                ptt1 = ic.ivfDB.pttDB.selectByHn(ptt.patient_hn_2);
+                                if (ptt.patient_hn_2.IndexOf("/") > 0)
+                                {
+                                    String hn = "", hnyr = "";
+                                    hn = ptt.patient_hn_2.Substring(0, ptt.patient_hn_2.IndexOf(ic.hnspareyear));
+                                    ptt1 = ic.ivfDB.pttDB.selectByHn(hn);
+                                }
+                                else
+                                {
+                                    ptt1 = ic.ivfDB.pttDB.selectByHn(ptt.patient_hn_2);
+                                }
                                 txtHnMale.Value = ptt.patient_hn_2;
                                 txtNameMale.Value = ptt1.Name;
                                 txtHnFeMale.Value = ptt.patient_hn;
@@ -1623,7 +1692,21 @@ namespace clinic_ivf.gui
                         if (ptt.f_sex_id.Equals("1"))//male
                         {
                             Patient ptt1 = new Patient();
-                            ptt1 = ic.ivfDB.pttDB.selectByHn(ptt.patient_hn_1);
+                            if (ptt.patient_hn_1.IndexOf("/") > 0)
+                            {
+                                String hn = "", hnyr = "";
+                                hn = ptt.patient_hn_1.Substring(0,ptt.patient_hn_1.IndexOf(ic.hnspareyear));
+                                //hnyr = ptt.patient_hn_1.Substring(ptt.patient_hn_1.IndexOf(ic.hnspareyear)).Replace(ic.hnspareyear,"");
+                                ptt1 = ic.ivfDB.pttDB.selectByHn(hn);
+                            }
+                            else
+                            {
+                                if (ptt.patient_hn_1.Length > 0)
+                                {
+                                    ptt1 = ic.ivfDB.pttDB.selectByHn(ptt.patient_hn_1);
+                                }
+                            }
+                            
                             txtHnMale.Value = ptt.patient_hn;
                             txtNameMale.Value = ptt.Name;
                             txtHnFeMale.Value = ptt.patient_hn_1;
@@ -1634,8 +1717,20 @@ namespace clinic_ivf.gui
                         else if (ptt.f_sex_id.Equals("2"))//female
                         {
                             Patient ptt2 = new Patient();
-                            ptt2 = ic.ivfDB.pttDB.selectByHn(ptt.patient_hn_2);
-                            txtHnMale.Value = ptt.patient_hn_2;
+                            if (ptt.patient_hn_1.IndexOf("/") > 0)
+                            {
+                                String hn = "", hnyr = "";
+                                hn = ptt.patient_hn_1.Substring(0, ptt.patient_hn_1.IndexOf(ic.hnspareyear));
+                                ptt2 = ic.ivfDB.pttDB.selectByHn(hn);
+                            }   
+                            else
+                            {
+                                if (ptt.patient_hn_1.Length > 0)
+                                {
+                                    ptt2 = ic.ivfDB.pttDB.selectByHn(ptt.patient_hn_1);
+                                }
+                            }
+                            txtHnMale.Value = ptt.patient_hn_1;
                             txtNameMale.Value = ptt2.Name;
                             txtHnFeMale.Value = ptt.patient_hn;
                             txtNameFeMale.Value = ptt.Name;

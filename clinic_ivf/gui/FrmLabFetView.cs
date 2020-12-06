@@ -363,8 +363,12 @@ namespace clinic_ivf.gui
                 row1[colOPUTime] = row[ic.ivfDB.lFormaDB.lformA.opu_time].ToString();
                 row1[colOPUTimeModi] = row[ic.ivfDB.lFormaDB.lformA.opu_time_modi].ToString();
                 row1[colRqLabName] = row["SName"].ToString();
-                row1[colRqHnMale] = row["hn_male"].ToString();
-                row1[colRqNameMale] = row["name_male"].ToString();
+                //row1[colRqHnMale] = row["hn_male"].ToString();
+                //row1[colRqNameMale] = row["name_male"].ToString();
+
+                row1[colRqHnMale] = row["patient_hn_1"].ToString();
+                row1[colRqNameMale] = row["patient_name_hn_1"].ToString();
+
                 row1[colRqHnDonor] = row["hn_donor"].ToString();
                 row1[colRqNameDonor] = row["name_donor"].ToString();
                 row1[colPttHnOld] = row["patient_hn_old"].ToString();
@@ -441,6 +445,9 @@ namespace clinic_ivf.gui
             }
             grfReq.Cols[colRqId].Visible = false;
             grfReq.Cols[colRqVn].Visible = false;
+            grfReq.Cols[colRqHnDonor].Visible = false;
+            grfReq.Cols[colRqNameDonor].Visible = false;
+
             grfReq.Cols[colRqReqNum].AllowEditing = false;
             grfReq.Cols[colRqHn].AllowEditing = false;
             grfReq.Cols[colRqVn].AllowEditing = false;

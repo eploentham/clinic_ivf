@@ -2513,5 +2513,91 @@ namespace clinic_ivf.objdb
             }
             return re;
         }
+        public String updateNameDOB(String pttid,String hn, String name, String dob)
+        {
+            DataTable dt = new DataTable();
+            String re = "";
+
+            Patient ptt = new Patient();
+            LabFet fet = new LabFet();
+            LabFormA forma = new LabFormA();
+            ptt = pttDB.selectByPk1(pttid);
+
+
+            
+            
+            fet = fetDB.selectByHnMale(hn);
+            //if (ptt.f_sex_id.Equals("1"))// male
+            //{
+            //    fetDB.updateHnMale(fet.fet_id, ptt.patient_hn_1);
+            //}
+            //else if (ptt.f_sex_id.Equals("2"))// female
+            //{
+            //    fetDB.updateHnFeMale(fet.fet_id, ptt.patient_hn_1);
+            //}
+
+            if (fet.fet_id.Length > 0)
+            {
+                fetDB.updateNameMaleDob(fet.fet_id, name, dob);
+            }
+            fet = fetDB.selectByHnFeMale(hn);
+            if (fet.fet_id.Length > 0)
+            {
+                fetDB.updateNameFeMaleDob(fet.fet_id, name, dob);
+            }
+
+            LabFormA lformA = new LabFormA();
+            lformA = lFormaDB.selectByHnMale(hn);
+            if (lformA.form_a_id.Length > 0)
+            {
+                lFormaDB.updateNameMaleDob(lformA.form_a_id, name, dob);
+            }
+            lformA = lFormaDB.selectByHnFeMale(hn);
+            if (lformA.form_a_id.Length > 0)
+            {
+                lFormaDB.updateNameFeMaleDob(lformA.form_a_id, name, dob);
+            }
+
+            LabOpu opu = new LabOpu();
+            opu = opuDB.selectByHnMale(hn);
+            if (opu.opu_id.Length > 0)
+            {
+                opuDB.updateNameMaleDob(opu.opu_id, name, dob);
+            }
+            opu = opuDB.selectByHnFeMale(hn);
+            if (opu.opu_id.Length > 0)
+            {
+                opuDB.updateNameFeMaleDob(opu.opu_id, name, dob);
+            }
+
+            LabSperm sperm = new LabSperm();
+            sperm = lspermDB.selectByHnMale(hn);
+            if (sperm.sperm_id.Length > 0)
+            {
+                lspermDB.updateNameMaleDob(sperm.sperm_id, name, dob);
+            }
+            sperm = lspermDB.selectByHnFeMale(hn);
+            if (sperm.sperm_id.Length > 0)
+            {
+                lspermDB.updateNameFeMaleDob(sperm.sperm_id, name, dob);
+            }
+
+            LabRequest lreq = new LabRequest();
+            lreq = lbReqDB.selectByHnMale(hn);
+            if (lreq.req_id.Length > 0)
+            {
+                lbReqDB.updateNameMaleDob(lreq.req_id, name, dob);
+            }
+            lreq = lbReqDB.selectByHnFeMale(hn);
+            if (lreq.req_id.Length > 0)
+            {
+                lbReqDB.updateNameFeMaleDob(lreq.req_id, name, dob);
+            }
+            vsDB.updateName(pttid, name);
+
+
+
+            return re;
+        }
     }
 }

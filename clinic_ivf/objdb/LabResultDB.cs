@@ -118,7 +118,7 @@ namespace clinic_ivf.objdb
 
             return dt;
         }
-        public DataTable selectByHn(String id)
+        public DataTable selectByHnMale(String id)
         {
             //LabResult cop1 = new LabResult();
             DataTable dt = new DataTable();

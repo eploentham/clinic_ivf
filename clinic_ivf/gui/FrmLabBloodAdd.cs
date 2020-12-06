@@ -116,7 +116,7 @@ namespace clinic_ivf.gui
             lbEmail.Text = "เริ่มส่ง Email";
             MailMessage mail = new MailMessage();
             txtEmailSubject.Value = "Routine LAB Result HN " + txtHn.Text + " Name " + txtPttNameE.Text + " [VN " + txtVnShow.Text + "] Infectious Report Date " + System.DateTime.Now.ToString("dd/MM/") + System.DateTime.Now.Year;
-            mail.From = new MailAddress(txtEmailTo.Text);
+            mail.From = new MailAddress(ic.iniC.email_form);
             mail.To.Add(txtEmailTo.Text);
             mail.Subject = txtEmailSubject.Text;
             mail.Body = txtEmailBody.Text;
@@ -1045,8 +1045,8 @@ namespace clinic_ivf.gui
                         CellRange cr = grfProc.GetCellRange(i, colRsResult, i, colRsResult);
                         //cr.StyleNew.Editor = cbo;
                         CellStyle cs1 = grfProc.Styles.Add("integer");
-                        cs.DataType = typeof(int);
-                        cs.ForeColor = Color.CornflowerBlue;
+                        cs1.DataType = typeof(int);
+                        cs1.ForeColor = Color.CornflowerBlue;
                         cr.Style = cs1;
                     }
                     else if (row[ic.ivfDB.oLabiDB.labI.status_datatype_result].ToString().Equals("3"))      // decimal
@@ -1054,9 +1054,10 @@ namespace clinic_ivf.gui
                         CellRange cr = grfProc.GetCellRange(i, colRsResult, i, colRsResult);
                         //cr.StyleNew.Editor = cbo;
                         CellStyle cs1 = grfProc.Styles.Add("decimal");
-                        cs.DataType = typeof(decimal);
-                        cs.ForeColor = Color.DarkGreen;
+                        cs1.DataType = typeof(decimal);
+                        cs1.ForeColor = Color.DarkGreen;
                         cr.Style = cs1;
+                        
                     }
                     grfProc[i, colRsResult] = row[ic.ivfDB.lbresDB.lbRes.result].ToString();
                     grfProc[i, colRsInterpret] = row[ic.ivfDB.lbresDB.lbRes.interpret].ToString();

@@ -413,7 +413,7 @@ namespace clinic_ivf.gui
             //    dateend1 = ic.datetoDB(txtDateEnd.Text);
             //}
             //dt = ic.ivfDB.lbReqDB.selectByStatusReqAccept();
-            dt = ic.ivfDB.lbReqDB.selectByStatusOPURequest();
+            dt = ic.ivfDB.lbReqDB.selectByStatusOPURequest1();
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             grfReq.Rows.Count = 1;
             grfReq.Cols.Count = 19;
@@ -470,7 +470,9 @@ namespace clinic_ivf.gui
                 Row row1 = grfReq.Rows.Add();
                 row1[colFormAId] = row[ic.ivfDB.lFormaDB.lformA.form_a_id].ToString();
                 row1[colRqId] = row[ic.ivfDB.lFormaDB.lformA.req_id_opu].ToString();
-                row1[colRqReqNum] = row[ic.ivfDB.lFormaDB.lformA.form_a_code].ToString();
+                //row1[colRqReqNum] = row[ic.ivfDB.lFormaDB.lformA.form_a_code].ToString();
+                row1[colRqReqNum] = row[ic.ivfDB.lbReqDB.lbReq.req_code].ToString();
+
                 row1[colRqHn] = row[ic.ivfDB.lbReqDB.lbReq.hn_female].ToString();
                 row1[colRqVn] = row[ic.ivfDB.lFormaDB.lformA.vn_old].ToString();
                 row1[colRqName] = row[ic.ivfDB.lbReqDB.lbReq.name_female].ToString();
@@ -480,8 +482,12 @@ namespace clinic_ivf.gui
                 row1[colOPUTime] = row[ic.ivfDB.lFormaDB.lformA.opu_time].ToString();
                 row1[colOPUTimeModi] = row[ic.ivfDB.lFormaDB.lformA.opu_time_modi].ToString();
                 row1[colRqLabName] = row["SName"].ToString();
-                row1[colRqHnMale] = row["hn_male"].ToString();
-                row1[colRqNameMale] = row["name_male"].ToString();
+
+                //row1[colRqHnMale] = row["hn_male"].ToString();
+                //row1[colRqNameMale] = row["name_male"].ToString();
+                row1[colRqHnMale] = row["patient_hn_1"].ToString();
+                row1[colRqNameMale] = row["patient_name_hn_1"].ToString();
+
                 row1[colRqHnDonor] = row["hn_donor"].ToString();
                 row1[colRqNameDonor] = row["name_donor"].ToString();
                 if (row["SName"].ToString().Trim().Equals("OPU"))
@@ -558,6 +564,8 @@ namespace clinic_ivf.gui
             grfReq.Cols[colRqId].Visible = false;
             grfReq.Cols[colRqVn].Visible = false;
             grfReq.Cols[colFormAId].Visible = false;
+            grfReq.Cols[colRqHnDonor].Visible = false;
+            grfReq.Cols[colRqNameDonor].Visible = false;
 
             grfReq.Cols[colRqReqNum].AllowEditing = false;
             grfReq.Cols[colRqHn].AllowEditing = false;

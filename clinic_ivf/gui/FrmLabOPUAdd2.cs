@@ -58,6 +58,8 @@ namespace clinic_ivf.gui
         String flagEdit = "";
         Image imgCorr, imgTran, imgFinish;
         FrmLabPrescription frmlabPresc;
+        Patient ptt;
+        Visit vs;
 
         [DllImport("user32.dll", CharSet = CharSet.Auto, CallingConvention = CallingConvention.Winapi)]
         internal static extern IntPtr GetFocus();
@@ -3337,6 +3339,22 @@ namespace clinic_ivf.gui
                     txtNameMale.Value = lbReq.name_male;
                     txtLabReqCode.Value = lbReq.req_code;
                     setControlFirstTime(false);
+                }
+
+                Patient pttcou = new Patient();
+                vs = ic.ivfDB.vsDB.selectByPk1(lbReq.visit_id);
+                ptt = ic.ivfDB.pttDB.selectByPk1(vs.t_patient_id);
+                if (ptt.patient_hn_1.IndexOf("/") > 0)
+                {
+                    String hn = "", hnyr = "";
+                    hn = ptt.patient_hn_1.Substring(0, ptt.patient_hn_1.IndexOf(ic.hnspareyear));
+                    pttcou = ic.ivfDB.pttDB.selectByHn(hn);
+                    if (pttcou.f_sex_id.Equals("1"))// male
+                    {
+                        txtHnMale.Value = lbReq.hn_male;
+                        txtNameMale.Value = lbReq.name_male;
+                        txtDobMale.Value = pttcou.patient_birthday;
+                    }
                 }
             }
             catch (Exception ex)

@@ -49,6 +49,8 @@ namespace clinic_ivf.gui
         List<LinkedResource> theEmailImage1 = new List<LinkedResource>();
         C1FlexGrid grfImg;
         Patient pttMale, pttFemale;
+        Patient ptt;
+        Visit vs;
 
         Boolean flagEdit = false, flagImg=false;
         public FrmLabSpermAdd(IvfControl ic, String reqid, String spermId, String flagEdit)
@@ -244,7 +246,6 @@ namespace clinic_ivf.gui
             txtPeRecive.KeyUp += TxtPeRecive_KeyUp;
             txtPeExam.KeyUp += TxtPeExam_KeyUp;
             txtPeFinish.KeyUp += TxtPeFinish_KeyUp;
-
 
             stt = new C1SuperTooltip();
             sep = new C1SuperErrorProvider();
@@ -3145,10 +3146,28 @@ namespace clinic_ivf.gui
             txtHnMale.Value = ic.showHN(pttMale.patient_hn,pttMale.patient_year);       //+0020
             txtNameFeMale.Value = lsperm.name_female;
             txtNameMale.Value = lsperm.name_male;
-            txtLabReqCode.Value = lbReq.req_code;
-            txtLabFormACode.Value = lforma.form_a_code;
             txtDobFeMale.Value = lsperm.dob_female;
             txtDobMale.Value = lsperm.dob_male;
+
+            Patient pttcou = new Patient();
+            vs = ic.ivfDB.vsDB.selectByPk1(lbReq.visit_id);
+            ptt = ic.ivfDB.pttDB.selectByPk1(vs.t_patient_id);
+            if (ptt.patient_hn_1.IndexOf("/") > 0)
+            {
+                String hn = "", hnyr = "";
+                hn = ptt.patient_hn_1.Substring(0, ptt.patient_hn_1.IndexOf(ic.hnspareyear));
+                pttcou = ic.ivfDB.pttDB.selectByHn(hn);
+                if (pttcou.f_sex_id.Equals("1"))// male
+                {
+                    txtHnFeMale.Value = lbReq.hn_male;
+                    txtNameFeMale.Value = lbReq.name_male;
+                    txtDobFeMale.Value = pttcou.patient_birthday;
+                }
+            }
+
+            txtLabReqCode.Value = lbReq.req_code;
+            txtLabFormACode.Value = lforma.form_a_code;
+            
             ic.setC1Combo(cboDoctor, lsperm.doctor_id);
             ic.setC1Combo(cboAppearance, lsperm.appearance);
             ic.setC1Combo(cboLiquefaction, lsperm.liquefaction);
@@ -3216,9 +3235,26 @@ namespace clinic_ivf.gui
             txtSfNameMale.Value = lsperm.name_male;
             txtSfLabReqCode.Value = lbReq.req_code;
             txtSfLabFormACode.Value = lforma.form_a_code;
-
             txtSfDobFeMale.Value = lsperm.dob_female;
             txtSfDobMale.Value = lsperm.dob_male;
+
+            Patient pttcou = new Patient();
+            vs = ic.ivfDB.vsDB.selectByPk1(lbReq.visit_id);
+            ptt = ic.ivfDB.pttDB.selectByPk1(vs.t_patient_id);
+            if (ptt.patient_hn_1.IndexOf("/") > 0)
+            {
+                String hn = "", hnyr = "";
+                hn = ptt.patient_hn_1.Substring(0, ptt.patient_hn_1.IndexOf(ic.hnspareyear));
+                pttcou = ic.ivfDB.pttDB.selectByHn(hn);
+                if (pttcou.f_sex_id.Equals("1"))// male
+                {
+                    txtSfHnFeMale.Value = lbReq.hn_male;
+                    txtSfNameFeMale.Value = lbReq.name_male;
+                    txtSfDobFeMale.Value = pttcou.patient_birthday;
+                }
+            }
+
+            
             ic.setC1Combo(cboSfDoctor, lsperm.doctor_id);
             ic.setC1Combo(cboSfAppearance, lsperm.appearance);
             ic.setC1Combo(cboSfLiquefaction, lsperm.liquefaction);
@@ -3300,6 +3336,23 @@ namespace clinic_ivf.gui
             txtPeLabFormACode.Value = lforma.form_a_code;
             txtPeDobFeMale.Value = lsperm.dob_female;
             txtPeDobMale.Value = lsperm.dob_male;
+
+            Patient pttcou = new Patient();
+            vs = ic.ivfDB.vsDB.selectByPk1(lbReq.visit_id);
+            ptt = ic.ivfDB.pttDB.selectByPk1(vs.t_patient_id);
+            if (ptt.patient_hn_1.IndexOf("/") > 0)
+            {
+                String hn = "", hnyr = "";
+                hn = ptt.patient_hn_1.Substring(0, ptt.patient_hn_1.IndexOf(ic.hnspareyear));
+                pttcou = ic.ivfDB.pttDB.selectByHn(hn);
+                if (pttcou.f_sex_id.Equals("1"))// male
+                {
+                    txtPeHnFeMale.Value = lbReq.hn_male;
+                    txtPeNameFeMale.Value = lbReq.name_male;
+                    txtPeDobFeMale.Value = pttcou.patient_birthday;
+                }
+            }
+
             ic.setC1Combo(cboPeDoctor, lsperm.doctor_id);
             ic.setC1Combo(cboPeAppearance, lsperm.appearance);
             ic.setC1Combo(cboPeLiquefaction, lsperm.liquefaction);
@@ -3367,6 +3420,23 @@ namespace clinic_ivf.gui
             txtIuiLabFormACode.Value = lforma.form_a_code;
             txtIuiDobFeMale.Value = lsperm.dob_female;
             txtIuiDobMale.Value = lsperm.dob_male;
+
+            Patient pttcou = new Patient();
+            vs = ic.ivfDB.vsDB.selectByPk1(lbReq.visit_id);
+            ptt = ic.ivfDB.pttDB.selectByPk1(vs.t_patient_id);
+            if (ptt.patient_hn_1.IndexOf("/") > 0)
+            {
+                String hn = "", hnyr = "";
+                hn = ptt.patient_hn_1.Substring(0, ptt.patient_hn_1.IndexOf(ic.hnspareyear));
+                pttcou = ic.ivfDB.pttDB.selectByHn(hn);
+                if (pttcou.f_sex_id.Equals("1"))// male
+                {
+                    txtIuiHnFeMale.Value = lbReq.hn_male;
+                    txtIuiNameFeMale.Value = lbReq.name_male;
+                    txtIuiDobFeMale.Value = pttcou.patient_birthday;
+                }
+            }
+
             ic.setC1Combo(cboIuiDoctor, lsperm.doctor_id);
             ic.setC1Combo(cboIuiAppearance, lsperm.appearance);
             ic.setC1Combo(cboIuiLiquefaction, lsperm.liquefaction);

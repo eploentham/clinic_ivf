@@ -124,6 +124,28 @@ namespace clinic_ivf.objdb
             lbReq1 = setLabRequest(dt);
             return lbReq1;
         }
+        public LabRequest selectByHnMale(String hn)
+        {
+            LabRequest lbReq1 = new LabRequest();
+            DataTable dt = new DataTable();
+            String sql = "select lbReq.* " +
+                "From " + lbReq.table + " lbReq " +
+                "Where lbReq." + lbReq.hn_male + " ='" + hn + "' ";
+            dt = conn.selectData(conn.conn, sql);
+            lbReq1 = setLabRequest(dt);
+            return lbReq1;
+        }
+        public LabRequest selectByHnFeMale(String hn)
+        {
+            LabRequest lbReq1 = new LabRequest();
+            DataTable dt = new DataTable();
+            String sql = "select lbReq.* " +
+                "From " + lbReq.table + " lbReq " +
+                "Where lbReq." + lbReq.hn_female + " ='" + hn + "' ";
+            dt = conn.selectData(conn.conn, sql);
+            lbReq1 = setLabRequest(dt);
+            return lbReq1;
+        }
         public DataTable selectByReq1()
         {
             DataTable dt = new DataTable();
@@ -237,7 +259,7 @@ namespace clinic_ivf.objdb
                 ", lforma.name_donor, 'OPU' SName " +
                 "From lab_t_request lreq " +
                 "Left Join lab_t_form_a lforma on lreq.form_a_id = lforma.form_a_id  " +
-                //"Left Join Patient ptt on lreq.hn_female = ptt.PIDS " +
+                //"Left Join t_patient ptt on lforma.t_patient_id = ptt.t_patient_id " +
                 //"Left Join SurfixName on SurfixName.SurfixID = ptt.SurfixID  " +
                 "Left join Doctor on lforma.doctor_id = Doctor.ID  " +
                 //"Left join SpecialItem si on lreq.item_id = si.SID " +
@@ -247,6 +269,32 @@ namespace clinic_ivf.objdb
                 //"Left Join lab_t_form_a lforma on vsold.form_a_id = lforma.form_a_id " +
                 //"Where lreq.status_req in ('0','1','2') and lforma.status_opu_active ='1' " +
                 "Where lreq.status_req in ('0','1','2') and lforma.req_id_opu > 0 " +
+                //"Order By lforma.form_a_id ";
+                "Order By lforma.opu_date, lforma.opu_time ";
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
+        public DataTable selectByStatusOPURequest1()
+        {
+            DataTable dt = new DataTable();
+            String sql = "Select  lforma.name_female,lforma.hn_female" +
+                ", Doctor.ID, Doctor.Name as dtr_name, Doctor.ID as dtrid, ifnull(lreq.remark,'') as remark, lforma.dob_female " +
+                ", lforma.status_wait_confirm_day1,lforma.form_a_id,lforma.req_id_opu , lforma.form_a_id,lforma.status_wait_confirm_day1,lforma.status_wait_confirm_opu_date " +
+                ", lforma.form_a_code, lforma.form_a_date, lforma.vn_old, lforma.status_opu_active, lforma.status_wait_confirm_opu_date, lforma.opu_wait_remark, lforma.remark as form_a_remark " +
+                ", lforma.opu_date, lforma.opu_time, lforma.opu_remark, lforma.fet_remark, lforma.opu_time_modi, lforma.status_opu_time_modi, lforma.hn_male, lforma.name_male, lforma.hn_donor" +
+                ", lforma.name_donor, 'OPU' SName, ptt.patient_name, ptt.patient_hn_1, ptt_hn1.patient_name as patient_name_hn_1, lreq.req_code " +
+                "From lab_t_request lreq " +
+                "Left Join lab_t_form_a lforma on lreq.form_a_id = lforma.form_a_id  " +
+                "Left Join t_patient ptt on lforma.t_patient_id = ptt.t_patient_id " +
+                "Left Join t_patient ptt_hn1 on ptt.t_patient_id_1 = ptt_hn1.t_patient_id  " +
+                "Left join Doctor on lforma.doctor_id = Doctor.ID  " +
+                //"Left join SpecialItem si on lreq.item_id = si.SID " +
+                //"Left Join lab_t_request lreq on lreq.req_id = oJSd.req_id " +
+                //"Left Join lab_t_request lreq on lreq.request_id = oJSd.ID  " +
+                //"Left Join Visit vsold on oJSd.VN = vsold.VN " +
+                //"Left Join lab_t_form_a lforma on vsold.form_a_id = lforma.form_a_id " +
+                //"Where lreq.status_req in ('0','1','2') and lforma.status_opu_active ='1' " +
+                "Where lreq.status_req in ('0','1','2') and lforma.req_id_opu > 0 and lreq.active = '1' and lreq.item_id = '26300000197' " +
                 //"Order By lforma.form_a_id ";
                 "Order By lforma.opu_date, lforma.opu_time ";
             dt = conn.selectData(conn.conn, sql);
@@ -315,13 +363,15 @@ namespace clinic_ivf.objdb
                 ", lreq.req_code, lreq.req_date, lreq.remark, lforma.sperm_analysis_date_start, lforma.status_wait_confirm_opu_date, lforma.opu_wait_remark, lforma.remark as form_a_remark " +
                 //", lforma.opu_date, lforma.opu_time, lforma.opu_remark, lforma.fet_remark, lforma.opu_time_modi, lforma.status_opu_time_modi, lforma.hn_male, lforma.name_male, lforma.hn_donor, lforma.hn_female, lforma.name_female" +//-0020
                 ", lforma.opu_date, lforma.opu_time, lforma.opu_remark, lforma.fet_remark, lforma.opu_time_modi, lforma.status_opu_time_modi, concat(lreq.hn_male,'/',ptt.patient_year) as hn_male, lreq.name_male, lforma.hn_donor, lreq.hn_female, lreq.name_female" +//+0020
-                ", lforma.name_donor,lreq.vn, lreq.item_id, si.LName, lforma.pasa_tese_date,lforma.iui_date,lforma.sperm_freezing_date_start " +
+                ", lforma.name_donor,lreq.vn, lreq.item_id, si.LName, lforma.pasa_tese_date,lforma.iui_date,lforma.sperm_freezing_date_start" +
+                ", ptt.patient_name, ptt.patient_hn_1, ptt_hn1.patient_name as patient_name_hn_1 " +
                 "From lab_t_request lreq " +
                 "Left Join lab_t_form_a lforma on lreq.form_a_id = lforma.form_a_id  " +
                 //"Left Join Patient ptt on lreq.hn_female = ptt.PIDS " +               //-0020
                 //"Left Join SurfixName on SurfixName.SurfixID = ptt.SurfixID  " +          //-0020
                 "Left Join t_visit vs on lreq.visit_id = vs.t_visit_id " +
                 "Left Join t_patient ptt on vs.t_patient_id = ptt.t_patient_id " +
+                "Left Join t_patient ptt_hn1 on ptt.t_patient_id_1 = ptt_hn1.t_patient_id  " +
                 "Left join Doctor on lforma.doctor_id = Doctor.ID  " +
                 "Left join LabItem si on lreq.item_id = si.LID " +
                 //"Left Join lab_t_request lreq on lreq.req_id = oJSd.req_id " +
@@ -331,7 +381,7 @@ namespace clinic_ivf.objdb
                 "Where lreq.status_req in ('0','1','2') " +
                 //"and lreq.item_id in ('2630000014','2630000018','2630000066','26300000196')  " +
                 "and si.LGID in ('3')  " +
-                "and lreq.form_a_id > 0 " +
+                "and lreq.form_a_id > 0 and lreq.active = '1' " +
                 "Order By lreq.req_id ";
             dt = conn.selectData(conn.conn, sql);
             return dt;
@@ -399,7 +449,7 @@ namespace clinic_ivf.objdb
                 //", lreq.req_code, ptt.PIDS as hn_female, lreq.req_date, lreq.remark, lforma.status_opu_active, lforma.status_wait_confirm_opu_date, lforma.opu_wait_remark, lforma.remark as form_a_remark " +            //-0020
                 ", lreq.req_code, lreq.hn_female, lreq.req_date, lreq.remark, lforma.status_opu_active, lforma.status_wait_confirm_opu_date, lforma.opu_wait_remark, lforma.remark as form_a_remark " +              //+0020
                 ", lforma.opu_date, lforma.opu_time, lforma.opu_remark, lforma.fet_remark, lforma.opu_time_modi, lforma.status_opu_time_modi, lforma.hn_male, lforma.name_male, lforma.hn_donor" +
-                ", lforma.name_donor,lreq.vn, lreq.item_id, si.SName, ifnull(ptt.patient_hn_old,0) as  patient_hn_old " +
+                ", lforma.name_donor,lreq.vn, lreq.item_id, si.SName, ifnull(ptt.patient_hn_old,0) as  patient_hn_old, ptt.patient_name, ptt.patient_hn_1, ptt_hn1.patient_name as patient_name_hn_1 " +
                 "From lab_t_request lreq " +
                 "Left Join lab_t_form_a lforma on lreq.form_a_id = lforma.form_a_id  " +
                 //"Left Join Patient ptt on lreq.hn_female = ptt.PIDS " +           //      -0020
@@ -412,8 +462,10 @@ namespace clinic_ivf.objdb
                 //"Left Join lab_t_form_a lforma on vsold.form_a_id = lforma.form_a_id " +
                 "Left Join t_visit vs on lreq.visit_id = vs.t_visit_id "+
                 "Left Join t_patient ptt on vs.t_patient_id = ptt.t_patient_id "+
+                "Left Join t_patient ptt_hn1 on ptt.t_patient_id_1 = ptt_hn1.t_patient_id  " +
                 "Where lreq.status_req in ('0','1','2') " +
-                "and lreq.item_id in ('2630000022') " +
+                //"and lreq.item_id in ('2630000022')  and lreq.active = '1' " +
+                "and lforma.req_id_fet  > 0  and lreq.active = '1' " +
                 //"Order By lforma.form_a_id ";
                 "Order By lreq.req_id ";
             dt = conn.selectData(conn.conn, sql);
@@ -516,6 +568,28 @@ namespace clinic_ivf.objdb
                 "status_req_accept='1' " +
                 ",req_id='" + reqId + "' " +
                 "Where id='" + oJsdId + "'";
+            re = conn.ExecuteNonQuery(conn.conn, sql);
+            return re;
+        }
+        public String updateNameMaleDob(String reqid, String name, String dob)
+        {
+            DataTable dt = new DataTable();
+            String re = "";
+            String sql = "Update " + lbReq.table + " Set " +
+                " " + lbReq.name_male + "='" + name.Replace("'", "''") + "' " +
+                " " + lbReq.dob_male + "='" + dob + "' " +
+                "Where id='" + reqid + "'";
+            re = conn.ExecuteNonQuery(conn.conn, sql);
+            return re;
+        }
+        public String updateNameFeMaleDob(String reqid, String name, String dob)
+        {
+            DataTable dt = new DataTable();
+            String re = "";
+            String sql = "Update " + lbReq.table + " Set " +
+                " " + lbReq.name_female + "='" + name.Replace("'", "''") + "' " +
+                " " + lbReq.dob_female + "='" + dob + "' " +
+                "Where id='" + reqid + "'";
             re = conn.ExecuteNonQuery(conn.conn, sql);
             return re;
         }

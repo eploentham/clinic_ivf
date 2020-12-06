@@ -707,6 +707,44 @@ namespace clinic_ivf.objdb
             }
             return re;
         }
+        public String updateNameMaleDob(String id, String name, String dob)
+        {
+            String re = "";
+            String sql = "";
+
+            sql = "Update " + lformA.table + " " +
+                "Set " + lformA.name_male + "='"+ name.Replace("'", "''") + "' " +
+                "," + lformA.dob_male + "='"+ dob + "' " +
+                " Where " + lformA.pkField + " = '" + id + "' ";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+            return re;
+        }
+        public String updateNameFeMaleDob(String id, String name, String dob)
+        {
+            String re = "";
+            String sql = "";
+
+            sql = "Update " + lformA.table + " " +
+                "Set " + lformA.name_female + "='" + name.Replace("'", "''") + "' " +
+                "," + lformA.dob_female + "='" + dob + "' " +
+                " Where " + lformA.pkField + " = '" + id + "' ";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+            return re;
+        }
         public String VoidSpermFz(String id)
         {
             String re = "";
@@ -877,6 +915,28 @@ namespace clinic_ivf.objdb
             String sql = "select lformA.* " +
                 "From " + lformA.table + " lformA " +
                 "Where lformA." + lformA.pkField + " ='" + pttId + "' ";
+            dt = conn.selectData(conn.conn, sql);
+            cop1 = setLabFormA(dt);
+            return cop1;
+        }
+        public LabFormA selectByHnMale(String hn)
+        {
+            LabFormA cop1 = new LabFormA();
+            DataTable dt = new DataTable();
+            String sql = "select lformA.* " +
+                "From " + lformA.table + " lformA " +
+                "Where lformA." + lformA.hn_male + " ='" + hn + "' ";
+            dt = conn.selectData(conn.conn, sql);
+            cop1 = setLabFormA(dt);
+            return cop1;
+        }
+        public LabFormA selectByHnFeMale(String hn)
+        {
+            LabFormA cop1 = new LabFormA();
+            DataTable dt = new DataTable();
+            String sql = "select lformA.* " +
+                "From " + lformA.table + " lformA " +
+                "Where lformA." + lformA.hn_female + " ='" + hn + "' ";
             dt = conn.selectData(conn.conn, sql);
             cop1 = setLabFormA(dt);
             return cop1;

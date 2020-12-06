@@ -281,6 +281,7 @@
             this.txtPttO = new C1.Win.C1Input.C1TextBox();
             this.cPdf = new C1.Win.C1Document.C1PdfDocumentSource(this.components);
             this._c1pdf = new C1.C1Pdf.C1PdfDocument();
+            this.btnUpdateAll = new C1.Win.C1Input.C1Button();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitMain)).BeginInit();
             this.splitMain.Panel1.SuspendLayout();
@@ -446,6 +447,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtBP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPulse)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPttO)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnUpdateAll)).BeginInit();
             this.SuspendLayout();
             // 
             // theme1
@@ -490,6 +492,7 @@
             // splitContainer2.Panel1
             // 
             this.splitContainer2.Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.splitContainer2.Panel1.Controls.Add(this.btnUpdateAll);
             this.splitContainer2.Panel1.Controls.Add(this.txtAge);
             this.splitContainer2.Panel1.Controls.Add(this.btnRefresh);
             this.splitContainer2.Panel1.Controls.Add(this.txtLmp);
@@ -4319,6 +4322,20 @@
             this._c1pdf.UseFastTextOut = true;
             this._c1pdf.UseFontShaping = true;
             // 
+            // btnUpdateAll
+            // 
+            this.btnUpdateAll.Image = global::clinic_ivf.Properties.Resources.maintenance24;
+            this.btnUpdateAll.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnUpdateAll.Location = new System.Drawing.Point(776, 311);
+            this.btnUpdateAll.Name = "btnUpdateAll";
+            this.btnUpdateAll.Size = new System.Drawing.Size(93, 33);
+            this.btnUpdateAll.TabIndex = 735;
+            this.btnUpdateAll.Text = "update all";
+            this.btnUpdateAll.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnUpdateAll, "(default)");
+            this.btnUpdateAll.UseVisualStyleBackColor = true;
+            this.btnUpdateAll.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
             // FrmPatientAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -4501,6 +4518,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtBP)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPulse)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPttO)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnUpdateAll)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -4764,5 +4782,6 @@
         private C1.Win.C1Input.C1DateEdit txtLmp;
         private C1.Win.C1Input.C1Button btnRefresh;
         private C1.Win.C1Input.C1TextBox txtAge;
+        private C1.Win.C1Input.C1Button btnUpdateAll;
     }
 }

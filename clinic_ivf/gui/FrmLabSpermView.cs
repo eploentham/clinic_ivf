@@ -500,8 +500,11 @@ namespace clinic_ivf.gui
                 row1[colOPUTime] = ic.timetoShow(row[ic.ivfDB.lFormaDB.lformA.sperm_analysis_date_start].ToString());
                 //row1[colRqStatusSperm] = row[ic.ivfDB.lbReqDB.lbReq.sta].ToString();
                 row1[colRqLabName] = row["LName"].ToString();
-                row1[colRqHnMale] = row["hn_male"].ToString();
-                row1[colRqNameMale] = row["name_male"].ToString();
+                //row1[colRqHnMale] = row["hn_male"].ToString();
+                //row1[colRqNameMale] = row["name_male"].ToString();
+
+                row1[colRqHnMale] = row["patient_hn_1"].ToString();
+                row1[colRqNameMale] = row["patient_name_hn_1"].ToString();
                 //row1[colRqStatusSperm] = row["item_id"].ToString().Equals("2630000014") ? "Sperm Analysis" 
                 //    : row["item_id"].ToString().Equals("18") ? "Sperm Freezing"
                 //    : row["item_id"].ToString().Equals("2630000066") ? "PESA/TESE"

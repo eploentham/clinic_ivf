@@ -674,6 +674,7 @@ namespace clinic_ivf.objdb
 
             return re;
         }
+        
         public C1ComboBox setCboAmphur(C1ComboBox c)
         {
             ComboBoxItem item = new ComboBoxItem();

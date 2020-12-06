@@ -71,7 +71,7 @@ namespace clinic_ivf.objdb
 
             sql = "Update " + oPkg.table + " Set " +
                 " " + oPkg.PackageName + " = '" + p.PackageName.Replace("'", "''") + "' " +
-                "," + oPkg.Price + " = '" + p.Price + "' " +
+                "," + oPkg.Price + " = '" + p.Price.Replace(",","") + "' " +
                 "Where " + oPkg.pkField + "='" + p.PCKID + "'"
                 ;
             try

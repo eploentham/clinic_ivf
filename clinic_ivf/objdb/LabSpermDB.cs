@@ -270,6 +270,30 @@ namespace clinic_ivf.objdb
             lbReq1 = setLabSperm(dt);
             return lbReq1;
         }
+        public LabSperm selectByHnMale(String hn)
+        {
+            LabSperm lbReq1 = new LabSperm();
+            DataTable dt = new DataTable();
+            String sql = "select lsperm.*,dtr.Name as doctorname " +
+                "From " + lsperm.table + " lsperm " +
+                "Left Join Doctor dtr on dtr.ID = lsperm." + lsperm.doctor_id + " " +
+                "Where lsperm." + lsperm.hn_male + " ='" + hn + "' ";
+            dt = conn.selectData(conn.conn, sql);
+            lbReq1 = setLabSperm(dt);
+            return lbReq1;
+        }
+        public LabSperm selectByHnFeMale(String hn)
+        {
+            LabSperm lbReq1 = new LabSperm();
+            DataTable dt = new DataTable();
+            String sql = "select lsperm.*,dtr.Name as doctorname " +
+                "From " + lsperm.table + " lsperm " +
+                "Left Join Doctor dtr on dtr.ID = lsperm." + lsperm.doctor_id + " " +
+                "Where lsperm." + lsperm.hn_female + " ='" + hn + "' ";
+            dt = conn.selectData(conn.conn, sql);
+            lbReq1 = setLabSperm(dt);
+            return lbReq1;
+        }
         public LabSperm selectByReqId(String reqId)
         {
             LabSperm lbReq1 = new LabSperm();
@@ -591,6 +615,44 @@ namespace clinic_ivf.objdb
                 re = update(p, userId);
             }
 
+            return re;
+        }
+        public String updateNameMaleDob(String id, String name, String dob)
+        {
+            String re = "", sql = "";
+            int chk = 0;
+            
+            sql = "Update " + lsperm.table + " " +
+                "Set " + lsperm.name_male + "='" + name.Replace("'", "''") + "' " +
+                    "," + lsperm.dob_male + "='"+ dob + "' " +
+                " Where " + lsperm.pkField + " = '" + id + "' ";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+            return re;
+        }
+        public String updateNameFeMaleDob(String id, String name, String dob)
+        {
+            String re = "", sql = "";
+            int chk = 0;
+
+            sql = "Update " + lsperm.table + " " +
+                "Set " + lsperm.name_female + "='" + name.Replace("'", "''") + "' " +
+                    "," + lsperm.dob_female + "='" + dob + "' " +
+                " Where " + lsperm.pkField + " = '" + id + "' ";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
             return re;
         }
         public String updateStatusLabFinish(String id, String userId)

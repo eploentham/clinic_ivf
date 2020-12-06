@@ -124,6 +124,32 @@ namespace clinic_ivf.objdb
             lbReq1 = setLabFET(dt);
             return lbReq1;
         }
+        public LabFet selectByHnMale(String hn)
+        {
+            LabFet lbReq1 = new LabFet();
+            DataTable dt = new DataTable();
+            String sql = "select fet.*,dtr.Name, proce.proce_name_t " +
+                "From " + fet.table + " fet " +
+                "Left Join Doctor dtr on dtr.ID = fet." + fet.doctor_id + " " +
+                "LEft Join lab_b_procedure proce on proce.proce_id = fet.proce_id " +
+                "Where fet." + fet.hn_male + " ='" + hn + "' ";
+            dt = conn.selectData(conn.conn, sql);
+            lbReq1 = setLabFET(dt);
+            return lbReq1;
+        }
+        public LabFet selectByHnFeMale(String hn)
+        {
+            LabFet lbReq1 = new LabFet();
+            DataTable dt = new DataTable();
+            String sql = "select fet.*,dtr.Name, proce.proce_name_t " +
+                "From " + fet.table + " fet " +
+                "Left Join Doctor dtr on dtr.ID = fet." + fet.doctor_id + " " +
+                "LEft Join lab_b_procedure proce on proce.proce_id = fet.proce_id " +
+                "Where fet." + fet.hn_female + " ='" + hn + "' ";
+            dt = conn.selectData(conn.conn, sql);
+            lbReq1 = setLabFET(dt);
+            return lbReq1;
+        }
         public DataTable selectDistinctByRemark()
         {
             DataTable dt = new DataTable();
@@ -221,6 +247,7 @@ namespace clinic_ivf.objdb
             DataTable dt = new DataTable();
             String sql = "select fet." + fet.fet_id + ", fet." + fet.fet_code + ",fet." + fet.hn_female + ",fet." + fet.name_female + ",fet." + fet.fet_date + ",fet." + fet.remark + "," + fet.hn_male + "," + fet.name_male + ", lab_b_procedure.proce_name_t " +
                 "From " + fet.table + " fet " +
+                //"Left Join t_patient ptt on fet" +
                 "Left Join Doctor on Doctor.ID = fet.doctor_id " +
                 "Left Join lab_b_procedure on fet.proce_id = lab_b_procedure.proce_id " +
                 "Where  " + wherehn +
@@ -718,6 +745,84 @@ namespace clinic_ivf.objdb
                 sql = ex.Message + " " + ex.InnerException;
             }
 
+            return re;
+        }
+        public String updateHnMale(String fetid, String hn)
+        {
+            String re = "";
+            String sql = "";
+            int chk = 0;
+
+            sql = "Update " + fet.table + " Set " +
+                " " + fet.hn_male + " = '" + hn.Replace("'", "''") + "' " +
+                "Where " + fet.pkField + "='" + fetid + "'";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+            return re;
+        }
+        public String updateHnFeMale(String fetid, String hn)
+        {
+            String re = "";
+            String sql = "";
+            int chk = 0;
+
+            sql = "Update " + fet.table + " Set " +
+                " " + fet.hn_female + " = '" + hn.Replace("'", "''") + "' " +
+                "Where " + fet.pkField + "='" + fetid + "'";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+            return re;
+        }
+        public String updateNameMaleDob(String fetid, String name, String dob)
+        {
+            String re = "";
+            String sql = "";
+            int chk = 0;
+
+            sql = "Update " + fet.table + " Set " +
+                " " + fet.name_male + " = '" + name.Replace("'", "''") + "' " +
+                "," + fet.dob_male + " = '" + dob + "' " +
+                "Where " + fet.pkField + "='" + fetid + "'";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+            return re;
+        }
+        public String updateNameFeMaleDob(String fetid, String name, String dob)
+        {
+            String re = "";
+            String sql = "";
+            int chk = 0;
+
+            sql = "Update " + fet.table + " Set " +
+                " " + fet.name_female + " = '" + name.Replace("'", "''") + "' " +
+                "," + fet.dob_female + " = '" + dob + "' " +
+                "Where " + fet.pkField + "='" + fetid + "'";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
             return re;
         }
         public LabFet setLabFET(DataTable dt)

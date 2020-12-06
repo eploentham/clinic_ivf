@@ -283,6 +283,7 @@ namespace clinic_ivf.gui
                     printReceipt("");
                     printReceipt("2");
                 }
+                ic.ivfDB.vsDB.updateStatusPharmacyFinish1(txtVn.Text);
             }
         }
         private void printReceipt(String flagExtra)

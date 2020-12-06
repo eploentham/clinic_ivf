@@ -205,7 +205,8 @@ namespace clinic_ivf.gui
             txtHn.Value = ic.showHN(ptt.patient_hn, ptt.patient_year);//  +0020
             txtVn.Value = vs.visit_vn;
             txtPttNameE.Value = ptt.Name;
-            
+            txtPttName.Value = ic.ivfDB.fpfDB.getList(ptt.f_patient_prefix_id) + " " + ptt.patient_firstname + " " + ptt.patient_lastname;
+
             txtDob.Value = ic.datetoShow(ptt.patient_birthday) + " [" + ptt.AgeStringShort() + "]";
             txtAllergy.Value = ptt.allergy_description;
             txtIdOld.Value = ptt.t_patient_id_old;

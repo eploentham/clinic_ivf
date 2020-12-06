@@ -1703,7 +1703,7 @@ namespace clinic_ivf.gui
                     grfQue[i, colPttHn] = ic.showHN(row["PIDS"].ToString(), row["patient_year"].ToString());
                     grfQue[i, colPttName] = row["patient_name"].ToString();
                     grfQue[i, colVsDate] = ic.datetoShow(row["VDate"]);
-                    grfQue[i, colVsTime] = row["VStartTime"].ToString();
+                    grfQue[i, colVsTime] = ic.timetoShow(row["VStartTime"].ToString());
                     grfQue[i, colVsEtime] = row["VEndTime"].ToString();
                     grfQue[i, colStatus] = row["VName"].ToString();
                     grfQue[i, colPttId] = row["t_patient_id"].ToString();

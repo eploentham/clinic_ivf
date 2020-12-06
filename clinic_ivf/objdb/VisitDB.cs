@@ -709,6 +709,22 @@ namespace clinic_ivf.objdb
             }
             return re;
         }
+        public String updateName(String pttid, String name)
+        {
+            String re = "", err = "";
+            String sql = "update " + vs.table + " " +
+                "Set " + vs.patient_name + " ='"+ name + "' " +
+                "Where " + vs.t_patient_id + " ='" + pttid + "' ";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                err = ex.Message;
+            }
+            return re;
+        }
         public String updateCloseStatusNurseByVN(String vn, String userid)
         {
             String re = "", err = "";
@@ -1227,20 +1243,20 @@ namespace clinic_ivf.objdb
             //    //"Order By vsold.VDate desc, vsold.VStartTime desc";
             //    "Order By vs.visit_begin_visit_time desc";
 
-            String sql = "Select vs.t_visit_id as id,vs.visit_vn , ptt.patient_hn as PIDS, vs.patient_name, vs.visit_begin_visit_time as VDate, vs.visit_begin_visit_time as VStartTime, vs.visit_financial_discharge_time as VEndTime, VStatus.VName" +
+            String sql = "Select vs.t_visit_id as id,vs.visit_vn , ptt.patient_hn as PIDS, ptt.patient_name, vs.visit_begin_visit_time as VDate, vs.visit_begin_visit_time as VStartTime, vs.visit_financial_discharge_time as VEndTime, VStatus.VName" +
                ", vs.visit_vn as VSID, ifnull(vs.t_patient_id,'') as PID, ptt.patient_birthday as dob" +
                ",vs.form_a_id, CONCAT(IFNULL(fpp.patient_prefix_description,''),' ', stf.staff_fname_e ,' ',stf.staff_lname_e)  as dtrname, vs.status_nurse, vs.status_cashier " +
-                ", ptt.patient_hn_1 ,CONCAT(IFNULL(fpp_1.patient_prefix_description,''),' ', ptt_1.patient_firstname_e ,' ',ptt_1.patient_lastname_e ) as name_1" +
+                ", ptt.patient_hn_1 ,ptt_1.patient_name as name_1" +
                ", ptt.patient_hn_2 ,CONCAT(IFNULL(fpp_2.patient_prefix_description,''),' ', ptt_2.patient_firstname_e ,' ',ptt_2.patient_lastname_e ) as name_2 " +
                ", ptt.agent, agt.AgentName, ifnull(ptt.f_sex_id,'') as f_sex_id, vs.t_patient_id,ptt.patient_year, ptt.patient_hn_old " +
                "From " + vs.table + " vs " +
                "Left Join VStatus on  VStatus.VSID = vs.VSID " +
                //"Left Join t_visit on  vsold.VN = t_visit.visit_vn " +
                "Left Join t_patient ptt on  vs.t_patient_id = ptt.t_patient_id " +
-               "Left Join b_staff stf on vs.doctor_id = stf.doctor_id_old " +
+               "Left Join b_staff stf on vs.doctor_id = stf.doctor_id_old  and stf.doctor_id_old != null " +
                "Left join f_patient_prefix fpp on fpp.f_patient_prefix_id = stf.prefix_id " +
                "Left join t_patient ptt_1 on ptt.t_patient_id_1 = ptt_1.t_patient_id and ptt.patient_hn_1 <> '' and ptt.patient_hn_1 is not null " +
-               "Left join f_patient_prefix fpp_1 on fpp_1.f_patient_prefix_id = ptt_1.f_patient_prefix_id " +
+               //"Left join f_patient_prefix fpp_1 on fpp_1.f_patient_prefix_id = ptt_1.f_patient_prefix_id " +
                "Left join t_patient ptt_2 on ptt.t_patient_id_2 = ptt_2.t_patient_id and ptt.patient_hn_2 <> '' and ptt.patient_hn_2 is not null " +
                "Left join f_patient_prefix fpp_2 on fpp_2.f_patient_prefix_id = ptt_2.f_patient_prefix_id " +
                "Left Join Agent agt on ptt.agent = agt.AgentID " +
@@ -1512,7 +1528,27 @@ namespace clinic_ivf.objdb
             {
                 sql = ex.Message + " " + ex.InnerException;
             }
+            return re;
+        }
+        public String updateStatusPharmacyFinish1(String vn)
+        {
+            String re = "";
+            String sql = "";
+            int chk = 0;
 
+            sql = "Update " + vs.table + " Set " +
+                " " + vs.lvsid + " = vsid " +
+                //"," + vs.vsid + " = '999' " +
+                "," + vs.f_visit_status_id + " = '4' " +
+                "Where " + vs.visit_vn + "='" + vn + "'";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
             return re;
         }
         public String updateFormA(String vn, String formaid)

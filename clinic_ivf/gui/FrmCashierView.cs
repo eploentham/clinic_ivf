@@ -1694,12 +1694,12 @@ namespace clinic_ivf.gui
 
             grfFinish.Rows.Count = dt.Rows.Count + 1;
             grfFinish.Cols.Count = 20;
-            C1TextBox txt = new C1TextBox();
+            //C1TextBox txt = new C1TextBox();
             //C1ComboBox cboproce = new C1ComboBox();
             //ic.ivfDB.itmDB.setCboItem(cboproce);
-            grfFinish.Cols[colPttHn].Editor = txt;
-            grfFinish.Cols[colPttName].Editor = txt;
-            grfFinish.Cols[colVsDate].Editor = txt;
+            //grfFinish.Cols[colPttHn].Editor = txt;
+            //grfFinish.Cols[colPttName].Editor = txt;
+            //grfFinish.Cols[colVsDate].Editor = txt;
 
             grfFinish.Cols[colVNshow].Width = 80;
             grfFinish.Cols[colPttHn].Width = 120;
@@ -1965,7 +1965,7 @@ namespace clinic_ivf.gui
             grfQue.Cols[colStatusCashier].Caption = "Cashier";
             grfQue.Cols[colVsAgent].Caption = "Agent";
             grfQue.Cols[colReceiptNo].Caption = "receipt no";
-            grfQue.Cols[colPttHnOld].Caption = "HN OPD";
+            grfQue.Cols[colPttHnOld].Caption = "HN OLD";
             //grfQue.Cols[colBillAcc].Caption = "HN OPD";
 
             //menuGw.MenuItems.Add("&receive operation", new EventHandler(ContextMenu_Apm));
@@ -2017,6 +2017,7 @@ namespace clinic_ivf.gui
             grfQue.Cols[colReceiptNo].Visible = false;
             grfQue.Cols[colStatusBill].Visible = false;
             grfQue.Cols[colBillAcc].Visible = false;
+            grfQue.Cols[colPttId].Visible = false;
 
             grfQue.Cols[colAgentId].Visible = false;
             grfQue.Cols[colBillId].Visible = false;
