@@ -138,6 +138,7 @@
             this.txtSpermFreezingDateStart = new C1.Win.C1Input.C1DateEdit();
             this.chkSpermFreezing = new C1.Win.C1Input.C1CheckBox();
             this.gbOPU = new System.Windows.Forms.GroupBox();
+            this.btnPrintOPUMale = new C1.Win.C1Input.C1Button();
             this.txtReqOpuId = new C1.Win.C1Input.C1TextBox();
             this.txtPasswordVoidOPU = new C1.Win.C1Input.C1TextBox();
             this.chkVoidOPU = new C1.Win.C1Input.C1CheckBox();
@@ -214,7 +215,6 @@
             this.txtSpermAnalysisDateStart = new C1.Win.C1Input.C1DateEdit();
             this.chkSememAnalysis = new C1.Win.C1Input.C1CheckBox();
             this.btnPrintSperm = new C1.Win.C1Input.C1Button();
-            this.btnPrintOPUMale = new C1.Win.C1Input.C1Button();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -288,6 +288,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtSpermFreezingDateStart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkSpermFreezing)).BeginInit();
             this.gbOPU.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnPrintOPUMale)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtReqOpuId)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPasswordVoidOPU)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkVoidOPU)).BeginInit();
@@ -335,7 +336,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtSpermAnalysisDateStart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkSememAnalysis)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPrintSperm)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnPrintOPUMale)).BeginInit();
             this.SuspendLayout();
             // 
             // sB
@@ -622,9 +622,9 @@
             this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSave.Location = new System.Drawing.Point(953, 57);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(83, 39);
+            this.btnSave.Size = new System.Drawing.Size(105, 39);
             this.btnSave.TabIndex = 535;
-            this.btnSave.Text = "บันทึกช้อมูล";
+            this.btnSave.Text = "send request";
             this.btnSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.theme1.SetTheme(this.btnSave, "(default)");
             this.btnSave.UseVisualStyleBackColor = true;
@@ -2338,6 +2338,20 @@
             this.gbOPU.Text = "OPU";
             this.theme1.SetTheme(this.gbOPU, "(default)");
             // 
+            // btnPrintOPUMale
+            // 
+            this.btnPrintOPUMale.Image = global::clinic_ivf.Properties.Resources.printer_orange24;
+            this.btnPrintOPUMale.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPrintOPUMale.Location = new System.Drawing.Point(914, 137);
+            this.btnPrintOPUMale.Name = "btnPrintOPUMale";
+            this.btnPrintOPUMale.Size = new System.Drawing.Size(112, 35);
+            this.btnPrintOPUMale.TabIndex = 750;
+            this.btnPrintOPUMale.Text = "Print OPU Male";
+            this.btnPrintOPUMale.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnPrintOPUMale, "(default)");
+            this.btnPrintOPUMale.UseVisualStyleBackColor = true;
+            this.btnPrintOPUMale.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
             // txtReqOpuId
             // 
             this.txtReqOpuId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -3642,20 +3656,6 @@
             this.btnPrintSperm.UseVisualStyleBackColor = true;
             this.btnPrintSperm.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // btnPrintOPUMale
-            // 
-            this.btnPrintOPUMale.Image = global::clinic_ivf.Properties.Resources.printer_orange24;
-            this.btnPrintOPUMale.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPrintOPUMale.Location = new System.Drawing.Point(914, 137);
-            this.btnPrintOPUMale.Name = "btnPrintOPUMale";
-            this.btnPrintOPUMale.Size = new System.Drawing.Size(112, 35);
-            this.btnPrintOPUMale.TabIndex = 750;
-            this.btnPrintOPUMale.Text = "Print OPU Male";
-            this.btnPrintOPUMale.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.theme1.SetTheme(this.btnPrintOPUMale, "(default)");
-            this.btnPrintOPUMale.UseVisualStyleBackColor = true;
-            this.btnPrintOPUMale.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
             // FrmLabFormA
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3751,6 +3751,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.chkSpermFreezing)).EndInit();
             this.gbOPU.ResumeLayout(false);
             this.gbOPU.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnPrintOPUMale)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtReqOpuId)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPasswordVoidOPU)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkVoidOPU)).EndInit();
@@ -3806,7 +3807,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtSpermAnalysisDateStart)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkSememAnalysis)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPrintSperm)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnPrintOPUMale)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -249,6 +249,9 @@ namespace clinic_ivf.control
                 iniC.statusCashierOldProgram = iniF.getIni("app", "statusCashierOldProgram");
                 iniC.spermFreezingDecimal = iniF.getIni("app", "spermFreezingDecimal");
                 iniC.statusNurseOrderInclude = iniF.getIni("app", "statusNurseOrderInclude");
+                //iniC.grdViewFontName = iniF.getIni("app", "grdViewFontName");
+                iniC.pdfFontName = iniF.getIni("app", "pdfFontName");
+                iniC.pdfViewFontSize = iniF.getIni("app", "pdfViewFontSize");
 
                 iniC.email_form = iniF.getIni("email", "email_form");
                 iniC.email_auth_user = iniF.getIni("email", "email_auth_user");
@@ -270,6 +273,8 @@ namespace clinic_ivf.control
                 iniC.email_to_labblood = iniF.getIni("email", "email_to_labblood");
 
                 iniC.grdViewFontName = iniC.grdViewFontName.Equals("") ? "Microsoft Sans Serif" : iniC.grdViewFontName;
+                iniC.pdfFontName = iniC.pdfFontName.Equals("") ? iniC.grdViewFontName : iniC.pdfFontName;
+                iniC.pdfViewFontSize = iniC.pdfViewFontSize.Equals("") ? iniC.grdViewFontSize : iniC.pdfViewFontSize;
                 //MessageBox.Show("0037 " + iniC.lisBarcode, "");
                 iniC.sticker_donor_width = iniC.sticker_donor_width.Equals("") ? "120" : iniC.sticker_donor_width;
                 iniC.sticker_donor_height = iniC.sticker_donor_height.Equals("") ? "90" : iniC.sticker_donor_height;

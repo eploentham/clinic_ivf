@@ -3344,6 +3344,9 @@ namespace clinic_ivf.gui
                 Patient pttcou = new Patient();
                 vs = ic.ivfDB.vsDB.selectByPk1(lbReq.visit_id);
                 ptt = ic.ivfDB.pttDB.selectByPk1(vs.t_patient_id);
+                txtHnFeMale.Value = ic.showHN(ptt.patient_hn, ptt.patient_year);
+                txtNameFeMale.Value = ptt.Name;
+                txtDobFeMale.Value = ptt.patient_birthday;
                 if (ptt.patient_hn_1.IndexOf("/") > 0)
                 {
                     String hn = "", hnyr = "";
@@ -3365,13 +3368,13 @@ namespace clinic_ivf.gui
         private void setControl1()
         {
             txtID.Value = opu.opu_id;
-            txtHnFeMale.Value = opu.hn_female;
-            txtHnMale.Value = opu.hn_male;
-            txtNameFeMale.Value = opu.name_female;
-            txtNameMale.Value = opu.name_male;
+            //txtHnFeMale.Value = opu.hn_female;
+            //txtHnMale.Value = opu.hn_male;
+            //txtNameFeMale.Value = opu.name_female;
+            //txtNameMale.Value = opu.name_male;
             txtLabReqCode.Value = lbReq.req_code;
-            txtDobFeMale.Value = opu.dob_female;
-            txtDobMale.Value = opu.dob_male;
+            //txtDobFeMale.Value = opu.dob_female;
+            //txtDobMale.Value = opu.dob_male;
             ic.setC1Combo(cboDoctor, opu.doctor_id);
             ic.setC1Combo(cboEmbryoForEtDoctor, opu.embryo_for_et_doctor);
             txtOpuDate.Value = opu.opu_date;

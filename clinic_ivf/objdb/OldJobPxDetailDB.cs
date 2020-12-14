@@ -376,7 +376,7 @@ namespace clinic_ivf.objdb
                 //"left join SurfixName on SurfixName.SurfixID = ptt.SurfixID " +
                 "left join StockDrug on StockDrug.DUID =  jobpxD.DUID " +
                 "Where JobPx.VN = '" + vn + "' " +
-                "group by jobpxD.DUName ";
+                "group by patient_name,hn,frequency, jobpxD.DUName , jobpxD.DUID, JobPx.Date, unit_name  ";
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }

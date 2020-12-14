@@ -673,7 +673,7 @@ namespace clinic_ivf.gui
             //grfProc.Cols[colPcRemark].Editor = txt;
 
             grfProc.Cols[colPcDate].Width = 120;
-            grfProc.Cols[colPcHnMale].Width = 200;
+            grfProc.Cols[colPcHnMale].Width = 120;
             grfProc.Cols[colPcNameMale].Width = 200;
             grfProc.Cols[colPcSpermName].Width = 200;
             grfProc.Cols[colPcRemark].Width = 200;

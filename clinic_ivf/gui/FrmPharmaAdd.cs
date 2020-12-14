@@ -131,7 +131,6 @@ namespace clinic_ivf.gui
             menu.removeTab(tab);
             //}
         }
-
         private void BtnPrnSticker_Click(object sender, EventArgs e)
         {
             // throw new NotImplementedException();
@@ -164,7 +163,6 @@ namespace clinic_ivf.gui
                     }
                 }
             }
-
             if (cboLangSticker.Text.Trim().Equals("English"))
             {
                 dt = ic.ivfDB.oJpxdDB.selectByVN1FreqEN(txtVn.Text);

@@ -1224,7 +1224,6 @@ namespace clinic_ivf.gui
             //calPeMotility();
             //calPESAMotile();
 
-
             Decimal pr = 0, nr = 0, motility = 0;
             Decimal.TryParse(txtPeMotility4.Text, out pr);
             Decimal.TryParse(txtPeMotility3.Text, out nr);
@@ -3082,7 +3081,6 @@ namespace clinic_ivf.gui
             //{
             //    pnEmailAddSubject.Enabled = false;
             //}
-
         }
         private void setControl()
         {
@@ -3157,10 +3155,10 @@ namespace clinic_ivf.gui
                 String hn = "", hnyr = "";
                 hn = ptt.patient_hn_1.Substring(0, ptt.patient_hn_1.IndexOf(ic.hnspareyear));
                 pttcou = ic.ivfDB.pttDB.selectByHn(hn);
-                if (pttcou.f_sex_id.Equals("1"))// male
+                if (pttcou.f_sex_id.Equals("2"))// female
                 {
-                    txtHnFeMale.Value = lbReq.hn_male;
-                    txtNameFeMale.Value = lbReq.name_male;
+                    txtHnFeMale.Value = pttcou.patient_hn+ic.hnspareyear+pttcou.patient_year;
+                    txtNameFeMale.Value = pttcou.Name;
                     txtDobFeMale.Value = pttcou.patient_birthday;
                 }
             }
@@ -3246,14 +3244,13 @@ namespace clinic_ivf.gui
                 String hn = "", hnyr = "";
                 hn = ptt.patient_hn_1.Substring(0, ptt.patient_hn_1.IndexOf(ic.hnspareyear));
                 pttcou = ic.ivfDB.pttDB.selectByHn(hn);
-                if (pttcou.f_sex_id.Equals("1"))// male
+                if (pttcou.f_sex_id.Equals("2"))// female
                 {
-                    txtSfHnFeMale.Value = lbReq.hn_male;
-                    txtSfNameFeMale.Value = lbReq.name_male;
+                    txtSfHnFeMale.Value = pttcou.patient_hn + ic.hnspareyear + pttcou.patient_year;
+                    txtSfNameFeMale.Value = pttcou.Name;
                     txtSfDobFeMale.Value = pttcou.patient_birthday;
                 }
             }
-
             
             ic.setC1Combo(cboSfDoctor, lsperm.doctor_id);
             ic.setC1Combo(cboSfAppearance, lsperm.appearance);
@@ -3345,10 +3342,10 @@ namespace clinic_ivf.gui
                 String hn = "", hnyr = "";
                 hn = ptt.patient_hn_1.Substring(0, ptt.patient_hn_1.IndexOf(ic.hnspareyear));
                 pttcou = ic.ivfDB.pttDB.selectByHn(hn);
-                if (pttcou.f_sex_id.Equals("1"))// male
+                if (pttcou.f_sex_id.Equals("2"))// female
                 {
-                    txtPeHnFeMale.Value = lbReq.hn_male;
-                    txtPeNameFeMale.Value = lbReq.name_male;
+                    txtPeHnFeMale.Value = pttcou.patient_hn + ic.hnspareyear + pttcou.patient_year;
+                    txtPeNameFeMale.Value = pttcou.Name;
                     txtPeDobFeMale.Value = pttcou.patient_birthday;
                 }
             }
@@ -3429,10 +3426,10 @@ namespace clinic_ivf.gui
                 String hn = "", hnyr = "";
                 hn = ptt.patient_hn_1.Substring(0, ptt.patient_hn_1.IndexOf(ic.hnspareyear));
                 pttcou = ic.ivfDB.pttDB.selectByHn(hn);
-                if (pttcou.f_sex_id.Equals("1"))// male
+                if (pttcou.f_sex_id.Equals("2"))// female
                 {
-                    txtIuiHnFeMale.Value = lbReq.hn_male;
-                    txtIuiNameFeMale.Value = lbReq.name_male;
+                    txtIuiHnFeMale.Value = pttcou.patient_hn + ic.hnspareyear + pttcou.patient_year;
+                    txtIuiNameFeMale.Value = pttcou.Name;
                     txtIuiDobFeMale.Value = pttcou.patient_birthday;
                 }
             }

@@ -40,6 +40,7 @@ namespace clinic_ivf.gui
      * 63-08-25     0019        ทำให้หน้าจอ FrmNurseAdd2 เร็วขึ้น
      * 63-10-27     0020        เรื่อง		เลิก insert table Visit
      * 63-10-27     0021        ให้เริ่ม HN ใหม่ แต่ให้ใช้ข้อมูลเก่า
+     * 63-12-07     0023        แก้ Progress Note ให้เป็น FTP เป็นแบบ HN เดิมเก็บใน Folder VN
      */
     public partial class FrmNurseAdd2 : Form
     {
@@ -131,6 +132,7 @@ namespace clinic_ivf.gui
             pageLoad = true;
             fEdit = new Font(ic.iniC.grdViewFontName, ic.grdViewFontSize, FontStyle.Regular);
             fEditB = new Font(ic.iniC.grdViewFontName, ic.grdViewFontSize, FontStyle.Bold);
+            ff = new Font(ic.iniC.pdfFontName, int.Parse(ic.iniC.pdfViewFontSize), FontStyle.Regular);
 
             //C1ThemeController.ApplicationTheme = ic.iniC.themeApplication;
             theme1.Theme = ic.iniC.themeApplication;
@@ -1946,13 +1948,14 @@ namespace clinic_ivf.gui
             {
                 RichTextBoxStreamType fileType = RichTextBoxStreamType.RichText;
                 MemoryStream stream = new MemoryStream();
-                String filePathName = "progressnote" + "_" + txtVn.Text + ".rtf";
+                String filePathName = "progressnote" + "_" + txtVnProgressNote.Text + ".rtf";
                 if (File.Exists(filePathName))
                 {
                     File.Delete(filePathName);
                     System.Threading.Thread.Sleep(200);
                 }
-                String aaa = ic.iniC.folderFTP + "/" + txtVn.Text.Trim()+"/" + filePathName;
+                //String aaa = ic.iniC.folderFTP + "/" + txtVn.Text.Trim()+"/" + filePathName;      //-0023
+                String aaa = ic.iniC.folderFTP + ic.iniC.pathChar + ptt.patient_hn + ic.iniC.pathChar + "progress_note" + ic.iniC.pathChar + filePathName;      //+0023
                 //setPic(new Bitmap(ic.ftpC.download(filenamepic)));
                 stream = ic.ftpC.download(aaa);
                 //File file1 = new File();
@@ -1989,7 +1992,7 @@ namespace clinic_ivf.gui
                     String txt = "";
                     txt = "Nursing Progress Note "+ Environment.NewLine;
                     txt += Environment.NewLine;
-                    txt += "Date : "+ DateTime.Now.ToString("dd-MM-") + "-" + DateTime.Now.Year+" "+ DateTime.Now.ToString("hh:MM:ss")+ Environment.NewLine;
+                    txt += "Date : "+ DateTime.Now.ToString("dd-MM-") + DateTime.Now.Year+" "+ DateTime.Now.ToString("hh:MM:ss")+ Environment.NewLine;
                     txt += Environment.NewLine;
                     txt += "Patient Name : "+ txtPttNameE .Text+ Environment.NewLine;
                     txt += "HN : " + txtHn.Text + " VN : "+txtVnShow.Text + Environment.NewLine;
@@ -2000,6 +2003,15 @@ namespace clinic_ivf.gui
                     txt += "Surgery : " + Environment.NewLine;
                     txt += "Period : " + Environment.NewLine;
                     txt += "Chromosome : " + Environment.NewLine;
+                    txt += Environment.NewLine;
+                    txt += "Tx : " + Environment.NewLine;
+                    txt += Environment.NewLine;
+                    txt += "Rx : " + Environment.NewLine;
+                    txt += Environment.NewLine;
+                    //txt += Environment.NewLine;
+                    //txt += Environment.NewLine;
+                    txt += "Appointment : " + Environment.NewLine;
+                    txt += Environment.NewLine;
                     txt += Environment.NewLine;
                     txt += "Diagnosis : " + Environment.NewLine;
                     txt += Environment.NewLine;
@@ -2103,7 +2115,7 @@ namespace clinic_ivf.gui
             //    this.SetDocumentProperties(dlg.FileName, fileType);
             //}
             RichTextBoxStreamType fileType = RichTextBoxStreamType.RichText;
-            this.SetDocumentProperties("progressnote_"+txtVn.Text + ".rtf", fileType);
+            this.SetDocumentProperties("progressnote_"+ txtVnProgressNote.Text + ".rtf", fileType);
             this.SaveDocumentAs(this.documentFileType);
             setGrfPg();
             return true;
@@ -2128,7 +2140,9 @@ namespace clinic_ivf.gui
                 //String ext = Path.GetExtension(filePathName);
                 //String filename = filePathName.Replace(ext, "");
                 //filename = filename+"_" + txtVn.Text + ext;
-                ic.savePicOPUtoServer(txtVn.Text.Trim(), documentName, filePathName);
+                ic.ftpC.createDirectory(ic.iniC.folderFTP + ic.iniC.pathChar + ptt.patient_hn);
+                ic.ftpC.createDirectory(ic.iniC.folderFTP + ic.iniC.pathChar + ptt.patient_hn + ic.iniC.pathChar + "progress_note");
+                ic.savePicOPUtoServer(ptt.patient_hn + ic.iniC.pathChar + "progress_note", documentName, filePathName);
             }
             catch(Exception ex)
             {
@@ -4096,6 +4110,7 @@ namespace clinic_ivf.gui
             else if (tabOrder.SelectedTab == tabRxSet)
             {
                 btnPkgOrder.Enabled = false;
+                ic.ivfDB.oJpxDB.setJobPx(txtVnOld.Text, ptt.patient_hn, txtIdOld.Text);//+0020
             }
             else if (tabOrder.SelectedTab == tabPackage)
             {
@@ -4942,6 +4957,9 @@ namespace clinic_ivf.gui
             txtAgent.Value = ic.ivfDB.oAgnDB.getAgentNameById(ptt.agent);
             txtLmp.Value = ptt.lmp;
             ic.ivfDB.vsDB.setCboVisit(cboLabVs, txtVsId.Text, txtPttId.Text);
+
+            this.richTextBox1.Font = ff;
+
             if (ptt.patient_hn_2.Length > 0)
             {
                 Patient ptt2 = new Patient();
@@ -6113,6 +6131,10 @@ namespace clinic_ivf.gui
                 setOrderRx();
             }
         }
+        private void ContextMenu_order_rx(object sender, System.EventArgs e)
+        {
+            setOrderRx();
+        }
         private void setOrderRx()
         {
             if (grfRx.Row <= 0) return;
@@ -6219,10 +6241,7 @@ namespace clinic_ivf.gui
             }
             setGrfOrder(txtVnOld.Text);
         }
-        private void ContextMenu_order_rx(object sender, System.EventArgs e)
-        {
-            setOrderRx();
-        }
+        
         private void setGrfRx()
         {
             grfRx.Rows.Count = 1;
@@ -8073,15 +8092,18 @@ namespace clinic_ivf.gui
             theme1.SetTheme(grfPg, "Office2016Colorful");
 
         }
-
         private void GrfPg_DoubleClick(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
             String id = "";
             if (grfPg.Row < 0) return;
             id = grfPg[grfPg.Row, colPgId].ToString();
-            id = id.Replace(ic.iniC.folderFTP, "").Replace("/", "").Replace("progressnote", "").Replace(".rtf", "").Replace("_", "").Replace(txtIdOld.Text, "");
-            txtVnProgressNote.Value = id;
+            //id = id.Replace(ic.iniC.folderFTP, "").Replace("/", "").Replace("progressnote", "").Replace(".rtf", "").Replace("_", "").Replace(txtIdOld.Text, "");
+            //FileInfo file = new FileInfo(id);
+            //file.Name
+            //id = id.Replace(ic.iniC.folderFTP, "").Replace("/", "").Replace("progressnote", "").Replace(".rtf", "").Replace(txtIdOld.Text, "");
+            txtVnProgressNote.Value = Path.GetFileName(id).Replace(Path.GetExtension(id),"").Replace("progressnote", "").Replace("_", "");      //+0023
+            richTextBox1.Text = "";
             Thread threadA = new Thread(new ParameterizedThreadStart(ExecuteProgressNote));
             threadA.Start();
         }
@@ -8094,7 +8116,7 @@ namespace clinic_ivf.gui
             grfPg.Cols.Count = 3;
 
             grfPg.Cols[colPgId].Width = 250;
-            grfPg.Cols[colPgFilename].Width = 300;
+            grfPg.Cols[colPgFilename].Width = 400;
 
             grfPg.ShowCursor = true;
             //grdFlex.Cols[colID].Caption = "no";
@@ -8127,7 +8149,8 @@ namespace clinic_ivf.gui
                 try
                 {
                     //String aaa = ic.iniC.folderFTP + "/" + txtIdOld.Text + "/" + filePathName;
-                    ftpRequest = (FtpWebRequest)FtpWebRequest.Create(host + "/" + ic.iniC.folderFTP + "/" + txtVn.Text.Trim());
+                    //ftpRequest = (FtpWebRequest)FtpWebRequest.Create(host + "/" + ic.iniC.folderFTP + "/" + txtVn.Text.Trim());      //-0023
+                    ftpRequest = (FtpWebRequest)FtpWebRequest.Create(host + ic.iniC.pathChar + ic.iniC.folderFTP + ic.iniC.pathChar + ptt.patient_hn + ic.iniC.pathChar + "progress_note");      //+0023
                     ftpRequest.Credentials = new NetworkCredential(user, pass);
                     ftpRequest.UseBinary = true;
                     //ftpRequest.UsePassive = false;
@@ -8182,7 +8205,6 @@ namespace clinic_ivf.gui
                             }));
                         }
                         //Row row = grfPg.Rows.Add();
-                        
                     }
                 }
                 catch (Exception ex)

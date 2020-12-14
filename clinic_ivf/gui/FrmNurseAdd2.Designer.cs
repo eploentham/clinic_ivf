@@ -3103,7 +3103,7 @@
             this.c1SplitterPanel6.SizeRatio = 28.02D;
             this.c1SplitterPanel6.TabIndex = 0;
             this.c1SplitterPanel6.Text = "Panel 1";
-            this.c1SplitterPanel6.Width = 443;
+            this.c1SplitterPanel6.Width = 436;
             // 
             // pnApmAll
             // 
@@ -10415,9 +10415,9 @@
             // richTextBox1
             // 
             this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.richTextBox1.Location = new System.Drawing.Point(0, 143);
+            this.richTextBox1.Location = new System.Drawing.Point(0, 146);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(906, 535);
+            this.richTextBox1.Size = new System.Drawing.Size(906, 532);
             this.richTextBox1.TabIndex = 1;
             this.richTextBox1.Text = "";
             // 
@@ -10432,7 +10432,7 @@
             this.c1Ribbon1.QatHolder = this.ribbonQat1;
             this.c1Ribbon1.QatItemsHolder.Add(this.UndoButton);
             this.c1Ribbon1.QatItemsHolder.Add(this.RedoButton);
-            this.c1Ribbon1.Size = new System.Drawing.Size(906, 143);
+            this.c1Ribbon1.Size = new System.Drawing.Size(906, 146);
             this.c1Ribbon1.Tabs.Add(this.HomeTab);
             this.c1Ribbon1.Tabs.Add(this.ViewTab);
             this.c1Ribbon1.Tabs.Add(this.ribbonTab1);

@@ -307,6 +307,35 @@ namespace clinic_ivf.gui
             //ptt = ic.ivfDB.pttDB.selectByPk1(txtID.Text);
             //ic.ivfDB.updateNameDOB(ptt.t_patient_id, txtHn.Text, ptt.Name, ptt.patient_birthday);
             //hideLbLoading();
+            if (txtDob.Text.Equals(""))
+            {
+                MessageBox.Show("DOB ไม่ถูกต้อง", "");
+                return;
+            }
+            String sex = cboSex.SelectedItem == null ? "" : ((ComboBoxItem)cboSex.SelectedItem).Value;
+            if (sex.Equals(""))
+            {
+                MessageBox.Show("Sex ไม่ถูกต้อง", "");
+                return;
+            }
+            if (cboSex.Text.Equals(""))
+            {
+                MessageBox.Show("Sex ไม่ถูกต้อง", "");
+                return;
+            }
+            if (MessageBox.Show("ต้องการ ส่ง ข้อมูล Patient \n"+cboPrefix.Text+" "+txtPttLNameE.Text+" "+txtPttLNameE.Text+" ไป WW ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+            {
+                Patient pttww = new Patient();
+                String year = year = String.Concat(DateTime.Now.Year + 543);
+                pttww = ic.ivfDB.pttDB.selectByPk1(txtID.Text);
+                pttww.patient_year = year.Substring(year.Length - 2, 2);
+                pttww.patient_hn = ic.ivfDB.copDB.genHNDocWW();     //  +0021
+                pttww.patient_name = cboPrefix.Text + " " + txtPttNameE.Text + "" + txtPttLNameE.Text;
+                pttww.patient_birthday = ic.datetoDB(pttww.patient_birthday);
+                pttww.patient_hn_old = ptt.patient_hn;
+                //txtHn.Value = ptt.patient_hn + ic.hnspareyear + ptt.patient_year;
+                ic.ivfDB.pttDB.insertww(pttww, "");
+            }
         }
         private void TxtDob_ValueChanged(object sender, EventArgs e)
         {
@@ -795,7 +824,8 @@ namespace clinic_ivf.gui
                     }
                     else
                     {
-                        setGrfVs(txtHn.Text.Replace(ic.hnspareyear, "").Replace(ptt.patient_year, ""));
+                        //setGrfVs(txtHn.Text.Replace(ic.hnspareyear, "").Replace(ptt.patient_year, ""));
+                        setGrfVs(txtID.Text);
                     }
                         
                     //        txtID.Value = re;setGrfVsDonor
@@ -1484,13 +1514,17 @@ namespace clinic_ivf.gui
             frm.ShowDialog(this);
             if (!ic.cStf.staff_id.Equals(""))
             {
+                Boolean chkHn = false;
                 txtUserReq.Value = ic.cStf.staff_fname_t + " " + ic.cStf.staff_lname_t;
                 txtStfConfirmID.Value = ic.cStf.staff_id;
                 //btnSave.Text = "Confirm";
                 btnSave.Image = Resources.Add_ticket_24;
                 stt.Show("<p><b>สวัสดี</b></p>คุณ " + ic.cStf.staff_fname_t + " " + ic.cStf.staff_lname_t + "<br> กรุณายินยันการ confirm อีกครั้ง", btnWebCamOn);
                 btnSave.Focus();
-                
+                if (txtHn.Text.Length <= 1)
+                {
+                    chkHn = true;
+                }
                 stt.Hide();
                 setPatient();
                 //String re = ic.ivfDB.pttDB.insertPatient(ptt, txtStfConfirmID.Text);
@@ -1637,6 +1671,10 @@ namespace clinic_ivf.gui
                         //String re2 = ic.ivfDB.pttDB.updatePID(re1, re, pttOld.PIDS);        //-0021
                         //if (long.TryParse(re2, out chk))        //-0021
                         //{        //-0021
+                        if (chkHn)        //  +0021
+                        {
+                            ic.ivfDB.pttDB.updateHn(txtID.Text.Trim(), ptt.patient_hn);
+                        }
                             btnSave.Text = "Save";
                                     btnSave.Image = Resources.accept_database24;
                                     txtID.Value = re1;
@@ -3383,10 +3421,17 @@ namespace clinic_ivf.gui
             //picPtt.SizeMode = PictureBoxSizeMode.StretchImage;
             if (txtHn_1.Text.Length > 0)
             {
-                Patient ptt = new Patient();
-                ptt = ic.ivfDB.pttDB.selectByHn(txtVisitHn_1.Text);
-                label59.Text = ptt.Name;
-                label78.Text = ptt.Name;
+                //Patient ptt = new Patient();
+                //ptt = ic.ivfDB.pttDB.selectByHn(txtVisitHn_1.Text);
+                //label59.Text = ptt.Name;
+                //label78.Text = ptt.Name;
+
+                Patient pttcou = new Patient();
+                String hn = "", hnyr = "";
+                hn = ptt.patient_hn_1.Substring(0, ptt.patient_hn_1.IndexOf(ic.hnspareyear));
+                pttcou = ic.ivfDB.pttDB.selectByHn(hn);
+                label78.Text = pttcou.Name;
+                label59.Text = pttcou.Name;
             }
             if (txtHn_2.Text.Length > 0)
             {

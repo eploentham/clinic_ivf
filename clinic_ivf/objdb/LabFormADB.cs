@@ -830,7 +830,7 @@ namespace clinic_ivf.objdb
             DataTable dt = new DataTable();
             //String sql = "select lformA.*,CONCAT(IFNULL(sfn.SurfixName,''),' ', ptt_f.PName ,' ',ptt_f.PSurname ) as name_female  " +     //-0020
             //    ",CONCAT(IFNULL(sfnm.SurfixName,''),' ', ptt_m.PName ,' ',ptt_m.PSurname ) as name_male, dtr.Name as doctor_name " +      //-0020
-            String sql = "select lformA.*  " +
+            String sql = "select lformA.*, dtr.Name as doctor_name  " +
                 "From " + lformA.table + " lformA " +
                 //"Left Join Patient as ptt_f on ptt_f.PIDS = lformA.hn_female " +     //-0020
                 //"Left Join SurfixName sfn on sfn.SurfixID = ptt_f.SurfixID " +     //-0020

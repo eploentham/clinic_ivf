@@ -353,6 +353,18 @@ namespace clinic_ivf.objdb
             cop1 = setCompany(dt);
             return cop1;
         }
+        public Company selectByCodeWW(String copId)
+        {
+            Company cop1 = new Company();
+            DataTable dt = new DataTable();
+            String sql = "select cop.*, date_format(now(),'%m') as month, date_format(now(),'%d') as day, year(now()) as year " +
+                "From " + cop.table + " cop " +
+                //"Left Join t_ssdata_visit ssv On ssv.ssdata_visit_id = bd.ssdata_visit_id " +
+                "Where cop." + cop.comp_code + " ='" + copId + "' and cop." + cop.active + " ='1' ";
+            dt = conn.selectData(conn.connEx, sql);
+            cop1 = setCompany(dt);
+            return cop1;
+        }
         public Company selectByCode2(String copId)
         {
             Company cop1 = new Company();
@@ -702,6 +714,26 @@ namespace clinic_ivf.objdb
                 "" + cop.hn_doc + "=" + chk +
                 " Where " + cop.pkField + "='" + cop1.comp_id + "'";
                 conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            return doc;
+        }
+        public String genHNDocWW()
+        {
+            String doc = "", year = "", sql = "";
+            Company cop1 = new Company();
+            cop1 = selectByCodeWW("001");
+            int chk = 0;
+            if (int.TryParse(cop1.hn_doc, out chk))
+            {
+                chk++;
+                doc = "000000" + chk;
+                doc = doc.Substring(doc.Length - 6, 6);
+                year = cop1.year_curr;
+
+                sql = "Update " + cop.table + " Set " +
+                "" + cop.hn_doc + "=" + chk +
+                " Where " + cop.pkField + "='" + cop1.comp_id + "'";
+                conn.ExecuteNonQuery(conn.connEx, sql);
             }
             return doc;
         }

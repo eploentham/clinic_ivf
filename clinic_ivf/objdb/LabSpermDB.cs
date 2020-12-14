@@ -301,7 +301,7 @@ namespace clinic_ivf.objdb
             String sql = "select lsperm.* , '' as doctorname " +
                 "From " + lsperm.table + " lsperm " +
                 //"Left Join Doctor dtr on dtr.ID = lsperm." + lsperm.doctor_id + " " +
-                "Where lsperm." + lsperm.req_id + " ='" + reqId + "' ";
+                "Where lsperm." + lsperm.req_id + " ='" + reqId + "' and active = '1'";
             dt = conn.selectData(conn.conn, sql);
             lbReq1 = setLabSperm(dt);
             return lbReq1;

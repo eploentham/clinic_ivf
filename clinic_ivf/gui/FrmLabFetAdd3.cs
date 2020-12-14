@@ -734,6 +734,9 @@ namespace clinic_ivf.gui
                 Patient pttcou = new Patient();
                 vs = ic.ivfDB.vsDB.selectByPk1(lbReq.visit_id);
                 ptt = ic.ivfDB.pttDB.selectByPk1(vs.t_patient_id);
+                txtHnFeMale.Value = ic.showHN(ptt.patient_hn, ptt.patient_year);
+                txtNameFeMale.Value = ptt.Name;
+                txtDobFeMale.Value = ptt.patient_birthday;
                 if (ptt.patient_hn_1.IndexOf("/") > 0)
                 {
                     String hn = "", hnyr = "";
@@ -741,8 +744,8 @@ namespace clinic_ivf.gui
                     pttcou = ic.ivfDB.pttDB.selectByHn(hn);
                     if (pttcou.f_sex_id.Equals("1"))// male
                     {
-                        txtHnMale.Value = lbReq.hn_male;
-                        txtNameMale.Value = lbReq.name_male;
+                        txtHnMale.Value = ic.showHN(pttcou.patient_hn, pttcou.patient_year);
+                        txtNameMale.Value = pttcou.Name;
                         txtDobMale.Value = pttcou.patient_birthday;
                     }
                 }
@@ -755,19 +758,19 @@ namespace clinic_ivf.gui
         private void setControl1()
         {
             txtID.Value = fet.fet_id;
-            txtHnFeMale.Value = fet.hn_female;
-            txtHnMale.Value = fet.hn_male;
-            txtNameFeMale.Value = fet.name_female;
-            txtNameMale.Value = fet.name_male;
+            //txtHnFeMale.Value = fet.hn_female;
+            //txtHnMale.Value = fet.hn_male;
+            //txtNameFeMale.Value = fet.name_female;
+            //txtNameMale.Value = fet.name_male;
             txtLabReqCode.Value = lbReq.req_code;
-            txtDobFeMale.Value = fet.dob_female;
-            if (fet.dob_female.Equals(""))
-            {
-                Patient ptt = new Patient();
-                ptt = ic.ivfDB.pttDB.selectByHn(fet.hn_female);
-                txtDobFeMale.Value = ptt.patient_birthday;
-            }
-            txtDobMale.Value = fet.dob_male;
+            //txtDobFeMale.Value = fet.dob_female;
+            //if (fet.dob_female.Equals(""))
+            //{
+            //    Patient ptt = new Patient();
+            //    ptt = ic.ivfDB.pttDB.selectByHn(fet.hn_female);
+            //    txtDobFeMale.Value = ptt.patient_birthday;
+            //}
+            //txtDobMale.Value = fet.dob_male;
             ic.setC1Combo(cboDoctor, fet.doctor_id);
             txtFetDate.Value = fet.fet_date;
             ic.setC1Combo(cboOpuProce, fet.proce_id);

@@ -32,6 +32,7 @@
             this.theme1 = new C1.Win.C1Themes.C1ThemeController();
             this.splitMain = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.btnUpdateAll = new C1.Win.C1Input.C1Button();
             this.txtAge = new C1.Win.C1Input.C1TextBox();
             this.btnRefresh = new C1.Win.C1Input.C1Button();
             this.txtLmp = new C1.Win.C1Input.C1DateEdit();
@@ -281,7 +282,6 @@
             this.txtPttO = new C1.Win.C1Input.C1TextBox();
             this.cPdf = new C1.Win.C1Document.C1PdfDocumentSource(this.components);
             this._c1pdf = new C1.C1Pdf.C1PdfDocument();
-            this.btnUpdateAll = new C1.Win.C1Input.C1Button();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitMain)).BeginInit();
             this.splitMain.Panel1.SuspendLayout();
@@ -291,6 +291,7 @@
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnUpdateAll)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAge)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnRefresh)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtLmp)).BeginInit();
@@ -447,7 +448,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtBP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPulse)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPttO)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnUpdateAll)).BeginInit();
             this.SuspendLayout();
             // 
             // theme1
@@ -595,6 +595,20 @@
             this.splitContainer2.SplitterDistance = 1153;
             this.splitContainer2.TabIndex = 0;
             this.theme1.SetTheme(this.splitContainer2, "(default)");
+            // 
+            // btnUpdateAll
+            // 
+            this.btnUpdateAll.Image = global::clinic_ivf.Properties.Resources.maintenance24;
+            this.btnUpdateAll.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnUpdateAll.Location = new System.Drawing.Point(776, 311);
+            this.btnUpdateAll.Name = "btnUpdateAll";
+            this.btnUpdateAll.Size = new System.Drawing.Size(93, 33);
+            this.btnUpdateAll.TabIndex = 735;
+            this.btnUpdateAll.Text = "update WW";
+            this.btnUpdateAll.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnUpdateAll, "(default)");
+            this.btnUpdateAll.UseVisualStyleBackColor = true;
+            this.btnUpdateAll.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // txtAge
             // 
@@ -4322,20 +4336,6 @@
             this._c1pdf.UseFastTextOut = true;
             this._c1pdf.UseFontShaping = true;
             // 
-            // btnUpdateAll
-            // 
-            this.btnUpdateAll.Image = global::clinic_ivf.Properties.Resources.maintenance24;
-            this.btnUpdateAll.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnUpdateAll.Location = new System.Drawing.Point(776, 311);
-            this.btnUpdateAll.Name = "btnUpdateAll";
-            this.btnUpdateAll.Size = new System.Drawing.Size(93, 33);
-            this.btnUpdateAll.TabIndex = 735;
-            this.btnUpdateAll.Text = "update all";
-            this.btnUpdateAll.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.theme1.SetTheme(this.btnUpdateAll, "(default)");
-            this.btnUpdateAll.UseVisualStyleBackColor = true;
-            this.btnUpdateAll.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
             // FrmPatientAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -4356,6 +4356,7 @@
             this.splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.btnUpdateAll)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAge)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnRefresh)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtLmp)).EndInit();
@@ -4518,7 +4519,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtBP)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPulse)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPttO)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnUpdateAll)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

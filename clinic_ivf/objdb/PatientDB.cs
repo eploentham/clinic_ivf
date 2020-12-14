@@ -433,6 +433,127 @@ namespace clinic_ivf.objdb
             }
             return re;
         }
+        public String insertww(Patient p, String userId)
+        {
+            String re = "";
+            String sql = "";
+            p.active = "1";
+            //p.ssdata_id = "";
+            int chk = 0;
+            //p.date_create = "";
+            chkNull(p);
+            String user = userId + "@" + conn._IPAddress;
+            if (p.t_patient_id_old.Equals("") || p.t_patient_id_old.Equals("0"))
+            {
+                p.t_patient_id_old = "-1";
+            }
+            try
+            {
+                //userId = userId + "@" + conn._IPAddress
+                sql = "Insert Into " + ptt.table + "(" + ptt.patient_hn + "," + ptt.patient_firstname + "," + ptt.patient_lastname + "," +
+                ptt.patient_xn + "," + ptt.patient_birthday + "," + ptt.patient_house + "," +
+                ptt.active + "," + ptt.remark + "," + ptt.patient_road + "," +
+                ptt.patient_moo + "," + ptt.patient_tambon + "," + ptt.patient_amphur + "," +
+                ptt.patient_changwat + "," + ptt.patient_father_firstname + "," + ptt.patient_mother_firstname + "," +
+                ptt.date_create + "," + ptt.date_modi + "," + ptt.date_cancel + ", " +
+                ptt.user_create + "," + ptt.user_modi + "," + ptt.user_cancel + ", " +
+                ptt.patient_couple_firstname + "," + ptt.patient_move_in_date_time + "," + ptt.patient_discharge_date_time + "," +
+                ptt.patient_father_pid + "," + ptt.patient_mather_pid + "," + ptt.patient_couple_pid + "," +
+                ptt.patient_community_status + "," + ptt.patient_private_doctor + "," + ptt.pid + "," +
+                ptt.patient_mother_lastname + "," + ptt.patient_father_lastname + "," + ptt.patient_couple_lastname + "," +
+                ptt.mobile1 + "," + ptt.patient_contact_phone_number + "," + ptt.patient_contact_house + "," +
+                ptt.patient_contact_moo + "," + ptt.patient_contact_changwat + "," + ptt.patient_contact_amphur + "," +
+                ptt.patient_contact_tambon + "," + ptt.patient_contact_road + "," + ptt.patient_contact_firstname + "," +
+                ptt.patient_contact_lastname + "," + ptt.patient_birthday_true + "," + ptt.patient_merged + "," +
+                ptt.patient_record_date_time + "," + ptt.patient_update_date_time + "," + ptt.patient_staff_record + "," +
+                ptt.patient_staff_modify + "," + ptt.patient_staff_cancel + "," + ptt.patient_active + "," +
+                ptt.patient_drugallergy + "," + ptt.patient_language_for_print + "," + ptt.mobile2 + "," +
+                ptt.patient_contact_mobile_phone + "," + ptt.patient_has_home_in_pcu + "," + ptt.patient_other_country_address + "," +
+                ptt.patient_is_other_country + "," + ptt.contact_namet + "," + ptt.contact_join_namet + "," +
+                ptt.ss_patient_hn + "," + ptt.patient_soi + "," + ptt.patient_contact_soi + "," +
+                ptt.status_chronic + "," + ptt.status_hiv + "," + ptt.patient_status_hiv + "," +
+                ptt.status_deny_allergy + "," + ptt.latitude + "," + ptt.longitude + "," +
+                ptt.patient_patient_email + "," + ptt.patient_contact_email + "," + ptt.picture_profile + "," +
+                ptt.remark2 + "," + ptt.remark1 + "," + ptt.f_patient_prefix_id + "," +
+                ptt.f_sex_id + "," + ptt.f_patient_marriage_status_id + "," + ptt.f_patient_occupation_id + "," +
+                ptt.f_patient_race_id + "," + ptt.f_patient_nation_id + "," + ptt.f_patient_religion_id + "," +
+                ptt.f_patient_education_type_id + "," + ptt.f_patient_family_status_id + "," + ptt.f_patient_discharge_status_id + "," +
+                ptt.f_patient_blood_group_id + "," + ptt.f_patient_foreigner_id + "," + ptt.f_patient_area_status_id + "," +
+                ptt.f_patient_relation_id + "," + ptt.patient_contact_sex_id + "," + ptt.t_health_family_id + "," +
+                ptt.contact_id + "," + ptt.contact_join_id + "," + ptt.t_person_id + ", " +
+                ptt.line_id + "," + ptt.email + "," + ptt.passport + ", " +
+                ptt.patient_type + "," + ptt.patient_group + "," + ptt.agent + "," +
+                ptt.status_convert + "," + ptt.patient_firstname_e + "," + ptt.patient_lastname_e + "," +
+                ptt.contract + "," + ptt.insurance + "," + ptt.patient_contact_f_patient_prefix_id + "," +
+                ptt.patient_couple_f_patient_prefix_id + "," + ptt.patient_contact_f_patient_relation_id + "," + ptt.patient_coulpe_f_patient_relation_id + "," +
+                ptt.b_contract_plans_id + "," + ptt.patient_father_mobile + "," + ptt.patient_mother_mobile + "," +
+                ptt.patient_couple_mobile + "," + ptt.t_patient_id_old + "," + ptt.status_opu + "," +
+                ptt.patient_nickname + "," + ptt.patient_height + "," + ptt.status_or + "," +
+                ptt.or_description + "," + ptt.status_congenial + "," + ptt.congenital_diseases_description + "," +
+                ptt.allergy_description + "," + ptt.status_g + "," + ptt.p + "," +
+                ptt.a + "," + ptt.g + "," + ptt.emercontact + "," +
+                ptt.patient_country + "," + ptt.patient_hn_couple + "," +
+                ptt.doctor_id + "," + ptt.patient_hn_1 + "," + ptt.patient_hn_2 + "," +
+                ptt.status_diagnosis + "," + ptt.lmp + "," + ptt.patient_name + "," +
+                ptt.patient_year + "," + ptt.t_patient_id_1 + "," + ptt.t_patient_id_2 + "," + ptt.patient_hn_old +" " +
+                ") " +
+                "Values ('" + p.patient_hn + "','" + p.patient_firstname.Replace("'", "''") + "','" + p.patient_lastname.Replace("'", "''") + "'," +
+                "'" + p.patient_xn.Replace("'", "''") + "','" + p.patient_birthday.Replace("'", "''") + "','" + p.patient_house.Replace("'", "''") + "'," +
+                "'" + p.active + "','" + p.remark.Replace("'", "''") + "','" + p.patient_road.Replace("'", "''") + "'," +
+                "'" + p.patient_moo.Replace("'", "''") + "','" + p.patient_tambon + "','" + p.patient_amphur + "'," +
+                "'" + p.patient_changwat + "','" + p.patient_father_firstname.Replace("'", "''") + "','" + p.patient_mother_firstname.Replace("'", "''") + "'," +
+                "now(),'" + p.date_modi + "','" + p.date_cancel + "', " +
+                "'" + user + "','" + p.user_modi + "','" + p.user_cancel + "', " +
+                "'" + p.patient_couple_firstname.Replace("'", "''") + "','" + p.patient_move_in_date_time + "','" + p.patient_discharge_date_time + "'," +
+                "'" + p.patient_father_pid + "','" + p.patient_mather_pid + "','" + p.patient_couple_pid + "'," +
+                "'" + p.patient_community_status + "','" + p.patient_private_doctor + "','" + p.pid + "'," +
+                "'" + p.patient_mother_lastname.Replace("'", "''") + "','" + p.patient_father_lastname.Replace("'", "''") + "','" + p.patient_couple_lastname.Replace("'", "''") + "'," +
+                "'" + p.mobile1 + "','" + p.patient_contact_phone_number + "','" + p.patient_contact_house + "'," +
+                "'" + p.patient_contact_moo.Replace("'", "''") + "','" + p.patient_contact_changwat + "','" + p.patient_contact_amphur + "'," +
+                "'" + p.patient_contact_tambon.Replace("'", "''") + "','" + p.patient_contact_road.Replace("'", "''") + "','" + p.patient_contact_firstname.Replace("'", "''") + "'," +
+                "'" + p.patient_contact_lastname.Replace("'", "''") + "','" + p.patient_birthday_true + "','" + p.patient_merged + "'," +
+                "'" + p.patient_record_date_time + "','" + p.patient_update_date_time + "','" + p.patient_staff_record + "'," +
+                "'" + p.patient_staff_modify + "','" + p.patient_staff_cancel + "','" + p.patient_active + "'," +
+                "'" + p.patient_drugallergy.Replace("'", "''") + "','" + p.patient_language_for_print + "','" + p.mobile2.Replace("'", "''") + "'," +
+                "'" + p.patient_contact_mobile_phone + "','" + p.patient_has_home_in_pcu.Replace("'", "''") + "','" + p.patient_other_country_address.Replace("'", "''") + "'," +
+                "'" + p.patient_is_other_country + "','" + p.contact_namet + "','" + p.contact_join_namet.Replace("'", "''") + "'," +
+                "'" + p.ss_patient_hn + "','" + p.patient_soi + "','" + p.patient_contact_soi.Replace("'", "''") + "'," +
+                "'" + p.status_chronic + "','" + p.status_hiv + "','" + p.patient_status_hiv + "'," +
+                "'" + p.status_deny_allergy + "','" + p.latitude + "','" + p.longitude + "'," +
+                "'" + p.patient_patient_email + "','" + p.patient_contact_email + "','" + p.picture_profile + "'," +
+                "'" + p.remark2 + "','" + p.remark1 + "','" + p.f_patient_prefix_id + "'," +
+                "'" + p.f_sex_id + "','" + p.f_patient_marriage_status_id + "','" + p.f_patient_occupation_id + "'," +
+                "'" + p.f_patient_race_id + "','" + p.f_patient_nation_id + "','" + p.f_patient_religion_id + "'," +
+                "'" + p.f_patient_education_type_id + "','" + p.f_patient_family_status_id + "','" + p.f_patient_discharge_status_id + "'," +
+                "'" + p.f_patient_blood_group_id + "','" + p.f_patient_foreigner_id + "','" + p.f_patient_area_status_id + "'," +
+                "'" + p.f_patient_relation_id + "','" + p.patient_contact_sex_id + "','" + p.t_health_family_id + "'," +
+                "'" + p.contact_id + "','" + p.contact_join_id + "','" + p.t_person_id + "', " +
+                "'" + p.line_id + "','" + p.email + "','" + p.passport + "', " +
+                "'" + p.patient_type.Replace("'", "''") + "','" + p.patient_group.Replace("'", "''") + "','" + p.agent.Replace("'", "''") + "'," +
+                "'" + p.status_convert.Replace("'", "''") + "','" + p.patient_firstname_e.Replace("'", "''") + "','" + p.patient_lastname_e.Replace("'", "''") + "'," +
+                "'" + p.contract.Replace("'", "''") + "','" + p.insurance.Replace("'", "''") + "','" + p.patient_contact_f_patient_prefix_id + "', " +
+                "'" + p.patient_couple_f_patient_prefix_id.Replace("'", "''") + "','" + p.patient_contact_f_patient_relation_id.Replace("'", "''") + "','" + p.patient_coulpe_f_patient_relation_id.Replace("'", "''") + "', " +
+                "'" + p.b_contract_plans_id.Replace("'", "''") + "','" + p.patient_father_mobile + "','" + p.patient_mother_mobile + "'," +
+                "'" + p.patient_couple_mobile + "','" + p.t_patient_id_old + "','" + p.status_opu + "'," +
+                "'" + p.patient_nickname + "','" + p.patient_height + "','" + p.status_or + "'," +
+                "'" + p.or_description + "','" + p.status_congenial + "','" + p.congenital_diseases_description + "'," +
+                "'" + p.allergy_description + "','" + p.status_g + "','" + p.p + "'," +
+                "'" + p.a + "','" + p.g + "','" + p.emercontact + "'," +
+                "'" + p.patient_country + "','" + p.patient_hn_couple + "'," +
+                "'" + p.doctor_id + "','" + p.patient_hn_1 + "','" + p.patient_hn_2 + "'," +
+                "'" + p.status_diagnosis + "','" + p.lmp + "','" + p.patient_name + "'," +
+                "'" + p.patient_year + "','" + p.t_patient_id_1 + "','" + p.t_patient_id_2 + "','" + p.patient_hn_old + "' " +
+               ")";
+
+                re = conn.ExecuteNonQuery(conn.connEx, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+                new LogWriter("e", "PatientDB insert err Message " + ex.Message + " InnerException " + ex.InnerException);
+            }
+            return re;
+        }
         public String insertPatient(Patient p, String userId)
         {
             String re = "";
@@ -655,6 +776,23 @@ namespace clinic_ivf.objdb
                 "," + ptt.patient_couple_firstname + "='" + ptt1.patient_couple_firstname + "' " +
                 "," + ptt.patient_couple_lastname + "='" + ptt1.patient_couple_lastname + "' " +
                 "," + ptt.patient_couple_f_patient_prefix_id + "='1' " +
+                "Where " + ptt.pkField + "='" + pttId + "'";
+
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+
+            return re;
+        }
+        public String updateHn(String pttId, String hn)
+        {
+            DataTable dt = new DataTable();
+            String re = "";
+            Patient ptt1 = new Patient();
+            ptt1 = selectByHn(hn);
+            if (!ptt1.t_patient_id.Equals(""))
+            {
+                String sql = "Update " + ptt.table + " Set " +
+                "" + ptt.patient_hn + "='" + hn + "' " +
                 "Where " + ptt.pkField + "='" + pttId + "'";
 
                 re = conn.ExecuteNonQuery(conn.conn, sql);
