@@ -627,7 +627,8 @@ namespace clinic_ivf.gui
             //pnEmai.BackColor = Color.Red;
 
             sCDay0.HeaderHeight = 0;
-            scTcDay0.SizeRatio = 0;
+            scTcDay0.SizeRatio = 100;
+            scPnDay0.SizeRatio = 0;
 
             day0View.AutoScrollMargin = new System.Drawing.Size(0, 0);
             day0View.AutoScrollMinSize = new System.Drawing.Size(0, 0);
@@ -782,7 +783,8 @@ namespace clinic_ivf.gui
             //pnEmai.BackColor = Color.Red;
 
             sCDay1.HeaderHeight = 0;
-            scTcDay1.SizeRatio = 0;
+            scTcDay1.SizeRatio = 100;
+            scPnDay1.SizeRatio = 0;
 
             day1View.AutoScrollMargin = new System.Drawing.Size(0, 0);
             day1View.AutoScrollMinSize = new System.Drawing.Size(0, 0);
@@ -954,7 +956,8 @@ namespace clinic_ivf.gui
             //pnEmai.BackColor = Color.Red;
 
             sCDay2.HeaderHeight = 0;
-            scTcDay2.SizeRatio = 0;
+            scTcDay2.SizeRatio = 100;
+            scPnDay2.SizeRatio = 0;
 
             tCday2.Dock = System.Windows.Forms.DockStyle.Fill;
             tCday2.HotTrack = true;
@@ -1192,7 +1195,8 @@ namespace clinic_ivf.gui
             //pnEmai.BackColor = Color.Red;
 
             sCDay3.HeaderHeight = 0;
-            scTcDay3.SizeRatio = 0;
+            scTcDay3.SizeRatio = 100;
+            scPnDay3.SizeRatio = 0;
 
             tCday3.Dock = System.Windows.Forms.DockStyle.Fill;
             tCday3.HotTrack = true;
@@ -2066,7 +2070,7 @@ namespace clinic_ivf.gui
         private void FrmNurseOPUView_Load(object sender, EventArgs e)
         {
             c1SplitContainer1.HeaderHeight = 0;
-            
+            c1SplitterPanel1.SizeRatio = 12;            //แบ่งหน้าจอ บน กับล่าง จะได้ พอดีกัน
             tCResult.SelectedTab = tabDay0;
             if(scPnDay1 != null) scTcDay1.SizeRatio = 0;
         }

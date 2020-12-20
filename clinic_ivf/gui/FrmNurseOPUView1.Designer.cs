@@ -73,12 +73,12 @@
             this.tCResult = new C1.Win.C1Command.C1DockingTab();
             this.tabDay0 = new C1.Win.C1Command.C1DockingTabPage();
             this.tabDay1 = new C1.Win.C1Command.C1DockingTabPage();
+            this.tabDay2 = new C1.Win.C1Command.C1DockingTabPage();
             this.tabDay3 = new C1.Win.C1Command.C1DockingTabPage();
             this.tabDay5 = new C1.Win.C1Command.C1DockingTabPage();
             this.tabDay6 = new C1.Win.C1Command.C1DockingTabPage();
             this.sB = new System.Windows.Forms.StatusStrip();
             this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.tabDay2 = new C1.Win.C1Command.C1DockingTabPage();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1SplitContainer1)).BeginInit();
             this.c1SplitContainer1.SuspendLayout();
@@ -144,7 +144,7 @@
             this.c1SplitterPanel1.Location = new System.Drawing.Point(0, 21);
             this.c1SplitterPanel1.Name = "c1SplitterPanel1";
             this.c1SplitterPanel1.Size = new System.Drawing.Size(1344, 98);
-            this.c1SplitterPanel1.SizeRatio = 18.75D;
+            this.c1SplitterPanel1.SizeRatio = 18.778D;
             this.c1SplitterPanel1.TabIndex = 0;
             this.c1SplitterPanel1.Text = "Panel 1";
             // 
@@ -916,6 +916,14 @@
             this.tabDay1.TabIndex = 7;
             this.tabDay1.Text = "Day1";
             // 
+            // tabDay2
+            // 
+            this.tabDay2.Location = new System.Drawing.Point(1, 24);
+            this.tabDay2.Name = "tabDay2";
+            this.tabDay2.Size = new System.Drawing.Size(1342, 499);
+            this.tabDay2.TabIndex = 12;
+            this.tabDay2.Text = "Day 2";
+            // 
             // tabDay3
             // 
             this.tabDay3.Location = new System.Drawing.Point(1, 24);
@@ -955,14 +963,6 @@
             this.sB1.Name = "sB1";
             this.sB1.Size = new System.Drawing.Size(118, 17);
             this.sB1.Text = "toolStripStatusLabel1";
-            // 
-            // tabDay2
-            // 
-            this.tabDay2.Location = new System.Drawing.Point(1, 24);
-            this.tabDay2.Name = "tabDay2";
-            this.tabDay2.Size = new System.Drawing.Size(1342, 499);
-            this.tabDay2.TabIndex = 12;
-            this.tabDay2.Text = "Day 2";
             // 
             // FrmNurseOPUView1
             // 

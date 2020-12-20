@@ -1939,7 +1939,7 @@ namespace clinic_ivf.gui
             grfQue.Cols[colPttName].Editor = txt;
             grfQue.Cols[colVsDate].Editor = txt;
 
-            grfQue.Cols[colVN].Width = 80;
+            grfQue.Cols[colVNshow].Width = 80;
             grfQue.Cols[colPttHn].Width = 120;
             grfQue.Cols[colPttName].Width = 300;
             grfQue.Cols[colVsDate].Width = 100;
@@ -1990,7 +1990,7 @@ namespace clinic_ivf.gui
                 grfQue[i, colPttHn] = ic.showHN(row["PIDS"].ToString(), row["patient_year"].ToString());
                 grfQue[i, colPttName] = row["PName"].ToString();
                 grfQue[i, colVsDate] = ic.datetoShow(row["VDate"]);
-                grfQue[i, colVsTime] = row["VStartTime"].ToString();
+                grfQue[i, colVsTime] = ic.timetoShow(row["VStartTime"].ToString());
                 grfQue[i, colVsEtime] = row["VEndTime"].ToString();
                 grfQue[i, colStatus] = row["VName"].ToString();
                 grfQue[i, colPttId] = row["PID"].ToString();

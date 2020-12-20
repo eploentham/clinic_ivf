@@ -1722,6 +1722,22 @@ namespace clinic_ivf.gui
                 printerOld = settings.PrinterName;
                 SetDefaultPrinter(ic.iniC.printerBill);
 
+                String dob = "";
+                dob = ic.datetoDB(txtDob.Text);
+                DateTime dtdob = new DateTime();
+                DateTime dtdobptt = new DateTime();
+                if (DateTime.TryParse(ptt.patient_birthday, out dtdobptt))
+                {
+                    if (DateTime.TryParse(txtDob.Text, out dtdob))
+                    {
+                        if (DateTime.Compare(dtdobptt, dtdob) > 0)
+                        {
+                            String re1 = ic.ivfDB.pttDB.updateBirthday(txtID.Text.Trim(), dob);
+                        }
+
+                    }
+                }
+
                 String age = "";
                 DateTime dt = new DateTime();
                 dt = (DateTime)txtDob.Value;
@@ -1754,6 +1770,26 @@ namespace clinic_ivf.gui
             //throw new NotImplementedException();                 
             try
             {
+                //setPatient();
+                //ptt.t_patient_id_old = txtIdOld.Text;
+                //String re1 = ic.ivfDB.pttDB.insertPatient(ptt, ic.user.staff_id);
+                String dob = "";
+                dob = ic.datetoDB(txtDob.Text);
+                DateTime dtdob = new DateTime();
+                DateTime dtdobptt = new DateTime();
+                if(DateTime.TryParse(ptt.patient_birthday, out dtdobptt))
+                {
+                    if (DateTime.TryParse(txtDob.Text, out dtdob))
+                    {
+                        if(DateTime.Compare(dtdobptt, dtdob)>0)
+                        {
+                            String re1 = ic.ivfDB.pttDB.updateBirthday(txtID.Text.Trim(), dob);
+                        }
+                        
+                    }
+                }
+                
+
                 PrinterSettings settings = new PrinterSettings();
                 printerOld = settings.PrinterName;
                 SetDefaultPrinter(ic.iniC.printerSticker);
@@ -1789,7 +1825,8 @@ namespace clinic_ivf.gui
                 row11["hn"] = ptt.patient_hn;
                 row11["name"] = ptt.Name;
                 row11["age"] = "Age "+ptt.AgeStringShort()+" ["+ic.datetoShow(ptt.patient_birthday)+"]";
-                row11["vn"] = vs.visit_vn;
+                
+                row11["vn"] = vs != null ? vs.visit_vn : "";
                 dt.Rows.Add(row11);
                 FrmReport frm = new FrmReport(ic);
                 frm.setStickerPatientThemal(dt);

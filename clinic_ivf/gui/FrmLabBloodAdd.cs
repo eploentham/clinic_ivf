@@ -315,8 +315,11 @@ namespace clinic_ivf.gui
                     CrExportOptions.DestinationOptions = CrDiskFileDestinationOptions;
                     CrExportOptions.FormatOptions = CrFormatTypeOptions;
                 }
+                Application.DoEvents();
+                GC.Collect();
                 lbEmail.Text = "Export Report";
                 rpt.Export();
+                Application.DoEvents();
             }
             catch (Exception ex)
             {
@@ -457,7 +460,10 @@ namespace clinic_ivf.gui
                     CrExportOptions.DestinationOptions = CrDiskFileDestinationOptions;
                     CrExportOptions.FormatOptions = CrFormatTypeOptions;
                 }
+                Application.DoEvents();
+                GC.Collect();
                 lbEmail.Text = "Export Report";
+                
                 rpt.Export();
                 System.Threading.Thread.Sleep(200);
                 Application.DoEvents();

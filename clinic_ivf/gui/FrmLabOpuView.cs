@@ -84,8 +84,8 @@ namespace clinic_ivf.gui
             initGrfProc();
             initGrfFinish();
             setGrfReq();
-            setGrfProc("");
-            setGrfFinish();
+            //setGrfProc("");
+            //setGrfFinish();
             initGrfSearch();
         }
 
@@ -592,7 +592,7 @@ namespace clinic_ivf.gui
             grfProc.Location = new System.Drawing.Point(0, 0);
 
             //FilterRow fr = new FilterRow(grfExpn);
-
+            grfProc.Rows.Count = 1;
             grfProc.AfterRowColChange += GrfProc_AfterRowColChange;
             grfProc.DoubleClick += GrfProc_DoubleClick;
             //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
@@ -776,7 +776,7 @@ namespace clinic_ivf.gui
             grfFinish.Font = fEdit;
             grfFinish.Dock = System.Windows.Forms.DockStyle.Fill;
             grfFinish.Location = new System.Drawing.Point(0, 0);
-
+            grfFinish.Rows.Count = 1;
             //FilterRow fr = new FilterRow(grfExpn);
 
             grfFinish.AfterRowColChange += GrfFinish_AfterRowColChange;
