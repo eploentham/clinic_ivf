@@ -78,9 +78,9 @@ namespace clinic_ivf.gui
             initGrfReq();
             setGrfReq();
             initGrfProc();
-            setGrfProc();
+            //setGrfProc();
             initGrfFinish();
-            setGrfFinish();
+            //setGrfFinish();
             initGrfSearch();
         }
 
@@ -246,7 +246,7 @@ namespace clinic_ivf.gui
             grfFinish.Font = fEdit;
             grfFinish.Dock = System.Windows.Forms.DockStyle.Fill;
             grfFinish.Location = new System.Drawing.Point(0, 0);
-
+            grfFinish.Rows.Count = 1;
             //FilterRow fr = new FilterRow(grfExpn);
 
             //grfReq.AfterRowColChange += GrfReq_AfterRowColChange;
@@ -393,7 +393,7 @@ namespace clinic_ivf.gui
             grfProc.Font = fEdit;
             grfProc.Dock = System.Windows.Forms.DockStyle.Fill;
             grfProc.Location = new System.Drawing.Point(0, 0);
-
+            grfProc.Rows.Count = 1;
             //FilterRow fr = new FilterRow(grfExpn);
 
             grfProc.AfterRowColChange += GrfProc_AfterRowColChange;
@@ -411,7 +411,7 @@ namespace clinic_ivf.gui
         private void setGrfProc()
         {
             grfProc.DataSource = null;
-            grfProc.Clear();
+            //grfProc.Clear();
             DataTable dt = new DataTable();
 
             //dt = ic.ivfDB.lbReqDB.selectByStatusReqAccept();
