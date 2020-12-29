@@ -99,6 +99,7 @@ namespace clinic_ivf.gui
             txtAmtCash.KeyUp += TxtAmtCash_KeyUp;
             txtAmtCredit.KeyUp += TxtAmtCredit_KeyUp;
             txtAmt.KeyUp += TxtAmt_KeyUp;
+            txtSearch.KeyUp += TxtSearch_KeyUp;
 
             txtCldDate.Value = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd");
             txtRptDateStart.Value = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd");
@@ -124,6 +125,16 @@ namespace clinic_ivf.gui
             timer.Tick += Timer_Tick;
             timer.Enabled = true;
         }
+
+        private void TxtSearch_KeyUp(object sender, KeyEventArgs e)
+        {
+            //throw new NotImplementedException();
+            if(e.KeyCode == Keys.Enter)
+            {
+                setGrfSearch();
+            }
+        }
+
         private void createFrmRpt01()
         {
             Size size = new Size();
@@ -1577,8 +1588,8 @@ namespace clinic_ivf.gui
                 grfSearch[i, colPttHn] = ic.showHN(row["PIDS"].ToString(), row["patient_year"].ToString());
                 grfSearch[i, colPttName] = row["PName"].ToString();
                 grfSearch[i, colVsDate] = ic.datetoShow(row["VDate"]);
-                grfSearch[i, colVsTime] = row["VStartTime"].ToString();
-                grfSearch[i, colVsEtime] = row["VEndTime"].ToString();
+                grfSearch[i, colVsTime] = ic.timetoShow(row["VStartTime"].ToString());
+                grfSearch[i, colVsEtime] = ic.timetoShow(row["VEndTime"].ToString());
                 grfSearch[i, colStatus] = row["VName"].ToString();
                 grfSearch[i, colPttId] = row["PID"].ToString();
                 grfSearch[i, colBillId] = row["bill_id"].ToString();

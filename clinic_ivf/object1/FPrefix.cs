@@ -12,5 +12,6 @@ namespace clinic_ivf.object1
         public String f_sex_id { get; set; }
         public String active { get; set; }
         public String f_patient_prefix_id { get; set; }
+        public String patient_prefix_description1 { get; set; }
     }
 }

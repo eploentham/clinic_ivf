@@ -4124,7 +4124,12 @@ namespace clinic_ivf.gui
             vs = new Visit();
             vs = ic.ivfDB.vsDB.setVisit1(vs);
             vs.t_visit_id = txtVisitID.Text;
-            vs.visit_hn = txtHn.Text.Replace(ic.hnspareyear,"").Replace(ptt.patient_year,"");
+            //vs.visit_hn = txtHn.Text.Replace(ic.hnspareyear,"").Replace(ptt.patient_year,"");
+            int index = txtHn.Text.IndexOf(ic.hnspareyear);
+            if (index >= 6)
+            {
+                vs.visit_hn = txtHn.Text.Substring(0, index);
+            }
             vs.t_patient_id = txtID.Text;
             vs.b_service_point_id = cboVisitBsp.SelectedItem == null ? "" : ((ComboBoxItem)cboVisitBsp.SelectedItem).Value;
             vs.visit_notice = txtVisitComment.Text;

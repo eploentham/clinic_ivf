@@ -3354,7 +3354,7 @@ namespace clinic_ivf.gui
                     pttcou = ic.ivfDB.pttDB.selectByHn(hn);
                     if (pttcou.f_sex_id.Equals("1"))// male
                     {
-                        txtHnMale.Value = pttcou.patient_hn;
+                        txtHnMale.Value = ic.showHN(pttcou.patient_hn, pttcou.patient_year);
                         txtNameMale.Value = pttcou.Name;
                         txtDobMale.Value = pttcou.patient_birthday;
                     }

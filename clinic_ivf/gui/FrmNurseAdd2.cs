@@ -58,7 +58,7 @@ namespace clinic_ivf.gui
         EggSti eggs;
         PatientMedicalHistory pmh;
 
-        Font fEdit, fEditB;
+        Font fEdit, fEditB, fEdit5B;
         Color bg, fc;
         Font ff, ffB;
 
@@ -67,6 +67,7 @@ namespace clinic_ivf.gui
         C1SuperTooltip stt;
         C1SuperErrorProvider sep;
         List<C1FlexGrid> lgrfPkg;
+        Label lbLoading;
 
         int colImgID = 1, colImgHn = 2, colImgImg = 3, colImgDesc = 4, colImgDesc2 = 5, colImgDesc3 = 6, colImgPathPic = 7, colImgBtn = 8, colImgStatus = 9, colImgDoctor = 10;
         int colBlId = 1, colBlName = 2, colBlQty = 3, colBlPrice = 4, colBlInclude = 5, colBlRemark = 6, colBlOrderGroup=7, colBlPkgName=8, colBlPkgId=9;
@@ -80,7 +81,7 @@ namespace clinic_ivf.gui
         int colPgId = 1, colPgFilename = 2;
         int colItminPkgId = 1, colItminPgkOrdDate = 2, colItminPkgItmTyp = 3, colItminPkgItmName = 4, colItminPkgPrice = 5, colItminPkgQty=6, colItminPkgExtra=7, colItminPkgQtyAmt=8;
 
-        int colFormADate = 1, colFormACode = 2, colFormAId = 3;
+        int colFormADate = 1, colFormACode = 2, colFormAId = 3, colFormAVn=4, colFormAVsid=5;
         int colOrderPID = 7, colOrderPIDS = 8, colOrderLName = 9, colOrderSP1V = 10, colOrderSP2V = 11, colOrderSP3V = 12;
         int colOrderSP4V = 13, colOrderSP5V = 14, colOrderSP6V = 15, colOrderSP7V = 16, colOrderSubItem = 17;
         int colOrderFileName = 18, colOrderWorder1 = 19, colOrderWorker2 = 20, colOrderWorker3 = 21, colOrderWorkder4 = 22;
@@ -100,6 +101,8 @@ namespace clinic_ivf.gui
         string documentPath;
         RichTextBoxStreamType documentFileType;
         FrmNurseView frmNurView;
+        FrmLabFormA frmFormA;
+        Panel pnFormAView, pnFormAAdd;
         Boolean flagImg = false, pageLoad=false, tabNoteLoad=false, tabPgLoad=false, tabHistoryLoad=false, tabOutlabLoad=false, tabLabFormALoad=false, tabEggStiLoad=false, tabBloodLabLoad=false, tabEmbryoLabLoad=false, tabSpermLabLoad=false, tabGeneticLabLoad=false, tabSpecialItemLoad=false;
         Boolean tabRxLoad = false, tabRxSetLoad = false, tabLabLoad=false, tabAppLoad=false, tabPMHLoad=false;
         [STAThread]
@@ -133,6 +136,7 @@ namespace clinic_ivf.gui
             fEdit = new Font(ic.iniC.grdViewFontName, ic.grdViewFontSize, FontStyle.Regular);
             fEditB = new Font(ic.iniC.grdViewFontName, ic.grdViewFontSize, FontStyle.Bold);
             ff = new Font(ic.iniC.pdfFontName, int.Parse(ic.iniC.pdfViewFontSize), FontStyle.Regular);
+            fEdit5B = new Font(ic.iniC.grdViewFontName, ic.grdViewFontSize + 5, FontStyle.Bold);
 
             //C1ThemeController.ApplicationTheme = ic.iniC.themeApplication;
             theme1.Theme = ic.iniC.themeApplication;
@@ -162,6 +166,14 @@ namespace clinic_ivf.gui
 
             imgCorr = Resources.red_checkmark_png_16;
             imgTran = Resources.red_checkmark_png_51;
+
+            lbLoading = new Label();
+            lbLoading.Font = fEdit5B;
+            lbLoading.BackColor = Color.WhiteSmoke;
+            lbLoading.ForeColor = Color.Black;
+            lbLoading.AutoSize = false;
+            lbLoading.Size = new Size(300, 60);
+            this.Controls.Add(lbLoading);
 
             ic.setCboLangSticker(cboLangSticker,"Thai");
 
@@ -385,13 +397,29 @@ namespace clinic_ivf.gui
                 setGrfRxSet();
             }
         }
-
+        private void setLbLoading(String txt)
+        {
+            lbLoading.Text = txt;
+            Application.DoEvents();
+        }
+        private void showLbLoading()
+        {
+            lbLoading.Show();
+            lbLoading.BringToFront();
+            Application.DoEvents();
+        }
+        private void hideLbLoading()
+        {
+            lbLoading.Hide();
+            Application.DoEvents();
+        }
         private void initPnLabFormA()
         {
+            showLbLoading();
             C1SplitterPanel scFormAAdd = new C1.Win.C1SplitContainer.C1SplitterPanel();
             C1SplitterPanel scFormAView = new C1.Win.C1SplitContainer.C1SplitterPanel();
             C1SplitContainer sC = new C1.Win.C1SplitContainer.C1SplitContainer();
-            Panel pnFormAView, pnFormAAdd;
+            
             pnFormAView = new Panel();
             pnFormAView.Dock = DockStyle.Fill;
             pnFormAView.Name = "pnFormAView";
@@ -427,25 +455,26 @@ namespace clinic_ivf.gui
             grfFormAView.Dock = System.Windows.Forms.DockStyle.Fill;
             grfFormAView.Location = new System.Drawing.Point(0, 0);
             grfFormAView.Rows.Count = 1;
-            grfFormAView.Cols.Count = 4;
+            grfFormAView.Cols.Count = 6;
             grfFormAView.Cols[colFormADate].Caption = "Date";
             grfFormAView.Cols[colFormACode].Caption = "FormA Code";
-            
+            grfFormAView.Cols[colFormAVn].Caption = "VN";
+
             ContextMenu menuGw = new ContextMenu();
             menuGw.MenuItems.Add("เพิ่ม ข้อมูล LAB Form A", new EventHandler(ContextMenu_grfformaview_add));
             grfFormAView.ContextMenu = menuGw;
             grfFormAView.DoubleClick += GrfFormAView_DoubleClick;
             theme1.SetTheme(grfFormAView, "RainerOrange");
 
-            FrmLabFormA frm = new FrmLabFormA(ic, "", txtPttId.Text, txtVsId.Text, txtVn.Text,"", ic.theme);
-            frm.TopLevel = false;
-            frm.FormBorderStyle = FormBorderStyle.None;
-            frm.AutoScroll = true;
-            frm.Parent = pnLabFormA;
-            frm.Show();
+            frmFormA = new FrmLabFormA(ic, "", txtPttId.Text, txtVsId.Text, txtVn.Text,"", ic.theme);
+            frmFormA.TopLevel = false;
+            frmFormA.FormBorderStyle = FormBorderStyle.None;
+            frmFormA.AutoScroll = true;
+            frmFormA.Parent = pnLabFormA;
+            frmFormA.Show();
             pnLabFormA.Controls.Add(sC);
             pnFormAView.Controls.Add(grfFormAView);
-            pnFormAAdd.Controls.Add(frm);
+            pnFormAAdd.Controls.Add(frmFormA);
 
             sC.HeaderHeight = 20;
             scFormAAdd.SizeRatio = 80;
@@ -462,6 +491,7 @@ namespace clinic_ivf.gui
             scFormAView.PerformLayout();
             scFormAAdd.PerformLayout();
             sC.PerformLayout();
+            hideLbLoading();
         }
         private void ContextMenu_grfformaview_add(object sender, System.EventArgs e)
         {
@@ -470,6 +500,18 @@ namespace clinic_ivf.gui
         private void GrfFormAView_DoubleClick(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
+            String vn = "", vsid="";
+            vn = grfFormAView[grfFormAView.Row, colFormAVn] != null ? grfFormAView[grfFormAView.Row, colFormAVn].ToString():"";
+            vsid = grfFormAView[grfFormAView.Row, colFormAVsid] != null ? grfFormAView[grfFormAView.Row, colFormAVsid].ToString() : "";
+            if (vn.Length <= 0) return;
+            if (frmFormA != null) frmFormA.Dispose();
+            frmFormA = new FrmLabFormA(ic, "", txtPttId.Text, vsid, vn, "", ic.theme);
+            frmFormA.TopLevel = false;
+            frmFormA.FormBorderStyle = FormBorderStyle.None;
+            frmFormA.AutoScroll = true;
+            frmFormA.Parent = pnLabFormA;
+            pnFormAAdd.Controls.Add(frmFormA);
+            frmFormA.Show();
 
         }
         private void setGrfLabFormA()
@@ -477,15 +519,16 @@ namespace clinic_ivf.gui
             //grfDept.Rows.Count = 7;
             //grfEmbryo.Clear();
             DataTable dt = new DataTable();
-            dt = ic.ivfDB.lFormaDB.selectReportByHn(txtHn.Text.Trim());
+            dt = ic.ivfDB.lFormaDB.selectReportByHn(txtPttId.Text.Trim());
             grfFormAView.Rows.Count = 1;
             grfFormAView.Rows.Count = dt.Rows.Count + 1;
             //grfEmbryo.Rows.Count = dt.Rows.Count + 1;
             //grfEmbryo.DataSource = dt;
-            grfFormAView.Cols.Count = 4;
+            //grfFormAView.Cols.Count = 6;
 
-            grfFormAView.Cols[colFormACode].Width = 100;
+            grfFormAView.Cols[colFormACode].Width = 120;
             grfFormAView.Cols[colFormADate].Width = 100;
+            grfFormAView.Cols[colFormAVn].Width = 100;
 
             grfFormAView.ShowCursor = true;
             //grdFlex.Cols[colID].Caption = "no";
@@ -493,7 +536,8 @@ namespace clinic_ivf.gui
 
             grfFormAView.Cols[colFormACode].Caption = "FormA Code";
             grfFormAView.Cols[colFormADate].Caption = "Date";
-            
+            grfFormAView.Cols[colFormAVn].Caption = "VN";
+
             int i = 0;
             decimal aaa = 0;
             foreach (DataRow row in dt.Rows)
@@ -505,6 +549,8 @@ namespace clinic_ivf.gui
                     grfFormAView[i, colFormAId] = row[ic.ivfDB.lFormaDB.lformA.form_a_id].ToString();
                     grfFormAView[i, colFormACode] = row[ic.ivfDB.lFormaDB.lformA.form_a_code].ToString();
                     grfFormAView[i, colFormADate] = ic.datetoShow(row[ic.ivfDB.lFormaDB.lformA.form_a_date].ToString());
+                    grfFormAView[i, colFormAVn] = row["visit_vn"].ToString();
+                    grfFormAView[i, colFormAVsid] = row["t_visit_id"].ToString();
                 }
                 catch (Exception ex)
                 {
@@ -515,11 +561,12 @@ namespace clinic_ivf.gui
             CellNoteManager mgr = new CellNoteManager(grfFormAView);
             grfFormAView.Cols[colFormAId].Visible = false;
             //grfEmbryo.Cols[colBlInclude].Visible = false;
-            //grfEmbryo.Cols[colBlPrice].Visible = false;
+            grfFormAView.Cols[colFormAVsid].Visible = false;
 
             grfFormAView.Cols[colFormADate].AllowEditing = false;
             grfFormAView.Cols[colFormACode].AllowEditing = false;
-            
+            grfFormAView.Cols[colFormAVn].AllowEditing = false;
+
             theme1.SetTheme(grfFormAView, ic.theme);
 
         }
@@ -8251,6 +8298,10 @@ namespace clinic_ivf.gui
             tcPackage.SelectedTab = tabPkgOrder;
             tcOrd.SelectedTab = tabOrd;
             //sB1.Text = "Date " + ic.cop.day + "-" + ic.cop.month + "-" + ic.cop.year + " Server " + ic.iniC.hostDB + " FTP " + ic.iniC.hostFTP;
+            Rectangle screenRect = Screen.GetBounds(Bounds);
+            lbLoading.Location = new Point((screenRect.Width / 2) - 100, (screenRect.Height / 2) - 300);
+            lbLoading.Text = "กรุณารอซักครู่ ...";
+            lbLoading.Hide();
             sB1.Text = "Date " + ic.cop.day + "-" + ic.cop.month + "-" + ic.cop.year + " Server " + ic.iniC.hostDB + " FTP " + ic.iniC.hostFTP + "/" + ic.iniC.folderFTP;
         }
     }

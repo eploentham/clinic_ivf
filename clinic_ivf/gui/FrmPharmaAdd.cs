@@ -179,6 +179,14 @@ namespace clinic_ivf.gui
                 qty = row["qty"] != null ? row["qty"].ToString() : " ";
                 unit = row["unit_name"] != null ? row["unit_name"].ToString() : " ";
                 row["unit_name"] = qty +" "+ unit;
+                //if (cboLangSticker.Text.Trim().Equals("English"))
+                //{
+                //    row["patient_name"] = txtPttNameE.Text.Trim();
+                //}
+                //else
+                //{
+                //    row["patient_name"] = txtPttName.Text.Trim();
+                //}
                 //MessageBox.Show("unit "+ row["unit_name"].ToString(), "");
             }
             ic.ivfDB.oJpxdDB.updateStatusPrintOKByVN(txtVn.Text);
@@ -203,7 +211,8 @@ namespace clinic_ivf.gui
             txtHn.Value = ic.showHN(ptt.patient_hn, ptt.patient_year);//  +0020
             txtVn.Value = vs.visit_vn;
             txtPttNameE.Value = ptt.Name;
-            txtPttName.Value = ic.ivfDB.fpfDB.getList(ptt.f_patient_prefix_id) + " " + ptt.patient_firstname + " " + ptt.patient_lastname;
+            txtPttName.Value = ic.ivfDB.fpfDB.getList1(ptt.f_patient_prefix_id) + " " + ptt.patient_firstname + " " + ptt.patient_lastname;
+            txtVnShow.Value = ic.showVN(vs.visit_vn);
 
             txtDob.Value = ic.datetoShow(ptt.patient_birthday) + " [" + ptt.AgeStringShort() + "]";
             txtAllergy.Value = ptt.allergy_description;
@@ -235,10 +244,13 @@ namespace clinic_ivf.gui
                 threadA.Start();
             }
             //if (!vsOld.VSID.Equals("166"))            //      -0020
-            if (!vs.vsid.Equals("166"))
-            {
-                btnPrnSticker.Enabled = false;
-            }
+
+            //  ต้องการ พิมพ์ sticker ย้อยหลัง
+            //if (!vs.vsid.Equals("166"))               //  ต้องการ พิมพ์ sticker ย้อยหลัง
+            //{                                         //  ต้องการ พิมพ์ sticker ย้อยหลัง
+            //    btnPrnSticker.Enabled = false;        //  ต้องการ พิมพ์ sticker ย้อยหลัง
+            //}                                         //  ต้องการ พิมพ์ sticker ย้อยหลัง
+
             //txtBg.Value = pttOld.b
             //txtAllergy.Value = 
         }

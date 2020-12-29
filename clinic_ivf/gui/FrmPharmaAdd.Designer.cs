@@ -37,6 +37,7 @@
             this.tlpPatient = new System.Windows.Forms.TableLayoutPanel();
             this.picPtt = new C1.Win.C1Input.C1PictureBox();
             this.pnPatient = new System.Windows.Forms.Panel();
+            this.btnCalBack = new C1.Win.C1Input.C1Button();
             this.lbPrinterStickerName = new System.Windows.Forms.Label();
             this.btnPrnSticker = new C1.Win.C1Input.C1Button();
             this.cboAllergyDesc = new C1.Win.C1Input.C1ComboBox();
@@ -106,7 +107,7 @@
             this.btnNoteAdd = new C1.Win.C1Input.C1Button();
             this.label73 = new System.Windows.Forms.Label();
             this.txtNote = new C1.Win.C1Input.C1TextBox();
-            this.btnCalBack = new C1.Win.C1Input.C1Button();
+            this.txtVnShow = new C1.Win.C1Input.C1TextBox();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sC)).BeginInit();
@@ -115,6 +116,7 @@
             this.tlpPatient.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picPtt)).BeginInit();
             this.pnPatient.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnCalBack)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPrnSticker)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboAllergyDesc)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPttId)).BeginInit();
@@ -161,7 +163,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.chkNoteAll)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnNoteAdd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNote)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnCalBack)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtVnShow)).BeginInit();
             this.SuspendLayout();
             // 
             // sB
@@ -261,6 +263,7 @@
             // pnPatient
             // 
             this.pnPatient.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnPatient.Controls.Add(this.txtVnShow);
             this.pnPatient.Controls.Add(this.btnCalBack);
             this.pnPatient.Controls.Add(this.lbPrinterStickerName);
             this.pnPatient.Controls.Add(this.btnPrnSticker);
@@ -319,6 +322,20 @@
             this.pnPatient.Size = new System.Drawing.Size(1422, 125);
             this.pnPatient.TabIndex = 531;
             this.theme1.SetTheme(this.pnPatient, "(default)");
+            // 
+            // btnCalBack
+            // 
+            this.btnCalBack.Image = global::clinic_ivf.Properties.Resources.InsertColumnBefore_small;
+            this.btnCalBack.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCalBack.Location = new System.Drawing.Point(842, 5);
+            this.btnCalBack.Name = "btnCalBack";
+            this.btnCalBack.Size = new System.Drawing.Size(80, 31);
+            this.btnCalBack.TabIndex = 968;
+            this.btnCalBack.Text = "Send to Cashier";
+            this.btnCalBack.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnCalBack, "(default)");
+            this.btnCalBack.UseVisualStyleBackColor = true;
+            this.btnCalBack.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // lbPrinterStickerName
             // 
@@ -823,12 +840,13 @@
             this.txtVn.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtVn.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtVn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtVn.Location = new System.Drawing.Point(48, 30);
+            this.txtVn.Location = new System.Drawing.Point(842, 36);
             this.txtVn.Name = "txtVn";
-            this.txtVn.Size = new System.Drawing.Size(146, 24);
+            this.txtVn.Size = new System.Drawing.Size(46, 24);
             this.txtVn.TabIndex = 820;
             this.txtVn.Tag = null;
             this.theme1.SetTheme(this.txtVn, "(default)");
+            this.txtVn.Visible = false;
             this.txtVn.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // txtBg
@@ -1260,19 +1278,18 @@
             this.theme1.SetTheme(this.txtNote, "(default)");
             this.txtNote.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // btnCalBack
+            // txtVnShow
             // 
-            this.btnCalBack.Image = global::clinic_ivf.Properties.Resources.InsertColumnBefore_small;
-            this.btnCalBack.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCalBack.Location = new System.Drawing.Point(842, 5);
-            this.btnCalBack.Name = "btnCalBack";
-            this.btnCalBack.Size = new System.Drawing.Size(80, 31);
-            this.btnCalBack.TabIndex = 968;
-            this.btnCalBack.Text = "Send to Cashier";
-            this.btnCalBack.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.theme1.SetTheme(this.btnCalBack, "(default)");
-            this.btnCalBack.UseVisualStyleBackColor = true;
-            this.btnCalBack.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.txtVnShow.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtVnShow.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtVnShow.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtVnShow.Location = new System.Drawing.Point(47, 29);
+            this.txtVnShow.Name = "txtVnShow";
+            this.txtVnShow.Size = new System.Drawing.Size(146, 24);
+            this.txtVnShow.TabIndex = 969;
+            this.txtVnShow.Tag = null;
+            this.theme1.SetTheme(this.txtVnShow, "(default)");
+            this.txtVnShow.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // FrmPharmaAdd
             // 
@@ -1295,6 +1312,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.picPtt)).EndInit();
             this.pnPatient.ResumeLayout(false);
             this.pnPatient.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnCalBack)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPrnSticker)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboAllergyDesc)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPttId)).EndInit();
@@ -1342,7 +1360,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.chkNoteAll)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnNoteAdd)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNote)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnCalBack)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtVnShow)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1429,5 +1447,6 @@
         private C1.Win.C1Input.C1Button btnPrnSticker;
         private System.Windows.Forms.Label lbPrinterStickerName;
         private C1.Win.C1Input.C1Button btnCalBack;
+        private C1.Win.C1Input.C1TextBox txtVnShow;
     }
 }

@@ -31,6 +31,7 @@ namespace clinic_ivf.objdb
             fpf.f_sex_id = "f_sex_id";            
             fpf.patient_prefix_description = "patient_prefix_description";
             fpf.active = "active";
+            fpf.patient_prefix_description1 = "patient_prefix_description1";
 
             fpf.pkField = "f_patient_prefix_id";
             fpf.table = "f_patient_prefix";
@@ -46,6 +47,7 @@ namespace clinic_ivf.objdb
                 FPrefix itm1 = new FPrefix();
                 itm1.f_patient_prefix_id = row[fpf.f_patient_prefix_id].ToString();
                 itm1.patient_prefix_description = row[fpf.patient_prefix_description].ToString();
+                itm1.patient_prefix_description1 = row[fpf.patient_prefix_description1].ToString();
 
                 lFpf.Add(itm1);
             }
@@ -62,6 +64,23 @@ namespace clinic_ivf.objdb
                 if (sex.f_patient_prefix_id.Equals(id))
                 {
                     re = sex.patient_prefix_description;
+                    break;
+                }
+            }
+            return re;
+        }
+        public String getList1(String id)
+        {
+            String re = "";
+            if (lFpf.Count <= 0)
+            {
+                getlFPrefix();
+            }
+            foreach (FPrefix sex in lFpf)
+            {
+                if (sex.f_patient_prefix_id.Equals(id))
+                {
+                    re = sex.patient_prefix_description1;
                     break;
                 }
             }
