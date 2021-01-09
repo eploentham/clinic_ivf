@@ -182,6 +182,7 @@ namespace clinic_ivf.objdb
             opu.status_approve_result_day2 = "status_approve_result_day2";
             opu.status_approve_result_day0 = "status_approve_result_day0";
             opu.status_day1_show_embryo_freezing = "status_day1_show_embryo_freezing";
+            opu.t_patient_id = "t_patient_id";
 
             opu.table = "lab_t_opu";
             opu.pkField = "opu_id";
@@ -628,8 +629,8 @@ namespace clinic_ivf.objdb
             p.embryologist_report_id = long.TryParse(p.embryologist_report_id, out chk) ? chk.ToString() : "0";
             p.approve_result_staff_id = long.TryParse(p.approve_result_staff_id, out chk) ? chk.ToString() : "0";
             p.approve_result_day6_staff_id = long.TryParse(p.approve_result_day6_staff_id, out chk) ? chk.ToString() : "0";
-            //opu.approve_result_day6_staff_id = "approve_result_day6_staff_id";
-            
+            p.t_patient_id = long.TryParse(p.t_patient_id, out chk) ? chk.ToString() : "0";
+
         }
         public String insert(LabOpu p, String userId)
         {
@@ -683,6 +684,7 @@ namespace clinic_ivf.objdb
                 "," + opu.status_approve_result_day5 + " = '" + p.status_approve_result_day5 + "'" +
                 "," + opu.status_approve_result_day6 + " = '" + p.status_approve_result_day6 + "'" +
                 "," + opu.status_day1_show_embryo_freezing + " = '" + p.status_day1_show_embryo_freezing + "'" +
+                "," + opu.t_patient_id + " = '" + p.t_patient_id + "'" +
                "";
             try
             {
@@ -1569,6 +1571,7 @@ namespace clinic_ivf.objdb
                 opu1.status_approve_result_day2 = dt.Rows[0][opu.status_approve_result_day2].ToString();
                 opu1.status_approve_result_day0 = dt.Rows[0][opu.status_approve_result_day0].ToString();
                 opu1.status_day1_show_embryo_freezing = dt.Rows[0][opu.status_day1_show_embryo_freezing].ToString();
+                opu1.t_patient_id = dt.Rows[0][opu.t_patient_id].ToString();
             }
             else
             {
@@ -1732,6 +1735,7 @@ namespace clinic_ivf.objdb
                 opu1.status_approve_result_day2 = "";
                 opu1.status_approve_result_day0 = "";
                 opu1.status_day1_show_embryo_freezing = "";
+                opu1.t_patient_id = "";
             }
 
             return opu1;

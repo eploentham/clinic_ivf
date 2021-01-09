@@ -266,7 +266,13 @@ namespace clinic_ivf.gui
                             dsc.doc_scan_id = "";
                             dsc.doc_group_id = dgss.doc_group_id;
                             //dsc.hn = txtHn.Text;          //-0021
-                            dsc.hn = txtHn.Text.Trim().Replace(ic.hnspareyear, "").Replace(txtPttYear.Text.Trim(), "");            //+0021
+                            //dsc.hn = txtHn.Text.Trim().Replace(ic.hnspareyear, "").Replace(txtPttYear.Text.Trim(), "");            //+0021
+                            int index = txtHn.Text.IndexOf(ic.hnspareyear);
+                            if (index >= 6)
+                            {
+                                dsc.hn = txtHn.Text.Substring(0, index);
+                            }
+
                             dsc.vn = txtVN.Text;
                             dsc.an = "";
                             dsc.visit_date = ic.datetoDB(txtVisitDate.Text);

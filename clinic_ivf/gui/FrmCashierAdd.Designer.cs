@@ -387,6 +387,7 @@
             this.btnPrnBill.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.theme1.SetTheme(this.btnPrnBill, "(default)");
             this.btnPrnBill.UseVisualStyleBackColor = true;
+            this.btnPrnBill.Visible = false;
             this.btnPrnBill.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // txtAllergy
@@ -427,6 +428,7 @@
             this.label3.TabIndex = 693;
             this.label3.Text = "Doctor :";
             this.theme1.SetTheme(this.label3, "(default)");
+            this.label3.Visible = false;
             // 
             // txtDoctor
             // 
@@ -439,6 +441,7 @@
             this.txtDoctor.TabIndex = 692;
             this.txtDoctor.Tag = null;
             this.theme1.SetTheme(this.txtDoctor, "(default)");
+            this.txtDoctor.Visible = false;
             this.txtDoctor.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // label2
@@ -1158,9 +1161,9 @@
             this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.label14.Location = new System.Drawing.Point(11, 71);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(115, 20);
+            this.label14.Size = new System.Drawing.Size(122, 20);
             this.label14.TabIndex = 703;
-            this.label14.Text = "ยอดคงเหลือสุทธิ :";
+            this.label14.Text = "ยอดเรียกเก็บสุทธิ :";
             this.theme1.SetTheme(this.label14, "(default)");
             // 
             // txtTotal
@@ -1250,6 +1253,7 @@
             this.c1Button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.theme1.SetTheme(this.c1Button1, "(default)");
             this.c1Button1.UseVisualStyleBackColor = true;
+            this.c1Button1.Visible = false;
             this.c1Button1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // txtDiscount
@@ -1314,6 +1318,7 @@
             this.label7.TabIndex = 677;
             this.label7.Text = "Payment By (Name/Surname) :";
             this.theme1.SetTheme(this.label7, "(default)");
+            this.label7.Visible = false;
             // 
             // txtPayName
             // 
@@ -1326,6 +1331,7 @@
             this.txtPayName.TabIndex = 676;
             this.txtPayName.Tag = null;
             this.theme1.SetTheme(this.txtPayName, "(default)");
+            this.txtPayName.Visible = false;
             this.txtPayName.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // tabReceipt

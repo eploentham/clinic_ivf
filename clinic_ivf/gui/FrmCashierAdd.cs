@@ -282,6 +282,7 @@ namespace clinic_ivf.gui
                 {                    
                     printReceipt("");
                     printReceipt("2");
+                    printReceipt("2");
                 }
                 ic.ivfDB.vsDB.updateStatusPharmacyFinish1(txtVn.Text);
             }
@@ -326,8 +327,8 @@ namespace clinic_ivf.gui
             SetDefaultPrinter(ic.iniC.printerBill);
             settings.PrinterName = ic.iniC.printerBill;
 
-            string stashPrinterName = Session_DefaultPrinter;
-            Session_DefaultPrinter = ic.iniC.printerBill;
+            //string stashPrinterName = Session_DefaultPrinter;
+            //Session_DefaultPrinter = ic.iniC.printerBill;
 
             DataTable dt = new DataTable();
             DataTable dtprn = new DataTable();
@@ -1019,7 +1020,6 @@ namespace clinic_ivf.gui
         private void TxtDiscount_KeyPress(object sender, KeyPressEventArgs e)
         {
             //throw new NotImplementedException();
-            
         }
 
         private void TxtAmt_KeyPress(object sender, KeyPressEventArgs e)
@@ -1040,7 +1040,6 @@ namespace clinic_ivf.gui
                 e.Handled = false;
             }
         }
-
         private void ChkDiscountPer_CheckedChanged(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
@@ -1065,7 +1064,7 @@ namespace clinic_ivf.gui
             vs = ic.ivfDB.vsDB.selectByVn(vn);      //      +0020
             //optt = ic.ivfDB.pttOldDB.selectByPk1(ovs.PID);      //      -0020
             //ptt = ic.ivfDB.pttDB.selectByHn(ovs.PIDS);      //      -0020
-            ptt = ic.ivfDB.pttDB.selectByHn(vs.visit_hn);      //      +0020
+            ptt = ic.ivfDB.pttDB.selectByPk1(vs.t_patient_id);      //      +0020
             //vs = ic.ivfDB.vsDB.selectByVn(ovs.VN);
             if (receiptno.Length > 0)
             {
@@ -1076,11 +1075,11 @@ namespace clinic_ivf.gui
                 //obilh = ic.ivfDB.obilhDB.selectByPk2(ovs.VN);      //      -0020
                 obilh = ic.ivfDB.obilhDB.selectByPk2(vs.visit_vn);      //      +0020
             }
-
             //ptt.patient_birthday = optt.DateOfBirth;      //      -0020
 
             txtHn.Value = ic.showHN(ptt.patient_hn, ptt.patient_year);
-            txtPttNameE.Value = vs.patient_name;
+            //txtPttNameE.Value = vs.patient_name;
+            txtPttNameE.Value = ptt.patient_name;
             txtDob.Value = ic.datetoShow(ptt.patient_birthday) + " [" + ptt.AgeStringShort() + "]";
             //txtHnOld.Value = optt.PIDS;      //      -0020
             //txtVnOld.Value = vsidOld;      //      -0020

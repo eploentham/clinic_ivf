@@ -444,7 +444,8 @@ namespace clinic_ivf.gui
             DataTable dtse = new DataTable();
             DataTable dtpx = new DataTable();
             DataTable dtpkg = new DataTable();
-
+            grfOrder.Rows.Count = 1;
+            if (vn.Length <= 0) return;
             dtbl = ic.ivfDB.oJlabdDB.selectByVN(vn);
             dtse = ic.ivfDB.ojsdDB.selectByVN(vn);
             //dtpx = ic.ivfDB.oJpxdDB.selectByVN(vn);

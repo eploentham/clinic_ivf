@@ -1104,14 +1104,16 @@ namespace clinic_ivf.gui
                 //ic.cop = ic.ivfDB.copDB.selectByCode1("001");
                 if (flaglang.Equals("English"))
                 {
-                    rpt.SetParameterValue("line11", "Worldwide Fertility Center");
-                    rpt.SetParameterValue("line12", "โทรศัพท์ " + ic.cop.tele);
+                    //rpt.SetParameterValue("line11", "Worldwide Fertility Center");
+                    rpt.SetParameterValue("line11", "101 Bangkok IVF");
+                    rpt.SetParameterValue("line12", "Tel " + ic.cop.tele);
                     rpt.SetParameterValue("date1", "" + date1);
                 }
                 else
                 {
-                    rpt.SetParameterValue("line11", "เวิลด์ไวด์คลินิกเวชกรรมเฉพาะทางสูตินรีเวช");
-                    rpt.SetParameterValue("line12", "โทรศัพท์ " + ic.cop.tele);
+                    //rpt.SetParameterValue("line11", "เวิลด์ไวด์คลินิกเวชกรรมเฉพาะทางสูตินรีเวช");
+                    rpt.SetParameterValue("line11", "101 Bangkok IVF");
+                    rpt.SetParameterValue("line12", "Tel " + ic.cop.tele);
                     rpt.SetParameterValue("date1", "" + date1);
                 }
                 

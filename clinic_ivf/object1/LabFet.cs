@@ -85,6 +85,7 @@ namespace clinic_ivf.object1
         public String remark2 { get; set; }
         public String freeze_date1 { get; set; }
         public String report { get; set; }
+        public String t_patient_id { get; set; }
 
     }
 }

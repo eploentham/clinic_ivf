@@ -574,6 +574,7 @@ namespace clinic_ivf.objdb
             opu.hn_donor = lformA.hn_donor;
             opu.name_donor = lformA.name_donor;
             opu.dob_donor = lformA.dob_donor;
+            opu.t_patient_id = lformA.t_patient_id;
             return opu;
         }
         public LabFet setFET(String reqid)
@@ -601,6 +602,7 @@ namespace clinic_ivf.objdb
             fet.hn_donor = lformA.hn_donor;
             fet.name_donor = lformA.name_donor;
             fet.dob_female = lbreq.dob_female;
+            fet.t_patient_id = lformA.t_patient_id;
             return fet;
         }
         public LabSperm setSperm(String reqid, String labsperm)

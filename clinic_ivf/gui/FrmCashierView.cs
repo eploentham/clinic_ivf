@@ -671,7 +671,7 @@ namespace clinic_ivf.gui
                     MessageBox.Show("ปิดวัน" + date + " เรียบร้อย", "");
                 }
             }
-        }        
+        }
         private void setCloseDay()
         {
             cld.closeday_id = txtCldId.Text;

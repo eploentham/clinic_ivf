@@ -14,6 +14,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -96,14 +97,13 @@ namespace clinic_ivf.gui
             //ic.setCboDayEmbryoDev(cboEmbryoDev1, "");
             //ic.setCboDayEmbryoDev(cboEmbryoDev2, "");
 
-            btnPrintOpuEmbryoDev.Click += BtnPrintOpuEmbryoDev_Click;
+            btnDownload.Click += BtnDownload_Click;
             btnPrint.Click += BtnPrint_Click;
             //btnSendEmail.Click += BtnSendEmail_Click;
             //btnResult.Click += BtnResult_Click;
             SmtpServer.SendCompleted += SmtpServer_SendCompleted;
             tCResult.SelectedIndexChanged += TCResult_SelectedIndexChanged;
-
-            ic.ivfDB.proceDB.setCboLabProce(cboOpuProce, objdb.LabProcedureDB.StatusLab.OPUProcedure);//cboEmbryoForEtDoctor
+            
             ic.ivfDB.dtrOldDB.setCboDoctor(cboDoctor, "");
             //ic.ivfDB.dtrOldDB.setCboDoctor(cboEmbryoForEtDoctor, "");
             //ic.ivfDB.stfDB.setCboEmbryologist(cboEmbryoForEtEmbryologist, "");
@@ -132,29 +132,45 @@ namespace clinic_ivf.gui
             //stt.BackgroundGradient = C1.Win.C1SuperTooltip.BackgroundGradient.Gold;
 
             //initGrf();
-            setControl();
+            
             //setGrf();
-            theme1.SetTheme(tCResult, theme2);
-            theme1.SetTheme(groupBox1, theme2);
-            foreach (Control ctl in groupBox1.Controls)
-            {
-                theme1.SetTheme(ctl, theme2);
-            }
-            theme1.SetTheme(this, theme2);
-            theme1.SetTheme(c1SplitContainer1, theme2);
-            theme1.SetTheme(c1SplitContainer1, theme2);
+            
             //setTheme();
             char c = '\u00B5';
             //label86.Text = c.ToString() + "l";
             //btnSendEmail.Enabled = false;
             if (flag.Equals("FET"))
             {
+                theme1.SetTheme(tCResult, ic.iniC.themeFET);
+                theme1.SetTheme(groupBox1, ic.iniC.themeFET);
+                foreach (Control ctl in groupBox1.Controls)
+                {
+                    theme1.SetTheme(ctl, ic.iniC.themeFET);
+                }
+                theme1.SetTheme(this, ic.iniC.themeFET);
+                theme1.SetTheme(c1SplitContainer1, ic.iniC.themeFET);
+                theme1.SetTheme(c1SplitContainer1, ic.iniC.themeFET);
                 tCResult.TabPages[0].TabVisible = false;    //day0
                 tCResult.TabPages[2].TabVisible = false;    //day2
                 tCResult.TabPages[3].TabVisible = false;    //day3
                 tCResult.TabPages[4].TabVisible = false;    //day5
                 tCResult.TabPages[5].TabVisible = false;    //day6
+                ic.ivfDB.proceDB.setCboLabProce(cboOpuProce, objdb.LabProcedureDB.StatusLab.FETProcedure);//cboEmbryoForEtDoctor
             }
+            else
+            {
+                theme1.SetTheme(tCResult, theme2);
+                theme1.SetTheme(groupBox1, theme2);
+                foreach (Control ctl in groupBox1.Controls)
+                {
+                    theme1.SetTheme(ctl, theme2);
+                }
+                theme1.SetTheme(this, theme2);
+                theme1.SetTheme(c1SplitContainer1, theme2);
+                theme1.SetTheme(c1SplitContainer1, theme2);
+                ic.ivfDB.proceDB.setCboLabProce(cboOpuProce, objdb.LabProcedureDB.StatusLab.OPUProcedure);//cboEmbryoForEtDoctor
+            }
+            setControl();
             //tCResult.TabPages[0].TabVisible = false;
             //tCResult.TabPages[1].TabVisible = false;
             //tCResult.TabPages[2].TabVisible = false;
@@ -284,11 +300,36 @@ namespace clinic_ivf.gui
             frm.ShowDialog(this);
         }
 
-        private void BtnPrintOpuEmbryoDev_Click(object sender, EventArgs e)
+        private void BtnDownload_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            FrmLabOPUPrint frm = new FrmLabOPUPrint(ic, txtID.Text, FrmLabOPUPrint.opuReport.OPUEmbryoDevReport);
-            frm.ShowDialog(this);
+            //FrmLabOPUPrint frm = new FrmLabOPUPrint(ic, txtID.Text, FrmLabOPUPrint.opuReport.OPUEmbryoDevReport);
+            //frm.ShowDialog(this);
+            String datetick = "",pathfile = "";
+            pathfile = ic.iniC.pathDownloadFile;
+            datetick = DateTime.Now.Ticks.ToString();
+            pathfile = pathfile + "\\" + datetick + "\\";
+            if (!Directory.Exists(pathfile))
+            {
+                Directory.CreateDirectory(pathfile);
+                Application.DoEvents();
+            }
+            FtpClient ftpc = new FtpClient(ic.iniC.hostFTP, ic.iniC.userFTP, ic.iniC.passFTP, ic.ftpUsePassive);
+            String[] listFile = ftpc.directoryListDetailed(ic.iniC.folderFTP + ic.iniC.pathChar + opu.opu_code + ic.iniC.pathChar);
+            foreach(String pathfiledownload in listFile)
+            {
+                MemoryStream stream = null;
+                String[] aaa = pathfiledownload.Split(' ');
+                if (aaa[aaa.Length-1].Length == 0) continue;
+                stream = ftpc.download(ic.iniC.folderFTP + ic.iniC.pathChar + opu.opu_code + ic.iniC.pathChar + aaa[aaa.Length-1]);
+                if (stream.Length == 0) continue;
+                stream.Seek(0, SeekOrigin.Begin);
+                var fileStream = File.Create(pathfile+"\\"+ aaa[aaa.Length - 1]);
+                stream.CopyTo(fileStream);
+                fileStream.Close();
+            }
+            Process.Start("explorer.exe", pathfile);
+
         }
         private void setTheme()
         {

@@ -44,7 +44,7 @@
             this.txtHnDonor = new C1.Win.C1Input.C1TextBox();
             this.txtDatePicEmbryo = new C1.Win.C1Input.C1DateEdit();
             this.label71 = new System.Windows.Forms.Label();
-            this.btnPrintOpuEmbryoDev = new C1.Win.C1Input.C1Button();
+            this.btnDownload = new C1.Win.C1Input.C1Button();
             this.btnPrint = new C1.Win.C1Input.C1Button();
             this.txtLabReqCode = new C1.Win.C1Input.C1TextBox();
             this.label62 = new System.Windows.Forms.Label();
@@ -90,7 +90,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtNameDonor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHnDonor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDatePicEmbryo)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnPrintOpuEmbryoDev)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnDownload)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPrint)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtLabReqCode)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtID)).BeginInit();
@@ -163,7 +163,7 @@
             this.groupBox1.Controls.Add(this.txtHnDonor);
             this.groupBox1.Controls.Add(this.txtDatePicEmbryo);
             this.groupBox1.Controls.Add(this.label71);
-            this.groupBox1.Controls.Add(this.btnPrintOpuEmbryoDev);
+            this.groupBox1.Controls.Add(this.btnDownload);
             this.groupBox1.Controls.Add(this.btnPrint);
             this.groupBox1.Controls.Add(this.txtLabReqCode);
             this.groupBox1.Controls.Add(this.label62);
@@ -419,20 +419,19 @@
             this.label71.Text = "Date pic Embryo :";
             this.theme1.SetTheme(this.label71, "(default)");
             // 
-            // btnPrintOpuEmbryoDev
+            // btnDownload
             // 
-            this.btnPrintOpuEmbryoDev.Image = global::clinic_ivf.Properties.Resources.print;
-            this.btnPrintOpuEmbryoDev.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPrintOpuEmbryoDev.Location = new System.Drawing.Point(1139, 15);
-            this.btnPrintOpuEmbryoDev.Name = "btnPrintOpuEmbryoDev";
-            this.btnPrintOpuEmbryoDev.Size = new System.Drawing.Size(151, 34);
-            this.btnPrintOpuEmbryoDev.TabIndex = 541;
-            this.btnPrintOpuEmbryoDev.Text = "Embryo Development";
-            this.btnPrintOpuEmbryoDev.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.theme1.SetTheme(this.btnPrintOpuEmbryoDev, "(default)");
-            this.btnPrintOpuEmbryoDev.UseVisualStyleBackColor = true;
-            this.btnPrintOpuEmbryoDev.Visible = false;
-            this.btnPrintOpuEmbryoDev.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.btnDownload.Image = global::clinic_ivf.Properties.Resources.PDF_file_icon_svg_20;
+            this.btnDownload.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDownload.Location = new System.Drawing.Point(1139, 15);
+            this.btnDownload.Name = "btnDownload";
+            this.btnDownload.Size = new System.Drawing.Size(151, 34);
+            this.btnDownload.TabIndex = 541;
+            this.btnDownload.Text = "Download PDF";
+            this.btnDownload.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnDownload, "(default)");
+            this.btnDownload.UseVisualStyleBackColor = true;
+            this.btnDownload.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // btnPrint
             // 
@@ -986,7 +985,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtNameDonor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHnDonor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDatePicEmbryo)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnPrintOpuEmbryoDev)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnDownload)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPrint)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtLabReqCode)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtID)).EndInit();
@@ -1031,7 +1030,7 @@
         private C1.Win.C1Input.C1TextBox txtHnDonor;
         private C1.Win.C1Input.C1DateEdit txtDatePicEmbryo;
         private System.Windows.Forms.Label label71;
-        private C1.Win.C1Input.C1Button btnPrintOpuEmbryoDev;
+        private C1.Win.C1Input.C1Button btnDownload;
         private C1.Win.C1Input.C1Button btnPrint;
         private C1.Win.C1Input.C1TextBox txtLabReqCode;
         private System.Windows.Forms.Label label62;

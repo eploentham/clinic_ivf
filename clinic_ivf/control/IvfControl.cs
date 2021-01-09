@@ -252,6 +252,7 @@ namespace clinic_ivf.control
                 //iniC.grdViewFontName = iniF.getIni("app", "grdViewFontName");
                 iniC.pdfFontName = iniF.getIni("app", "pdfFontName");
                 iniC.pdfViewFontSize = iniF.getIni("app", "pdfViewFontSize");
+                iniC.pathDownloadFile = iniF.getIni("app", "pathDownloadFile");
 
                 iniC.email_form = iniF.getIni("email", "email_form");
                 iniC.email_auth_user = iniF.getIni("email", "email_auth_user");
@@ -318,6 +319,7 @@ namespace clinic_ivf.control
                 iniC.statusCashierOldProgram = iniC.statusCashierOldProgram == null ? "0" : iniC.statusCashierOldProgram.Equals("") ? "0" : iniC.statusCashierOldProgram;
                 iniC.spermFreezingDecimal = iniC.spermFreezingDecimal == null ? "0" : iniC.spermFreezingDecimal.Equals("") ? "0" : iniC.spermFreezingDecimal;
                 iniC.statusNurseOrderInclude = iniC.statusNurseOrderInclude == null ? "0" : iniC.statusNurseOrderInclude.Equals("") ? "0" : iniC.statusNurseOrderInclude;
+                iniC.pathDownloadFile = iniC.pathDownloadFile == null ? "C:\\Manual" : iniC.pathDownloadFile.Equals("") ? "C:\\Manual" : iniC.pathDownloadFile;
 
                 int.TryParse(iniC.grdViewFontSize, out grdViewFontSize);
                 int.TryParse(iniC.spermFreezingDecimal, out spermFreezingDecimal);

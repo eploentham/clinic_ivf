@@ -96,6 +96,7 @@ namespace clinic_ivf.objdb
             fet.remark2 = "remark2";
             fet.freeze_date1 = "freeze_date1";
             fet.report = "report";
+            fet.t_patient_id = "t_patient_id";
 
             fet.table = "lab_t_fet";
             fet.pkField = "fet_id";
@@ -198,10 +199,14 @@ namespace clinic_ivf.objdb
         public DataTable selectByStatusFinish(String datestart, String dateend)
         {
             DataTable dt = new DataTable();
-            String sql = "select fet." + fet.fet_id + ", fet." + fet.fet_code + ",fet." + fet.hn_female + ",fet." + fet.name_female + ",fet." + fet.fet_date + ",fet." + fet.remark + "," + fet.hn_male + "," + fet.name_male + ", lab_b_procedure.proce_name_t " +
+            String sql = "select fet." + fet.fet_id + ", fet." + fet.fet_code + ",fet." + fet.hn_female + ",fet." + fet.name_female + ",fet." + fet.fet_date 
+                + ",fet." + fet.remark + "," + fet.hn_male + "," + fet.name_male + ", lab_b_procedure.proce_name_t " +
+                ", ptt.patient_name, ptt.patient_hn_1, ptt_hn1.patient_name as patient_name_hn_1" +
                 "From " + fet.table + " fet " +
                 "Left Join Doctor on Doctor.ID = fet.doctor_id " +
                 "Left Join lab_b_procedure on fet.proce_id = lab_b_procedure.proce_id " +
+                "Left Join t_patient ptt on fet.t_patient_id = ptt.t_patient_id " +
+                "Left Join t_patient ptt_hn1 on ptt.t_patient_id_1 = ptt_hn1.t_patient_id  " +
                 "Where fet." + fet.status_fet + " ='2' and fet." + fet.active + "='1' " +
                 "and fet." + fet.fet_date + " >= '" + datestart + "' and fet." + fet.fet_date + " <= '" + dateend + "' " +
                 //"Order By opu." + opu.opu_id + " " +
@@ -220,11 +225,13 @@ namespace clinic_ivf.objdb
         {
             DataTable dt = new DataTable();
             String sql = "select fet." + fet.fet_id + ", fet." + fet.fet_code + ",fet." + fet.hn_female + ",fet." + fet.name_female + ",fet." + fet.fet_date + ",fet." + fet.remark + "," + fet.hn_male + "," + fet.name_male + ", lab_b_procedure.proce_name_t " +
+                ", ptt.patient_name, ptt.patient_hn_1, ptt_hn1.patient_name as patient_name_hn_1" +
                 "From " + fet.table + " fet " +
                 "Left Join Doctor on Doctor.ID = fet.doctor_id " +
                 "Left Join lab_b_procedure on fet.proce_id = lab_b_procedure.proce_id " +
-                //"Left Join t_patient ptt on fet. "+
-                "Where fet." + fet.status_fet + " ='1' and fet." + fet.active + "='1' " +
+                "Left Join t_patient ptt on fet.t_patient_id = ptt.t_patient_id " +
+                "Left Join t_patient ptt_hn1 on ptt.t_patient_id_1 = ptt_hn1.t_patient_id  " +
+                "Where fet." + fet.status_fet + " = '1' and fet." + fet.active + "= '1' " +
                 //"Order By opu." + opu.opu_id + " " +
                 //"Union " +
                 //"select fet.fet_id , fet.fet_code ,fet.hn_female ,fet.name_female,fet.fet_date ,fet.remark, fet.hn_male, fet.name_male, lab_b_procedure.proce_name_t " +
@@ -246,8 +253,10 @@ namespace clinic_ivf.objdb
             }
             DataTable dt = new DataTable();
             String sql = "select fet." + fet.fet_id + ", fet." + fet.fet_code + ",fet." + fet.hn_female + ",fet." + fet.name_female + ",fet." + fet.fet_date + ",fet." + fet.remark + "," + fet.hn_male + "," + fet.name_male + ", lab_b_procedure.proce_name_t " +
+                ", ptt.patient_name, ptt.patient_hn_1, ptt_hn1.patient_name as patient_name_hn_1" +
                 "From " + fet.table + " fet " +
-                //"Left Join t_patient ptt on fet" +
+                "Left Join t_patient ptt on fet.t_patient_id = ptt.t_patient_id " +
+                "Left Join t_patient ptt_hn1 on ptt.t_patient_id_1 = ptt_hn1.t_patient_id  " +
                 "Left Join Doctor on Doctor.ID = fet.doctor_id " +
                 "Left Join lab_b_procedure on fet.proce_id = lab_b_procedure.proce_id " +
                 "Where  " + wherehn +
@@ -432,6 +441,7 @@ namespace clinic_ivf.objdb
             p.embryologist_report_id = long.TryParse(p.embryologist_report_id, out chk) ? chk.ToString() : "0";
             p.embryo_for_et_embryologist_id = long.TryParse(p.embryo_for_et_embryologist_id, out chk) ? chk.ToString() : "0";
             p.embryo_for_et_doctor = long.TryParse(p.embryo_for_et_doctor, out chk) ? chk.ToString() : "0";
+            p.t_patient_id = long.TryParse(p.t_patient_id, out chk) ? chk.ToString() : "0";
             //p.status_lab = p.status_lab == null ? "0" : p.status_lab;
         }
         public String insert(LabFet p, String userId)
@@ -475,6 +485,7 @@ namespace clinic_ivf.objdb
                 "," + fet.embryo_freez_freeze_media + " = '" + p.embryo_freez_freeze_media + "'" +
                 "," + fet.remark1 + " = '" + p.remark1 + "'" +
                 "," + fet.remark2 + " = '" + p.remark2 + "'" +
+                "," + fet.t_patient_id + " = '" + p.t_patient_id + "'" +
                "";
             try
             {
@@ -906,6 +917,7 @@ namespace clinic_ivf.objdb
                 fet1.embryo_pic_day1 = dt.Rows[0][fet.embryo_pic_day1].ToString();
                 fet1.freeze_date1 = dt.Rows[0][fet.freeze_date1].ToString();
                 fet1.report = dt.Rows[0][fet.report].ToString();
+                fet1.t_patient_id = dt.Rows[0][fet.t_patient_id].ToString();
             }
             else
             {
@@ -987,6 +999,7 @@ namespace clinic_ivf.objdb
                 fet1.remark2 = "";
                 fet1.freeze_date1 = "";
                 fet1.report = "";
+                fet1.t_patient_id = "";
             }
 
             return fet1;

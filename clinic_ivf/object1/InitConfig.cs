@@ -24,5 +24,7 @@ namespace clinic_ivf.object1
         public String email_to_lab_fet = "", email_form_lab_fet = "", email_auth_user_lab_fet = "", email_auth_pass_lab_fet = "", email_to_labblood="";
         public String themeFET = "", themeApp = "";
         public String lisBarcode = "", messageDebug="", statusCashierOldProgram="", spermFreezingDecimal="", statusNurseOrderInclude="";
+
+        public String pathDownloadFile = "";
     }
 }

@@ -127,14 +127,12 @@ namespace clinic_ivf.gui
             //throw new NotImplementedException();
             setGrfReq();
         }
-
         private void Timer_Tick(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
             setGrfReq();
             //setGrfProc();
         }
-
         private void setGrfSearch()
         {
             grfSearch.DataSource = null;
@@ -145,14 +143,14 @@ namespace clinic_ivf.gui
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             grfSearch.Rows.Count = 1;
             grfSearch.Cols.Count = 7;
-            C1TextBox txt = new C1TextBox();
+            //C1TextBox txt = new C1TextBox();
             //C1ComboBox cboproce = new C1ComboBox();
             //ic.ivfDB.itmDB.setCboItem(cboproce);
-            grfSearch.Cols[colPcOpuNum].Editor = txt;
-            grfSearch.Cols[colPcHn].Editor = txt;
-            grfSearch.Cols[colPcPttName].Editor = txt;
-            grfSearch.Cols[colPcDate].Editor = txt;
-            grfSearch.Cols[colPcRemark].Editor = txt;
+            //grfSearch.Cols[colPcOpuNum].Editor = txt;
+            //grfSearch.Cols[colPcHn].Editor = txt;
+            //grfSearch.Cols[colPcPttName].Editor = txt;
+            //grfSearch.Cols[colPcDate].Editor = txt;
+            //grfSearch.Cols[colPcRemark].Editor = txt;
 
             grfSearch.Cols[colPcOpuNum].Width = 120;
             grfSearch.Cols[colPcHn].Width = 120;
@@ -301,13 +299,13 @@ namespace clinic_ivf.gui
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             grfReq.Rows.Count = 1;
             grfReq.Cols.Count = 19;
-            C1TextBox txt = new C1TextBox();
+            //C1TextBox txt = new C1TextBox();
             //C1ComboBox cboproce = new C1ComboBox();
             //ic.ivfDB.itmDB.setCboItem(cboproce);
-            grfReq.Cols[colRqReqNum].Editor = txt;
-            grfReq.Cols[colRqHn].Editor = txt;
-            grfReq.Cols[colRqVn].Editor = txt;
-            grfReq.Cols[colRqName].Editor = txt;
+            //grfReq.Cols[colRqReqNum].Editor = txt;
+            //grfReq.Cols[colRqHn].Editor = txt;
+            //grfReq.Cols[colRqVn].Editor = txt;
+            //grfReq.Cols[colRqName].Editor = txt;
 
             grfReq.Cols[colRqHn].Width = 100;
             grfReq.Cols[colRqVn].Width = 120;
@@ -703,11 +701,11 @@ namespace clinic_ivf.gui
                 grfProc[i, colPcId] = row[ic.ivfDB.fetDB.fet.fet_id].ToString();
                 grfProc[i, colPcOpuNum] = row[ic.ivfDB.fetDB.fet.fet_code].ToString();
                 grfProc[i, colPcHn] = row[ic.ivfDB.fetDB.fet.hn_female].ToString();
-                grfProc[i, colPcPttName] = row[ic.ivfDB.fetDB.fet.name_female].ToString();
+                grfProc[i, colPcPttName] = row["patient_name"].ToString();
                 grfProc[i, colPcDate] = ic.datetoShow(row[ic.ivfDB.fetDB.fet.fet_date].ToString());
                 grfProc[i, colPcRemark] = row[ic.ivfDB.fetDB.fet.remark].ToString();
                 grfProc[i, colPcHnMale] = row[ic.ivfDB.fetDB.fet.hn_male].ToString();
-                grfProc[i, colPcNameMale] = row[ic.ivfDB.fetDB.fet.name_male].ToString();
+                grfProc[i, colPcNameMale] = row["patient_name_hn_1"].ToString();
                 grfProc[i, colProceName] = row["proce_name_t"].ToString();
                 //row1[colRqRemark] = row[ic.ivfDB.lbReqDB.lbReq.remark].ToString();
                 //row1[colOpuId] = "";
@@ -907,17 +905,16 @@ namespace clinic_ivf.gui
                 grfFinish[i, colPcId] = row[ic.ivfDB.fetDB.fet.fet_id].ToString();
                 grfFinish[i, colPcOpuNum] = row[ic.ivfDB.fetDB.fet.fet_code].ToString();
                 grfFinish[i, colPcHn] = row[ic.ivfDB.fetDB.fet.hn_female].ToString();
-                grfFinish[i, colPcPttName] = row[ic.ivfDB.fetDB.fet.name_female].ToString();
+                grfFinish[i, colPcPttName] = row["patient_name"].ToString();
                 grfFinish[i, colPcDate] = ic.datetoShow(row[ic.ivfDB.fetDB.fet.fet_date].ToString());
                 grfFinish[i, colPcRemark] = row[ic.ivfDB.fetDB.fet.remark].ToString();
                 grfFinish[i, colPcHnMale] = row[ic.ivfDB.fetDB.fet.hn_male].ToString();
-                grfFinish[i, colPcNameMale] = row[ic.ivfDB.fetDB.fet.name_male].ToString();
+                grfFinish[i, colPcNameMale] = row["patient_name_hn_1"].ToString();
                 grfFinish[i, colProceName] = row["proce_name_t"].ToString();
                 //row1[colRqRemark] = row[ic.ivfDB.lbReqDB.lbReq.remark].ToString();
                 //row1[colOpuId] = "";
                 //row1[colDtrName] = row["dtr_name"].ToString();
                 grfFinish[i, 0] = (i - 1);
-
             }
             grfFinish.Cols[colRqId].Visible = false;
             grfFinish.Cols[colPcOpuNum].AllowEditing = false;
