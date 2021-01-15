@@ -35,6 +35,7 @@ namespace clinic_ivf.objdb
             oca.user_cancel = "user_cancel";
             oca.user_create = "user_create";
             oca.user_modi = "user_modi";
+            oca.receipt_print = "receipt_print";
 
             oca.table = "CashAccount";
             oca.pkField = "CashID";
@@ -246,6 +247,7 @@ namespace clinic_ivf.objdb
                 dept1.CashName = dt.Rows[0][oca.CashName].ToString();
                 dept1.remark = dt.Rows[0][oca.remark].ToString();
                 dept1.IntLock = dt.Rows[0][oca.IntLock].ToString();
+                dept1.receipt_print = dt.Rows[0][oca.receipt_print].ToString();
             }
             else
             {
@@ -253,6 +255,7 @@ namespace clinic_ivf.objdb
                 dept1.CashName = "";
                 dept1.remark = "";
                 dept1.IntLock = "";
+                dept1.receipt_print = "";
             }
 
             return dept1;

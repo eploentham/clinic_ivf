@@ -35,6 +35,7 @@ namespace clinic_ivf.objdb
             occa.user_cancel = "user_cancel";
             occa.user_create = "user_create";
             occa.user_modi = "user_modi";
+            occa.receipt_print = "receipt_print";
 
             occa.table = "CreditCardAccount";
             occa.pkField = "CreditCardID";
@@ -246,6 +247,7 @@ namespace clinic_ivf.objdb
                 dept1.CreditCardName = dt.Rows[0][occa.CreditCardName].ToString();
                 dept1.remark = dt.Rows[0][occa.remark].ToString();
                 dept1.IntLock = dt.Rows[0][occa.IntLock].ToString();
+                dept1.receipt_print = dt.Rows[0][occa.receipt_print].ToString();
             }
             else
             {
@@ -253,6 +255,7 @@ namespace clinic_ivf.objdb
                 dept1.CreditCardName = "";
                 dept1.remark = "";
                 dept1.IntLock = "";
+                dept1.receipt_print = "";
             }
 
             return dept1;

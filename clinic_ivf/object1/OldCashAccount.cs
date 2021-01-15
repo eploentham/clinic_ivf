@@ -12,6 +12,6 @@ namespace clinic_ivf.object1
         public String CashName { get; set; }
         public String IntLock { get; set; }
         public String active { get; set; }
-
+        public String receipt_print { get; set; }
     }
 }

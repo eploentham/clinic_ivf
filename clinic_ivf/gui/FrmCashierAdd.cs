@@ -44,6 +44,8 @@ namespace clinic_ivf.gui
         C1SuperTooltip stt;
         C1SuperErrorProvider sep;
         Panel pnOrder, pnBill;
+        OldCashAccount oca;
+        OldCreditCardAccount ocr;
 
         int colId = 1, colName = 2, colprice=3, colqty=4, colAmt = 5, colDiscount = 6, colNetAmt = 7, colGrpName=8, colBilId=9, colInclude=10, colStatus=11;
         int colOrdid = 1, colOrdDate = 2, colOrdlpid = 3, colOrdName = 4, colOrdPrice = 5, colOrdPrice1 = 6, colOrdQty = 7, colOrdstatus = 8, colOrdrow1 = 9, colOrditmid = 10, colOrdInclude = 11, colOrdAmt = 12, colOrdUsE = 13, colOrdUsT = 14, colOrdOrderId = 15, colOrdStatusAmt = 16, colOrdStatusOrdGrp = 17;
@@ -109,6 +111,8 @@ namespace clinic_ivf.gui
 
             stt = new C1SuperTooltip();
             sep = new C1SuperErrorProvider();
+            oca = new OldCashAccount();
+            ocr = new OldCreditCardAccount();
 
             chkDiscount.CheckedChanged += ChkDiscount_CheckedChanged;
             chkDiscountPer.CheckedChanged += ChkDiscountPer_CheckedChanged;
@@ -264,13 +268,13 @@ namespace clinic_ivf.gui
                 String flag = "";
                 if (cashid1.Length > 0)
                 {
-                    OldCashAccount oca = new OldCashAccount();
+                    
                     oca = ic.ivfDB.ocaDB.selectByPk1(cashid1);
                     flag = oca.IntLock.Equals("1") ? "2" : "1";
                 }
                 else
                 {
-                    OldCreditCardAccount ocr = new OldCreditCardAccount();
+                    
                     ocr = ic.ivfDB.ocrDB.selectByPk1(creditid1);
                     flag = ocr.IntLock.Equals("1") ? "2" : "1";
                 }
@@ -279,10 +283,10 @@ namespace clinic_ivf.gui
                     printReceipt("");
                 }
                 else
-                {                    
+                {
                     printReceipt("");
                     printReceipt("2");
-                    printReceipt("2");
+                    //printReceipt("2");
                 }
                 ic.ivfDB.vsDB.updateStatusPharmacyFinish1(txtVn.Text);
             }
@@ -426,7 +430,6 @@ namespace clinic_ivf.gui
                     billNo = receiptno11;
                     billExtNo = billnoex1;
                 }
-                
             }
             //dtprn.Columns.Add("col1", typeof(String));
             //dtprn.Columns.Add("col2", typeof(String));
@@ -444,10 +447,18 @@ namespace clinic_ivf.gui
                     //DataRow row = dtprn.NewRow();
                     row["original"] = "1";
                     dtprn.ImportRow(row);
+
+                    int page = 0;
+                    
                     row["original"] = "2";
                     Decimal.TryParse(row["col2"].ToString().Replace(",", ""), out price1);
                     sumprice += price1;
                     dtprn.ImportRow(row);
+                    if (flagExtra.Equals("2"))
+                    {
+                        row["original"] = "3";
+                        dtprn.ImportRow(row);
+                    }
                 }
             }
             else
@@ -492,7 +503,7 @@ namespace clinic_ivf.gui
                 billFormat = billNo.Substring(billNo.Length - 5);
                 billNo = billNo.Substring(0, billNo.Length - 5) + "-" + billFormat;
             }
-            //day = DateTime.Now.ToString("dd");
+            //day = DateTime.Now.ToString("dd"); 
             //month = DateTime.Now.ToString("MM");
             //year = DateTime.Now.ToString("yyyy");
             day = ic.cop.day;

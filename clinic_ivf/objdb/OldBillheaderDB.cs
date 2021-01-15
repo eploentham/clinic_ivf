@@ -420,6 +420,24 @@ namespace clinic_ivf.objdb
             }
             return re;
         }
+        public String voidBillById(String bilid, String userId)
+        {
+            String re = "", sql = "";
+            sql = "Update " + obillh.table + " set " +
+                "" + obillh.active + "='3' " +
+                "," + obillh.user_modi + "='" + userId + "' " +
+                "," + obillh.date_modi + "= now() " +
+                "Where " + obillh.bill_id + "='" + bilid + "' ";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+            return re;
+        }
         public String voidBillByVN(String vn, String userId)
         {
             String re = "", sql = "";

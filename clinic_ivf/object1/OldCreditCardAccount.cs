@@ -11,6 +11,6 @@ namespace clinic_ivf.object1
         public String CreditCardID { get; set; }
         public String CreditCardName { get; set; }
         public String IntLock { get; set; }
-
+        public String receipt_print { get; set; }
     }
 }

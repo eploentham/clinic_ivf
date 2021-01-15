@@ -643,6 +643,22 @@ namespace clinic_ivf.objdb
 
             return re;
         }
+        public String updateOpenStatusCashierById(String vsid)
+        {
+            String re = "", err = "";
+            String sql = "update " + vs.table + " " +
+                "Set " + vs.status_cashier + " ='1' " +
+                "Where " + vs.t_visit_id + " ='" + vsid + "' ";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                err = ex.Message;
+            }
+            return re;
+        }
         public String updateOpenStatusCashierByVn(String vn)
         {
             String re = "", err = "";

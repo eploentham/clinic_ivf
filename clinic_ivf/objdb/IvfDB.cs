@@ -1138,10 +1138,10 @@ namespace clinic_ivf.objdb
                 //}
             }
         }
-        public void VoidBill(String vn, String userId)
+        public void VoidBill(String vsid, String userId)
         {
-            obilhDB.voidBillByVN(vn, userId);
-            obildDB.voidBillDetailByVN(vn, userId);
+            obilhDB.voidBillById(vsid, userId);
+            obildDB.voidBillDetailByBillId(vsid, userId);
         }
         public void DeleteBill1(String vn)
         {

@@ -4175,6 +4175,7 @@ namespace clinic_ivf.gui
             vs.vsid = "110";
             vs.patient_name = cboPrefix.Text + " " + txtPttNameE.Text + " " + txtPttLNameE.Text;
             vs.patient_year = ptt.patient_year;
+            vs.agent_id = cboAgent.SelectedItem == null ? "" : ((ComboBoxItem)cboAgent.SelectedItem).Value;
         }
         private void setTetxtLbLoading(String txt)
         {

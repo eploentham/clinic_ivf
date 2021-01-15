@@ -1870,9 +1870,9 @@ namespace clinic_ivf.gui
         }
         private void ContextMenu_edit_billVoid(object sender, System.EventArgs e)
         {
-            String billid = "", name = "", id = "";
+            String billid = "", name = "", vsid = "";
 
-            id = grfFinish[grfFinish.Row, colID] != null ? grfFinish[grfFinish.Row, colID].ToString() : "";     //billid
+            vsid = grfFinish[grfFinish.Row, colID] != null ? grfFinish[grfFinish.Row, colID].ToString() : "";     //billid
             name = grfFinish[grfFinish.Row, colPttName] != null ? grfFinish[grfFinish.Row, colPttName].ToString() : "";
             billid = grfFinish[grfFinish.Row, colBillId] != null ? grfFinish[grfFinish.Row, colBillId].ToString() : "";
 
@@ -1882,12 +1882,12 @@ namespace clinic_ivf.gui
             frm.ShowDialog(this);
             if (!ic.cStf.staff_id.Equals(""))
             {
-                ic.ivfDB.VoidBill(id, ic.cStf.staff_id);
+                ic.ivfDB.VoidBill(billid, ic.cStf.staff_id);
                 //String billid1 = ic.ivfDB.getBill(id, ic.cStf.staff_id);
                 //ic.ivfDB.updatePackagePaymentComplete(ovs.PID, row["PCKSID"].ToString());
                 ic.ivfDB.opkgsDB.updateStatus1(billid);
-                String re1 = ic.ivfDB.vsDB.updateOpenStatusCashierByVn(id);
-                ic.ivfDB.nurseFinish(id, ic.cStf.staff_id);        // +0015
+                String re1 = ic.ivfDB.vsDB.updateOpenStatusCashierById(vsid);
+                ic.ivfDB.nurseFinish(vsid, ic.cStf.staff_id);        // +0015
                 setGrfFinish();
             }
         }

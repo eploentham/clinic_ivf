@@ -653,6 +653,27 @@ namespace clinic_ivf.objdb
             }
             return re;
         }
+        public String voidBillDetailByBillId(String bilid, String userId)
+        {
+            String re = "";
+            String sql = "";
+            //chkNull(p);
+
+            sql = "Update " + obilld.table + " Set " +
+                " " + obilld.active + " = '3'" +
+                "," + obilld.date_modi + "= now() " +
+                "," + obilld.user_modi + "= '" + userId + "'" +
+                "Where " + obilld.bill_id + "='" + bilid + "'";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+            return re;
+        }
         public String voidBillDetailByVN(String vn, String userId)
         {
             String re = "";

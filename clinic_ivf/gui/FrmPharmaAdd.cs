@@ -198,7 +198,6 @@ namespace clinic_ivf.gui
             frm.setStickerDrugReport(date, dt, cboLangSticker.Text.Trim());
             frm.ShowDialog(this);
         }
-
         private void setControl(String vsid)
         {
             //vsOld = ic.ivfDB.ovsDB.selectByPk1(vsid);             //      -0020
