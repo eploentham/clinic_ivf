@@ -185,12 +185,31 @@ namespace clinic_ivf.objdb
             }
             return re;
         }
+        public String updateStatusFinishByVN(String vn)
+        {
+            DataTable dt = new DataTable();
+            String re = "";
+            String sql = "Update " + oJpxd.table + " " +
+                "Set " + oJpxd.pharmacy_finish_date_time + " = now() " +
+                "Where " + oJpxd.VN + "='" + vn + "'";
+            //re = conn.ExecuteNonQuery(conn.conn, sql);
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+            return re;
+        }
         public String updateStatusPrintOKByVN(String vn)
         {
             DataTable dt = new DataTable();
             String re = "";
             String sql = "Update " + oJpxd.table + " " +
                 "Set " + oJpxd.status_print+" = '1' " +
+                oJpxd.pharmacy_sticker_date_time + " = now() " +
                 "Where " + oJpxd.VN + "='" + vn + "'";
             //re = conn.ExecuteNonQuery(conn.conn, sql);
             try
@@ -209,6 +228,7 @@ namespace clinic_ivf.objdb
             String re = "";
             String sql = "Update " + oJpxd.table + " " +
                 "Set " + oJpxd.status_print + " = '1' " +
+                oJpxd.pharmacy_sticker_date_time + " = now() " +
                 "Where " + oJpxd.ID + "='" + pxdid + "'";
             //re = conn.ExecuteNonQuery(conn.conn, sql);
             try
@@ -316,6 +336,21 @@ namespace clinic_ivf.objdb
                 //"Group By oJpxd.DUID " +
                 "Group By oJpxd.DUID ,oJpxd.ID,oJpxd.DUName,oJpxd.Price,oJpxd.TUsage,oJpxd.EUsage,oJpxd.Extra,oJpxd.row1 "+
                 "Order By oJpxd." + oJpxd.DUName;
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
+        public DataTable selectByDate(String startdate, String endate)
+        {
+            DataTable dt = new DataTable();
+            String sql = "select oJpxd.DUID,oJpxd.ID,oJpxd.DUName,oJpxd.Price,sum(oJpxd.QTY) as QTY,oJpxd.TUsage,oJpxd.EUsage,oJpxd.Extra,oJpxd.row1, ptt.patient_name,JobPx.Date, JobPx.PIDS,oJpxd.Status, oJpxd.pharmacy_finish_date_time, ptt.patient_year " +
+                "From " + oJpxd.table + " oJpxd " +
+                "inner join JobPx on JobPx.VN = oJpxd.VN " +
+                "inner join t_patient ptt on JobPx.PID = ptt.t_patient_id " +
+                "inner join t_visit vs on JobPx.VN = vs.visit_vn " +
+                "Where JobPx.Date >='" + startdate + " 00:00:00' and JobPx.Date <='" + endate+ " 23:59:59' " +
+                //"Group By oJpxd.DUID " +
+                "Group By oJpxd.pharmacy_finish_date_time,ptt.patient_name, oJpxd.DUID ,oJpxd.ID,oJpxd.DUName,oJpxd.Price,oJpxd.TUsage,oJpxd.EUsage,oJpxd.Extra,oJpxd.row1,oJpxd.Status " +
+                "Order By oJpxd.pharmacy_finish_date_time, oJpxd." + oJpxd.DUName;
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }

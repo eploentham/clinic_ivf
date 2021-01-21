@@ -71,7 +71,9 @@ namespace clinic_ivf.objdb
             obillh.include_package = "include_package";
             obillh.ext_package = "ext_package";
             obillh.total1 = "total1";
-            obillh.agent_id = "agent_id";            
+            obillh.agent_id = "agent_id";
+            obillh.cash_transfer = "cash_transfer";
+            obillh.cash_transfer_id = "cash_transfer_id";
 
             obillh.table = "BillHeader";
             obillh.pkField = "VN";
@@ -285,6 +287,7 @@ namespace clinic_ivf.objdb
             p.IntLock = long.TryParse(p.IntLock, out chk) ? chk.ToString() : "0";
             p.closeday_id = long.TryParse(p.closeday_id, out chk) ? chk.ToString() : "0";
             p.agent_id = long.TryParse(p.agent_id, out chk) ? chk.ToString() : "0";
+            p.cash_transfer_id = long.TryParse(p.cash_transfer_id, out chk) ? chk.ToString() : "0";
 
             p.Include_Pkg_Price = decimal.TryParse(p.Include_Pkg_Price, out chk1) ? chk1.ToString() : "0";
             p.Extra_Pkg_Price = decimal.TryParse(p.Extra_Pkg_Price, out chk1) ? chk1.ToString() : "0";
@@ -294,6 +297,7 @@ namespace clinic_ivf.objdb
             p.SepCredit = decimal.TryParse(p.SepCredit, out chk1) ? chk1.ToString() : "0";
             p.cash = decimal.TryParse(p.cash, out chk1) ? chk1.ToString() : "0";
             p.credit = decimal.TryParse(p.credit, out chk1) ? chk1.ToString() : "0";
+            p.cash_transfer = decimal.TryParse(p.cash_transfer, out chk1) ? chk1.ToString() : "0";
         }
         public String insert(OldBillheader p, String userId)
         {
@@ -349,6 +353,8 @@ namespace clinic_ivf.objdb
                 "," + obillh.total1 + " = '" + p.total1 + "' " +
                 "," + obillh.agent_id + " = '" + p.agent_id + "' " +
                 "," + obillh.closeday_id + " = '0' " +
+                "," + obillh.cash_transfer + " = '" + p.cash_transfer + "' " +
+                "," + obillh.cash_transfer_id + " = '" + p.cash_transfer_id + "' " +
                 "";
             try
             {
@@ -536,12 +542,13 @@ namespace clinic_ivf.objdb
             return re;
         }
         public String updateReceiptNoByBillId(String billid, String billno, String cash, String credit, String creditnumber, String cashid
-            , String creditid, String total, String discount, String paymentby)
+            , String creditid, String total, String discount, String paymentby, String transfer, String transferid)
         {
             String re = "", sql = "";
             long chk = 0;
             cashid = long.TryParse(cashid, out chk) ? chk.ToString() : "0";
             creditid = long.TryParse(creditid, out chk) ? chk.ToString() : "0";
+            transferid = long.TryParse(transferid, out chk) ? chk.ToString() : "0";
 
             sql = "Update " + obillh.table + " set " +
                 "" + obillh.receipt_no + "='" + billno + "' " +
@@ -553,6 +560,8 @@ namespace clinic_ivf.objdb
                 "," + obillh.Total + "='" + total + "' " +
                 "," + obillh.Discount + "='" + discount + "' " +
                 "," + obillh.PaymentBy + "='" + paymentby.Replace("'","''") + "' " +
+                "," + obillh.cash_transfer + "='" + transfer + "' " +
+                "," + obillh.cash_transfer_id + "='" + transferid.Replace("'", "''") + "' " +
                 "Where " + obillh.bill_id + "='" + billid + "' ";
             try
             {
@@ -635,6 +644,8 @@ namespace clinic_ivf.objdb
                 vsold1.ext_package = dt.Rows[0][obillh.ext_package].ToString();
                 vsold1.total1 = dt.Rows[0][obillh.total1].ToString();
                 vsold1.agent_id = dt.Rows[0][obillh.agent_id].ToString();
+                vsold1.cash_transfer = dt.Rows[0][obillh.cash_transfer].ToString();
+                vsold1.cash_transfer_id = dt.Rows[0][obillh.cash_transfer_id].ToString();
             }
             else
             {
@@ -692,6 +703,8 @@ namespace clinic_ivf.objdb
             stf1.ext_package = "";
             stf1.total1 = "";
             stf1.agent_id = "";
+            stf1.cash_transfer = "";
+            stf1.cash_transfer_id = "";
             return stf1;
         }
     }

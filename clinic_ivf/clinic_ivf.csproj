@@ -932,6 +932,7 @@
     <Compile Include="gui\PasswordForm.designer.cs">
       <DependentUpon>PasswordForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="objdb\AccCashTransferDB.cs" />
     <Compile Include="objdb\AddressDB.cs" />
     <Compile Include="objdb\ClosedayDB.cs" />
     <Compile Include="objdb\ClosedayDetailDB.cs" />
@@ -1017,6 +1018,7 @@
     <Compile Include="objdb\StockReturnDB.cs" />
     <Compile Include="objdb\StockReturnDetailDB.cs" />
     <Compile Include="objdb\StockSubNameDB.cs" />
+    <Compile Include="object1\AccCashTransfer.cs" />
     <Compile Include="object1\Address.cs" />
     <Compile Include="object1\ASCII.cs" />
     <Compile Include="object1\CellNoteManager.cs" />

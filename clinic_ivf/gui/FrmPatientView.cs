@@ -27,7 +27,7 @@ namespace clinic_ivf.gui
         Color bg, fc;
         Font ff, ffB;
 
-        int colPttId = 1, colPttHn = 2, colPttName = 3, colPttDOB=4, colPttHnOld=5, colPttRemark = 6, colHn_1 = 7, colName_1 = 8, colHn_2 = 9, colName_2 = 10, colStfCreate=11, colStfModi=12;
+        int colPttId = 1, colPttHn = 2, colPttName = 3, colPttDOB=4, colPttHnOld=5, colPttRemark = 6, colHn_1 = 7, colName_1 = 8, colHn_2 = 9, colName_2 = 10, colStfCreate=11, colStfModi=12, colAgent=13, colDtrName=14;
 
         C1FlexGrid grfPtt;
         C1SuperTooltip stt;

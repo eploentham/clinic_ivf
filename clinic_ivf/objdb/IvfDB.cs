@@ -117,6 +117,7 @@ namespace clinic_ivf.objdb
         public StockCardEndYearDB stkeDB;
         public CustomerDB custDB;
         public AddressDB addrDB;
+        public AccCashTransferDB actDB;
         public IvfDB(ConnectDB c)
         {
             conn = c;
@@ -220,6 +221,7 @@ namespace clinic_ivf.objdb
             stkeDB = new StockCardEndYearDB(conn);
             custDB = new CustomerDB(conn);
             addrDB = new AddressDB(conn);
+            actDB = new AccCashTransferDB(conn);
 
             Console.WriteLine("ivfDB end");
         }
@@ -1138,10 +1140,10 @@ namespace clinic_ivf.objdb
                 //}
             }
         }
-        public void VoidBill(String vsid, String userId)
+        public void VoidBillByVN(String vsid, String userId)
         {
-            obilhDB.voidBillById(vsid, userId);
-            obildDB.voidBillDetailByBillId(vsid, userId);
+            obilhDB.voidBillByVN(vsid, userId);
+            obildDB.voidBillDetailByVN(vsid, userId);
         }
         public void DeleteBill1(String vn)
         {
@@ -1163,7 +1165,7 @@ namespace clinic_ivf.objdb
             sql = "delete from DebtorDetail Where VN='" + vn + "'";
             re = conn.ExecuteNonQuery(conn.conn, sql);
             sql = "";
-            VoidBill(vn, userId);
+            VoidBillByVN(vn, userId);
             /* Step 2.
              * Update PackageSold
              * $queryP = $this->db->query('Select * from PackageSold Where VN="'.$VN.'"');
@@ -2096,7 +2098,7 @@ namespace clinic_ivf.objdb
             OldPackageSold pkg = new OldPackageSold();
             pkg = opkgsDB.selectByVN2(vn);
             //pkgid = pkg.PCKID;
-            VoidBill(vn, userid);
+            VoidBillByVN(vn, userid);
             //dt = obildDB.selectByPIDPkgID(pid, pkgid);
             if (!pkg.PCKSID.Equals("0"))
             {

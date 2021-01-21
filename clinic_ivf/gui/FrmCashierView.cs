@@ -1882,12 +1882,14 @@ namespace clinic_ivf.gui
             frm.ShowDialog(this);
             if (!ic.cStf.staff_id.Equals(""))
             {
-                ic.ivfDB.VoidBill(billid, ic.cStf.staff_id);
+                ic.ivfDB.VoidBillByVN(billid, ic.cStf.staff_id);
                 //String billid1 = ic.ivfDB.getBill(id, ic.cStf.staff_id);
                 //ic.ivfDB.updatePackagePaymentComplete(ovs.PID, row["PCKSID"].ToString());
+                Visit vs = new Visit();
+                vs = ic.ivfDB.vsDB.selectByPk1(vsid);
                 ic.ivfDB.opkgsDB.updateStatus1(billid);
                 String re1 = ic.ivfDB.vsDB.updateOpenStatusCashierById(vsid);
-                ic.ivfDB.nurseFinish(vsid, ic.cStf.staff_id);        // +0015
+                ic.ivfDB.nurseFinish(vs.visit_vn, ic.cStf.staff_id);        // +0015
                 setGrfFinish();
             }
         }

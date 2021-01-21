@@ -122,5 +122,9 @@ namespace clinic_ivf.object1
         public String vsid { get; set; }
         public String lvsid { get; set; }
         public String patient_year { get; set; }
+        public String pharmacy_finish_date_time { get; set; }
+        public String pharmacy_finish_staff_id { get; set; }
+        public String status_pharmacy { get; set; }
+        public String status_lab { get; set; }
     }
 }

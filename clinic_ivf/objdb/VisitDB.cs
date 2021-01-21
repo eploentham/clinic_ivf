@@ -149,6 +149,10 @@ namespace clinic_ivf.objdb
             vs.vsid = "vsid";
             vs.lvsid = "lvsid";
             vs.patient_year = "patient_year";
+            vs.pharmacy_finish_date_time = "pharmacy_finish_date_time";
+            vs.pharmacy_finish_staff_id = "pharmacy_finish_staff_id";
+            vs.status_pharmacy = "status_pharmacy";
+            vs.status_lab = "status_lab";
 
             vs.table = "t_visit";
             vs.pkField = "t_visit_id";
@@ -681,6 +685,7 @@ namespace clinic_ivf.objdb
             String sql = "update " + vs.table + " " +
                 "Set " + vs.status_cashier + " ='2' " +
                 "," + vs.vsid + " = '166' " +       //      +0020
+                "," + vs.visit_financial_discharge_time + " = now() " +
                 "Where " + vs.pkField + " ='" + vsid + "' ";
             try
             {
@@ -1011,11 +1016,12 @@ namespace clinic_ivf.objdb
             //String date = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd");
             String sql = "select vs.t_visit_id as id,vs.visit_vn as VN, vs.visit_hn as PIDS, CONCAT(IFNULL(fpp.patient_prefix_description,''),' ', ptt.patient_firstname_e ,' ',ptt.patient_lastname_e)  as PName" +
                 ", vs.visit_begin_visit_time as VDate, vs.visit_begin_visit_time as VStartTime, vs.visit_financial_discharge_time as VEndTime, '' as VName, bsp.service_point_description as VSID" +
-                ", vs.t_patient_id as PID, ptt.patient_birthday as dob, vs.status_nurse, vs.status_cashier, vs.status_lab, vs.nurse_finish_date_time, vs.f_visit_status_id, vs.cashier_finish_date_time " +
+                ", vs.t_patient_id as PID, ptt.patient_birthday as dob, vs.status_nurse, vs.status_cashier, vs.status_lab, vs.nurse_finish_date_time, vs.f_visit_status_id, vs.cashier_finish_date_time, agent.AgentName " +
                 "From " + vs.table + " vs " +
                 "Left Join t_patient ptt on  ptt.t_patient_id = vs." + vs.t_patient_id + " " +
                 "Left join f_patient_prefix fpp on fpp.f_patient_prefix_id = ptt.f_patient_prefix_id " +
                 "Left Join b_service_point bsp on bsp.b_service_point_id = vs.b_service_point_id " +
+                "Left Join Agent agent on agent.AgentID = vs.agent_id " +
                 " " +
                 "Where vs." + vs.visit_hn + " ='" + hn + "' and vs.f_visit_status_id in ('1','2','4') " +
                 "Order By vs." + vs.t_visit_id;
@@ -1047,12 +1053,13 @@ namespace clinic_ivf.objdb
             //String date = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd");
             String sql = "select vs.t_visit_id as id,vs.visit_vn as VN, vs.visit_hn as PIDS, CONCAT(IFNULL(fpp.patient_prefix_description,''),' ', ptt.patient_firstname_e ,' ',ptt.patient_lastname_e)  as PName" +
                 ", vs.visit_begin_visit_time as VDate, vs.visit_begin_visit_time as VStartTime, vs.visit_financial_discharge_time as VEndTime, '' as VName, bsp.service_point_description as VSID" +
-                ", vs.t_patient_id as PID, ptt.patient_birthday as dob, vs.status_nurse, vs.status_cashier, vs.status_lab, vs.nurse_finish_date_time, vs.f_visit_status_id, vs.cashier_finish_date_time " +
+                ", vs.t_patient_id as PID, ptt.patient_birthday as dob, vs.status_nurse, vs.status_cashier, vs.status_lab, vs.nurse_finish_date_time, vs.f_visit_status_id, vs.cashier_finish_date_time, agt.AgentName, dtr.Name as dtr_name, vs.status_pharmacy, vs.pharmacy_finish_date_time " +
                 "From " + vs.table + " vs " +
                 "Left Join t_patient ptt on  ptt.t_patient_id = vs." + vs.t_patient_id + " " +
                 "Left join f_patient_prefix fpp on fpp.f_patient_prefix_id = ptt.f_patient_prefix_id " +
                 "Left Join b_service_point bsp on bsp.b_service_point_id = vs.b_service_point_id " +
-                " " +
+                "Left Join Agent agt on vs.agent_id = agt.AgentID " +
+                "Left Join Doctor dtr on vs.doctor_id = dtr.ID " +
                 "Where vs." + vs.t_patient_id + " ='" + pttid + "' and vs.f_visit_status_id in ('1','2','4') " +
                 "Order By vs."+vs.t_visit_id;
             dt = conn.selectData(conn.conn, sql);
@@ -1470,8 +1477,8 @@ namespace clinic_ivf.objdb
                 "Left Join BillHeader bilh on vs.visit_vn = bilh.VN and bilh.active = '1' " +
                 "Left Join CashAccount on bilh.CashID = CashAccount.CashID " +
                 "Left Join CreditCardAccount on bilh.CreditCardID = CreditCardAccount.CreditCardID " +
-                //"Where  vs.vsid in('166','160','165')  " +//and t_visit.b_service_point_id = '" + bspid + "' " +
-                "Where  vs.status_cashier = '2' and bilh.Date = '" + date + "' " +
+                "Where  vs.vsid in('166','160','165')  " +//and t_visit.b_service_point_id = '" + bspid + "' " +
+                                                          //"Where  vs.status_cashier = '2' and bilh.Date = '" + date + "' " +
                 "Order By vs.vsid desc,vs.visit_begin_visit_time desc ";
             dt = conn.selectData(conn.conn, sql);
 
@@ -1487,7 +1494,7 @@ namespace clinic_ivf.objdb
             }
             if (visitdate.Length > 0)
             {
-                wheredate = " and vsold.VDate = '" + visitdate + "' ";
+                wheredate = " and vs.visit_begin_visit_time = '" + visitdate + "' ";
             }
             //String date = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd");
             String sql = "select vs.t_visit_id as id,vs.visit_vn as VN, vs.visit_hn as PIDS, vs.patient_name as PName, vs.visit_begin_visit_time as VDate, vs.visit_begin_visit_time as VStartTime, vs.visit_financial_discharge_time as VEndTime" +
@@ -1510,7 +1517,7 @@ namespace clinic_ivf.objdb
         {
             DataTable dt = new DataTable();
             String date = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd");
-            String sql = "select vs.t_visit_id as id,vs.visit_vn as VN, vs.visit_hn as PIDS, vs.patient_name as PName, vs.visit_begin_visit_time as VDate, vs.visit_begin_visit_time as VStartTime, vs.visit_financial_discharge_time as VEndTime " +
+            String sql = "select vs.t_visit_id as id,vs.visit_vn as VN, vs.visit_hn as PIDS, vs.patient_name as PName, vs.visit_begin_visit_time as VDate, vs.visit_begin_visit_time as VStartTime, vs.pharmacy_finish_date_time as VEndTime " +
                 ", VStatus.VName, vs.vsid, ifnull(vs.t_patient_id,'') as PID " +
                 ",vs.form_a_id,CONCAT(IFNULL(fpp.patient_prefix_description,''),' ', stf.staff_fname_e ,' ',stf.staff_lname_e)  as dtrname,vs.status_nurse, vs.status_cashier,t_patient.patient_year  " +
                 "From " + vs.table + " vs " +
@@ -1519,11 +1526,30 @@ namespace clinic_ivf.objdb
                 //"Left Join t_visit on  vsold.VN = t_visit.visit_vn " +
                 "Left Join b_staff stf on vs.doctor_id = stf.doctor_id_old " +
                 "Left join f_patient_prefix fpp on fpp.f_patient_prefix_id = stf.prefix_id " +
-                "Where  vs.f_visit_status_id = '4'  and vs.visit_begin_visit_time >= '" + date + " 00:00:00' and vs.visit_begin_visit_time <= '" + date + " 23:59:59' " +
+                "Where  vs.f_visit_status_id = '4'  and vs.visit_financial_discharge_time >= '" + date + " 00:00:00' and vs.visit_financial_discharge_time <= '" + date + " 23:59:59' " +       // ดึงแบบนี้ไปก่อน ค่อยแก้ไข
                 "Order By vs.vsid desc,vs.visit_begin_visit_time desc ";
             dt = conn.selectData(conn.conn, sql);
 
             return dt;
+        }
+        public String updateStatusPharmacyProcess(String vn)
+        {
+            String re = "";
+            String sql = "";
+            int chk = 0;
+
+            sql = "Update " + vs.table + " Set " +
+                " " + vs.status_pharmacy + " = '1' " +
+                "Where " + vs.t_visit_id + "='" + vn + "'";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+            return re;
         }
         public String updateStatusPharmacyFinish(String vn)
         {
@@ -1535,6 +1561,8 @@ namespace clinic_ivf.objdb
                 " " + vs.lvsid + " = vsid " +
                 "," + vs.vsid + " = '999' " +
                 "," + vs.f_visit_status_id + " = '4' " +
+                "," + vs.pharmacy_finish_date_time + " = now() " +
+                "," + vs.status_pharmacy + " = '2' " +
                 "Where " + vs.visit_vn + "='" + vn + "'";
             try
             {
@@ -1546,7 +1574,7 @@ namespace clinic_ivf.objdb
             }
             return re;
         }
-        public String updateStatusPharmacyFinish1(String vn)
+        public String updateStatusCashierFinish(String vn)
         {
             String re = "";
             String sql = "";
@@ -1554,8 +1582,10 @@ namespace clinic_ivf.objdb
 
             sql = "Update " + vs.table + " Set " +
                 " " + vs.lvsid + " = vsid " +
-                //"," + vs.vsid + " = '999' " +
-                "," + vs.f_visit_status_id + " = '4' " +
+                "," + vs.cashier_finish_date_time + " = now() " +
+                "," + vs.visit_financial_discharge_time + " = now() " +
+                "," + vs.f_visit_status_id + " = '4' " +        //จบคิดเงินก็ถือว่า จบกระบวนการ
+                "," + vs.status_cashier + " = '2' " +
                 "Where " + vs.visit_vn + "='" + vn + "'";
             try
             {

@@ -47,7 +47,6 @@ namespace clinic_ivf.objdb
             cld.table = "t_closeday";
             cld.pkField = "closeday_id";
         }
-        
         public DataTable selectAll()
         {
             DataTable dt = new DataTable();
@@ -282,11 +281,11 @@ namespace clinic_ivf.objdb
             }
             else
             {
-                setDocGroupScan(dgs1);
+                setCloseday(dgs1);
             }
             return dgs1;
         }
-        public Closeday setDocGroupScan(Closeday dgs1)
+        public Closeday setCloseday(Closeday dgs1)
         {
             dgs1.closeday_id = "";
             dgs1.closeday_date = "";

@@ -292,6 +292,7 @@ namespace clinic_ivf.gui
             grfOrder.AfterDataRefresh += GrfOrder_AfterDataRefresh;
             grfOrder.ChangeEdit += GrfOrder_ChangeEdit;
             grfOrder.SubtotalPosition = SubtotalPositionEnum.BelowData;
+            grfOrder.SelectionMode = SelectionModeEnum.RowRange;
             //grfOrder.mou
             //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
             ContextMenu menuGw = new ContextMenu();
@@ -365,9 +366,13 @@ namespace clinic_ivf.gui
                     }
                 }
             }
+            id = id.Trim();
             if (id.Length > 0)
             {
-                id = id.Substring(0, id.Length - 1);
+                if (id.Substring(id.Length - 1).IndexOf(',') >= 0)
+                {
+                    id = id.Substring(0, id.Length - 1);
+                }
                 PrinterSettings settings = new PrinterSettings();
                 printerOld = settings.PrinterName;
                 SetDefaultPrinter(ic.iniC.printerSticker);
@@ -1040,7 +1045,7 @@ namespace clinic_ivf.gui
         {
             //throw new NotImplementedException();
             //ic.ivfDB.nurseFinish(txtVnOld.Text);
-            //ic.ivfDB.ovsDB.updateStatusPharmacyFinish(txtVnOld.Text);
+            ic.ivfDB.oJpxdDB.updateStatusFinishByVN(txtVn.Text);
             ic.ivfDB.vsDB.updateStatusPharmacyFinish(txtVn.Text);
             //VisitOld ovs = new VisitOld();
             //ovs = ic.ivfDB.ovsDB.selectByPk1(txtVnOld.Text);

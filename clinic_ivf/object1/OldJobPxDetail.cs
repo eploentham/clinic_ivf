@@ -26,5 +26,7 @@ namespace clinic_ivf.object1
         public String pckdid { get; set; }
         public String status_print { get; set; }
         public String status_up_stock { get; set; }
+        public String pharmacy_finish_date_time { get; set; }
+        public String pharmacy_sticker_date_time { get; set; }
     }
 }

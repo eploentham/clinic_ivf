@@ -46,6 +46,8 @@ namespace clinic_ivf.object1
         public String ext_special { get; set; }
         public String include_package { get; set; }
         public String ext_package { get; set; }
-        public String total1 { get; set; }        
+        public String total1 { get; set; }
+        public String cash_transfer { get; set; }
+        public String cash_transfer_id { get; set; }
     }
 }

@@ -3998,7 +3998,7 @@ namespace clinic_ivf.gui
             opkgs.P2BDetailID = "";
             opkgs.P3BDetailID = "";
             opkgs.P4BDetailID = "";
-            opkgs.VN = txtVnOld.Text;
+            opkgs.VN = txtVn.Text;
             opkgs.row1 = grfOrder.Rows.Count.ToString();
             String pkgsid = ic.ivfDB.PackageAdd(opkgs, ic.userId);
 

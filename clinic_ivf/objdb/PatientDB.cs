@@ -1182,6 +1182,7 @@ namespace clinic_ivf.objdb
                 "Left join " + ptt.table + " ptt_2 on ptt." + ptt.t_patient_id_2 + "= ptt_2." + ptt.t_patient_id + " and ptt.patient_hn_2 <> '' and ptt.patient_hn_2 is not null " +
                 "Left join f_patient_prefix fpp_2 on fpp_2.f_patient_prefix_id = ptt_2.f_patient_prefix_id " +
                 "left join Agent agt on ptt.agent = agt.AgentID " +
+                //"left join Doctor dtr on ptt.doctor" +
                 "Where ptt." + ptt.patient_record_date_time + " >='" + date + " 00:00:00' and ptt." + ptt.patient_record_date_time + " <='" + date + " 23:59:59' " +
                 " and ptt." + ptt.active + "='1'  " +
                 "Order By ptt." + ptt.t_patient_id;

@@ -274,8 +274,7 @@ namespace clinic_ivf.objdb
                 "Where " + opkgs.PCKSID + "= " +
                 "(select billd.pcksid " +
                 "from BillDetail billd inner join BillHeader billh on billd.bill_id = billh.bill_id " +
-                "where billh.bill_id = '"+ pkgsid + "' and billd.status='package') "
-                ;
+                "where billh.bill_id = '"+ pkgsid + "' and billd.status='package') ";
             try
             {
                 re = conn.ExecuteNonQuery(conn.conn, sql);

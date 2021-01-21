@@ -32,15 +32,15 @@
             this.sB = new System.Windows.Forms.StatusStrip();
             this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.c1Button1 = new C1.Win.C1Input.C1Button();
             this.cboStkSubName = new C1.Win.C1Input.C1ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.pnStock = new System.Windows.Forms.Panel();
-            this.c1Button1 = new C1.Win.C1Input.C1Button();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             this.sB.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cboStkSubName)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1Button1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboStkSubName)).BeginInit();
             this.SuspendLayout();
             // 
             // theme1
@@ -78,6 +78,18 @@
             this.panel1.Size = new System.Drawing.Size(1112, 42);
             this.panel1.TabIndex = 531;
             this.theme1.SetTheme(this.panel1, "(default)");
+            // 
+            // c1Button1
+            // 
+            this.c1Button1.Location = new System.Drawing.Point(340, 10);
+            this.c1Button1.Name = "c1Button1";
+            this.c1Button1.Size = new System.Drawing.Size(75, 23);
+            this.c1Button1.TabIndex = 924;
+            this.c1Button1.Text = "c1Button1";
+            this.theme1.SetTheme(this.c1Button1, "(default)");
+            this.c1Button1.UseVisualStyleBackColor = true;
+            this.c1Button1.Visible = false;
+            this.c1Button1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // cboStkSubName
             // 
@@ -124,17 +136,6 @@
             this.pnStock.TabIndex = 532;
             this.theme1.SetTheme(this.pnStock, "(default)");
             // 
-            // c1Button1
-            // 
-            this.c1Button1.Location = new System.Drawing.Point(340, 10);
-            this.c1Button1.Name = "c1Button1";
-            this.c1Button1.Size = new System.Drawing.Size(75, 23);
-            this.c1Button1.TabIndex = 924;
-            this.c1Button1.Text = "c1Button1";
-            this.theme1.SetTheme(this.c1Button1, "(default)");
-            this.c1Button1.UseVisualStyleBackColor = true;
-            this.c1Button1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
             // FrmStockOnhand
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -151,8 +152,8 @@
             this.sB.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cboStkSubName)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1Button1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboStkSubName)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

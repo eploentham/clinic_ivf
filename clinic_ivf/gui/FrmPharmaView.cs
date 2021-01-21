@@ -1,6 +1,7 @@
 ﻿using C1.Win.C1Command;
 using C1.Win.C1FlexGrid;
 using C1.Win.C1Input;
+using C1.Win.C1SplitContainer;
 using C1.Win.C1SuperTooltip;
 using clinic_ivf.control;
 using clinic_ivf.object1;
@@ -9,6 +10,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,12 +30,21 @@ namespace clinic_ivf.gui
         Color bg, fc;
         Font ff, ffB;
 
-        C1FlexGrid grfQue, grfFinish, grfSearch;
+        C1FlexGrid grfQue, grfFinish, grfSearch, grfRptName, grfRpt;
 
         int colID = 1, colVNshow = 2, colPttHn = 3, colPttName = 4, colVsDate = 5, colVsTime = 6, colVsEtime = 7, colStatus = 8, colPttId = 9, colVn = 10, colDtr = 11, colStatusNurse = 12, colStatusCashier = 13;
 
         C1SuperTooltip stt;
         C1SuperErrorProvider sep;
+
+        C1DockingTabPage tabReport;
+        C1SplitterPanel scRptLeft, scRptRight, scRptReportName, scRptReportCriteria;
+        C1SplitContainer sCRpt, sCRptReport;
+        C1Button btnOk, btnExcel;
+        Label lbtxtRptDateStart, lbtxtRptDateEnd;
+        C1DateEdit txtRptDateStart, txtRptDateEnd;
+
+        int colRptDrugDailyTime = 1, colRptDrugDailyDrugCode = 2, colRptDrugDailyDrugName = 3, colRptDrugDailyPttHn = 4, colRptDrugDailyPttName = 5, colRptDrugDailyQty = 6;
 
         Boolean pageLoad = false;
         Timer timer;
@@ -62,7 +73,85 @@ namespace clinic_ivf.gui
             stt = new C1SuperTooltip();
             sep = new C1SuperErrorProvider();
 
-            txtDateStart.Value = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd");
+            tabReport = new C1DockingTabPage();
+            tabReport.Location = new System.Drawing.Point(1, 24);
+            //tabScan.Name = "c1DockingTabPage1";
+            tabReport.Size = new System.Drawing.Size(667, 175);
+            tabReport.TabIndex = 0;
+            tabReport.Text = "Report";
+            tabReport.Name = "tabReport";
+            tC.Controls.Add(tabReport);
+            sCRpt = new C1.Win.C1SplitContainer.C1SplitContainer();
+            scRptLeft = new C1.Win.C1SplitContainer.C1SplitterPanel();
+            scRptRight = new C1.Win.C1SplitContainer.C1SplitterPanel();
+            sCRptReport = new C1.Win.C1SplitContainer.C1SplitContainer();
+            scRptReportName = new C1.Win.C1SplitContainer.C1SplitterPanel();
+            scRptReportCriteria = new C1.Win.C1SplitContainer.C1SplitterPanel();
+            sCRpt.SuspendLayout();
+            scRptRight.SuspendLayout();
+            scRptLeft.SuspendLayout();
+            sCRptReport.SuspendLayout();
+            scRptReportName.SuspendLayout();
+            scRptReportCriteria.SuspendLayout();
+
+            scRptLeft.Collapsible = true;
+            scRptLeft.Dock = C1.Win.C1SplitContainer.PanelDockStyle.Left;
+            scRptLeft.Location = new System.Drawing.Point(0, 21);
+            scRptLeft.Name = "scRptLeft";
+            scRptLeft.Controls.Add(sCRptReport);
+            scRptLeft.ClientSize = new Size(20, 80);
+            scRptLeft.Collapsible = true;
+            scRptLeft.SizeRatio = 15;
+
+            scRptRight.Collapsible = false;
+            scRptRight.Dock = C1.Win.C1SplitContainer.PanelDockStyle.Right;
+            scRptRight.Location = new System.Drawing.Point(0, 21);
+            scRptRight.Name = "scRptRight";
+            //scRptRight.Controls.Add(day0View);
+
+            sCRpt.AutoSizeElement = C1.Framework.AutoSizeElement.Both;
+            sCRpt.Name = "sCRpt";
+            sCRpt.Dock = System.Windows.Forms.DockStyle.Fill;
+            sCRpt.Panels.Add(scRptLeft);
+            sCRpt.Panels.Add(scRptRight);
+            tabReport.Controls.Add(sCRpt);
+
+            scRptReportCriteria.Collapsible = true;
+            scRptReportCriteria.Dock = C1.Win.C1SplitContainer.PanelDockStyle.Bottom;
+            scRptReportCriteria.Location = new System.Drawing.Point(0, 21);
+            scRptReportCriteria.Name = "scRptReportCriteria";
+            //scRptLeft.Controls.Add(pnEmailDay0);
+            scRptReportCriteria.ClientSize = new Size(20, 80);
+            scRptReportCriteria.Collapsible = true;
+            scRptReportCriteria.SizeRatio = 25;
+
+            scRptReportName.Collapsible = false;
+            scRptReportName.Dock = C1.Win.C1SplitContainer.PanelDockStyle.Top;
+            scRptReportName.Location = new System.Drawing.Point(0, 21);
+            scRptReportName.Name = "scRptReportName";
+
+            sCRptReport.AutoSizeElement = C1.Framework.AutoSizeElement.Both;
+            sCRptReport.Name = "sCRptReport";
+            sCRptReport.Dock = System.Windows.Forms.DockStyle.Fill;
+            sCRptReport.Panels.Add(scRptReportCriteria);
+            sCRptReport.Panels.Add(scRptReportName);
+
+
+            scRptLeft.ResumeLayout(false);
+            scRptRight.ResumeLayout(false);
+            sCRpt.ResumeLayout(false);
+            scRptReportCriteria.ResumeLayout(false);
+            scRptReportName.ResumeLayout(false);
+            sCRptReport.ResumeLayout(false);
+            scRptLeft.PerformLayout();
+            scRptRight.PerformLayout();
+            sCRpt.PerformLayout();
+            scRptReportCriteria.PerformLayout();
+            scRptReportName.PerformLayout();
+            sCRptReport.PerformLayout();
+
+            //txtDateStart.Value = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd");
+            txtDateStart.Value = "";
             cboVisitBsp.SelectedItemChanged += CboVisitBsp_SelectedItemChanged;
             ic.ivfDB.bspDB.setCboBsp(cboVisitBsp, ic.iniC.service_point_id);
 
@@ -78,7 +167,9 @@ namespace clinic_ivf.gui
             initGrfFinish();
             
             initGrfSearch();
-            
+            initGrfRptName();
+            initGrfRpt();
+
             int timerlab = 0;
             int.TryParse(ic.iniC.timerlabreqaccept, out timerlab);
             timer = new Timer();
@@ -101,6 +192,156 @@ namespace clinic_ivf.gui
             setGrfQue();
             //setGrfSearch(txtSearch.Text.Trim());
         }
+        private void initGrfRptName()
+        {
+            grfRptName = new C1FlexGrid();
+            grfRptName.Font = fEdit;
+            grfRptName.Dock = System.Windows.Forms.DockStyle.Fill;
+            grfRptName.Location = new System.Drawing.Point(0, 0);
+            grfRptName.Rows.Count = 2;
+            grfRptName.Cols.Count = 2;
+            grfRptName.Cols[1].Width = 300;
+            grfRptName.Cols[1].Caption = "Report Name";
+            
+            
+            grfRptName[1, 0] = 1;
+            grfRptName[1, 1] = "รายงานการจ่ายยา";
+            grfRptName.Cols[1].AllowEditing = false;
+            grfRptName.Click += GrfRptName_Click;
+            //FilterRow fr = new FilterRow(grfExpn);
+
+            //grfSearch.DoubleClick += GrfSearch_DoubleClick;
+            //grfExpnC.CellButtonClick += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellButtonClick);
+            //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
+            //ContextMenu menuGw = new ContextMenu();
+            //menuGw.MenuItems.Add("&แก้ไข รายการเบิก", new EventHandler(ContextMenu_edit));
+            //grfRptName.ContextMenu = menuGw;
+            scRptReportName.Controls.Add(grfRptName);
+            //grfRptName.Rows.Count = 1;
+            theme1.SetTheme(grfRptName, "Office2010Red");
+
+        }
+
+        private void GrfRptName_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (grfRptName.Row == 1)
+            {
+                initComponentRptDrugDaily();
+            }
+        }
+        private void initComponentRptDrugDaily()
+        {
+            int gapLine = 25, gapX = 20, gapY = 20, xCol2 = 130, xCol1 = 80, xCol3 = 330, xCol4 = 640, xCol5 = 950;
+            Size size = new Size();
+
+            //gapY += gapLine;
+            scRptReportCriteria.Controls.Clear();
+            lbtxtRptDateStart = new Label();
+            txtRptDateStart = new C1DateEdit();
+            lbtxtRptDateEnd = new Label();
+            txtRptDateEnd = new C1DateEdit();
+            btnOk = new C1Button();
+            ic.setControlLabel(ref lbtxtRptDateStart, fEdit, "วันที่เริ่มต้น :", "lbtxtRptDateStart", gapX, gapY);
+            size = ic.MeasureString(lbtxtRptDateStart);
+            ic.setControlC1DateTimeEdit(ref txtRptDateStart, "txtRptDateStart", xCol2, gapY);
+
+            gapY += gapLine;
+            ic.setControlLabel(ref lbtxtRptDateEnd, fEdit, "วันที่สิ้นสุด :", "lbtxtRptDateEnd", gapX, gapY);
+            size = ic.MeasureString(lbtxtRptDateEnd);
+            ic.setControlC1DateTimeEdit(ref txtRptDateEnd, "txtRptDateEnd", xCol2, gapY);
+
+            gapY += gapLine;
+            ic.setControlC1Button(ref btnOk, fEdit, "OK", "btnOk", xCol1-40, gapY);
+            ic.setControlC1Button(ref btnExcel, fEdit, "Excel", "btnExcel", xCol2, gapY);
+
+            btnOk.Click += BtnOk_Click;
+
+            scRptReportCriteria.Controls.Add(lbtxtRptDateStart);
+            scRptReportCriteria.Controls.Add(txtRptDateStart);
+            scRptReportCriteria.Controls.Add(lbtxtRptDateEnd);
+            scRptReportCriteria.Controls.Add(txtRptDateEnd);
+            scRptReportCriteria.Controls.Add(btnOk);
+            scRptReportCriteria.Controls.Add(btnExcel);
+        }
+
+        private void BtnOk_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (grfRptName.Row == 1)
+            {
+                setGrfRptDrugDaily();
+            }
+        }
+        private void setGrfRptDrugDaily()
+        {
+            String startdate = "", enddate = "";
+            DataTable dt = new DataTable();
+            DateTime startdate1 = new DateTime();
+            DateTime enddate1 = new DateTime();
+            DateTime.TryParse(txtRptDateStart.Text, out startdate1);
+            DateTime.TryParse(txtRptDateEnd.Text, out enddate1);
+            startdate = startdate1.ToString("yyyy-MM-dd", new CultureInfo("en-US"));
+            enddate = enddate1.ToString("yyyy-MM-dd", new CultureInfo("en-US"));
+            dt = ic.ivfDB.oJpxdDB.selectByDate(startdate, enddate);
+            grfRpt.Rows.Count = 1;
+            grfRpt.Rows.Count = dt.Rows.Count + 1;
+            grfRpt.Cols.Count = 7;
+
+            grfRpt.Cols[colRptDrugDailyDrugCode].Width = 80;
+            grfRpt.Cols[colRptDrugDailyDrugName].Width = 300;
+            grfRpt.Cols[colRptDrugDailyPttHn].Width = 100;
+            grfRpt.Cols[colRptDrugDailyPttName].Width = 300;
+            grfRpt.Cols[colRptDrugDailyQty].Width = 80;
+            grfRpt.Cols[colRptDrugDailyTime].Width = 80;
+            grfRpt.Cols[colRptDrugDailyTime].Caption = "TIME";
+            grfRpt.Cols[colRptDrugDailyQty].Caption = "QTY";
+            grfRpt.Cols[colRptDrugDailyPttName].Caption = "Patient Name";
+            grfRpt.Cols[colRptDrugDailyPttHn].Caption = "HN";
+            grfRpt.Cols[colRptDrugDailyDrugName].Caption = "NAME";
+            grfRpt.Cols[colRptDrugDailyDrugCode].Caption = "CODE";
+            grfRpt.Cols[colRptDrugDailyTime].Caption = "Date ";
+            ContextMenu menuGw = new ContextMenu();
+            //menuGw.MenuItems.Add("&receive operation", new EventHandler(ContextMenu_Apm));
+            grfRpt.ContextMenu = menuGw;
+            int i = 1;
+            foreach (DataRow row in dt.Rows)
+            {
+                grfRpt[i, colRptDrugDailyDrugCode] = row["DUID"].ToString();
+                grfRpt[i, colRptDrugDailyDrugName] = row["DUName"].ToString();
+                grfRpt[i, colRptDrugDailyPttHn] = ic.showHN(row["PIDS"].ToString(), row["patient_year"].ToString());
+                grfRpt[i, colRptDrugDailyPttName] = row["patient_name"].ToString();
+                grfRpt[i, colRptDrugDailyQty] = row["QTY"].ToString();
+                grfRpt[i, colRptDrugDailyTime] = ic.datetimetoShow(row["pharmacy_finish_date_time"].ToString());
+                i++;
+            }
+            grfRpt.Cols[colRptDrugDailyDrugCode].AllowEditing = false;
+            grfRpt.Cols[colRptDrugDailyDrugName].AllowEditing = false;
+            grfRpt.Cols[colRptDrugDailyPttHn].AllowEditing = false;
+            grfRpt.Cols[colRptDrugDailyPttName].AllowEditing = false;
+            grfRpt.Cols[colRptDrugDailyQty].AllowEditing = false;
+            grfRpt.Cols[colRptDrugDailyTime].AllowEditing = false;
+        }
+        private void initGrfRpt()
+        {
+            grfRpt = new C1FlexGrid();
+            grfRpt.Font = fEdit;
+            grfRpt.Dock = System.Windows.Forms.DockStyle.Fill;
+            grfRpt.Location = new System.Drawing.Point(0, 0);
+
+            //FilterRow fr = new FilterRow(grfExpn);
+
+            //grfSearch.DoubleClick += GrfSearch_DoubleClick;
+            //grfExpnC.CellButtonClick += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellButtonClick);
+            //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
+            //ContextMenu menuGw = new ContextMenu();
+            //menuGw.MenuItems.Add("&แก้ไข รายการเบิก", new EventHandler(ContextMenu_edit));
+            //grfSearch.ContextMenu = menuGw;
+            scRptRight.Controls.Add(grfRpt);
+            grfRpt.Rows.Count = 1;
+            theme1.SetTheme(grfRpt, "Office2010Red");
+
+        }
         private void initGrfSearch()
         {
             grfSearch = new C1FlexGrid();
@@ -121,7 +362,6 @@ namespace clinic_ivf.gui
             theme1.SetTheme(pnSearch, "Office2010Red");
 
         }
-
         private void GrfSearch_DoubleClick(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
@@ -177,7 +417,7 @@ namespace clinic_ivf.gui
             name = grfQue[grfQue.Row, colPttName] != null ? grfQue[grfQue.Row, colPttName].ToString() : "";
             //FrmNurseAdd frm = new FrmNurseAdd();
             //frm.ShowDialog(this);
-
+            ic.ivfDB.vsDB.updateStatusPharmacyProcess(id);
             openNurseAdd(pttId, id, name, "edit");
         }
         private void openNurseAdd3()
@@ -351,12 +591,12 @@ namespace clinic_ivf.gui
             grfQue.Rows.Count = 1;
             grfQue.Rows.Count = dt.Rows.Count + 1;
             grfQue.Cols.Count = 14;
-            C1TextBox txt = new C1TextBox();
+            //C1TextBox txt = new C1TextBox();
             //C1ComboBox cboproce = new C1ComboBox();
             //ic.ivfDB.itmDB.setCboItem(cboproce);
-            grfQue.Cols[colPttHn].Editor = txt;
-            grfQue.Cols[colPttName].Editor = txt;
-            grfQue.Cols[colVsDate].Editor = txt;
+            //grfQue.Cols[colPttHn].Editor = txt;
+            //grfQue.Cols[colPttName].Editor = txt;
+            //grfQue.Cols[colVsDate].Editor = txt;
 
             grfQue.Cols[colVNshow].Width = 80;
             grfQue.Cols[colPttHn].Width = 120;
@@ -498,8 +738,8 @@ namespace clinic_ivf.gui
                 grfFinish[i, colPttHn] = ic.showHN(row["PIDS"].ToString(), row["patient_year"].ToString());
                 grfFinish[i, colPttName] = row["PName"].ToString();
                 grfFinish[i, colVsDate] = ic.datetoShow(row["VDate"]);
-                grfFinish[i, colVsTime] = row["VStartTime"].ToString();
-                grfFinish[i, colVsEtime] = row["VEndTime"].ToString();
+                grfFinish[i, colVsTime] = ic.timetoShow(row["VStartTime"].ToString());
+                grfFinish[i, colVsEtime] = ic.timetoShow(row["VEndTime"].ToString());
                 grfFinish[i, colStatus] = row["VName"].ToString();
                 grfFinish[i, colPttId] = row["PID"].ToString();
                 grfFinish[i, colVn] = row["VN"].ToString();
@@ -535,7 +775,7 @@ namespace clinic_ivf.gui
         {
             //grfDept.Rows.Count = 7;
             tC.SelectedTab = tabSearch;
-            grfSearch.Clear();
+            //grfSearch.Clear();
             DataTable dt1 = new DataTable();
             DataTable dt = new DataTable();
             if (search.Equals(""))
@@ -551,18 +791,19 @@ namespace clinic_ivf.gui
             else
             {
                 dt = ic.ivfDB.ovsDB.selectByHNLike(search);
+                dt = ic.ivfDB.vsDB.selectByStatusCashierSearch(txtSearch.Text, ic.datetoDB(txtDateStart.Text));        //+0020
                 //grfPtt.DataSource = ic.ivfDB.vsOldDB.selectCurrentVisit(search);
             }
 
-            //grfExpn.Rows.Count = dt.Rows.Count + 1;
+            grfSearch.Rows.Count = 1;
             grfSearch.Rows.Count = dt.Rows.Count + 1;
             grfSearch.Cols.Count = 10;
-            C1TextBox txt = new C1TextBox();
+            //C1TextBox txt = new C1TextBox();
             //C1ComboBox cboproce = new C1ComboBox();
             //ic.ivfDB.itmDB.setCboItem(cboproce);
-            grfSearch.Cols[colPttHn].Editor = txt;
-            grfSearch.Cols[colPttName].Editor = txt;
-            grfSearch.Cols[colVsDate].Editor = txt;
+            //grfSearch.Cols[colPttHn].Editor = txt;
+            //grfSearch.Cols[colPttName].Editor = txt;
+            //grfSearch.Cols[colVsDate].Editor = txt;
 
             grfSearch.Cols[colVNshow].Width = 120;
             grfSearch.Cols[colPttHn].Width = 120;
@@ -601,8 +842,8 @@ namespace clinic_ivf.gui
                 grfSearch[i, colPttHn] = row["PIDS"].ToString();
                 grfSearch[i, colPttName] = row["PName"].ToString();
                 grfSearch[i, colVsDate] = ic.datetoShow(row["VDate"]);
-                grfSearch[i, colVsTime] = row["VStartTime"].ToString();
-                grfSearch[i, colVsEtime] = row["VEndTime"].ToString();
+                grfSearch[i, colVsTime] = ic.timetoShow(row["VStartTime"].ToString());
+                grfSearch[i, colVsEtime] = ic.timetoShow(row["VEndTime"].ToString());
                 grfSearch[i, colStatus] = row["VName"].ToString();
                 grfSearch[i, colPttId] = row["PID"].ToString();
                 if (!row[ic.ivfDB.ovsDB.vsold.form_a_id].ToString().Equals("0"))
@@ -644,6 +885,7 @@ namespace clinic_ivf.gui
             setGrfQue();
             setGrfFinish();
             theme1.SetTheme(tC, ic.theme);
+            txtDateStart.ErrorInfo.C1SuperErrorProvider = sep;
         }
     }
 }

@@ -50,7 +50,7 @@ namespace clinic_ivf.gui
         Color bg, fc;
         Font ff, ffB;
         int colID = 1, colHn = 2, colImg = 3, colDesc = 4, colDesc2 = 5, colDesc3 = 6, colPathPic = 7, colBtn=8, colStatus=9, colDoctor=10;
-        int colVsVN = 1, colVsVnShow=2, colVsHn = 3, colVsVisitDate = 4, colVsVisitTime=5, colVsNuserFinishTime=6, colVsCashierFinishTime=7, colVsStatus=8, colVsStatusNurse=9, colVsStatusLab=10, colVsStatusCashier=11;
+        int colVsVN = 1, colVsVnShow=2, colVsHn = 3, colVsVisitDate = 4, colVsVisitTime=5, colVsNuserFinishTime=6, colVsCashierFinishTime=7, colVsPharmacyFinishTime = 8, colVsStatus=9, colVsStatusNurse=10, colVsStatusLab=11, colVsStatusCashier=12, colVsStatusPharmacy = 13, colVsAgent=14, colVsDtrName=15;
         int colpApmId = 1, colpApmDate = 2, colpApmTime = 3, colpApmRemark = 4;
         int colNoteId = 1, colNote = 2, colNoteStatusAll=3;
         Image imgCorr, imgTran, imgFinish;
@@ -2733,7 +2733,7 @@ namespace clinic_ivf.gui
         {
             //grfVs.Clear();
             grfVs.Rows.Count = 1;
-            grfVs.Cols.Count = 12;
+            grfVs.Cols.Count = 15;
             DataTable dt = ic.ivfDB.vsDB.selectByHN1(search);
 
             grfVs.Rows.Count = dt.Rows.Count + 1;
@@ -2754,6 +2754,8 @@ namespace clinic_ivf.gui
             colLab.DataType = typeof(Image);
             Column colCashier = grfVs.Cols[colVsStatusCashier];
             colCashier.DataType = typeof(Image);
+            Column colPharmacy = grfVs.Cols[colVsStatusPharmacy];
+            colPharmacy.DataType = typeof(Image);
             //grfImg.Cols[colBtn].Editor = btn;
 
             grfVs.Cols[colVsVN].Width = 250;
@@ -2778,6 +2780,8 @@ namespace clinic_ivf.gui
             grfVs.Cols[colVsStatusCashier].Caption = "Cashier";
             grfVs.Cols[colVsNuserFinishTime].Caption = "N.F Time";
             grfVs.Cols[colVsCashierFinishTime].Caption = "C.F Time";
+            grfVs.Cols[colVsPharmacyFinishTime].Caption = "P.F Time";
+            grfVs.Cols[colVsAgent].Caption = "Agent";
 
             //Hashtable ht = new Hashtable();
             //foreach (DataRow dr in dt.Rows)
@@ -2807,8 +2811,11 @@ namespace clinic_ivf.gui
                 grfVs[i, colVsStatusNurse] = row["status_nurse"].ToString().Equals("1") ? imgCorr : row["status_nurse"].ToString().Equals("2") ? imgFinish : imgTran;
                 grfVs[i, colVsStatusLab] = row["status_lab"].ToString().Equals("1") ? imgCorr : row["status_lab"].ToString().Equals("2") ? imgFinish : imgTran;
                 grfVs[i, colVsStatusCashier] = row["status_cashier"].ToString().Equals("1") ? imgCorr : row["status_cashier"].ToString().Equals("2") ? imgFinish : imgTran;
+                grfVs[i, colVsStatusPharmacy] = row["status_pharmacy"].ToString().Equals("1") ? imgCorr : row["status_pharmacy"].ToString().Equals("2") ? imgFinish : imgTran;
                 grfVs[i, colVsNuserFinishTime] = ic.timetoShow(row[ic.ivfDB.vsDB.vs.nurse_finish_date_time].ToString());
                 grfVs[i, colVsCashierFinishTime] = ic.timetoShow(row[ic.ivfDB.vsDB.vs.cashier_finish_date_time].ToString());
+                grfVs[i, colVsPharmacyFinishTime] = ic.timetoShow(row[ic.ivfDB.vsDB.vs.pharmacy_finish_date_time].ToString());
+                grfVs[i, colVsAgent] = row["AgentName"].ToString();
                 grfVs[i, 0] = i;
                 i++;
                 //if (i % 2 == 0)
@@ -2825,8 +2832,11 @@ namespace clinic_ivf.gui
             grfVs.Cols[colVsStatusNurse].AllowEditing = false;
             grfVs.Cols[colVsStatusLab].AllowEditing = false;
             grfVs.Cols[colVsStatusCashier].AllowEditing = false;
+            grfVs.Cols[colVsStatusPharmacy].AllowEditing = false;
             grfVs.Cols[colVsNuserFinishTime].AllowEditing = false;
             grfVs.Cols[colVsCashierFinishTime].AllowEditing = false;
+            grfVs.Cols[colVsPharmacyFinishTime].AllowEditing = false;
+            grfVs.Cols[colVsAgent].AllowEditing = false;
             grfVs.AutoSizeCols();
             grfVs.AutoSizeRows();
             theme1.SetTheme(grfVs, "Office2016DarkGray");
@@ -2835,7 +2845,7 @@ namespace clinic_ivf.gui
         {
             //grfVs.Clear();
             grfVs.Rows.Count = 1;
-            grfVs.Cols.Count = 12;
+            grfVs.Cols.Count = 16;
             //DataTable dt = ic.ivfDB.vsDB.selectByHN(search);      //-0020
             DataTable dt = ic.ivfDB.vsDB.selectByPttId2(search);        //+0020
             grfVs.Rows.Count = dt.Rows.Count + 1;
@@ -2870,6 +2880,8 @@ namespace clinic_ivf.gui
             colLab.DataType = typeof(Image);
             Column colCashier = grfVs.Cols[colVsStatusCashier];
             colCashier.DataType = typeof(Image);
+            Column colPhar = grfVs.Cols[colVsStatusPharmacy];
+            colPhar.DataType = typeof(Image);
             grfVs.Cols[colVsVN].Caption = "VN";
             grfVs.Cols[colVsHn].Caption = "HN";
             grfVs.Cols[colVsVisitDate].Caption = "visit date";
@@ -2877,9 +2889,12 @@ namespace clinic_ivf.gui
             grfVs.Cols[colVsStatus].Caption = "Status";
             grfVs.Cols[colVsStatusNurse].Caption = "Nurse";
             grfVs.Cols[colVsStatusLab].Caption = "Lab";
+            grfVs.Cols[colVsStatusPharmacy].Caption = "PHAR";
             grfVs.Cols[colVsStatusCashier].Caption = "Cashier";
             grfVs.Cols[colVsNuserFinishTime].Caption = "N.F Time";
             grfVs.Cols[colVsCashierFinishTime].Caption = "C.F Time";
+            grfVs.Cols[colVsAgent].Caption = "agent";
+            grfVs.Cols[colVsDtrName].Caption = "Doctor";
 
             //Hashtable ht = new Hashtable();
             //foreach (DataRow dr in dt.Rows)
@@ -2909,8 +2924,11 @@ namespace clinic_ivf.gui
                 grfVs[i, colVsStatusNurse] = row["status_nurse"].ToString().Equals("1") ? imgCorr : row["status_nurse"].ToString().Equals("2") ? imgFinish : imgTran;
                 grfVs[i, colVsStatusLab] = row["status_lab"].ToString().Equals("1") ? imgCorr : row["status_lab"].ToString().Equals("2") ? imgFinish : imgTran;
                 grfVs[i, colVsStatusCashier] = row["status_cashier"].ToString().Equals("1") ? imgCorr : row["status_cashier"].ToString().Equals("2") ? imgFinish : imgTran;
+                grfVs[i, colVsStatusPharmacy] = row["status_pharmacy"].ToString().Equals("1") ? imgCorr : row["status_pharmacy"].ToString().Equals("2") ? imgFinish : imgTran;
                 grfVs[i, colVsNuserFinishTime] = ic.timetoShow(row[ic.ivfDB.vsDB.vs.nurse_finish_date_time].ToString());
                 grfVs[i, colVsCashierFinishTime] = ic.timetoShow(row[ic.ivfDB.vsDB.vs.cashier_finish_date_time].ToString());
+                grfVs[i, colVsAgent] = row["AgentName"].ToString();
+                grfVs[i, colVsDtrName] = row["dtr_name"].ToString();
                 grfVs[i, 0] = i;
                 i++;
                 //if (i % 2 == 0)

@@ -106,6 +106,7 @@ namespace clinic_ivf.gui
             ff = txtHn.Font;
             ic.ivfDB.ocaDB.setCboCashAccount(cboAccCash, "");
             ic.ivfDB.ocrDB.setCboCreditCardAccount(cboAccCredit, "");
+            ic.ivfDB.actDB.setCboAccCashTransfer(cboAccCashTransfer, "");
             ic.ivfDB.obilgDB.setCboGroupType(cboGrpType, "0");
             txtCreditCharge.Value = ic.iniC.creditCharge;
 
@@ -264,21 +265,21 @@ namespace clinic_ivf.gui
                     MessageBox.Show("ยังไม่ได้เลือก ประเภทบัญชี", "");
                     return;
                 }
-
                 String flag = "";
                 if (cashid1.Length > 0)
                 {
-                    
                     oca = ic.ivfDB.ocaDB.selectByPk1(cashid1);
                     flag = oca.IntLock.Equals("1") ? "2" : "1";
+                    flag = oca.IntLock;
                 }
                 else
                 {
-                    
                     ocr = ic.ivfDB.ocrDB.selectByPk1(creditid1);
                     flag = ocr.IntLock.Equals("1") ? "2" : "1";
+                    flag = ocr.IntLock;
                 }
-                if (flag.Equals("1"))
+                //if (flag.Equals("1"))
+                if (flag.Equals("0"))
                 {
                     printReceipt("");
                 }
@@ -288,23 +289,25 @@ namespace clinic_ivf.gui
                     printReceipt("2");
                     //printReceipt("2");
                 }
-                ic.ivfDB.vsDB.updateStatusPharmacyFinish1(txtVn.Text);
+                ic.ivfDB.vsDB.updateStatusCashierFinish(txtVn.Text);
             }
         }
         private void printReceipt(String flagExtra)
         {
-            String cashid1 = "", creditid1 = "";
+            String cashid1 = "", creditid1 = "", transferid="";
             cashid1 = cboAccCash.SelectedItem == null ? "" : ((ComboBoxItem)cboAccCash.SelectedItem).Value;
             creditid1 = cboAccCredit.SelectedItem == null ? "" : ((ComboBoxItem)cboAccCredit.SelectedItem).Value;
-            if (cashid1.Length == 0 && creditid1.Length == 0)
+            transferid = cboAccCashTransfer.SelectedItem == null ? "" : ((ComboBoxItem)cboAccCashTransfer.SelectedItem).Value;
+            if (cashid1.Length == 0 && creditid1.Length == 0 && transferid.Length == 0)
             {
                 MessageBox.Show("ยังไม่ได้เลือก ประเภทบัญชี", "");
                 return;
             }
 
-            Decimal totalcredit = 0, totalcash = 0, total = 0, discount = 0;
+            Decimal totalcredit = 0, totalcash = 0, total = 0, discount = 0, totaltransfer=0;
             Decimal.TryParse(txtTotalCredit.Text.Replace(",", ""), out totalcredit);
             Decimal.TryParse(txtTotalCash.Text.Replace(",", ""), out totalcash);
+            Decimal.TryParse(txtTotalTransfer.Text.Replace(",", ""), out totaltransfer);
 
             if (cashid1.Equals("") && totalcash > 0)
             {
@@ -313,7 +316,35 @@ namespace clinic_ivf.gui
             }
             if (!cashid1.Equals("") && totalcash <= 0)
             {
-                MessageBox.Show("มียอด cash แต่ไม่ได้ป้อน จำนวนเงิน", "");
+                if (!cboAccCash.Text.Equals("-"))
+                {
+                    MessageBox.Show("มียอด cash แต่ไม่ได้ป้อน จำนวนเงิน", "");
+                    txtTotalCash.Focus();
+                    return;
+                }
+            }
+            if (creditid1.Equals("") && totalcredit > 0)
+            {
+                MessageBox.Show("มียอด credit ไม่ยังไม่ได้เลือก ประเภทบัญชี", "");
+                return;
+            }
+            if (!creditid1.Equals("") && totalcredit <= 0)
+            {
+                if (!cboAccCredit.Text.Equals("-"))
+                {
+                    MessageBox.Show("มียอด credit แต่ไม่ได้ป้อน จำนวนเงิน", "");
+                    txtTotalCash.Focus();
+                    return;
+                }
+            }
+            if (transferid.Equals("") && totaltransfer > 0)
+            {
+                MessageBox.Show("มียอด transfer ไม่ยังไม่ได้เลือก ประเภทบัญชี", "");
+                return;
+            }
+            if (!transferid.Equals("") && totaltransfer <= 0)
+            {
+                MessageBox.Show("มียอด transfer แต่ไม่ได้ป้อน จำนวนเงิน", "");
                 txtTotalCash.Focus();
                 return;
             }
@@ -325,7 +356,13 @@ namespace clinic_ivf.gui
                 //    return;
                 //}
             }
-            total = totalcash + totalcredit;
+            total = totalcash + totalcredit+ totaltransfer;
+            if (total <= 0)
+            {
+                MessageBox.Show("ไม่ได้ป้อน จำนวนเงิน", "");
+                txtTotalCash.Focus();
+                return;
+            }
             PrinterSettings settings = new PrinterSettings();
             printerOld = settings.PrinterName;
             SetDefaultPrinter(ic.iniC.printerBill);
@@ -353,10 +390,8 @@ namespace clinic_ivf.gui
                 //receiptno11 = ic.ivfDB.obilhDB.selectReceiptNoByVN(ovs.VN);           //      -0020
                 receiptno11 = ic.ivfDB.obilhDB.selectReceiptNoByVN(vs.visit_vn);             //      +0020
             }
-            
             //billnoex1 = ic.ivfDB.obilhDB.selectBillNoExByVN(ovs.VN);
             //new LogWriter("e", "printReceipt receiptno " + receiptno);
-
             if (flagExtra.Equals("2") && !flagedit.Equals("noedit")) receiptno11 = "";      //พิมพ์ ใบเสร็จ 2 ชุด
             if (receiptno11.Length <= 0)
             {
@@ -366,8 +401,9 @@ namespace clinic_ivf.gui
                     billExtNo = ic.ivfDB.copDB.genReceiptExtDoc();
                 }
                 billNo = ic.ivfDB.copDB.genReceiptDoc(ref year, ref month, ref day, flagExtra);                
-                String cashid = cboAccCash.SelectedItem == null ? "" : ((ComboBoxItem)cboAccCash.SelectedItem).Value;
-                String creditid = cboAccCredit.SelectedItem == null ? "" : ((ComboBoxItem)cboAccCredit.SelectedItem).Value;
+                //String cashid = cboAccCash.SelectedItem == null ? "" : ((ComboBoxItem)cboAccCash.SelectedItem).Value;
+                //String creditid = cboAccCredit.SelectedItem == null ? "" : ((ComboBoxItem)cboAccCredit.SelectedItem).Value;
+                //String cashtransferid = cboAccCashTransfer.SelectedItem == null ? "" : ((ComboBoxItem)cboAccCashTransfer.SelectedItem).Value;
                 //ic.ivfDB.obilhDB.updateReceiptNo(txtVn.Text, billNo, txtTotalCash.Text.Replace(",",""), txtTotalCredit.Text.Replace(",", ""), txtCreditCardNumber.Text, cashid, creditid);
                 if (flagExtra.Equals("2"))
                 {
@@ -375,8 +411,10 @@ namespace clinic_ivf.gui
                 }
                 else
                 {
-                    ic.ivfDB.obilhDB.updateReceiptNoByBillId(txtBillId.Text, billNo, txtTotalCash.Text.Replace(",", ""), txtTotalCredit.Text.Replace(",", "")
-                    , txtCreditCardNumber.Text, cashid, creditid, total.ToString(), discount.ToString(), txtPayName.Text);
+                    //ic.ivfDB.obilhDB.updateReceiptNoByBillId(txtBillId.Text, billNo, txtTotalCash.Text.Replace(",", ""), txtTotalCredit.Text.Replace(",", "")
+                    //, txtCreditCardNumber.Text, cashid1, creditid1, total.ToString(), discount.ToString(), txtPayName.Text, totaltransfer.ToString(), transferid);
+                    ic.ivfDB.obilhDB.updateReceiptNoByBillId(txtBillId.Text, billNo, totalcash.ToString(), totalcredit.ToString()
+                    , txtCreditCardNumber.Text, cashid1, creditid1, total.ToString(), discount.ToString(), txtPayName.Text, totaltransfer.ToString(), transferid);
                     //OldBillheader obill = new OldBillheader();
                     String billno2 = ic.ivfDB.obilhDB.selectBillNoByVN(txtVn.Text);
                     if (billno2.Equals(""))
@@ -457,6 +495,7 @@ namespace clinic_ivf.gui
                     if (flagExtra.Equals("2"))
                     {
                         row["original"] = "3";
+                        //row["original"] = "2";
                         dtprn.ImportRow(row);
                     }
                 }
@@ -480,19 +519,31 @@ namespace clinic_ivf.gui
             String re1 = ic.ivfDB.vsDB.updateCloseStatusCashier(txtVsId.Text);     // +0020
 
             amt2 = ic.NumberToCurrencyTextThaiBaht(amt, MidpointRounding.AwayFromZero);
-            Decimal.TryParse(txtTotalCash.Text, out cash);
-            Decimal.TryParse(txtTotalCredit.Text, out credit);
-            if ((cash > 0) && (credit <= 0))
+            //Decimal.TryParse(txtTotalCash.Text, out cash);
+            //Decimal.TryParse(txtTotalCredit.Text, out credit);
+            if ((totalcash > 0) && (totalcredit <= 0) && (totaltransfer <= 0))
             {
                 payby = "เงินสด/Cash ";
             }
-            else if ((credit > 0) && (cash <= 0))
+            else if ((totalcash <= 0) && (totalcredit > 0) && (totaltransfer <= 0))
             {
                 payby = "เครดิตการ์ด/Credit Card ";
             }
-            else if ((credit > 0) && (cash > 0))
+            else if ((totalcash > 0) && (totalcredit > 0) && (totaltransfer <= 0))
             {
                 payby = "เงินสด และเครดิตการ์ด/Cash & Credit Card ";
+            }
+            else if ((totalcash > 0) && (totalcredit <= 0) && (totaltransfer > 0))
+            {
+                payby = "เงินสด และเงินโอน/Cash & Cash Transfer ";
+            }
+            else if ((totalcash <= 0) && (totalcredit > 0) && (totaltransfer > 0))
+            {
+                payby = "เครดิตการ์ด และเงินโอน/Credit Card & Cash Transfer ";
+            }
+            else if ((totalcash > 0) && (totalcredit > 0) && (totaltransfer > 0))
+            {
+                payby = "เงินสด และเครดิตการ์ด และเงินโอน/Cash & Credit Card & Cash Transfer ";
             }
             else
             {
@@ -516,9 +567,7 @@ namespace clinic_ivf.gui
             {
                 timecreate = dtdatecreate.ToString("HH:mm");
             }
-
             String billdate = ic.datetoShow(obilh.Date);
-
             btnPrnReceipt.Enabled = false;
             FrmReport frm = new FrmReport(ic);
             new LogWriter("e", "printReceipt billNo " + billNo);
@@ -1106,7 +1155,11 @@ namespace clinic_ivf.gui
             txtVnOld.Value = vs.visit_vn;      //      +0020
             txtHnOld.Value = vs.visit_hn;      //      +0020
             txtVn.Value = vs.visit_vn;      //      +0020
-            txtPttName.Value = ic.ivfDB.fpfDB.getList(ptt.f_patient_prefix_id) + " " + ptt.patient_firstname + " " + ptt.patient_lastname;
+            //txtPttName.Value = ic.ivfDB.fpfDB.getList(ptt.f_patient_prefix_id) + " " + ptt.patient_firstname + " " + ptt.patient_lastname;
+            if (ptt.patient_firstname.Length>0)
+            {
+                txtPttName.Value = ic.ivfDB.fpfDB.getList1(ptt.f_patient_prefix_id) + " " + ptt.patient_firstname + " " + ptt.patient_lastname;
+            }
             txtVnShow.Value = ic.showVN(vs.visit_vn);
             txtAllergy.Value = ptt.allergy_description;
             txtSex.Value = ptt.f_sex_id.Equals("1") ? "ชาย" : "หญิง";
