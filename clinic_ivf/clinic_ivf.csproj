@@ -48,7 +48,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Resources\Subway_TokyoAsakusa.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\iconarchive-red-orb-alphabet-letter-t.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AForge, Version=2.2.5.0, Culture=neutral, PublicKeyToken=c1db6ff4eaa06aeb, processorArchitecture=MSIL">
@@ -933,6 +933,7 @@
       <DependentUpon>PasswordForm.cs</DependentUpon>
     </Compile>
     <Compile Include="objdb\AccCashTransferDB.cs" />
+    <Compile Include="objdb\AccCreditBankDB.cs" />
     <Compile Include="objdb\AddressDB.cs" />
     <Compile Include="objdb\ClosedayDB.cs" />
     <Compile Include="objdb\ClosedayDetailDB.cs" />
@@ -1019,6 +1020,7 @@
     <Compile Include="objdb\StockReturnDetailDB.cs" />
     <Compile Include="objdb\StockSubNameDB.cs" />
     <Compile Include="object1\AccCashTransfer.cs" />
+    <Compile Include="object1\AccCreditBank.cs" />
     <Compile Include="object1\Address.cs" />
     <Compile Include="object1\ASCII.cs" />
     <Compile Include="object1\CellNoteManager.cs" />

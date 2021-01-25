@@ -108,6 +108,7 @@ namespace clinic_ivf.gui
             ic.ivfDB.ocrDB.setCboCreditCardAccount(cboAccCredit, "");
             ic.ivfDB.actDB.setCboAccCashTransfer(cboAccCashTransfer, "");
             ic.ivfDB.obilgDB.setCboGroupType(cboGrpType, "0");
+            ic.ivfDB.acbDB.setCboAccCreditBank(cboCreditBank,"");
             txtCreditCharge.Value = ic.iniC.creditCharge;
 
             stt = new C1SuperTooltip();

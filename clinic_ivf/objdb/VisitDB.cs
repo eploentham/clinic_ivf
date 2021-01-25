@@ -482,13 +482,21 @@ namespace clinic_ivf.objdb
             cop1 = setVisit(dt);
             return cop1;
         }
-        public String selectCloseDay()
+        public String selectCloseDay(String cldid)
         {
-            String cnt = "";
+            String cnt = "", wherevsdate="";
             DataTable dt = new DataTable();
+            if (cldid.Length > 0)
+            {
+                wherevsdate = " vs." + vs.closeday_id + " ='"+ cldid + "' and vs." + vs.f_visit_status_id + " <> '4' ";
+            }
+            else
+            {
+                wherevsdate = " vs." + vs.closeday_id + " ='0' and vs." + vs.f_visit_status_id + " <> '4' ";
+            }
             String sql = "select count(1) as cnt " +
                 "From " + vs.table + " vs " +
-                "Where vs." + vs.closeday_id + " ='0' and vs."+vs.f_visit_status_id +" <> '4' ";
+                "Where  "+ wherevsdate;
             dt = conn.selectData(conn.conn, sql);
             if (dt.Rows.Count >= 1)
             {

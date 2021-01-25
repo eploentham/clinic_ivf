@@ -49,5 +49,7 @@ namespace clinic_ivf.object1
         public String total1 { get; set; }
         public String cash_transfer { get; set; }
         public String cash_transfer_id { get; set; }
+        public String credit_bank_id { get; set; }
+        public String charge { get; set; }
     }
 }

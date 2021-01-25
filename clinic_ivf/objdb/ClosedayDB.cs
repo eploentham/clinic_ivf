@@ -73,6 +73,19 @@ namespace clinic_ivf.objdb
             cop1 = setCloseday(dt);
             return cop1;
         }
+        public Closeday selectByDateCloseDay(String vsdate)
+        {
+            Closeday cop1 = new Closeday();
+            DataTable dt = new DataTable();
+            String sql = "select * " +
+                "From " + cld.table + " dsc " +
+                //"Left Join f_patient_prefix pfx On stf.prefix_id = pfx.f_patient_prefix_id " +
+                "Where dsc." + cld.closeday_date + " ='" + vsdate + "' and dsc.active = '1' " +
+                "Order By closeday_date ";
+            dt = conn.selectData(conn.conn, sql);
+            cop1 = setCloseday(dt);
+            return cop1;
+        }
         public DataTable selectByPk1(String id)
         {
             Closeday cop1 = new Closeday();

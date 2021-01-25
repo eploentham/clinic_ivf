@@ -9,24 +9,24 @@ using System.Threading.Tasks;
 
 namespace clinic_ivf.objdb
 {
-    public class AccCashTransferDB
+    public class AccCreditBankDB
     {
-        public AccCashTransfer act;
+        public AccCreditBank act;
         ConnectDB conn;
-        public List<AccCashTransfer> lFpf;
-
-        public AccCashTransferDB(ConnectDB c)
+        public List<AccCreditBank> lFpf;
+        public AccCreditBankDB(ConnectDB c)
         {
             this.conn = c;
             initConfig();
         }
         private void initConfig()
         {
-            lFpf = new List<AccCashTransfer>();
-            act = new AccCashTransfer();
-            act.cash_transfer_id = "cash_transfer_id";
-            act.cash_transfer_code = "cash_transfer_code";
-            act.cash_transfer_name = "cash_transfer_name";
+            lFpf = new List<AccCreditBank>();
+            act = new AccCreditBank();
+
+            act.credit_bank_id = "credit_bank_id";
+            act.credit_bank_name = "credit_bank_name";
+            act.charge = "charge";
             act.active = "active";
             act.remark = "remark";
             act.date_create = "date_create";
@@ -35,10 +35,9 @@ namespace clinic_ivf.objdb
             act.user_create = "user_create";
             act.user_modi = "user_modi";
             act.user_cancel = "user_cancel";
-            act.receipt_print = "receipt_print";
 
-            act.table = "b_acc_cash_transfer";
-            act.pkField = "cash_transfer_id";
+            act.table = "b_acc_credit_bank";
+            act.pkField = "credit_bank_id";
         }
         public DataTable selectAll()
         {
@@ -47,32 +46,32 @@ namespace clinic_ivf.objdb
                 "From " + act.table + " act " +
                 //"Left Join f_patient_prefix pfx On stf.prefix_id = pfx.f_patient_prefix_id " +
                 " Where act." + act.active + " ='1' " +
-                "Order By act.cash_transfer_code ";
+                "Order By act.credit_bank_name ";
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
-        public AccCashTransfer selectByPk(String id)
+        public AccCreditBank selectByPk(String id)
         {
-            AccCashTransfer cop1 = new AccCashTransfer();
+            AccCreditBank cop1 = new AccCreditBank();
             DataTable dt = new DataTable();
             String sql = "select * " +
                 "From " + act.table + " act " +
                 //"Left Join f_patient_prefix pfx On stf.prefix_id = pfx.f_patient_prefix_id " +
                 "Where dsc." + act.pkField + " ='" + id + "' " +
-                "Order By cash_transfer_id ";
+                "Order By credit_bank_id ";
             dt = conn.selectData(conn.conn, sql);
             cop1 = setAccCashTransfer(dt);
             return cop1;
         }
         public DataTable selectByPk1(String id)
         {
-            AccCashTransfer cop1 = new AccCashTransfer();
+            AccCreditBank cop1 = new AccCreditBank();
             DataTable dt = new DataTable();
             String sql = "select * " +
                 "From " + act.table + " act " +
                 //"Left Join f_patient_prefix pfx On stf.prefix_id = pfx.f_patient_prefix_id " +
                 "Where dsc." + act.pkField + " ='" + id + "' " +
-                "Order By cash_transfer_id ";
+                "Order By credit_bank_id ";
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
@@ -84,16 +83,15 @@ namespace clinic_ivf.objdb
             dt = selectAll();
             foreach (DataRow row in dt.Rows)
             {
-                AccCashTransfer itm1 = new AccCashTransfer();
-                itm1.cash_transfer_id = row[act.cash_transfer_id].ToString();
-                itm1.cash_transfer_code = row[act.cash_transfer_code].ToString();
-                itm1.cash_transfer_name = row[act.cash_transfer_name].ToString();
-                itm1.receipt_print = row[act.receipt_print].ToString();
+                AccCreditBank itm1 = new AccCreditBank();
+                itm1.credit_bank_id = row[act.credit_bank_id].ToString();
+                itm1.credit_bank_name = row[act.credit_bank_name].ToString();
+                itm1.charge = row[act.charge].ToString();
 
                 lFpf.Add(itm1);
             }
         }
-        public C1ComboBox setCboAccCashTransfer(C1ComboBox c, String selected)
+        public C1ComboBox setCboAccCreditBank(C1ComboBox c, String selected)
         {
             ComboBoxItem item = new ComboBoxItem();
             //DataTable dt = selectC1();
@@ -106,11 +104,11 @@ namespace clinic_ivf.objdb
             c.Items.Add(item1);
             //for (int i = 0; i < dt.Rows.Count; i++)
             int i = 0;
-            foreach (AccCashTransfer row in lFpf)
+            foreach (AccCreditBank row in lFpf)
             {
                 item = new ComboBoxItem();
-                item.Value = row.cash_transfer_id;
-                item.Text = row.cash_transfer_name;
+                item.Value = row.credit_bank_id;
+                item.Text = row.credit_bank_name;
                 c.Items.Add(item);
                 if (item.Value.Equals(selected))
                 {
@@ -122,15 +120,14 @@ namespace clinic_ivf.objdb
             }
             return c;
         }
-        public AccCashTransfer setAccCashTransfer(DataTable dt)
+        public AccCreditBank setAccCashTransfer(DataTable dt)
         {
-            AccCashTransfer dgs1 = new AccCashTransfer();
+            AccCreditBank dgs1 = new AccCreditBank();
             if (dt.Rows.Count > 0)
             {
-                dgs1.cash_transfer_id = dt.Rows[0][act.cash_transfer_id].ToString();
-                dgs1.cash_transfer_code = dt.Rows[0][act.cash_transfer_code].ToString();
-                dgs1.cash_transfer_name = dt.Rows[0][act.cash_transfer_name].ToString();
-                dgs1.receipt_print = dt.Rows[0][act.receipt_print].ToString();
+                dgs1.credit_bank_id = dt.Rows[0][act.credit_bank_id].ToString();
+                dgs1.credit_bank_name = dt.Rows[0][act.credit_bank_name].ToString();
+                dgs1.charge = dt.Rows[0][act.charge].ToString();
                 dgs1.active = dt.Rows[0][act.active].ToString();
                 dgs1.remark = dt.Rows[0][act.remark].ToString();
                 dgs1.date_create = dt.Rows[0][act.date_create].ToString();
@@ -146,11 +143,11 @@ namespace clinic_ivf.objdb
             }
             return dgs1;
         }
-        public AccCashTransfer setAccCashTransfer(AccCashTransfer dgs1)
+        public AccCreditBank setAccCashTransfer(AccCreditBank dgs1)
         {
-            dgs1.cash_transfer_id = "";
-            dgs1.cash_transfer_code = "";
-            dgs1.cash_transfer_name = "";
+            dgs1.credit_bank_id = "";
+            dgs1.credit_bank_name = "";
+            dgs1.charge = "";
             dgs1.active = "";
             dgs1.remark = "";
             dgs1.date_create = "";
@@ -159,7 +156,6 @@ namespace clinic_ivf.objdb
             dgs1.user_create = "";
             dgs1.user_modi = "";
             dgs1.user_cancel = "";
-            dgs1.receipt_print = "";
             return dgs1;
         }
     }

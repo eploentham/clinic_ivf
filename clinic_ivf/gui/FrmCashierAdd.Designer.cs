@@ -113,6 +113,8 @@
             this.txtPayName = new C1.Win.C1Input.C1TextBox();
             this.tabReceipt = new C1.Win.C1Command.C1DockingTabPage();
             this.tabLabPrescription = new C1.Win.C1Command.C1DockingTabPage();
+            this.cboCreditBank = new C1.Win.C1Input.C1ComboBox();
+            this.label23 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtBillId)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtVnShow)).BeginInit();
@@ -167,6 +169,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtDiscount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboAccCash)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPayName)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboCreditBank)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -749,6 +752,8 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel2.Controls.Add(this.cboCreditBank);
+            this.panel2.Controls.Add(this.label23);
             this.panel2.Controls.Add(this.label22);
             this.panel2.Controls.Add(this.txtTotalTransfer);
             this.panel2.Controls.Add(this.cboAccCashTransfer);
@@ -797,7 +802,7 @@
             this.label22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label22.Location = new System.Drawing.Point(307, 119);
+            this.label22.Location = new System.Drawing.Point(301, 119);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(89, 16);
             this.label22.TabIndex = 762;
@@ -816,7 +821,7 @@
             | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd) 
             | C1.Win.C1Input.FormatInfoInheritFlags.CalendarType)));
             this.txtTotalTransfer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtTotalTransfer.Location = new System.Drawing.Point(421, 115);
+            this.txtTotalTransfer.Location = new System.Drawing.Point(415, 115);
             this.txtTotalTransfer.Name = "txtTotalTransfer";
             this.txtTotalTransfer.Size = new System.Drawing.Size(141, 20);
             this.txtTotalTransfer.TabIndex = 761;
@@ -836,7 +841,7 @@
             this.cboAccCashTransfer.ImagePadding = new System.Windows.Forms.Padding(0);
             this.cboAccCashTransfer.ItemsDisplayMember = "";
             this.cboAccCashTransfer.ItemsValueMember = "";
-            this.cboAccCashTransfer.Location = new System.Drawing.Point(421, 94);
+            this.cboAccCashTransfer.Location = new System.Drawing.Point(415, 94);
             this.cboAccCashTransfer.Name = "cboAccCashTransfer";
             this.cboAccCashTransfer.Size = new System.Drawing.Size(159, 20);
             this.cboAccCashTransfer.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
@@ -853,7 +858,7 @@
             this.label21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label21.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label21.Location = new System.Drawing.Point(307, 96);
+            this.label21.Location = new System.Drawing.Point(301, 96);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(115, 16);
             this.label21.TabIndex = 759;
@@ -932,7 +937,7 @@
             this.panel3.Controls.Add(this.chkDiscountAll);
             this.panel3.Controls.Add(this.label19);
             this.panel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.panel3.Location = new System.Drawing.Point(614, 45);
+            this.panel3.Location = new System.Drawing.Point(565, 45);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(440, 23);
             this.panel3.TabIndex = 750;
@@ -1060,7 +1065,7 @@
             this.label18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label18.Location = new System.Drawing.Point(594, 117);
+            this.label18.Location = new System.Drawing.Point(586, 117);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(121, 16);
             this.label18.TabIndex = 749;
@@ -1079,7 +1084,7 @@
             | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd) 
             | C1.Win.C1Input.FormatInfoInheritFlags.CalendarType)));
             this.txtTotalCredit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtTotalCredit.Location = new System.Drawing.Point(730, 115);
+            this.txtTotalCredit.Location = new System.Drawing.Point(718, 115);
             this.txtTotalCredit.Name = "txtTotalCredit";
             this.txtTotalCredit.Size = new System.Drawing.Size(141, 20);
             this.txtTotalCredit.TabIndex = 748;
@@ -1094,7 +1099,7 @@
             this.pnDiscount.Controls.Add(this.chkDiscountPer);
             this.pnDiscount.Controls.Add(this.chkDiscountCash);
             this.pnDiscount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.pnDiscount.Location = new System.Drawing.Point(353, 45);
+            this.pnDiscount.Location = new System.Drawing.Point(304, 45);
             this.pnDiscount.Name = "pnDiscount";
             this.pnDiscount.Size = new System.Drawing.Size(255, 23);
             this.pnDiscount.TabIndex = 747;
@@ -1165,7 +1170,7 @@
             this.txtAmt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtAmt.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtAmt.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtAmt.Location = new System.Drawing.Point(144, 27);
+            this.txtAmt.Location = new System.Drawing.Point(138, 27);
             this.txtAmt.Name = "txtAmt";
             this.txtAmt.Size = new System.Drawing.Size(141, 20);
             this.txtAmt.TabIndex = 708;
@@ -1198,7 +1203,7 @@
             | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd) 
             | C1.Win.C1Input.FormatInfoInheritFlags.CalendarType)));
             this.txtTotalCash.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtTotalCash.Location = new System.Drawing.Point(144, 115);
+            this.txtTotalCash.Location = new System.Drawing.Point(138, 115);
             this.txtTotalCash.Name = "txtTotalCash";
             this.txtTotalCash.Size = new System.Drawing.Size(141, 20);
             this.txtTotalCash.TabIndex = 706;
@@ -1211,7 +1216,7 @@
             this.txtCreditCardNumber.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtCreditCardNumber.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtCreditCardNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtCreditCardNumber.Location = new System.Drawing.Point(730, 73);
+            this.txtCreditCardNumber.Location = new System.Drawing.Point(718, 73);
             this.txtCreditCardNumber.Name = "txtCreditCardNumber";
             this.txtCreditCardNumber.Size = new System.Drawing.Size(141, 20);
             this.txtCreditCardNumber.TabIndex = 705;
@@ -1225,7 +1230,7 @@
             this.label15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label15.Location = new System.Drawing.Point(594, 73);
+            this.label15.Location = new System.Drawing.Point(586, 73);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(132, 16);
             this.label15.TabIndex = 704;
@@ -1250,7 +1255,7 @@
             this.txtTotal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtTotal.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtTotal.Location = new System.Drawing.Point(144, 69);
+            this.txtTotal.Location = new System.Drawing.Point(138, 69);
             this.txtTotal.Name = "txtTotal";
             this.txtTotal.Size = new System.Drawing.Size(141, 24);
             this.txtTotal.TabIndex = 702;
@@ -1296,7 +1301,7 @@
             this.cboAccCredit.ImagePadding = new System.Windows.Forms.Padding(0);
             this.cboAccCredit.ItemsDisplayMember = "";
             this.cboAccCredit.ItemsValueMember = "";
-            this.cboAccCredit.Location = new System.Drawing.Point(730, 94);
+            this.cboAccCredit.Location = new System.Drawing.Point(718, 94);
             this.cboAccCredit.Name = "cboAccCredit";
             this.cboAccCredit.Size = new System.Drawing.Size(159, 20);
             this.cboAccCredit.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
@@ -1313,7 +1318,7 @@
             this.label12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label12.Location = new System.Drawing.Point(594, 96);
+            this.label12.Location = new System.Drawing.Point(586, 96);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(132, 16);
             this.label12.TabIndex = 698;
@@ -1341,7 +1346,7 @@
             this.txtDiscount.DataType = typeof(decimal);
             this.txtDiscount.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtDiscount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtDiscount.Location = new System.Drawing.Point(144, 48);
+            this.txtDiscount.Location = new System.Drawing.Point(138, 48);
             this.txtDiscount.Name = "txtDiscount";
             this.txtDiscount.Size = new System.Drawing.Size(141, 20);
             this.txtDiscount.TabIndex = 682;
@@ -1361,7 +1366,7 @@
             this.cboAccCash.ImagePadding = new System.Windows.Forms.Padding(0);
             this.cboAccCash.ItemsDisplayMember = "";
             this.cboAccCash.ItemsValueMember = "";
-            this.cboAccCash.Location = new System.Drawing.Point(144, 94);
+            this.cboAccCash.Location = new System.Drawing.Point(138, 94);
             this.cboAccCash.Name = "cboAccCash";
             this.cboAccCash.Size = new System.Drawing.Size(159, 20);
             this.cboAccCash.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
@@ -1403,7 +1408,7 @@
             this.txtPayName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPayName.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtPayName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtPayName.Location = new System.Drawing.Point(144, 6);
+            this.txtPayName.Location = new System.Drawing.Point(138, 6);
             this.txtPayName.Name = "txtPayName";
             this.txtPayName.Size = new System.Drawing.Size(332, 20);
             this.txtPayName.TabIndex = 676;
@@ -1427,6 +1432,42 @@
             this.tabLabPrescription.Size = new System.Drawing.Size(1274, 545);
             this.tabLabPrescription.TabIndex = 1;
             this.tabLabPrescription.Text = "Prescription";
+            // 
+            // cboCreditBank
+            // 
+            this.cboCreditBank.AllowSpinLoop = false;
+            this.cboCreditBank.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cboCreditBank.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cboCreditBank.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cboCreditBank.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.cboCreditBank.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboCreditBank.GapHeight = 0;
+            this.cboCreditBank.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.cboCreditBank.ItemsDisplayMember = "";
+            this.cboCreditBank.ItemsValueMember = "";
+            this.cboCreditBank.Location = new System.Drawing.Point(969, 94);
+            this.cboCreditBank.Name = "cboCreditBank";
+            this.cboCreditBank.Size = new System.Drawing.Size(115, 20);
+            this.cboCreditBank.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.cboCreditBank.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
+            this.cboCreditBank.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboCreditBank.TabIndex = 764;
+            this.cboCreditBank.Tag = null;
+            this.theme1.SetTheme(this.cboCreditBank, "(default)");
+            this.cboCreditBank.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label23.Location = new System.Drawing.Point(881, 96);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(83, 16);
+            this.label23.TabIndex = 763;
+            this.label23.Text = "Credit Bank :";
+            this.theme1.SetTheme(this.label23, "(default)");
             // 
             // FrmCashierAdd
             // 
@@ -1500,6 +1541,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtDiscount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboAccCash)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPayName)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboCreditBank)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1592,5 +1634,7 @@
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label22;
         private C1.Win.C1Input.C1TextBox txtTotalTransfer;
+        private C1.Win.C1Input.C1ComboBox cboCreditBank;
+        private System.Windows.Forms.Label label23;
     }
 }

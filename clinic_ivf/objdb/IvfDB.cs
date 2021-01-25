@@ -118,6 +118,7 @@ namespace clinic_ivf.objdb
         public CustomerDB custDB;
         public AddressDB addrDB;
         public AccCashTransferDB actDB;
+        public AccCreditBankDB acbDB;
         public IvfDB(ConnectDB c)
         {
             conn = c;
@@ -222,6 +223,7 @@ namespace clinic_ivf.objdb
             custDB = new CustomerDB(conn);
             addrDB = new AddressDB(conn);
             actDB = new AccCashTransferDB(conn);
+            acbDB = new AccCreditBankDB(conn);
 
             Console.WriteLine("ivfDB end");
         }

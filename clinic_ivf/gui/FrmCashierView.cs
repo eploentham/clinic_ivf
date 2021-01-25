@@ -105,6 +105,8 @@ namespace clinic_ivf.gui
             txtRptDateStart.Value = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd");
             txtRptDateEnd.Value = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd");
 
+            txtCldDate.ValueChanged += TxtCldDate_ValueChanged;
+
             initGrfQue();
             initGrfFinish();
             setGrfQue();
@@ -124,6 +126,15 @@ namespace clinic_ivf.gui
             timer.Interval = timerlab * 1000;
             timer.Tick += Timer_Tick;
             timer.Enabled = true;
+        }
+
+        private void TxtCldDate_ValueChanged(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            String date = "";
+            date = ic.datetoDB(txtCldDate.Text);
+            setControlCld(date);
+            setGrfCloseDay(date);
         }
 
         private void TxtSearch_KeyUp(object sender, KeyEventArgs e)
@@ -767,8 +778,8 @@ namespace clinic_ivf.gui
                 FrmWaiting frmW = new FrmWaiting();
                 frmW.Show();
 
-                setControlCld();
-                setGrfCloseDay();
+                setControlCld("");
+                setGrfCloseDay("");
 
                 frmW.Dispose();
             }
@@ -801,14 +812,25 @@ namespace clinic_ivf.gui
             total = amt - exp1 - exp2 - exp3 - exp4 - exp5 + deposit;
             txtTotalCash.Value = total.ToString("#,###.00");
         }
-        private void setControlCld()
+        private void setControlCld(String vsdate)
         {
             String cntvs = "", cash="", credit="";
             Decimal cash1 = 0, credit1 = 0,amt=0;
             DataTable dt = new DataTable();
-            cntvs = ic.ivfDB.vsDB.selectCloseDay();
+            Closeday cld = new Closeday();
+            cld = ic.ivfDB.cldDB.selectByDateCloseDay(vsdate);
+            if (vsdate.Length <= 0)
+            {
+                cntvs = ic.ivfDB.vsDB.selectCloseDay("");
+                dt = ic.ivfDB.obilhDB.selectCashCloseDay("");
+            }
+            else
+            {
+                cntvs = ic.ivfDB.vsDB.selectCloseDay(cld.closeday_id);
+                dt = ic.ivfDB.obilhDB.selectCashCloseDay(cld.closeday_id);
+            }
             txtCntPtt.Value = cntvs;
-            dt = ic.ivfDB.obilhDB.selectCashCloseDay();
+            
             if (dt.Rows.Count > 0)
             {
                 cash = dt.Rows[0]["cash"].ToString();
@@ -828,16 +850,19 @@ namespace clinic_ivf.gui
             setGrfQue();
             //setGrfSearch(txtSearch.Text.Trim());
         }
-        private void setGrfCloseDay()
+        private void setGrfCloseDay(String vsdate)
         {
             //grfDept.Rows.Count = 7;
-            grfCld.Clear();
+            //grfCld.Clear();
             DataTable dt1 = new DataTable();
             DataTable dt = new DataTable();
-            String date = "";
+            Closeday cld = new Closeday();
+            cld = ic.ivfDB.cldDB.selectByDateCloseDay(vsdate);
 
-            dt = ic.ivfDB.obilhDB.selectByCloseDay();
+            dt = ic.ivfDB.obilhDB.selectByCloseDay(cld.closeday_id);
 
+            //grfCld.Rows.Count = dt.Rows.Count + 1;
+            grfCld.Rows.Count = 1;
             grfCld.Rows.Count = dt.Rows.Count + 1;
             grfCld.Cols.Count = 32;
 

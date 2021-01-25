@@ -74,6 +74,8 @@ namespace clinic_ivf.objdb
             obillh.agent_id = "agent_id";
             obillh.cash_transfer = "cash_transfer";
             obillh.cash_transfer_id = "cash_transfer_id";
+            obillh.credit_bank_id = "credit_bank_id";
+            obillh.charge = "charge";
 
             obillh.table = "BillHeader";
             obillh.pkField = "VN";
@@ -111,13 +113,21 @@ namespace clinic_ivf.objdb
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
-        public DataTable selectCashCloseDay()
+        public DataTable selectCashCloseDay(String cldid)
         {
-            String cnt = "";
+            String cnt = "", wherevsdate = "";
             DataTable dt = new DataTable();
+            if (cldid.Length > 0)
+            {
+                wherevsdate = " obillh." + obillh.closeday_id + " ='"+ cldid + "' and obillh." + obillh.active + " = '1' ";
+            }
+            else
+            {
+                wherevsdate = " obillh." + obillh.closeday_id + " ='0' and obillh." + obillh.active + " = '1' ";
+            }
             String sql = "select sum("+obillh.cash+ ") as cash,sum(" + obillh.credit + ") as credit  " +
                 "From " + obillh.table + " obillh " +
-                "Where obillh." + obillh.closeday_id + " ='0' and obillh." + obillh.active + " = '1' ";
+                "Where " + wherevsdate;
             dt = conn.selectData(conn.conn, sql);
             //if (dt.Rows.Count >= 1)
             //{
@@ -125,10 +135,18 @@ namespace clinic_ivf.objdb
             //}
             return dt;
         }
-        public DataTable selectByCloseDay()
+        public DataTable selectByCloseDay(String cldid)
         {
-            String cnt = "";
+            String cnt = "", wherevsdate = "";
             DataTable dt = new DataTable();
+            if (cldid.Length > 0)
+            {
+                wherevsdate = " obillh." + obillh.closeday_id + " ='"+ cldid + "' and obillh." + obillh.active + " = '1' and obillh." + obillh.receipt_no + " is not null ";
+            }
+            else
+            {
+                wherevsdate = " obillh." + obillh.closeday_id + " ='0' and obillh." + obillh.active + " = '1' and obillh." + obillh.receipt_no + " is not null ";
+            }
             String sql = "select obillh.*, Agent.AgentName " +
                 "From " + obillh.table + " obillh " +
                 "Left Join Agent on obillh.agent_id = Agent.AgentID " +
@@ -288,6 +306,7 @@ namespace clinic_ivf.objdb
             p.closeday_id = long.TryParse(p.closeday_id, out chk) ? chk.ToString() : "0";
             p.agent_id = long.TryParse(p.agent_id, out chk) ? chk.ToString() : "0";
             p.cash_transfer_id = long.TryParse(p.cash_transfer_id, out chk) ? chk.ToString() : "0";
+            p.credit_bank_id = long.TryParse(p.credit_bank_id, out chk) ? chk.ToString() : "0";
 
             p.Include_Pkg_Price = decimal.TryParse(p.Include_Pkg_Price, out chk1) ? chk1.ToString() : "0";
             p.Extra_Pkg_Price = decimal.TryParse(p.Extra_Pkg_Price, out chk1) ? chk1.ToString() : "0";
@@ -298,6 +317,7 @@ namespace clinic_ivf.objdb
             p.cash = decimal.TryParse(p.cash, out chk1) ? chk1.ToString() : "0";
             p.credit = decimal.TryParse(p.credit, out chk1) ? chk1.ToString() : "0";
             p.cash_transfer = decimal.TryParse(p.cash_transfer, out chk1) ? chk1.ToString() : "0";
+            p.charge = decimal.TryParse(p.charge, out chk1) ? chk1.ToString() : "0";
         }
         public String insert(OldBillheader p, String userId)
         {
@@ -646,6 +666,8 @@ namespace clinic_ivf.objdb
                 vsold1.agent_id = dt.Rows[0][obillh.agent_id].ToString();
                 vsold1.cash_transfer = dt.Rows[0][obillh.cash_transfer].ToString();
                 vsold1.cash_transfer_id = dt.Rows[0][obillh.cash_transfer_id].ToString();
+                vsold1.charge = dt.Rows[0][obillh.charge].ToString();
+                vsold1.credit_bank_id = dt.Rows[0][obillh.credit_bank_id].ToString();
             }
             else
             {
@@ -705,6 +727,8 @@ namespace clinic_ivf.objdb
             stf1.agent_id = "";
             stf1.cash_transfer = "";
             stf1.cash_transfer_id = "";
+            stf1.charge = "";
+            stf1.credit_bank_id = "";
             return stf1;
         }
     }
