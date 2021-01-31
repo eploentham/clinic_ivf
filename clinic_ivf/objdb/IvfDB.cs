@@ -1147,6 +1147,11 @@ namespace clinic_ivf.objdb
             obilhDB.voidBillByVN(vsid, userId);
             obildDB.voidBillDetailByVN(vsid, userId);
         }
+        public void VoidBillByBilId(String bilid, String userId)
+        {
+            obilhDB.voidBillById(bilid, userId);
+            obildDB.voidBillDetailByBillId(bilid, userId);
+        }
         public void DeleteBill1(String vn)
         {
             obilhDB.delete(vn);

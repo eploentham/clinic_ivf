@@ -70,6 +70,8 @@
             this.tabBillItem = new C1.Win.C1Command.C1DockingTabPage();
             this.pnBillD = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.cboCreditBank = new C1.Win.C1Input.C1ComboBox();
+            this.label23 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.txtTotalTransfer = new C1.Win.C1Input.C1TextBox();
             this.cboAccCashTransfer = new C1.Win.C1Input.C1ComboBox();
@@ -113,8 +115,6 @@
             this.txtPayName = new C1.Win.C1Input.C1TextBox();
             this.tabReceipt = new C1.Win.C1Command.C1DockingTabPage();
             this.tabLabPrescription = new C1.Win.C1Command.C1DockingTabPage();
-            this.cboCreditBank = new C1.Win.C1Input.C1ComboBox();
-            this.label23 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtBillId)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtVnShow)).BeginInit();
@@ -146,6 +146,7 @@
             this.tC1.SuspendLayout();
             this.tabBillItem.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cboCreditBank)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTotalTransfer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboAccCashTransfer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnItmAdd)).BeginInit();
@@ -169,7 +170,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtDiscount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboAccCash)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPayName)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cboCreditBank)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -795,6 +795,42 @@
             this.panel2.Size = new System.Drawing.Size(1274, 144);
             this.panel2.TabIndex = 699;
             this.theme1.SetTheme(this.panel2, "(default)");
+            // 
+            // cboCreditBank
+            // 
+            this.cboCreditBank.AllowSpinLoop = false;
+            this.cboCreditBank.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cboCreditBank.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cboCreditBank.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cboCreditBank.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.cboCreditBank.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboCreditBank.GapHeight = 0;
+            this.cboCreditBank.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.cboCreditBank.ItemsDisplayMember = "";
+            this.cboCreditBank.ItemsValueMember = "";
+            this.cboCreditBank.Location = new System.Drawing.Point(969, 94);
+            this.cboCreditBank.Name = "cboCreditBank";
+            this.cboCreditBank.Size = new System.Drawing.Size(115, 20);
+            this.cboCreditBank.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.cboCreditBank.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
+            this.cboCreditBank.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboCreditBank.TabIndex = 764;
+            this.cboCreditBank.Tag = null;
+            this.theme1.SetTheme(this.cboCreditBank, "(default)");
+            this.cboCreditBank.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label23.Location = new System.Drawing.Point(881, 96);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(83, 16);
+            this.label23.TabIndex = 763;
+            this.label23.Text = "Credit Bank :";
+            this.theme1.SetTheme(this.label23, "(default)");
             // 
             // label22
             // 
@@ -1433,42 +1469,6 @@
             this.tabLabPrescription.TabIndex = 1;
             this.tabLabPrescription.Text = "Prescription";
             // 
-            // cboCreditBank
-            // 
-            this.cboCreditBank.AllowSpinLoop = false;
-            this.cboCreditBank.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.cboCreditBank.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cboCreditBank.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.cboCreditBank.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.cboCreditBank.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.cboCreditBank.GapHeight = 0;
-            this.cboCreditBank.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.cboCreditBank.ItemsDisplayMember = "";
-            this.cboCreditBank.ItemsValueMember = "";
-            this.cboCreditBank.Location = new System.Drawing.Point(969, 94);
-            this.cboCreditBank.Name = "cboCreditBank";
-            this.cboCreditBank.Size = new System.Drawing.Size(115, 20);
-            this.cboCreditBank.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.cboCreditBank.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
-            this.cboCreditBank.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.cboCreditBank.TabIndex = 764;
-            this.cboCreditBank.Tag = null;
-            this.theme1.SetTheme(this.cboCreditBank, "(default)");
-            this.cboCreditBank.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label23.Location = new System.Drawing.Point(881, 96);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(83, 16);
-            this.label23.TabIndex = 763;
-            this.label23.Text = "Credit Bank :";
-            this.theme1.SetTheme(this.label23, "(default)");
-            // 
             // FrmCashierAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1516,6 +1516,7 @@
             this.tabBillItem.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cboCreditBank)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTotalTransfer)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboAccCashTransfer)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnItmAdd)).EndInit();
@@ -1541,7 +1542,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtDiscount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboAccCash)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPayName)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cboCreditBank)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

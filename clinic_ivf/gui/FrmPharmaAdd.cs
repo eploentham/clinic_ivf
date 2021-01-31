@@ -179,6 +179,10 @@ namespace clinic_ivf.gui
                 qty = row["qty"] != null ? row["qty"].ToString() : " ";
                 unit = row["unit_name"] != null ? row["unit_name"].ToString() : " ";
                 row["unit_name"] = qty +" "+ unit;
+                if (ptt.f_patient_nation_id.Equals("1"))        // thai
+                {
+                    row["patient_name"] = ic.ivfDB.fpfDB.getList1(ptt.f_patient_prefix_id)+" "+ptt.patient_firstname+" "+ ptt.patient_lastname;
+                }
                 //if (cboLangSticker.Text.Trim().Equals("English"))
                 //{
                 //    row["patient_name"] = txtPttNameE.Text.Trim();

@@ -99,6 +99,58 @@ namespace clinic_ivf.objdb
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
+        public DataTable selectGroupByDate(String datestart, String dateend)
+        {
+            DataTable dt = new DataTable();
+            String wherehn = "";
+
+            String sql = "SELECT bilh.Date,bilh.PIDS, ptt.patient_year,bilh.PName,bild.GroupType, bilg.Name,sum(bild.Total) as total ,bilg.ID  " +
+                " " +
+                "From " + obilld.table + " bild " +
+                "left join BillGroup bilg on bild.bill_group_id = bilg.ID " +
+                "inner join BillHeader bilh on bild.bill_id = bilh.bill_id " +
+                "inner join t_patient ptt on bilh.PID = ptt.t_patient_id " +
+                "Where bilh.Date >= '" + datestart + "' and bilh.Date <= '" + dateend + "' and bild." + obilld.active + "= '1' and bilh.active = '1' " +
+                "Group By bilh.Date,bilh.PIDS, ptt.patient_year,bilh.PName,bild.GroupType, bilg.Name,bilg.ID " +
+                "Order By  bilh.Date,bild.GroupType,bilg.ID ";
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
+        public DataTable selectTypeByDate(String datestart, String dateend)
+        {
+            DataTable dt = new DataTable();
+            String wherehn = "";
+
+            String sql = "select bilh.Date,bilh.Time,bilh.PIDS, ptt.patient_year,bilh.PName, bild.item_id, labitm.LName,sitm.SName, bild.status, sum(bild.qty) as qty, drug.DUName,bild.Total,bild.price1  " +
+                " " +
+                "From " + obilld.table + " bild " +
+                "inner join BillHeader bilh on bild.bill_id = bilh.bill_id " +
+                "Left Join LabItem labitm on bild.item_id = labitm.LID " +
+                "Left Join SpecialItem sitm on bild.item_id = sitm.SID " +
+                "Left Join StockDrug drug on bild.item_id = drug.DUID " +
+                "inner join t_patient ptt on bilh.PID = ptt.t_patient_id " +
+                "Where bilh.Date >= '" + datestart + "' and bilh.Date <= '" + dateend + "' and bild." + obilld.active + "= '1' and bilh.active = '1' " +
+                "group by  bilh.Date,bilh.Time,bilh.PIDS, ptt.patient_year,bilh.PName,bild.item_id, labitm.LName,sitm.SName, bild.status,bild.Total,bild.price1 " +
+                "Order By  bilh.Date,bilh.Time,bild.status, drug.DUName, labitm.LName,sitm.SName ";
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
+        public DataTable selectAgentByDate(String datestart, String dateend)
+        {
+            DataTable dt = new DataTable();
+            String wherehn = "";
+
+            String sql = "select bilh.Date,bilh.Time,bilh.PIDS, ptt.patient_year,bilh.PName,agt.AgentID, agt.AgentName,bilh.cash_transfer,bilh.cash,bilh.credit  ,bilh.receipt_no ,bilh.receipt1_no,acb.credit_bank_name  " +
+                " " +
+                "From  BillHeader bilh  " +
+                "Left Join Agent agt on bilh.agent_id = agt.AgentID " +
+                "inner join t_patient ptt on bilh.PID = ptt.t_patient_id " +
+                "Left Join b_acc_credit_bank acb on bilh.credit_bank_id = acb.credit_bank_id " +
+                "Where bilh.Date >= '" + datestart + "' and bilh.Date <= '" + dateend + "' and bilh.active = '1' " +
+                "order by bilh.Date,bilh.Time,  agt.AgentName  ";
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
         public DataTable selectByDate(String datestart, String dateend)
         {
             DataTable dt = new DataTable();

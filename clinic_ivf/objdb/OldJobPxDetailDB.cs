@@ -43,6 +43,7 @@ namespace clinic_ivf.objdb
             oJpxd.pckdid = "pckdid";
             oJpxd.status_print = "status_print";
             oJpxd.status_up_stock = "status_up_stock";
+            oJpxd.pharmacy_finish_date_time = "pharmacy_finish_date_time";
 
             oJpxd.table = "JobPxDetail";
             oJpxd.pkField = "ID";

@@ -4964,6 +4964,7 @@ namespace clinic_ivf.gui
             //txtApmName.Value = vsOld.PName;
             txtApmName.Value = vs.patient_name;
             //txtDob.Value = ic.datetoShow(pttOld.DateOfBirth) + " [" + ptt.AgeStringShort() + "]";     //  bug ทำให้ year เกิดผิด
+            //txtPttName.Value = ic.ivfDB.fpfDB.getList1(ptt.f_patient_prefix_id) + " " + ptt.patient_firstname + " " + ptt.patient_lastname;
             txtDob.Value = ic.datetoShow(ptt.patient_birthday) + " [" + ptt.AgeStringShort() + "]";
             txtAllergy.Value = ptt.allergy_description;
             //txtIdOld.Value = pttOld.PID;      //-0020
@@ -4982,7 +4983,7 @@ namespace clinic_ivf.gui
             txtVisitPulse.Value = vs.pulse;
             chkChronic.Checked = ptt.status_congenial.Equals("1") ? true : false;
             ic.setC1Combo(cboDoctor, vs.doctor_id);
-            txtPttName.Value = ic.ivfDB.fpfDB.getList(ptt.f_patient_prefix_id) +" "+ ptt.patient_firstname + " "+ptt.patient_lastname;
+            txtPttName.Value = ic.ivfDB.fpfDB.getList1(ptt.f_patient_prefix_id) +" "+ ptt.patient_firstname + " "+ptt.patient_lastname;
             //ptt1 = ic.ivfDB.pttDB.selectByHn(vs.patient_hn_male);
             if(ptt.patient_hn_1.IndexOf("/") > 0)
             {

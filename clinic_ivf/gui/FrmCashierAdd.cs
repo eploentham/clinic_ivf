@@ -270,13 +270,13 @@ namespace clinic_ivf.gui
                 if (cashid1.Length > 0)
                 {
                     oca = ic.ivfDB.ocaDB.selectByPk1(cashid1);
-                    flag = oca.IntLock.Equals("1") ? "2" : "1";
+                    //flag = oca.IntLock.Equals("1") ? "2" : "1";
                     flag = oca.IntLock;
                 }
                 else
                 {
                     ocr = ic.ivfDB.ocrDB.selectByPk1(creditid1);
-                    flag = ocr.IntLock.Equals("1") ? "2" : "1";
+                    //flag = ocr.IntLock.Equals("1") ? "2" : "1";
                     flag = ocr.IntLock;
                 }
                 //if (flag.Equals("1"))
@@ -286,7 +286,7 @@ namespace clinic_ivf.gui
                 }
                 else
                 {
-                    printReceipt("");
+                    //printReceipt("");
                     printReceipt("2");
                     //printReceipt("2");
                 }
@@ -295,10 +295,12 @@ namespace clinic_ivf.gui
         }
         private void printReceipt(String flagExtra)
         {
-            String cashid1 = "", creditid1 = "", transferid="";
+            String cashid1 = "", creditid1 = "", transferid="", creditbankik="";
             cashid1 = cboAccCash.SelectedItem == null ? "" : ((ComboBoxItem)cboAccCash.SelectedItem).Value;
             creditid1 = cboAccCredit.SelectedItem == null ? "" : ((ComboBoxItem)cboAccCredit.SelectedItem).Value;
             transferid = cboAccCashTransfer.SelectedItem == null ? "" : ((ComboBoxItem)cboAccCashTransfer.SelectedItem).Value;
+            creditbankik = cboCreditBank.SelectedItem == null ? "" : ((ComboBoxItem)cboCreditBank.SelectedItem).Value;
+            //cboCreditBank
             if (cashid1.Length == 0 && creditid1.Length == 0 && transferid.Length == 0)
             {
                 MessageBox.Show("ยังไม่ได้เลือก ประเภทบัญชี", "");
@@ -408,52 +410,53 @@ namespace clinic_ivf.gui
                 //ic.ivfDB.obilhDB.updateReceiptNo(txtVn.Text, billNo, txtTotalCash.Text.Replace(",",""), txtTotalCredit.Text.Replace(",", ""), txtCreditCardNumber.Text, cashid, creditid);
                 if (flagExtra.Equals("2"))
                 {
-                    ic.ivfDB.obilhDB.updateReceipt1NoByBillId(txtBillId.Text, billNo);
+                    ic.ivfDB.obilhDB.updateReceipt1NoByBillId(txtBillId.Text, billNo, totalcash.ToString(), totalcredit.ToString()
+                    , txtCreditCardNumber.Text, cashid1, creditid1, total.ToString(), discount.ToString(), txtPayName.Text, totaltransfer.ToString(), transferid, creditbankik);
                 }
                 else
                 {
                     //ic.ivfDB.obilhDB.updateReceiptNoByBillId(txtBillId.Text, billNo, txtTotalCash.Text.Replace(",", ""), txtTotalCredit.Text.Replace(",", "")
                     //, txtCreditCardNumber.Text, cashid1, creditid1, total.ToString(), discount.ToString(), txtPayName.Text, totaltransfer.ToString(), transferid);
                     ic.ivfDB.obilhDB.updateReceiptNoByBillId(txtBillId.Text, billNo, totalcash.ToString(), totalcredit.ToString()
-                    , txtCreditCardNumber.Text, cashid1, creditid1, total.ToString(), discount.ToString(), txtPayName.Text, totaltransfer.ToString(), transferid);
+                    , txtCreditCardNumber.Text, cashid1, creditid1, total.ToString(), discount.ToString(), txtPayName.Text, totaltransfer.ToString(), transferid,creditbankik);
                     //OldBillheader obill = new OldBillheader();
-                    String billno2 = ic.ivfDB.obilhDB.selectBillNoByVN(txtVn.Text);
-                    if (billno2.Equals(""))
-                    {
-                        String billNo1 = ic.ivfDB.copDB.genBillingDoc(ref year, ref month, ref day);
-                        String billExtNo1 = ic.ivfDB.copDB.genBillingExtDoc();
-                        //ic.ivfDB.obilhDB.updateBillNo(txtVn.Text, billNo1);
-                        ic.ivfDB.obilhDB.updateBillNoByBillId(txtBillId.Text, billNo1);
-                    }
+                }
+                String billno2 = ic.ivfDB.obilhDB.selectBillNoByVN(txtVn.Text);
+                if (billno2.Equals(""))
+                {
+                    String billNo1 = ic.ivfDB.copDB.genBillingDoc(ref year, ref month, ref day);
+                    String billExtNo1 = ic.ivfDB.copDB.genBillingExtDoc();
+                    //ic.ivfDB.obilhDB.updateBillNo(txtVn.Text, billNo1);
+                    ic.ivfDB.obilhDB.updateBillNoByBillId(txtBillId.Text, billNo1);
+                }
 
-                    //dtpgk = ic.ivfDB.opkgsDB.selectByVN1(txtVn.Text);
-                    //dtpgk = ic.ivfDB.opkgsDB.selectByPID(ovs.PID);    // ต้องดึงตาม HN เพราะ ถ้ามีงวดการชำระ          //      -0020
-                    dtpgk = ic.ivfDB.opkgsDB.selectByPID(vs.t_patient_id);    // ต้องดึงตาม HN เพราะ ถ้ามีงวดการชำระ            //      +0020
-                    foreach (DataRow row in dtpgk.Rows)
+                //dtpgk = ic.ivfDB.opkgsDB.selectByVN1(txtVn.Text);
+                //dtpgk = ic.ivfDB.opkgsDB.selectByPID(ovs.PID);    // ต้องดึงตาม HN เพราะ ถ้ามีงวดการชำระ          //      -0020
+                dtpgk = ic.ivfDB.opkgsDB.selectByPID(vs.t_patient_id);    // ต้องดึงตาม HN เพราะ ถ้ามีงวดการชำระ            //      +0020
+                foreach (DataRow row in dtpgk.Rows)
+                {
+                    String times = "";
+                    Decimal price = 0;
+                    //row["PaymentTimes"].GetType()
+                    times = row["payment_times"].ToString();
+                    //ic.ivfDB.updatePackagePaymentComplete(ovs.PID, row["PCKSID"].ToString());          //      -0020
+                    ic.ivfDB.updatePackagePaymentComplete(vs.t_patient_id, row["PCKSID"].ToString());            //      +0020
+                    if (Decimal.TryParse(row["Payment1"].ToString(), out price) && row["P1BDetailID"].ToString().Equals("0"))
                     {
-                        String times = "";
-                        Decimal price = 0;
-                        //row["PaymentTimes"].GetType()
-                        times = row["payment_times"].ToString();
-                        //ic.ivfDB.updatePackagePaymentComplete(ovs.PID, row["PCKSID"].ToString());          //      -0020
-                        ic.ivfDB.updatePackagePaymentComplete(vs.t_patient_id, row["PCKSID"].ToString());            //      +0020
-                        if (Decimal.TryParse(row["Payment1"].ToString(), out price) && row["P1BDetailID"].ToString().Equals("0"))
-                        {
-                            ic.ivfDB.opkgsDB.updateP1BillNo(row["PCKSID"].ToString(), billNo.Replace(ic.cop.prefix_receipt_doc, ""));
-                            //times = "1";
-                        }
-                        else if (Decimal.TryParse(row["Payment2"].ToString(), out price) && row["P2BDetailID"].ToString().Equals("0"))
-                        {
-                            ic.ivfDB.opkgsDB.updateP2BillNo(row["PCKSID"].ToString(), billNo.Replace(ic.cop.prefix_receipt_doc, ""));
-                        }
-                        else if (Decimal.TryParse(row["Payment3"].ToString(), out price) && row["P3BDetailID"].ToString().Equals("0"))
-                        {
-                            ic.ivfDB.opkgsDB.updateP3BillNo(row["PCKSID"].ToString(), billNo.Replace(ic.cop.prefix_receipt_doc, ""));
-                        }
-                        else if (Decimal.TryParse(row["Payment4"].ToString(), out price) && row["P4BDetailID"].ToString().Equals("0"))
-                        {
-                            ic.ivfDB.opkgsDB.updateP4BillNo(row["PCKSID"].ToString(), billNo.Replace(ic.cop.prefix_receipt_doc, ""));
-                        }
+                        ic.ivfDB.opkgsDB.updateP1BillNo(row["PCKSID"].ToString(), billNo.Replace(ic.cop.prefix_receipt_doc, ""));
+                        //times = "1";
+                    }
+                    else if (Decimal.TryParse(row["Payment2"].ToString(), out price) && row["P2BDetailID"].ToString().Equals("0"))
+                    {
+                        ic.ivfDB.opkgsDB.updateP2BillNo(row["PCKSID"].ToString(), billNo.Replace(ic.cop.prefix_receipt_doc, ""));
+                    }
+                    else if (Decimal.TryParse(row["Payment3"].ToString(), out price) && row["P3BDetailID"].ToString().Equals("0"))
+                    {
+                        ic.ivfDB.opkgsDB.updateP3BillNo(row["PCKSID"].ToString(), billNo.Replace(ic.cop.prefix_receipt_doc, ""));
+                    }
+                    else if (Decimal.TryParse(row["Payment4"].ToString(), out price) && row["P4BDetailID"].ToString().Equals("0"))
+                    {
+                        ic.ivfDB.opkgsDB.updateP4BillNo(row["PCKSID"].ToString(), billNo.Replace(ic.cop.prefix_receipt_doc, ""));
                     }
                 }
             }
@@ -555,6 +558,12 @@ namespace clinic_ivf.gui
                 billFormat = billNo.Substring(billNo.Length - 5);
                 billNo = billNo.Substring(0, billNo.Length - 5) + "-" + billFormat;
             }
+            String cardname = "";
+            cardname = cboCreditBank.Text.Replace("-","");
+            if (cboCreditBank.Text.Replace("-", "").Length > 0)
+            {
+                cardname = cboCreditBank.Text.Replace("-", "");
+            }
             //day = DateTime.Now.ToString("dd"); 
             //month = DateTime.Now.ToString("MM");
             //year = DateTime.Now.ToString("yyyy");
@@ -573,7 +582,7 @@ namespace clinic_ivf.gui
             FrmReport frm = new FrmReport(ic);
             new LogWriter("e", "printReceipt billNo " + billNo);
             //frm.setPrintBill(dtprn, txtHn.Text, txtPttNameE.Text, amt2, amt.ToString("#,###.00"), billNo, day + "/" + month + "/" + year, payby, "ใบเสร็จ/Receipt", sumprice.ToString("#,###.00"), flagExtra);
-            frm.setPrintBill(dtprn, txtHn.Text, txtPttNameE.Text, amt2, amt.ToString("#,###.00"), billNo, billdate+" "+ timecreate, payby, "ใบเสร็จ/Receipt", sumprice.ToString("#,###.00"), flagExtra);
+            frm.setPrintBill(dtprn, txtHn.Text, txtPttNameE.Text, amt2, amt.ToString("#,###.00"), billNo, billdate+" "+ timecreate, payby, "ใบเสร็จ/Receipt", sumprice.ToString("#,###.00"), flagExtra, cardname);
             frm.Show(this);
         }
         private void ChkDiscountPer_Click(object sender, EventArgs e)
@@ -999,7 +1008,7 @@ namespace clinic_ivf.gui
             month = ic.cop.month;
             year = ic.cop.year;
             FrmReport frm = new FrmReport(ic);
-            frm.setPrintBill(dtprn, txtHn.Text, txtPttNameE.Text, amt2, amt.ToString("#,###.00"), billNo, day+"/"+month+"/"+year, payby,"ใบแจ้งหนี้/Bill", sumprice.ToString("#,###.00"),"");
+            frm.setPrintBill(dtprn, txtHn.Text, txtPttNameE.Text, amt2, amt.ToString("#,###.00"), billNo, day+"/"+month+"/"+year, payby,"ใบแจ้งหนี้/Bill", sumprice.ToString("#,###.00"),"","");
             frm.ShowDialog(this);
             
         }
@@ -1178,9 +1187,12 @@ namespace clinic_ivf.gui
                 txtTotalCredit.Value = obilh.credit;
                 txtPayCreditCard.Value = "";
                 txtCreditCardNumber.Value = obilh.CreditCardNumber;
+                txtTotalTransfer.Value = obilh.cash_transfer;
+                txtCreditCharge.Value = obilh.charge;
                 //cboAccCredit.Text = "";
                 ic.setC1Combo(cboAccCash, obilh.CashID);
                 ic.setC1Combo(cboAccCredit, obilh.CreditCardID);
+                ic.setC1Combo(cboCreditBank, obilh.credit_bank_id);
             }
 
             FrmLabPrescription frm = new FrmLabPrescription(ic, "", "", ptt.patient_hn);

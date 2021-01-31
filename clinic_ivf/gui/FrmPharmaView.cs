@@ -293,7 +293,7 @@ namespace clinic_ivf.gui
             grfRpt.Cols[colRptDrugDailyPttHn].Width = 100;
             grfRpt.Cols[colRptDrugDailyPttName].Width = 300;
             grfRpt.Cols[colRptDrugDailyQty].Width = 80;
-            grfRpt.Cols[colRptDrugDailyTime].Width = 80;
+            grfRpt.Cols[colRptDrugDailyTime].Width = 140;
             grfRpt.Cols[colRptDrugDailyTime].Caption = "TIME";
             grfRpt.Cols[colRptDrugDailyQty].Caption = "QTY";
             grfRpt.Cols[colRptDrugDailyPttName].Caption = "Patient Name";
@@ -640,8 +640,8 @@ namespace clinic_ivf.gui
                 grfQue[i, colPttHn] = ic.showHN(row["PIDS"].ToString(), row["patient_year"].ToString());
                 grfQue[i, colPttName] = row["PName"].ToString();
                 grfQue[i, colVsDate] = ic.datetoShow(row["VDate"]);
-                grfQue[i, colVsTime] = row["VStartTime"].ToString();
-                grfQue[i, colVsEtime] = row["VEndTime"].ToString();
+                grfQue[i, colVsTime] = ic.timetoShow(row["VStartTime"].ToString());
+                grfQue[i, colVsEtime] = ic.timetoShow(row["VEndTime"].ToString());
                 grfQue[i, colStatus] = row["VName"].ToString();
                 grfQue[i, colPttId] = row["PID"].ToString();
                 grfQue[i, colDtr] = row["dtrname"].ToString();

@@ -125,7 +125,7 @@ namespace clinic_ivf.objdb
             {
                 wherevsdate = " obillh." + obillh.closeday_id + " ='0' and obillh." + obillh.active + " = '1' ";
             }
-            String sql = "select sum("+obillh.cash+ ") as cash,sum(" + obillh.credit + ") as credit  " +
+            String sql = "select sum("+obillh.cash+ ") as cash,sum(" + obillh.credit + ") as credit ,sum(" + obillh.cash_transfer + ") as transfer  " +
                 "From " + obillh.table + " obillh " +
                 "Where " + wherevsdate;
             dt = conn.selectData(conn.conn, sql);
@@ -141,16 +141,18 @@ namespace clinic_ivf.objdb
             DataTable dt = new DataTable();
             if (cldid.Length > 0)
             {
-                wherevsdate = " obillh." + obillh.closeday_id + " ='"+ cldid + "' and obillh." + obillh.active + " = '1' and obillh." + obillh.receipt_no + " is not null ";
+                //wherevsdate = " obillh." + obillh.closeday_id + " ='"+ cldid + "' and obillh." + obillh.active + " = '1' and obillh." + obillh.receipt_no + " is not null ";
+                wherevsdate = " obillh." + obillh.closeday_id + " ='" + cldid + "' and obillh." + obillh.active + " = '1' ";
             }
             else
             {
-                wherevsdate = " obillh." + obillh.closeday_id + " ='0' and obillh." + obillh.active + " = '1' and obillh." + obillh.receipt_no + " is not null ";
+                //wherevsdate = " obillh." + obillh.closeday_id + " ='0' and obillh." + obillh.active + " = '1' and obillh." + obillh.receipt_no + " is not null ";
+                wherevsdate = " obillh." + obillh.closeday_id + " ='0' and obillh." + obillh.active + " = '1'  ";
             }
             String sql = "select obillh.*, Agent.AgentName " +
                 "From " + obillh.table + " obillh " +
                 "Left Join Agent on obillh.agent_id = Agent.AgentID " +
-                "Where obillh." + obillh.closeday_id + " ='0' and obillh." + obillh.active + " = '1' and obillh."+obillh.receipt_no +" is not null " +
+                "Where " + wherevsdate +
                 "Order By obillh." + obillh.receipt_no;
             dt = conn.selectData(conn.conn, sql);
             //if (dt.Rows.Count >= 1)
@@ -562,7 +564,7 @@ namespace clinic_ivf.objdb
             return re;
         }
         public String updateReceiptNoByBillId(String billid, String billno, String cash, String credit, String creditnumber, String cashid
-            , String creditid, String total, String discount, String paymentby, String transfer, String transferid)
+            , String creditid, String total, String discount, String paymentby, String transfer, String transferid, String creditbankid)
         {
             String re = "", sql = "";
             long chk = 0;
@@ -582,6 +584,40 @@ namespace clinic_ivf.objdb
                 "," + obillh.PaymentBy + "='" + paymentby.Replace("'","''") + "' " +
                 "," + obillh.cash_transfer + "='" + transfer + "' " +
                 "," + obillh.cash_transfer_id + "='" + transferid.Replace("'", "''") + "' " +
+                "," + obillh.credit_bank_id + "='" + creditbankid.Replace("'", "''") + "' " +
+                "Where " + obillh.bill_id + "='" + billid + "' ";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+            return re;
+        }
+        public String updateReceipt1NoByBillId(String billid, String billno, String cash, String credit, String creditnumber, String cashid
+            , String creditid, String total, String discount, String paymentby, String transfer, String transferid, String creditbankid)
+        {
+            String re = "", sql = "";
+            long chk = 0;
+            cashid = long.TryParse(cashid, out chk) ? chk.ToString() : "0";
+            creditid = long.TryParse(creditid, out chk) ? chk.ToString() : "0";
+            transferid = long.TryParse(transferid, out chk) ? chk.ToString() : "0";
+
+            sql = "Update " + obillh.table + " set " +
+                "" + obillh.receipt1_no + "='" + billno + "' " +
+                "," + obillh.cash + "='" + cash + "' " +
+                "," + obillh.credit + "='" + credit + "' " +
+                "," + obillh.CreditCardNumber + "='" + creditnumber + "' " +
+                "," + obillh.CashID + "='" + cashid + "' " +
+                "," + obillh.CreditCardID + "='" + creditid + "' " +
+                "," + obillh.Total + "='" + total + "' " +
+                "," + obillh.Discount + "='" + discount + "' " +
+                "," + obillh.PaymentBy + "='" + paymentby.Replace("'", "''") + "' " +
+                "," + obillh.cash_transfer + "='" + transfer + "' " +
+                "," + obillh.cash_transfer_id + "='" + transferid.Replace("'", "''") + "' " +
+                "," + obillh.credit_bank_id + "='" + creditbankid.Replace("'", "''") + "' " +
                 "Where " + obillh.bill_id + "='" + billid + "' ";
             try
             {
