@@ -333,8 +333,8 @@ namespace clinic_ivf.gui
             grfReq.Cols[colRqRemark].Caption = "Remark";
             grfReq.Cols[colDtrName].Caption = "Doctor";
             grfReq.Cols[colRqLabName].Caption = "Lab Name";
-            grfReq.Cols[colOPUDate].Caption = "FET Date";
-            grfReq.Cols[colOPUTime].Caption = "FET Time";
+            grfReq.Cols[colOPUDate].Caption = "Freezing Date";
+            grfReq.Cols[colOPUTime].Caption = "FET NO";
             grfReq.Cols[colOPUTimeModi].Caption = "FET time old";
             grfReq.Cols[colRqHnMale].Caption = "HN male";
             grfReq.Cols[colRqNameMale].Caption = "Name male";
@@ -352,15 +352,20 @@ namespace clinic_ivf.gui
                 Row row1 = grfReq.Rows.Add();
                 row1[colRqId] = row[ic.ivfDB.lbReqDB.lbReq.req_id].ToString();
                 row1[colRqReqNum] = row[ic.ivfDB.lbReqDB.lbReq.req_code].ToString();
-                row1[colRqHn] = row[ic.ivfDB.lbReqDB.lbReq.hn_female].ToString();
+                //row1[colRqHn] = row[ic.ivfDB.lbReqDB.lbReq.hn_female].ToString(); fet_no_date_freezing
+                row1[colRqHn] = ic.showHN(row["patient_hn"].ToString(), row["patient_year"].ToString());
                 row1[colRqVn] = row[ic.ivfDB.lbReqDB.lbReq.vn].ToString();
-                row1[colRqName] = row[ic.ivfDB.lbReqDB.lbReq.name_female].ToString();
+                //row1[colRqName] = row[ic.ivfDB.lbReqDB.lbReq.name_female].ToString();
+                row1[colRqName] = row["patient_name"].ToString();
                 row1[colRqDate] = ic.datetoShow(row[ic.ivfDB.lbReqDB.lbReq.req_date].ToString());
-                row1[colRqRemark] = row["form_a_remark"].ToString();
-                row1[colOPUDate] = ic.datetoShow(row[ic.ivfDB.lFormaDB.lformA.opu_date].ToString());
-                row1[colOPUTime] = row[ic.ivfDB.lFormaDB.lformA.opu_time].ToString();
+                row1[colRqRemark] = row["fet_remark"].ToString();
+                //row1[colOPUDate] = ic.datetoShow(row[ic.ivfDB.lFormaDB.lformA.opu_date].ToString());
+                row1[colOPUDate] = ic.datetoShow(row["fet_no_date_freezing"].ToString());
+
+                //row1[colOPUTime] = row[ic.ivfDB.lFormaDB.lformA.opu_time].ToString();
+                row1[colOPUTime] = row["fet_no"].ToString();
                 row1[colOPUTimeModi] = row[ic.ivfDB.lFormaDB.lformA.opu_time_modi].ToString();
-                row1[colRqLabName] = row["SName"].ToString();
+                row1[colRqLabName] = row["LName"].ToString();
                 //row1[colRqHnMale] = row["hn_male"].ToString();
                 //row1[colRqNameMale] = row["name_male"].ToString();
 
@@ -370,14 +375,14 @@ namespace clinic_ivf.gui
                 row1[colRqHnDonor] = row["hn_donor"].ToString();
                 row1[colRqNameDonor] = row["name_donor"].ToString();
                 row1[colPttHnOld] = row["patient_hn_old"].ToString();
-                if (row["SName"].ToString().Trim().Equals("FET"))
-                {
-                    row1[colRqRemark] = row["opu_remark"].ToString() + " " + row["form_a_remark"].ToString();
-                }
-                else if (row["SName"].ToString().Equals("FET"))
-                {
-                    row1[colRqRemark] = row["fet_remark"].ToString() + " " + row["form_a_remark"].ToString();
-                }
+                //if (row["LName"].ToString().Trim().Equals("FET"))
+                //{
+                //    row1[colRqRemark] = row["opu_remark"].ToString() + " " + row["form_a_remark"].ToString();
+                //}
+                //else if (row["LName"].ToString().Equals("FET"))
+                //{
+                //    row1[colRqRemark] = row["fet_remark"].ToString() + " " + row["form_a_remark"].ToString();
+                //}
                 row1[colOpuId] = "";
                 row1[colDtrName] = row["dtr_name"].ToString();
                 row1[0] = i;
@@ -553,11 +558,11 @@ namespace clinic_ivf.gui
             //    //grfSearch.Cols[col + 1].Caption = dt.Columns[col].ColumnName;
             //    grfSearch.Cols[col + 1].Name = dt.Columns[col].ColumnName;
             //}
-            int i = 0;
+            int i = 1;
             foreach (DataRow row in dt.Rows)
             {
-                i++;
-                if (i == 1) continue;
+                
+                //if (i == 1) continue;
                 //Row row1 = grfSearch.Rows.Add();
                 grfSearch[i, colPcId] = row[ic.ivfDB.fetDB.fet.fet_id].ToString();
                 grfSearch[i, colPcOpuNum] = row[ic.ivfDB.fetDB.fet.fet_code].ToString();
@@ -571,8 +576,8 @@ namespace clinic_ivf.gui
                 //row1[colRqRemark] = row[ic.ivfDB.lbReqDB.lbReq.remark].ToString();
                 //row1[colOpuId] = "";
                 //row1[colDtrName] = row["dtr_name"].ToString();
-                grfSearch[i, 0] = (i - 2);
-
+                grfSearch[i, 0] = (i );
+                i++;
             }
             grfSearch.Cols[colRqId].Visible = false;
             grfSearch.Cols[colPcOpuNum].AllowEditing = false;
@@ -649,7 +654,7 @@ namespace clinic_ivf.gui
             {
                 grfProc.Rows.Count = dt.Rows.Count + 1;
             }
-            grfProc.Cols.Count = 10;
+            grfProc.Cols.Count = 13;
             //C1TextBox txt = new C1TextBox();
             ////C1ComboBox cboproce = new C1ComboBox();
             ////ic.ivfDB.itmDB.setCboItem(cboproce);
@@ -686,12 +691,12 @@ namespace clinic_ivf.gui
             //CellRange rg1 = grfBank.GetCellRange(1, colE, grfBank.Rows.Count, colE);
             //rg1.Style = grfBank.Styles["date"];
             //grfCu.Cols[colID].Visible = false;
-            for (int col = 0; col < dt.Columns.Count; ++col)
-            {
-                grfProc.Cols[col + 1].DataType = dt.Columns[col].DataType;
-                //grfProc.Cols[col + 1].Caption = dt.Columns[col].ColumnName;
-                grfProc.Cols[col + 1].Name = dt.Columns[col].ColumnName;
-            }
+            //for (int col = 0; col < dt.Columns.Count; ++col)
+            //{
+            //    grfProc.Cols[col + 1].DataType = dt.Columns[col].DataType;
+            //    //grfProc.Cols[col + 1].Caption = dt.Columns[col].ColumnName;
+            //    grfProc.Cols[col + 1].Name = dt.Columns[col].ColumnName;
+            //}
             int i = 0;
             foreach (DataRow row in dt.Rows)
             {
@@ -723,12 +728,12 @@ namespace clinic_ivf.gui
             grfProc.Cols[colPcNameMale].AllowEditing = false;
             grfProc.Cols[colProceName].AllowEditing = false;
             //grfReq.Cols[coldt].Visible = false;
-            if (grfProc.Rows.Count > 2)
-            {
-                FilterRow fr = new FilterRow(grfProc);
-                grfProc.AllowFiltering = true;
-                grfProc.AfterFilter += GrfProc_AfterFilter;
-            }
+            //if (grfProc.Rows.Count > 2)
+            //{
+            //    FilterRow fr = new FilterRow(grfProc);
+            //    grfProc.AllowFiltering = true;
+            //    grfProc.AfterFilter += GrfProc_AfterFilter;
+            //}
         }
 
         private void GrfProc_AfterFilter(object sender, EventArgs e)
@@ -862,7 +867,7 @@ namespace clinic_ivf.gui
             //grfProc.Cols[colPcPttName].Editor = txt;
             //grfProc.Cols[colPcDate].Editor = txt;
             //grfProc.Cols[colPcRemark].Editor = txt;
-
+             
             grfFinish.Cols[colPcOpuNum].Width = 120;
             grfFinish.Cols[colPcHn].Width = 120;
             grfFinish.Cols[colPcPttName].Width = 280;
@@ -890,12 +895,12 @@ namespace clinic_ivf.gui
             //CellRange rg1 = grfBank.GetCellRange(1, colE, grfBank.Rows.Count, colE);
             //rg1.Style = grfBank.Styles["date"];
             //grfCu.Cols[colID].Visible = false;
-            for (int col = 0; col < dt.Columns.Count; ++col)
-            {
-                grfFinish.Cols[col + 1].DataType = dt.Columns[col].DataType;
-                grfFinish.Cols[col + 1].Caption = dt.Columns[col].ColumnName;
-                grfFinish.Cols[col + 1].Name = dt.Columns[col].ColumnName;
-            }
+            //for (int col = 0; col < dt.Columns.Count; ++col)
+            //{
+            //    grfFinish.Cols[col + 1].DataType = dt.Columns[col].DataType;
+            //    grfFinish.Cols[col + 1].Caption = dt.Columns[col].ColumnName;
+            //    grfFinish.Cols[col + 1].Name = dt.Columns[col].ColumnName;
+            //}
             int i =1;
             foreach (DataRow row in dt.Rows)
             {

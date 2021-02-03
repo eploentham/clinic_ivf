@@ -115,6 +115,8 @@
             this.txtPayName = new C1.Win.C1Input.C1TextBox();
             this.tabReceipt = new C1.Win.C1Command.C1DockingTabPage();
             this.tabLabPrescription = new C1.Win.C1Command.C1DockingTabPage();
+            this.label24 = new System.Windows.Forms.Label();
+            this.txtReceiptNo = new C1.Win.C1Input.C1TextBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtBillId)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtVnShow)).BeginInit();
@@ -170,11 +172,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtDiscount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboAccCash)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPayName)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtReceiptNo)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox1.Controls.Add(this.txtReceiptNo);
+            this.groupBox1.Controls.Add(this.label24);
             this.groupBox1.Controls.Add(this.txtBillId);
             this.groupBox1.Controls.Add(this.txtVnShow);
             this.groupBox1.Controls.Add(this.label20);
@@ -224,9 +229,9 @@
             this.txtBillId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtBillId.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtBillId.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtBillId.Location = new System.Drawing.Point(1239, 15);
+            this.txtBillId.Location = new System.Drawing.Point(440, 67);
             this.txtBillId.Name = "txtBillId";
-            this.txtBillId.Size = new System.Drawing.Size(30, 20);
+            this.txtBillId.Size = new System.Drawing.Size(100, 20);
             this.txtBillId.TabIndex = 705;
             this.txtBillId.Tag = null;
             this.theme1.SetTheme(this.txtBillId, "(default)");
@@ -333,7 +338,7 @@
             this.txtVnOld.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtVnOld.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtVnOld.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtVnOld.Location = new System.Drawing.Point(1167, 59);
+            this.txtVnOld.Location = new System.Drawing.Point(757, 12);
             this.txtVnOld.Name = "txtVnOld";
             this.txtVnOld.Size = new System.Drawing.Size(30, 20);
             this.txtVnOld.TabIndex = 698;
@@ -347,7 +352,7 @@
             this.txtVsId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtVsId.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtVsId.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtVsId.Location = new System.Drawing.Point(1203, 41);
+            this.txtVsId.Location = new System.Drawing.Point(254, 15);
             this.txtVsId.Name = "txtVsId";
             this.txtVsId.Size = new System.Drawing.Size(30, 20);
             this.txtVsId.TabIndex = 614;
@@ -361,7 +366,7 @@
             this.txtIdOld.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtIdOld.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtIdOld.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtIdOld.Location = new System.Drawing.Point(1167, 38);
+            this.txtIdOld.Location = new System.Drawing.Point(897, 14);
             this.txtIdOld.Name = "txtIdOld";
             this.txtIdOld.Size = new System.Drawing.Size(30, 20);
             this.txtIdOld.TabIndex = 697;
@@ -471,7 +476,7 @@
             this.txtVn.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtVn.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtVn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtVn.Location = new System.Drawing.Point(1203, 62);
+            this.txtVn.Location = new System.Drawing.Point(787, 9);
             this.txtVn.Name = "txtVn";
             this.txtVn.Size = new System.Drawing.Size(30, 24);
             this.txtVn.TabIndex = 690;
@@ -1469,6 +1474,32 @@
             this.tabLabPrescription.TabIndex = 1;
             this.tabLabPrescription.Text = "Prescription";
             // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label24.Location = new System.Drawing.Point(205, 70);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(34, 16);
+            this.label24.TabIndex = 706;
+            this.label24.Text = "NO :";
+            this.theme1.SetTheme(this.label24, "(default)");
+            // 
+            // txtReceiptNo
+            // 
+            this.txtReceiptNo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtReceiptNo.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtReceiptNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtReceiptNo.Location = new System.Drawing.Point(287, 67);
+            this.txtReceiptNo.Name = "txtReceiptNo";
+            this.txtReceiptNo.Size = new System.Drawing.Size(148, 20);
+            this.txtReceiptNo.TabIndex = 707;
+            this.txtReceiptNo.Tag = null;
+            this.theme1.SetTheme(this.txtReceiptNo, "(default)");
+            this.txtReceiptNo.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
             // FrmCashierAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1542,6 +1573,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtDiscount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboAccCash)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPayName)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtReceiptNo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1636,5 +1668,7 @@
         private C1.Win.C1Input.C1TextBox txtTotalTransfer;
         private C1.Win.C1Input.C1ComboBox cboCreditBank;
         private System.Windows.Forms.Label label23;
+        private C1.Win.C1Input.C1TextBox txtReceiptNo;
+        private System.Windows.Forms.Label label24;
     }
 }

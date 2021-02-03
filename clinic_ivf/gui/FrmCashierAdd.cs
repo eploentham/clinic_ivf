@@ -403,7 +403,8 @@ namespace clinic_ivf.gui
                 {
                     billExtNo = ic.ivfDB.copDB.genReceiptExtDoc();
                 }
-                billNo = ic.ivfDB.copDB.genReceiptDoc(ref year, ref month, ref day, flagExtra);                
+                
+                billNo = ic.ivfDB.copDB.genReceiptDoc(ref year, ref month, ref day, flagExtra);
                 //String cashid = cboAccCash.SelectedItem == null ? "" : ((ComboBoxItem)cboAccCash.SelectedItem).Value;
                 //String creditid = cboAccCredit.SelectedItem == null ? "" : ((ComboBoxItem)cboAccCredit.SelectedItem).Value;
                 //String cashtransferid = cboAccCashTransfer.SelectedItem == null ? "" : ((ComboBoxItem)cboAccCashTransfer.SelectedItem).Value;
@@ -418,9 +419,10 @@ namespace clinic_ivf.gui
                     //ic.ivfDB.obilhDB.updateReceiptNoByBillId(txtBillId.Text, billNo, txtTotalCash.Text.Replace(",", ""), txtTotalCredit.Text.Replace(",", "")
                     //, txtCreditCardNumber.Text, cashid1, creditid1, total.ToString(), discount.ToString(), txtPayName.Text, totaltransfer.ToString(), transferid);
                     ic.ivfDB.obilhDB.updateReceiptNoByBillId(txtBillId.Text, billNo, totalcash.ToString(), totalcredit.ToString()
-                    , txtCreditCardNumber.Text, cashid1, creditid1, total.ToString(), discount.ToString(), txtPayName.Text, totaltransfer.ToString(), transferid,creditbankik);
+                    , txtCreditCardNumber.Text, cashid1, creditid1, total.ToString(), discount.ToString(), txtPayName.Text, totaltransfer.ToString(), transferid, creditbankik);
                     //OldBillheader obill = new OldBillheader();
                 }
+                
                 String billno2 = ic.ivfDB.obilhDB.selectBillNoByVN(txtVn.Text);
                 if (billno2.Equals(""))
                 {
@@ -1165,6 +1167,7 @@ namespace clinic_ivf.gui
             txtVnOld.Value = vs.visit_vn;      //      +0020
             txtHnOld.Value = vs.visit_hn;      //      +0020
             txtVn.Value = vs.visit_vn;      //      +0020
+            txtReceiptNo.Value = receiptno;
             //txtPttName.Value = ic.ivfDB.fpfDB.getList(ptt.f_patient_prefix_id) + " " + ptt.patient_firstname + " " + ptt.patient_lastname;
             if (ptt.patient_firstname.Length>0)
             {

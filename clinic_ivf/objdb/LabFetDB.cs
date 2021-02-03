@@ -201,7 +201,7 @@ namespace clinic_ivf.objdb
             DataTable dt = new DataTable();
             String sql = "select fet." + fet.fet_id + ", fet." + fet.fet_code + ",fet." + fet.hn_female + ",fet." + fet.name_female + ",fet." + fet.fet_date 
                 + ",fet." + fet.remark + "," + fet.hn_male + "," + fet.name_male + ", lab_b_procedure.proce_name_t " +
-                ", ptt.patient_name, ptt.patient_hn_1, ptt_hn1.patient_name as patient_name_hn_1" +
+                ", ptt.patient_name, ptt.patient_hn_1, ptt_hn1.patient_name as patient_name_hn_1 " +
                 "From " + fet.table + " fet " +
                 "Left Join Doctor on Doctor.ID = fet.doctor_id " +
                 "Left Join lab_b_procedure on fet.proce_id = lab_b_procedure.proce_id " +
@@ -225,7 +225,7 @@ namespace clinic_ivf.objdb
         {
             DataTable dt = new DataTable();
             String sql = "select fet." + fet.fet_id + ", fet." + fet.fet_code + ",fet." + fet.hn_female + ",fet." + fet.name_female + ",fet." + fet.fet_date + ",fet." + fet.remark + "," + fet.hn_male + "," + fet.name_male + ", lab_b_procedure.proce_name_t " +
-                ", ptt.patient_name, ptt.patient_hn_1, ptt_hn1.patient_name as patient_name_hn_1" +
+                ", ptt.patient_name, ptt.patient_hn_1, ptt_hn1.patient_name as patient_name_hn_1 " +
                 "From " + fet.table + " fet " +
                 "Left Join Doctor on Doctor.ID = fet.doctor_id " +
                 "Left Join lab_b_procedure on fet.proce_id = lab_b_procedure.proce_id " +
@@ -253,7 +253,7 @@ namespace clinic_ivf.objdb
             }
             DataTable dt = new DataTable();
             String sql = "select fet." + fet.fet_id + ", fet." + fet.fet_code + ",fet." + fet.hn_female + ",fet." + fet.name_female + ",fet." + fet.fet_date + ",fet." + fet.remark + "," + fet.hn_male + "," + fet.name_male + ", lab_b_procedure.proce_name_t " +
-                ", ptt.patient_name, ptt.patient_hn_1, ptt_hn1.patient_name as patient_name_hn_1" +
+                ", ptt.patient_name, ptt.patient_hn_1, ptt_hn1.patient_name as patient_name_hn_1 " +
                 "From " + fet.table + " fet " +
                 "Left Join t_patient ptt on fet.t_patient_id = ptt.t_patient_id " +
                 "Left Join t_patient ptt_hn1 on ptt.t_patient_id_1 = ptt_hn1.t_patient_id  " +

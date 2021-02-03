@@ -329,13 +329,29 @@ namespace clinic_ivf.gui
             {
                 setGrfRpt0021();
             }
+            else if (rptid.Equals("rptcashier002s"))
+            {
+                setGrfRpt002s();
+            }
             else if (rptid.Equals("rptcashier003"))
             {
                 setGrfRpt0031();
             }
+            else if (rptid.Equals("rptcashier003s"))
+            {
+                setGrfRpt003s();
+            }
             else if (rptid.Equals("rptcashier004"))
             {
                 setGrfRpt0041();
+            }
+            else if (rptid.Equals("rptcashier004s"))
+            {
+                setGrfRpt004s();
+            }
+            else if (rptid.Equals("rptcashier004i"))
+            {
+                setGrfRpt004i();
             }
             hideLbLoading();
         }
@@ -405,6 +421,116 @@ namespace clinic_ivf.gui
                 grfRpt[i, 7] = cash.ToString("#,###.00");
                 decimal.TryParse(row["credit"].ToString(), out cash);
                 grfRpt[i, 8] = cash.ToString("#,###.00");
+                //grfRpt[i, 5] = row["AgentID"].ToString();
+                i++;
+            }
+        }
+        private void setGrfRpt004i()
+        {
+            String rpt = "", dateStart = "", dateEnd = "";
+            int cntCash = 0, cntCredit = 0;
+            dateStart = ic.datetoDB(txtRptDateStart.Text);
+            dateEnd = ic.datetoDB(txtRptDateEnd.Text);
+            //grfRpt.Clear();
+            grfRpt.Rows.Count = 1;
+            grfRpt.Cols.Count = 6;
+            grfRpt.Cols[1].Caption = "Date";
+            //grfRpt.Cols[2].Caption = "Agent Name";
+            grfRpt.Cols[2].Caption = "Cash";
+            grfRpt.Cols[3].Caption = "Transfer";
+            grfRpt.Cols[4].Caption = "Credit";
+            grfRpt.Cols[5].Caption = "Card Type";
+            grfRpt.Cols[1].Width = 100;
+            //grfRpt.Cols[2].Width = 170;
+            grfRpt.Cols[2].Width = 100;
+            grfRpt.Cols[3].Width = 100;
+            grfRpt.Cols[4].Width = 100;
+            grfRpt.Cols[5].Width = 110;
+            grfRpt.Cols[1].AllowEditing = false;
+            //grfRpt.Cols[2].AllowEditing = false;
+            grfRpt.Cols[2].AllowEditing = false;
+            grfRpt.Cols[3].AllowEditing = false;
+            grfRpt.Cols[4].AllowEditing = false;
+            grfRpt.Cols[5].AllowEditing = false;
+            DataTable dt = new DataTable();
+            dt = ic.ivfDB.obildDB.selectIncomeByDate(dateStart, dateEnd);
+            cntCash = dt.Rows.Count;
+            grfRpt.Rows.Count = dt.Rows.Count + 1;
+            int i = 1;
+            foreach (DataRow row in dt.Rows)
+            {
+                decimal cash = 0;
+                grfRpt[i, 0] = i;
+                grfRpt[i, 1] = ic.datetoShow(row["Date"].ToString());
+                //grfRpt[i, 2] = ic.timetoShow(row["Time"].ToString());
+                //grfRpt[i, 4] = row["PName"].ToString();
+                //grfRpt[i, 3] = ic.showHN(row["PIDS"].ToString(), row["patient_year"].ToString());
+                //grfRpt[i, 2] = row["AgentName"].ToString();
+
+                //grfRpt[i, 9] = row["receipt_no"].ToString();
+                //grfRpt[i, 10] = row["receipt1_no"].ToString();
+                grfRpt[i, 5] = row["credit_bank_name"].ToString();
+                decimal.TryParse(row["cash"].ToString(), out cash);
+                grfRpt[i, 2] = cash.ToString("#,###.00");
+                decimal.TryParse(row["cash_transfer"].ToString(), out cash);
+                grfRpt[i, 3] = cash.ToString("#,###.00");
+                decimal.TryParse(row["credit"].ToString(), out cash);
+                grfRpt[i, 4] = cash.ToString("#,###.00");
+                //grfRpt[i, 5] = row["AgentID"].ToString();
+                i++;
+            }
+        }
+        private void setGrfRpt004s()
+        {
+            String rpt = "", dateStart = "", dateEnd = "";
+            int cntCash = 0, cntCredit = 0;
+            dateStart = ic.datetoDB(txtRptDateStart.Text);
+            dateEnd = ic.datetoDB(txtRptDateEnd.Text);
+            //grfRpt.Clear();
+            grfRpt.Rows.Count = 1;
+            grfRpt.Cols.Count = 7;
+            grfRpt.Cols[1].Caption = "Date";            
+            grfRpt.Cols[2].Caption = "Agent Name";
+            grfRpt.Cols[3].Caption = "Cash";
+            grfRpt.Cols[4].Caption = "Transfer";
+            grfRpt.Cols[5].Caption = "Credit";
+            grfRpt.Cols[6].Caption = "Card Type";
+            grfRpt.Cols[1].Width = 100;
+            grfRpt.Cols[2].Width = 170;
+            grfRpt.Cols[3].Width = 100;
+            grfRpt.Cols[4].Width = 100;
+            grfRpt.Cols[5].Width = 100;
+            grfRpt.Cols[6].Width = 110;
+            grfRpt.Cols[1].AllowEditing = false;
+            grfRpt.Cols[2].AllowEditing = false;
+            grfRpt.Cols[3].AllowEditing = false;
+            grfRpt.Cols[4].AllowEditing = false;
+            grfRpt.Cols[5].AllowEditing = false;
+            grfRpt.Cols[6].AllowEditing = false;
+            DataTable dt = new DataTable();
+            dt = ic.ivfDB.obildDB.selectAgentSumByDate(dateStart, dateEnd);
+            cntCash = dt.Rows.Count;
+            grfRpt.Rows.Count = dt.Rows.Count + 1;
+            int i = 1;
+            foreach (DataRow row in dt.Rows)
+            {
+                decimal cash = 0;
+                grfRpt[i, 0] = i;
+                grfRpt[i, 1] = ic.datetoShow(row["Date"].ToString());
+                //grfRpt[i, 2] = ic.timetoShow(row["Time"].ToString());
+                //grfRpt[i, 4] = row["PName"].ToString();
+                //grfRpt[i, 3] = ic.showHN(row["PIDS"].ToString(), row["patient_year"].ToString());
+                grfRpt[i, 2] = row["AgentName"].ToString();
+
+                //grfRpt[i, 9] = row["receipt_no"].ToString();
+                //grfRpt[i, 10] = row["receipt1_no"].ToString();
+                grfRpt[i, 6] = row["credit_bank_name"].ToString();
+                decimal.TryParse(row["cash"].ToString(), out cash);
+                grfRpt[i, 3] = cash.ToString("#,###.00");
+                decimal.TryParse(row["cash_transfer"].ToString(), out cash);
+                grfRpt[i, 4] = cash.ToString("#,###.00");
+                decimal.TryParse(row["credit"].ToString(), out cash);
+                grfRpt[i, 5] = cash.ToString("#,###.00");
                 //grfRpt[i, 5] = row["AgentID"].ToString();
                 i++;
             }
@@ -516,6 +642,65 @@ namespace clinic_ivf.gui
             grfRpt.Cols[colCash].AllowEditing = false;
             grfRpt.Cols[colCredit].AllowEditing = false;
         }
+        private void setGrfRpt003s()
+        {
+            String rpt = "", dateStart = "", dateEnd = "";
+            int cntCash = 0, cntCredit = 0;
+            dateStart = ic.datetoDB(txtRptDateStart.Text);
+            dateEnd = ic.datetoDB(txtRptDateEnd.Text);
+            //grfRpt.Clear();
+            grfRpt.Rows.Count = 1;
+            grfRpt.Cols.Count = 1;
+            grfRpt.Cols.Count = 8;
+            grfRpt.Cols[1].Caption = "Date";
+            grfRpt.Cols[2].Caption = "Type Name";
+            grfRpt.Cols[3].Caption = "Item Name";
+            grfRpt.Cols[4].Caption = "Price";
+            grfRpt.Cols[5].Caption = "Qty";
+            grfRpt.Cols[6].Caption = "Total";
+            grfRpt.Cols[7].Caption = "code";
+            grfRpt.Cols[1].Width = 100;
+            grfRpt.Cols[2].Width = 90;
+            grfRpt.Cols[3].Width = 400;
+            grfRpt.Cols[4].Width = 100;
+            grfRpt.Cols[5].Width = 100;
+            grfRpt.Cols[1].AllowEditing = false;
+            grfRpt.Cols[2].AllowEditing = false;
+            grfRpt.Cols[3].AllowEditing = false;
+            grfRpt.Cols[4].AllowEditing = false;
+            grfRpt.Cols[5].AllowEditing = false;
+            grfRpt.Cols[6].AllowEditing = false;
+            grfRpt.Cols[7].AllowEditing = false;
+            DataTable dt = new DataTable();
+            dt = ic.ivfDB.obildDB.selectTypeSumByDate(dateStart, dateEnd);
+            cntCash = dt.Rows.Count;
+            grfRpt.Rows.Count = dt.Rows.Count + 1;
+            int i = 1;
+            foreach (DataRow row in dt.Rows)
+            {
+                grfRpt[i, 0] = i;
+                if (row["status"].ToString().Equals("drug"))
+                {
+                    grfRpt[i, 3] = row["DUName"].ToString();
+                }
+                else if (row["status"].ToString().Equals("special"))
+                {
+                    grfRpt[i, 3] = row["SName"].ToString();
+                }
+                else if (row["status"].ToString().Equals("lab"))
+                {
+                    grfRpt[i, 3] = row["LName"].ToString();
+                }
+                grfRpt[i, 1] = ic.datetoShow(row["Date"].ToString());
+                grfRpt[i, 2] = row["status"].ToString();
+                //grfRpt[i, 3] = row["status"].ToString();
+                grfRpt[i, 6] = row["Total"].ToString();
+                grfRpt[i, 5] = row["qty"].ToString();
+                grfRpt[i, 4] = row["price1"].ToString();
+                grfRpt[i, 7] = row["item_id"].ToString();
+                i++;
+            }
+        }
         private void setGrfRpt0031()
         {
             String rpt = "", dateStart = "", dateEnd = "";
@@ -613,7 +798,7 @@ namespace clinic_ivf.gui
             //grfRpt.Clear();
             grfRpt.Rows.Count = 1;
             grfRpt.Cols.Count = 7;
-            grfRpt.Cols[1].Caption = "Patient Name";
+            grfRpt.Cols[1].Caption = "Date";
             grfRpt.Cols[2].Caption = "Patient Name";
             grfRpt.Cols[3].Caption = "Group Name";
             grfRpt.Cols[4].Caption = "Total";
@@ -644,6 +829,39 @@ namespace clinic_ivf.gui
                 grfRpt[i, 5] = row["ID"].ToString();
                 grfRpt[i, 6] = ic.showHN(row["PIDS"].ToString(), row["patient_year"].ToString());
                 
+                i++;
+            }
+        }
+        private void setGrfRpt002s()
+        {
+            String rpt = "", dateStart = "", dateEnd = "";
+            int cntCash = 0, cntCredit = 0;
+            dateStart = ic.datetoDB(txtRptDateStart.Text);
+            dateEnd = ic.datetoDB(txtRptDateEnd.Text);
+            //grfRpt.Clear();
+            grfRpt.Rows.Count = 1;
+            grfRpt.Cols.Count = 4;
+            grfRpt.Cols[1].Caption = "Date";
+            grfRpt.Cols[2].Caption = "Group Name";
+            grfRpt.Cols[3].Caption = "Total";
+
+            grfRpt.Cols[1].Width = 100;
+            grfRpt.Cols[2].Width = 400;
+            grfRpt.Cols[3].Width = 100;
+            grfRpt.Cols[1].AllowEditing = false;
+            grfRpt.Cols[2].AllowEditing = false;
+            grfRpt.Cols[3].AllowEditing = false;
+            DataTable dt = new DataTable();
+            dt = ic.ivfDB.obildDB.selectGroupSumByDate(dateStart, dateEnd);
+            cntCash = dt.Rows.Count;
+            grfRpt.Rows.Count = dt.Rows.Count + 1;
+            int i = 1;
+            foreach (DataRow row in dt.Rows)
+            {
+                grfRpt[i, 0] = i;
+                grfRpt[i, 1] = ic.datetoShow(row["Date"].ToString());
+                grfRpt[i, 2] = row["Name"].ToString();
+                grfRpt[i, 3] = row["Total"].ToString();
                 i++;
             }
         }
@@ -1281,20 +1499,20 @@ namespace clinic_ivf.gui
 
                 amtother = ic.ivfDB.obildDB.selectSumPriceByBilId1(bilid, "2650000102");
                 Decimal.TryParse(amtother, out amtother1);
-                                
+
                 //total = pkg11 + pkg21 + pkg31 + pkg41 + pkg51 + pkg61 + labfreezing1 + extraday61 + laball1 + amtmed1 + amtdtrfee1 + amtdiscount1 + amtother1-include1;
                 
-                String rc = "";
-                rc = row[ic.ivfDB.obilhDB.obillh.receipt_no].ToString();
+                String receipt1no = "";
+                receipt1no = row[ic.ivfDB.obilhDB.obillh.receipt1_no] != null ? row[ic.ivfDB.obilhDB.obillh.receipt1_no].ToString() : "";
                 pkgother1 = pkgall1 - pkg11 - pkg21 - pkg31 - pkg41 - pkg51 - pkg61 - pkglabfreezing1;
                 pkgall2 = pkg11 + pkg21 + pkg31 + pkg41 + pkg51 + pkg61 + pkgother1;
                 total = pkgall1 + extra1 + amtdiscount1;
-
+                
                 grfCld[i, 0] = i;
                 grfCld[i, colCldId] = "";
                 grfCld[i, colCldBillId] = row[ic.ivfDB.obilhDB.obillh.bill_id].ToString();
                 grfCld[i, colCldBillNo] = row[ic.ivfDB.obilhDB.obillh.BillNo].ToString();
-                grfCld[i, colCldReceiptNo] = row[ic.ivfDB.obilhDB.obillh.receipt_no].ToString();
+                grfCld[i, colCldReceiptNo] = (receiptno.Length > 0) ? receiptno : receipt1no;
                 grfCld[i, colCldDate] = ic.datetoShow(row[ic.ivfDB.obilhDB.obillh.Date].ToString());
                 grfCld[i, colCldHn] = row[ic.ivfDB.obilhDB.obillh.PIDS].ToString();
                 grfCld[i, colCldName] = row[ic.ivfDB.obilhDB.obillh.PName].ToString();
@@ -1630,7 +1848,8 @@ namespace clinic_ivf.gui
             grfRpt.Dock = System.Windows.Forms.DockStyle.Fill;
             grfRpt.Location = new System.Drawing.Point(0, 0);
             //grfRptCri.Click += GrfRpt_Click;
-
+            grfRpt.Rows.Count = 1;
+            grfRpt.Cols.Count = 5;
             pnReportView.Controls.Add(grfRpt);
 
             theme1.SetTheme(grfRpt, "Office2010Red");
@@ -1673,11 +1892,27 @@ namespace clinic_ivf.gui
                 {
                     pnReportCri001.Show();
                 }
+                else if (rptid.Equals("rptcashier002s"))
+                {
+                    pnReportCri001.Show();
+                }
                 else if (rptid.Equals("rptcashier003"))
                 {
                     pnReportCri001.Show();
                 }
+                else if (rptid.Equals("rptcashier003s"))
+                {
+                    pnReportCri001.Show();
+                }
                 else if (rptid.Equals("rptcashier004"))
+                {
+                    pnReportCri001.Show();
+                }
+                else if (rptid.Equals("rptcashier004s"))
+                {
+                    pnReportCri001.Show();
+                }
+                else if (rptid.Equals("rptcashier004i"))
                 {
                     pnReportCri001.Show();
                 }
@@ -1697,6 +1932,7 @@ namespace clinic_ivf.gui
 
             grfRptCri.Rows.Count = 2;
             grfRptCri.Cols.Count = 3;
+            //grfRpt.Rows.Count = 2;
             C1TextBox txt = new C1TextBox();
             //C1ComboBox cboproce = new C1ComboBox();
             //ic.ivfDB.itmDB.setCboItem(cboproce);
@@ -1721,13 +1957,32 @@ namespace clinic_ivf.gui
             Row row = grfRptCri.Rows.Add();
             row[1] = "rptcashier002";
             row[2] = "รายงานประจำวัน ตาม Group";
+            grfRptCri[2, 0] = 2;
             row = grfRptCri.Rows.Add();
             row[1] = "rptcashier003";
             row[2] = "รายงานประจำวัน ตาม Item";
+            grfRptCri[3, 0] = 3;
             row = grfRptCri.Rows.Add();
             row[1] = "rptcashier004";
             row[2] = "รายงานประจำวัน ตาม Agent";
+            grfRptCri[4, 0] = 4;
+            row = grfRptCri.Rows.Add();
+            row[1] = "rptcashier002s";
+            row[2] = "รายงานประจำวัน สรุป ตาม Group";
+            grfRptCri[5, 0] = 5;
+            row = grfRptCri.Rows.Add();
+            row[1] = "rptcashier003s";
+            row[2] = "รายงานประจำวัน สรุป ตาม Item";
+            grfRptCri[6, 0] = 6;
+            row = grfRptCri.Rows.Add();
+            row[1] = "rptcashier004s";
+            row[2] = "รายงานประจำวัน สรุป ตาม Agent";
+            grfRptCri[7, 0] = 7;
 
+            row = grfRptCri.Rows.Add();
+            row[1] = "rptcashier004i";
+            row[2] = "รายงานประจำวัน สรุป ตาม INCOME";
+            grfRptCri[8, 0] = 8;
             //    grfPtt.Rows[i].StyleNew.BackColor = color;
             i++;
             
@@ -1824,7 +2079,7 @@ namespace clinic_ivf.gui
             grfSearch.Cols[colCash].Width = 80;
             grfSearch.Cols[colCredit].Width = 80;
             grfSearch.Cols[colTransfer].Width = 80;
-            //grfSearch.Cols[colVsAgent].Width = 150;
+            grfSearch.Cols[colStatusBill].Width = 60;
 
             grfSearch.ShowCursor = true;
             //grdFlex.Cols[colID].Caption = "no";
@@ -1836,6 +2091,7 @@ namespace clinic_ivf.gui
             grfSearch.Cols[colVsDate].Caption = "Date";
             grfSearch.Cols[colVsTime].Caption = "Time visit";
             grfSearch.Cols[colVsEtime].Caption = "Time finish";
+            grfSearch.Cols[colVsAgent].Caption = "Agent";
             grfSearch.Cols[colStatus].Caption = "Status";
             grfSearch.Cols[colPttId].Caption = "colPttId";
             grfSearch.Cols[colStatusNurse].Caption = "colStatusNurse";
@@ -1845,7 +2101,10 @@ namespace clinic_ivf.gui
             grfSearch.Cols[colTransfer].Caption = "Transfer";
             grfSearch.Cols[colPttHnOld].Caption = "HN OLD";
             grfSearch.Cols[colStatusBill].Caption = "active";
-
+            grfSearch.Cols[colBillAcc].Caption = "Account";
+            grfSearch.Cols[colAgentId].Caption = "agent id";
+            grfSearch.Cols[colReceiptNo].Caption = "receipt no";
+            grfSearch.Cols[colReceiptNo1].Caption = "receipt no";
             //menuGw.MenuItems.Add("&receive operation", new EventHandler(ContextMenu_Apm));
             //menuGw.MenuItems.Add("receive operation", new EventHandler(ContextMenu_order));
             //menuGw.MenuItems.Add("&LAB request FORM A", new EventHandler(ContextMenu_LAB_req_formA_Ptt));
@@ -1910,6 +2169,9 @@ namespace clinic_ivf.gui
             grfSearch.Cols[colVN].Visible = false;
             grfSearch.Cols[colPttId].Visible = false;
             grfSearch.Cols[colBillId].Visible = false;
+            grfSearch.Cols[colVsAgent].Visible = false;
+            grfSearch.Cols[colAgentId].Visible = false;
+
             grfSearch.Cols[colStatusNurse].Visible = false;
             grfSearch.Cols[colStatusCashier].Visible = false;
             grfSearch.Cols[colVNshow].AllowEditing = false;
@@ -2007,7 +2269,7 @@ namespace clinic_ivf.gui
             grfFinish.Cols[colVsTime].Width = 80;
             grfFinish.Cols[colVsEtime].Width = 80;
             grfFinish.Cols[colStatus].Width = 200;
-
+            grfFinish.Cols[colBillId].Width = 100;
             grfFinish.ShowCursor = true;
             //grdFlex.Cols[colID].Caption = "no";
             //grfDept.Cols[colCode].Caption = "รหัส";
@@ -2018,14 +2280,16 @@ namespace clinic_ivf.gui
             grfFinish.Cols[colVsDate].Caption = "Date";
             grfFinish.Cols[colVsTime].Caption = "Time visit";
             grfFinish.Cols[colVsEtime].Caption = "Time finish";
+            grfFinish.Cols[colVsAgent].Caption = "agent";
             grfFinish.Cols[colStatus].Caption = "Status";
+            grfFinish.Cols[colAgentId].Caption = "AgentId";
             grfFinish.Cols[colPttId].Caption = "colPttId";
             grfFinish.Cols[colStatusNurse].Caption = "colStatusNurse";
             grfFinish.Cols[colReceiptNo].Caption = "receipt no";
             grfFinish.Cols[colPttHnOld].Caption = "HN OLD";
             grfFinish.Cols[colBillAcc].Caption = "Account";
             grfFinish.Cols[colReceiptNo1].Caption = "receipt no1";
-
+            grfFinish.Cols[colBillId].Caption = "billid";
             //menuGw.MenuItems.Add("&receive operation", new EventHandler(ContextMenu_Apm));
             //menuGw.MenuItems.Add("receive operation", new EventHandler(ContextMenu_order));
             //menuGw.MenuItems.Add("&LAB request FORM A", new EventHandler(ContextMenu_LAB_req_formA_Ptt));
@@ -2056,6 +2320,7 @@ namespace clinic_ivf.gui
                 grfFinish[i, colPttHnOld] = row["patient_hn_old"].ToString();
                 grfFinish[i, colReceiptNo] = row["receipt_no"].ToString();
                 grfFinish[i, colReceiptNo1] = row["receipt1_no"].ToString();
+                //grfFinish[i, colBillId] = row["bill_id"].ToString();
                 if (!row[ic.ivfDB.ovsDB.vsold.form_a_id].ToString().Equals("0"))
                 {
                     CellNote note = new CellNote("ส่ง Lab Request Foam A");
@@ -2082,6 +2347,9 @@ namespace clinic_ivf.gui
             grfFinish.Cols[colVN].Visible = false;
             grfFinish.Cols[colReceiptNo1].Visible = true;
             grfFinish.Cols[colStatusBill].Visible = false;
+            grfFinish.Cols[colBillId].Visible = true;
+            grfFinish.Cols[colVsAgent].Visible = false;
+            grfFinish.Cols[colAgentId].Visible = false;
 
             grfFinish.Cols[colPttId].Visible = false;
             grfFinish.Cols[colBillId].Visible = false;
@@ -2124,7 +2392,6 @@ namespace clinic_ivf.gui
             //theme1.SetTheme(tabFinish, "Office2010Blue");
 
         }
-
         private void GrfQue_DoubleClick(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
@@ -2139,26 +2406,28 @@ namespace clinic_ivf.gui
         }
         private void ContextMenu_edit_billSearch(object sender, System.EventArgs e)
         {
-            String billid = "", name = "", id = "", receptno="", vn="";
+            String billid = "", name = "", id = "", receptno="", vn="", recept1no="";
 
             id = grfSearch[grfSearch.Row, colID] != null ? grfSearch[grfSearch.Row, colID].ToString() : "";
             name = grfSearch[grfSearch.Row, colPttName] != null ? grfSearch[grfSearch.Row, colPttName].ToString() : "";
             billid = grfSearch[grfSearch.Row, colBildId] != null ? grfSearch[grfSearch.Row, colBillId].ToString() : "";
             receptno = grfSearch[grfSearch.Row, colReceiptNo] != null ? grfSearch[grfSearch.Row, colReceiptNo].ToString() : "";
+            recept1no = grfSearch[grfSearch.Row, colReceiptNo1] != null ? grfSearch[grfSearch.Row, colReceiptNo1].ToString() : "";
             vn = grfSearch[grfSearch.Row, colVN] != null ? grfSearch[grfSearch.Row, colVN].ToString() : "";
 
-            openBillNew(vn, name, "noedit", billid, receptno);
+            openBillNew(vn, name, "noedit", billid, receptno.Length>0 ? receptno : recept1no);
         }
         private void ContextMenu_edit_billfinish(object sender, System.EventArgs e)
         {
-            String billid = "", name = "", id = "", vn="";
+            String billid = "", name = "", id = "", vn="", receptno = "", recept1no = "";
 
             id = grfFinish[grfFinish.Row, colID] != null ? grfFinish[grfFinish.Row, colID].ToString() : "";
             name = grfFinish[grfFinish.Row, colPttName] != null ? grfFinish[grfFinish.Row, colPttName].ToString() : "";
             billid = grfFinish[grfFinish.Row, colBillId] != null ? grfFinish[grfFinish.Row, colBillId].ToString() : "";
             vn = grfFinish[grfFinish.Row, colVN] != null ? grfFinish[grfFinish.Row, colVN].ToString() : "";
-
-            openBillNew(vn, name, "noedit", billid,"");
+            receptno = grfFinish[grfFinish.Row, colReceiptNo] != null ? grfFinish[grfFinish.Row, colReceiptNo].ToString() : "";
+            recept1no = grfFinish[grfFinish.Row, colReceiptNo1] != null ? grfFinish[grfFinish.Row, colReceiptNo1].ToString() : "";
+            openBillNew(vn, name, "noedit", billid, receptno.Length > 0 ? receptno : recept1no);
         }
         private void ContextMenu_edit_billVoid(object sender, System.EventArgs e)
         {

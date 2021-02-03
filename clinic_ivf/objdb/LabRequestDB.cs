@@ -449,18 +449,20 @@ namespace clinic_ivf.objdb
                 //", lreq.req_code, ptt.PIDS as hn_female, lreq.req_date, lreq.remark, lforma.status_opu_active, lforma.status_wait_confirm_opu_date, lforma.opu_wait_remark, lforma.remark as form_a_remark " +            //-0020
                 ", lreq.req_code, lreq.hn_female, lreq.req_date, lreq.remark, lforma.status_opu_active, lforma.status_wait_confirm_opu_date, lforma.opu_wait_remark, lforma.remark as form_a_remark " +              //+0020
                 ", lforma.opu_date, lforma.opu_time, lforma.opu_remark, lforma.fet_remark, lforma.opu_time_modi, lforma.status_opu_time_modi, lforma.hn_male, lforma.name_male, lforma.hn_donor" +
-                ", lforma.name_donor,lreq.vn, lreq.item_id, si.SName, ifnull(ptt.patient_hn_old,0) as  patient_hn_old, ptt.patient_name, ptt.patient_hn_1, ptt_hn1.patient_name as patient_name_hn_1 " +
+                ", lforma.name_donor,lreq.vn, lreq.item_id, li.LName, ifnull(ptt.patient_hn_old,0) as  patient_hn_old, ptt.patient_name, ptt.patient_hn_1, ptt_hn1.patient_name as patient_name_hn_1" +
+                ", ptt.patient_hn, ptt.patient_year, lforma.fet_no_date_freezing,lforma.fet_no " +
                 "From lab_t_request lreq " +
                 "Left Join lab_t_form_a lforma on lreq.form_a_id = lforma.form_a_id  " +
                 //"Left Join Patient ptt on lreq.hn_female = ptt.PIDS " +           //      -0020
                 //"Left Join SurfixName on SurfixName.SurfixID = ptt.SurfixID  " +           //      -0020
                 "Left join Doctor on lforma.doctor_id = Doctor.ID  " +
-                "Left join SpecialItem si on lreq.item_id = si.SID " +
+                //"Left join SpecialItem si on lreq.item_id = si.SID " +
+                "Left join LabItem li on lreq.item_id = li.LID " +
                 //"Left Join lab_t_request lreq on lreq.req_id = oJSd.req_id " +
                 //"Left Join lab_t_request lreq on lreq.request_id = oJSd.ID  " +
                 //"Left Join Visit vsold on oJSd.VN = vsold.VN " +
                 //"Left Join lab_t_form_a lforma on vsold.form_a_id = lforma.form_a_id " +
-                "Left Join t_visit vs on lreq.visit_id = vs.t_visit_id "+
+                "Left Join t_visit vs on lreq.visit_id = vs.t_visit_id " +
                 "Left Join t_patient ptt on vs.t_patient_id = ptt.t_patient_id "+
                 "Left Join t_patient ptt_hn1 on ptt.t_patient_id_1 = ptt_hn1.t_patient_id  " +
                 "Where lreq.status_req in ('0','1','2') " +

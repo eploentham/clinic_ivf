@@ -1040,33 +1040,42 @@ namespace clinic_ivf.gui
                 //txt = "ป้อน LAB Sperm " + name;
                 //frm.FormBorderStyle = FormBorderStyle.None;
                 //menu.AddNewTab(frm, txt);
-                String re = ic.ivfDB.lbReqDB.UpdateStatusRequestProcess(reqId, ic.cStf.staff_id);
-                long chk1 = 0;
-                if (long.TryParse(re, out chk1))
+                LabRequest req = new LabRequest();
+                req = ic.ivfDB.lbReqDB.selectByPk1(reqId);
+                if(req.status_req.Equals("2") || req.status_req.Equals("4"))
                 {
-                    if (grfReq.Row <= 0)
+                    // มีคนอื่น double click รับ request ไปแล้ว  ที่ ดัก status เพราะ กัน รับ request แล้ว เกิด record ซ้อนกัน 2 record
+                }
+                else
+                {
+                    String re = ic.ivfDB.lbReqDB.UpdateStatusRequestProcess(reqId, ic.cStf.staff_id);
+                    long chk1 = 0;
+                    if (long.TryParse(re, out chk1))
                     {
-                        MessageBox.Show("ไม่พบ request id", "");
-                        return;
-                    }
-                    LabSperm fet1 = ic.ivfDB.setSperm(reqId, grfReq[grfReq.Row, colRqStatusSperm].ToString());
-                    String re1 = ic.ivfDB.lspermDB.insert(fet1, ic.cStf.staff_id);
-                    if (long.TryParse(re1, out chk1))
-                    {
-                        //FrmLabOPUAdd frm = new FrmLabOPUAdd(ic, "", re1);
-                        FrmLabSpermAdd frm = new FrmLabSpermAdd(ic, "", re1, "edit");
-                        String txt = "";
-                        if (!name.Equals(""))
+                        if (grfReq.Row <= 0)
                         {
-                            txt = "ป้อน LAB Sperm " + name;
+                            MessageBox.Show("ไม่พบ request id", "");
+                            return;
                         }
-                        else
+                        LabSperm fet1 = ic.ivfDB.setSperm(reqId, grfReq[grfReq.Row, colRqStatusSperm].ToString());
+                        String re1 = ic.ivfDB.lspermDB.insert(fet1, ic.cStf.staff_id);
+                        if (long.TryParse(re1, out chk1))
                         {
-                            txt = "ป้อน LAB Sperm ใหม่ ";
-                        }
+                            //FrmLabOPUAdd frm = new FrmLabOPUAdd(ic, "", re1);
+                            FrmLabSpermAdd frm = new FrmLabSpermAdd(ic, "", re1, "edit");
+                            String txt = "";
+                            if (!name.Equals(""))
+                            {
+                                txt = "ป้อน LAB Sperm " + name;
+                            }
+                            else
+                            {
+                                txt = "ป้อน LAB Sperm ใหม่ ";
+                            }
 
-                        frm.FormBorderStyle = FormBorderStyle.None;
-                        menu.AddNewTab(frm, txt);
+                            frm.FormBorderStyle = FormBorderStyle.None;
+                            menu.AddNewTab(frm, txt);
+                        }
                     }
                 }
             }

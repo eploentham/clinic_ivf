@@ -694,6 +694,7 @@ namespace clinic_ivf.objdb
                 "Set " + vs.status_cashier + " ='2' " +
                 "," + vs.vsid + " = '166' " +       //      +0020
                 "," + vs.visit_financial_discharge_time + " = now() " +
+                "," + vs.cashier_finish_date_time + " = now() " +
                 "Where " + vs.pkField + " ='" + vsid + "' ";
             try
             {
@@ -1498,21 +1499,21 @@ namespace clinic_ivf.objdb
             //String date = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd");
             String sql = "select vs.t_visit_id as id,vs.visit_vn as VN, vs.visit_hn as PIDS, vs.patient_name as PName, vs.visit_begin_visit_time as VDate, vs.visit_begin_visit_time as VStartTime, vs.visit_financial_discharge_time as VEndTime " +
                 ", VStatus.VName, vs.vsid, ifnull(vs.t_patient_id,'') as PID, t_patient.patient_birthday as dob " +
-                ",vs.form_a_id,CONCAT(IFNULL(fpp.patient_prefix_description,''),' ', stf.staff_fname_e ,' ',stf.staff_lname_e)  as dtrname,vs.status_nurse, vs.status_cashier, bilh.bill_id" +
+                ",vs.form_a_id,vs.status_nurse, vs.status_cashier, bilh.bill_id" +
                 ", ifnull(CashAccount.CashName,'') as CashName, ifnull(CreditCardAccount.CreditCardName,'') as CreditCardName, bilh.CashID, bilh.CreditCardID" +
                 ", t_patient.patient_hn_old, bilh.receipt_no, bilh.receipt1_no,t_patient.patient_year,bilh.active  " +
                 "From " + vs.table + " vs " +
                 "Left Join VStatus on  VStatus.VSID = vs.vsid " +
                 "Left Join t_patient on  vs.t_patient_id = t_patient.t_patient_id " +
                 //"Left Join t_visit on  vsold.VN = t_visit.visit_vn " +
-                "Left Join b_staff stf on vs.doctor_id = stf.doctor_id_old " +
-                "Left join f_patient_prefix fpp on fpp.f_patient_prefix_id = stf.prefix_id " +
+                //"Left Join b_staff stf on vs.doctor_id = stf.doctor_id_old " +
+                //"Left join f_patient_prefix fpp on fpp.f_patient_prefix_id = stf.prefix_id " +
                 "inner Join BillHeader bilh on vs.visit_vn = bilh.VN and bilh.active = '1'    " +
                 "Left Join CashAccount on bilh.CashID = CashAccount.CashID and CashAccount.CashID > 0 " +
                 "Left Join CreditCardAccount on bilh.CreditCardID = CreditCardAccount.CreditCardID and CreditCardAccount.CreditCardID  > 0 " +
                 "Where  vs." + vs.cashier_finish_date_time + " >= '" + vsdate + " 00:00:00' and vs." + vs.cashier_finish_date_time + " <=  '" + vsdate + " 23:59:59'  " +//and t_visit.b_service_point_id = '" + bspid + "' " +
-                                                          //"Where  vs.status_cashier = '2' and bilh.Date = '" + date + "' " +
-                "Order By vs.vsid desc,vs.visit_begin_visit_time desc ";
+                                                                                                                                                                         //"Where  vs.status_cashier = '2' and bilh.Date = '" + date + "' " +
+                "Order By vs.vsid desc,vs.visit_begin_visit_time desc, bilh.bill_id ";
             dt = conn.selectData(conn.conn, sql);
 
             return dt;

@@ -604,7 +604,7 @@ namespace clinic_ivf.objdb
             cashid = long.TryParse(cashid, out chk) ? chk.ToString() : "0";
             creditid = long.TryParse(creditid, out chk) ? chk.ToString() : "0";
             transferid = long.TryParse(transferid, out chk) ? chk.ToString() : "0";
-
+            creditbankid = long.TryParse(creditbankid, out chk) ? chk.ToString() : "0";
             sql = "Update " + obillh.table + " set " +
                 "" + obillh.receipt1_no + "='" + billno + "' " +
                 "," + obillh.cash + "='" + cash + "' " +

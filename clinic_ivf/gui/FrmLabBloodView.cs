@@ -647,137 +647,145 @@ namespace clinic_ivf.gui
             frm1.ShowDialog(this);
             if (!ic.cStf.staff_id.Equals(""))
             {
-                DataTable dtVs = new DataTable();
-                dtVs = ic.ivfDB.lbReqDB.selectLabBloodByVsid(vsid);
-                foreach(DataRow rowVs in dtVs.Rows)
+                LabRequest req = new LabRequest();
+                req = ic.ivfDB.lbReqDB.selectByPk1(id);
+                if (req.status_req.Equals("2") || req.status_req.Equals("4"))
                 {
-                    String id1 = "";
-                    id1 = rowVs[ic.ivfDB.lbReqDB.lbReq.req_id].ToString();
-                    LabRequest lbreq = new LabRequest();
-                    lbreq = ic.ivfDB.lbReqDB.selectByPk1(id1);
-                    if (lbreq.req_id.Length <= 0) continue;
-
-                    Lis lis = new Lis();
-                    lis.lis_id = "";
-                    lis.barcode = "";
-                    lis.req_id = lbreq.req_id;
-                    lis.visit_vn = lbreq.vn;
-
-                    if (lbreq.name_female.Length > 0)
+                    // มีคนอื่น double click รับ request ไปแล้ว  ที่ ดัก status เพราะ กัน รับ request แล้ว เกิด record ซ้อนกัน 2 record
+                }
+                else
+                {
+                    DataTable dtVs = new DataTable();
+                    dtVs = ic.ivfDB.lbReqDB.selectLabBloodByVsid(vsid);
+                    foreach (DataRow rowVs in dtVs.Rows)
                     {
-                        lis.patient_name = lbreq.name_female;
-                        lis.visit_hn = lbreq.hn_female;
-                    }
-                    else
-                    {
-                        lis.patient_name = lbreq.name_male;
-                        lis.visit_hn = lbreq.hn_male;
-                    }
+                        String id1 = "";
+                        id1 = rowVs[ic.ivfDB.lbReqDB.lbReq.req_id].ToString();
+                        LabRequest lbreq = new LabRequest();
+                        lbreq = ic.ivfDB.lbReqDB.selectByPk1(id1);
+                        if (lbreq.req_id.Length <= 0) continue;
 
-                    lis.visit_id = lbreq.visit_id;
-                    lis.message_lis = "";
-                    lis.active = "";
-                    lis.remark = "";
-                    lis.date_create = "";
-                    lis.date_modi = "";
-                    lis.date_cancel = "";
-                    lis.user_create = "";
-                    lis.user_modi = "";
-                    lis.user_cancel = "";
-                    lis.statis_lis = "";
-                    lis.date_time_receive = "";
-                    lis.date_time_finish = "";
-                    lis.lab_id = lbreq.item_id;
+                        Lis lis = new Lis();
+                        lis.lis_id = "";
+                        lis.barcode = "";
+                        lis.req_id = lbreq.req_id;
+                        lis.visit_vn = lbreq.vn;
 
-                    String re = "", re1 = "", re2 = "";
-                    long chk = 0, chk2 = 0;
-                    re1 = ic.ivfDB.lisDB.insertLis(lis, ic.cStf.staff_id);
-                    if (long.TryParse(re1, out chk))
-                    {
-                        LabResult lbRes = new LabResult();
-                        OldLabItem labi = new OldLabItem();
-                        labi = ic.ivfDB.oLabiDB.selectByPk1(lbreq.item_id);
-                        lbRes.result_id = "";
-                        lbRes.lis_id = re1;
-                        lbRes.req_id = lbreq.req_id;
-                        lbRes.visit_id = lbreq.visit_id;
-                        lbRes.patient_id = "";
-                        lbRes.lab_id = lbreq.item_id;
-                        lbRes.result = "";
-                        lbRes.method = "";
-                        lbRes.active = "";
-                        lbRes.remark = "";
-                        lbRes.date_create = "";
-                        lbRes.date_modi = "";
-                        lbRes.date_cancel = "";
-                        lbRes.user_create = "";
-                        lbRes.user_modi = "";
-                        lbRes.user_cancel = "";
-                        lbRes.unit = "";
-                        lbRes.sort1 = "";
-                        lbRes.staff_id_result = "";
-                        lbRes.staff_id_approve = "";
-                        lbRes.date_time_result = "";
-                        lbRes.date_time_approve = "";
-                        lbRes.normal_value = labi.normal_vaule;
-                        lbRes.interpret = "";
-                        lbRes.status_result = "1";
-                        lbRes.row1 = "0";
-                        DateTime date1 = new DateTime();
-                        DateTime.TryParse(lbreq.req_time, out date1);
-                        //lbRes.req_date_time = date1.Year+"-"+ date1.ToString("MM-dd")+" " + date1.ToString("HH:mm:ss");
-                        lbRes.req_date_time = lbreq.req_time;
-                        lbRes.date_time_receive = System.DateTime.Now.Year+"-"+ System.DateTime.Now.ToString("MM-dd HH:mm:ss");
-                        lbRes.doctor_id = lbreq.doctor_id;
-                        lbRes.date_time_collect = lbRes.req_date_time;
-                        lbRes.remark_nurse = lbreq.remark;
-                        re2 = ic.ivfDB.lbresDB.insertLabResult(lbRes, ic.cStf.staff_id);
-                        if (long.TryParse(re2, out chk2))
-                         {
-                            resid = re2;
-                            re = ic.ivfDB.lbReqDB.UpdateStatusRequestAccept(lbreq.req_id, ic.cStf.staff_id);
-                            chk = 0;
-                            if (long.TryParse(re, out chk))
+                        if (lbreq.name_female.Length > 0)
+                        {
+                            lis.patient_name = lbreq.name_female;
+                            lis.visit_hn = lbreq.hn_female;
+                        }
+                        else
+                        {
+                            lis.patient_name = lbreq.name_male;
+                            lis.visit_hn = lbreq.hn_male;
+                        }
+
+                        lis.visit_id = lbreq.visit_id;
+                        lis.message_lis = "";
+                        lis.active = "";
+                        lis.remark = "";
+                        lis.date_create = "";
+                        lis.date_modi = "";
+                        lis.date_cancel = "";
+                        lis.user_create = "";
+                        lis.user_modi = "";
+                        lis.user_cancel = "";
+                        lis.statis_lis = "";
+                        lis.date_time_receive = "";
+                        lis.date_time_finish = "";
+                        lis.lab_id = lbreq.item_id;
+
+                        String re = "", re1 = "", re2 = "";
+                        long chk = 0, chk2 = 0;
+                        re1 = ic.ivfDB.lisDB.insertLis(lis, ic.cStf.staff_id);
+                        if (long.TryParse(re1, out chk))
+                        {
+                            LabResult lbRes = new LabResult();
+                            OldLabItem labi = new OldLabItem();
+                            labi = ic.ivfDB.oLabiDB.selectByPk1(lbreq.item_id);
+                            lbRes.result_id = "";
+                            lbRes.lis_id = re1;
+                            lbRes.req_id = lbreq.req_id;
+                            lbRes.visit_id = lbreq.visit_id;
+                            lbRes.patient_id = "";
+                            lbRes.lab_id = lbreq.item_id;
+                            lbRes.result = "";
+                            lbRes.method = "";
+                            lbRes.active = "";
+                            lbRes.remark = "";
+                            lbRes.date_create = "";
+                            lbRes.date_modi = "";
+                            lbRes.date_cancel = "";
+                            lbRes.user_create = "";
+                            lbRes.user_modi = "";
+                            lbRes.user_cancel = "";
+                            lbRes.unit = "";
+                            lbRes.sort1 = "";
+                            lbRes.staff_id_result = "";
+                            lbRes.staff_id_approve = "";
+                            lbRes.date_time_result = "";
+                            lbRes.date_time_approve = "";
+                            lbRes.normal_value = labi.normal_vaule;
+                            lbRes.interpret = "";
+                            lbRes.status_result = "1";
+                            lbRes.row1 = "0";
+                            DateTime date1 = new DateTime();
+                            DateTime.TryParse(lbreq.req_time, out date1);
+                            //lbRes.req_date_time = date1.Year+"-"+ date1.ToString("MM-dd")+" " + date1.ToString("HH:mm:ss");
+                            lbRes.req_date_time = lbreq.req_time;
+                            lbRes.date_time_receive = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd HH:mm:ss");
+                            lbRes.doctor_id = lbreq.doctor_id;
+                            lbRes.date_time_collect = lbRes.req_date_time;
+                            lbRes.remark_nurse = lbreq.remark;
+                            re2 = ic.ivfDB.lbresDB.insertLabResult(lbRes, ic.cStf.staff_id);
+                            if (long.TryParse(re2, out chk2))
                             {
-                                //      ยังไม่ได้ต่อ LIS        62-08-03
-                                //try
-                                //{
-                                //    SetDefaultPrinter(ic.iniC.printerSticker);
+                                resid = re2;
+                                re = ic.ivfDB.lbReqDB.UpdateStatusRequestAccept(lbreq.req_id, ic.cStf.staff_id);
+                                chk = 0;
+                                if (long.TryParse(re, out chk))
+                                {
+                                    //      ยังไม่ได้ต่อ LIS        62-08-03
+                                    //try
+                                    //{
+                                    //    SetDefaultPrinter(ic.iniC.printerSticker);
 
-                                //    Lis lis1 = new Lis();
-                                //    lis1 = ic.ivfDB.lisDB.selectByPk(re1);
-                                //    Visit vs = new Visit();
-                                //    vs = ic.ivfDB.vsDB.selectByVn(lis1.visit_vn);
-                                //    Patient ptt = new Patient();
-                                //    ptt = ic.ivfDB.pttDB.selectByPk1(vs.t_patient_id);
+                                    //    Lis lis1 = new Lis();
+                                    //    lis1 = ic.ivfDB.lisDB.selectByPk(re1);
+                                    //    Visit vs = new Visit();
+                                    //    vs = ic.ivfDB.vsDB.selectByVn(lis1.visit_vn);
+                                    //    Patient ptt = new Patient();
+                                    //    ptt = ic.ivfDB.pttDB.selectByPk1(vs.t_patient_id);
 
-                                //    DataTable dt = new DataTable();
-                                //    dt.Columns.Add("hn", typeof(String));
-                                //    dt.Columns.Add("name", typeof(String));
-                                //    dt.Columns.Add("age", typeof(String));
-                                //    dt.Columns.Add("vn", typeof(String));
-                                //    DataRow row11 = dt.NewRow();
-                                //    row11["hn"] = lis1.visit_hn;
-                                //    row11["name"] = lis1.patient_name;
-                                //    row11["age"] = "Age " + ptt.AgeStringShort() + " [" + ic.datetoShow(ptt.patient_birthday) + "]";
-                                //    row11["vn"] = lis1.barcode;
-                                //    dt.Rows.Add(row11);
-                                //    FrmReport frm = new FrmReport(ic);
-                                //    frm.setStickerPatientThemalLIS(dt);
-                                //    frm.ShowDialog(this);
-                                //    SetDefaultPrinter(ic.iniC.printerSticker);
-                                //}
-                                //catch (Exception ex)
-                                //{
-                                //    MessageBox.Show(this, ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                //    return;
-                                //}
-                                //      ยังไม่ได้ต่อ LIS        62-08-03
+                                    //    DataTable dt = new DataTable();
+                                    //    dt.Columns.Add("hn", typeof(String));
+                                    //    dt.Columns.Add("name", typeof(String));
+                                    //    dt.Columns.Add("age", typeof(String));
+                                    //    dt.Columns.Add("vn", typeof(String));
+                                    //    DataRow row11 = dt.NewRow();
+                                    //    row11["hn"] = lis1.visit_hn;
+                                    //    row11["name"] = lis1.patient_name;
+                                    //    row11["age"] = "Age " + ptt.AgeStringShort() + " [" + ic.datetoShow(ptt.patient_birthday) + "]";
+                                    //    row11["vn"] = lis1.barcode;
+                                    //    dt.Rows.Add(row11);
+                                    //    FrmReport frm = new FrmReport(ic);
+                                    //    frm.setStickerPatientThemalLIS(dt);
+                                    //    frm.ShowDialog(this);
+                                    //    SetDefaultPrinter(ic.iniC.printerSticker);
+                                    //}
+                                    //catch (Exception ex)
+                                    //{
+                                    //    MessageBox.Show(this, ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    //    return;
+                                    //}
+                                    //      ยังไม่ได้ต่อ LIS        62-08-03
+                                }
                             }
                         }
                     }
                 }
-
             }
             //String id = "";
             //id = grfProc[grfProc.Row, colRsId] != null ? grfProc[grfProc.Row, colRsId].ToString() : "";
