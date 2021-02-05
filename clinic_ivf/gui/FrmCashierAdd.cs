@@ -258,10 +258,11 @@ namespace clinic_ivf.gui
             frm.ShowDialog(this);
             if (!ic.cStf.staff_id.Equals(""))
             {
-                String cashid1 = "", creditid1 = "";
+                String cashid1 = "", creditid1 = "", transferid = "";
                 cashid1 = cboAccCash.SelectedItem == null ? "" : ((ComboBoxItem)cboAccCash.SelectedItem).Value;
                 creditid1 = cboAccCredit.SelectedItem == null ? "" : ((ComboBoxItem)cboAccCredit.SelectedItem).Value;
-                if (cashid1.Length == 0 && creditid1.Length == 0)
+                transferid = cboAccCashTransfer.SelectedItem == null ? "" : ((ComboBoxItem)cboAccCashTransfer.SelectedItem).Value;
+                if (cashid1.Length == 0 && creditid1.Length == 0 && transferid.Length == 0)
                 {
                     MessageBox.Show("ยังไม่ได้เลือก ประเภทบัญชี", "");
                     return;

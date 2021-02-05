@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtReceiptNo = new C1.Win.C1Input.C1TextBox();
+            this.label24 = new System.Windows.Forms.Label();
             this.txtBillId = new C1.Win.C1Input.C1TextBox();
             this.txtVnShow = new C1.Win.C1Input.C1TextBox();
             this.label20 = new System.Windows.Forms.Label();
@@ -115,9 +117,8 @@
             this.txtPayName = new C1.Win.C1Input.C1TextBox();
             this.tabReceipt = new C1.Win.C1Command.C1DockingTabPage();
             this.tabLabPrescription = new C1.Win.C1Command.C1DockingTabPage();
-            this.label24 = new System.Windows.Forms.Label();
-            this.txtReceiptNo = new C1.Win.C1Input.C1TextBox();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtReceiptNo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBillId)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtVnShow)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAgent)).BeginInit();
@@ -172,7 +173,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtDiscount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboAccCash)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPayName)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtReceiptNo)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -223,6 +223,32 @@
             this.groupBox1.Text = "Patient";
             this.theme1.SetTheme(this.groupBox1, "(default)");
             this.groupBox1.Enter += new System.EventHandler(this.GroupBox1_Enter);
+            // 
+            // txtReceiptNo
+            // 
+            this.txtReceiptNo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtReceiptNo.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtReceiptNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtReceiptNo.Location = new System.Drawing.Point(287, 67);
+            this.txtReceiptNo.Name = "txtReceiptNo";
+            this.txtReceiptNo.Size = new System.Drawing.Size(148, 20);
+            this.txtReceiptNo.TabIndex = 707;
+            this.txtReceiptNo.Tag = null;
+            this.theme1.SetTheme(this.txtReceiptNo, "(default)");
+            this.txtReceiptNo.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label24.Location = new System.Drawing.Point(205, 70);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(34, 16);
+            this.label24.TabIndex = 706;
+            this.label24.Text = "NO :";
+            this.theme1.SetTheme(this.label24, "(default)");
             // 
             // txtBillId
             // 
@@ -1474,32 +1500,6 @@
             this.tabLabPrescription.TabIndex = 1;
             this.tabLabPrescription.Text = "Prescription";
             // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label24.Location = new System.Drawing.Point(205, 70);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(34, 16);
-            this.label24.TabIndex = 706;
-            this.label24.Text = "NO :";
-            this.theme1.SetTheme(this.label24, "(default)");
-            // 
-            // txtReceiptNo
-            // 
-            this.txtReceiptNo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtReceiptNo.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtReceiptNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtReceiptNo.Location = new System.Drawing.Point(287, 67);
-            this.txtReceiptNo.Name = "txtReceiptNo";
-            this.txtReceiptNo.Size = new System.Drawing.Size(148, 20);
-            this.txtReceiptNo.TabIndex = 707;
-            this.txtReceiptNo.Tag = null;
-            this.theme1.SetTheme(this.txtReceiptNo, "(default)");
-            this.txtReceiptNo.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
             // FrmCashierAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1515,6 +1515,7 @@
             this.Load += new System.EventHandler(this.FrmCashierAdd_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtReceiptNo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBillId)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtVnShow)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAgent)).EndInit();
@@ -1573,7 +1574,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtDiscount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboAccCash)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPayName)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtReceiptNo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
