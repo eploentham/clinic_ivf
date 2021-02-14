@@ -12,6 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -148,6 +149,9 @@ namespace clinic_ivf.gui
             btnAgentEmail.Click += BtnAgentEmail_Click;
             btnSfAgentEmail.Click += BtnSfAgentEmail_Click;
             btnPeSendEmail.Click += BtnPeSendEmail_Click;
+            btnSaDownload.Click += BtnSaDownload_Click;
+            btnSfDownload.Click += BtnSfDownload_Click;
+            btnPesaDownload.Click += BtnPesaDownload_Click;
 
             pttFemale = new Patient();
             pttMale = new Patient();
@@ -278,6 +282,53 @@ namespace clinic_ivf.gui
             //}
         }
 
+        private void BtnPesaDownload_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            downloaFileSperm();
+        }
+
+        private void BtnSfDownload_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            downloaFileSperm();
+        }
+
+        private void BtnSaDownload_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            downloaFileSperm();
+        }
+        private void downloaFileSperm()
+        {
+            String datetick = "", pathfile = "";
+            pathfile = ic.iniC.pathDownloadFile;
+            datetick = DateTime.Now.Ticks.ToString();
+            pathfile = pathfile + "\\" + datetick + "\\";
+            if (!Directory.Exists(pathfile))
+            {
+                Directory.CreateDirectory(pathfile);
+                Application.DoEvents();
+            }
+            FtpClient ftpc = new FtpClient(ic.iniC.hostFTP, ic.iniC.userFTP, ic.iniC.passFTP, ic.ftpUsePassive);
+            String[] listFile = ftpc.directoryListDetailed(ic.iniC.folderFTP + ic.iniC.pathChar + "sperm_" + txtID.Text + ic.iniC.pathChar);
+            //foreach (String pathfiledownload in listFile)
+            //{
+            MemoryStream stream = null;
+                //String[] aaa = pathfiledownload.Split(' ');
+                //if (aaa[aaa.Length - 1].Length == 0) continue;
+            stream = ftpc.download(ic.iniC.folderFTP + ic.iniC.pathChar + "sperm_" + txtID.Text + ic.iniC.pathChar + lsperm.report);
+            if (stream.Length > 0)
+            {
+                stream.Seek(0, SeekOrigin.Begin);
+                var fileStream = File.Create(pathfile + ic.iniC.pathChar + lsperm.report);
+                stream.CopyTo(fileStream);
+                fileStream.Close();
+            }
+                
+            //}
+            Process.Start("explorer.exe", pathfile);
+        }
         private void TxtVolume_KeyUp1(object sender, KeyEventArgs e)
         {
             //throw new NotImplementedException();
@@ -3106,6 +3157,9 @@ namespace clinic_ivf.gui
             txtPeReportDate.Value = lsperm.date_report;
             txtIuiApproveDate.Value = lsperm.date_approve;
             txtIuiReportDate.Value = lsperm.date_report;
+            btnSfDownload.Hide();
+            btnSaDownload.Hide();
+            btnPesaDownload.Hide();
             //if (ic.iniC.statusCheckDonor.Equals("1"))
             //{
             //    lsperm = new LabSperm();
@@ -3115,16 +3169,28 @@ namespace clinic_ivf.gui
             {
                 setControlSpermFreezing();
                 setControlSpermFreezingReadOnly(flagEdit);
+                if (lsperm.status_lab.Equals("2"))
+                {
+                    btnSfDownload.Show();
+                }
             }
             else if (lsperm.status_lab_sperm.Equals("2"))
             {
                 setControlAnalysis();
                 setControlAnalysisReadOnly(flagEdit);
+                if (lsperm.status_lab.Equals("2"))
+                {
+                    btnSaDownload.Show();
+                }
             }
             else if (lsperm.status_lab_sperm.Equals("3"))
             {
                 setControlPesa();
                 setControlSpermPESAReadOnly(flagEdit);
+                if (lsperm.status_lab.Equals("2"))
+                {
+                    btnPesaDownload.Show();
+                }
             }
             else if (lsperm.status_lab_sperm.Equals("4"))
             {
@@ -3779,7 +3845,8 @@ namespace clinic_ivf.gui
                 {
                     if (ctl is C1PictureBox) continue;
                     theme1.SetTheme(ctl, theme2);
-                }
+                }//txtSpermTime
+                theme1.SetTheme(txtSpermTime, theme2);
             }
             else if (lsperm.status_lab_sperm.Equals("3"))
             {

@@ -56,7 +56,7 @@ namespace clinic_ivf.objdb
             lformA.status_sperm_analysis= "status_sperm_analysis";
             lformA.status_sperm_freezing= "status_sperm_freezing";
             lformA.pasa_tese_date= "pasa_tese_date";
-            lformA.iui_date= "iui_date";
+            lformA.sperm_iui_date= "sperm_iui_date";
             lformA.lab_t_form_acol= "lab_t_form_acol";
             lformA.sperm_analysis_date_start= "sperm_analysis_date_start";
             lformA.sperm_analysis_date_end= "sperm_analysis_date_end";
@@ -120,6 +120,10 @@ namespace clinic_ivf.objdb
             lformA.sperm_sa_remark = "sperm_sa_remark";
             lformA.status_no_ngs = "status_no_ngs";
             lformA.form_a_id_female = "form_a_id_female";
+            lformA.iui_date = "iui_date";
+            lformA.iui_time = "iui_time";
+            lformA.iui_remark = "iui_remark";
+            lformA.status_iui = "status_iui";
 
             lformA.pkField = "form_a_id";
             lformA.table = "lab_t_form_a";
@@ -163,7 +167,7 @@ namespace clinic_ivf.objdb
             p.status_sperm_analysis = p.status_sperm_analysis == null ? "" : p.status_sperm_analysis;
             p.status_sperm_freezing = p.status_sperm_freezing == null ? "" : p.status_sperm_freezing;
             p.pasa_tese_date = p.pasa_tese_date == null ? "" : p.pasa_tese_date;
-            p.iui_date = p.iui_date == null ? "" : p.iui_date;
+            p.sperm_iui_date = p.sperm_iui_date == null ? "" : p.sperm_iui_date;
             p.lab_t_form_acol = p.lab_t_form_acol == null ? "" : p.lab_t_form_acol;
             p.sperm_analysis_date_start = p.sperm_analysis_date_start == null ? "" : p.sperm_analysis_date_start;
             p.sperm_analysis_date_end = p.sperm_analysis_date_end == null ? "" : p.sperm_analysis_date_end;
@@ -190,6 +194,9 @@ namespace clinic_ivf.objdb
             p.et_remark = p.et_remark == null ? "" : p.et_remark;
             p.sperm_freezing_remark = p.sperm_freezing_remark == null ? "" : p.sperm_freezing_remark;
             p.sperm_sa_remark = p.sperm_sa_remark == null ? "" : p.sperm_sa_remark;
+            p.iui_date = p.iui_date == null ? "" : p.iui_date;
+            p.iui_time = p.iui_time == null ? "" : p.iui_time;
+            p.iui_remark = p.iui_remark == null ? "" : p.iui_remark;
 
             p.y_selection = p.y_selection == null ? "0" : p.y_selection;
             p.x_selection = p.x_selection == null ? "0" : p.x_selection;
@@ -211,6 +218,7 @@ namespace clinic_ivf.objdb
             p.status_sperm_pesa = p.status_sperm_pesa == null ? "0" : p.status_sperm_pesa;
             p.status_sperm_iui = p.status_sperm_iui == null ? "0" : p.status_sperm_iui;
             p.status_no_ngs = p.status_no_ngs == null ? "0" : p.status_no_ngs;
+            p.status_iui = p.status_iui == null ? "0" : p.status_iui;
 
             p.t_patient_id = long.TryParse(p.t_patient_id, out chk) ? chk.ToString() : "0";
             p.t_visit_id = long.TryParse(p.t_visit_id, out chk) ? chk.ToString() : "0";
@@ -264,7 +272,7 @@ namespace clinic_ivf.objdb
                     "," + lformA.status_sperm_analysis + "='" + p.status_sperm_analysis + "'" +
                     "," + lformA.status_sperm_freezing + "='" + p.status_sperm_freezing + "'" +
                     "," + lformA.pasa_tese_date + "='" + p.pasa_tese_date + "'" +
-                    "," + lformA.iui_date + "='" + p.iui_date + "'" +
+                    "," + lformA.sperm_iui_date + "='" + p.sperm_iui_date + "'" +
                     "," + lformA.lab_t_form_acol + "='" + p.lab_t_form_acol + "'" +
                     "," + lformA.sperm_analysis_date_start + "='" + p.sperm_analysis_date_start + "'" +
                     "," + lformA.sperm_analysis_date_end + "='" + p.sperm_analysis_date_end + "'" +
@@ -329,6 +337,10 @@ namespace clinic_ivf.objdb
                     "," + lformA.sperm_sa_remark + "='" + p.sperm_sa_remark.Replace("'", "''") + "' " +
                     "," + lformA.status_no_ngs + "='" + p.status_no_ngs.Replace("'", "''") + "' " +
                     "," + lformA.form_a_id_female + "='" + p.form_a_id_female + "' " +
+                    "," + lformA.iui_date + "='" + p.iui_date + "' " +
+                    "," + lformA.iui_time + "='" + p.iui_time + "' " +
+                    "," + lformA.iui_remark + "='" + p.iui_remark + "' " +
+                    "," + lformA.status_iui + "='" + p.status_iui + "' " +
                     "";
                 re = conn.ExecuteNonQuery(conn.conn, sql);
             }
@@ -377,7 +389,7 @@ namespace clinic_ivf.objdb
                     "," + lformA.status_sperm_analysis + "='" + p.status_sperm_analysis + "'" +
                     "," + lformA.status_sperm_freezing + "='" + p.status_sperm_freezing + "'" +
                     "," + lformA.pasa_tese_date + "='" + p.pasa_tese_date + "'" +
-                    "," + lformA.iui_date + "='" + p.iui_date + "'" +
+                    "," + lformA.sperm_iui_date + "='" + p.sperm_iui_date + "'" +
                     "," + lformA.lab_t_form_acol + "='" + p.lab_t_form_acol + "'" +
                     "," + lformA.sperm_analysis_date_start + "='" + p.sperm_analysis_date_start + "'" +
                     "," + lformA.sperm_analysis_date_end + "='" + p.sperm_analysis_date_end + "'" +
@@ -430,6 +442,10 @@ namespace clinic_ivf.objdb
                     "," + lformA.sperm_sa_remark + "='" + p.sperm_sa_remark.Replace("'", "''") + "' " +
                     "," + lformA.status_no_ngs + "='" + p.status_no_ngs.Replace("'", "''") + "' " +
                     "," + lformA.form_a_id_female + "='" + p.form_a_id_female + "' " +
+                    "," + lformA.iui_date + "='" + p.iui_date + "' " +
+                    "," + lformA.iui_time + "='" + p.iui_time + "' " +
+                    "," + lformA.iui_remark + "='" + p.iui_remark + "' " +
+                    "," + lformA.status_iui + "='" + p.status_iui + "' " +
                 " Where " + lformA.pkField + " = '" + p.form_a_id + "' "
                 ;
             try
@@ -1047,6 +1063,38 @@ namespace clinic_ivf.objdb
             }
             return c;
         }
+        public DataTable selectDistinctByIUIRemark()
+        {
+            DataTable dt = new DataTable();
+            String sql = "select distinct lformA.iui_remark " +
+                "From " + lformA.table + " lformA " +
+                "Where lformA." + lformA.active + "='1' ";
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
+        public C1ComboBox setCboIUIRemark(C1ComboBox c)
+        {
+            ComboBoxItem item = new ComboBoxItem();
+            DataTable dt = selectDistinctByIUIRemark();
+            //String aaa = "";
+            ComboBoxItem item1 = new ComboBoxItem();
+            //item1.Text = "";
+            //item1.Value = "";
+            c.Items.Clear();
+            //c.Items.Add(item1);
+            //for (int i = 0; i < dt.Rows.Count; i++)
+            int i = 0;
+            foreach (DataRow row in dt.Rows)
+            {
+                item = new ComboBoxItem();
+                item.Text = row[lformA.iui_remark].ToString();
+                item.Value = i.ToString();
+
+                c.Items.Add(item);
+                i++;
+            }
+            return c;
+        }
         public DataTable selectDistinctBySpermSaRemark()
         {
             DataTable dt = new DataTable();
@@ -1209,7 +1257,7 @@ namespace clinic_ivf.objdb
                 vs1.status_sperm_analysis = dt.Rows[0][lformA.status_sperm_analysis].ToString();
                 vs1.status_sperm_freezing = dt.Rows[0][lformA.status_sperm_freezing].ToString();
                 vs1.pasa_tese_date = dt.Rows[0][lformA.pasa_tese_date].ToString();
-                vs1.iui_date = dt.Rows[0][lformA.iui_date].ToString();
+                vs1.sperm_iui_date = dt.Rows[0][lformA.sperm_iui_date].ToString();
                 vs1.lab_t_form_acol = dt.Rows[0][lformA.lab_t_form_acol].ToString();
                 vs1.sperm_analysis_date_start = dt.Rows[0][lformA.sperm_analysis_date_start].ToString();
                 vs1.sperm_analysis_date_end = dt.Rows[0][lformA.sperm_analysis_date_end].ToString();
@@ -1273,6 +1321,10 @@ namespace clinic_ivf.objdb
                 vs1.sperm_sa_remark = dt.Rows[0][lformA.sperm_sa_remark].ToString();
                 vs1.status_no_ngs = dt.Rows[0][lformA.status_no_ngs].ToString();
                 vs1.form_a_id_female = dt.Rows[0][lformA.form_a_id_female].ToString();
+                vs1.iui_date = dt.Rows[0][lformA.iui_date].ToString();
+                vs1.iui_time = dt.Rows[0][lformA.iui_time].ToString();
+                vs1.iui_remark = dt.Rows[0][lformA.iui_remark].ToString();
+                vs1.status_iui = dt.Rows[0][lformA.status_iui].ToString();
             }
             else
             {
@@ -1311,7 +1363,7 @@ namespace clinic_ivf.objdb
             lforma1.status_sperm_analysis = "";
             lforma1.status_sperm_freezing = "";
             lforma1.pasa_tese_date = "";
-            lforma1.iui_date = "";
+            lforma1.sperm_iui_date = "";
             lforma1.lab_t_form_acol = "";
             lforma1.sperm_analysis_date_start = "";
             lforma1.sperm_analysis_date_end = "";
@@ -1375,6 +1427,10 @@ namespace clinic_ivf.objdb
             lforma1.sperm_freezing_remark = "";
             lforma1.status_no_ngs = "";
             lforma1.form_a_id_female = "";
+            lforma1.iui_date = "";
+            lforma1.iui_time = "";
+            lforma1.iui_remark = "";
+            lforma1.status_iui = "";
             return lforma1;
         }
     }

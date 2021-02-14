@@ -565,6 +565,9 @@
             this.txtPeHnFeMale = new C1.Win.C1Input.C1TextBox();
             this.tabReport = new C1.Win.C1Command.C1DockingTabPage();
             this.crySperm = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
+            this.btnSfDownload = new C1.Win.C1Input.C1Button();
+            this.btnSaDownload = new C1.Win.C1Input.C1Button();
+            this.btnPesaDownload = new C1.Win.C1Input.C1Button();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tC)).BeginInit();
@@ -830,6 +833,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtPeNameFeMale)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPeHnFeMale)).BeginInit();
             this.tabReport.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSfDownload)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSaDownload)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnPesaDownload)).BeginInit();
             this.SuspendLayout();
             // 
             // sB
@@ -1104,6 +1110,7 @@
             // panel7
             // 
             this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel7.Controls.Add(this.btnSfDownload);
             this.panel7.Controls.Add(this.lbSpFzRemark);
             this.panel7.Controls.Add(this.label220);
             this.panel7.Controls.Add(this.txtSfLabFormACode);
@@ -3251,7 +3258,7 @@
             this.c1SplitterPanel1.SizeRatio = 42.265D;
             this.c1SplitterPanel1.TabIndex = 0;
             this.c1SplitterPanel1.Text = "Panel 1";
-            this.c1SplitterPanel1.Width = 642;
+            this.c1SplitterPanel1.Width = 635;
             // 
             // panel6
             // 
@@ -3416,6 +3423,7 @@
             // pnSememAnalysis
             // 
             this.pnSememAnalysis.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnSememAnalysis.Controls.Add(this.btnSaDownload);
             this.pnSememAnalysis.Controls.Add(this.lbSpSaRemark);
             this.pnSememAnalysis.Controls.Add(this.label233);
             this.pnSememAnalysis.Controls.Add(this.txtLabFormACode);
@@ -7407,7 +7415,7 @@
             this.c1SplitterPanel5.SizeRatio = 43.91D;
             this.c1SplitterPanel5.TabIndex = 0;
             this.c1SplitterPanel5.Text = "Panel 1";
-            this.c1SplitterPanel5.Width = 660;
+            this.c1SplitterPanel5.Width = 667;
             // 
             // panel8
             // 
@@ -7573,6 +7581,7 @@
             // panel9
             // 
             this.panel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel9.Controls.Add(this.btnPesaDownload);
             this.panel9.Controls.Add(this.txtPeLabFormACode);
             this.panel9.Controls.Add(this.label218);
             this.panel9.Controls.Add(this.btnPrintPesa);
@@ -9282,6 +9291,48 @@
             this.crySperm.TabIndex = 2;
             this.theme1.SetTheme(this.crySperm, "(default)");
             // 
+            // btnSfDownload
+            // 
+            this.btnSfDownload.Image = global::clinic_ivf.Properties.Resources.PDF_file_icon_svg_20;
+            this.btnSfDownload.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSfDownload.Location = new System.Drawing.Point(648, 246);
+            this.btnSfDownload.Name = "btnSfDownload";
+            this.btnSfDownload.Size = new System.Drawing.Size(126, 34);
+            this.btnSfDownload.TabIndex = 874;
+            this.btnSfDownload.Text = "Download PDF";
+            this.btnSfDownload.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnSfDownload, "(default)");
+            this.btnSfDownload.UseVisualStyleBackColor = true;
+            this.btnSfDownload.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // btnSaDownload
+            // 
+            this.btnSaDownload.Image = global::clinic_ivf.Properties.Resources.PDF_file_icon_svg_20;
+            this.btnSaDownload.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSaDownload.Location = new System.Drawing.Point(633, 253);
+            this.btnSaDownload.Name = "btnSaDownload";
+            this.btnSaDownload.Size = new System.Drawing.Size(126, 34);
+            this.btnSaDownload.TabIndex = 876;
+            this.btnSaDownload.Text = "Download PDF";
+            this.btnSaDownload.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnSaDownload, "(default)");
+            this.btnSaDownload.UseVisualStyleBackColor = true;
+            this.btnSaDownload.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // btnPesaDownload
+            // 
+            this.btnPesaDownload.Image = global::clinic_ivf.Properties.Resources.PDF_file_icon_svg_20;
+            this.btnPesaDownload.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPesaDownload.Location = new System.Drawing.Point(639, 246);
+            this.btnPesaDownload.Name = "btnPesaDownload";
+            this.btnPesaDownload.Size = new System.Drawing.Size(126, 34);
+            this.btnPesaDownload.TabIndex = 875;
+            this.btnPesaDownload.Text = "Download PDF";
+            this.btnPesaDownload.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnPesaDownload, "(default)");
+            this.btnPesaDownload.UseVisualStyleBackColor = true;
+            this.btnPesaDownload.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
             // FrmLabSpermAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -9572,6 +9623,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtPeNameFeMale)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPeHnFeMale)).EndInit();
             this.tabReport.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.btnSfDownload)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSaDownload)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnPesaDownload)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -10116,5 +10170,8 @@
         private CrystalDecisions.Windows.Forms.CrystalReportViewer crySperm;
         private System.Windows.Forms.Panel panel14;
         private C1.Win.C1Input.C1TextBox txtSfEmailBody;
+        private C1.Win.C1Input.C1Button btnSfDownload;
+        private C1.Win.C1Input.C1Button btnSaDownload;
+        private C1.Win.C1Input.C1Button btnPesaDownload;
     }
 }

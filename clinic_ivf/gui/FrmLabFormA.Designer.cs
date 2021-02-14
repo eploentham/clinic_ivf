@@ -69,12 +69,11 @@
             this.txtVsId = new C1.Win.C1Input.C1TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.gbSpermIUI = new System.Windows.Forms.GroupBox();
-            this.txtReqIUIId = new C1.Win.C1Input.C1TextBox();
+            this.txtReqSpIUIId = new C1.Win.C1Input.C1TextBox();
             this.chkSpermIUI = new C1.Win.C1Input.C1CheckBox();
-            this.txtIUIDate = new C1.Win.C1Input.C1DateEdit();
-            this.cboRemark = new C1.Win.C1Input.C1ComboBox();
+            this.txtSpermIUIDate = new C1.Win.C1Input.C1DateEdit();
+            this.cboSpIUIRemark = new C1.Win.C1Input.C1ComboBox();
             this.label27 = new System.Windows.Forms.Label();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.gbSpermPESA = new System.Windows.Forms.GroupBox();
             this.c1CheckBox1 = new C1.Win.C1Input.C1CheckBox();
             this.label37 = new System.Windows.Forms.Label();
@@ -215,6 +214,15 @@
             this.txtSpermAnalysisDateStart = new C1.Win.C1Input.C1DateEdit();
             this.chkSememAnalysis = new C1.Win.C1Input.C1CheckBox();
             this.btnPrintSperm = new C1.Win.C1Input.C1Button();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.c1TextBox1 = new C1.Win.C1Input.C1TextBox();
+            this.chkIUI = new C1.Win.C1Input.C1CheckBox();
+            this.cboIUIremark = new C1.Win.C1Input.C1ComboBox();
+            this.label40 = new System.Windows.Forms.Label();
+            this.txtIUItime = new C1.Win.C1Input.C1TextBox();
+            this.label41 = new System.Windows.Forms.Label();
+            this.btnPrintIUI = new C1.Win.C1Input.C1Button();
+            this.txtIUIdate = new C1.Win.C1Input.C1DateEdit();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -244,10 +252,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtVsId)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.gbSpermIUI.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtReqIUIId)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtReqSpIUIId)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkSpermIUI)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtIUIDate)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cboRemark)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSpermIUIDate)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboSpIUIRemark)).BeginInit();
             this.gbSpermPESA.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtReqPesaId)).BeginInit();
@@ -336,6 +344,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtSpermAnalysisDateStart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkSememAnalysis)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPrintSperm)).BeginInit();
+            this.groupBox6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkIUI)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboIUIremark)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtIUItime)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnPrintIUI)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtIUIdate)).BeginInit();
             this.SuspendLayout();
             // 
             // sB
@@ -377,7 +392,6 @@
             this.groupBox1.Controls.Add(this.label62);
             this.groupBox1.Controls.Add(this.txtID);
             this.groupBox1.Controls.Add(this.btnEdit);
-            this.groupBox1.Controls.Add(this.btnSave);
             this.groupBox1.Controls.Add(this.txtDobFeMale);
             this.groupBox1.Controls.Add(this.txtDobMale);
             this.groupBox1.Controls.Add(this.cboDoctor);
@@ -620,7 +634,7 @@
             // 
             this.btnSave.Image = global::clinic_ivf.Properties.Resources.download_database24;
             this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSave.Location = new System.Drawing.Point(953, 57);
+            this.btnSave.Location = new System.Drawing.Point(1046, 611);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(105, 39);
             this.btnSave.TabIndex = 535;
@@ -971,14 +985,15 @@
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox2.Controls.Add(this.groupBox6);
             this.groupBox2.Controls.Add(this.gbSpermIUI);
-            this.groupBox2.Controls.Add(this.groupBox5);
             this.groupBox2.Controls.Add(this.gbSpermPESA);
             this.groupBox2.Controls.Add(this.gbETFET);
             this.groupBox2.Controls.Add(this.gbSpermFreezing);
             this.groupBox2.Controls.Add(this.gbOPU);
             this.groupBox2.Controls.Add(this.gbSpermAnalysis);
             this.groupBox2.Controls.Add(this.btnPrintSperm);
+            this.groupBox2.Controls.Add(this.btnSave);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.groupBox2.Location = new System.Drawing.Point(0, 105);
@@ -992,10 +1007,10 @@
             // gbSpermIUI
             // 
             this.gbSpermIUI.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.gbSpermIUI.Controls.Add(this.txtReqIUIId);
+            this.gbSpermIUI.Controls.Add(this.txtReqSpIUIId);
             this.gbSpermIUI.Controls.Add(this.chkSpermIUI);
-            this.gbSpermIUI.Controls.Add(this.txtIUIDate);
-            this.gbSpermIUI.Controls.Add(this.cboRemark);
+            this.gbSpermIUI.Controls.Add(this.txtSpermIUIDate);
+            this.gbSpermIUI.Controls.Add(this.cboSpIUIRemark);
             this.gbSpermIUI.Controls.Add(this.label27);
             this.gbSpermIUI.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.gbSpermIUI.Location = new System.Drawing.Point(12, 594);
@@ -1006,19 +1021,19 @@
             this.gbSpermIUI.Text = "Sperm IUI";
             this.theme1.SetTheme(this.gbSpermIUI, "(default)");
             // 
-            // txtReqIUIId
+            // txtReqSpIUIId
             // 
-            this.txtReqIUIId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtReqIUIId.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtReqIUIId.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtReqIUIId.Location = new System.Drawing.Point(930, 15);
-            this.txtReqIUIId.Name = "txtReqIUIId";
-            this.txtReqIUIId.Size = new System.Drawing.Size(30, 20);
-            this.txtReqIUIId.TabIndex = 737;
-            this.txtReqIUIId.Tag = null;
-            this.theme1.SetTheme(this.txtReqIUIId, "(default)");
-            this.txtReqIUIId.Visible = false;
-            this.txtReqIUIId.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.txtReqSpIUIId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtReqSpIUIId.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtReqSpIUIId.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtReqSpIUIId.Location = new System.Drawing.Point(930, 15);
+            this.txtReqSpIUIId.Name = "txtReqSpIUIId";
+            this.txtReqSpIUIId.Size = new System.Drawing.Size(30, 20);
+            this.txtReqSpIUIId.TabIndex = 737;
+            this.txtReqSpIUIId.Tag = null;
+            this.theme1.SetTheme(this.txtReqSpIUIId, "(default)");
+            this.txtReqSpIUIId.Visible = false;
+            this.txtReqSpIUIId.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // chkSpermIUI
             // 
@@ -1039,76 +1054,76 @@
             this.chkSpermIUI.Value = null;
             this.chkSpermIUI.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // txtIUIDate
+            // txtSpermIUIDate
             // 
-            this.txtIUIDate.AllowSpinLoop = false;
-            this.txtIUIDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSpermIUIDate.AllowSpinLoop = false;
+            this.txtSpermIUIDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             // 
             // 
             // 
-            this.txtIUIDate.Calendar.ArrowColor = System.Drawing.Color.Black;
-            this.txtIUIDate.Calendar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.txtIUIDate.Calendar.DayNamesFont = new System.Drawing.Font("Tahoma", 8F);
-            this.txtIUIDate.Calendar.Font = new System.Drawing.Font("Tahoma", 8F);
-            this.txtIUIDate.Calendar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.txtIUIDate.Calendar.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(71)))), ((int)(((byte)(47)))));
-            this.txtIUIDate.Calendar.SelectionForeColor = System.Drawing.Color.White;
-            this.txtIUIDate.Calendar.TitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.txtIUIDate.Calendar.TitleFont = new System.Drawing.Font("Tahoma", 8F);
-            this.txtIUIDate.Calendar.TitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.txtIUIDate.Calendar.TodayBorderColor = System.Drawing.Color.White;
-            this.txtIUIDate.Calendar.TrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtIUIDate.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            this.txtIUIDate.Culture = 1054;
-            this.txtIUIDate.CurrentTimeZone = false;
-            this.txtIUIDate.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtIUIDate.DisplayFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
-            this.txtIUIDate.DisplayFormat.EmptyAsNull = false;
-            this.txtIUIDate.DisplayFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
-            this.txtIUIDate.DisplayFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
+            this.txtIUIdate.Calendar.ArrowColor = System.Drawing.Color.Black;
+            this.txtIUIdate.Calendar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.txtIUIdate.Calendar.DayNamesFont = new System.Drawing.Font("Tahoma", 8F);
+            this.txtIUIdate.Calendar.Font = new System.Drawing.Font("Tahoma", 8F);
+            this.txtIUIdate.Calendar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.txtIUIdate.Calendar.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(71)))), ((int)(((byte)(47)))));
+            this.txtIUIdate.Calendar.SelectionForeColor = System.Drawing.Color.White;
+            this.txtIUIdate.Calendar.TitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.txtIUIdate.Calendar.TitleFont = new System.Drawing.Font("Tahoma", 8F);
+            this.txtIUIdate.Calendar.TitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.txtIUIdate.Calendar.TodayBorderColor = System.Drawing.Color.White;
+            this.txtIUIdate.Calendar.TrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtIUIdate.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.txtSpermIUIDate.Culture = 1054;
+            this.txtSpermIUIDate.CurrentTimeZone = false;
+            this.txtSpermIUIDate.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtSpermIUIDate.DisplayFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
+            this.txtSpermIUIDate.DisplayFormat.EmptyAsNull = false;
+            this.txtSpermIUIDate.DisplayFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
+            this.txtSpermIUIDate.DisplayFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
             | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
             | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
-            this.txtIUIDate.EditFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
-            this.txtIUIDate.EditFormat.EmptyAsNull = false;
-            this.txtIUIDate.EditFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDateShortTime;
-            this.txtIUIDate.EditFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
+            this.txtSpermIUIDate.EditFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
+            this.txtSpermIUIDate.EditFormat.EmptyAsNull = false;
+            this.txtSpermIUIDate.EditFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDateShortTime;
+            this.txtSpermIUIDate.EditFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
             | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
             | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
-            this.txtIUIDate.EmptyAsNull = true;
-            this.txtIUIDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtIUIDate.GMTOffset = System.TimeSpan.Parse("00:00:00");
-            this.txtIUIDate.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.txtIUIDate.Location = new System.Drawing.Point(207, 19);
-            this.txtIUIDate.MaskInfo.EmptyAsNull = false;
-            this.txtIUIDate.MaskInfo.Inherit = ((C1.Win.C1Input.MaskInfoInheritFlags)((C1.Win.C1Input.MaskInfoInheritFlags.CaseSensitive | C1.Win.C1Input.MaskInfoInheritFlags.ErrorMessage)));
-            this.txtIUIDate.MaskInfo.SaveBlanks = true;
-            this.txtIUIDate.Name = "txtIUIDate";
-            this.txtIUIDate.Size = new System.Drawing.Size(176, 20);
-            this.txtIUIDate.TabIndex = 733;
-            this.txtIUIDate.Tag = null;
-            this.theme1.SetTheme(this.txtIUIDate, "(default)");
-            this.txtIUIDate.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.txtSpermIUIDate.EmptyAsNull = true;
+            this.txtSpermIUIDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtSpermIUIDate.GMTOffset = System.TimeSpan.Parse("00:00:00");
+            this.txtSpermIUIDate.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.txtSpermIUIDate.Location = new System.Drawing.Point(207, 19);
+            this.txtSpermIUIDate.MaskInfo.EmptyAsNull = false;
+            this.txtSpermIUIDate.MaskInfo.Inherit = ((C1.Win.C1Input.MaskInfoInheritFlags)((C1.Win.C1Input.MaskInfoInheritFlags.CaseSensitive | C1.Win.C1Input.MaskInfoInheritFlags.ErrorMessage)));
+            this.txtSpermIUIDate.MaskInfo.SaveBlanks = true;
+            this.txtSpermIUIDate.Name = "txtSpermIUIDate";
+            this.txtSpermIUIDate.Size = new System.Drawing.Size(176, 20);
+            this.txtSpermIUIDate.TabIndex = 733;
+            this.txtSpermIUIDate.Tag = null;
+            this.theme1.SetTheme(this.txtSpermIUIDate, "(default)");
+            this.txtSpermIUIDate.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // cboRemark
+            // cboSpIUIRemark
             // 
-            this.cboRemark.AllowSpinLoop = false;
-            this.cboRemark.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.cboRemark.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.cboRemark.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.cboRemark.GapHeight = 0;
-            this.cboRemark.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.cboRemark.ItemsDisplayMember = "";
-            this.cboRemark.ItemsValueMember = "";
-            this.cboRemark.Location = new System.Drawing.Point(461, 17);
-            this.cboRemark.Name = "cboRemark";
-            this.cboRemark.Size = new System.Drawing.Size(463, 20);
-            this.cboRemark.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.cboRemark.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
-            this.cboRemark.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.cboRemark.TabIndex = 735;
-            this.cboRemark.Tag = null;
-            this.theme1.SetTheme(this.cboRemark, "(default)");
-            this.cboRemark.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.cboSpIUIRemark.AllowSpinLoop = false;
+            this.cboSpIUIRemark.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cboSpIUIRemark.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.cboSpIUIRemark.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboSpIUIRemark.GapHeight = 0;
+            this.cboSpIUIRemark.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.cboSpIUIRemark.ItemsDisplayMember = "";
+            this.cboSpIUIRemark.ItemsValueMember = "";
+            this.cboSpIUIRemark.Location = new System.Drawing.Point(461, 17);
+            this.cboSpIUIRemark.Name = "cboSpIUIRemark";
+            this.cboSpIUIRemark.Size = new System.Drawing.Size(463, 20);
+            this.cboSpIUIRemark.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.cboSpIUIRemark.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
+            this.cboSpIUIRemark.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboSpIUIRemark.TabIndex = 735;
+            this.cboSpIUIRemark.Tag = null;
+            this.theme1.SetTheme(this.cboSpIUIRemark, "(default)");
+            this.cboSpIUIRemark.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // label27
             // 
@@ -1122,18 +1137,6 @@
             this.label27.TabIndex = 734;
             this.label27.Text = "Remark :";
             this.theme1.SetTheme(this.label27, "(default)");
-            // 
-            // groupBox5
-            // 
-            this.groupBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.groupBox5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.groupBox5.Location = new System.Drawing.Point(1075, 504);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(60, 24);
-            this.groupBox5.TabIndex = 13;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Sperm";
-            this.theme1.SetTheme(this.groupBox5, "(default)");
             // 
             // gbSpermPESA
             // 
@@ -3656,6 +3659,184 @@
             this.btnPrintSperm.UseVisualStyleBackColor = true;
             this.btnPrintSperm.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
+            // groupBox6
+            // 
+            this.groupBox6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox6.Controls.Add(this.txtIUIdate);
+            this.groupBox6.Controls.Add(this.btnPrintIUI);
+            this.groupBox6.Controls.Add(this.txtIUItime);
+            this.groupBox6.Controls.Add(this.label41);
+            this.groupBox6.Controls.Add(this.c1TextBox1);
+            this.groupBox6.Controls.Add(this.chkIUI);
+            this.groupBox6.Controls.Add(this.cboIUIremark);
+            this.groupBox6.Controls.Add(this.label40);
+            this.groupBox6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.groupBox6.Location = new System.Drawing.Point(12, 654);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(1139, 54);
+            this.groupBox6.TabIndex = 750;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "IUI";
+            this.theme1.SetTheme(this.groupBox6, "(default)");
+            // 
+            // c1TextBox1
+            // 
+            this.c1TextBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.c1TextBox1.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.c1TextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.c1TextBox1.Location = new System.Drawing.Point(930, 15);
+            this.c1TextBox1.Name = "c1TextBox1";
+            this.c1TextBox1.Size = new System.Drawing.Size(30, 20);
+            this.c1TextBox1.TabIndex = 737;
+            this.c1TextBox1.Tag = null;
+            this.theme1.SetTheme(this.c1TextBox1, "(default)");
+            this.c1TextBox1.Visible = false;
+            this.c1TextBox1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // chkIUI
+            // 
+            this.chkIUI.BackColor = System.Drawing.Color.Transparent;
+            this.chkIUI.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkIUI.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.chkIUI.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chkIUI.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkIUI.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkIUI.Location = new System.Drawing.Point(8, 15);
+            this.chkIUI.Name = "chkIUI";
+            this.chkIUI.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.chkIUI.Size = new System.Drawing.Size(62, 24);
+            this.chkIUI.TabIndex = 736;
+            this.chkIUI.Text = "IUI :";
+            this.theme1.SetTheme(this.chkIUI, "(default)");
+            this.chkIUI.UseVisualStyleBackColor = true;
+            this.chkIUI.Value = null;
+            this.chkIUI.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // cboIUIremark
+            // 
+            this.cboIUIremark.AllowSpinLoop = false;
+            this.cboIUIremark.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cboIUIremark.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.cboIUIremark.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboIUIremark.GapHeight = 0;
+            this.cboIUIremark.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.cboIUIremark.ItemsDisplayMember = "";
+            this.cboIUIremark.ItemsValueMember = "";
+            this.cboIUIremark.Location = new System.Drawing.Point(461, 17);
+            this.cboIUIremark.Name = "cboIUIremark";
+            this.cboIUIremark.Size = new System.Drawing.Size(463, 20);
+            this.cboIUIremark.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.cboIUIremark.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
+            this.cboIUIremark.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboIUIremark.TabIndex = 735;
+            this.cboIUIremark.Tag = null;
+            this.theme1.SetTheme(this.cboIUIremark, "(default)");
+            this.cboIUIremark.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label40.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label40.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label40.Location = new System.Drawing.Point(393, 19);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(62, 16);
+            this.label40.TabIndex = 734;
+            this.label40.Text = "Remark :";
+            this.theme1.SetTheme(this.label40, "(default)");
+            // 
+            // txtIUItime
+            // 
+            this.txtIUItime.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtIUItime.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtIUItime.EditMask = "00:00";
+            this.txtIUItime.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtIUItime.Location = new System.Drawing.Point(261, 15);
+            this.txtIUItime.MaskInfo.EmptyAsNull = true;
+            this.txtIUItime.MaskInfo.Inherit = ((C1.Win.C1Input.MaskInfoInheritFlags)((C1.Win.C1Input.MaskInfoInheritFlags.CaseSensitive | C1.Win.C1Input.MaskInfoInheritFlags.ErrorMessage)));
+            this.txtIUItime.MaskInfo.SaveBlanks = true;
+            this.txtIUItime.Name = "txtIUItime";
+            this.txtIUItime.Size = new System.Drawing.Size(57, 20);
+            this.txtIUItime.TabIndex = 739;
+            this.txtIUItime.Tag = null;
+            this.theme1.SetTheme(this.txtIUItime, "(default)");
+            this.txtIUItime.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label41
+            // 
+            this.label41.AutoSize = true;
+            this.label41.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label41.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label41.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label41.Location = new System.Drawing.Point(182, 18);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(64, 16);
+            this.label41.TabIndex = 738;
+            this.label41.Text = "IUI Time :";
+            this.theme1.SetTheme(this.label41, "(default)");
+            // 
+            // btnPrintIUI
+            // 
+            this.btnPrintIUI.Image = global::clinic_ivf.Properties.Resources.printer_orange24;
+            this.btnPrintIUI.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPrintIUI.Location = new System.Drawing.Point(1035, 13);
+            this.btnPrintIUI.Name = "btnPrintIUI";
+            this.btnPrintIUI.Size = new System.Drawing.Size(97, 35);
+            this.btnPrintIUI.TabIndex = 751;
+            this.btnPrintIUI.Text = "Print IUI";
+            this.btnPrintIUI.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnPrintIUI, "(default)");
+            this.btnPrintIUI.UseVisualStyleBackColor = true;
+            this.btnPrintIUI.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // txtIUIdate
+            // 
+            this.txtIUIdate.AllowSpinLoop = false;
+            this.txtIUIdate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            // 
+            // 
+            // 
+            this.txtIUIdate.Calendar.ArrowColor = System.Drawing.Color.Black;
+            this.txtIUIdate.Calendar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.txtIUIdate.Calendar.DayNamesFont = new System.Drawing.Font("Tahoma", 8F);
+            this.txtIUIdate.Calendar.Font = new System.Drawing.Font("Tahoma", 8F);
+            this.txtIUIdate.Calendar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.txtIUIdate.Calendar.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(71)))), ((int)(((byte)(47)))));
+            this.txtIUIdate.Calendar.SelectionForeColor = System.Drawing.Color.White;
+            this.txtIUIdate.Calendar.TitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.txtIUIdate.Calendar.TitleFont = new System.Drawing.Font("Tahoma", 8F);
+            this.txtIUIdate.Calendar.TitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.txtIUIdate.Calendar.TodayBorderColor = System.Drawing.Color.White;
+            this.txtIUIdate.Calendar.TrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtIUIdate.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.txtIUIdate.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
+            this.txtIUIdate.Culture = 1054;
+            this.txtIUIdate.CurrentTimeZone = false;
+            this.txtIUIdate.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtIUIdate.DisplayFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
+            this.txtIUIdate.DisplayFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
+            this.txtIUIdate.DisplayFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)(((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
+            this.txtIUIdate.EditFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
+            this.txtIUIdate.EditFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
+            this.txtIUIdate.EditFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)(((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
+            this.txtIUIdate.EmptyAsNull = true;
+            this.txtIUIdate.GMTOffset = System.TimeSpan.Parse("00:00:00");
+            this.txtIUIdate.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.txtIUIdate.Location = new System.Drawing.Point(67, 17);
+            this.txtIUIdate.Name = "txtIUIdate";
+            this.txtIUIdate.Size = new System.Drawing.Size(110, 18);
+            this.txtIUIdate.TabIndex = 752;
+            this.txtIUIdate.Tag = null;
+            this.theme1.SetTheme(this.txtIUIdate, "(default)");
+            this.txtIUIdate.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
             // FrmLabFormA
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3700,10 +3881,10 @@
             this.groupBox2.ResumeLayout(false);
             this.gbSpermIUI.ResumeLayout(false);
             this.gbSpermIUI.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtReqIUIId)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtReqSpIUIId)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkSpermIUI)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtIUIDate)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cboRemark)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSpermIUIDate)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboSpIUIRemark)).EndInit();
             this.gbSpermPESA.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtReqPesaId)).EndInit();
@@ -3807,6 +3988,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtSpermAnalysisDateStart)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkSememAnalysis)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPrintSperm)).EndInit();
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkIUI)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboIUIremark)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtIUItime)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnPrintIUI)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtIUIdate)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3957,13 +4146,12 @@
         private C1.Win.C1Input.C1Button btnPrintFet;
         private C1.Win.C1Input.C1Button btnPrintOPU;
         private C1.Win.C1Input.C1Button btnPrintSperm;
-        private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.GroupBox gbSpermAnalysis;
         private System.Windows.Forms.GroupBox gbSpermFreezing;
         private System.Windows.Forms.GroupBox gbSpermIUI;
         private C1.Win.C1Input.C1CheckBox chkSpermIUI;
-        private C1.Win.C1Input.C1DateEdit txtIUIDate;
-        private C1.Win.C1Input.C1ComboBox cboRemark;
+        private C1.Win.C1Input.C1DateEdit txtSpermIUIDate;
+        private C1.Win.C1Input.C1ComboBox cboSpIUIRemark;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.GroupBox gbSpermPESA;
         private C1.Win.C1Input.C1DateEdit txtPasaTeseDate;
@@ -3983,7 +4171,7 @@
         private C1.Win.C1Input.C1TextBox txtReqPesaId;
         private C1.Win.C1Input.C1TextBox txtReqSpFzId;
         private C1.Win.C1Input.C1TextBox txtReqSpAId;
-        private C1.Win.C1Input.C1TextBox txtReqIUIId;
+        private C1.Win.C1Input.C1TextBox txtReqSpIUIId;
         private C1.Win.C1Input.C1TextBox txtReqFetId;
         private C1.Win.C1Input.C1TextBox txtReqOpuId;
         private System.Windows.Forms.Label lbSpALab;
@@ -4001,5 +4189,14 @@
         private C1.Win.C1Input.C1ComboBox cboSpFzRemark;
         private C1.Win.C1Input.C1ComboBox cboSpSaRemark;
         private C1.Win.C1Input.C1Button btnPrintOPUMale;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private C1.Win.C1Input.C1TextBox c1TextBox1;
+        private C1.Win.C1Input.C1CheckBox chkIUI;
+        private C1.Win.C1Input.C1ComboBox cboIUIremark;
+        private System.Windows.Forms.Label label40;
+        private C1.Win.C1Input.C1TextBox txtIUItime;
+        private System.Windows.Forms.Label label41;
+        private C1.Win.C1Input.C1Button btnPrintIUI;
+        private C1.Win.C1Input.C1DateEdit txtIUIdate;
     }
 }

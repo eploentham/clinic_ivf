@@ -274,11 +274,21 @@ namespace clinic_ivf.gui
                     //flag = oca.IntLock.Equals("1") ? "2" : "1";
                     flag = oca.IntLock;
                 }
-                else
+                else if (creditid1.Length > 0 && !creditid1.Equals("0"))
                 {
                     ocr = ic.ivfDB.ocrDB.selectByPk1(creditid1);
                     //flag = ocr.IntLock.Equals("1") ? "2" : "1";
                     flag = ocr.IntLock;
+                }
+                else if (transferid.Length > 0)
+                {
+                    AccCashTransfer act = ic.ivfDB.actDB.selectByPk(transferid);
+                    //flag = ocr.IntLock.Equals("1") ? "2" : "1";
+                    if (act.Equals("2760000002"))
+                    {
+                        flag = "2";
+                    }
+                    
                 }
                 //if (flag.Equals("1"))
                 if (flag.Equals("0"))
@@ -551,6 +561,10 @@ namespace clinic_ivf.gui
             else if ((totalcash > 0) && (totalcredit > 0) && (totaltransfer > 0))
             {
                 payby = "เงินสด และเครดิตการ์ด และเงินโอน/Cash & Credit Card & Cash Transfer ";
+            }
+            else if ((totalcash <= 0) && (totalcredit <= 0) && (totaltransfer > 0))
+            {
+                payby = "เงินโอน/Cash Transfer ";
             }
             else
             {
@@ -1197,6 +1211,7 @@ namespace clinic_ivf.gui
                 ic.setC1Combo(cboAccCash, obilh.CashID);
                 ic.setC1Combo(cboAccCredit, obilh.CreditCardID);
                 ic.setC1Combo(cboCreditBank, obilh.credit_bank_id);
+                ic.setC1Combo(cboAccCashTransfer, obilh.cash_transfer_id);
             }
 
             FrmLabPrescription frm = new FrmLabPrescription(ic, "", "", ptt.patient_hn);
@@ -2099,26 +2114,33 @@ namespace clinic_ivf.gui
             //Decimal.TryParse(txtAmt.Text, out amt);
             total = amt - discount;
             txtTotal.Value = total.ToString("#,###.00");
-            String cashid1 = "", creditid1 = "";
+            String cashid1 = "", creditid1 = "", transfer1="";
             cashid1 = cboAccCash.SelectedItem == null ? "" : ((ComboBoxItem)cboAccCash.SelectedItem).Value;
             creditid1 = cboAccCredit.SelectedItem == null ? "" : ((ComboBoxItem)cboAccCredit.SelectedItem).Value;
-            if ((cashid1.Length > 0) && (creditid1.Length > 0))
+            transfer1 = cboAccCashTransfer.SelectedItem == null ? "" : ((ComboBoxItem)cboAccCashTransfer.SelectedItem).Value;
+            if ((cashid1.Length > 0) && (creditid1.Length > 0) && (transfer1.Length > 0))
             {
                 //txtTotalCash.Value = total;
                 //txtTotalCredit.Value = "0";
             }
-            else if ((cashid1.Length > 0) && (creditid1.Length == 0))
+            else if ((cashid1.Length > 0) && (creditid1.Length == 0) && (transfer1.Length == 0))
             {
                 txtTotalCash.Value = total;
                 //txtTotalCredit.Value = "0";
             }
-            else if ((creditid1.Length > 0) && (cashid1.Length == 0))
+            else if ((creditid1.Length > 0) && (cashid1.Length == 0) && (transfer1.Length == 0))
             {
                 //txtTotalCash.Value = "0";
                 if (flagcharge.Length == 0)
                 {
                     txtTotalCredit.Value = total;
                 }
+            }
+            else if ((transfer1.Length > 0) && (cashid1.Length == 0) && (creditid1.Length == 0 || creditid1.Equals("0")))
+            {
+                //txtTotalCash.Value = "0";
+                txtTotalTransfer.Value = total;
+                
             }
         }
         private void calTotalCredit(String flagcharge)
@@ -2142,11 +2164,12 @@ namespace clinic_ivf.gui
         }
         private void calTotalCash()
         {
-            Decimal total = 0, cash = 0, credit = 0, per = 0, paycredit = 0;
+            Decimal total = 0, cash = 0, credit = 0, per = 0, paycredit = 0, transfer=0;
             Decimal.TryParse(txtTotal.Text, out total);
             Decimal.TryParse(txtTotalCredit.Text, out credit);
+            Decimal.TryParse(txtTotalTransfer.Text, out transfer);
             Decimal.TryParse(txtCreditCharge.Text, out per);
-            cash = total - credit;
+            cash = total - credit - transfer;
             paycredit = credit * per / 100;
             txtTotalCash.Value = cash.ToString("0.00");
             txtPayCreditCard.Value = paycredit.ToString("0.00");

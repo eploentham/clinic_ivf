@@ -343,7 +343,7 @@ namespace clinic_ivf.gui
             }
             else if (rptid.Equals("rptcashier004"))
             {
-                setGrfRpt0041();
+                setGrfRpt0041();        //daily agent
             }
             else if (rptid.Equals("rptcashier004s"))
             {

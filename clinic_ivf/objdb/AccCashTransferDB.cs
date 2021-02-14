@@ -55,11 +55,11 @@ namespace clinic_ivf.objdb
         {
             AccCashTransfer cop1 = new AccCashTransfer();
             DataTable dt = new DataTable();
-            String sql = "select * " +
+            String sql = "select act.* " +
                 "From " + act.table + " act " +
                 //"Left Join f_patient_prefix pfx On stf.prefix_id = pfx.f_patient_prefix_id " +
-                "Where dsc." + act.pkField + " ='" + id + "' " +
-                "Order By cash_transfer_id ";
+                "Where act." + act.pkField + " ='" + id + "' " +
+                "Order By act.cash_transfer_id ";
             dt = conn.selectData(conn.conn, sql);
             cop1 = setAccCashTransfer(dt);
             return cop1;

@@ -37,7 +37,7 @@ namespace clinic_ivf.object1
         public String status_sperm_analysis { get; set; }
         public String status_sperm_freezing { get; set; }
         public String pasa_tese_date { get; set; }
-        public String iui_date { get; set; }
+        public String sperm_iui_date { get; set; }
         public String lab_t_form_acol { get; set; }
         public String sperm_analysis_date_start { get; set; }
         public String sperm_analysis_date_end { get; set; }
@@ -101,5 +101,9 @@ namespace clinic_ivf.object1
         public String sperm_freezing_remark { get; set; }
         public String status_no_ngs { get; set; }
         public String form_a_id_female { get; set; }
+        public String iui_date { get; set; }
+        public String iui_time { get; set; }
+        public String iui_remark { get; set; }
+        public String status_iui { get; set; }
     }
 }

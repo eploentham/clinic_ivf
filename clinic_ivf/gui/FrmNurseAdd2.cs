@@ -466,7 +466,7 @@ namespace clinic_ivf.gui
             grfFormAView.DoubleClick += GrfFormAView_DoubleClick;
             theme1.SetTheme(grfFormAView, "RainerOrange");
 
-            frmFormA = new FrmLabFormA(ic, "", txtPttId.Text, txtVsId.Text, txtVn.Text,"", ic.theme);
+            frmFormA = new FrmLabFormA(ic, "", txtPttId.Text, txtVsId.Text, txtVn.Text,"hidegb1", ic.theme);
             frmFormA.TopLevel = false;
             frmFormA.FormBorderStyle = FormBorderStyle.None;
             frmFormA.AutoScroll = true;
@@ -500,19 +500,21 @@ namespace clinic_ivf.gui
         private void GrfFormAView_DoubleClick(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
+            showLbLoading();
+
             String vn = "", vsid="";
             vn = grfFormAView[grfFormAView.Row, colFormAVn] != null ? grfFormAView[grfFormAView.Row, colFormAVn].ToString():"";
             vsid = grfFormAView[grfFormAView.Row, colFormAVsid] != null ? grfFormAView[grfFormAView.Row, colFormAVsid].ToString() : "";
             if (vn.Length <= 0) return;
             if (frmFormA != null) frmFormA.Dispose();
-            frmFormA = new FrmLabFormA(ic, "", txtPttId.Text, vsid, vn, "", ic.theme);
+            frmFormA = new FrmLabFormA(ic, "", txtPttId.Text, vsid, vn, "hidegb1", ic.theme);
             frmFormA.TopLevel = false;
             frmFormA.FormBorderStyle = FormBorderStyle.None;
             frmFormA.AutoScroll = true;
             frmFormA.Parent = pnLabFormA;
             pnFormAAdd.Controls.Add(frmFormA);
             frmFormA.Show();
-
+            hideLbLoading();
         }
         private void setGrfLabFormA()
         {
