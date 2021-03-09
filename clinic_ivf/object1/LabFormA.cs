@@ -77,6 +77,9 @@ namespace clinic_ivf.object1
         public String req_id_fet { get; set; }
         public String req_id_iui { get; set; }
         public String req_id_pesa_tese { get; set; }
+        public String req_id_semem_analysis { get; set; }
+        public String req_id_sperm_freezing { get; set; }
+        public String req_id_sperm_iui { get; set; }
         public String opu_time { get; set; }
         public String status_opu_active { get; set; }
         public String opu_wait_remark { get; set; }
@@ -91,8 +94,7 @@ namespace clinic_ivf.object1
         public String fet1_day { get; set; }
         public String frozen_sperm_date { get; set; }       //staff_req_id
         public String staff_req_id { get; set; }
-        public String req_id_semem_analysis { get; set; }
-        public String req_id_sperm_freezing { get; set; }
+        
         public String status_sperm_pesa { get; set; }
         public String status_sperm_iui { get; set; }
         public String et_day { get; set; }
@@ -105,5 +107,7 @@ namespace clinic_ivf.object1
         public String iui_time { get; set; }
         public String iui_remark { get; set; }
         public String status_iui { get; set; }
+        public String sperm_iui_start_time { get; set; }
+        public String sperm_iui_finish_time { get; set; }
     }
 }

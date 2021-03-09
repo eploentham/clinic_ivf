@@ -303,7 +303,7 @@ namespace clinic_ivf.gui
         private void setGrfPtt(String search)
         {
             //grfDept.Rows.Count = 7;
-            grfPtt.Clear();
+            //grfPtt.Clear();
             DataTable dt = new DataTable();
             
             if (search.Equals(""))
@@ -317,14 +317,15 @@ namespace clinic_ivf.gui
             }
 
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
+            grfPtt.Rows.Count = 1;
             grfPtt.Rows.Count = dt.Rows.Count+1;
             grfPtt.Cols.Count = 9;
-            C1TextBox txt = new C1TextBox();
-            //C1ComboBox cboproce = new C1ComboBox();
-            //ic.ivfDB.itmDB.setCboItem(cboproce);
-            grfPtt.Cols[colHn].Editor = txt;
-            grfPtt.Cols[colName].Editor = txt;
-            grfPtt.Cols[colVsDate].Editor = txt;
+            //C1TextBox txt = new C1TextBox();
+            ////C1ComboBox cboproce = new C1ComboBox();
+            ////ic.ivfDB.itmDB.setCboItem(cboproce);
+            //grfPtt.Cols[colHn].Editor = txt;
+            //grfPtt.Cols[colName].Editor = txt;
+            //grfPtt.Cols[colVsDate].Editor = txt;
 
             grfPtt.Cols[colVN].Width = 120;
             grfPtt.Cols[colHn].Width = 120;
@@ -360,12 +361,12 @@ namespace clinic_ivf.gui
             {
                 grfPtt[i, 0] = i;
                 grfPtt[i, colID] = row["id"].ToString();
-                grfPtt[i, colVN] = row["VN"].ToString();
-                grfPtt[i, colHn] = row["PIDS"].ToString();
+                grfPtt[i, colVN] = ic.showVN(row["VN"].ToString());
+                grfPtt[i, colHn] = ic.showHN(row["patient_hn"].ToString(), row["patient_year"].ToString());
                 grfPtt[i, colName] = row["PName"].ToString();
                 grfPtt[i, colVsDate] = ic.datetoShow(row["VDate"]);
-                grfPtt[i, colVsTime] = row["VStartTime"].ToString();
-                grfPtt[i, colVsEtime] = row["VEndTime"].ToString();
+                grfPtt[i, colVsTime] = ic.timetoShow(row["VStartTime"].ToString());
+                grfPtt[i, colVsEtime] = ic.timetoShow(row["VEndTime"].ToString());
                 grfPtt[i, colStatus] = row["VName"].ToString();
                 //if (i % 2 == 0)
                 //    grfPtt.Rows[i].StyleNew.BackColor = color;

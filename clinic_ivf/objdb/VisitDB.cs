@@ -1340,13 +1340,13 @@ namespace clinic_ivf.objdb
         {
             DataTable dt = new DataTable();
             //String date = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd");
-            String sql = "select vs.t_visit_id as id,vs.visit_vn as vn, vs.visit_hn as PIDS, vs.patient_name as PName, vs.visit_begin_visit_time as VDate, vs.visit_begin_visit_time as VStartTime" +
+            String sql = "select vs.t_visit_id as id,vs.visit_vn as vn, ptt.patient_hn as PIDS, vs.patient_name as PName, vs.visit_begin_visit_time as VDate, vs.visit_begin_visit_time as VStartTime" +
                 ",vs.visit_financial_discharge_time as VEndTime, VStatus.VName, vs.vsid,ptt.patient_birthday as dob, ptt.patient_year, ptt.patient_hn " +
                 "From " + vs.table + " vs " +
                 "Left Join VStatus on  VStatus.VSID = vs.vsid " +
                 "Left Join t_patient ptt on  vs.t_patient_id = ptt.t_patient_id  " +
                 //"Where vs." + vs.visit_hn + " like ('%" + hn + "%') and vs." + vs.vsid + " <> '998' and vs.f_visit_status_id <> '4' " +
-                "Where vs." + vs.visit_hn + " like ('%" + hn + "%') " +
+                "Where vs." + vs.visit_hn + " like ('%" + hn + "%') and ptt.active = '1' " +
                 "Order By vs.visit_vn ";
             dt = conn.selectData(conn.conn, sql);
 

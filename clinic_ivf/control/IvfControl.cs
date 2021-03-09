@@ -44,7 +44,7 @@ namespace clinic_ivf.control
         public String[] args;
         public String userId = "";
         public String copID = "", jobID = "", cusID = "", addrID = "", contID = "", cusrID = "", custID = "", stfID = "", deptID = "", posiID = "", drawID = "", email="", hnspareyear="/";
-        public String rContactName = "", rContacTel = "", rContID = "", userIderc = "", NumSticker="", labrequestremark="", statusResult="", opu_report_day3 = "", opu_report_day1 = "", statusResultDay1 = "", opu_report_day5 = "", statusResultDay5 = "", opu_report_day6 = "", statusResultDay6 = "", statusResultDay0 = "", opu_report_day0="", statusResultDay2 = "", opu_report_day2="";
+        public String rContactName = "", rContacTel = "", rContID = "", userIderc = "", NumSticker="", labrequestremark="", statusResult="", opu_report_day3 = "", opu_report_day1 = "", statusResultDay1 = "", opu_report_day5 = "", statusResultDay5 = "", opu_report_day6 = "", statusResultDay6 = "", statusResultDay0 = "", opu_report_day0="", statusResultDay2 = "", opu_report_day2="", deposit="", dwithdrawid="";
         
         public Staff sStf, cStf;
         

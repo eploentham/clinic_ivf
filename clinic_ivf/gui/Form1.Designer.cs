@@ -261,9 +261,9 @@
             // 
             // c1TextBox2
             // 
-            this.c1TextBox2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(212)))), ((int)(((byte)(212)))));
+            this.c1TextBox2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
             this.c1TextBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.c1TextBox2.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.c1TextBox2.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(172)))), ((int)(((byte)(172)))), ((int)(((byte)(172)))));
             this.c1TextBox2.Location = new System.Drawing.Point(165, 67);
             this.c1TextBox2.Name = "c1TextBox2";
             this.c1TextBox2.Size = new System.Drawing.Size(100, 18);
@@ -283,7 +283,6 @@
             // txtReqDate
             // 
             this.txtReqDate.AllowSpinLoop = false;
-            this.txtReqDate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.txtReqDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             // 
             // 
@@ -302,7 +301,8 @@
             this.txtReqDate.Calendar.TodayBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.txtReqDate.Calendar.TrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(172)))), ((int)(((byte)(172)))), ((int)(((byte)(172)))));
             this.txtReqDate.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            this.txtReqDate.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtReqDate.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(172)))), ((int)(((byte)(172)))), ((int)(((byte)(172)))));
+            this.txtReqDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.txtReqDate.ImagePadding = new System.Windows.Forms.Padding(0);
             this.txtReqDate.Location = new System.Drawing.Point(58, 337);
             this.txtReqDate.Name = "txtReqDate";
@@ -343,14 +343,14 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(87)))));
             this.panel1.Controls.Add(this.c1Label2);
             this.panel1.Controls.Add(this.c1Label1);
             this.panel1.Controls.Add(this.cboBarcodeType);
             this.panel1.Controls.Add(this.btnBarcodePrint);
             this.panel1.Controls.Add(this.txtBarcode);
             this.panel1.Controls.Add(this.c1BarCode1);
-            this.panel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(118)))), ((int)(((byte)(135)))));
+            this.panel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
             this.panel1.Location = new System.Drawing.Point(12, 58);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(597, 258);
@@ -361,7 +361,7 @@
             // 
             this.c1Label2.AutoSize = true;
             this.c1Label2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.c1Label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.c1Label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
             this.c1Label2.Location = new System.Drawing.Point(13, 36);
             this.c1Label2.Name = "c1Label2";
             this.c1Label2.Size = new System.Drawing.Size(51, 13);
@@ -375,7 +375,7 @@
             // 
             this.c1Label1.AutoSize = true;
             this.c1Label1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.c1Label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.c1Label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
             this.c1Label1.Location = new System.Drawing.Point(298, 36);
             this.c1Label1.Name = "c1Label1";
             this.c1Label1.Size = new System.Drawing.Size(51, 13);
@@ -388,9 +388,9 @@
             // cboBarcodeType
             // 
             this.cboBarcodeType.AllowSpinLoop = false;
-            this.cboBarcodeType.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(212)))), ((int)(((byte)(212)))));
+            this.cboBarcodeType.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
             this.cboBarcodeType.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.cboBarcodeType.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.cboBarcodeType.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(172)))), ((int)(((byte)(172)))), ((int)(((byte)(172)))));
             this.cboBarcodeType.GapHeight = 0;
             this.cboBarcodeType.ImagePadding = new System.Windows.Forms.Padding(0);
             this.cboBarcodeType.ItemsDisplayMember = "";
@@ -398,8 +398,8 @@
             this.cboBarcodeType.Location = new System.Drawing.Point(378, 34);
             this.cboBarcodeType.Name = "cboBarcodeType";
             this.cboBarcodeType.Size = new System.Drawing.Size(200, 18);
-            this.cboBarcodeType.Style.DropDownBackColor = System.Drawing.Color.White;
-            this.cboBarcodeType.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
+            this.cboBarcodeType.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.cboBarcodeType.Style.DropDownBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
             this.cboBarcodeType.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.cboBarcodeType.TabIndex = 3;
             this.cboBarcodeType.Tag = null;
@@ -419,9 +419,10 @@
             // 
             // txtBarcode
             // 
-            this.txtBarcode.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(212)))), ((int)(((byte)(212)))));
+            this.txtBarcode.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
             this.txtBarcode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtBarcode.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtBarcode.DataType = typeof(decimal);
+            this.txtBarcode.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(172)))), ((int)(((byte)(172)))), ((int)(((byte)(172)))));
             this.txtBarcode.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.txtBarcode.Location = new System.Drawing.Point(84, 32);
             this.txtBarcode.Name = "txtBarcode";

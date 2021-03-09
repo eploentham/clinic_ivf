@@ -1358,7 +1358,7 @@ namespace clinic_ivf.objdb
                 "From " + ptt.table + " ptt " +
                 //"Left join SurfixName fpp on fpp.SurfixID = ptt.SurfixID " +
                 "Left join f_patient_prefix fpp on fpp.f_patient_prefix_id = ptt.f_patient_prefix_id " +
-                "Where " + whereHN + whereName + wherepid + wherenameE + " " +
+                "Where " + whereHN + whereName + wherepid + wherenameE + " and ptt.active = '1' " +
                 "Order By ptt." + ptt.pid;
             dt = conn.selectData(conn.conn, sql);
             return dt;

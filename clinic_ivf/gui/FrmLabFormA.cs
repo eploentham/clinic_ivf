@@ -294,6 +294,7 @@ namespace clinic_ivf.gui
                 theme1.SetTheme(pnSpermFreezing, theme11);
                 foreach (Control c in groupBox1.Controls)
                 {
+                    if (c is PictureBox) return;
                     theme1.SetTheme(c, theme11);
                 }
                 foreach (Control c in groupBox2.Controls)
@@ -630,12 +631,14 @@ namespace clinic_ivf.gui
             FrmReport frm = new FrmReport(ic);
             DataTable dt = new DataTable();
             dt = ic.ivfDB.lFormaDB.selectReportByPk(txtID.Text);
-            String date1 = "", txt1 = "", datespermanalysis="", datespermfreezing="", datespermpesa="", datespermiui="",datespermanalysisend="", datespermfreezingend="";
+            String date1 = "", txt1 = "", datespermanalysis="", datespermfreezing="", datespermpesa="", datespermiui="",datespermanalysisend="", datespermfreezingend="", spermiuistarttime="", spermiuifinishtime = "";
             if (dt.Rows.Count <= 0) return;
             datespermanalysis = dt.Rows[0][ic.ivfDB.lFormaDB.lformA.sperm_analysis_date_start].ToString();
             datespermfreezing = dt.Rows[0][ic.ivfDB.lFormaDB.lformA.sperm_freezing_date_start].ToString();
             datespermanalysisend = dt.Rows[0][ic.ivfDB.lFormaDB.lformA.sperm_analysis_date_end].ToString();
             datespermfreezingend = dt.Rows[0][ic.ivfDB.lFormaDB.lformA.sperm_freezing_date_end].ToString();
+            spermiuistarttime = dt.Rows[0][ic.ivfDB.lFormaDB.lformA.sperm_iui_start_time].ToString();
+            spermiuifinishtime = dt.Rows[0][ic.ivfDB.lFormaDB.lformA.sperm_iui_finish_time].ToString();
             //datespermpesa = dt.Rows[0][ic.ivfDB.lFormaDB.lformA.sperm_freezing_date_start].ToString();
             //datespermiui = dt.Rows[0][ic.ivfDB.lFormaDB.lformA.opu_date].ToString();
 
@@ -668,21 +671,56 @@ namespace clinic_ivf.gui
 
             //date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.pasa_tese_date].ToString());
             //dt.Rows[0][ic.ivfDB.lFormaDB.lformA.fet_no_date_freezing] = date1.Replace("-", "/");
+            
+            if (chkSememAnalysis.Checked)
+            {
+                txt1 += "SA " + dt.Rows[0]["sperm_sa_remark"].ToString()+" ";
+            }
+            else if (chkSpermFreezing.Checked)
+            {
+                txt1 += "SS " + dt.Rows[0]["sperm_freezing_remark"].ToString() + " ";
+            }
+            else if (chkSememPESA.Checked)
+            {
+                //txt1 += "PESA " + dt.Rows[0]["sperm_sa_remark"].ToString() + " ";     cboSpIUIRemark
+            }
+            else if (chkSpermIUI.Checked)
+            {
+                txt1 += "Remark Sperm IUI " + dt.Rows[0]["remark"].ToString() + " ";
+            }
             if (dt.Rows[0]["status_wait_confirm_opu_date"].ToString().Equals("1"))
             {
-                txt1 = "รอ confirm วัน เวลา OPU จากทาง พยาบาล";
+                txt1 += "รอ confirm วัน เวลา OPU จากทาง พยาบาล" + " ";
             }
-            txt1 = "";
+            //txt1 = "";
             dt.Columns.Add("note1", typeof(String));
             dt.Rows[0]["note1"] = txt1;
             dt.Columns.Add("sperm_analysis_time_start", typeof(String));
             dt.Columns.Add("sperm_analysis_time_end", typeof(String));
             dt.Columns.Add("sperm_freezing_time_start", typeof(String));
             dt.Columns.Add("sperm_freezing_time_end", typeof(String));
+            //dt.Columns.Add("sperm_iui_start_time", typeof(String));
+            dt.Columns.Add("sperm_iui_end_time", typeof(String));
             dt.Rows[0]["sperm_analysis_time_start"] = ic.timetoShow(datespermanalysis);
             dt.Rows[0]["sperm_analysis_time_end"] = ic.timetoShow(datespermanalysisend);
             dt.Rows[0]["sperm_freezing_time_start"] = ic.timetoShow(datespermfreezing);
             dt.Rows[0]["sperm_freezing_time_end"] = ic.timetoShow(datespermfreezingend);
+            dt.Rows[0]["sperm_iui_start_time"] = ic.timetoShow(spermiuistarttime);
+            dt.Rows[0]["sperm_iui_end_time"] = ic.timetoShow(spermiuifinishtime);
+            String aaa = dt.Rows[0]["sperm_iui_date"].ToString();
+
+            Patient ptt2 = new Patient();
+            if (dt.Rows[0]["hn_male"].ToString().Length > 0)
+            {
+                ptt2 = ic.ivfDB.pttDB.selectByHn(dt.Rows[0]["hn_male"].ToString());
+            }
+            dt.Rows[0]["hn_male"] = ic.showHN(ptt2.patient_hn, ptt2.patient_year);
+            if (dt.Rows[0]["hn_female"].ToString().Length > 0)
+            {
+                ptt2 = ic.ivfDB.pttDB.selectByHn(dt.Rows[0]["hn_female"].ToString());
+            }
+            dt.Rows[0]["hn_female"] = ic.showHN(ptt2.patient_hn, ptt2.patient_year);
+
             frm.setLabFormASpermReport(dt);
             frm.ShowDialog(this);
         }
@@ -772,6 +810,19 @@ namespace clinic_ivf.gui
             }
             dt.Columns.Add("note1", typeof(String));
             dt.Rows[0]["note1"] = txt1;
+
+            Patient ptt2 = new Patient();
+            if (dt.Rows[0]["hn_male"].ToString().Length > 0)
+            {
+                ptt2 = ic.ivfDB.pttDB.selectByHn(dt.Rows[0]["hn_male"].ToString());
+            }
+            dt.Rows[0]["hn_male"] = ic.showHN(ptt2.patient_hn, ptt2.patient_year);
+            if (dt.Rows[0]["hn_female"].ToString().Length > 0)
+            {
+                ptt2 = ic.ivfDB.pttDB.selectByHn(dt.Rows[0]["hn_female"].ToString());
+            }
+            dt.Rows[0]["hn_female"] = ic.showHN(ptt2.patient_hn, ptt2.patient_year);
+
             frm.setLabFormAFetReport(dt);
             frm.ShowDialog(this);
         }
@@ -818,6 +869,19 @@ namespace clinic_ivf.gui
             }
             dt.Columns.Add("note1", typeof(String));
             dt.Rows[0]["note1"] = txt1;
+
+            Patient ptt2 = new Patient();
+            if (dt.Rows[0]["hn_male"].ToString().Length > 0)
+            {
+                ptt2 = ic.ivfDB.pttDB.selectByHn(dt.Rows[0]["hn_male"].ToString());
+            }
+            dt.Rows[0]["hn_male"] = ic.showHN(ptt2.patient_hn, ptt2.patient_year);
+            if (dt.Rows[0]["hn_female"].ToString().Length > 0)
+            {
+                ptt2 = ic.ivfDB.pttDB.selectByHn(dt.Rows[0]["hn_female"].ToString());
+            }
+            dt.Rows[0]["hn_female"] = ic.showHN(ptt2.patient_hn, ptt2.patient_year);
+
             frm.setLabFormAOPUMaleReport(dt);
             frm.ShowDialog(this);
         }
@@ -869,6 +933,19 @@ namespace clinic_ivf.gui
             }
             dt.Columns.Add("note1", typeof(String));
             dt.Rows[0]["note1"] = txt1;
+
+            Patient ptt2 = new Patient();
+            if (dt.Rows[0]["hn_male"].ToString().Length > 0)
+            {
+                ptt2 = ic.ivfDB.pttDB.selectByHn(dt.Rows[0]["hn_male"].ToString());
+            }
+            dt.Rows[0]["hn_male"] = ic.showHN(ptt2.patient_hn, ptt2.patient_year);
+            if (dt.Rows[0]["hn_female"].ToString().Length > 0)
+            {
+                ptt2 = ic.ivfDB.pttDB.selectByHn(dt.Rows[0]["hn_female"].ToString());
+            }
+            dt.Rows[0]["hn_female"] = ic.showHN(ptt2.patient_hn, ptt2.patient_year);
+
             frm.setLabFormAOPUReport(dt);
             frm.ShowDialog(this);
         }
@@ -1051,6 +1128,18 @@ namespace clinic_ivf.gui
             dt.Rows[0]["note1"] = txt1;
             dt.Columns.Add("embryo_freezing_day1", typeof(String));
             dt.Rows[0]["embryo_freezing_day1"] = dt.Rows[0]["embryo_freezing_day"].ToString();
+            Patient ptt2 = new Patient();
+            if (dt.Rows[0]["hn_male"].ToString().Length > 0)
+            {
+                ptt2 = ic.ivfDB.pttDB.selectByHn(dt.Rows[0]["hn_male"].ToString());
+            }
+            dt.Rows[0]["hn_male"] = ic.showHN(ptt2.patient_hn,ptt2.patient_year);
+            if (dt.Rows[0]["hn_female"].ToString().Length > 0)
+            {
+                ptt2 = ic.ivfDB.pttDB.selectByHn(dt.Rows[0]["hn_female"].ToString());
+            }
+            dt.Rows[0]["hn_female"] = ic.showHN(ptt2.patient_hn, ptt2.patient_year);
+
             frm.setLabFormAReport(dt);
             frm.ShowDialog(this);
         }
@@ -1138,7 +1227,7 @@ namespace clinic_ivf.gui
             lFormA.status_sperm_analysis = chkSememAnalysis.Checked ? "1" : "0";
             lFormA.status_sperm_freezing = chkSpermFreezing.Checked ? "1" : "0";
             lFormA.pasa_tese_date = ic.dateTimetoDB(txtPasaTeseDate.Text);
-            lFormA.sperm_iui_date = txtSpermIUIDate.Text;
+            lFormA.sperm_iui_date = ic.datetoDB(txtSpermIUIDate.Text);
             lFormA.lab_t_form_acol = "";
             lFormA.sperm_analysis_date_start = ic.datetoDB(txtSpermAnalysisDateStart.Text) +" "+ txtSpermAnalysisTimeStart.Text.Trim();
             lFormA.sperm_analysis_date_end = ic.datetoDB(txtSpermAnalysisDateStart.Text) + " "+ txtSpermAnalysisDateEnd.Text.Trim();
@@ -1195,14 +1284,15 @@ namespace clinic_ivf.gui
             }
             lFormA.et_day = cboEtDay.SelectedItem == null ? "" : ((ComboBoxItem)cboEtDay.SelectedItem).Value;
             lFormA.et_remark = cboEtRemark.Text;
-            lFormA.sperm_freezing_remark = cboSpSaRemark.Text;
+            lFormA.sperm_freezing_remark = cboSpFzRemark.Text;
             lFormA.sperm_sa_remark = cboSpSaRemark.Text;
             lFormA.status_no_ngs = chkNoNgs.Checked ? "1" : "0";
             lFormA.iui_date = ic.datetoDB(txtIUIdate.Text);
             lFormA.iui_time = txtIUItime.Text.Trim();
             lFormA.iui_remark = cboIUIremark.Text.Trim();
             lFormA.status_iui = chkIUI.Checked ? "1" : "0";
-            //lFormA.embryo txtEmbryoTranferTime.Text
+            lFormA.sperm_iui_start_time = txtSpermIUIStartTime.Text.Trim();
+            lFormA.sperm_iui_finish_time = txtSpermIUIEndTime.Text.Trim();
 
         }
         private Boolean saveLabFormA()
@@ -1310,13 +1400,22 @@ namespace clinic_ivf.gui
             //}
             if (txtID.Text.Equals(""))
             {
+                String hnmale = "", hnfemale = "";
+                if (txtHnFeMale.Text.Trim().IndexOf("/") > 0)
+                {
+                    hnfemale = txtHnFeMale.Text.Trim().Substring(0, txtHnFeMale.Text.Trim().IndexOf(ic.hnspareyear));
+                }
+                if (txtHnMale.Text.Trim().IndexOf("/") > 0)
+                {
+                    hnmale = txtHnMale.Text.Trim().Substring(0, txtHnMale.Text.Trim().IndexOf(ic.hnspareyear));
+                }
                 LabRequest lbReq = new LabRequest();
                 if ((gbOPU.Enabled && chkWaitOpuDate.Checked) || (gbOPU.Enabled && chkConfirmOpuDate.Checked) || chkOPU)
                 {
                     String dtrid = "";
                     dtrid = cboDoctor.SelectedItem == null ? "" : ((ComboBoxItem)cboDoctor.SelectedItem).Value;
                     reqid = ic.ivfDB.oJsDB.selectByStatusOPU(vn);
-                    lbReq = ic.ivfDB.setLabRequest(txtReqOpuId.Text, txtNameFeMale.Text, vn, dtrid, cboSpIUIRemark.Text, txtHnFeMale.Text, ic.datetoDB(txtDobFeMale.Text), reqid, "26300000197", txtHnMale.Text, txtNameMale.Text, txtHnDonor.Text, txtNameDonor.Text, txtDonorDob.Text, txtVsId.Text);
+                    lbReq = ic.ivfDB.setLabRequest(txtReqOpuId.Text, txtNameFeMale.Text, vn, dtrid, cboSpIUIRemark.Text, hnfemale, ic.datetoDB(txtDobFeMale.Text), reqid, "26300000197", hnmale, txtNameMale.Text, txtHnDonor.Text, txtNameDonor.Text, txtDonorDob.Text, txtVsId.Text);
                     lbReq.form_a_id = re;
                     String re1 = ic.ivfDB.lbReqDB.insertLabRequest(lbReq, txtStfConfirmID.Text);
                     String re2 = ic.ivfDB.lFormaDB.updateReqIdOPU(re, re1);
@@ -1329,7 +1428,7 @@ namespace clinic_ivf.gui
                     reqid = "";
                     lbReq = new LabRequest();
                     //reqid = ic.ivfDB.oJsDB.selectByStatusFET(vn);
-                    lbReq = ic.ivfDB.setLabRequest(txtReqFetId.Text, txtNameFeMale.Text, vn, dtrid, cboSpIUIRemark.Text, txtHnOld.Text, ic.datetoDB(txtDobFeMale.Text), reqid, "2630000022", txtHnMale.Text, txtNameMale.Text, txtHnDonor.Text, txtNameDonor.Text, txtDonorDob.Text, txtVsId.Text);
+                    lbReq = ic.ivfDB.setLabRequest(txtReqFetId.Text, hnfemale, vn, dtrid, cboSpIUIRemark.Text, txtHnOld.Text, ic.datetoDB(txtDobFeMale.Text), reqid, "2630000022", hnmale, txtNameMale.Text, txtHnDonor.Text, txtNameDonor.Text, txtDonorDob.Text, txtVsId.Text);
                     lbReq.form_a_id = re;
                     String re2 = ic.ivfDB.lbReqDB.insertLabRequest(lbReq, txtStfConfirmID.Text);
                     if (chkFET.Checked)
@@ -1342,7 +1441,7 @@ namespace clinic_ivf.gui
                     String dtrid = "";
                     dtrid = cboDoctor.SelectedItem == null ? "" : ((ComboBoxItem)cboDoctor.SelectedItem).Value;
                     reqid = ic.ivfDB.oJlabdDB.selectByStatusSememAnalysis(vn);
-                    lbReq = ic.ivfDB.setLabRequest(txtReqSpAId.Text, txtNameFeMale.Text, vn, dtrid, cboSpIUIRemark.Text, txtHnOld.Text, ic.datetoDB(txtDobFeMale.Text), reqid, "2630000014", txtHnMale.Text, txtNameMale.Text, txtHnDonor.Text, txtNameDonor.Text, txtDonorDob.Text, txtVsId.Text);
+                    lbReq = ic.ivfDB.setLabRequest(txtReqSpAId.Text, hnfemale, vn, dtrid, cboSpIUIRemark.Text, txtHnOld.Text, ic.datetoDB(txtDobFeMale.Text), reqid, "2630000014", hnmale, txtNameMale.Text, txtHnDonor.Text, txtNameDonor.Text, txtDonorDob.Text, txtVsId.Text);
                     lbReq.form_a_id = re;
                     String re1 = ic.ivfDB.lbReqDB.insertLabRequest(lbReq, txtStfConfirmID.Text);
                     String re2 = ic.ivfDB.lFormaDB.updateReqIdSememAnalysis(re, re1);
@@ -1352,7 +1451,7 @@ namespace clinic_ivf.gui
                     String dtrid = "";
                     dtrid = cboDoctor.SelectedItem == null ? "" : ((ComboBoxItem)cboDoctor.SelectedItem).Value;
                     reqid = ic.ivfDB.oJlabdDB.selectByStatusSememFreezing(vn);
-                    lbReq = ic.ivfDB.setLabRequest(txtReqSpFzId.Text, txtNameFeMale.Text, vn, dtrid, cboSpIUIRemark.Text, txtHnOld.Text, ic.datetoDB(txtDobFeMale.Text), reqid, "2630000018", txtHnMale.Text, txtNameMale.Text, txtHnDonor.Text, txtNameDonor.Text, txtDonorDob.Text, txtVsId.Text);
+                    lbReq = ic.ivfDB.setLabRequest(txtReqSpFzId.Text, hnfemale, vn, dtrid, cboSpIUIRemark.Text, txtHnOld.Text, ic.datetoDB(txtDobFeMale.Text), reqid, "2630000018", hnmale, txtNameMale.Text, txtHnDonor.Text, txtNameDonor.Text, txtDonorDob.Text, txtVsId.Text);
                     lbReq.form_a_id = re;
                     String re1 = ic.ivfDB.lbReqDB.insertLabRequest(lbReq, txtStfConfirmID.Text);
                     String re2 = ic.ivfDB.lFormaDB.updateReqIdSpermFreezing(re, re1);
@@ -1362,27 +1461,35 @@ namespace clinic_ivf.gui
                     String dtrid = "";
                     dtrid = cboDoctor.SelectedItem == null ? "" : ((ComboBoxItem)cboDoctor.SelectedItem).Value;
                     reqid = ic.ivfDB.oJlabdDB.selectByStatusPesa(vn);
-                    lbReq = ic.ivfDB.setLabRequest(txtReqPesaId.Text, txtNameFeMale.Text, vn, dtrid, cboSpIUIRemark.Text, txtHnOld.Text, ic.datetoDB(txtDobFeMale.Text), reqid, "2630000066", txtHnMale.Text, txtNameMale.Text, txtHnDonor.Text, txtNameDonor.Text, txtDonorDob.Text, txtVsId.Text);
+                    lbReq = ic.ivfDB.setLabRequest(txtReqPesaId.Text, hnfemale, vn, dtrid, cboSpIUIRemark.Text, txtHnOld.Text, ic.datetoDB(txtDobFeMale.Text), reqid, "2630000066", hnmale, txtNameMale.Text, txtHnDonor.Text, txtNameDonor.Text, txtDonorDob.Text, txtVsId.Text);
                     lbReq.form_a_id = re;
                     String re1 = ic.ivfDB.lbReqDB.insertLabRequest(lbReq, txtStfConfirmID.Text);
-                    String re2 = ic.ivfDB.lFormaDB.updateReqIdPESATESE(txtID.Text, re1);
+                    String re2 = ic.ivfDB.lFormaDB.updateReqIdPESATESE(re, re1);
                 }
                 if (lFormA.req_id_iui.Equals("0") && chkSpermIUI.Checked)
                 {
                     String dtrid = "";
                     dtrid = cboDoctor.SelectedItem == null ? "" : ((ComboBoxItem)cboDoctor.SelectedItem).Value;
                     reqid = ic.ivfDB.oJlabdDB.selectByStatusSememFreezing(vn);
-                    lbReq = ic.ivfDB.setLabRequest(txtReqSpIUIId.Text, txtNameFeMale.Text, vn, dtrid, cboSpIUIRemark.Text, txtHnOld.Text, ic.datetoDB(txtDobFeMale.Text), reqid, "26300000196", txtHnMale.Text, txtNameMale.Text, txtHnDonor.Text, txtNameDonor.Text, txtDonorDob.Text, txtVsId.Text);
+                    lbReq = ic.ivfDB.setLabRequest(txtReqSpIUIId.Text, hnfemale, vn, dtrid, cboSpIUIRemark.Text, txtHnOld.Text, ic.datetoDB(txtDobFeMale.Text), reqid, "26300000196", hnmale, txtNameMale.Text, txtHnDonor.Text, txtNameDonor.Text, txtDonorDob.Text, txtVsId.Text);
                     lbReq.form_a_id = re;
                     String re1 = ic.ivfDB.lbReqDB.insertLabRequest(lbReq, txtStfConfirmID.Text);
-                    String re2 = ic.ivfDB.lFormaDB.updateReqIdIUI(txtID.Text, re1);
+                    String re2 = ic.ivfDB.lFormaDB.updateReqIdIUI(re, re1);
                 }
             }
             else
             {
                 LabRequest lbReq = new LabRequest();
                 LabFormA lFormA1 = new LabFormA();
-
+                String hnmale = "", hnfemale = "";
+                if (txtHnFeMale.Text.Trim().IndexOf("/") > 0)
+                {
+                    hnfemale = txtHnFeMale.Text.Trim().Substring(0, txtHnFeMale.Text.Trim().IndexOf(ic.hnspareyear));
+                }
+                if (txtHnMale.Text.Trim().IndexOf("/") > 0)
+                {
+                    hnmale = txtHnMale.Text.Trim().Substring(0, txtHnMale.Text.Trim().IndexOf(ic.hnspareyear));
+                }
                 //String re1 = ic.ivfDB.lbReqDB.insertLabRequest(lbReq, txtStfConfirmID.Text);
                 if (chkETNotoTranfer.Checked || chkFET.Checked)
                 {
@@ -1391,8 +1498,8 @@ namespace clinic_ivf.gui
                     reqid = "";
                     lbReq = new LabRequest();
                     //reqid = ic.ivfDB.oJsDB.selectByStatusFET1(vn);
-                    lbReq = ic.ivfDB.setLabRequest(txtNameFeMale.Text, vn, dtrid, cboSpIUIRemark.Text, txtHnOld.Text, ic.datetoDB(txtDobFeMale.Text), reqid, "2630000022"
-                        , txtHnMale.Text, txtNameMale.Text, txtHnDonor.Text, txtNameDonor.Text, txtDonorDob.Text, txtVsId.Text);
+                    lbReq = ic.ivfDB.setLabRequest(hnfemale, vn, dtrid, cboSpIUIRemark.Text, txtHnOld.Text, ic.datetoDB(txtDobFeMale.Text), reqid, "2630000022"
+                        , txtHnMale.Text, hnmale, txtHnDonor.Text, txtNameDonor.Text, txtDonorDob.Text, txtVsId.Text);
                     lbReq.form_a_id = txtID.Text;
                     lbReq.req_id = lFormA.req_id_fet;
                 if (chkETNotoTranfer.Checked) lbReq.req_id = lFormA.req_id_et;
@@ -1418,8 +1525,8 @@ namespace clinic_ivf.gui
                     String dtrid = "";
                     dtrid = cboDoctor.SelectedItem == null ? "" : ((ComboBoxItem)cboDoctor.SelectedItem).Value;
                     reqid = ic.ivfDB.oJlabdDB.selectByStatusSememAnalysis(vn);
-                    lbReq = ic.ivfDB.setLabRequest(txtNameFeMale.Text, vn, dtrid, cboSpIUIRemark.Text, txtHnOld.Text, ic.datetoDB(txtDobFeMale.Text), reqid, "2630000014"
-                        , txtHnMale.Text, txtNameMale.Text, txtHnDonor.Text, txtNameDonor.Text, txtDonorDob.Text, txtVsId.Text);
+                    lbReq = ic.ivfDB.setLabRequest(hnfemale, vn, dtrid, cboSpIUIRemark.Text, txtHnOld.Text, ic.datetoDB(txtDobFeMale.Text), reqid, "2630000014"
+                        , txtHnMale.Text, hnmale, txtHnDonor.Text, txtNameDonor.Text, txtDonorDob.Text, txtVsId.Text);
                     lbReq.form_a_id = txtID.Text;
                     lbReq.req_id = lFormA.req_id_semem_analysis;
                     String re1 = ic.ivfDB.lbReqDB.insertLabRequest(lbReq, txtStfConfirmID.Text);
@@ -1435,8 +1542,8 @@ namespace clinic_ivf.gui
                     String dtrid = "";
                     dtrid = cboDoctor.SelectedItem == null ? "" : ((ComboBoxItem)cboDoctor.SelectedItem).Value;
                     reqid = ic.ivfDB.oJlabdDB.selectByStatusSememFreezing(vn);
-                    lbReq = ic.ivfDB.setLabRequest(txtNameFeMale.Text, vn, dtrid, cboSpIUIRemark.Text, txtHnOld.Text, ic.datetoDB(txtDobFeMale.Text), reqid, "2630000018"
-                        , txtHnMale.Text, txtNameMale.Text, txtHnDonor.Text, txtNameDonor.Text, txtDonorDob.Text, txtVsId.Text);
+                    lbReq = ic.ivfDB.setLabRequest(hnfemale, vn, dtrid, cboSpIUIRemark.Text, txtHnOld.Text, ic.datetoDB(txtDobFeMale.Text), reqid, "2630000018"
+                        , txtHnMale.Text, hnmale, txtHnDonor.Text, txtNameDonor.Text, txtDonorDob.Text, txtVsId.Text);
                     lbReq.form_a_id = txtID.Text;
                     lbReq.req_id = lFormA.req_id_sperm_freezing;
                     String re1 = ic.ivfDB.lbReqDB.insertLabRequest(lbReq, txtStfConfirmID.Text);
@@ -1452,8 +1559,8 @@ namespace clinic_ivf.gui
                     String dtrid = "";
                     dtrid = cboDoctor.SelectedItem == null ? "" : ((ComboBoxItem)cboDoctor.SelectedItem).Value;
                     reqid = ic.ivfDB.oJlabdDB.selectByStatusPesa(vn);
-                    lbReq = ic.ivfDB.setLabRequest(txtNameFeMale.Text, vn, dtrid, cboSpIUIRemark.Text, txtHnOld.Text, ic.datetoDB(txtDobFeMale.Text), reqid, "2630000066"
-                        , txtHnMale.Text, txtNameMale.Text, txtHnDonor.Text, txtNameDonor.Text, txtDonorDob.Text, txtVsId.Text);
+                    lbReq = ic.ivfDB.setLabRequest(hnfemale, vn, dtrid, cboSpIUIRemark.Text, txtHnOld.Text, ic.datetoDB(txtDobFeMale.Text), reqid, "2630000066"
+                        , txtHnMale.Text, hnmale, txtHnDonor.Text, txtNameDonor.Text, txtDonorDob.Text, txtVsId.Text);
                     lbReq.form_a_id = txtID.Text;
                     lbReq.req_id = lFormA.req_id_pesa_tese;
                     String re1 = ic.ivfDB.lbReqDB.insertLabRequest(lbReq, txtStfConfirmID.Text);
@@ -1464,13 +1571,13 @@ namespace clinic_ivf.gui
                         String re2 = ic.ivfDB.lFormaDB.updateReqIdPESATESE(txtID.Text, re1);
                     }
                 }
-                if (lFormA.req_id_iui.Equals("0") && chkSpermIUI.Checked)
+                if (lFormA.req_id_iui.Equals("0") && chkIUI.Checked)
                 {
                     String dtrid = "";
                     dtrid = cboDoctor.SelectedItem == null ? "" : ((ComboBoxItem)cboDoctor.SelectedItem).Value;
-                    reqid = ic.ivfDB.oJlabdDB.selectByStatusSememFreezing(vn);
-                    lbReq = ic.ivfDB.setLabRequest(txtNameFeMale.Text, vn, dtrid, cboSpIUIRemark.Text, txtHnOld.Text, ic.datetoDB(txtDobFeMale.Text), reqid, "26300000196"
-                        , txtHnMale.Text, txtNameMale.Text, txtHnDonor.Text, txtNameDonor.Text, txtDonorDob.Text, txtVsId.Text);
+                    reqid = ic.ivfDB.oJlabdDB.selectByStatusIUI(vn);
+                    lbReq = ic.ivfDB.setLabRequest(hnfemale, vn, dtrid, cboSpIUIRemark.Text, txtHnOld.Text, ic.datetoDB(txtDobFeMale.Text), reqid, "26300000196"
+                        , txtHnMale.Text, hnmale, txtHnDonor.Text, txtNameDonor.Text, txtDonorDob.Text, txtVsId.Text);
                     lbReq.form_a_id = txtID.Text;
                     lbReq.req_id = lFormA.req_id_iui;
                     String re1 = ic.ivfDB.lbReqDB.insertLabRequest(lbReq, txtStfConfirmID.Text);
@@ -2294,6 +2401,9 @@ namespace clinic_ivf.gui
             txtIUItime.Value = lFormA.iui_time;
             cboIUIremark.Value = lFormA.iui_remark;
             chkIUI.Checked = lFormA.status_iui.Equals("1") ? true : false;
+            txtIUItime.Value = lFormA.sperm_iui_finish_time;
+            txtSpermIUIStartTime.Value = lFormA.sperm_iui_start_time;
+            txtSpermIUIEndTime.Value = lFormA.sperm_iui_finish_time;
         }
         private void FrmLabOPUReq_Load(object sender, EventArgs e)
         {

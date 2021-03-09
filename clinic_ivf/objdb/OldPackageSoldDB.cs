@@ -350,8 +350,7 @@ namespace clinic_ivf.objdb
 
             sql = "Update " + opkgs.table + " Set " +
                 " " + opkgs.Status + " = '3'" +
-                "Where " + opkgs.PCKSID + "='" + pkgsid + "'"
-                ;
+                "Where " + opkgs.PCKSID + "='" + pkgsid + "'";
             try
             {
                 re = conn.ExecuteNonQuery(conn.conn, sql);
@@ -360,7 +359,6 @@ namespace clinic_ivf.objdb
             {
                 sql = ex.Message + " " + ex.InnerException;
             }
-
             return re;
         }
         public String updateP1BillNo(String pcksid, String billno)

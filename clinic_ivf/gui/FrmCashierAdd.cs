@@ -135,6 +135,8 @@ namespace clinic_ivf.gui
             chkDiscountPer.Click += ChkDiscountPer_Click;
             btnPrnReceipt.Click += BtnPrnReceipt_Click;
             btnPayPeriod.Click += BtnPayPeriod_Click;
+            btnItmAdd.Click += BtnItmAdd_Click;
+            btnDeposit.Click += BtnDeposit_Click;
             //txtTotalCash.KeyPress += TxtTotalCash_KeyPress;
             //txtTotalCredit.KeyPress += TxtTotalCredit_KeyPress;
 
@@ -156,6 +158,49 @@ namespace clinic_ivf.gui
             //MessageBox.Show(DateTime.Now.ToString("MM"), "");
             //MessageBox.Show(DateTime.Now.ToString("dd"), "");
         }
+
+        private void BtnDeposit_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            ic.deposit = "";
+            ic.dwithdrawid = "";
+            FrmDeposit frm = new FrmDeposit(ic, txtPttId.Text.Trim(), txtVsId.Text.Trim());
+            frm.FormBorderStyle = FormBorderStyle.FixedSingle;
+            frm.WindowState = FormWindowState.Normal;
+            frm.StartPosition = FormStartPosition.CenterScreen;
+            frm.ShowDialog(this);
+
+            OldBilldetail obilld = new OldBilldetail();
+            obilld.ID = "";
+            obilld.VN = txtVn.Text;
+            obilld.Name = "OtherService discount ";
+            obilld.Extra = "1";
+            obilld.item_id = "2640000191";      // form table specialitem
+            obilld.status = "special";
+            obilld.qty = "1";
+            obilld.Price = "-" + ic.deposit.Replace(",", "");
+            obilld.Total = "-" + ic.deposit.Replace(",", "");
+            obilld.price1 = "-" + ic.deposit.Replace(",", "");
+            obilld.Comment = ic.dwithdrawid;
+            obilld.bill_group_id = "2650000099";            // form table billgroup
+            obilld.GroupType = "Discount";
+            obilld.bill_id = txtBillId.Text;
+            long chk = 0;
+            String re = ic.ivfDB.obildDB.insertBillDetail(obilld, "");
+            if (long.TryParse(re, out chk))
+            {
+                setGrfBillD();
+                calTotal("");
+                calTotalCredit("");
+            }
+        }
+
+        private void BtnItmAdd_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+
+        }
+
         private void initGrf()
         {
             C1SplitterPanel scOrder = new C1.Win.C1SplitContainer.C1SplitterPanel();
@@ -456,20 +501,20 @@ namespace clinic_ivf.gui
                     ic.ivfDB.updatePackagePaymentComplete(vs.t_patient_id, row["PCKSID"].ToString());            //      +0020
                     if (Decimal.TryParse(row["Payment1"].ToString(), out price) && row["P1BDetailID"].ToString().Equals("0"))
                     {
-                        ic.ivfDB.opkgsDB.updateP1BillNo(row["PCKSID"].ToString(), billNo.Replace(ic.cop.prefix_receipt_doc, ""));
+                        ic.ivfDB.opkgsDB.updateP1BillNo(row["PCKSID"].ToString(), billNo.Replace(ic.cop.prefix_receipt_doc, "").Replace(ic.cop.prefix_receipt1_doc, ""));
                         //times = "1";
                     }
                     else if (Decimal.TryParse(row["Payment2"].ToString(), out price) && row["P2BDetailID"].ToString().Equals("0"))
                     {
-                        ic.ivfDB.opkgsDB.updateP2BillNo(row["PCKSID"].ToString(), billNo.Replace(ic.cop.prefix_receipt_doc, ""));
+                        ic.ivfDB.opkgsDB.updateP2BillNo(row["PCKSID"].ToString(), billNo.Replace(ic.cop.prefix_receipt_doc, "").Replace(ic.cop.prefix_receipt1_doc, ""));
                     }
                     else if (Decimal.TryParse(row["Payment3"].ToString(), out price) && row["P3BDetailID"].ToString().Equals("0"))
                     {
-                        ic.ivfDB.opkgsDB.updateP3BillNo(row["PCKSID"].ToString(), billNo.Replace(ic.cop.prefix_receipt_doc, ""));
+                        ic.ivfDB.opkgsDB.updateP3BillNo(row["PCKSID"].ToString(), billNo.Replace(ic.cop.prefix_receipt_doc, "").Replace(ic.cop.prefix_receipt1_doc, ""));
                     }
                     else if (Decimal.TryParse(row["Payment4"].ToString(), out price) && row["P4BDetailID"].ToString().Equals("0"))
                     {
-                        ic.ivfDB.opkgsDB.updateP4BillNo(row["PCKSID"].ToString(), billNo.Replace(ic.cop.prefix_receipt_doc, ""));
+                        ic.ivfDB.opkgsDB.updateP4BillNo(row["PCKSID"].ToString(), billNo.Replace(ic.cop.prefix_receipt_doc, "").Replace(ic.cop.prefix_receipt1_doc, ""));
                     }
                 }
             }
@@ -695,8 +740,9 @@ namespace clinic_ivf.gui
                 obilld.VN = txtVn.Text;
                 obilld.Name = "OtherService discount ";
                 obilld.Extra = "1";
-                obilld.item_id = "67";      // form table specialitem
+                obilld.item_id = "2640000067";      // form table specialitem
                 obilld.status = "special";
+                obilld.qty = "1";
                 //obilld.GroupType = "OtherService";
                 Decimal nettotal = 0, discountper=0, discount=0;
                 if (chkDiscountAll.Checked)

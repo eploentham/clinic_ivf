@@ -27,6 +27,7 @@ namespace clinic_ivf.gui
 {
     /*
      * 63-10-27     0020        เรื่อง		เลิก insert table Visit
+     * 64-02-27     0027        เรื่อง		หน้าจอ labspermview ใส่ รหัสผิด
      */
     public partial class FrmLabSpermAdd : Form
     {
@@ -251,6 +252,9 @@ namespace clinic_ivf.gui
             txtPeExam.KeyUp += TxtPeExam_KeyUp;
             txtPeFinish.KeyUp += TxtPeFinish_KeyUp;
 
+            //txtIuiVolume.KeyUp += TxtIuiVolume_KeyUp1;
+            //txtIuiCount.KeyUp += TxtIuiCount_KeyUp1;
+
             stt = new C1SuperTooltip();
             sep = new C1SuperErrorProvider();
             lsperm = new LabSperm();
@@ -281,6 +285,18 @@ namespace clinic_ivf.gui
             //    }
             //}
         }
+
+        //private void TxtIuiCount_KeyUp1(object sender, KeyEventArgs e)
+        //{
+        //    //throw new NotImplementedException();
+
+        //}
+
+        //private void TxtIuiVolume_KeyUp1(object sender, KeyEventArgs e)
+        //{
+        //    //throw new NotImplementedException();
+
+        //}
 
         private void BtnPesaDownload_Click(object sender, EventArgs e)
         {
@@ -404,6 +420,7 @@ namespace clinic_ivf.gui
                     String filename1 = Path.GetFileName(filename);
                     ic.savePicOPUtoServer("sperm_" + txtPeID.Text, filename1, filename);
                     ic.ivfDB.lspermDB.updateReportFile(txtPeID.Text, filename1);
+                    lsperm.report = filename1;
                     createReport();
                 }
 
@@ -436,6 +453,9 @@ namespace clinic_ivf.gui
             {
                 sep.Clear();
             }
+            calIUIMotilityPost();
+            calIUIMotilePost();
+            calIUIIMPost();
             if (e.KeyCode == Keys.Enter)
             {
                 txtIuiEjacula.Focus();
@@ -587,6 +607,7 @@ namespace clinic_ivf.gui
                     String filename1 = Path.GetFileName(filename);
                     ic.savePicOPUtoServer("sperm_" + txtIuiID.Text, filename1, filename);
                     ic.ivfDB.lspermDB.updateReportFile(txtIuiID.Text, filename1);
+                    lsperm.report = filename1;
                     createReport();
                 }
 
@@ -631,6 +652,7 @@ namespace clinic_ivf.gui
                     String filename1 = Path.GetFileName(filename);
                     ic.savePicOPUtoServer("sperm_" + txtID.Text, filename1, filename);
                     ic.ivfDB.lspermDB.updateReportFile(txtID.Text, filename1);
+                    lsperm.report = filename1;
                     createReport();
                 }
                 StringBuilder tip = new StringBuilder();
@@ -713,6 +735,7 @@ namespace clinic_ivf.gui
                     String filename1 = Path.GetFileName(filename);
                     ic.savePicOPUtoServer("sperm_" + txtSfID.Text, filename1, filename);
                     ic.ivfDB.lspermDB.updateReportFile(txtSfID.Text, filename1);
+                    lsperm.report = filename1;
                     createReport();
                 }
 
@@ -2294,9 +2317,30 @@ namespace clinic_ivf.gui
             //throw new NotImplementedException();
             FrmReport frm = new FrmReport(ic);
             DataTable dt = new DataTable();
+            Patient ptt1 = new Patient();
+            String hnfemale = "";
+            if (pttMale.patient_hn_1.IndexOf("/") > 0)
+            {
+                String hn = "", hnyr = "";
+                hn = pttMale.patient_hn_1.Substring(0, pttMale.patient_hn_1.IndexOf(ic.hnspareyear));
+                ptt1 = ic.ivfDB.pttDB.selectByHn(hn);
+            }
+            hnfemale = pttMale.patient_hn_1;
+
+            ptt = ic.ivfDB.pttDB.selectByHn(pttMale.patient_hn_1);
             dt = ic.ivfDB.lspermDB.selectByPk(txtIuiID.Text);
-            dt.Rows[0]["hn_male"] = txtHnMale.Value;       //+0020
-            dt.Rows[0]["hn_female"] = txtHnFeMale.Value + ic.datetoShow(pttFemale.patient_birthday);       //+0020
+            dt.Rows[0]["hn_male"] = txtIuiHnMale.Text;       //+0020
+            if (pttFemale.patient_birthday.Length > 0)
+            {
+                dt.Rows[0]["hn_female"] = txtIuiHnFeMale.Text + ic.datetoShow(pttFemale.patient_birthday);       //+0020
+            }
+            else
+            {
+                dt.Rows[0]["hn_female"] = txtIuiHnFeMale.Text +" "+ ic.datetoShow(ptt1.patient_birthday);       //+0020
+            }
+            //dt.Rows[0]["hn_female"] = txtIuiHnFeMale.Text+" " + txtIuiDobFeMale.Text;       //+0020
+            //dt.Columns.Add("wife_name", typeof(String));
+            //dt.Rows[0]["wife_name"] = txtIuiNameFeMale.Text;
             //FrmWaiting frmW = new FrmWaiting();
             //frmW.Show();
             frm.setSpermIui(dt);
@@ -2324,7 +2368,7 @@ namespace clinic_ivf.gui
             datemale = ic.datetoShow(dt.Rows[0]["dob_male"]);
             dt.Rows[0]["dob_male"] = datemale;
             dt.Rows[0]["hn_male"] = txtHnMale.Value;       //+0020
-            dt.Rows[0]["hn_female"] = txtHnFeMale.Value+ic.datetoShow(pttFemale.patient_birthday);       //+0020
+            dt.Rows[0]["hn_female"] = txtHnFeMale.Value + " " + ic.datetoShow(pttFemale.patient_birthday);       //+0020
             //FrmWaiting frmW = new FrmWaiting();
             //frmW.Show();
             frm.setSpermPesa(dt);
@@ -2350,7 +2394,7 @@ namespace clinic_ivf.gui
             datemale = ic.datetoShow(dt.Rows[0]["dob_male"]);
             dt.Rows[0]["dob_male"] = datemale;
             dt.Rows[0]["hn_male"] = txtHnMale.Value;       //+0020
-            dt.Rows[0]["hn_female"] = txtHnFeMale.Value + ic.datetoShow(pttFemale.patient_birthday);       //+0020
+            dt.Rows[0]["hn_female"] = txtHnFeMale.Value + " " + ic.datetoShow(pttFemale.patient_birthday);       //+0020
             String appearance = "", appearancetext = "";
             appearance = dt.Rows[0]["appearance"].ToString();
             appearancetext = dt.Rows[0]["appearance_text"].ToString();
@@ -2383,7 +2427,7 @@ namespace clinic_ivf.gui
             datemale = ic.datetoShow(dt.Rows[0]["dob_male"]);
             dt.Rows[0]["dob_male"] = datemale;
             dt.Rows[0]["hn_male"] = txtHnMale.Value;       //+0020
-            dt.Rows[0]["hn_female"] = txtHnFeMale.Value + ic.datetoShow(pttFemale.patient_birthday);       //+0020
+            dt.Rows[0]["hn_female"] = txtHnFeMale.Value + " " + ic.datetoShow(pttFemale.patient_birthday);       //+0020
             String appearance = "", appearancetext = "", chk = "";
             appearance = dt.Rows[0]["appearance"].ToString();
             appearancetext = dt.Rows[0]["appearance_text"].ToString();
@@ -2470,6 +2514,31 @@ namespace clinic_ivf.gui
             dt.Rows[0]["dob_male"] = datemale;
             dt.Rows[0]["hn_male"] = txtHnMale.Value;       //+0020
             dt.Rows[0]["hn_female"] = txtHnFeMale.Value + ic.datetoShow(pttFemale.patient_birthday);       //+0020
+
+
+            Patient ptt1 = new Patient();
+            String hnfemale = "";
+            if (pttMale.patient_hn_1.IndexOf("/") > 0)
+            {
+                String hn = "", hnyr = "";
+                hn = pttMale.patient_hn_1.Substring(0, pttMale.patient_hn_1.IndexOf(ic.hnspareyear));
+                ptt1 = ic.ivfDB.pttDB.selectByHn(hn);
+            }
+            hnfemale = pttMale.patient_hn_1;
+
+            ptt = ic.ivfDB.pttDB.selectByHn(pttMale.patient_hn_1);
+            dt = ic.ivfDB.lspermDB.selectByPk(txtIuiID.Text);
+            dt.Rows[0]["hn_male"] = txtIuiHnMale.Text;       //+0020
+            if (pttFemale.patient_birthday.Length > 0)
+            {
+                dt.Rows[0]["hn_female"] = txtIuiHnFeMale.Text + ic.datetoShow(pttFemale.patient_birthday);       //+0020
+            }
+            else
+            {
+                dt.Rows[0]["hn_female"] = txtIuiHnFeMale.Text + " " + ic.datetoShow(ptt1.patient_birthday);       //+0020
+            }
+
+
             String appearance = "", appearancetext = "", chk = "";
             appearance = dt.Rows[0]["appearance"].ToString();
             appearancetext = dt.Rows[0]["appearance_text"].ToString();
@@ -3145,7 +3214,20 @@ namespace clinic_ivf.gui
             //Patient ptt = new Patient();
             vs = ic.ivfDB.vsDB.selectByPk1(lbReq.visit_id);
             pttMale = ic.ivfDB.pttDB.selectByPk1(vs.t_patient_id);
-            pttFemale = ic.ivfDB.pttDB.selectByHn(lsperm.hn_female);
+            if (lsperm.hn_female.Length <= 0)
+            {
+                Patient ptt2 = new Patient();
+                if (pttMale.patient_hn_1.IndexOf("/") > 0)
+                {
+                    String hn = "", hnyr = "";
+                    hn = pttMale.patient_hn_1.Substring(0, pttMale.patient_hn_1.IndexOf(ic.hnspareyear));
+                    ptt2 = ic.ivfDB.pttDB.selectByHn(hn);
+                }
+            }
+            else
+            {
+                pttFemale = ic.ivfDB.pttDB.selectByHn(lsperm.hn_female);
+            }
             txtPttId.Value = vs.t_patient_id;
             txtPttIdOld.Value = pttMale.t_patient_id_old;
 
@@ -3165,22 +3247,34 @@ namespace clinic_ivf.gui
             //    lsperm = new LabSperm();
             //    lsperm.status_lab_sperm = StatusSperm;
             //}
-            if (lsperm.status_lab_sperm.Equals("1"))
+            if (lsperm.status_lab_sperm.Equals("1"))       // "1"   //"Sperm Analysis" 
             {
-                setControlSpermFreezing();
-                setControlSpermFreezingReadOnly(flagEdit);
-                if (lsperm.status_lab.Equals("2"))
-                {
-                    btnSfDownload.Show();
-                }
+                //setControlSpermFreezing();                          //-0072
+                //setControlSpermFreezingReadOnly(flagEdit);                          //-0072
+                //if (lsperm.status_lab.Equals("2"))                          //-0072
+                //{                          //-0072
+                //    btnSfDownload.Show();                          //-0072
+                //}                          //-0072
+                setControlAnalysis();                          //+0072
+                setControlAnalysisReadOnly(flagEdit);                          //+0072
+                if (lsperm.status_lab.Equals("2"))                          //+0072
+                {                          //+0072
+                    btnSaDownload.Show();                          //+0072
+                }                          //+0072
             }
-            else if (lsperm.status_lab_sperm.Equals("2"))
+            else if (lsperm.status_lab_sperm.Equals("2"))       // "2"      //"Sperm Freezing"
             {
-                setControlAnalysis();
-                setControlAnalysisReadOnly(flagEdit);
-                if (lsperm.status_lab.Equals("2"))
-                {
-                    btnSaDownload.Show();
+                //setControlAnalysis();                          //-0072
+                //setControlAnalysisReadOnly(flagEdit);                          //-0072
+                //if (lsperm.status_lab.Equals("2"))                          //-0072
+                //{                          //-0072
+                //    btnSaDownload.Show();                          //-0072
+                //}                          //-0072
+                setControlSpermFreezing();                          //+0072
+                setControlSpermFreezingReadOnly(flagEdit);                          //+0072
+                if (lsperm.status_lab.Equals("2"))                          //+0072
+                {                          //+0072
+                    btnSfDownload.Show();                          //+0072
                 }
             }
             else if (lsperm.status_lab_sperm.Equals("3"))
@@ -4202,12 +4296,12 @@ namespace clinic_ivf.gui
 
             day1View.DocumentSource = pds;
 
-            if (lsperm.status_lab_sperm.Equals("1"))      // sperm Freezing
+            if (lsperm.status_lab_sperm.Equals("2"))      // sperm Freezing
             {
                 panel14.Controls.Add(day1View);
                 panel14.Height = 800;
             }
-            else if (lsperm.status_lab_sperm.Equals("2"))      // sperm analysis
+            else if (lsperm.status_lab_sperm.Equals("1"))      // sperm analysis
             {
                 pnEmailView.Controls.Add(day1View);
                 pnEmailView.Height = 800;
@@ -4233,13 +4327,13 @@ namespace clinic_ivf.gui
             sCPesa.HeaderHeight = 0;
             sCFreezing.HeaderHeight = 0;
             tC.ShowTabs = false;
-            if (lsperm.status_lab_sperm.Equals("1"))      // sperm Freezing
-            {
-                tC.SelectedTab = tabSpermFreezing;
-            }
-            else if (lsperm.status_lab_sperm.Equals("2"))      // sperm analysis
+            if (lsperm.status_lab_sperm.Equals("1"))      // sperm analysis
             {
                 tC.SelectedTab = tabSememAna;
+            }
+            else if (lsperm.status_lab_sperm.Equals("2"))      // sperm Freezing
+            {
+                tC.SelectedTab = tabSpermFreezing;
             }
             else if (lsperm.status_lab_sperm.Equals("3"))      // sperm Pesa
             {

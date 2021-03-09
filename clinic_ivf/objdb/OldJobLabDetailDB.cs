@@ -433,6 +433,22 @@ namespace clinic_ivf.objdb
             }
             return re;
         }
+        public String selectByStatusIUI(String vn)
+        {
+            String re = "";
+            DataTable dt = new DataTable();
+            String sql = "Select jlabD.ID  " +
+                "From " + jlabD.table + " jlabD " +
+                "Where jlabD." + jlabD.Status + " ='1' and jlabD.LID in (26300000196) " +
+                "and jlabD.VN ='" + vn + "' " +
+                "Order By jlabD.ID";
+            dt = conn.selectData(conn.conn, sql);
+            if (dt.Rows.Count > 0)
+            {
+                re = dt.Rows[0]["ID"].ToString();
+            }
+            return re;
+        }
         public OldJobLabDetail setJobLabDetail(DataTable dt)
         {
             OldJobLabDetail lbReq1 = new OldJobLabDetail();

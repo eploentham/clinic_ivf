@@ -50,6 +50,7 @@
             this.txtSfEmailTo = new C1.Win.C1Input.C1TextBox();
             this.c1SplitterPanel4 = new C1.Win.C1SplitContainer.C1SplitterPanel();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.btnSfDownload = new C1.Win.C1Input.C1Button();
             this.lbSpFzRemark = new System.Windows.Forms.Label();
             this.label220 = new System.Windows.Forms.Label();
             this.txtSfLabFormACode = new C1.Win.C1Input.C1TextBox();
@@ -197,6 +198,7 @@
             this.txtEmailTo = new C1.Win.C1Input.C1TextBox();
             this.c1SplitterPanel2 = new C1.Win.C1SplitContainer.C1SplitterPanel();
             this.pnSememAnalysis = new System.Windows.Forms.Panel();
+            this.btnSaDownload = new C1.Win.C1Input.C1Button();
             this.lbSpSaRemark = new System.Windows.Forms.Label();
             this.label233 = new System.Windows.Forms.Label();
             this.txtLabFormACode = new C1.Win.C1Input.C1TextBox();
@@ -460,6 +462,7 @@
             this.txtPeEmailTo = new C1.Win.C1Input.C1TextBox();
             this.c1SplitterPanel6 = new C1.Win.C1SplitContainer.C1SplitterPanel();
             this.panel9 = new System.Windows.Forms.Panel();
+            this.btnPesaDownload = new C1.Win.C1Input.C1Button();
             this.txtPeLabFormACode = new C1.Win.C1Input.C1TextBox();
             this.label218 = new System.Windows.Forms.Label();
             this.btnPrintPesa = new C1.Win.C1Input.C1Button();
@@ -565,9 +568,6 @@
             this.txtPeHnFeMale = new C1.Win.C1Input.C1TextBox();
             this.tabReport = new C1.Win.C1Command.C1DockingTabPage();
             this.crySperm = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
-            this.btnSfDownload = new C1.Win.C1Input.C1Button();
-            this.btnSaDownload = new C1.Win.C1Input.C1Button();
-            this.btnPesaDownload = new C1.Win.C1Input.C1Button();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tC)).BeginInit();
@@ -587,6 +587,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtSfEmailTo)).BeginInit();
             this.c1SplitterPanel4.SuspendLayout();
             this.panel7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSfDownload)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSfLabFormACode)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPttIdOld)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPttId)).BeginInit();
@@ -657,6 +658,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtEmailTo)).BeginInit();
             this.c1SplitterPanel2.SuspendLayout();
             this.pnSememAnalysis.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSaDownload)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtLabFormACode)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPrintSa)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1PictureBox2)).BeginInit();
@@ -788,6 +790,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtPeEmailTo)).BeginInit();
             this.c1SplitterPanel6.SuspendLayout();
             this.panel9.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnPesaDownload)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPeLabFormACode)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPrintPesa)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1PictureBox5)).BeginInit();
@@ -833,9 +836,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtPeNameFeMale)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPeHnFeMale)).BeginInit();
             this.tabReport.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnSfDownload)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnSaDownload)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnPesaDownload)).BeginInit();
             this.SuspendLayout();
             // 
             // sB
@@ -1214,6 +1214,20 @@
             this.panel7.TabIndex = 0;
             this.theme1.SetTheme(this.panel7, "(default)");
             // 
+            // btnSfDownload
+            // 
+            this.btnSfDownload.Image = global::clinic_ivf.Properties.Resources.PDF_file_icon_svg_20;
+            this.btnSfDownload.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSfDownload.Location = new System.Drawing.Point(648, 246);
+            this.btnSfDownload.Name = "btnSfDownload";
+            this.btnSfDownload.Size = new System.Drawing.Size(126, 34);
+            this.btnSfDownload.TabIndex = 874;
+            this.btnSfDownload.Text = "Download PDF";
+            this.btnSfDownload.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnSfDownload, "(default)");
+            this.btnSfDownload.UseVisualStyleBackColor = true;
+            this.btnSfDownload.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
             // lbSpFzRemark
             // 
             this.lbSpFzRemark.AutoSize = true;
@@ -1259,11 +1273,11 @@
             this.label216.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label216.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label216.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label216.Location = new System.Drawing.Point(351, 110);
+            this.label216.Location = new System.Drawing.Point(423, 110);
             this.label216.Name = "label216";
-            this.label216.Size = new System.Drawing.Size(163, 16);
+            this.label216.Size = new System.Drawing.Size(92, 16);
             this.label216.TabIndex = 870;
-            this.label216.Text = "Lab Form A Req Number :";
+            this.label216.Text = "forma ReqNo:";
             this.theme1.SetTheme(this.label216, "(default)");
             // 
             // txtPttIdOld
@@ -1578,9 +1592,9 @@
             this.label76.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.label76.Location = new System.Drawing.Point(423, 87);
             this.label76.Name = "label76";
-            this.label76.Size = new System.Drawing.Size(91, 16);
+            this.label76.Size = new System.Drawing.Size(61, 16);
             this.label76.TabIndex = 853;
-            this.label76.Text = "Req Number :";
+            this.label76.Text = "Req No :";
             this.theme1.SetTheme(this.label76, "(default)");
             // 
             // txtSfID
@@ -2419,7 +2433,7 @@
             this.cboSfEmbryologistAppv.ItemsValueMember = "";
             this.cboSfEmbryologistAppv.Location = new System.Drawing.Point(517, 201);
             this.cboSfEmbryologistAppv.Name = "cboSfEmbryologistAppv";
-            this.cboSfEmbryologistAppv.Size = new System.Drawing.Size(165, 20);
+            this.cboSfEmbryologistAppv.Size = new System.Drawing.Size(207, 20);
             this.cboSfEmbryologistAppv.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.cboSfEmbryologistAppv.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
             this.cboSfEmbryologistAppv.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
@@ -2440,9 +2454,9 @@
             this.cboSfEmbryologistReport.ImagePadding = new System.Windows.Forms.Padding(0);
             this.cboSfEmbryologistReport.ItemsDisplayMember = "";
             this.cboSfEmbryologistReport.ItemsValueMember = "";
-            this.cboSfEmbryologistReport.Location = new System.Drawing.Point(517, 155);
+            this.cboSfEmbryologistReport.Location = new System.Drawing.Point(572, 155);
             this.cboSfEmbryologistReport.Name = "cboSfEmbryologistReport";
-            this.cboSfEmbryologistReport.Size = new System.Drawing.Size(165, 20);
+            this.cboSfEmbryologistReport.Size = new System.Drawing.Size(207, 20);
             this.cboSfEmbryologistReport.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.cboSfEmbryologistReport.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
             this.cboSfEmbryologistReport.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
@@ -2470,7 +2484,7 @@
             this.label111.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label111.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label111.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label111.Location = new System.Drawing.Point(369, 157);
+            this.label111.Location = new System.Drawing.Point(423, 157);
             this.label111.Name = "label111";
             this.label111.Size = new System.Drawing.Size(131, 16);
             this.label111.TabIndex = 804;
@@ -3107,7 +3121,7 @@
             this.txtSfNameMale.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.txtSfNameMale.Location = new System.Drawing.Point(108, 110);
             this.txtSfNameMale.Name = "txtSfNameMale";
-            this.txtSfNameMale.Size = new System.Drawing.Size(207, 20);
+            this.txtSfNameMale.Size = new System.Drawing.Size(309, 20);
             this.txtSfNameMale.TabIndex = 763;
             this.txtSfNameMale.Tag = null;
             this.theme1.SetTheme(this.txtSfNameMale, "(default)");
@@ -3198,7 +3212,7 @@
             this.txtSfHnFeMale.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.txtSfHnFeMale.Location = new System.Drawing.Point(108, 157);
             this.txtSfHnFeMale.Name = "txtSfHnFeMale";
-            this.txtSfHnFeMale.Size = new System.Drawing.Size(207, 20);
+            this.txtSfHnFeMale.Size = new System.Drawing.Size(309, 20);
             this.txtSfHnFeMale.TabIndex = 756;
             this.txtSfHnFeMale.Tag = null;
             this.theme1.SetTheme(this.txtSfHnFeMale, "(default)");
@@ -3258,7 +3272,7 @@
             this.c1SplitterPanel1.SizeRatio = 42.265D;
             this.c1SplitterPanel1.TabIndex = 0;
             this.c1SplitterPanel1.Text = "Panel 1";
-            this.c1SplitterPanel1.Width = 635;
+            this.c1SplitterPanel1.Width = 642;
             // 
             // panel6
             // 
@@ -3525,6 +3539,20 @@
             this.pnSememAnalysis.TabIndex = 0;
             this.theme1.SetTheme(this.pnSememAnalysis, "(default)");
             // 
+            // btnSaDownload
+            // 
+            this.btnSaDownload.Image = global::clinic_ivf.Properties.Resources.PDF_file_icon_svg_20;
+            this.btnSaDownload.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSaDownload.Location = new System.Drawing.Point(633, 253);
+            this.btnSaDownload.Name = "btnSaDownload";
+            this.btnSaDownload.Size = new System.Drawing.Size(126, 34);
+            this.btnSaDownload.TabIndex = 876;
+            this.btnSaDownload.Text = "Download PDF";
+            this.btnSaDownload.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnSaDownload, "(default)");
+            this.btnSaDownload.UseVisualStyleBackColor = true;
+            this.btnSaDownload.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
             // lbSpSaRemark
             // 
             this.lbSpSaRemark.AutoSize = true;
@@ -3570,11 +3598,11 @@
             this.label217.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label217.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label217.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label217.Location = new System.Drawing.Point(351, 110);
+            this.label217.Location = new System.Drawing.Point(423, 110);
             this.label217.Name = "label217";
-            this.label217.Size = new System.Drawing.Size(163, 16);
+            this.label217.Size = new System.Drawing.Size(93, 16);
             this.label217.TabIndex = 872;
-            this.label217.Text = "Lab Form A Req Number :";
+            this.label217.Text = "formA ReqNo:";
             this.theme1.SetTheme(this.label217, "(default)");
             // 
             // btnPrintSa
@@ -3861,9 +3889,9 @@
             this.label66.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.label66.Location = new System.Drawing.Point(423, 87);
             this.label66.Name = "label66";
-            this.label66.Size = new System.Drawing.Size(91, 16);
+            this.label66.Size = new System.Drawing.Size(61, 16);
             this.label66.TabIndex = 853;
-            this.label66.Text = "Req Number :";
+            this.label66.Text = "Req No :";
             this.theme1.SetTheme(this.label66, "(default)");
             // 
             // txtID
@@ -4653,7 +4681,7 @@
             this.cboEmbryologistAppv.ItemsValueMember = "";
             this.cboEmbryologistAppv.Location = new System.Drawing.Point(517, 201);
             this.cboEmbryologistAppv.Name = "cboEmbryologistAppv";
-            this.cboEmbryologistAppv.Size = new System.Drawing.Size(165, 20);
+            this.cboEmbryologistAppv.Size = new System.Drawing.Size(228, 20);
             this.cboEmbryologistAppv.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.cboEmbryologistAppv.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
             this.cboEmbryologistAppv.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
@@ -4674,9 +4702,9 @@
             this.cboEmbryologistReport.ImagePadding = new System.Windows.Forms.Padding(0);
             this.cboEmbryologistReport.ItemsDisplayMember = "";
             this.cboEmbryologistReport.ItemsValueMember = "";
-            this.cboEmbryologistReport.Location = new System.Drawing.Point(517, 155);
+            this.cboEmbryologistReport.Location = new System.Drawing.Point(573, 155);
             this.cboEmbryologistReport.Name = "cboEmbryologistReport";
-            this.cboEmbryologistReport.Size = new System.Drawing.Size(165, 20);
+            this.cboEmbryologistReport.Size = new System.Drawing.Size(228, 20);
             this.cboEmbryologistReport.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.cboEmbryologistReport.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
             this.cboEmbryologistReport.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
@@ -4704,7 +4732,7 @@
             this.label60.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label60.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label60.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label60.Location = new System.Drawing.Point(369, 157);
+            this.label60.Location = new System.Drawing.Point(423, 157);
             this.label60.Name = "label60";
             this.label60.Size = new System.Drawing.Size(131, 16);
             this.label60.TabIndex = 804;
@@ -5341,7 +5369,7 @@
             this.txtNameMale.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.txtNameMale.Location = new System.Drawing.Point(108, 113);
             this.txtNameMale.Name = "txtNameMale";
-            this.txtNameMale.Size = new System.Drawing.Size(207, 20);
+            this.txtNameMale.Size = new System.Drawing.Size(309, 20);
             this.txtNameMale.TabIndex = 763;
             this.txtNameMale.Tag = null;
             this.theme1.SetTheme(this.txtNameMale, "(default)");
@@ -5432,7 +5460,7 @@
             this.txtHnFeMale.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.txtHnFeMale.Location = new System.Drawing.Point(108, 157);
             this.txtHnFeMale.Name = "txtHnFeMale";
-            this.txtHnFeMale.Size = new System.Drawing.Size(207, 20);
+            this.txtHnFeMale.Size = new System.Drawing.Size(309, 20);
             this.txtHnFeMale.TabIndex = 756;
             this.txtHnFeMale.Tag = null;
             this.theme1.SetTheme(this.txtHnFeMale, "(default)");
@@ -6568,7 +6596,7 @@
             this.label238.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label238.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label238.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label238.Location = new System.Drawing.Point(369, 181);
+            this.label238.Location = new System.Drawing.Point(441, 181);
             this.label238.Name = "label238";
             this.label238.Size = new System.Drawing.Size(68, 16);
             this.label238.TabIndex = 809;
@@ -7264,7 +7292,7 @@
             this.txtIuiNameMale.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.txtIuiNameMale.Location = new System.Drawing.Point(108, 88);
             this.txtIuiNameMale.Name = "txtIuiNameMale";
-            this.txtIuiNameMale.Size = new System.Drawing.Size(207, 20);
+            this.txtIuiNameMale.Size = new System.Drawing.Size(309, 20);
             this.txtIuiNameMale.TabIndex = 763;
             this.txtIuiNameMale.Tag = null;
             this.theme1.SetTheme(this.txtIuiNameMale, "(default)");
@@ -7329,7 +7357,7 @@
             this.txtIuiNameFeMale.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.txtIuiNameFeMale.Location = new System.Drawing.Point(108, 179);
             this.txtIuiNameFeMale.Name = "txtIuiNameFeMale";
-            this.txtIuiNameFeMale.Size = new System.Drawing.Size(207, 20);
+            this.txtIuiNameFeMale.Size = new System.Drawing.Size(309, 20);
             this.txtIuiNameFeMale.TabIndex = 758;
             this.txtIuiNameFeMale.Tag = null;
             this.theme1.SetTheme(this.txtIuiNameFeMale, "(default)");
@@ -7415,7 +7443,7 @@
             this.c1SplitterPanel5.SizeRatio = 43.91D;
             this.c1SplitterPanel5.TabIndex = 0;
             this.c1SplitterPanel5.Text = "Panel 1";
-            this.c1SplitterPanel5.Width = 667;
+            this.c1SplitterPanel5.Width = 660;
             // 
             // panel8
             // 
@@ -7680,6 +7708,20 @@
             this.panel9.TabIndex = 0;
             this.theme1.SetTheme(this.panel9, "(default)");
             // 
+            // btnPesaDownload
+            // 
+            this.btnPesaDownload.Image = global::clinic_ivf.Properties.Resources.PDF_file_icon_svg_20;
+            this.btnPesaDownload.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPesaDownload.Location = new System.Drawing.Point(639, 246);
+            this.btnPesaDownload.Name = "btnPesaDownload";
+            this.btnPesaDownload.Size = new System.Drawing.Size(126, 34);
+            this.btnPesaDownload.TabIndex = 875;
+            this.btnPesaDownload.Text = "Download PDF";
+            this.btnPesaDownload.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnPesaDownload, "(default)");
+            this.btnPesaDownload.UseVisualStyleBackColor = true;
+            this.btnPesaDownload.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
             // txtPeLabFormACode
             // 
             this.txtPeLabFormACode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -7699,11 +7741,11 @@
             this.label218.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label218.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label218.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label218.Location = new System.Drawing.Point(351, 110);
+            this.label218.Location = new System.Drawing.Point(423, 110);
             this.label218.Name = "label218";
-            this.label218.Size = new System.Drawing.Size(163, 16);
+            this.label218.Size = new System.Drawing.Size(92, 16);
             this.label218.TabIndex = 872;
-            this.label218.Text = "Lab Form A Req Number :";
+            this.label218.Text = "forma ReqNo:";
             this.theme1.SetTheme(this.label218, "(default)");
             // 
             // btnPrintPesa
@@ -7983,9 +8025,9 @@
             this.label150.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.label150.Location = new System.Drawing.Point(423, 87);
             this.label150.Name = "label150";
-            this.label150.Size = new System.Drawing.Size(91, 16);
+            this.label150.Size = new System.Drawing.Size(61, 16);
             this.label150.TabIndex = 853;
-            this.label150.Text = "Req Number :";
+            this.label150.Text = "Req No :";
             this.theme1.SetTheme(this.label150, "(default)");
             // 
             // txtPeID
@@ -8421,7 +8463,7 @@
             this.label180.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label180.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label180.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label180.Location = new System.Drawing.Point(369, 180);
+            this.label180.Location = new System.Drawing.Point(422, 180);
             this.label180.Name = "label180";
             this.label180.Size = new System.Drawing.Size(68, 16);
             this.label180.TabIndex = 809;
@@ -8488,7 +8530,7 @@
             this.cboPeEmbryologistAppv.ItemsValueMember = "";
             this.cboPeEmbryologistAppv.Location = new System.Drawing.Point(517, 201);
             this.cboPeEmbryologistAppv.Name = "cboPeEmbryologistAppv";
-            this.cboPeEmbryologistAppv.Size = new System.Drawing.Size(165, 20);
+            this.cboPeEmbryologistAppv.Size = new System.Drawing.Size(273, 20);
             this.cboPeEmbryologistAppv.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.cboPeEmbryologistAppv.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
             this.cboPeEmbryologistAppv.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
@@ -8509,9 +8551,9 @@
             this.cboPeEmbryologistReport.ImagePadding = new System.Windows.Forms.Padding(0);
             this.cboPeEmbryologistReport.ItemsDisplayMember = "";
             this.cboPeEmbryologistReport.ItemsValueMember = "";
-            this.cboPeEmbryologistReport.Location = new System.Drawing.Point(517, 154);
+            this.cboPeEmbryologistReport.Location = new System.Drawing.Point(570, 154);
             this.cboPeEmbryologistReport.Name = "cboPeEmbryologistReport";
-            this.cboPeEmbryologistReport.Size = new System.Drawing.Size(165, 20);
+            this.cboPeEmbryologistReport.Size = new System.Drawing.Size(273, 20);
             this.cboPeEmbryologistReport.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.cboPeEmbryologistReport.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
             this.cboPeEmbryologistReport.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
@@ -8539,7 +8581,7 @@
             this.label182.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label182.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label182.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label182.Location = new System.Drawing.Point(369, 156);
+            this.label182.Location = new System.Drawing.Point(422, 156);
             this.label182.Name = "label182";
             this.label182.Size = new System.Drawing.Size(131, 16);
             this.label182.TabIndex = 804;
@@ -9171,7 +9213,7 @@
             this.txtPeNameMale.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.txtPeNameMale.Location = new System.Drawing.Point(108, 88);
             this.txtPeNameMale.Name = "txtPeNameMale";
-            this.txtPeNameMale.Size = new System.Drawing.Size(207, 20);
+            this.txtPeNameMale.Size = new System.Drawing.Size(309, 20);
             this.txtPeNameMale.TabIndex = 763;
             this.txtPeNameMale.Tag = null;
             this.theme1.SetTheme(this.txtPeNameMale, "(default)");
@@ -9236,7 +9278,7 @@
             this.txtPeNameFeMale.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.txtPeNameFeMale.Location = new System.Drawing.Point(108, 179);
             this.txtPeNameFeMale.Name = "txtPeNameFeMale";
-            this.txtPeNameFeMale.Size = new System.Drawing.Size(207, 20);
+            this.txtPeNameFeMale.Size = new System.Drawing.Size(309, 20);
             this.txtPeNameFeMale.TabIndex = 758;
             this.txtPeNameFeMale.Tag = null;
             this.theme1.SetTheme(this.txtPeNameFeMale, "(default)");
@@ -9291,48 +9333,6 @@
             this.crySperm.TabIndex = 2;
             this.theme1.SetTheme(this.crySperm, "(default)");
             // 
-            // btnSfDownload
-            // 
-            this.btnSfDownload.Image = global::clinic_ivf.Properties.Resources.PDF_file_icon_svg_20;
-            this.btnSfDownload.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSfDownload.Location = new System.Drawing.Point(648, 246);
-            this.btnSfDownload.Name = "btnSfDownload";
-            this.btnSfDownload.Size = new System.Drawing.Size(126, 34);
-            this.btnSfDownload.TabIndex = 874;
-            this.btnSfDownload.Text = "Download PDF";
-            this.btnSfDownload.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.theme1.SetTheme(this.btnSfDownload, "(default)");
-            this.btnSfDownload.UseVisualStyleBackColor = true;
-            this.btnSfDownload.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // btnSaDownload
-            // 
-            this.btnSaDownload.Image = global::clinic_ivf.Properties.Resources.PDF_file_icon_svg_20;
-            this.btnSaDownload.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSaDownload.Location = new System.Drawing.Point(633, 253);
-            this.btnSaDownload.Name = "btnSaDownload";
-            this.btnSaDownload.Size = new System.Drawing.Size(126, 34);
-            this.btnSaDownload.TabIndex = 876;
-            this.btnSaDownload.Text = "Download PDF";
-            this.btnSaDownload.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.theme1.SetTheme(this.btnSaDownload, "(default)");
-            this.btnSaDownload.UseVisualStyleBackColor = true;
-            this.btnSaDownload.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // btnPesaDownload
-            // 
-            this.btnPesaDownload.Image = global::clinic_ivf.Properties.Resources.PDF_file_icon_svg_20;
-            this.btnPesaDownload.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPesaDownload.Location = new System.Drawing.Point(639, 246);
-            this.btnPesaDownload.Name = "btnPesaDownload";
-            this.btnPesaDownload.Size = new System.Drawing.Size(126, 34);
-            this.btnPesaDownload.TabIndex = 875;
-            this.btnPesaDownload.Text = "Download PDF";
-            this.btnPesaDownload.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.theme1.SetTheme(this.btnPesaDownload, "(default)");
-            this.btnPesaDownload.UseVisualStyleBackColor = true;
-            this.btnPesaDownload.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
             // FrmLabSpermAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -9365,6 +9365,7 @@
             this.c1SplitterPanel4.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSfDownload)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSfLabFormACode)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPttIdOld)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPttId)).EndInit();
@@ -9439,6 +9440,7 @@
             this.c1SplitterPanel2.ResumeLayout(false);
             this.pnSememAnalysis.ResumeLayout(false);
             this.pnSememAnalysis.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSaDownload)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtLabFormACode)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPrintSa)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1PictureBox2)).EndInit();
@@ -9577,6 +9579,7 @@
             this.c1SplitterPanel6.ResumeLayout(false);
             this.panel9.ResumeLayout(false);
             this.panel9.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnPesaDownload)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPeLabFormACode)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPrintPesa)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1PictureBox5)).EndInit();
@@ -9623,9 +9626,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtPeNameFeMale)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPeHnFeMale)).EndInit();
             this.tabReport.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.btnSfDownload)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnSaDownload)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnPesaDownload)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

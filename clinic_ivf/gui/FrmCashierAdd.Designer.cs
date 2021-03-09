@@ -72,6 +72,7 @@
             this.tabBillItem = new C1.Win.C1Command.C1DockingTabPage();
             this.pnBillD = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnDeposit = new C1.Win.C1Input.C1Button();
             this.cboCreditBank = new C1.Win.C1Input.C1ComboBox();
             this.label23 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
@@ -149,6 +150,7 @@
             this.tC1.SuspendLayout();
             this.tabBillItem.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnDeposit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboCreditBank)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTotalTransfer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboAccCashTransfer)).BeginInit();
@@ -783,6 +785,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel2.Controls.Add(this.btnDeposit);
             this.panel2.Controls.Add(this.cboCreditBank);
             this.panel2.Controls.Add(this.label23);
             this.panel2.Controls.Add(this.label22);
@@ -826,6 +829,20 @@
             this.panel2.Size = new System.Drawing.Size(1274, 144);
             this.panel2.TabIndex = 699;
             this.theme1.SetTheme(this.panel2, "(default)");
+            // 
+            // btnDeposit
+            // 
+            this.btnDeposit.Image = global::clinic_ivf.Properties.Resources.zoom_in24;
+            this.btnDeposit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDeposit.Location = new System.Drawing.Point(285, 6);
+            this.btnDeposit.Name = "btnDeposit";
+            this.btnDeposit.Size = new System.Drawing.Size(110, 36);
+            this.btnDeposit.TabIndex = 765;
+            this.btnDeposit.Text = "Deposit";
+            this.btnDeposit.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnDeposit, "(default)");
+            this.btnDeposit.UseVisualStyleBackColor = true;
+            this.btnDeposit.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // cboCreditBank
             // 
@@ -946,9 +963,9 @@
             // 
             this.btnItmAdd.Image = global::clinic_ivf.Properties.Resources.zoom_in24;
             this.btnItmAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnItmAdd.Location = new System.Drawing.Point(767, 6);
+            this.btnItmAdd.Location = new System.Drawing.Point(981, 6);
             this.btnItmAdd.Name = "btnItmAdd";
-            this.btnItmAdd.Size = new System.Drawing.Size(107, 36);
+            this.btnItmAdd.Size = new System.Drawing.Size(25, 36);
             this.btnItmAdd.TabIndex = 757;
             this.btnItmAdd.Text = "เพิ่ม / ลด รายการ";
             this.btnItmAdd.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -961,9 +978,9 @@
             // 
             this.btnPayPeriod.Image = global::clinic_ivf.Properties.Resources.maintenance24;
             this.btnPayPeriod.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPayPeriod.Location = new System.Drawing.Point(880, 6);
+            this.btnPayPeriod.Location = new System.Drawing.Point(1012, 6);
             this.btnPayPeriod.Name = "btnPayPeriod";
-            this.btnPayPeriod.Size = new System.Drawing.Size(107, 36);
+            this.btnPayPeriod.Size = new System.Drawing.Size(30, 36);
             this.btnPayPeriod.TabIndex = 756;
             this.btnPayPeriod.Text = "แบ่งชำระ";
             this.btnPayPeriod.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1396,9 +1413,9 @@
             // 
             this.c1Button1.Image = global::clinic_ivf.Properties.Resources.Add_ticket_24;
             this.c1Button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.c1Button1.Location = new System.Drawing.Point(549, 7);
+            this.c1Button1.Location = new System.Drawing.Point(1048, 6);
             this.c1Button1.Name = "c1Button1";
-            this.c1Button1.Size = new System.Drawing.Size(59, 32);
+            this.c1Button1.Size = new System.Drawing.Size(25, 32);
             this.c1Button1.TabIndex = 697;
             this.c1Button1.Text = "Cal";
             this.c1Button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1477,7 +1494,7 @@
             this.txtPayName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.txtPayName.Location = new System.Drawing.Point(138, 6);
             this.txtPayName.Name = "txtPayName";
-            this.txtPayName.Size = new System.Drawing.Size(332, 20);
+            this.txtPayName.Size = new System.Drawing.Size(32, 20);
             this.txtPayName.TabIndex = 676;
             this.txtPayName.Tag = null;
             this.theme1.SetTheme(this.txtPayName, "(default)");
@@ -1548,6 +1565,7 @@
             this.tabBillItem.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnDeposit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboCreditBank)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTotalTransfer)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboAccCashTransfer)).EndInit();
@@ -1670,5 +1688,6 @@
         private System.Windows.Forms.Label label23;
         private C1.Win.C1Input.C1TextBox txtReceiptNo;
         private System.Windows.Forms.Label label24;
+        private C1.Win.C1Input.C1Button btnDeposit;
     }
 }

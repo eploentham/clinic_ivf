@@ -897,3 +897,46 @@ ALTER TABLE `ivf_101_donor`.`lab_b_group` AUTO_INCREMENT = 2550000000;
 ALTER TABLE `ivf_101`.`LabItem` 
 ADD COLUMN `lab_group_id` BIGINT NULL AFTER `remark`;
 
+ALTER TABLE ivf_ww_101.t_deposit AUTO_INCREMENT = 2780000000;
+
+CREATE TABLE `t_deposit_withdraw` (
+  `withdraw_id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `deposit_id` bigint(20) NULL ,
+  `withdraw_code` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `withdraw_date` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `patient_hn` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `visit_vn` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `withdraw_name` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `withdraw_amount` decimal(10,2) DEFAULT NULL,
+  `remark` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `active` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `date_create` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `date_modi` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `date_cancel` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `user_create` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `user_modi` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `user_cancel` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  
+  PRIMARY KEY (`withdraw_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=2790000000 DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='id=279';
+
+ALTER TABLE `ivf_ww_101`.`t_deposit_withdraw` 
+ADD COLUMN `t_visit_id` BIGINT NULL AFTER `user_cancel`;
+
+
+ALTER TABLE `ivf_ww_101`.`t_deposit` 
+ADD COLUMN `t_patient_id` BIGINT NULL AFTER `status_deposit`;
+
+ALTER TABLE `ivf_ww_101`.`t_deposit_withdraw` 
+ADD COLUMN `t_patient_id` BIGINT NULL AFTER `t_visit_id`;
+
+ALTER TABLE `ivf_ww_101`.`t_deposit` 
+ADD COLUMN `pckid` BIGINT NULL AFTER `t_patient_id`;
+
+ALTER TABLE `ivf_ww_101`.`t_deposit` 
+ADD COLUMN `amount` DECIMAL(10,2) NULL AFTER `pck_id`;
+
+ALTER TABLE `ivf_ww_101`.`b_company` 
+ADD COLUMN `prefix_deposit_doc` VARCHAR(45) NULL AFTER `prefix_rec_doc`,
+ADD COLUMN `deposit_doc` INT NULL AFTER `prefix_deposit_doc`;
+

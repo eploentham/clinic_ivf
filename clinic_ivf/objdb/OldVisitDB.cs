@@ -497,13 +497,21 @@ namespace clinic_ivf.objdb
         {
             DataTable dt = new DataTable();
             String date = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd");
-            String sql = "select vsold.VN as id,vsold.VN, vsold.PIDS, vsold.PName, vsold.VDate, vsold.VStartTime, vsold.VEndTime, VStatus.VName, vsold.VSID, Patient.DateOfBirth as dob " +
-                ",vsold.form_a_id " +
-                "From " + vsold.table + " vsold " +
-                "Left Join VStatus on  VStatus.VSID = vsold.VSID " +
-                "Left Join Patient on  vsold.PID = Patient.PID " +
-                "Where vsold." + vsold.VDate + " ='"+ date + "' " +
-                "Order By vsold.VDate, vsold.VStartTime";
+            //String sql = "select vsold.VN as id,vsold.VN, vsold.PIDS, vsold.PName, vsold.VDate, vsold.VStartTime, vsold.VEndTime, VStatus.VName, vsold.VSID, Patient.DateOfBirth as dob " +
+            //    ",vsold.form_a_id " +
+            //    "From " + vsold.table + " vsold " +
+            //    "Left Join VStatus on  VStatus.VSID = vsold.VSID " +
+            //    "Left Join Patient on  vsold.PID = Patient.PID " +
+            //    "Where vsold." + vsold.VDate + " ='"+ date + "' " +
+            //    "Order By vsold.VDate, vsold.VStartTime";
+
+            String sql = "select vsold.visit_vn as id,vsold.visit_vn as VN, t_patient.pid as PIDS, vsold.patient_name as PName, vsold.visit_begin_visit_time as VDate, vsold.visit_begin_visit_time as VStartTime " +
+                ", vsold.nurse_finish_date_time as VEndTime, vsold.cashier_finish_date_time, vsold.pharmacy_finish_date_time, VStatus.VName, vsold.VSID, t_patient.patient_birthday as dob ,vsold.form_a_id,t_patient.patient_hn, t_patient.patient_year  " +
+                "From t_visit vsold  " +
+                "Left Join VStatus on  VStatus.VSID = vsold.VSID  " +
+                "Left Join t_patient on  vsold.t_patient_id = t_patient.t_patient_id  " +
+                "Where vsold.visit_begin_visit_time >= '"+ date + " 00:00:00' and vsold.visit_begin_visit_time <= '"+ date + " 23:59:59' " +
+                "Order By vsold.visit_begin_visit_time ";
             dt = conn.selectData(conn.conn, sql);
 
             return dt;

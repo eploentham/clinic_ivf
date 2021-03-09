@@ -119,6 +119,8 @@ namespace clinic_ivf.objdb
         public AddressDB addrDB;
         public AccCashTransferDB actDB;
         public AccCreditBankDB acbDB;
+        public DepositDB depositDB;
+        public DepositWithDrawDB dwitdrawDB;
         public IvfDB(ConnectDB c)
         {
             conn = c;
@@ -224,6 +226,8 @@ namespace clinic_ivf.objdb
             addrDB = new AddressDB(conn);
             actDB = new AccCashTransferDB(conn);
             acbDB = new AccCreditBankDB(conn);
+            depositDB = new DepositDB(conn);
+            dwitdrawDB = new DepositWithDrawDB(conn);
 
             Console.WriteLine("ivfDB end");
         }
@@ -635,7 +639,7 @@ namespace clinic_ivf.objdb
             opu.dob_female = lformA.dob_female;
             opu.dob_male = lformA.dob_male;
             opu.doctor_id = lbreq.doctor_id;
-            opu.status_lab_sperm = labsperm;
+            opu.status_lab_sperm = labsperm;        //1= sa;2=sf;3=pesa;4=iui
             opu.sperm_date = DateTime.Now.Year.ToString() + "-" + System.DateTime.Now.ToString("MM-dd");
             opu.req_id = reqid;
             opu.sperm_analysis_date_start = lformA.sperm_analysis_date_start;

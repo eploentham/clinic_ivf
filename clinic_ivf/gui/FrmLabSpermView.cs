@@ -16,6 +16,9 @@ using System.Windows.Forms;
 
 namespace clinic_ivf.gui
 {
+    /*
+     * 64-02-27     0027     เรื่อง		หน้าจอ labspermview ใส่ รหัสผิด
+     * */
     public partial class FrmLabSpermView : Form
     {
         IvfControl ic;
@@ -84,7 +87,7 @@ namespace clinic_ivf.gui
             initGrfReq();
             initGrfProc();
             initGrfFinish();
-            setGrfReq();
+            //setGrfReq();
             //setGrfProc();
             //setGrfFinish();
             initGrfSearch();   //111
@@ -145,7 +148,7 @@ namespace clinic_ivf.gui
             FrmLabSpermAdd frm = new FrmLabSpermAdd(ic, "", "", "4");
             frm.StatusSperm = "4";
             String txt = "";
-            txt = "ป้อน LAB Sperm Analysis ";
+            txt = "ป้อน LAB Sperm IUI ";
             frm.FormBorderStyle = FormBorderStyle.None;
             
             menu.AddNewTab(frm, txt);
@@ -301,13 +304,13 @@ namespace clinic_ivf.gui
                 row1[colPcRemark] = row[ic.ivfDB.lspermDB.lsperm.remark].ToString();
                 if (row[ic.ivfDB.lspermDB.lsperm.status_lab_sperm].ToString().Equals("1"))
                 {
-                    row1[colPcDate] = ic.datetoShow(row[ic.ivfDB.lspermDB.lsperm.spern_freezing_date_start].ToString());
-                    row1[colPcTime] = ic.timetoShow(row[ic.ivfDB.lspermDB.lsperm.spern_freezing_date_start].ToString());
+                    row1[colPcDate] = ic.datetoShow(row[ic.ivfDB.lspermDB.lsperm.sperm_analysis_date_start].ToString());
+                    row1[colPcTime] = ic.timetoShow(row[ic.ivfDB.lspermDB.lsperm.sperm_analysis_date_start].ToString());
                 }
                 else if (row[ic.ivfDB.lspermDB.lsperm.status_lab_sperm].ToString().Equals("2"))
                 {
-                    row1[colPcDate] = ic.datetoShow(row[ic.ivfDB.lspermDB.lsperm.sperm_analysis_date_start].ToString());
-                    row1[colPcTime] = ic.timetoShow(row[ic.ivfDB.lspermDB.lsperm.sperm_analysis_date_start].ToString());
+                    row1[colPcDate] = ic.datetoShow(row[ic.ivfDB.lspermDB.lsperm.spern_freezing_date_start].ToString());
+                    row1[colPcTime] = ic.timetoShow(row[ic.ivfDB.lspermDB.lsperm.spern_freezing_date_start].ToString());
                 }
                 else if (row[ic.ivfDB.lspermDB.lsperm.status_lab_sperm].ToString().Equals("3"))
                 {
@@ -320,8 +323,8 @@ namespace clinic_ivf.gui
                     //row1[colOPUTime] = ic.timetoShow(row[ic.ivfDB.lspermDB.lsperm.sperm_analysis_date_start].ToString());
                 }
                 row1[colPcStatusSperm] = row[ic.ivfDB.lspermDB.lsperm.status_lab_sperm].ToString();
-                row1[colPcSpermName] = row[ic.ivfDB.lspermDB.lsperm.status_lab_sperm].ToString().Equals("1") ? "Sperm Freezing"
-                    : row[ic.ivfDB.lspermDB.lsperm.status_lab_sperm].ToString().Equals("2") ? "Sperm Analysis"
+                row1[colPcSpermName] = row[ic.ivfDB.lspermDB.lsperm.status_lab_sperm].ToString().Equals("2") ? "Sperm Freezing"
+                    : row[ic.ivfDB.lspermDB.lsperm.status_lab_sperm].ToString().Equals("1") ? "Sperm Analysis"
                     : row[ic.ivfDB.lspermDB.lsperm.status_lab_sperm].ToString().Equals("3") ? " PESA"
                     : row[ic.ivfDB.lspermDB.lsperm.status_lab_sperm].ToString().Equals("4") ? " IUI " : "";
                 //row1[colRqHnMale] = row[ic.ivfDB.lspermDB.lsperm.hn_male].ToString();
@@ -392,7 +395,8 @@ namespace clinic_ivf.gui
             Cursor curOld;
             curOld = this.Cursor;
             this.Cursor = Cursors.WaitCursor;
-            openLabSpermNew(id, name, chk.Equals("2") ? " Analysis " : chk.Equals("1") ? " Freezing " : chk.Equals("3") ? " PESA " : " IUI ");
+            //openLabSpermNew(id, name, chk.Equals("2") ? " Analysis " : chk.Equals("1") ? " Freezing " : chk.Equals("3") ? " PESA " : " IUI ");        //-0027
+            openLabSpermNew(id, name, chk.Equals("1") ? " Analysis " : chk.Equals("2") ? " Freezing " : chk.Equals("3") ? " PESA " : " IUI ");        //+0027
             setGrfReq();
             setGrfProc();
             this.Cursor = curOld;
@@ -409,7 +413,7 @@ namespace clinic_ivf.gui
         }
         private void setGrfReq()
         {
-            grfReq.DataSource = null;
+            //grfReq.DataSource = null;
             //grfReq.Clear();
             DataTable dt = new DataTable();
             //DateTime datestart, dateend;
@@ -463,9 +467,9 @@ namespace clinic_ivf.gui
             //grfDept.Cols[colCode].Caption = "รหัส";
 
             grfReq.Cols[colRqReqNum].Caption = "req number";
-            grfReq.Cols[colRqHn].Caption = "HN";
+            grfReq.Cols[colRqHn].Caption = "HN Female";
             grfReq.Cols[colRqVn].Caption = "VN";
-            grfReq.Cols[colRqName].Caption = "Name";
+            grfReq.Cols[colRqName].Caption = "Name Female";
             grfReq.Cols[colRqDate].Caption = "Date Req";
             grfReq.Cols[colRqRemark].Caption = "Remark";
             grfReq.Cols[colDtrName].Caption = "Doctor";
@@ -490,11 +494,23 @@ namespace clinic_ivf.gui
                 row1[colRqId] = row[ic.ivfDB.lbReqDB.lbReq.req_id].ToString();
                 row1[colRqReqNum] = row[ic.ivfDB.lbReqDB.lbReq.req_code].ToString();
                 //row1[colRqHn] = row[ic.ivfDB.lbReqDB.lbReq.hn_female].ToString();
-                row1[colRqHn] = row["hn_male"].ToString();
+                //row1[colRqHn] = row["hn_male"].ToString();
+                row1[colRqHn] = row["patient_hn_1"].ToString();
                 row1[colRqVn] = row[ic.ivfDB.lbReqDB.lbReq.vn].ToString();
-                row1[colRqName] = row[ic.ivfDB.lbReqDB.lbReq.name_female].ToString();
+                //row1[colRqName] = row[ic.ivfDB.lbReqDB.lbReq.name_female].ToString();
+                row1[colRqName] = row["patient_name_hn_1"].ToString();
                 row1[colRqDate] = ic.datetoShow(row[ic.ivfDB.lbReqDB.lbReq.req_date].ToString());
-                row1[colRqRemark] = row["form_a_remark"].ToString();
+                //String remark = "";
+                //remark = row["form_a_remark"].ToString();
+                //if (row["item_id"].ToString().Equals("2630000014"))
+                //{
+                //    remark += row["sperm_sa_remark"].ToString();
+                //}
+                //else if (row["item_id"].ToString().Equals("2630000018"))
+                //{
+                //    remark += row["sperm_freezing_remark"].ToString();
+                //}
+                //row1[colRqRemark] = remark;
 
                 row1[colOPUDate] = ic.datetoShow(row[ic.ivfDB.lFormaDB.lformA.sperm_analysis_date_start].ToString());
                 row1[colOPUTime] = ic.timetoShow(row[ic.ivfDB.lFormaDB.lformA.sperm_analysis_date_start].ToString());
@@ -503,25 +519,33 @@ namespace clinic_ivf.gui
                 //row1[colRqHnMale] = row["hn_male"].ToString();
                 //row1[colRqNameMale] = row["name_male"].ToString();
 
-                row1[colRqHnMale] = row["patient_hn_1"].ToString();
-                row1[colRqNameMale] = row["patient_name_hn_1"].ToString();
-                //row1[colRqStatusSperm] = row["item_id"].ToString().Equals("2630000014") ? "Sperm Analysis" 
-                //    : row["item_id"].ToString().Equals("18") ? "Sperm Freezing"
-                //    : row["item_id"].ToString().Equals("2630000066") ? "PESA/TESE"
-                //    : row["item_id"].ToString().Equals("88") ? "IUI" : "";
-                row1[colRqStatusSperm] = row["item_id"].ToString().Equals("2630000014") ? "2"   //"Sperm Freezing" 
-                    : row["item_id"].ToString().Equals("2630000018") ? "1"      //"Sperm Analysis" 
+                //row1[colRqHnMale] = row["patient_hn_1"].ToString();        //-0027
+                //row1[colRqNameMale] = row["patient_name_hn_1"].ToString();        //-0027
+                row1[colRqHnMale] = row["visit_hn"].ToString();         //+0027
+                row1[colRqNameMale] = row["patient_name"].ToString();         //+0027
+                //row1[colRqStatusSperm] = row["item_id"].ToString().Equals("2630000014") ? "Sperm Analysis"        //-0027
+                //    : row["item_id"].ToString().Equals("18") ? "Sperm Freezing"        //-0027
+                //    : row["item_id"].ToString().Equals("2630000066") ? "PESA/TESE"        //-0027
+                //    : row["item_id"].ToString().Equals("88") ? "IUI" : "";        //-0027
+                //row1[colRqStatusSperm] = row["item_id"].ToString().Equals("2630000014") ? "2"   //"Sperm Freezing"         //-0027
+                //    : row["item_id"].ToString().Equals("2630000018") ? "1"      //"Sperm Analysis"         //-0027
+                //    : row["item_id"].ToString().Equals("2630000066") ? "3"        //-0027
+                //    : row["item_id"].ToString().Equals("26300000196") ? "4" : "";        //-0027
+                row1[colRqStatusSperm] = row["item_id"].ToString().Equals("2630000014") ? "1"   //"Sperm Analysis"         //+0027
+                    : row["item_id"].ToString().Equals("2630000018") ? "2"      //"Sperm Freezing"          //+0027
                     : row["item_id"].ToString().Equals("2630000066") ? "3"
                     : row["item_id"].ToString().Equals("26300000196") ? "4" : "";
                 if (row1[colRqStatusSperm].ToString().Equals("1"))      // sperm analysis
                 {
                     row1[colOPUDate] = ic.datetoShow(row[ic.ivfDB.lFormaDB.lformA.sperm_analysis_date_start].ToString());
                     row1[colOPUTime] = ic.timetoShow(row[ic.ivfDB.lFormaDB.lformA.sperm_analysis_date_start].ToString());
+                    row1[colRqRemark] = row["sperm_sa_remark"].ToString();
                 }
                 else if (row1[colRqStatusSperm].ToString().Equals("2"))      // sperm Freezing
                 {
                     row1[colOPUDate] = ic.datetoShow(row[ic.ivfDB.lFormaDB.lformA.sperm_freezing_date_start].ToString());
                     row1[colOPUTime] = ic.timetoShow(row[ic.ivfDB.lFormaDB.lformA.sperm_freezing_date_start].ToString());
+                    row1[colRqRemark] = row["sperm_freezing_remark"].ToString();
                 }
                 else if (row1[colRqStatusSperm].ToString().Equals("3"))      // sperm Pesa
                 {
@@ -530,7 +554,9 @@ namespace clinic_ivf.gui
                 }
                 else if (row1[colRqStatusSperm].ToString().Equals("4"))      // sperm IUI
                 {
-                    row1[colOPUDate] = ic.datetoShow(row[ic.ivfDB.lFormaDB.lformA.iui_date].ToString());
+                    //row1[colOPUDate] = ic.datetoShow(row[ic.ivfDB.lFormaDB.lformA.iui_date].ToString());
+                    row1[colOPUDate] = ic.datetoShow(row[ic.ivfDB.lFormaDB.lformA.sperm_iui_date].ToString());
+                    row1[colOPUTime] = ic.timetoShow(row[ic.ivfDB.lFormaDB.lformA.sperm_iui_start_time].ToString());
                     //row1[colOPUTime] = ic.timetoShow(row[ic.ivfDB.lFormaDB.lformA.sperm_freezing_date_start].ToString());
                 }//row1[colRqHnDonor] = row["hn_donor"].ToString();
                  //row1[colRqNameDonor] = row["name_donor"].ToString();
@@ -655,7 +681,7 @@ namespace clinic_ivf.gui
         private void setGrfProc()
         {
             grfProc.DataSource = null;
-            grfProc.Clear();
+            //grfProc.Clear();
             DataTable dt = new DataTable();
             grfProc.Rows.Count = 0;
             dt = ic.ivfDB.lspermDB.selectByStatusProcess1();
@@ -725,13 +751,13 @@ namespace clinic_ivf.gui
                 row1[colPcRemark] = row[ic.ivfDB.lspermDB.lsperm.remark].ToString();
                 if (row[ic.ivfDB.lspermDB.lsperm.status_lab_sperm].ToString().Equals("1"))
                 {
-                    row1[colPcDate] = ic.datetoShow(row[ic.ivfDB.lspermDB.lsperm.spern_freezing_date_start].ToString());
-                    row1[colPcTime] = ic.timetoShow(row[ic.ivfDB.lspermDB.lsperm.spern_freezing_date_start].ToString());
+                    row1[colPcDate] = ic.datetoShow(row[ic.ivfDB.lspermDB.lsperm.sperm_analysis_date_start].ToString());
+                    row1[colPcTime] = ic.timetoShow(row[ic.ivfDB.lspermDB.lsperm.sperm_analysis_date_start].ToString());
                 }
                 else if (row[ic.ivfDB.lspermDB.lsperm.status_lab_sperm].ToString().Equals("2"))
                 {
-                    row1[colPcDate] = ic.datetoShow(row[ic.ivfDB.lspermDB.lsperm.sperm_analysis_date_start].ToString());
-                    row1[colPcTime] = ic.timetoShow(row[ic.ivfDB.lspermDB.lsperm.sperm_analysis_date_start].ToString());
+                    row1[colPcDate] = ic.datetoShow(row[ic.ivfDB.lspermDB.lsperm.spern_freezing_date_start].ToString());
+                    row1[colPcTime] = ic.timetoShow(row[ic.ivfDB.lspermDB.lsperm.spern_freezing_date_start].ToString());
                 }
                 else if (row[ic.ivfDB.lspermDB.lsperm.status_lab_sperm].ToString().Equals("3"))
                 {
@@ -744,8 +770,8 @@ namespace clinic_ivf.gui
                     //row1[colOPUTime] = ic.timetoShow(row[ic.ivfDB.lspermDB.lsperm.sperm_analysis_date_start].ToString());
                 }
                 row1[colPcStatusSperm] = row[ic.ivfDB.lspermDB.lsperm.status_lab_sperm].ToString();
-                row1[colPcSpermName] = row[ic.ivfDB.lspermDB.lsperm.status_lab_sperm].ToString().Equals("1") ? "Sperm Freezing" 
-                    : row[ic.ivfDB.lspermDB.lsperm.status_lab_sperm].ToString().Equals("2") ? "Sperm Analysis"
+                row1[colPcSpermName] = row[ic.ivfDB.lspermDB.lsperm.status_lab_sperm].ToString().Equals("2") ? "Sperm Freezing" 
+                    : row[ic.ivfDB.lspermDB.lsperm.status_lab_sperm].ToString().Equals("1") ? "Sperm Analysis"
                     : row[ic.ivfDB.lspermDB.lsperm.status_lab_sperm].ToString().Equals("3") ? " PESA" 
                     : row[ic.ivfDB.lspermDB.lsperm.status_lab_sperm].ToString().Equals("4") ? " IUI " : "";
                 //row1[colRqHnMale] = row[ic.ivfDB.lspermDB.lsperm.hn_male].ToString();
@@ -930,13 +956,13 @@ namespace clinic_ivf.gui
                 row1[colPcRemark] = row[ic.ivfDB.lspermDB.lsperm.remark].ToString();
                 if (row[ic.ivfDB.lspermDB.lsperm.status_lab_sperm].ToString().Equals("1"))
                 {
-                    row1[colPcDate] = ic.datetoShow(row[ic.ivfDB.lspermDB.lsperm.spern_freezing_date_start].ToString());
-                    row1[colPcTime] = ic.timetoShow(row[ic.ivfDB.lspermDB.lsperm.spern_freezing_date_start].ToString());
+                    row1[colPcDate] = ic.datetoShow(row[ic.ivfDB.lspermDB.lsperm.sperm_analysis_date_start].ToString());
+                    row1[colPcTime] = ic.timetoShow(row[ic.ivfDB.lspermDB.lsperm.sperm_analysis_date_start].ToString());
                 }
                 else if (row[ic.ivfDB.lspermDB.lsperm.status_lab_sperm].ToString().Equals("2"))
                 {
-                    row1[colPcDate] = ic.datetoShow(row[ic.ivfDB.lspermDB.lsperm.sperm_analysis_date_start].ToString());
-                    row1[colPcTime] = ic.timetoShow(row[ic.ivfDB.lspermDB.lsperm.sperm_analysis_date_start].ToString());
+                    row1[colPcDate] = ic.datetoShow(row[ic.ivfDB.lspermDB.lsperm.spern_freezing_date_start].ToString());
+                    row1[colPcTime] = ic.timetoShow(row[ic.ivfDB.lspermDB.lsperm.spern_freezing_date_start].ToString());
                 }
                 else if (row[ic.ivfDB.lspermDB.lsperm.status_lab_sperm].ToString().Equals("3"))
                 {
@@ -949,8 +975,8 @@ namespace clinic_ivf.gui
                     //row1[colOPUTime] = ic.timetoShow(row[ic.ivfDB.lspermDB.lsperm.sperm_analysis_date_start].ToString());
                 }
                 row1[colPcStatusSperm] = row[ic.ivfDB.lspermDB.lsperm.status_lab_sperm].ToString();
-                row1[colPcSpermName] = row[ic.ivfDB.lspermDB.lsperm.status_lab_sperm].ToString().Equals("1") ? "Sperm Freezing"
-                    : row[ic.ivfDB.lspermDB.lsperm.status_lab_sperm].ToString().Equals("2") ? "Sperm Analysis"
+                row1[colPcSpermName] = row[ic.ivfDB.lspermDB.lsperm.status_lab_sperm].ToString().Equals("2") ? "Sperm Freezing"
+                    : row[ic.ivfDB.lspermDB.lsperm.status_lab_sperm].ToString().Equals("1") ? "Sperm Analysis"
                     : row[ic.ivfDB.lspermDB.lsperm.status_lab_sperm].ToString().Equals("3") ? " PESA"
                     : row[ic.ivfDB.lspermDB.lsperm.status_lab_sperm].ToString().Equals("4") ? " IUI " : "";
                 //row1[colRqHnMale] = row[ic.ivfDB.lspermDB.lsperm.hn_male].ToString();

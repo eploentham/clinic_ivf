@@ -473,6 +473,9 @@
     <Compile Include="gui\FrmDepartmentS.designer.cs">
       <DependentUpon>FrmDepartmentS.cs</DependentUpon>
     </Compile>
+    <Compile Include="gui\FrmDeposit.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="gui\FrmDocGroupScan.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -938,6 +941,8 @@
     <Compile Include="objdb\ClosedayDB.cs" />
     <Compile Include="objdb\ClosedayDetailDB.cs" />
     <Compile Include="objdb\CustomerDB.cs" />
+    <Compile Include="objdb\DepositDB.cs" />
+    <Compile Include="objdb\DepositWithDrawDB.cs" />
     <Compile Include="objdb\EggStiDayDB.cs" />
     <Compile Include="objdb\EggStiDB.cs" />
     <Compile Include="objdb\LabDataTypeComboBoxDB.cs" />
@@ -1028,6 +1033,8 @@
     <Compile Include="object1\ClosedayDetail.cs" />
     <Compile Include="object1\CommunicationManager.cs" />
     <Compile Include="object1\Customer.cs" />
+    <Compile Include="object1\Deposit.cs" />
+    <Compile Include="object1\DepositWithDraw.cs" />
     <Compile Include="object1\DocGroupScan.cs" />
     <Compile Include="object1\DocGroupSubScan.cs" />
     <Compile Include="object1\DocScan.cs" />

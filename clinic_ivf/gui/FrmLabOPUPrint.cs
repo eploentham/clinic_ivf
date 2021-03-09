@@ -1420,10 +1420,15 @@ namespace clinic_ivf.gui
                 {
                     day = "3";
                 }
+                else if (opureport == opuReport.ResultDay2)
+                {
+                    day = "2";
+                }
                 else
                 {
                     day = cboEmbryoDev3.SelectedItem == null ? "" : ((ComboBoxItem)cboEmbryoDev3.SelectedItem).Value;
                 }
+                
                 if (!day.Equals("2"))
                 {
                     if (!day.Equals("3"))
@@ -1590,6 +1595,9 @@ namespace clinic_ivf.gui
                 txtEmailSubject.Value = "OPU Date " + DateTime.Now.ToString("dd/MM/") + DateTime.Now.Year + " " + txtNameMale.Text + " " + txtNameFeMale.Text;
 
                 //chkSendEmail.Checked = opu.status_opu.Equals("2") ? true : false;
+                cboEmbryoDev1.Value = "2";
+                cboEmbryoDev2.Value = "2";
+                cboEmbryoDev3.Value = "2";
                 chkSendEmail.Checked = true;
                 if (chkSendEmail.Checked)
                 {

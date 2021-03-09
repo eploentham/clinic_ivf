@@ -364,7 +364,7 @@ namespace clinic_ivf.objdb
                 //", lforma.opu_date, lforma.opu_time, lforma.opu_remark, lforma.fet_remark, lforma.opu_time_modi, lforma.status_opu_time_modi, lforma.hn_male, lforma.name_male, lforma.hn_donor, lforma.hn_female, lforma.name_female" +//-0020
                 ", lforma.opu_date, lforma.opu_time, lforma.opu_remark, lforma.fet_remark, lforma.opu_time_modi, lforma.status_opu_time_modi, concat(lreq.hn_male,'/',ptt.patient_year) as hn_male, lreq.name_male, lforma.hn_donor, lreq.hn_female, lreq.name_female" +//+0020
                 ", lforma.name_donor,lreq.vn, lreq.item_id, si.LName, lforma.pasa_tese_date,lforma.iui_date,lforma.sperm_freezing_date_start" +
-                ", ptt.patient_name, ptt.patient_hn_1, ptt_hn1.patient_name as patient_name_hn_1 " +
+                ", ptt.patient_name, ptt.patient_hn_1, ptt_hn1.patient_name as patient_name_hn_1, lforma.sperm_sa_remark, lforma.sperm_freezing_remark, lforma.iui_remark, vs.visit_hn, lforma.sperm_iui_date, lforma.sperm_iui_start_time " +
                 "From lab_t_request lreq " +
                 "Left Join lab_t_form_a lforma on lreq.form_a_id = lforma.form_a_id  " +
                 //"Left Join Patient ptt on lreq.hn_female = ptt.PIDS " +               //-0020

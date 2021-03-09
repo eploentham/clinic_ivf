@@ -95,7 +95,7 @@ namespace clinic_ivf.objdb
             String sql = "SELECT obilld.*  " +
                 " " +
                 "From " + obilld.table + " obilld " +
-                "Where obilld.bill_id = '" + bilid + "' ";
+                "Where obilld.bill_id = '" + bilid + "' and obilld." + obilld.active + "='1' ";
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }

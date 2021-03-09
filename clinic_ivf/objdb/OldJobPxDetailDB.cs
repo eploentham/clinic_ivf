@@ -381,7 +381,7 @@ namespace clinic_ivf.objdb
                 "left join t_patient ptt on ptt.t_patient_id = JobPx.PID " +          //+0020
                 //"left join SurfixName on SurfixName.SurfixID = ptt.SurfixID " +
                 "left join StockDrug on StockDrug.DUID =  jobpxD.DUID " +
-                "Where JobPx.VN = '" + vn + "' " +
+                "Where jobpxD.VN = '" + vn + "' " +
                 "group by patient_name,hn,frequency, jobpxD.DUName , jobpxD.DUID, JobPx.Date, unit_name  ";
             dt = conn.selectData(conn.conn, sql);
             return dt;
@@ -411,7 +411,7 @@ namespace clinic_ivf.objdb
                 "left join t_patient ptt on ptt.t_patient_id = JobPx.PID " +
                 //"left join SurfixName on SurfixName.SurfixID = ptt.SurfixID " +
                 "left join StockDrug on StockDrug.DUID =  jobpxD.DUID " +
-                "Where JobPx.VN = '" + vn + "' " +
+                "Where jobpxD.VN = '" + vn + "' " +
                 "group by patient_name,hn,frequency, jobpxD.DUName , jobpxD.DUID, JobPx.Date, unit_name  ";
             dt = conn.selectData(conn.conn, sql);
             return dt;

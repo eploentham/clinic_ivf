@@ -403,6 +403,10 @@ namespace clinic_ivf.report {
             
             private global::System.Data.DataColumn columniui_remark;
             
+            private global::System.Data.DataColumn columnsperm_iui_start_time;
+            
+            private global::System.Data.DataColumn columnsperm_iui_end_time;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public lab_form_aDataTable() {
@@ -934,6 +938,22 @@ namespace clinic_ivf.report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn sperm_iui_start_timeColumn {
+                get {
+                    return this.columnsperm_iui_start_time;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn sperm_iui_end_timeColumn {
+                get {
+                    return this.columnsperm_iui_end_time;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1031,7 +1051,9 @@ namespace clinic_ivf.report {
                         string status_iui, 
                         string iui_time, 
                         string sperm_iui_date, 
-                        string iui_remark) {
+                        string iui_remark, 
+                        string sperm_iui_start_time, 
+                        string sperm_iui_end_time) {
                 lab_form_aRow rowlab_form_aRow = ((lab_form_aRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         form_a_id,
@@ -1095,7 +1117,9 @@ namespace clinic_ivf.report {
                         status_iui,
                         iui_time,
                         sperm_iui_date,
-                        iui_remark};
+                        iui_remark,
+                        sperm_iui_start_time,
+                        sperm_iui_end_time};
                 rowlab_form_aRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowlab_form_aRow);
                 return rowlab_form_aRow;
@@ -1180,6 +1204,8 @@ namespace clinic_ivf.report {
                 this.columniui_time = base.Columns["iui_time"];
                 this.columnsperm_iui_date = base.Columns["sperm_iui_date"];
                 this.columniui_remark = base.Columns["iui_remark"];
+                this.columnsperm_iui_start_time = base.Columns["sperm_iui_start_time"];
+                this.columnsperm_iui_end_time = base.Columns["sperm_iui_end_time"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1309,6 +1335,10 @@ namespace clinic_ivf.report {
                 base.Columns.Add(this.columnsperm_iui_date);
                 this.columniui_remark = new global::System.Data.DataColumn("iui_remark", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columniui_remark);
+                this.columnsperm_iui_start_time = new global::System.Data.DataColumn("sperm_iui_start_time", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnsperm_iui_start_time);
+                this.columnsperm_iui_end_time = new global::System.Data.DataColumn("sperm_iui_end_time", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnsperm_iui_end_time);
                 this.columnform_a_id.Caption = "DataColumn1";
                 this.columnhn_female.Caption = "DataColumn1";
                 this.columnname_female.Caption = "DataColumn1";
@@ -2486,6 +2516,38 @@ namespace clinic_ivf.report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string sperm_iui_start_time {
+                get {
+                    try {
+                        return ((string)(this[this.tablelab_form_a.sperm_iui_start_timeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'sperm_iui_start_time\' in table \'lab_form_a\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablelab_form_a.sperm_iui_start_timeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string sperm_iui_end_time {
+                get {
+                    try {
+                        return ((string)(this[this.tablelab_form_a.sperm_iui_end_timeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'sperm_iui_end_time\' in table \'lab_form_a\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablelab_form_a.sperm_iui_end_timeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool Isform_a_idNull() {
                 return this.IsNull(this.tablelab_form_a.form_a_idColumn);
             }
@@ -3226,6 +3288,30 @@ namespace clinic_ivf.report {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void Setiui_remarkNull() {
                 this[this.tablelab_form_a.iui_remarkColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Issperm_iui_start_timeNull() {
+                return this.IsNull(this.tablelab_form_a.sperm_iui_start_timeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Setsperm_iui_start_timeNull() {
+                this[this.tablelab_form_a.sperm_iui_start_timeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Issperm_iui_end_timeNull() {
+                return this.IsNull(this.tablelab_form_a.sperm_iui_end_timeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Setsperm_iui_end_timeNull() {
+                this[this.tablelab_form_a.sperm_iui_end_timeColumn] = global::System.Convert.DBNull;
             }
         }
         

@@ -431,6 +431,12 @@ namespace clinic_ivf.report {
             
             private global::System.Data.DataColumn columnstaff_report_name;
             
+            private global::System.Data.DataColumn columnsperm_iui_start_time;
+            
+            private global::System.Data.DataColumn columnsperm_iui_finish_time;
+            
+            private global::System.Data.DataColumn columniui_time;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public lab_spermDataTable() {
@@ -1074,6 +1080,30 @@ namespace clinic_ivf.report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn sperm_iui_start_timeColumn {
+                get {
+                    return this.columnsperm_iui_start_time;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn sperm_iui_finish_timeColumn {
+                get {
+                    return this.columnsperm_iui_finish_time;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn iui_timeColumn {
+                get {
+                    return this.columniui_time;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1185,7 +1215,10 @@ namespace clinic_ivf.report {
                         string doc_type_name_noo, 
                         string doctorname, 
                         string staff_approve_name, 
-                        string staff_report_name) {
+                        string staff_report_name, 
+                        string sperm_iui_start_time, 
+                        string sperm_iui_finish_time, 
+                        string iui_time) {
                 lab_spermRow rowlab_spermRow = ((lab_spermRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         sperm_id,
@@ -1263,7 +1296,10 @@ namespace clinic_ivf.report {
                         doc_type_name_noo,
                         doctorname,
                         staff_approve_name,
-                        staff_report_name};
+                        staff_report_name,
+                        sperm_iui_start_time,
+                        sperm_iui_finish_time,
+                        iui_time};
                 rowlab_spermRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowlab_spermRow);
                 return rowlab_spermRow;
@@ -1362,6 +1398,9 @@ namespace clinic_ivf.report {
                 this.columndoctorname = base.Columns["doctorname"];
                 this.columnstaff_approve_name = base.Columns["staff_approve_name"];
                 this.columnstaff_report_name = base.Columns["staff_report_name"];
+                this.columnsperm_iui_start_time = base.Columns["sperm_iui_start_time"];
+                this.columnsperm_iui_finish_time = base.Columns["sperm_iui_finish_time"];
+                this.columniui_time = base.Columns["iui_time"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1519,6 +1558,12 @@ namespace clinic_ivf.report {
                 base.Columns.Add(this.columnstaff_approve_name);
                 this.columnstaff_report_name = new global::System.Data.DataColumn("staff_report_name", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnstaff_report_name);
+                this.columnsperm_iui_start_time = new global::System.Data.DataColumn("sperm_iui_start_time", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnsperm_iui_start_time);
+                this.columnsperm_iui_finish_time = new global::System.Data.DataColumn("sperm_iui_finish_time", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnsperm_iui_finish_time);
+                this.columniui_time = new global::System.Data.DataColumn("iui_time", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columniui_time);
                 this.columnsperm_id.Caption = "DataColumn1";
                 this.columnsperm_code.Caption = "DataColumn1";
                 this.columnhn_male.Caption = "DataColumn1";
@@ -2944,6 +2989,54 @@ namespace clinic_ivf.report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string sperm_iui_start_time {
+                get {
+                    try {
+                        return ((string)(this[this.tablelab_sperm.sperm_iui_start_timeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'sperm_iui_start_time\' in table \'lab_sperm\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablelab_sperm.sperm_iui_start_timeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string sperm_iui_finish_time {
+                get {
+                    try {
+                        return ((string)(this[this.tablelab_sperm.sperm_iui_finish_timeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'sperm_iui_finish_time\' in table \'lab_sperm\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablelab_sperm.sperm_iui_finish_timeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string iui_time {
+                get {
+                    try {
+                        return ((string)(this[this.tablelab_sperm.iui_timeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'iui_time\' in table \'lab_sperm\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablelab_sperm.iui_timeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool Issperm_idNull() {
                 return this.IsNull(this.tablelab_sperm.sperm_idColumn);
             }
@@ -3852,6 +3945,42 @@ namespace clinic_ivf.report {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void Setstaff_report_nameNull() {
                 this[this.tablelab_sperm.staff_report_nameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Issperm_iui_start_timeNull() {
+                return this.IsNull(this.tablelab_sperm.sperm_iui_start_timeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Setsperm_iui_start_timeNull() {
+                this[this.tablelab_sperm.sperm_iui_start_timeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Issperm_iui_finish_timeNull() {
+                return this.IsNull(this.tablelab_sperm.sperm_iui_finish_timeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Setsperm_iui_finish_timeNull() {
+                this[this.tablelab_sperm.sperm_iui_finish_timeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Isiui_timeNull() {
+                return this.IsNull(this.tablelab_sperm.iui_timeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Setiui_timeNull() {
+                this[this.tablelab_sperm.iui_timeColumn] = global::System.Convert.DBNull;
             }
         }
         

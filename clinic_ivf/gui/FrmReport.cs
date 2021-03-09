@@ -347,6 +347,7 @@ namespace clinic_ivf.gui
                 rpt.SetParameterValue("line1", ic.cop.comp_name_t);
                 rpt.SetParameterValue("line2", "");
                 rpt.SetParameterValue("line3", " ");
+                //rpt.SetParameterValue("wife_name", " ");
                 this.crystalReportViewer1.ReportSource = rpt;
                 this.crystalReportViewer1.Refresh();
             }

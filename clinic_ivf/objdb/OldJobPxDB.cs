@@ -112,7 +112,7 @@ namespace clinic_ivf.objdb
             //    }
             DataTable dt = new DataTable();
             String re = "", sql="";
-            sql = "select "+ jobpx .VN+ " from "+ jobpx .table+ " Where "+ jobpx .VN+ "='"+ vn + "'";
+            sql = "select "+ jobpx .VN+ " from "+ jobpx .table+ " Where "+ jobpx.VN+ "='"+ vn + "'";
             dt = conn.selectData(conn.conn, sql);
             if (dt.Rows.Count <= 0)
             {

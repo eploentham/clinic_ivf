@@ -82,6 +82,7 @@
             this.menuLabItem = new System.Windows.Forms.ToolStripMenuItem();
             this.memuAccCash = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemMas = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuCust = new System.Windows.Forms.ToolStripMenuItem();
             this.menuAgent = new System.Windows.Forms.ToolStripMenuItem();
             this.menuTest = new System.Windows.Forms.ToolStripMenuItem();
             this.menuConfig = new System.Windows.Forms.ToolStripMenuItem();
@@ -94,7 +95,7 @@
             this.tC1 = new C1.Win.C1Command.C1DockingTab();
             this.PageS = new C1.Win.C1Command.C1DockingTabPage();
             this.theme1 = new C1.Win.C1Themes.C1ThemeController();
-            this.menuCust = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuDeposit = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tCC1)).BeginInit();
             this.tCC1.SuspendLayout();
@@ -166,7 +167,8 @@
             this.menuNurseDefault,
             this.menuExamiRoom,
             this.menuReqLabFormA,
-            this.menuMiscView});
+            this.menuMiscView,
+            this.menuDeposit});
             this.menuNurse.Name = "menuNurse";
             this.menuNurse.Size = new System.Drawing.Size(50, 20);
             this.menuNurse.Text = "Nurse";
@@ -454,7 +456,7 @@
             // menuDrug
             // 
             this.menuDrug.Name = "menuDrug";
-            this.menuDrug.Size = new System.Drawing.Size(180, 22);
+            this.menuDrug.Size = new System.Drawing.Size(175, 22);
             this.menuDrug.Text = "แผนก Drug";
             // 
             // แผนกORToolStripMenuItem
@@ -464,7 +466,7 @@
             this.menuOrDiag,
             this.menuOrAnes});
             this.แผนกORToolStripMenuItem.Name = "แผนกORToolStripMenuItem";
-            this.แผนกORToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.แผนกORToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
             this.แผนกORToolStripMenuItem.Text = "แผนก OR";
             // 
             // menuGrpDiag
@@ -488,26 +490,32 @@
             // menuSpecialItem
             // 
             this.menuSpecialItem.Name = "menuSpecialItem";
-            this.menuSpecialItem.Size = new System.Drawing.Size(180, 22);
+            this.menuSpecialItem.Size = new System.Drawing.Size(175, 22);
             this.menuSpecialItem.Text = "SpecialItem";
             // 
             // menuLabItem
             // 
             this.menuLabItem.Name = "menuLabItem";
-            this.menuLabItem.Size = new System.Drawing.Size(180, 22);
+            this.menuLabItem.Size = new System.Drawing.Size(175, 22);
             this.menuLabItem.Text = "LabItem";
             // 
             // memuAccCash
             // 
             this.memuAccCash.Name = "memuAccCash";
-            this.memuAccCash.Size = new System.Drawing.Size(180, 22);
+            this.memuAccCash.Size = new System.Drawing.Size(175, 22);
             this.memuAccCash.Text = "Account_Cash";
             // 
             // menuItemMas
             // 
             this.menuItemMas.Name = "menuItemMas";
-            this.menuItemMas.Size = new System.Drawing.Size(180, 22);
+            this.menuItemMas.Size = new System.Drawing.Size(175, 22);
             this.menuItemMas.Text = "Item Master Center";
+            // 
+            // menuCust
+            // 
+            this.menuCust.Name = "menuCust";
+            this.menuCust.Size = new System.Drawing.Size(175, 22);
+            this.menuCust.Text = "Customer/Vender";
             // 
             // menuAgent
             // 
@@ -605,11 +613,11 @@
             // 
             this.theme1.Theme = "BeigeOne";
             // 
-            // menuCust
+            // menuDeposit
             // 
-            this.menuCust.Name = "menuCust";
-            this.menuCust.Size = new System.Drawing.Size(180, 22);
-            this.menuCust.Text = "Customer/Vender";
+            this.menuDeposit.Name = "menuDeposit";
+            this.menuDeposit.Size = new System.Drawing.Size(182, 22);
+            this.menuDeposit.Text = "Deposit";
             // 
             // MainMenu
             // 
@@ -703,5 +711,6 @@
         private System.Windows.Forms.ToolStripMenuItem menuMiscView;
         private System.Windows.Forms.ToolStripMenuItem menuCashierRefund;
         private System.Windows.Forms.ToolStripMenuItem menuCust;
+        private System.Windows.Forms.ToolStripMenuItem menuDeposit;
     }
 }

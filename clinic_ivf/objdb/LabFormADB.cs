@@ -124,6 +124,9 @@ namespace clinic_ivf.objdb
             lformA.iui_time = "iui_time";
             lformA.iui_remark = "iui_remark";
             lformA.status_iui = "status_iui";
+            lformA.sperm_iui_start_time = "sperm_iui_start_time";
+            lformA.sperm_iui_finish_time = "sperm_iui_finish_time";
+            lformA.req_id_sperm_iui = "req_id_sperm_iui";
 
             lformA.pkField = "form_a_id";
             lformA.table = "lab_t_form_a";
@@ -197,6 +200,8 @@ namespace clinic_ivf.objdb
             p.iui_date = p.iui_date == null ? "" : p.iui_date;
             p.iui_time = p.iui_time == null ? "" : p.iui_time;
             p.iui_remark = p.iui_remark == null ? "" : p.iui_remark;
+            p.sperm_iui_finish_time = p.sperm_iui_finish_time == null ? "" : p.sperm_iui_finish_time;
+            p.sperm_iui_start_time = p.sperm_iui_start_time == null ? "" : p.sperm_iui_start_time;
 
             p.y_selection = p.y_selection == null ? "0" : p.y_selection;
             p.x_selection = p.x_selection == null ? "0" : p.x_selection;
@@ -233,6 +238,7 @@ namespace clinic_ivf.objdb
             p.req_id_sperm_freezing = long.TryParse(p.req_id_sperm_freezing, out chk) ? chk.ToString() : "0";
             p.req_id_semem_analysis = long.TryParse(p.req_id_semem_analysis, out chk) ? chk.ToString() : "0";
             p.form_a_id_female = long.TryParse(p.form_a_id_female, out chk) ? chk.ToString() : "0";
+            p.req_id_sperm_iui = long.TryParse(p.req_id_sperm_iui, out chk) ? chk.ToString() : "0";
 
         }
         public String insert(LabFormA p, String userId)
@@ -341,6 +347,9 @@ namespace clinic_ivf.objdb
                     "," + lformA.iui_time + "='" + p.iui_time + "' " +
                     "," + lformA.iui_remark + "='" + p.iui_remark + "' " +
                     "," + lformA.status_iui + "='" + p.status_iui + "' " +
+                    "," + lformA.sperm_iui_start_time + "='" + p.sperm_iui_start_time + "' " +
+                    "," + lformA.sperm_iui_finish_time + "='" + p.sperm_iui_finish_time + "' " +
+                    "," + lformA.req_id_sperm_iui + "='" + p.req_id_sperm_iui + "' " +
                     "";
                 re = conn.ExecuteNonQuery(conn.conn, sql);
             }
@@ -446,6 +455,8 @@ namespace clinic_ivf.objdb
                     "," + lformA.iui_time + "='" + p.iui_time + "' " +
                     "," + lformA.iui_remark + "='" + p.iui_remark + "' " +
                     "," + lformA.status_iui + "='" + p.status_iui + "' " +
+                    "," + lformA.sperm_iui_start_time + "='" + p.sperm_iui_start_time + "' " +
+                    "," + lformA.sperm_iui_finish_time + "='" + p.sperm_iui_finish_time + "' " +
                 " Where " + lformA.pkField + " = '" + p.form_a_id + "' "
                 ;
             try
@@ -1325,6 +1336,9 @@ namespace clinic_ivf.objdb
                 vs1.iui_time = dt.Rows[0][lformA.iui_time].ToString();
                 vs1.iui_remark = dt.Rows[0][lformA.iui_remark].ToString();
                 vs1.status_iui = dt.Rows[0][lformA.status_iui].ToString();
+                vs1.sperm_iui_finish_time = dt.Rows[0][lformA.sperm_iui_finish_time].ToString();
+                vs1.sperm_iui_start_time = dt.Rows[0][lformA.sperm_iui_start_time].ToString();
+                vs1.req_id_sperm_iui = dt.Rows[0][lformA.req_id_sperm_iui].ToString();
             }
             else
             {
@@ -1431,6 +1445,9 @@ namespace clinic_ivf.objdb
             lforma1.iui_time = "";
             lforma1.iui_remark = "";
             lforma1.status_iui = "";
+            lforma1.sperm_iui_finish_time = "";
+            lforma1.sperm_iui_start_time = "";
+            lforma1.req_id_sperm_iui = "";
             return lforma1;
         }
     }
