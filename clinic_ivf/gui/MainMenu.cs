@@ -38,11 +38,14 @@ namespace clinic_ivf.gui
                 Thread.CurrentThread.IsBackground = true;
                 /* run your code here */
                 ic.ivfDB = new objdb.IvfDB(ic.conn);
+                //ic.logw.WriteLog("d", "MainMenu getInit before ");
                 ic.getInit();
+                //ic.logw.WriteLog("d", "MainMenu getInit end ");
             }).Start();
             
             if (login.LogonSuccessful.Equals("1"))
             {
+                //ic.logw.WriteLog("d", "MainMenu if (login.LogonSuccessful.Equals('1')) ");
                 initConfig();
                 new Thread(() =>
                 {
@@ -59,10 +62,10 @@ namespace clinic_ivf.gui
         private void TC1_TabPageClosing(object sender, TabPageCancelEventArgs e)
         {
             //throw new NotImplementedException();
-            String xx = "";
-            C1DockingTab tab = new C1DockingTab();
-            tab = (C1DockingTab)sender;
-            xx = tab.Name;
+            //String xx = "";
+            //C1DockingTab tab = new C1DockingTab();
+            //tab = (C1DockingTab)sender;
+            //xx = tab.Name;
             //C1DockingTabPage page = new C1DockingTabPage();
             //page = tab.TabPages[0];
             //page = tab.TabPages[1];
@@ -71,6 +74,7 @@ namespace clinic_ivf.gui
 
         private void initConfig()
         {
+            //ic.logw.WriteLog("d", "MainMenu initConfig 00 start ");
             this.FormClosing += MainMenu4_FormClosing;
             menuExit.Click += MenuExit_Click;
             menuLabOpu.Click += MenuLabOpu_Click;
@@ -120,7 +124,20 @@ namespace clinic_ivf.gui
             menuStockEndYear.Click += MenuStockEndYear_Click;
             menuCust.Click += MenuCust_Click;
             menuDeposit.Click += MenuDeposit_Click;
+            menuTemplateDrug.Click += MenuTemplateDrug_Click;
+            //ic.logw.WriteLog("d", "MainMenu initConfig end");
         }
+
+        private void MenuTemplateDrug_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            FrmDoctorTemplateDrug frm = new FrmDoctorTemplateDrug(ic);
+            frm.FormBorderStyle = FormBorderStyle.FixedSingle;
+            frm.WindowState = FormWindowState.Normal;
+            frm.StartPosition = FormStartPosition.CenterScreen;
+            frm.ShowDialog(this);
+        }
+
         private void MenuDeposit_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
@@ -740,8 +757,8 @@ namespace clinic_ivf.gui
         {
             String date = "";
             date = DateTime.Now.Year+"-"+ DateTime.Now.ToString("MM-dd");
-            this.Text = ic.iniC.statusAppDonor.Equals("1") ? "โปรแกรมClinic IVF Donor " +"สวัสดี คุณ "+ic.user.staff_fname_t +" "+ic.user.staff_lname_t+" Update 2021-03-09 "
-                : "โปรแกรมClinic IVF " + "สวัสดี คุณ " + ic.user.staff_fname_t + " " + ic.user.staff_lname_t + " Update 2021-03-08 format date " + date;
+            this.Text = ic.iniC.statusAppDonor.Equals("1") ? "โปรแกรมClinic IVF Donor " +"สวัสดี คุณ "+ic.user.staff_fname_t +" "+ic.user.staff_lname_t+" Update 2021-03-16 "
+                : "โปรแกรมClinic IVF " + "สวัสดี คุณ " + ic.user.staff_fname_t + " " + ic.user.staff_lname_t + " Update 2021-03-16 format date " + date;
             //theme1.SetTheme(this, ic.theme);
             theme1.SetTheme(this, ic.theme);
             theme1.SetTheme(menuStrip1, ic.theme);

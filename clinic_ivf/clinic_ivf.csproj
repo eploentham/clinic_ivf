@@ -48,7 +48,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Resources\Subway_TokyoAsakusa.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\iconarchive-red-orb-alphabet-letter-t.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AForge, Version=2.2.5.0, Culture=neutral, PublicKeyToken=c1db6ff4eaa06aeb, processorArchitecture=MSIL">
@@ -493,6 +493,9 @@
     </Compile>
     <Compile Include="gui\FrmDoctorAdd.Designer.cs">
       <DependentUpon>FrmDoctorAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="gui\FrmDoctorTemplateDrug.cs">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="gui\FrmDoctorView.cs">
       <SubType>Form</SubType>
@@ -1024,6 +1027,7 @@
     <Compile Include="objdb\StockReturnDB.cs" />
     <Compile Include="objdb\StockReturnDetailDB.cs" />
     <Compile Include="objdb\StockSubNameDB.cs" />
+    <Compile Include="objdb\TemplateDrugDB.cs" />
     <Compile Include="object1\AccCashTransfer.cs" />
     <Compile Include="object1\AccCreditBank.cs" />
     <Compile Include="object1\Address.cs" />
@@ -1112,6 +1116,7 @@
     <Compile Include="object1\StockReturn.cs" />
     <Compile Include="object1\StockReturnDetail.cs" />
     <Compile Include="object1\StockSubName.cs" />
+    <Compile Include="object1\TemplateDrug.cs" />
     <Compile Include="object1\TSCLIB_DLL.cs" />
     <Compile Include="object1\Visit.cs" />
     <Compile Include="objdb\VisitQueueTransferDB.cs" />

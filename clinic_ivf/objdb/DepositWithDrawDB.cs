@@ -44,6 +44,8 @@ namespace clinic_ivf.objdb
             dwithdraw.t_visit_id = "t_visit_id";
             dwithdraw.visit_vn = "visit_vn";
             dwithdraw.t_patient_id = "t_patient_id";
+            dwithdraw.bill_id = "bill_id";
+            //dwithdraw.status_payment = "status_payment";
 
             dwithdraw.table = "t_deposit_withdraw";
             dwithdraw.pkField = "withdraw_id";
@@ -116,12 +118,14 @@ namespace clinic_ivf.objdb
             p.withdraw_name = p.withdraw_name == null ? "" : p.withdraw_name;
             p.visit_vn = p.visit_vn == null ? "" : p.visit_vn;
             p.remark = p.remark == null ? "" : p.remark;
+            p.status_payment = p.status_payment == null ? "0" : p.status_payment;
 
             p.withdraw_amount = decimal.TryParse(p.withdraw_amount, out chk1) ? chk1.ToString() : "0";
 
             p.deposit_id = long.TryParse(p.deposit_id, out chk) ? chk.ToString() : "0";
             p.t_visit_id = long.TryParse(p.t_visit_id, out chk) ? chk.ToString() : "0";
             p.t_patient_id = long.TryParse(p.t_patient_id, out chk) ? chk.ToString() : "0";
+            p.bill_id = long.TryParse(p.bill_id, out chk) ? chk.ToString() : "0";
         }
         public String insert(DepositWithDraw p, String userId)
         {
@@ -149,6 +153,7 @@ namespace clinic_ivf.objdb
                 "," + dwithdraw.t_visit_id + "= '" + p.t_visit_id + "'" +
                 "," + dwithdraw.deposit_id + "= '" + p.deposit_id + "'" +
                 "," + dwithdraw.t_patient_id + "= '" + p.t_patient_id + "'" +
+                //"," + dwithdraw.status_payment + "= '0'" +
                 "";
             try
             {
@@ -202,7 +207,7 @@ namespace clinic_ivf.objdb
 
             return re;
         }
-        public String insertDocScan(DepositWithDraw p, String userId)
+        public String insertDepositWithDraw(DepositWithDraw p, String userId)
         {
             String re = "";
             //chkNull(p);
@@ -217,6 +222,50 @@ namespace clinic_ivf.objdb
 
             return re;
         }
+        public String voidDepositWithDraw(String dwithdrawid, String userId)
+        {
+            String re = "";
+            String sql = "";
+            int chk = 0;
+            //chkNull(p);
+            sql = "Update " + dwithdraw.table + " Set " +
+                " " + dwithdraw.active + "= '3'" +
+                "," + dwithdraw.date_cancel + "= now()" +
+                "," + dwithdraw.user_cancel + "= '" + userId + "@" + conn._IPAddress + "' " +
+                "Where " + dwithdraw.pkField + "='" + dwithdrawid + "'"
+                ;
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+            return re;
+        }
+        public String updateBillId(String dwithdrawid, String billid)
+        {
+            String re = "";
+            String sql = "";
+            int chk = 0;
+            //chkNull(p);
+            sql = "Update " + dwithdraw.table + " Set " +
+                " " + dwithdraw.bill_id + "= '"+ billid + "'" +
+                //"," + dwithdraw.status_payment + "= '1'" +
+                "Where " + dwithdraw.pkField + "='" + dwithdrawid + "'"
+                ;
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+            return re;
+        }
+        
         public DepositWithDraw setAccCashTransfer(DataTable dt)
         {
             DepositWithDraw dgs1 = new DepositWithDraw();
@@ -240,6 +289,7 @@ namespace clinic_ivf.objdb
                 dgs1.visit_vn = dt.Rows[0][dwithdraw.visit_vn].ToString();
                 dgs1.t_visit_id = dt.Rows[0][dwithdraw.t_visit_id].ToString();
                 dgs1.t_patient_id = dt.Rows[0][dwithdraw.t_patient_id].ToString();
+                dgs1.bill_id = dt.Rows[0][dwithdraw.bill_id].ToString();
             }
             else
             {
@@ -267,6 +317,7 @@ namespace clinic_ivf.objdb
             dgs1.visit_vn = "";
             dgs1.t_visit_id = "";
             dgs1.t_patient_id = "";
+            dgs1.bill_id = "";
             return dgs1;
         }
     }

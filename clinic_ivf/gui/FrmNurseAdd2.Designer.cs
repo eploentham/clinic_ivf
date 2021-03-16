@@ -673,7 +673,7 @@
             this.ParagraphAlignCenterButton = new C1.Win.C1Ribbon.RibbonToggleButton();
             this.ParagraphAlignRightButton = new C1.Win.C1Ribbon.RibbonToggleButton();
             this.ribbonGroup2 = new C1.Win.C1Ribbon.RibbonGroup();
-            this.ribbonComboBox1 = new C1.Win.C1Ribbon.RibbonComboBox();
+            this.cboTempDrug = new C1.Win.C1Ribbon.RibbonComboBox();
             this.ViewTab = new C1.Win.C1Ribbon.RibbonTab();
             this.ViewZoomGroup = new C1.Win.C1Ribbon.RibbonGroup();
             this.ViewZoomCombobox = new C1.Win.C1Ribbon.RibbonComboBox();
@@ -10754,14 +10754,14 @@
             // 
             // ribbonGroup2
             // 
-            this.ribbonGroup2.Items.Add(this.ribbonComboBox1);
+            this.ribbonGroup2.Items.Add(this.cboTempDrug);
             this.ribbonGroup2.Name = "ribbonGroup2";
             this.ribbonGroup2.Text = "Templete";
             // 
-            // ribbonComboBox1
+            // cboTempDrug
             // 
-            this.ribbonComboBox1.Label = "Templete";
-            this.ribbonComboBox1.Name = "ribbonComboBox1";
+            this.cboTempDrug.Label = "Templete";
+            this.cboTempDrug.Name = "cboTempDrug";
             // 
             // ViewTab
             // 
@@ -12594,7 +12594,7 @@
         private C1.Win.C1Input.C1DateEdit txtLmp;
         private System.Windows.Forms.Label lbLmp;
         private C1.Win.C1Ribbon.RibbonGroup ribbonGroup2;
-        private C1.Win.C1Ribbon.RibbonComboBox ribbonComboBox1;
+        private C1.Win.C1Ribbon.RibbonComboBox cboTempDrug;
         private C1.Win.C1Document.C1PdfDocumentSource cPdf;
         private C1.Win.C1Input.C1CheckBox chkApmPesa;
         private C1.Win.C1Input.C1CheckBox chkApmSpermFreezing;

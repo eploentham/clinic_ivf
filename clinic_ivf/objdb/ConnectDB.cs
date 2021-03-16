@@ -78,12 +78,14 @@ namespace clinic_ivf.objdb
             }
             catch (Exception ex)
             {
-                MessageBox.Show("HResult " + ex.HResult + "\n" + "Message" + ex.Message + "\n" + sql, "Error");
-                if (con.State == ConnectionState.Open)
-                {
-                    //con.Close();
-                }
-                throw new Exception(ex.Message, ex);
+                //MessageBox.Show("HResult " + ex.HResult + "\n" + "Message" + ex.Message + "\n" + sql, "Error");
+                //if (con.State == ConnectionState.Open)
+                // {
+                //con.Close();
+                //}
+                //throw new Exception(ex.Message, ex);
+                LogWriter lw = new LogWriter();
+                lw.WriteLog("d", "error selectData " + ex.Message+" sql "+ sql);
             }
             finally
             {

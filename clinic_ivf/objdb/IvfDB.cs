@@ -121,6 +121,7 @@ namespace clinic_ivf.objdb
         public AccCreditBankDB acbDB;
         public DepositDB depositDB;
         public DepositWithDrawDB dwitdrawDB;
+        public TemplateDrugDB tdrugDB;
         public IvfDB(ConnectDB c)
         {
             conn = c;
@@ -228,6 +229,7 @@ namespace clinic_ivf.objdb
             acbDB = new AccCreditBankDB(conn);
             depositDB = new DepositDB(conn);
             dwitdrawDB = new DepositWithDrawDB(conn);
+            tdrugDB = new TemplateDrugDB(conn);
 
             Console.WriteLine("ivfDB end");
         }
@@ -884,8 +886,9 @@ namespace clinic_ivf.objdb
             oJpxd.status_up_stock = "0";
             oJpxdDB.insert(oJpxd, "");
         }
-        public void PxAdd(String duid, String qty, String pid, String pids, String vn, String extra, String row1, String usage, String flagOld, String pckdid)
+        public String PxAdd(String duid, String qty, String pid, String pids, String vn, String extra, String row1, String usage, String flagOld, String pckdid, String stfid)
         {       //      0015
+            String re = "";
             OldJobPxDetail oJpxd = new OldJobPxDetail();
             OldStockDrug ostkD = new OldStockDrug();
             Decimal price1 = 0, qty1 = 0;
@@ -923,7 +926,9 @@ namespace clinic_ivf.objdb
             oJpxd.pckdid = pckdid;
             oJpxd.status_print = "0";
             oJpxd.status_up_stock = "0";
-            oJpxdDB.insert(oJpxd, "");
+            oJpxd.staff_id = stfid;
+            re = oJpxdDB.insert(oJpxd, "");
+            return re;
         }
         public void LabAdd(String lid, String qty, String pid, String pids, String vn, String extra, String sp1v, String sp2v, String sp3v, String sp4v, String sp5v, String sp6v, String sp7v, String row1, String lidordergrp, String status_amt, String status_order_group, String pckdid)
         {

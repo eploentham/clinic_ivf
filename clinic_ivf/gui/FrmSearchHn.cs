@@ -230,10 +230,10 @@ namespace clinic_ivf.gui
                 //    }         //-0021
                 //    else         //-0021
                 //    {         //-0021
-                //        dt = ic.ivfDB.pttDB.selectBySearch1(hn);         //-0021
+                dt = ic.ivfDB.pttDB.selectBySearch1(hn);         //-0021
                 //    }         //-0021
                 //}         //-0021
-                dt = ic.ivfDB.vsDB.selectLikeByHNSearch(hn);
+                //dt = ic.ivfDB.vsDB.selectLikeByHNSearch(hn);
                 //}         //-0021
             }
             if (dt.Rows.Count <= 0)

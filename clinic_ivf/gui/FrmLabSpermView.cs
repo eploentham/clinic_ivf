@@ -436,6 +436,7 @@ namespace clinic_ivf.gui
             //}
             //dt = ic.ivfDB.lbReqDB.selectByStatusReqAccept();
             //dt = ic.ivfDB.lbReqDB.selectBySpermStatusUnAccept(datestart1, dateend1);
+            
             dt = ic.ivfDB.lbReqDB.selectBySpermStatusUnAccept();
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             grfReq.Rows.Count = 1;
@@ -496,9 +497,16 @@ namespace clinic_ivf.gui
                 //row1[colRqHn] = row[ic.ivfDB.lbReqDB.lbReq.hn_female].ToString();
                 //row1[colRqHn] = row["hn_male"].ToString();
                 row1[colRqHn] = row["patient_hn_1"].ToString();
+                row1[colRqName] = row["patient_name_hn_1"].ToString();
+
+                row1[colRqHnMale] = row["visit_hn"].ToString();         //+0027
+                row1[colRqNameMale] = row["patient_name"].ToString();         //+0027
+
+
+
                 row1[colRqVn] = row[ic.ivfDB.lbReqDB.lbReq.vn].ToString();
                 //row1[colRqName] = row[ic.ivfDB.lbReqDB.lbReq.name_female].ToString();
-                row1[colRqName] = row["patient_name_hn_1"].ToString();
+                
                 row1[colRqDate] = ic.datetoShow(row[ic.ivfDB.lbReqDB.lbReq.req_date].ToString());
                 //String remark = "";
                 //remark = row["form_a_remark"].ToString();
@@ -521,8 +529,7 @@ namespace clinic_ivf.gui
 
                 //row1[colRqHnMale] = row["patient_hn_1"].ToString();        //-0027
                 //row1[colRqNameMale] = row["patient_name_hn_1"].ToString();        //-0027
-                row1[colRqHnMale] = row["visit_hn"].ToString();         //+0027
-                row1[colRqNameMale] = row["patient_name"].ToString();         //+0027
+                
                 //row1[colRqStatusSperm] = row["item_id"].ToString().Equals("2630000014") ? "Sperm Analysis"        //-0027
                 //    : row["item_id"].ToString().Equals("18") ? "Sperm Freezing"        //-0027
                 //    : row["item_id"].ToString().Equals("2630000066") ? "PESA/TESE"        //-0027

@@ -42,7 +42,7 @@ namespace clinic_ivf.gui
         String pttid = "", visitid="";
         Patient ptt;
         Visit vs;
-        Boolean flagCashier = false;
+        Boolean flagCashier = false, pageLoad = false;
 
         Deposit deposit;
         DepositWithDraw dwithdraw;
@@ -66,6 +66,7 @@ namespace clinic_ivf.gui
         }
         private void initConfig()
         {
+            pageLoad = true;
             fEdit = new Font(ic.iniC.grdViewFontName, ic.grdViewFontSize, FontStyle.Regular);
             fEditB = new Font(ic.iniC.grdViewFontName, ic.grdViewFontSize, FontStyle.Bold);
             deposit = new Deposit();
@@ -74,10 +75,13 @@ namespace clinic_ivf.gui
             vs = new Visit();
             theme1 = new C1ThemeController();
             theme1.Theme = ic.iniC.themeApplication;
+            stt = new C1SuperTooltip();
+            sep = new C1SuperErrorProvider();
 
             initCompoment();
             ic.ivfDB.oPkgDB.setCboPackage(cboPackage, "");
             ic.ivfDB.oPkgDB.setCboPackage(cboPackageHn, "");
+            txtDepositDate.Value = DateTime.Now.ToString("yyyy-MM-dd");
 
             this.Load += FrmDeport_Load;
             btnSave.Click += BtnSave_Click;
@@ -87,6 +91,10 @@ namespace clinic_ivf.gui
             txtHn.KeyUp += TxtHn_KeyUp;
             btnSearch.Click += BtnSearch_Click;
             grfDepositHn.DoubleClick += GrfDepositHn_DoubleClick;
+            txtDeposit.KeyPress += TxtDeposit_KeyPress;
+            txtName.KeyPress += TxtName_KeyPress;
+            cboPackage.DropDownClosed += CboPackage_DropDownClosed;
+            txtWithDrawAmount.KeyPress += TxtWithDrawAmount_KeyPress;
 
             setControl();
             if (pttid.Length > 0)
@@ -95,6 +103,46 @@ namespace clinic_ivf.gui
             }
             setGrfDeposit(pttid, grfDeposit);
             setGrfDeposit(pttid, grfDepositHn);
+            pageLoad = false;
+        }
+
+        private void TxtWithDrawAmount_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (!chkWithDrawActive.Checked) chkWithDrawActive.Checked = true;
+        }
+
+        private void CboPackage_DropDownClosed(object sender, DropDownClosedEventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (pageLoad) return;
+
+            txtDeposit.Focus();
+        }
+
+        private void TxtName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (txtName.Text.Trim().Length > 1)
+            {
+                sep.Clear();
+            }
+        }
+
+        private void TxtDeposit_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //throw new NotImplementedException();
+            decimal deposit = 0;
+            if(decimal.TryParse(txtDeposit.Text.Trim(), out deposit))
+            {
+                sep.Clear();
+            }
+        }
+
+        private void TxtDeposit_Enter(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            
         }
 
         private void GrfDepositHn_DoubleClick(object sender, EventArgs e)
@@ -116,8 +164,11 @@ namespace clinic_ivf.gui
             frm.ShowDialog(this);
             if (!ic.sVsOld.PIDS.Trim().Equals("-"))
             {
+                chkAll.Checked = false;         //  user ค้นหา ไม่ใช้การ ดึงข้อมูลทั้งหมด
+                chkActive.Checked = true;
                 txtHn.Value = ic.sVsOld.PIDS;
                 setSearchPatient();
+                txtRemark.Focus();
             }
         }
 
@@ -140,6 +191,8 @@ namespace clinic_ivf.gui
 
                 txtWithDrawHn.Value = ic.showHN(ptt.patient_hn, ptt.patient_year);
                 txtWithDrawName.Value = ptt.patient_name;
+
+                setGrfDeposit(ptt.t_patient_id, grfDeposit);
             }
         }
         private void BtnNew_Click(object sender, EventArgs e)
@@ -153,6 +206,7 @@ namespace clinic_ivf.gui
             txtName.Value = "";
             txtRemark.Value = "";
             cboPackage.Text = "";
+            txtDepositDate.Value = DateTime.Now.ToString("yyyy-MM-dd");
             ptt = new Patient();
             vs = new Visit();
         }
@@ -175,6 +229,7 @@ namespace clinic_ivf.gui
             txtWithDrawRemark.Value = deposit.remark;
             txtId.Value = deposit.deposit_id;
             ic.setC1Combo(cboPackageHn, deposit.pck_id);
+            txtWithDrawDate.Value = System.DateTime.Now.ToString("yyyy-MM-dd");
         }
         private void setControl()
         {
@@ -189,6 +244,10 @@ namespace clinic_ivf.gui
             txtHn.Value = deposit.patient_hn;
             txtName.Value = deposit.deposit_name;
             txtRemark.Value = deposit.remark;
+            if (deposit.active !=null && deposit.active.Equals("1"))
+            {
+                chkActive.Checked = true;
+            }
 
             txtWithDrawVisitId.Value = vs.t_visit_id;
             txtWithDrawVn.Value = vs.visit_vn;
@@ -212,16 +271,37 @@ namespace clinic_ivf.gui
                 txtWithDrawVisitId.Value = vs.t_visit_id;
                 txtWithDrawVn.Value = vs.visit_vn;
             }
-            
+            if (txtId.Text.Length <= 0)
+            {
+                txtDepositDate.Value = DateTime.Now.ToString("yyyy-MM-dd");
+            }
         }
         private void BtnWithDrawSave_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
+            decimal amt = 0, withdraw = 0;
+            decimal.TryParse(txtWithDrawAmt.Text.Trim(), out amt);
+            decimal.TryParse(txtWithDrawAmount.Text.Trim(), out withdraw);
+            if (amt <= 0)
+            {
+                MessageBox.Show("Amount equal 0", "");
+                return;
+            }
+            if (withdraw <= 0)
+            {
+                MessageBox.Show("WithDraw equal 0", "");
+                return;
+            }
+            if (withdraw > amt)
+            {
+                MessageBox.Show("withdraw > Amount", "");
+                return;
+            }
             setWithDraw();
             String re = "";
-            re = ic.ivfDB.dwitdrawDB.insertDocScan(dwithdraw, ic.userId);
+            re = ic.ivfDB.dwitdrawDB.insertDepositWithDraw(dwithdraw, ic.userId);
             txtWithDrawId.Value = re;
-            ic.ivfDB.depositDB.updateAmount(txtId.Text.Trim(), dwithdraw.withdraw_amount);
+            //ic.ivfDB.depositDB.updateAmount(txtId.Text.Trim(), dwithdraw.withdraw_amount);
             setGrfWithDraw(txtWithDrawPttId.Text.Trim());
             if (flagCashier)
             {
@@ -247,22 +327,45 @@ namespace clinic_ivf.gui
         private void BtnSave_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            Decimal chk = 0;
-            if (txtDeposit.Text.Length <= 0)
+            if (chkUnActive.Checked)
             {
-                MessageBox.Show("bbbbbb", "");
-                return;
+                if (MessageBox.Show("ต้องการ ยกเลิกรายการ  \n"+" "+txtHn.Text+" "+txtName.Text, "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+                {
+                    String re = "";
+                    re = ic.ivfDB.depositDB.voidDeposit(txtId.Text, ic.userId);
+                    BtnNew_Click(null, null);
+                }
             }
-            if(!decimal.TryParse(txtDeposit.Text, out chk))
+            else
             {
-                MessageBox.Show("aaaa", "");
-                return;
+                Decimal chk = 0;
+                if (txtDeposit.Text.Length <= 0)
+                {
+                    MessageBox.Show("ไม่พบจำนวนเงิน", "");
+                    sep.SetError(txtDeposit, "ไม่พบจำนวนเงิน");
+                    //sep.Clear();                
+                    return;
+                }
+                if (!decimal.TryParse(txtDeposit.Text, out chk))
+                {
+                    MessageBox.Show("จำนวนเงิน error", "");
+                    sep.SetError(txtDeposit, "จำนวนเงิน error");
+                    return;
+                }
+                if (txtName.Text.Trim().Length <= 0)
+                {
+                    MessageBox.Show("ไม่พบชื่อ", "");
+                    sep.SetError(txtName, "ไม่พบชื่อ");
+                    return;
+                }
+                setDeposit();
+                String re = "";
+                re = ic.ivfDB.depositDB.insertDocScan(deposit, ic.userId);
+                txtId.Value = re;
+                //BtnNew_Click(null, null);
             }
-            setDeposit();
-            String re = "";
-            re = ic.ivfDB.depositDB.insertDocScan(deposit, ic.userId);
-            txtId.Value = re;
             setGrfDeposit("", grfDeposit);
+
         }
         private void initCompomentTabWithDraw()
         {
@@ -334,7 +437,6 @@ namespace clinic_ivf.gui
             ic.setControlLabel(ref lbtxtWithDrawDeposit, fEdit, "Deposit :", "lbtxtWithDrawDeposit", xcol32, gapY);
             ic.setControlC1TextBox(ref txtWithDrawDeposit, fEdit, "txtWithDrawDeposit", 120, xCol4, gapY);
 
-
             gapY += gapLine;
             ic.setControlLabel(ref lbtxtWithDrawName, fEdit, "Name :", "lbtxtWithDrawName", gapX, gapY);
             ic.setControlC1TextBox(ref txtWithDrawName, fEdit, "txtWithDrawName", 400, xCol20, gapY);
@@ -356,10 +458,7 @@ namespace clinic_ivf.gui
             txtWithDrawAmount.DataType = typeof(decimal);
             gapY += gapLine;
             ic.setControlLabel(ref lbcboPackageHn, fEdit, "Package :", "lbcboPackageHn", gapX, gapY);
-            ic.setControlC1ComboBox(ref cboPackageHn, "cboPackageHn", 400, xCol2, gapY);
-
-
-
+            ic.setControlC1ComboBox(ref cboPackageHn, fEdit, "cboPackageHn", 500, xCol2, gapY);
 
             grfWithDraw = new C1FlexGrid();
             grfWithDraw.Name = "grfWithDraw";
@@ -484,7 +583,6 @@ namespace clinic_ivf.gui
             grfDeposit.Location = new System.Drawing.Point(0, 0);
             grfDeposit.Rows.Count = 1;
 
-
             tabDeposit.Controls.Add(grfDeposit);
 
             tabDeposit.Controls.Add(lbtxtDepositCode);
@@ -561,7 +659,6 @@ namespace clinic_ivf.gui
                     dt = ic.ivfDB.depositDB.selectByPttId(pttid);
                 }
             }
-            
             grf.Rows.Count = dt.Rows.Count + 1;
             grf.Cols[colCode].Width = 100;
             grf.Cols[colHn].Width = 100;
@@ -580,22 +677,25 @@ namespace clinic_ivf.gui
             grf.Cols[colPck].Caption = "Package";
             grf.Cols[colAmount].Caption = "Amount";
             ContextMenu menuGw = new ContextMenu();
-            menuGw.MenuItems.Add("Receive operation", new EventHandler(ContextMenu_order_finish));
+            menuGw.MenuItems.Add("ต้องการ Void Deposit", new EventHandler(ContextMenu_void_Deposit));
             grf.ContextMenu = menuGw;
             Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
             int i = 1;
             foreach (DataRow row in dt.Rows)
             {
+                decimal deposit = 0, amount=0;
+                decimal.TryParse(row["deposit_amount"].ToString(), out deposit);
+                decimal.TryParse(row["amount"].ToString(), out amount);
                 grf[i, 0] = i;
                 grf[i, colId] = row["deposit_id"].ToString();
                 grf[i, colCode] = row["deposit_code"].ToString();
                 grf[i, colHn] = row["patient_hn"].ToString();
                 grf[i, colName] = row["deposit_name"].ToString();
                 grf[i, colDate] = ic.datetoShow(row["deposit_date"].ToString());
-                grf[i, colDeposit] = row["deposit_amount"].ToString();
+                grf[i, colDeposit] = deposit.ToString("#,###.00");
                 grf[i, colRemark] = row["remark"].ToString();
                 grf[i, colPck] = row["PackageName"].ToString();
-                grf[i, colAmount] = row["amount"].ToString();
+                grf[i, colAmount] = amount.ToString("#,###.00");
                 i++;
             }
             grf.Cols[colId].Visible = false;
@@ -606,6 +706,17 @@ namespace clinic_ivf.gui
             grf.Cols[colDeposit].AllowEditing = false;
             grf.Cols[colRemark].AllowEditing = false;
             grf.Cols[colAmount].AllowEditing = false;
+        }
+        private void ContextMenu_void_Deposit(object sender, System.EventArgs e)
+        {
+            if (grfDeposit == null) return;
+            if (grfDeposit.Row <= 0) return;
+            if (grfDeposit.Col <= 0) return;
+
+            if (MessageBox.Show("ต้องการ ยกเลิกรายการ  ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+            {
+
+            }
         }
         private void setDeposit()
         {
@@ -651,7 +762,7 @@ namespace clinic_ivf.gui
             grfWithDraw.Cols[colDeposit].Caption = "WithDraw";
             grfWithDraw.Cols[colRemark].Caption = "Remark";
             ContextMenu menuGw = new ContextMenu();
-            menuGw.MenuItems.Add("Receive operation", new EventHandler(ContextMenu_order_finish));
+            menuGw.MenuItems.Add("Receive operation", new EventHandler(ContextMenu_void_Deposit));
             grfWithDraw.ContextMenu = menuGw;
             Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
             int i = 1;
@@ -675,10 +786,7 @@ namespace clinic_ivf.gui
             grfWithDraw.Cols[colDeposit].AllowEditing = false;
             grfWithDraw.Cols[colRemark].AllowEditing = false;
         }
-        private void ContextMenu_order_finish(object sender, System.EventArgs e)
-        {
-
-        }
+        
         private void FrmDeport_Load(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
@@ -687,6 +795,7 @@ namespace clinic_ivf.gui
             this.WindowState = FormWindowState.Normal;
             this.StartPosition = FormStartPosition.CenterScreen;
             this.Top = 100;
+            this.Left = this.Left - 200;
             grfDeposit.Height = this.Height - 300;
             grfDeposit.Top = 130;
             grfWithDraw.Height = this.Height - 430;
@@ -694,6 +803,13 @@ namespace clinic_ivf.gui
             grfDepositHn.Height = this.Height - 430 - (txtWithDrawAmount.Location.Y + 35) - 140;
             grfDepositHn.Top = txtWithDrawAmount.Location.Y + 65;
             grfDepositHn.Width = this.Width - 20;
+            if (flagCashier)
+            {
+                tcMain.TabPages[0].Visible = false;
+                tcMain.ShowTabs = false;
+            }
+            theme1.SetTheme(lbtxtHn, this.theme1.Theme);
+            theme1.SetTheme(lbtxtWithDrawHn, this.theme1.Theme);
         }
     }
 }

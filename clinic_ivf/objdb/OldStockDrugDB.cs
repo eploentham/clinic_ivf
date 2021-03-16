@@ -431,6 +431,17 @@ namespace clinic_ivf.objdb
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
+        public OldStockDrug selectByPkName(String copId)
+        {
+            OldStockDrug stf1 = new OldStockDrug();
+            DataTable dt = new DataTable();
+            String sql = "select ostkD.*  " +
+                "From " + ostkD.table + " ostkD " +
+                "Where ostkD." + ostkD.DUName + " ='" + copId + "' ";
+            dt = conn.selectData(conn.conn, sql);
+            stf1 = setStockDrug(dt);
+            return stf1;
+        }
         public OldStockDrug selectByPk1(String copId)
         {
             OldStockDrug stf1 = new OldStockDrug();
@@ -571,6 +582,28 @@ namespace clinic_ivf.objdb
                 i++;
             }
             return c;
+        }
+        public void setCboStockDrug(C1ComboBox c, String selected)
+        {
+            ComboBoxItem item = new ComboBoxItem();
+            DataTable dt = selectAll();
+            //String aaa = "";
+            ComboBoxItem item1 = new ComboBoxItem();
+            item1.Text = "";
+            item1.Value = "";
+            c.Items.Clear();
+            c.Items.Add(item1);
+            //for (int i = 0; i < dt.Rows.Count; i++)
+            int i = 0;
+            foreach (DataRow row in dt.Rows)
+            {
+                item = new ComboBoxItem();
+                item.Text = row[ostkD.DUName].ToString();
+                item.Value = row[ostkD.DUID].ToString();
+
+                c.Items.Add(item);
+                i++;
+            }
         }
         public OldStockDrug setStockDrug(DataTable dt)
         {

@@ -68,6 +68,7 @@ namespace clinic_ivf.gui
         C1SuperErrorProvider sep;
         List<C1FlexGrid> lgrfPkg;
         Label lbLoading;
+        List<OldStockDrug> lstkdOrder;
 
         int colImgID = 1, colImgHn = 2, colImgImg = 3, colImgDesc = 4, colImgDesc2 = 5, colImgDesc3 = 6, colImgPathPic = 7, colImgBtn = 8, colImgStatus = 9, colImgDoctor = 10;
         int colBlId = 1, colBlName = 2, colBlQty = 3, colBlPrice = 4, colBlInclude = 5, colBlRemark = 6, colBlOrderGroup=7, colBlPkgName=8, colBlPkgId=9;
@@ -96,12 +97,15 @@ namespace clinic_ivf.gui
         static String filenamepic = "";
         decimal rat = 0;
         Color color;
+        C1Button btnDtrOrderNew = new C1Button();
+        C1FlexGrid grfDtrOrderNew = new C1FlexGrid();
 
         string documentName, filePathNamePg;
         string documentPath;
         RichTextBoxStreamType documentFileType;
         FrmNurseView frmNurView;
         FrmLabFormA frmFormA;
+        Form frmDtrOrderNew;
         Panel pnFormAView, pnFormAAdd;
         Boolean flagImg = false, pageLoad=false, tabNoteLoad=false, tabPgLoad=false, tabHistoryLoad=false, tabOutlabLoad=false, tabLabFormALoad=false, tabEggStiLoad=false, tabBloodLabLoad=false, tabEmbryoLabLoad=false, tabSpermLabLoad=false, tabGeneticLabLoad=false, tabSpecialItemLoad=false;
         Boolean tabRxLoad = false, tabRxSetLoad = false, tabLabLoad=false, tabAppLoad=false, tabPMHLoad=false;
@@ -163,6 +167,7 @@ namespace clinic_ivf.gui
             sep = new C1SuperErrorProvider();
             color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
             lgrfPkg = new List<C1FlexGrid>();
+            lstkdOrder = new List<OldStockDrug>();
 
             imgCorr = Resources.red_checkmark_png_16;
             imgTran = Resources.red_checkmark_png_51;
@@ -225,7 +230,9 @@ namespace clinic_ivf.gui
             FontUnderlineButton.Click += FontUnderlineButton_Click;
             FontStrikeoutButton.Click += FontStrikeoutButton_Click;
             FontColorPicker.Click += FontColorPicker_Click;
+            FontColorPicker.SelectedColorChanged += FontColorPicker_SelectedColorChanged;
             BackColorPicker.Click += BackColorPicker_Click;
+            BackColorPicker.SelectedColorChanged += BackColorPicker_SelectedColorChanged;
             ParagraphAlignLeftButton.Click += ParagraphAlignLeftButton_Click;
             ParagraphAlignCenterButton.Click += ParagraphAlignCenterButton_Click;
             ParagraphAlignRightButton.Click += ParagraphAlignRightButton_Click;
@@ -276,9 +283,15 @@ namespace clinic_ivf.gui
             tCHistory.DoubleClick += TCHistory_DoubleClick;
             tabOrder.SelectedIndexChanged += TabOrder_SelectedIndexChanged;
 
-
             cboLabVs.SelectedIndexChanged += CboLabVs_SelectedIndexChanged;
             this.Disposed += FrmNurseAdd2_Disposed;
+
+            cboTempDrug.SelectedIndexChanged += CboTempDrug_SelectedIndexChanged;
+            txtCongenital.ValueChanged += TxtCongenital_ValueChanged;
+            chkDenyAllergy.ValueChanged += ChkDenyAllergy_ValueChanged;
+            richTextBox1.TextChanged += RichTextBox1_TextChanged;
+            richTextBox1.DoubleClick += RichTextBox1_DoubleClick;
+            
 
             setControl(vn);
             ChkDenyAllergy_CheckedChanged(null, null);
@@ -291,7 +304,7 @@ namespace clinic_ivf.gui
 
             setGrfpackage();
             setGrfOrder(txtVn.Text);
-                        
+
             //initGrfAdm();            
             //setGrfpApmAll();
 
@@ -327,6 +340,93 @@ namespace clinic_ivf.gui
             //setGrfPtt("");
             
             pageLoad = false;
+        }
+
+        private void BackColorPicker_SelectedColorChanged(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            RibbonColorPicker rcp = (RibbonColorPicker)sender;
+            this.richTextBox1.SelectionBackColor = rcp.Color;
+        }
+
+        private void FontColorPicker_SelectedColorChanged(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            RibbonColorPicker rcp = (RibbonColorPicker)sender;
+            this.richTextBox1.SelectionColor = rcp.Color;
+        }
+
+        private void RichTextBox1_DoubleClick(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            String txt = "";
+            txt = richTextBox1.SelectedText.Trim();
+            if (txt.ToLower().IndexOf("drug") >= 0)
+            {
+                richTextBox1.SelectedText = txt + " : " + cboAllergyDesc.Text;
+            }
+            else if (txt.ToLower().IndexOf("disease") >= 0)
+            {
+                richTextBox1.SelectedText = txt + " : " + txtCongenital.Text;
+            }
+            else if (txt.ToLower().IndexOf("appointment") >= 0)
+            {
+                String vsdate = "", txt1 = "";
+                vsdate = DateTime.Now.ToString("yyyy-MM-dd");
+                DataTable dtpapp = new DataTable();
+                dtpapp = ic.ivfDB.pApmDB.selectByDateInout(vsdate, ptt.t_patient_id);
+                foreach(DataRow drow in dtpapp.Rows)
+                {
+                    txt1 = ic.datetoShow(drow["patient_appointment_date"].ToString())+" "+ drow["patient_appointment_time"].ToString() + " " + drow["patient_appointment"].ToString() + " " + drow["dtr_name"].ToString()+Environment.NewLine;
+                }
+                richTextBox1.SelectedText = txt + " : " + txt1;
+            }
+        }
+
+        private void RichTextBox1_TextChanged(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            SaveDocumentButton.SmallImage = Resources.Save_large;
+        }
+
+        private void ChkDenyAllergy_ValueChanged(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (!ptt.allergy_description.Equals(cboAllergyDesc.Text.Trim()))
+            {
+                if (MessageBox.Show("ต้องการ บันทึก ข้อมูล การแพ้ยา ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+                {
+                    ic.ivfDB.pttDB.updateDiseases(ptt.t_patient_id, cboAllergyDesc.Text.Trim());
+                }
+            }
+        }
+
+        private void TxtCongenital_ValueChanged(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (!ptt.congenital_diseases_description.Equals(txtCongenital.Text.Trim()))
+            {
+                if (MessageBox.Show("ต้องการ บันทึก ข้อมูล โรคประจำตัว ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+                {
+                    ic.ivfDB.pttDB.updateDiseases(ptt.t_patient_id, txtCongenital.Text.Trim());
+                }
+            }
+        }
+
+        private void CboTempDrug_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (pageLoad) return;
+            String tdrugid = "", txt = "";
+            DataTable dt = new DataTable();
+            tdrugid = cboTempDrug.Text.Trim();
+            dt = ic.ivfDB.tdrugDB.selectByDtrId(ic.userId, tdrugid);
+            foreach (DataRow drow in dt.Rows)
+            {
+                txt += drow["DUName"].ToString() +";QTY "+ drow["qty"].ToString() + ";usage " + drow["usage_eng"].ToString()+Environment.NewLine;
+            }
+            Clipboard.SetText(txt);
+            //this.richTextBox1.Paste();
         }
 
         private void TabOrder_SelectedIndexChanged(object sender, EventArgs e)
@@ -575,7 +675,18 @@ namespace clinic_ivf.gui
         private void FrmNurseAdd2_Disposed(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            frmNurView.Dispose();
+            try
+            {
+                frmNurView.Dispose();
+            }
+            catch(Exception ex)
+            {
+
+            }
+            finally
+            {
+
+            }
         }
 
         private void BtnLabReq_Click(object sender, EventArgs e)
@@ -880,6 +991,7 @@ namespace clinic_ivf.gui
                     initProgressNote();
                 }
                 tabPgLoad = true;
+                ic.ivfDB.tdrugDB.setCboUsageT(cboTempDrug, ic.userId);
                 setGrfPg();
             }
             else if (tC.SelectedTab == tabHistory)
@@ -1737,7 +1849,9 @@ namespace clinic_ivf.gui
         private void FontColorPicker_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            this.richTextBox1.SelectionColor = this.FontColorPicker.Color;
+            //this.richTextBox1.SelectionColor = this.FontColorPicker.Color;
+            RibbonColorPicker rcp = (RibbonColorPicker)sender;
+            this.richTextBox1.SelectionColor = rcp.Color;
         }
 
         private void FontStrikeoutButton_Click(object sender, EventArgs e)
@@ -1993,8 +2107,10 @@ namespace clinic_ivf.gui
         private void ExecuteProgressNote(Object obj)
         {
             //Console.WriteLine("Executing parameterless thread!");
+            String err = "";
             try
             {
+                err = "00";
                 RichTextBoxStreamType fileType = RichTextBoxStreamType.RichText;
                 MemoryStream stream = new MemoryStream();
                 String filePathName = "progressnote" + "_" + txtVnProgressNote.Text + ".rtf";
@@ -2003,7 +2119,9 @@ namespace clinic_ivf.gui
                     File.Delete(filePathName);
                     System.Threading.Thread.Sleep(200);
                 }
-                //String aaa = ic.iniC.folderFTP + "/" + txtVn.Text.Trim()+"/" + filePathName;      //-0023
+                err = "01";
+                //String aaa = ic.iniC.fold
+                //erFTP + "/" + txtVn.Text.Trim()+"/" + filePathName;      //-0023
                 String aaa = ic.iniC.folderFTP + ic.iniC.pathChar + ptt.patient_hn + ic.iniC.pathChar + "progress_note" + ic.iniC.pathChar + filePathName;      //+0023
                 //setPic(new Bitmap(ic.ftpC.download(filenamepic)));
                 stream = ic.ftpC.download(aaa);
@@ -2053,9 +2171,12 @@ namespace clinic_ivf.gui
                     txt += "Period : " + Environment.NewLine;
                     txt += "Chromosome : " + Environment.NewLine;
                     txt += Environment.NewLine;
+                    txt += Environment.NewLine;
                     txt += "Tx : " + Environment.NewLine;
                     txt += Environment.NewLine;
+                    txt += Environment.NewLine;
                     txt += "Rx : " + Environment.NewLine;
+                    txt += Environment.NewLine;
                     txt += Environment.NewLine;
                     //txt += Environment.NewLine;
                     //txt += Environment.NewLine;
@@ -2075,6 +2196,7 @@ namespace clinic_ivf.gui
             catch (Exception ex)
             {
                 String aaa = "";
+                new LogWriter("e", "FrmNurseAdd2 ExecuteProgressNote 1 " + ex.Message +" " + aaa);
             }
         }
         private void LoadRecentDocument(string filename)
@@ -2166,6 +2288,8 @@ namespace clinic_ivf.gui
             RichTextBoxStreamType fileType = RichTextBoxStreamType.RichText;
             this.SetDocumentProperties("progressnote_"+ txtVnProgressNote.Text + ".rtf", fileType);
             this.SaveDocumentAs(this.documentFileType);
+            stt.Show("<p><b>save success</b></p> <br>", richTextBox1, 10, 20, 5);
+            SaveDocumentButton.SmallImage = Resources.Save_small;
             setGrfPg();
             return true;
         }
@@ -3752,7 +3876,7 @@ namespace clinic_ivf.gui
         private void ChkDenyAllergy_CheckedChanged(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            cboAllergyDesc.Enabled = chkDenyAllergy.Checked ? true : false;
+            cboAllergyDesc.Enabled = chkDenyAllergy.Checked ? false : true;
             cboAllergyDesc.Focus();
         }
 
@@ -5024,9 +5148,208 @@ namespace clinic_ivf.gui
                 Thread threadA = new Thread(new ParameterizedThreadStart(ExecuteA));
                 threadA.Start();
             }
+            ContextMenu menuGw = new ContextMenu();
+            menuGw.MenuItems.Add("send Order Doctor", new EventHandler(ContextMenu_progressnote_sendorder));
+            menuGw.MenuItems.Add("void Order Doctor", new EventHandler(ContextMenu_progressnote_voidorder));
+
+            richTextBox1.ContextMenu = menuGw;
             //txtBg.Value = pttOld.b
             //txtAllergy.Value = 
         }
+        private void ContextMenu_progressnote_sendorder(object sender, System.EventArgs e)
+        {
+            String txt = "";
+
+            
+
+            txt = richTextBox1.SelectedText;
+            String[] chktxt = txt.Split('\n');
+            if (chktxt.Length >= 1)
+            {
+                String[] chkcol = chktxt[0].Split(';');
+                int gapLine = 25, gapX = 20, gapY = 20, xCol2 = 150, xCol1 = 80, xCol3 = 330, xCol4 = 640, xCol5 = 950;
+                Size size = new Size();
+                
+                try
+                {
+                    lstkdOrder.Clear();
+                    frmDtrOrderNew = new Form();
+                    frmDtrOrderNew.WindowState = FormWindowState.Normal;
+                    frmDtrOrderNew.StartPosition = FormStartPosition.CenterScreen;
+                    frmDtrOrderNew.Size = new Size(1000, 600);
+
+                    grfDtrOrderNew = new C1FlexGrid();
+                    grfDtrOrderNew.Name = "grfSendOrder";
+                    grfDtrOrderNew.Font = fEdit;
+                    grfDtrOrderNew.Size = new Size(560, 500);
+                    grfDtrOrderNew.Location = new Point(0, 0);
+                    grfDtrOrderNew.Dock = System.Windows.Forms.DockStyle.Bottom;
+                    grfDtrOrderNew.Location = new System.Drawing.Point(0, 0);
+                    grfDtrOrderNew.Rows.Count = 1;
+                    grfDtrOrderNew.Rows.Count = chktxt.Length + 1;
+                    grfDtrOrderNew.Cols.Count = chkcol.Length + 1;
+                    int i = 0;
+                    foreach (String chk in chktxt)
+                    {
+                        String[] order = chk.Split(';');
+                        if (order.Length >= 3)
+                        {
+                            grfDtrOrderNew[i + 1, 1] = order[0];
+                            grfDtrOrderNew[i + 1, 2] = order[1].Replace("QTY","").Trim();
+                            grfDtrOrderNew[i + 1, 3] = order[2].Replace("usage", "").Trim();
+                        }
+                        i++;
+                    }
+                    grfDtrOrderNew.Cols[1].AllowEditing = false;
+                    grfDtrOrderNew.Cols[2].AllowEditing = false;
+                    grfDtrOrderNew.Cols[3].AllowEditing = false;
+                    grfDtrOrderNew.Cols[1].Width = 300;
+                    grfDtrOrderNew.Cols[2].Width = 60;
+                    grfDtrOrderNew.Cols[3].Width = 500;
+                    grfDtrOrderNew.Cols[1].Caption = "Drug";
+                    grfDtrOrderNew.Cols[2].Caption = "QTY";
+                    grfDtrOrderNew.Cols[3].Caption = "USAGE";
+                    ic.setControlC1Button(ref btnDtrOrderNew, fEdit, "New", "btnNew", 400, 20);
+
+                    frmDtrOrderNew.Controls.Add(grfDtrOrderNew);
+                    frmDtrOrderNew.Controls.Add(btnDtrOrderNew);
+                    btnDtrOrderNew.Click += BtnDtrOrderNew_Click;
+
+                    frmDtrOrderNew.ShowDialog(this);
+                    if (lstkdOrder.Count > 0)
+                    {
+                        int ii = 0;
+                        foreach (String chk in chktxt)
+                        {
+                            String[] order = chk.Split(';');
+                            if (order.Length >= 3)
+                            {
+                                foreach(OldStockDrug stkd in lstkdOrder)
+                                {
+                                    if (stkd.DUName.Trim().Equals(order[0].Trim()))
+                                    {
+                                        chktxt[ii] = chk + ";" + stkd.date_cancel;
+                                        break;
+                                    }
+                                }
+                            }
+                            ii++;
+                        }
+                        richTextBox1.SelectedText = "";
+                        foreach (String chk in chktxt)
+                        {
+                            richTextBox1.SelectedText += chk+Environment.NewLine;
+                        }
+
+                        int index = 0;
+                        var temp = richTextBox1.Text;
+                        //richTextArea.Text = "";
+                        //richTextArea.Text = temp;
+                        OldStockDrug stkd0 = new OldStockDrug();
+                        OldStockDrug stkdLast = new OldStockDrug();
+                        stkd0 = lstkdOrder[0];
+                        stkdLast = lstkdOrder[lstkdOrder.Count - 1];
+                        int num0 = richTextBox1.Find(stkd0.DUName, index, richTextBox1.TextLength, RichTextBoxFinds.None);
+                        int numLast = richTextBox1.Find(stkdLast.date_cancel, index, richTextBox1.TextLength, RichTextBoxFinds.None);
+                        richTextBox1.SelectionStart = richTextBox1.Find(stkd0.DUName, index, richTextBox1.TextLength, RichTextBoxFinds.None);
+                        richTextBox1.SelectionBackColor = Color.Red;
+                        richTextBox1.SelectionLength = richTextBox1.Find(stkdLast.date_cancel, index, richTextBox1.TextLength, RichTextBoxFinds.None);
+
+
+                        richTextBox1.Select(num0, (numLast - num0 + stkdLast.date_cancel.Length));
+                        richTextBox1.SelectionBackColor = Color.Red;
+                        //richTextBox1.SelectionColor = Color.Red;
+
+
+                        //while (index < richTextBox1.Text.LastIndexOf(textBoxSearch.Text))
+                        //{
+                        //    richTextArea.Find(textBoxSearch.Text, index, richTextArea.TextLength, RichTextBoxFinds.None);
+                        //    richTextArea.SelectionBackColor = Color.Yellow;
+
+                        //    index = richTextArea.Text.IndexOf(textBoxSearch.Text, index) + 1;
+                        //}
+                        this.SaveDocument(this.documentPath == null);
+                    }
+                }
+                catch(Exception ex)
+                {
+                    new LogWriter("e", "FrmNurseAdd2 ContextMenu_progressnote_sendorder " + ex.Message );
+                }
+                
+            }
+        }
+        private void ContextMenu_progressnote_voidorder(object sender, System.EventArgs e)
+        {
+            String txt = "";
+            txt = richTextBox1.SelectedText;
+            String[] chktxt = txt.Split('\n');
+            if (chktxt.Length >= 1)
+            {
+                int i = 0;
+                foreach (String chk in chktxt)
+                {
+                    String id = "";
+                    String[] order = chk.Split(';');
+                    if (order.Length >= 4)
+                    {
+                        id = order[3];
+                        ic.ivfDB.oJpxdDB.deleteByPk(id);
+                        richTextBox1.Text.Replace(id, "");
+                    }
+                    i++;
+                }
+            }
+            setGrfOrder(txtVnOld.Text);
+        }
+        private void BtnDtrOrderNew_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (grfDtrOrderNew == null) return;
+            if (grfDtrOrderNew.Rows.Count > 0)
+            {
+                try
+                {
+                    String drugname = "", qty = "", usage = "", chkdrug = "", re = "", orderid="";
+                    lstkdOrder.Clear();
+                    ic.ivfDB.oJpxDB.setJobPx(txtVnOld.Text, ptt.patient_hn, txtIdOld.Text);//+0020
+
+                    OldStockDrug stkd = new OldStockDrug();
+                    Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
+                    Color colorred = ColorTranslator.FromHtml(ic.iniC.grfRowRed);
+                    foreach (Row row in grfDtrOrderNew.Rows)
+                    {
+                        if (row[1] == null) continue;
+                        if (row[2] == null) continue;
+                        if (row[2].ToString().Equals("QTY")) continue;
+                        drugname = row[1].ToString();
+                        qty = row[2].ToString();
+                        usage = row[3].ToString();
+                        stkd = ic.ivfDB.oStkdDB.selectByPkName(drugname);
+                        if (stkd.DUID.Length > 0)
+                        {
+                            row.StyleNew.BackColor = color;
+                        }
+                        else
+                        {
+                            row.StyleNew.BackColor = colorred;
+                        }
+                        re = setOrderRx("dtrorderdrug", stkd.DUID, qty, usage);
+                        stkd.date_cancel = re;
+                        lstkdOrder.Add(stkd);
+                        //orderid += drugname +"@"+re + "#";
+                    }
+                    if (frmDtrOrderNew != null)
+                    {
+                        frmDtrOrderNew.Dispose();
+                    }
+                }
+                catch(Exception ex)
+                {
+                    new LogWriter("e", "FrmNurseAdd2 BtnDtrOrderNew_Click " + ex.Message);
+                }
+            }
+        }
+
         private void ExecuteA(Object obj)
         {
             //Console.WriteLine("Executing parameterless thread!");
@@ -6178,36 +6501,48 @@ namespace clinic_ivf.gui
             if (grfRx.Col == colBlQty) return;
             if (flagedit.Equals("edit"))
             {
-                setOrderRx();
+                setOrderRx("", "", "", "");
             }
         }
         private void ContextMenu_order_rx(object sender, System.EventArgs e)
         {
-            setOrderRx();
+            setOrderRx("","","","");
         }
-        private void setOrderRx()
+        private string setOrderRx(String dtrorderdrug, String drugid1, String qty2, String usage1)
         {
-            if (grfRx.Row <= 0) return;
-            if (grfRx[grfRx.Row, colBlId] == null) return;
-            String chk = "", name = "", drugid = "", qty = "", include = "", usage = "", pkgdid = "", qtyext="", includeGrf = "";
-            drugid = grfRx[grfRx.Row, colRxdId] != null ? grfRx[grfRx.Row, colRxdId].ToString() : "";
-            qty = grfRx[grfRx.Row, colRxQty] != null ? grfRx[grfRx.Row, colRxQty].ToString() : "";
-            includeGrf = grfRx[grfRx.Row, colRxInclude] != null ? grfRx[grfRx.Row, colRxInclude].ToString().Equals("True") ? "1" : "0" : "0";
-            if (cboLangSticker.Text.Equals("English"))
+            String chk = "", name = "", drugid = "", qty = "", include = "", usage = "", pkgdid = "", qtyext = "", includeGrf = "", re="";
+            if (dtrorderdrug.Equals("dtrorderdrug"))
             {
-                usage = grfRx[grfRx.Row, colRxUsE] != null ? grfRx[grfRx.Row, colRxUsE].ToString() : "";
+                drugid = drugid1;
+                qty = qty2;
+                usage = usage1;
             }
             else
             {
-                usage = grfRx[grfRx.Row, colRxUsT] != null ? grfRx[grfRx.Row, colRxUsT].ToString() : "";
+                if (grfRx.Row <= 0) return "";
+                if (grfRx[grfRx.Row, colBlId] == null) return "";
+
+                drugid = grfRx[grfRx.Row, colRxdId] != null ? grfRx[grfRx.Row, colRxdId].ToString() : "";
+                qty = grfRx[grfRx.Row, colRxQty] != null ? grfRx[grfRx.Row, colRxQty].ToString() : "";
+                includeGrf = grfRx[grfRx.Row, colRxInclude] != null ? grfRx[grfRx.Row, colRxInclude].ToString().Equals("True") ? "1" : "0" : "0";
+
+                if (cboLangSticker.Text.Equals("English"))
+                {
+                    usage = grfRx[grfRx.Row, colRxUsE] != null ? grfRx[grfRx.Row, colRxUsE].ToString() : "";
+                }
+                else
+                {
+                    usage = grfRx[grfRx.Row, colRxUsT] != null ? grfRx[grfRx.Row, colRxUsT].ToString() : "";
+                }
+                if (includeGrf.Equals("1"))//   +0019
+                {
+                    //ic.ivfDB.PxAdd(drugid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", grfOrder.Rows.Count.ToString(), usage, "old", pkgdid);//-0020
+                    re = ic.ivfDB.PxAdd(drugid, qty, txtIdOld.Text, ptt.patient_hn, txtVnOld.Text, "0", grfOrder.Rows.Count.ToString(), usage, "old", pkgdid, ic.userId);//+0020
+                    setGrfOrder(txtVnOld.Text);
+                    return re;   //ถ้า click include ที่หน้าจอ
+                }
             }
-            if (includeGrf.Equals("1"))//   +0019
-            {
-                //ic.ivfDB.PxAdd(drugid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", grfOrder.Rows.Count.ToString(), usage, "old", pkgdid);//-0020
-                ic.ivfDB.PxAdd(drugid, qty, txtIdOld.Text, ptt.patient_hn, txtVnOld.Text, "0", grfOrder.Rows.Count.ToString(), usage, "old", pkgdid);//+0020
-                setGrfOrder(txtVnOld.Text);
-                return;   //ถ้า click include ที่หน้าจอ
-            }
+            
             pkgdid = setPkgDId(drugid, qty,"","");
             String[] pkgdid1 = pkgdid.Split('#');
             if (pkgdid1.Length > 1)
@@ -6233,13 +6568,13 @@ namespace clinic_ivf.gui
                         Decimal.TryParse(qtyext, out qtyext1);
                         //ic.ivfDB.PxAdd(drugid, (qty1 - qtyext1).ToString(), txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", grfOrder.Rows.Count.ToString(), usage, "old", pkgdid);//-0020
                         //ic.ivfDB.PxAdd(drugid, qtyext, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "1", grfOrder.Rows.Count.ToString(), usage, "old", pkgdid);//-0020
-                        ic.ivfDB.PxAdd(drugid, (qty1 - qtyext1).ToString(), txtIdOld.Text, ptt.patient_hn, txtVnOld.Text, "0", grfOrder.Rows.Count.ToString(), usage, "old", pkgdid);//+0020
-                        ic.ivfDB.PxAdd(drugid, qtyext, txtIdOld.Text, ptt.patient_hn, txtVnOld.Text, "1", grfOrder.Rows.Count.ToString(), usage, "old", pkgdid);//+0020
+                        re = ic.ivfDB.PxAdd(drugid, (qty1 - qtyext1).ToString(), txtIdOld.Text, ptt.patient_hn, txtVnOld.Text, "0", grfOrder.Rows.Count.ToString(), usage, "old", pkgdid, ic.userId);//+0020
+                        re = ic.ivfDB.PxAdd(drugid, qtyext, txtIdOld.Text, ptt.patient_hn, txtVnOld.Text, "1", grfOrder.Rows.Count.ToString(), usage, "old", pkgdid, ic.userId);//+0020
                     }
                     else
                     {
                         //ic.ivfDB.PxAdd(drugid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", grfOrder.Rows.Count.ToString(), usage, "old", pkgdid);//-0020
-                        ic.ivfDB.PxAdd(drugid, qty, txtIdOld.Text, ptt.patient_hn, txtVnOld.Text, "0", grfOrder.Rows.Count.ToString(), usage, "old", pkgdid);//+0020
+                        re = ic.ivfDB.PxAdd(drugid, qty, txtIdOld.Text, ptt.patient_hn, txtVnOld.Text, "0", grfOrder.Rows.Count.ToString(), usage, "old", pkgdid, ic.userId);//+0020
                     }
                 }
                 else
@@ -6251,13 +6586,13 @@ namespace clinic_ivf.gui
                         Decimal.TryParse(qtyext, out qtyext1);
                         //ic.ivfDB.PxAdd(drugid, (qty1 - qtyext1).ToString(), txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", grfOrder.Rows.Count.ToString(), usage, "old", pkgdid);//-0020
                         //ic.ivfDB.PxAdd(drugid, qtyext, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", grfOrder.Rows.Count.ToString(), usage, "old", pkgdid);//-0020
-                        ic.ivfDB.PxAdd(drugid, (qty1 - qtyext1).ToString(), txtIdOld.Text, ptt.patient_hn, txtVnOld.Text, "0", grfOrder.Rows.Count.ToString(), usage, "old", pkgdid);//+0020
-                        ic.ivfDB.PxAdd(drugid, qtyext, txtIdOld.Text, ptt.patient_hn, txtVnOld.Text, "0", grfOrder.Rows.Count.ToString(), usage, "old", pkgdid);//+0020
+                        re = ic.ivfDB.PxAdd(drugid, (qty1 - qtyext1).ToString(), txtIdOld.Text, ptt.patient_hn, txtVnOld.Text, "0", grfOrder.Rows.Count.ToString(), usage, "old", pkgdid, ic.userId);//+0020
+                        re = ic.ivfDB.PxAdd(drugid, qtyext, txtIdOld.Text, ptt.patient_hn, txtVnOld.Text, "0", grfOrder.Rows.Count.ToString(), usage, "old", pkgdid, ic.userId);//+0020
                     }
                     else
                     {
                         //ic.ivfDB.PxAdd(drugid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", grfOrder.Rows.Count.ToString(), usage, pkgdid);//-0020
-                        ic.ivfDB.PxAdd(drugid, qty, txtIdOld.Text, ptt.patient_hn, txtVnOld.Text, "0", grfOrder.Rows.Count.ToString(), usage, pkgdid);//+0020
+                        re = ic.ivfDB.PxAdd(drugid, qty, txtIdOld.Text, ptt.patient_hn, txtVnOld.Text, "0", grfOrder.Rows.Count.ToString(), usage,"", pkgdid, ic.userId);//+0020
                     }
                 }
             }
@@ -6277,19 +6612,20 @@ namespace clinic_ivf.gui
                     if((qty1 - qtyext1)> 0)
                     {
                         //ic.ivfDB.PxAdd(drugid, (qty1 - qtyext1).ToString(), txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", grfOrder.Rows.Count.ToString(), usage, pkgdid);/-0020
-                        ic.ivfDB.PxAdd(drugid, (qty1 - qtyext1).ToString(), txtIdOld.Text, ptt.patient_hn, txtVnOld.Text, "0", grfOrder.Rows.Count.ToString(), usage, pkgdid);//+0020
+                        re = ic.ivfDB.PxAdd(drugid, (qty1 - qtyext1).ToString(), txtIdOld.Text, ptt.patient_hn, txtVnOld.Text, "0", grfOrder.Rows.Count.ToString(), usage,"", pkgdid,ic.userId);//+0020
                     }
                     //ic.ivfDB.PxAdd(drugid, qtyext, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "1", grfOrder.Rows.Count.ToString(), usage, "");/-0020
-                    ic.ivfDB.PxAdd(drugid, qtyext, txtIdOld.Text, ptt.patient_hn, txtVnOld.Text, "1", grfOrder.Rows.Count.ToString(), usage, "");//+0020
+                    re = ic.ivfDB.PxAdd(drugid, qtyext, txtIdOld.Text, ptt.patient_hn, txtVnOld.Text, "1", grfOrder.Rows.Count.ToString(), usage, "","", ic.userId);//+0020
                 }
                 else
                 {
                     //ic.ivfDB.PxAdd(drugid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "1", grfOrder.Rows.Count.ToString(), usage, "");/-0020
-                    ic.ivfDB.PxAdd(drugid, qty, txtIdOld.Text, ptt.patient_hn, txtVnOld.Text, "1", grfOrder.Rows.Count.ToString(), usage, "");//+0020
+                    re = ic.ivfDB.PxAdd(drugid, qty, txtIdOld.Text, ptt.patient_hn, txtVnOld.Text, "1", grfOrder.Rows.Count.ToString(), usage, "","", ic.userId);//+0020
                 }
                 //}
             }
             setGrfOrder(txtVnOld.Text);
+            return re;
         }
         
         private void setGrfRx()
@@ -8163,17 +8499,18 @@ namespace clinic_ivf.gui
             //grfPg.Clear();
             grfPg.DataSource = null;
             grfPg.Rows.Count = 1;
-            grfPg.Cols.Count = 3;
+            grfPg.Cols.Count = 4;
 
             grfPg.Cols[colPgId].Width = 250;
             grfPg.Cols[colPgFilename].Width = 400;
+            grfPg.Cols[3].Width = 400;
 
             grfPg.ShowCursor = true;
             //grdFlex.Cols[colID].Caption = "no";
             //grfDept.Cols[colCode].Caption = "รหัส";
-                        
+
             grfPg.Cols[colPgFilename].Caption = "Desc1";
-                        
+            grfPg.Cols[3].Caption = "VN";
 
             Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
             //CellRange rg1 = grfBank.GetCellRange(1, colE, grfBank.Rows.Count, colE);

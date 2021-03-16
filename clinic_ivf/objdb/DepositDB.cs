@@ -135,6 +135,25 @@ namespace clinic_ivf.objdb
             }
             return re;
         }
+        public String updateAmountVoidWithDraw(String depositid, String amount)
+        {
+            String re = "";
+            String sql = "";
+            int chk = 0;
+
+            sql = "Update " + deposit.table + " Set " +
+                " " + deposit.amount + " = " + deposit.amount + " +'" + amount + "' " +
+                "Where " + deposit.deposit_id + "='" + depositid + "'";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+            return re;
+        }
         private void chkNull(Deposit p)
         {
             long chk = 0;
@@ -255,7 +274,29 @@ namespace clinic_ivf.objdb
 
             return re;
         }
+        public String voidDeposit(String depositid, String userId)
+        {
+            String re = "";
+            String sql = "";
+            int chk = 0;
+            
+            sql = "Update " + deposit.table + " Set " +
+                " " + deposit.active + "= '3'" +
+                "," + deposit.date_cancel + "= now()" +
+                "," + deposit.user_cancel + "= '" + userId + "@" + conn._IPAddress + "'" +
+                "Where " + deposit.pkField + "='" + depositid + "'"
+                ;
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
 
+            return re;
+        }
         public Deposit setAccCashTransfer(DataTable dt)
         {
             Deposit dgs1 = new Deposit();

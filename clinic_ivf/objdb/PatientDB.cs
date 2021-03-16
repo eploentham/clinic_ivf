@@ -812,6 +812,20 @@ namespace clinic_ivf.objdb
 
             return re;
         }
+        public String updateDiseases(String pttId, String diseases)
+        {
+            DataTable dt = new DataTable();
+            String re = "";
+            
+            String sql = "Update " + ptt.table + " Set " +
+            "" + ptt.congenital_diseases_description + "='" + diseases + "' " +
+            "Where " + ptt.pkField + "='" + pttId + "'";
+
+            re = conn.ExecuteNonQuery(conn.conn, sql);
+            
+
+            return re;
+        }
         public String updatePatientRecordDateTime(String pttId)
         {
             DataTable dt = new DataTable();

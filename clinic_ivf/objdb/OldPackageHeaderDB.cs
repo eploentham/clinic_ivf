@@ -153,6 +153,7 @@ namespace clinic_ivf.objdb
             item = new ComboBoxItem();
             item.Value = "";
             item.Text = "";
+            c.Items.Clear();
             c.Items.Add(item);
             foreach (DoctorOld cus1 in ldtrO)
             {

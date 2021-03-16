@@ -28,5 +28,7 @@ namespace clinic_ivf.object1
         public String status_up_stock { get; set; }
         public String pharmacy_finish_date_time { get; set; }
         public String pharmacy_sticker_date_time { get; set; }
+        public String staff_id { get; set; }
+        public String order_date_time { get; set; }
     }
 }

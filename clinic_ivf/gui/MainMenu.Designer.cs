@@ -42,6 +42,7 @@
             this.menuOrScreen = new System.Windows.Forms.ToolStripMenuItem();
             this.menuReqLabFormA = new System.Windows.Forms.ToolStripMenuItem();
             this.menuMiscView = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuDeposit = new System.Windows.Forms.ToolStripMenuItem();
             this.menuLab = new System.Windows.Forms.ToolStripMenuItem();
             this.menuLabAccept = new System.Windows.Forms.ToolStripMenuItem();
             this.menuLabOpu = new System.Windows.Forms.ToolStripMenuItem();
@@ -95,7 +96,7 @@
             this.tC1 = new C1.Win.C1Command.C1DockingTab();
             this.PageS = new C1.Win.C1Command.C1DockingTabPage();
             this.theme1 = new C1.Win.C1Themes.C1ThemeController();
-            this.menuDeposit = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuTemplateDrug = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tCC1)).BeginInit();
             this.tCC1.SuspendLayout();
@@ -219,6 +220,12 @@
             this.menuMiscView.Name = "menuMiscView";
             this.menuMiscView.Size = new System.Drawing.Size(182, 22);
             this.menuMiscView.Text = "เบิกเบ็ดเตล็ด";
+            // 
+            // menuDeposit
+            // 
+            this.menuDeposit.Name = "menuDeposit";
+            this.menuDeposit.Size = new System.Drawing.Size(182, 22);
+            this.menuDeposit.Text = "Deposit";
             // 
             // menuLab
             // 
@@ -360,7 +367,8 @@
             // menuDoctor
             // 
             this.menuDoctor.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuDoctorDefault});
+            this.menuDoctorDefault,
+            this.menuTemplateDrug});
             this.menuDoctor.Name = "menuDoctor";
             this.menuDoctor.Size = new System.Drawing.Size(55, 20);
             this.menuDoctor.Text = "Doctor";
@@ -368,7 +376,7 @@
             // menuDoctorDefault
             // 
             this.menuDoctorDefault.Name = "menuDoctorDefault";
-            this.menuDoctorDefault.Size = new System.Drawing.Size(148, 22);
+            this.menuDoctorDefault.Size = new System.Drawing.Size(180, 22);
             this.menuDoctorDefault.Text = "Doctor Screen";
             // 
             // menuInit
@@ -613,11 +621,11 @@
             // 
             this.theme1.Theme = "BeigeOne";
             // 
-            // menuDeposit
+            // menuTemplateDrug
             // 
-            this.menuDeposit.Name = "menuDeposit";
-            this.menuDeposit.Size = new System.Drawing.Size(182, 22);
-            this.menuDeposit.Text = "Deposit";
+            this.menuTemplateDrug.Name = "menuTemplateDrug";
+            this.menuTemplateDrug.Size = new System.Drawing.Size(180, 22);
+            this.menuTemplateDrug.Text = "Template Drug";
             // 
             // MainMenu
             // 
@@ -712,5 +720,6 @@
         private System.Windows.Forms.ToolStripMenuItem menuCashierRefund;
         private System.Windows.Forms.ToolStripMenuItem menuCust;
         private System.Windows.Forms.ToolStripMenuItem menuDeposit;
+        private System.Windows.Forms.ToolStripMenuItem menuTemplateDrug;
     }
 }

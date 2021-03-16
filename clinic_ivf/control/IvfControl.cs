@@ -175,8 +175,11 @@ namespace clinic_ivf.control
         }
         public void getInit()
         {
+            //logw.WriteLog("d", "IvfControl getInit  00");
             ivfDB.sexDB.getlSex();
+            //logw.WriteLog("d", "IvfControl getInit  01");
             cop = ivfDB.copDB.selectByCode1("001");
+            //logw.WriteLog("d", "IvfControl getInit  02");
             _IPAddress = GetLocalIPAddress();
             conn._IPAddress = _IPAddress;
         }
@@ -2066,6 +2069,28 @@ namespace clinic_ivf.control
             cbo.Tag = null;
             cbo.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             cbo.Size = new Size(width, 30);
+        }
+        public void setControlC1ComboBox(ref C1ComboBox cbo, Font font, String name, int width, int x, int y)
+        {
+            cbo.AllowSpinLoop = false;
+            cbo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            cbo.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            cbo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            cbo.GapHeight = 0;
+            cbo.ImagePadding = new System.Windows.Forms.Padding(0);
+            cbo.ItemsDisplayMember = "";
+            cbo.ItemsValueMember = "";
+            cbo.Location = new System.Drawing.Point(x, y);
+            cbo.Name = name;
+            cbo.Size = new System.Drawing.Size(65, 20);
+            cbo.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            cbo.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
+            cbo.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            cbo.TabIndex = 538;
+            cbo.Tag = null;
+            cbo.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            cbo.Size = new Size(width, 30);
+            cbo.Font = font;
         }
         public void setControlC1Button(ref C1Button btn, Font fEdit, String text, String name, int x, int y)
         {

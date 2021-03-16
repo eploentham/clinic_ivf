@@ -940,3 +940,7 @@ ALTER TABLE `ivf_ww_101`.`b_company`
 ADD COLUMN `prefix_deposit_doc` VARCHAR(45) NULL AFTER `prefix_rec_doc`,
 ADD COLUMN `deposit_doc` INT NULL AFTER `prefix_deposit_doc`;
 
+ALTER TABLE `ivf_ww_101`.`jobpxdetail` 
+ADD COLUMN `staff_id` BIGINT NULL AFTER `pharmacy_sticker_date_time`,
+ADD COLUMN `order_date_time` VARCHAR(45) NULL AFTER `staff_id`;
+

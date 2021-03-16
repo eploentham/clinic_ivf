@@ -169,29 +169,31 @@ namespace clinic_ivf.gui
             frm.WindowState = FormWindowState.Normal;
             frm.StartPosition = FormStartPosition.CenterScreen;
             frm.ShowDialog(this);
-
-            OldBilldetail obilld = new OldBilldetail();
-            obilld.ID = "";
-            obilld.VN = txtVn.Text;
-            obilld.Name = "OtherService discount ";
-            obilld.Extra = "1";
-            obilld.item_id = "2640000191";      // form table specialitem
-            obilld.status = "special";
-            obilld.qty = "1";
-            obilld.Price = "-" + ic.deposit.Replace(",", "");
-            obilld.Total = "-" + ic.deposit.Replace(",", "");
-            obilld.price1 = "-" + ic.deposit.Replace(",", "");
-            obilld.Comment = ic.dwithdrawid;
-            obilld.bill_group_id = "2650000099";            // form table billgroup
-            obilld.GroupType = "Discount";
-            obilld.bill_id = txtBillId.Text;
-            long chk = 0;
-            String re = ic.ivfDB.obildDB.insertBillDetail(obilld, "");
-            if (long.TryParse(re, out chk))
+            if (ic.dwithdrawid.Length > 0)
             {
-                setGrfBillD();
-                calTotal("");
-                calTotalCredit("");
+                OldBilldetail obilld = new OldBilldetail();
+                obilld.ID = "";
+                obilld.VN = txtVn.Text;
+                obilld.Name = "OtherService discount ";
+                obilld.Extra = "1";
+                obilld.item_id = "2640000191";      // form table specialitem
+                obilld.status = "special";
+                obilld.qty = "1";
+                obilld.Price = "-" + ic.deposit.Replace(",", "");
+                obilld.Total = "-" + ic.deposit.Replace(",", "");
+                obilld.price1 = "-" + ic.deposit.Replace(",", "");
+                obilld.Comment = ic.dwithdrawid;
+                obilld.bill_group_id = "2650000099";            // form table billgroup
+                obilld.GroupType = "Discount";
+                obilld.bill_id = txtBillId.Text;
+                long chk = 0;
+                String re = ic.ivfDB.obildDB.insertBillDetail(obilld, "");
+                if (long.TryParse(re, out chk))
+                {
+                    setGrfBillD();
+                    calTotal("");
+                    calTotalCredit("");
+                }
             }
         }
 
@@ -626,6 +628,12 @@ namespace clinic_ivf.gui
             {
                 cardname = cboCreditBank.Text.Replace("-", "");
             }
+
+
+            //deposit process
+            setBillIdDeposit();
+
+
             //day = DateTime.Now.ToString("dd"); 
             //month = DateTime.Now.ToString("MM");
             //year = DateTime.Now.ToString("yyyy");
@@ -806,11 +814,7 @@ namespace clinic_ivf.gui
                 String re = ic.ivfDB.obildDB.insertBillDetail(obilld, "");
                 if (long.TryParse(re, out chk))
                 {
-                    txtDiscount.Value = "";
-                    pnDiscount.Enabled = false;
-                    panel3.Enabled = false;
-                    chkDiscount.Enabled = false;
-                    txtDiscount.Enabled = false;
+                    setDescountDisable();
                     setGrfBillD();
                     calTotal("");
                     calTotalCredit("");
@@ -818,12 +822,8 @@ namespace clinic_ivf.gui
             }
             else
             {
-                txtDiscount.Value = "";
-                pnDiscount.Enabled = true;
-                panel3.Enabled = true;
-                chkDiscount.Enabled = true;
-                txtDiscount.Enabled = true;
-                foreach(Row row in grfBillD.Rows)
+                setDescountEnable();
+                foreach (Row row in grfBillD.Rows)
                 {
                     try
                     {
@@ -846,7 +846,22 @@ namespace clinic_ivf.gui
                 calTotalCredit("");
             }
         }
-
+        private void setDescountEnable()
+        {
+            txtDiscount.Value = "";
+            pnDiscount.Enabled = true;
+            panel3.Enabled = true;
+            chkDiscount.Enabled = true;
+            txtDiscount.Enabled = true;
+        }
+        private void setDescountDisable()
+        {
+            txtDiscount.Value = "";
+            pnDiscount.Enabled = false;
+            panel3.Enabled = false;
+            chkDiscount.Enabled = false;
+            txtDiscount.Enabled = false;
+        }
         private void BtnChargeAdd_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
@@ -1939,6 +1954,16 @@ namespace clinic_ivf.gui
                 OldBilldetail bild = new OldBilldetail();
                 bild = ic.ivfDB.obildDB.selectByPk1(bildid);
                 ic.ivfDB.obildDB.voidBillDetailBybildid(bildid, ic.cStf.staff_id);
+                if (bild.item_id.Equals("2640000191"))        // check deposit
+                {
+                    DepositWithDraw dwithdraw = new DepositWithDraw();
+                    dwithdraw = ic.ivfDB.dwitdrawDB.selectByPk(bild.Comment.Trim());
+                    if (dwithdraw.withdraw_id.Length > 0)
+                    {
+                        String re = ic.ivfDB.dwitdrawDB.voidDepositWithDraw(dwithdraw.withdraw_id, ic.userId);
+                        //String re1 = ic.ivfDB.depositDB.updateAmountVoidWithDraw(dwithdraw.deposit_id, dwithdraw.withdraw_amount);
+                    }
+                }
                 setGrfBillD();
                 if (bild.item_id.Equals("2640000098"))      //OtherService service charge
                 {
@@ -1948,6 +1973,40 @@ namespace clinic_ivf.gui
                     txtTotal.Value = amt;
                     txtTotalCredit.Value = 0;
                 }
+                if (bild.item_id.Equals("2640000067"))      //OtherService Discount
+                {
+                    setDescountEnable();
+                }
+            }
+        }
+        private void setBillIdDeposit()
+        {
+            try
+            {
+                foreach (Row row in grfBillD.Rows)
+                {
+                    String bildid = "";
+                    bildid = row[colId] != null ? row[colId].ToString() : "";
+                    if (bildid.Length <= 0) continue;
+                    OldBilldetail bild = new OldBilldetail();
+                    bild = ic.ivfDB.obildDB.selectByPk1(bildid);
+                    //ic.ivfDB.obildDB.voidBillDetailBybildid(bildid, ic.cStf.staff_id);
+                    if (bild.item_id.Equals("2640000191"))        // check deposit
+                    {
+                        DepositWithDraw dwithdraw = new DepositWithDraw();
+                        dwithdraw = ic.ivfDB.dwitdrawDB.selectByPk(bild.Comment.Trim());
+                        if (dwithdraw.withdraw_id.Length > 0 & dwithdraw.bill_id.Length <= 0)//never withdraw amount
+                        {
+                            String re = ic.ivfDB.dwitdrawDB.updateBillId(dwithdraw.withdraw_id, txtBillId.Text.Trim());
+                            String re1 = ic.ivfDB.depositDB.updateAmount(dwithdraw.deposit_id, dwithdraw.withdraw_amount);
+
+                        }
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+                ic.logw.WriteLog("e", "FrmCashierAdd setBillIdDeposit error "+ex.Message);
             }
         }
         private void ContextMenu_send_back(object sender, System.EventArgs e)

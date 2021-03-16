@@ -738,6 +738,7 @@ namespace clinic_ivf.objdb
                 stf1.status_doctor = dt.Rows[0][stf.status_doctor] != null ? dt.Rows[0][stf.status_doctor].ToString() : "0";
                 stf1.doctor_id = dt.Rows[0][stf.doctor_id] != null ? dt.Rows[0][stf.doctor_id].ToString() : "0";
                 stf1.doctor_id_old = dt.Rows[0][stf.doctor_id_old] != null ? dt.Rows[0][stf.doctor_id_old].ToString() : "0";
+                stf1.name_full = stf1.staff_fname_e + " " + stf1.staff_lname_e;
             }
             else
             {
@@ -791,6 +792,7 @@ namespace clinic_ivf.objdb
             stf1.status_doctor = "0";
             stf1.doctor_id = "0";
             stf1.doctor_id_old = "0";
+            stf1.name_full = "";
             return stf1;
         }
         public String getStaffNameBylStfEx(String selected)

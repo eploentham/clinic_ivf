@@ -710,16 +710,22 @@ namespace clinic_ivf.gui
             String aaa = dt.Rows[0]["sperm_iui_date"].ToString();
 
             Patient ptt2 = new Patient();
-            if (dt.Rows[0]["hn_male"].ToString().Length > 0)
+            if (dt.Rows[0]["hn_male"].ToString().IndexOf("/") < 0)
             {
-                ptt2 = ic.ivfDB.pttDB.selectByHn(dt.Rows[0]["hn_male"].ToString());
+                if (dt.Rows[0]["hn_male"].ToString().Length > 0)
+                {
+                    ptt2 = ic.ivfDB.pttDB.selectByHn(dt.Rows[0]["hn_male"].ToString());
+                }
+                dt.Rows[0]["hn_male"] = ic.showHN(ptt2.patient_hn, ptt2.patient_year);
             }
-            dt.Rows[0]["hn_male"] = ic.showHN(ptt2.patient_hn, ptt2.patient_year);
-            if (dt.Rows[0]["hn_female"].ToString().Length > 0)
+            if (dt.Rows[0]["hn_female"].ToString().IndexOf("/") < 0)
             {
-                ptt2 = ic.ivfDB.pttDB.selectByHn(dt.Rows[0]["hn_female"].ToString());
+                if (dt.Rows[0]["hn_female"].ToString().Length > 0)
+                {
+                    ptt2 = ic.ivfDB.pttDB.selectByHn(dt.Rows[0]["hn_female"].ToString());
+                }
+                dt.Rows[0]["hn_female"] = ic.showHN(ptt2.patient_hn, ptt2.patient_year);
             }
-            dt.Rows[0]["hn_female"] = ic.showHN(ptt2.patient_hn, ptt2.patient_year);
 
             frm.setLabFormASpermReport(dt);
             frm.ShowDialog(this);
@@ -1244,8 +1250,24 @@ namespace clinic_ivf.gui
             lFormA.vn_old = txtVnOld.Text;
             lFormA.hn_old = txtHnOld.Text;
             lFormA.status_assist_hatching = chkAssistHatching.Checked ? "1" : "0";
-            lFormA.hn_female = txtHnFeMale.Text;
-            lFormA.hn_male = txtHnMale.Text;
+            if (txtHnFeMale.Text.Trim().IndexOf("/") > 0)
+            {
+                lFormA.hn_female = txtHnFeMale.Text.Trim().Substring(0, txtHnFeMale.Text.Trim().IndexOf(ic.hnspareyear));
+            }
+            else
+            {
+                lFormA.hn_female = txtHnFeMale.Text.Trim();
+            }
+            if (txtHnMale.Text.Trim().IndexOf("/") > 0)
+            {
+                lFormA.hn_male = txtHnMale.Text.Trim().Substring(0, txtHnMale.Text.Trim().IndexOf(ic.hnspareyear));
+            }
+            else
+            {
+                lFormA.hn_male = txtHnMale.Text.Trim();
+            }
+            //lFormA.hn_female = txtHnFeMale.Text;
+            //lFormA.hn_male = txtHnMale.Text;
             lFormA.name_female = txtNameFeMale.Text;
             lFormA.name_male = txtNameMale.Text;
             lFormA.fresh_sperm_collect_time = txtFreshSpermColTime.Text;
@@ -1405,9 +1427,17 @@ namespace clinic_ivf.gui
                 {
                     hnfemale = txtHnFeMale.Text.Trim().Substring(0, txtHnFeMale.Text.Trim().IndexOf(ic.hnspareyear));
                 }
+                else
+                {
+                    hnfemale = txtHnFeMale.Text.Trim();
+                }
                 if (txtHnMale.Text.Trim().IndexOf("/") > 0)
                 {
                     hnmale = txtHnMale.Text.Trim().Substring(0, txtHnMale.Text.Trim().IndexOf(ic.hnspareyear));
+                }
+                else
+                {
+                    hnmale = txtHnMale.Text.Trim();
                 }
                 LabRequest lbReq = new LabRequest();
                 if ((gbOPU.Enabled && chkWaitOpuDate.Checked) || (gbOPU.Enabled && chkConfirmOpuDate.Checked) || chkOPU)
@@ -1486,9 +1516,17 @@ namespace clinic_ivf.gui
                 {
                     hnfemale = txtHnFeMale.Text.Trim().Substring(0, txtHnFeMale.Text.Trim().IndexOf(ic.hnspareyear));
                 }
+                else
+                {
+                    hnfemale = txtHnFeMale.Text.Trim();
+                }
                 if (txtHnMale.Text.Trim().IndexOf("/") > 0)
                 {
                     hnmale = txtHnMale.Text.Trim().Substring(0, txtHnMale.Text.Trim().IndexOf(ic.hnspareyear));
+                }
+                else
+                {
+                    hnmale = txtHnMale.Text.Trim();
                 }
                 //String re1 = ic.ivfDB.lbReqDB.insertLabRequest(lbReq, txtStfConfirmID.Text);
                 if (chkETNotoTranfer.Checked || chkFET.Checked)

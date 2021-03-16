@@ -18,6 +18,7 @@ namespace clinic_ivf.object1
         public String withdraw_name { get; set; }
         public String withdraw_amount { get; set; }
         public String t_patient_id { get; set; }
-
+        public String bill_id { get; set; }
+        public String status_payment { get; set; }
     }
 }

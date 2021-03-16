@@ -44,6 +44,8 @@ namespace clinic_ivf.objdb
             oJpxd.status_print = "status_print";
             oJpxd.status_up_stock = "status_up_stock";
             oJpxd.pharmacy_finish_date_time = "pharmacy_finish_date_time";
+            oJpxd.staff_id = "staff_id";
+            oJpxd.order_date_time = "order_date_time";
 
             oJpxd.table = "JobPxDetail";
             oJpxd.pkField = "ID";
@@ -61,6 +63,7 @@ namespace clinic_ivf.objdb
             p.Comment = p.Comment.Equals("")? "NULL" : p.Comment;
             p.status_print = p.status_print == null ? "0" : p.status_print;
             p.status_up_stock = p.status_up_stock == null ? "0" : p.status_up_stock;
+            p.order_date_time = p.order_date_time == null ? "" : p.order_date_time;
 
             p.ID = long.TryParse(p.ID, out chk) ? chk.ToString() : "0";
             p.VN = long.TryParse(p.VN, out chk) ? chk.ToString() : "0";
@@ -71,6 +74,7 @@ namespace clinic_ivf.objdb
             p.PID = long.TryParse(p.PID, out chk) ? chk.ToString() : "0";
             p.row1 = long.TryParse(p.row1, out chk) ? chk.ToString() : "0";
             p.pckdid = long.TryParse(p.pckdid, out chk) ? chk.ToString() : "0";
+            p.staff_id = long.TryParse(p.staff_id, out chk) ? chk.ToString() : "0";
 
             p.Price = decimal.TryParse(p.Price, out chk1) ? chk1.ToString() : "0";
             p.price1 = decimal.TryParse(p.price1, out chk1) ? chk1.ToString() : "0";
@@ -104,6 +108,8 @@ namespace clinic_ivf.objdb
                 "," + oJpxd.pckdid + "= '" + p.pckdid + "'" +
                 "," + oJpxd.status_print + "= '" + p.status_print + "'" +
                 "," + oJpxd.status_up_stock + "= '" + p.status_up_stock + "'" +
+                "," + oJpxd.staff_id + "= '" + p.staff_id + "'" +
+                "," + oJpxd.order_date_time + "= now() " +
                 "";
             try
             {
