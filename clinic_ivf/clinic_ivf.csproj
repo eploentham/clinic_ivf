@@ -2473,6 +2473,8 @@
     <None Include="Resources\Message-already-read.ico" />
     <None Include="Resources\Subway_TokyoAsakusa.ico" />
     <None Include="Resources\iconarchive-red-orb-alphabet-letter-t.ico" />
+    <None Include="Resources\doctor32.png" />
+    <None Include="Resources\nurse32.png" />
     <Content Include="TSCLIB.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -2062,7 +2062,7 @@ namespace clinic_ivf.gui
             //grfBillD.Cols[colDiscount].Editor = txt;
             //grfBillD.Cols[colNetAmt].Editor = txt;
 
-            grfBillD.Cols[colName].Width = 360;
+            grfBillD.Cols[colName].Width = 560;
             grfBillD.Cols[colAmt].Width = 120;
             grfBillD.Cols[colDiscount].Width = 120;
             grfBillD.Cols[colNetAmt].Width = 120;

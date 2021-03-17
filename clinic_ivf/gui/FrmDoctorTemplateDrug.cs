@@ -55,6 +55,9 @@ namespace clinic_ivf.gui
 
             theme1 = new C1ThemeController();
             theme1.Theme = ic.iniC.themeApplication;
+            sep = new C1SuperErrorProvider();
+            stt = new C1SuperTooltip();
+
             stf = new Staff();
             stf = ic.ivfDB.stfDB.selectByPk1(ic.userId);
 
@@ -71,9 +74,50 @@ namespace clinic_ivf.gui
             cboTempDrugName.SelectedItemChanged += CboTempDrugName_SelectedItemChanged;
             grfDrug.DoubleClick += GrfDrug_DoubleClick;
             btnNew.Click += BtnNew_Click;
+            cboTempDrugName.KeyPress += CboTempDrugName_KeyPress;
+            cboDrugName.KeyPress += CboDrugName_KeyPress;
+            txtQty.KeyPress += TxtQty_KeyPress;
+            txtEng.KeyPress += TxtEng_KeyPress;
+            txtThai.KeyPress += TxtThai_KeyPress;
 
             pageLoad = false;
         }
+
+        private void TxtThai_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //throw new NotImplementedException();
+            sep.Clear();
+            stt.Hide();
+        }
+
+        private void TxtEng_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //throw new NotImplementedException();
+            sep.Clear();
+            stt.Hide();
+        }
+
+        private void TxtQty_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //throw new NotImplementedException();
+            sep.Clear();
+            stt.Hide();
+        }
+
+        private void CboDrugName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //throw new NotImplementedException();
+            sep.Clear();
+            stt.Hide();
+        }
+
+        private void CboTempDrugName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //throw new NotImplementedException();
+            sep.Clear();
+            stt.Hide();
+        }
+
         private void BtnNew_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
@@ -100,6 +144,9 @@ namespace clinic_ivf.gui
         {
             //throw new NotImplementedException();
             if (pageLoad) return;
+            sep.Clear();
+            stt.Hide();
+
             String tempdrugname = "";
 
             tempdrugname = cboTempDrugName.SelectedItem == null ? "" : ((ComboBoxItem)cboTempDrugName.SelectedItem).Value;
@@ -109,6 +156,38 @@ namespace clinic_ivf.gui
         private void BtnSave_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
+            Decimal qty = 0;
+            if (cboTempDrugName.Text.Trim().Length <= 0)
+            {
+                //MessageBox.Show
+                sep.SetError(cboTempDrugName, "Error");
+                stt.Show("ไม่มี ชื่อ Template", cboTempDrugName);
+                return;
+            }
+            if (cboDrugName.Text.Trim().Length <= 0)
+            {
+                sep.SetError(cboDrugName, "Error");
+                stt.Show("ไม่มี ชื่อ Drug", cboDrugName);
+                return;
+            }
+            if(!decimal.TryParse(txtQty.Text.Trim(), out qty) && qty <=0)
+            {
+                sep.SetError(txtQty, "Error");
+                stt.Show("QTY error", txtQty);
+                return;
+            }
+            if (txtEng.Text.Trim().Length <= 0)
+            {
+                sep.SetError(txtEng, "Error");
+                stt.Show("English error", txtEng);
+                return;
+            }
+            if (txtThai.Text.Trim().Length <= 0)
+            {
+                sep.SetError(txtThai, "Error");
+                stt.Show("Thai error", txtThai);
+                return;
+            }
             TemplateDrug tdrug = new TemplateDrug();
             tdrug = setTemplateDrug();
             if (tdrug.temp_drug_id != null)
@@ -148,6 +227,8 @@ namespace clinic_ivf.gui
             //throw new NotImplementedException();
             if (pageLoad) return;
             String drugid = "";
+            sep.Clear();
+            stt.Hide();
 
             drugid = cboDrugName.SelectedItem == null ? "" : ((ComboBoxItem)cboDrugName.SelectedItem).Value;
             setControlDrug(drugid);
@@ -198,7 +279,7 @@ namespace clinic_ivf.gui
             //tabScan.Name = "c1DockingTabPage1";
             tabDeposit.Size = new System.Drawing.Size(667, 175);
             tabDeposit.TabIndex = 0;
-            tabDeposit.Text = "Deposit";
+            tabDeposit.Text = "Template Drug";
             tabDeposit.Name = "tabDeposit";
             tcMain.Controls.Add(tabDeposit);
 
@@ -231,6 +312,7 @@ namespace clinic_ivf.gui
             gapY += gapLine;
             ic.setControlLabel(ref lbcboDrugName, fEdit, "Drug Name :", "lbcboDrugName", gapX, gapY);
             ic.setControlC1ComboBox(ref cboDrugName, "cboDrugName", 400, xCol2, gapY);
+            cboDrugName.Font = fEdit;
 
             gapY += gapLine;
             ic.setControlLabel(ref lbtxtRemark, fEdit, "Remark :", "lbtxtRemark", gapX, gapY);
@@ -286,6 +368,21 @@ namespace clinic_ivf.gui
             tabDeposit.Controls.Add(grfDrug);
 
             this.Controls.Add(tcMain);
+
+            theme1.SetTheme(lbcboDrugName, ic.theme);
+            theme1.SetTheme(txtEng, ic.theme);
+
+
+            Action<Control> setTheme = null;
+            setTheme = (c) =>
+            {
+                if (C1.Win.C1Themes.C1ThemeController.IsObjectThemeable(c))
+                    this.theme1.SetTheme(c, "Office2010Blue");
+                foreach (Control cc in c.Controls)
+                    setTheme(cc);
+            };
+            setTheme(this);
+
         }
         private void ContextMenu_void_drug(object sender, System.EventArgs e)
         {

@@ -423,7 +423,15 @@ namespace clinic_ivf.gui
             dt = ic.ivfDB.tdrugDB.selectByDtrId(ic.userId, tdrugid);
             foreach (DataRow drow in dt.Rows)
             {
-                txt += drow["DUName"].ToString() +";QTY "+ drow["qty"].ToString() + ";usage " + drow["usage_eng"].ToString()+Environment.NewLine;
+                if (cboLangSticker.Text.Trim().Equals("Thai"))
+                {
+                    txt += drow["DUName"].ToString().Trim() + ";QTY " + drow["qty"].ToString() + ";usage " + drow["usage_thai"].ToString().Trim().Replace("\n", "") + Environment.NewLine;
+                }
+                else
+                {
+                    txt += drow["DUName"].ToString().Trim() + ";QTY " + drow["qty"].ToString() + ";usage " + drow["usage_eng"].ToString().Trim().Replace("\n", "") + Environment.NewLine;
+                }
+                
             }
             Clipboard.SetText(txt);
             //this.richTextBox1.Paste();
@@ -5209,12 +5217,15 @@ namespace clinic_ivf.gui
                     grfDtrOrderNew.Cols[1].Caption = "Drug";
                     grfDtrOrderNew.Cols[2].Caption = "QTY";
                     grfDtrOrderNew.Cols[3].Caption = "USAGE";
-                    ic.setControlC1Button(ref btnDtrOrderNew, fEdit, "New", "btnNew", 400, 20);
-
+                    ic.setControlC1Button(ref btnDtrOrderNew, fEdit, "Order Drug", "btnNew", 400, 20);
+                    btnDtrOrderNew.Height = 40;
                     frmDtrOrderNew.Controls.Add(grfDtrOrderNew);
                     frmDtrOrderNew.Controls.Add(btnDtrOrderNew);
                     btnDtrOrderNew.Click += BtnDtrOrderNew_Click;
-
+                    btnDtrOrderNew.Image = Resources.doctor32;
+                    btnDtrOrderNew.ImageAlign = ContentAlignment.MiddleLeft;
+                    theme1.SetTheme(grfDtrOrderNew, ic.theme);
+                    theme1.SetTheme(frmDtrOrderNew, ic.theme);
                     frmDtrOrderNew.ShowDialog(this);
                     if (lstkdOrder.Count > 0)
                     {
@@ -5294,11 +5305,37 @@ namespace clinic_ivf.gui
                     {
                         id = order[3];
                         ic.ivfDB.oJpxdDB.deleteByPk(id);
-                        richTextBox1.Text.Replace(id, "");
+                        richTextBox1.Text = richTextBox1.Text.Replace(";"+id, "");
                     }
                     i++;
                 }
             }
+
+
+            int index = 0;
+            var temp = richTextBox1.Text;
+            //richTextArea.Text = "";
+            //richTextArea.Text = temp;
+            if (lstkdOrder.Count > 0)
+            {
+                OldStockDrug stkd0 = new OldStockDrug();
+                OldStockDrug stkdLast = new OldStockDrug();
+                stkd0 = lstkdOrder[0];
+                stkdLast = lstkdOrder[lstkdOrder.Count - 1];
+                int num0 = richTextBox1.Find(stkd0.DUName, index, richTextBox1.TextLength, RichTextBoxFinds.None);
+                int numLast = richTextBox1.Find(stkdLast.date_cancel, index, richTextBox1.TextLength, RichTextBoxFinds.None);
+                //richTextBox1.SelectionStart = richTextBox1.Find(stkd0.DUName, index, richTextBox1.TextLength, RichTextBoxFinds.None);
+                richTextBox1.SelectionBackColor = Color.White;
+                //richTextBox1.SelectionLength = richTextBox1.Find(stkdLast.EUsage, index, richTextBox1.TextLength, RichTextBoxFinds.None);
+
+
+                richTextBox1.Select(num0, (numLast - num0 + stkdLast.date_cancel.Length));
+                richTextBox1.SelectionBackColor = Color.White;
+            }
+            
+
+            this.SaveDocument(this.documentPath == null);
+
             setGrfOrder(txtVnOld.Text);
         }
         private void BtnDtrOrderNew_Click(object sender, EventArgs e)
@@ -5760,8 +5797,10 @@ namespace clinic_ivf.gui
             grfOrder.Cols[colOrdName].Width = 280;
             grfOrder.Cols[colOrdPrice].Width = 100;
             grfOrder.Cols[colOrdQty].Width = 80;
-            grfOrder.Cols[colOrdUsT].Width = 100;
-
+            grfOrder.Cols[colOrdUsT].Width = 500;
+            grfOrder.Cols[colOrdstatus].Width = 80;
+            grfOrder.Cols[colOrdAmt].Width = 80;
+            grfOrder.Cols[colOrdInclude].Width = 80;
             grfOrder.ShowCursor = true;
             //grdFlex.Cols[colID].Caption = "no";
             //grfDept.Cols[colCode].Caption = "รหัส";
@@ -6055,7 +6094,7 @@ namespace clinic_ivf.gui
             cs.DataType = typeof(bool);
             cs.ImageAlign = ImageAlignEnum.LeftCenter;
 
-            grfPackage.Cols[colBlName].Width = 320;
+            grfPackage.Cols[colBlName].Width = 520;
             grfPackage.Cols[colBlInclude].Width = 80;
             grfPackage.Cols[colBlPrice].Width = 80;
             grfPackage.Cols[colBlRemark].Width = 100;

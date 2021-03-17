@@ -350,17 +350,17 @@ namespace clinic_ivf.gui
             grfReq.Font = fEdit;
             grfReq.Dock = System.Windows.Forms.DockStyle.Fill;
             grfReq.Location = new System.Drawing.Point(0, 0);
-
+            grfReq.SelectionMode = SelectionModeEnum.Row;
             //FilterRow fr = new FilterRow(grfExpn);
 
             grfReq.AfterRowColChange += GrfReq_AfterRowColChange;
             grfReq.DoubleClick += GrfReq_DoubleClick;
             //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
-            //ContextMenu menuGw = new ContextMenu();
-            //menuGw.MenuItems.Add("ป้อน LAB OPU/FET", new EventHandler(ContextMenu_edit));
+            ContextMenu menuGw = new ContextMenu();
+            menuGw.MenuItems.Add("void Lab Seprm", new EventHandler(ContextMenu_void_labsperm_grfReq));
             //menuGw.MenuItems.Add("รับทราบการเปลี่ยนแปลงเวลา", new EventHandler(ContextMenu_Gw_time_modi));
             ////menuGw.MenuItems.Add("&ยกเลิก", new EventHandler(ContextMenu_Gw_Cancel));
-            //grfReq.ContextMenu = menuGw;
+            grfReq.ContextMenu = menuGw;
             gB.Controls.Add(grfReq);
 
             theme1.SetTheme(grfReq, "Office2010Blue");
@@ -371,7 +371,19 @@ namespace clinic_ivf.gui
             //throw new NotImplementedException();
             ContextMenu_edit(null, null);
         }
-
+        private void ContextMenu_void_labsperm_grfReq(object sender, System.EventArgs e)
+        {
+            String chk = "", name = "", id = "", labname="", reqcode="";
+            name = grfReq[grfReq.Row, colRqNameMale] != null ? grfReq[grfReq.Row, colRqNameMale].ToString() : "";
+            labname = grfReq[grfReq.Row, colRqLabName] != null ? grfReq[grfReq.Row, colRqLabName].ToString() : "";
+            reqcode = grfReq[grfReq.Row, colRqReqNum] != null ? grfReq[grfReq.Row, colRqReqNum].ToString() : "";
+            if (MessageBox.Show("ต้องการ Void Lab Sperm  \n" + name+" "+ labname+"\n"+reqcode, "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+            {
+                id = grfReq[grfReq.Row, colRqId] != null ? grfReq[grfReq.Row, colRqId].ToString() : "";
+                String re = ic.ivfDB.lbReqDB.VoidRequest(id, ic.userId);
+                setGrfReq();
+            }
+        }
         private void ContextMenu_Gw_time_modi(object sender, System.EventArgs e)
         {
             String chk = "", name = "", id = "";
