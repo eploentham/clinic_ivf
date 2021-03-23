@@ -1173,7 +1173,7 @@ namespace clinic_ivf.objdb
             }
 
             int chk = 0;
-            if (int.TryParse(cop1.rec_doc, out chk))
+            if (int.TryParse(cop1.deposit_doc, out chk))
             {
                 chk++;
                 doc = "00000" + chk;

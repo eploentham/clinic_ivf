@@ -64,6 +64,7 @@
             this.menuMedicalRecordView = new System.Windows.Forms.ToolStripMenuItem();
             this.menuDoctor = new System.Windows.Forms.ToolStripMenuItem();
             this.menuDoctorDefault = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuTemplateDrug = new System.Windows.Forms.ToolStripMenuItem();
             this.menuInit = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStaff = new System.Windows.Forms.ToolStripMenuItem();
             this.menuDept = new System.Windows.Forms.ToolStripMenuItem();
@@ -96,7 +97,7 @@
             this.tC1 = new C1.Win.C1Command.C1DockingTab();
             this.PageS = new C1.Win.C1Command.C1DockingTabPage();
             this.theme1 = new C1.Win.C1Themes.C1ThemeController();
-            this.menuTemplateDrug = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuCashierDeposit = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tCC1)).BeginInit();
             this.tCC1.SuspendLayout();
@@ -304,7 +305,8 @@
             // 
             this.menuCashier.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuCashierDefault,
-            this.menuCashierRefund});
+            this.menuCashierRefund,
+            this.menuCashierDeposit});
             this.menuCashier.Name = "menuCashier";
             this.menuCashier.Size = new System.Drawing.Size(58, 20);
             this.menuCashier.Text = "Cashier";
@@ -312,13 +314,13 @@
             // menuCashierDefault
             // 
             this.menuCashierDefault.Name = "menuCashierDefault";
-            this.menuCashierDefault.Size = new System.Drawing.Size(151, 22);
+            this.menuCashierDefault.Size = new System.Drawing.Size(180, 22);
             this.menuCashierDefault.Text = "Cashier Screen";
             // 
             // menuCashierRefund
             // 
             this.menuCashierRefund.Name = "menuCashierRefund";
-            this.menuCashierRefund.Size = new System.Drawing.Size(151, 22);
+            this.menuCashierRefund.Size = new System.Drawing.Size(180, 22);
             this.menuCashierRefund.Text = "Refund";
             // 
             // menuMedicalRecord
@@ -376,8 +378,14 @@
             // menuDoctorDefault
             // 
             this.menuDoctorDefault.Name = "menuDoctorDefault";
-            this.menuDoctorDefault.Size = new System.Drawing.Size(180, 22);
+            this.menuDoctorDefault.Size = new System.Drawing.Size(151, 22);
             this.menuDoctorDefault.Text = "Doctor Screen";
+            // 
+            // menuTemplateDrug
+            // 
+            this.menuTemplateDrug.Name = "menuTemplateDrug";
+            this.menuTemplateDrug.Size = new System.Drawing.Size(151, 22);
+            this.menuTemplateDrug.Text = "Template Drug";
             // 
             // menuInit
             // 
@@ -621,11 +629,11 @@
             // 
             this.theme1.Theme = "BeigeOne";
             // 
-            // menuTemplateDrug
+            // menuCashierDeposit
             // 
-            this.menuTemplateDrug.Name = "menuTemplateDrug";
-            this.menuTemplateDrug.Size = new System.Drawing.Size(180, 22);
-            this.menuTemplateDrug.Text = "Template Drug";
+            this.menuCashierDeposit.Name = "menuCashierDeposit";
+            this.menuCashierDeposit.Size = new System.Drawing.Size(180, 22);
+            this.menuCashierDeposit.Text = "Deposit";
             // 
             // MainMenu
             // 
@@ -721,5 +729,6 @@
         private System.Windows.Forms.ToolStripMenuItem menuCust;
         private System.Windows.Forms.ToolStripMenuItem menuDeposit;
         private System.Windows.Forms.ToolStripMenuItem menuTemplateDrug;
+        private System.Windows.Forms.ToolStripMenuItem menuCashierDeposit;
     }
 }

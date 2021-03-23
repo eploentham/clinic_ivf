@@ -11,6 +11,7 @@ namespace clinic_ivf.object1
         public String hostDB = "", userDB = "", passDB = "", nameDB = "", portDB = "";
         public String hostDBEx = "", userDBEx = "", passDBEx = "", nameDBEx = "", portDBEx = "";
         public String hostDBIm = "", userDBIm = "", passDBIm = "", nameDBIm = "", portDBIm = "";
+        public String hostDBLogTask = "", userDBLogTask = "", passDBLogTask = "", nameDBLogTask = "", portDBLogTask = "";
         public String hostFTP = "", userFTP = "", passFTP = "", portFTP = "", pathImageScan = "", folderFTP="", usePassiveFTP="", pathChar="";
 
         public String grdViewFontSize = "", grdViewFontName = "", themeApplication = "", txtFocus = "", grfRowColor = "", grfRowGreen = "", grfRowRed = "", grfRowYellow = "", pdfFontName="", pdfViewFontSize="";
@@ -25,6 +26,6 @@ namespace clinic_ivf.object1
         public String themeFET = "", themeApp = "";
         public String lisBarcode = "", messageDebug="", statusCashierOldProgram="", spermFreezingDecimal="", statusNurseOrderInclude="";
 
-        public String pathDownloadFile = "";
+        public String pathDownloadFile = "",ipAddressBroadcast="";
     }
 }

@@ -380,12 +380,25 @@ namespace clinic_ivf.gui
             //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
             ContextMenu menuGw = new ContextMenu();
             menuGw.MenuItems.Add("รับ request พิมพ์ Sticker", new EventHandler(ContextMenu_sticker));
-            //menuGw.MenuItems.Add("รับทราบการเปลี่ยนแปลงเวลา", new EventHandler(ContextMenu_Gw_time_modi));
+            menuGw.MenuItems.Add("void Lab Blood", new EventHandler(ContextMenu_void_labblood_grfReq));
             //menuGw.MenuItems.Add("&ยกเลิก", new EventHandler(ContextMenu_Gw_Cancel));
             grfReq.ContextMenu = menuGw;
             pnReq.Controls.Add(grfReq);
 
             theme1.SetTheme(grfReq, "Office2010Blue");
+        }
+        private void ContextMenu_void_labblood_grfReq(object sender, System.EventArgs e)
+        {
+            String chk = "", name = "", id = "", labname = "", reqcode = "";
+            name = grfReq[grfReq.Row, colReqPttName] != null ? grfReq[grfReq.Row, colReqPttName].ToString() : "";
+            labname = grfReq[grfReq.Row, colReqLabName] != null ? grfReq[grfReq.Row, colReqLabName].ToString() : "";
+            //reqcode = grfReq[grfReq.Row, colRqReqNum] != null ? grfReq[grfReq.Row, colRqReqNum].ToString() : "";
+            if (MessageBox.Show("ต้องการ Void Lab Blood "+ labname + " \n" + name + " " + "\n" + reqcode, "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+            {
+                id = grfReq[grfReq.Row, colReqId] != null ? grfReq[grfReq.Row, colReqId].ToString() : "";
+                String re = ic.ivfDB.lbReqDB.VoidRequest(id, ic.userId);
+                setGrfReq();
+            }
         }
         private void initGrfProc()
         {
@@ -876,7 +889,7 @@ namespace clinic_ivf.gui
                 //row1[colRqNameMale] = row["name_male"].ToString();
                 //row1[colRqHnDonor] = row["hn_donor"].ToString();
                 //row1[colRqNameDonor] = row["name_donor"].ToString();
-                
+                row1[0] = i;
                 i++;
             }
             grfReq.Cols[colReqId].Visible = false;

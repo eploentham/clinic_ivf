@@ -83,6 +83,7 @@ namespace clinic_ivf.gui
                 ic.user = stf;
                 ic.conn.user = stf;
                 LogonSuccessful = "1";
+                //ic.ivfDB.insertLogPage(stf.staff_id, "Login", "BtnOk_Click", "logon success");
                 //ic.ivfDB.copDB.cop = ic.ivfDB.copDB.selectByCode1("001");
                 this.Dispose();
             }
@@ -97,6 +98,7 @@ namespace clinic_ivf.gui
         private void TxtUserName_LostFocus(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
+
             C1TextBox a = (C1TextBox)sender;
             a.BackColor = bg;
             //a.ForeColor = fc;
@@ -118,6 +120,11 @@ namespace clinic_ivf.gui
             //throw new NotImplementedException();
             if (e.KeyCode == Keys.Enter)
             {
+                if (txtUserName.Text.Trim().IndexOf("\\\\")>=0)
+                {
+                    sep.SetError(txtUserName, "error");
+                    return;
+                }
                 chkLogin();
             }
         }

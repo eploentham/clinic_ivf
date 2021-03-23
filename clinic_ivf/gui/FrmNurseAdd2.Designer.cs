@@ -674,6 +674,8 @@
             this.ParagraphAlignRightButton = new C1.Win.C1Ribbon.RibbonToggleButton();
             this.ribbonGroup2 = new C1.Win.C1Ribbon.RibbonGroup();
             this.cboTempDrug = new C1.Win.C1Ribbon.RibbonComboBox();
+            this.ribbonGroup3 = new C1.Win.C1Ribbon.RibbonGroup();
+            this.ribbonLabelMessage = new C1.Win.C1Ribbon.RibbonLabel();
             this.ViewTab = new C1.Win.C1Ribbon.RibbonTab();
             this.ViewZoomGroup = new C1.Win.C1Ribbon.RibbonGroup();
             this.ViewZoomCombobox = new C1.Win.C1Ribbon.RibbonComboBox();
@@ -3103,7 +3105,7 @@
             this.c1SplitterPanel6.SizeRatio = 28.02D;
             this.c1SplitterPanel6.TabIndex = 0;
             this.c1SplitterPanel6.Text = "Panel 1";
-            this.c1SplitterPanel6.Width = 436;
+            this.c1SplitterPanel6.Width = 443;
             // 
             // pnApmAll
             // 
@@ -10415,9 +10417,9 @@
             // richTextBox1
             // 
             this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.richTextBox1.Location = new System.Drawing.Point(0, 146);
+            this.richTextBox1.Location = new System.Drawing.Point(0, 143);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(906, 532);
+            this.richTextBox1.Size = new System.Drawing.Size(906, 535);
             this.richTextBox1.TabIndex = 1;
             this.richTextBox1.Text = "";
             // 
@@ -10432,7 +10434,7 @@
             this.c1Ribbon1.QatHolder = this.ribbonQat1;
             this.c1Ribbon1.QatItemsHolder.Add(this.UndoButton);
             this.c1Ribbon1.QatItemsHolder.Add(this.RedoButton);
-            this.c1Ribbon1.Size = new System.Drawing.Size(906, 146);
+            this.c1Ribbon1.Size = new System.Drawing.Size(906, 143);
             this.c1Ribbon1.Tabs.Add(this.HomeTab);
             this.c1Ribbon1.Tabs.Add(this.ViewTab);
             this.c1Ribbon1.Tabs.Add(this.ribbonTab1);
@@ -10559,6 +10561,7 @@
             this.HomeTab.Groups.Add(this.FontGroup);
             this.HomeTab.Groups.Add(this.ParagraphGroup);
             this.HomeTab.Groups.Add(this.ribbonGroup2);
+            this.HomeTab.Groups.Add(this.ribbonGroup3);
             this.HomeTab.Name = "HomeTab";
             this.HomeTab.Text = "&Home";
             // 
@@ -10762,6 +10765,17 @@
             // 
             this.cboTempDrug.Label = "Templete";
             this.cboTempDrug.Name = "cboTempDrug";
+            // 
+            // ribbonGroup3
+            // 
+            this.ribbonGroup3.Items.Add(this.ribbonLabelMessage);
+            this.ribbonGroup3.Name = "ribbonGroup3";
+            this.ribbonGroup3.Text = "Message                                                                          " +
+    "    .";
+            // 
+            // ribbonLabelMessage
+            // 
+            this.ribbonLabelMessage.Name = "ribbonLabelMessage";
             // 
             // ViewTab
             // 
@@ -12611,5 +12625,7 @@
         private C1.Win.C1Input.C1CheckBox chkApmHCG;
         private C1.Win.C1Input.C1CheckBox chkApmHormoneTest;
         private C1.Win.C1Input.C1CheckBox chkConsult;
+        private C1.Win.C1Ribbon.RibbonGroup ribbonGroup3;
+        private C1.Win.C1Ribbon.RibbonLabel ribbonLabelMessage;
     }
 }

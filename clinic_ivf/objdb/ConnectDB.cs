@@ -14,7 +14,7 @@ namespace clinic_ivf.objdb
 {
     public class ConnectDB
     {
-        public MySqlConnection connIm, connEx, conn;
+        public MySqlConnection connIm, connEx, conn, connLog;
         public MySqlConnection connNoClose;
         public OleDbConnection connA = new OleDbConnection();
 
@@ -33,6 +33,7 @@ namespace clinic_ivf.objdb
             connIm = new MySqlConnection();
             connEx = new MySqlConnection();
             connNoClose = new MySqlConnection();
+            connLog = new MySqlConnection();
             //MessageBox.Show("0041 "+ initc.hostDB, "");
             conn.ConnectionString = "Server=" + initc.hostDB + ";Database=" + initc.nameDB + ";Uid=" + initc.userDB + ";Pwd=" + initc.passDB +
                 ";port = " + initc.portDB + "; Connection Timeout = 300;default command timeout=0; CharSet=utf8;SslMode=none; convert zero datetime=True; ";
@@ -42,6 +43,9 @@ namespace clinic_ivf.objdb
                 ";port = " + initc.portDBIm + "; Connection Timeout = 300;default command timeout=0; CharSet=utf8;SslMode=none; convert zero datetime=True; ";
             connEx.ConnectionString = "Server=" + initc.hostDBEx + ";Database=" + initc.nameDBEx + ";Uid=" + initc.userDBEx + ";Pwd=" + initc.passDBEx +
                 ";port = " + initc.portDBEx + "; Connection Timeout = 300;default command timeout=0; CharSet=utf8;SslMode=none; convert zero datetime=True; ";
+
+            connLog.ConnectionString = "Server=" + initc.hostDBLogTask + ";Database=" + initc.nameDBLogTask + ";Uid=" + initc.userDBLogTask + ";Pwd=" + initc.passDBLogTask +
+                ";port = " + initc.portDBLogTask + "; Connection Timeout = 300;default command timeout=0; CharSet=utf8;SslMode=none; convert zero datetime=True; ";
             user = new Staff();
         }
         public ConnectDB(String pathSSO)
@@ -199,6 +203,8 @@ namespace clinic_ivf.objdb
             {
                 throw new Exception("ExecuteNonQuery::Error occured.", ex);
                 toReturn = ex.Message;
+                LogWriter lw = new LogWriter();
+                lw.WriteLog("d", "error ExecuteNonQuery " + ex.Message+" con "+con.ConnectionString + " sql " + sql);
             }
             finally
             {
@@ -426,7 +432,6 @@ namespace clinic_ivf.objdb
                 {
                     connA.ConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0; Data Source=" + pathA + ";Persist Security Info=False";
                 }
-
             }
             try
             {

@@ -316,10 +316,24 @@ namespace clinic_ivf.gui
             menuGw.MenuItems.Add("รับทราบการเปลี่ยนแปลงเวลา", new EventHandler(ContextMenu_Gw_time_modi));
             menuGw.MenuItems.Add("Lab Form A", new EventHandler(ContextMenu_grfreq_lab_form_a));
             menuGw.MenuItems.Add("Lab Form Day1", new EventHandler(ContextMenu_grfreq_lab_form_day1));
+            menuGw.MenuItems.Add("void Lab OPU", new EventHandler(ContextMenu_grfreq_lab_opu));
             grfReq.ContextMenu = menuGw;
             pnReq.Controls.Add(grfReq);
 
             theme1.SetTheme(grfReq, "Office2010Blue");
+        }
+        private void ContextMenu_grfreq_lab_opu(object sender, System.EventArgs e)
+        {
+            String chk = "", name = "", id = "", labname = "", reqcode = "";
+            name = grfReq[grfReq.Row, colRqName] != null ? grfReq[grfReq.Row, colRqName].ToString() : "";
+            labname = grfReq[grfReq.Row, colRqLabName] != null ? grfReq[grfReq.Row, colRqLabName].ToString() : "";
+            reqcode = grfReq[grfReq.Row, colRqReqNum] != null ? grfReq[grfReq.Row, colRqReqNum].ToString() : "";
+            if (MessageBox.Show("ต้องการ Void Lab OPU  \n" + name + " " + labname + "\n" + reqcode, "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+            {
+                id = grfReq[grfReq.Row, colRqId] != null ? grfReq[grfReq.Row, colRqId].ToString() : "";
+                String re = ic.ivfDB.lbReqDB.VoidRequest(id, ic.userId);
+                setGrfReq();
+            }
         }
         private void ContextMenu_grfreq_lab_form_day1(object sender, System.EventArgs e)
         {

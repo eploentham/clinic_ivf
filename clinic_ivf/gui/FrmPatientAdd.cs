@@ -3480,13 +3480,15 @@ namespace clinic_ivf.gui
                 //ptt = ic.ivfDB.pttDB.selectByHn(txtVisitHn_1.Text);
                 //label59.Text = ptt.Name;
                 //label78.Text = ptt.Name;
-
-                Patient pttcou = new Patient();
-                String hn = "", hnyr = "";
-                hn = ptt.patient_hn_1.Substring(0, ptt.patient_hn_1.IndexOf(ic.hnspareyear));
-                pttcou = ic.ivfDB.pttDB.selectByHn(hn);
-                label78.Text = pttcou.Name;
-                label59.Text = pttcou.Name;
+                if (txtHn_1.Text.Equals("-"))       //      บ่อยครั้ง  user ป้อน -
+                {
+                    Patient pttcou = new Patient();
+                    String hn = "", hnyr = "";
+                    hn = ptt.patient_hn_1.Substring(0, ptt.patient_hn_1.IndexOf(ic.hnspareyear));
+                    pttcou = ic.ivfDB.pttDB.selectByHn(hn);
+                    label78.Text = pttcou.Name;
+                    label59.Text = pttcou.Name;
+                }
             }
             if (txtHn_2.Text.Length > 0)
             {

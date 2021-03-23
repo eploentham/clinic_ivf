@@ -116,13 +116,13 @@ namespace clinic_ivf.objdb
             p.patient_appointment_time = p.patient_appointment_time == null ? "" : p.patient_appointment_time;
             p.patient_appointment = p.patient_appointment == null ? "" : p.patient_appointment;
             p.patient_appointment_doctor = p.patient_appointment_doctor == null ? "" : p.patient_appointment_doctor;
-            p.patient_appointment_servicepoint = p.patient_appointment_servicepoint == null ? "" : p.patient_appointment_servicepoint;
+            //p.patient_appointment_servicepoint = p.patient_appointment_servicepoint == null ? "" : p.patient_appointment_servicepoint;
             p.patient_appointment_notice = p.patient_appointment_notice == null ? "" : p.patient_appointment_notice;
             p.patient_appointment_auto_visit = p.patient_appointment_auto_visit == null ? "0" : p.patient_appointment_auto_visit;
             //p.t_visit_id = p.t_visit_id == null ? "" : p.t_visit_id;
             p.patient_appointment_status = p.patient_appointment_status == null ? "" : p.patient_appointment_status;
             p.patient_appointment_vn = p.patient_appointment_vn == null ? "" : p.patient_appointment_vn;
-            p.patient_appointment_staff_record = p.patient_appointment_staff_record == null ? "" : p.patient_appointment_staff_record;
+            //p.patient_appointment_staff_record = p.patient_appointment_staff_record == null ? "" : p.patient_appointment_staff_record;
             p.patient_appointment_record_date_time = p.patient_appointment_record_date_time == null ? "" : p.patient_appointment_record_date_time;
             p.patient_appointment_staff_update = p.patient_appointment_staff_update == null ? "" : p.patient_appointment_staff_update;
             p.patient_appointment_update_date_time = p.patient_appointment_update_date_time == null ? "" : p.patient_appointment_update_date_time;
@@ -180,6 +180,8 @@ namespace clinic_ivf.objdb
             p.patient_appointment_staff = long.TryParse(p.patient_appointment_staff, out chk) ? chk.ToString() : "0";
             p.patient_appointment_doctor = long.TryParse(p.patient_appointment_doctor, out chk) ? chk.ToString() : "0";
             p.appoitment_id_old = long.TryParse(p.appoitment_id_old, out chk) ? chk.ToString() : "0";
+            p.patient_appointment_servicepoint = long.TryParse(p.patient_appointment_servicepoint, out chk) ? chk.ToString() : "0";
+            p.patient_appointment_staff_record = long.TryParse(p.patient_appointment_staff_record, out chk) ? chk.ToString() : "0";
         }
         public String insert(PatientAppointment p, String userId)
         {

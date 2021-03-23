@@ -233,6 +233,22 @@ namespace clinic_ivf.objdb
 
             Console.WriteLine("ivfDB end");
         }
+        public String insertLogPage(String userid, String form, String method, String desc)
+        {
+            String re = "", sql = "";
+            sql = "Insert into log_page set " +
+                "log_page_user_id = '"+ userid + "'" +
+                ",log_page_desc = '"+ desc + "'" +
+                ",log_page_id_address = '" + conn._IPAddress + "'" +
+                ",page_form = '" + form + "'" +
+                ",page_form_method = '" + method + "'" +
+                ",date_create = now()" +
+                ",user_create = CURRENT_USER()" +
+                " " +
+                "";
+            conn.ExecuteNonQuery(conn.connLog, sql);
+            return re;
+        }
         public String genAppointmentRemarkPtt(DataRow row1)
         {
             String re = "";

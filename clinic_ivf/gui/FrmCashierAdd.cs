@@ -1353,6 +1353,7 @@ namespace clinic_ivf.gui
                 }
                 amt = period1 + period2 + period3 + period4;
                 grfPkgPayPeriod[grfPkgPayPeriod.Row, 5] = amt;
+                ic.ivfDB.insertLogPage(ic.userId, "FrmCashierAdd", "GrfPkgPayPeriod_AfterEdit", "vsid " + txtVsId.Text+ " period1 " + period1.ToString() + " period2 " + period2.ToString() + " period3 " + period3.ToString() + " period4 " + period4.ToString());
             }
         }
 
@@ -1428,6 +1429,8 @@ namespace clinic_ivf.gui
             re4 = ic.ivfDB.opkgsDB.updatePayment4(pkgsid, period4.ToString());
             re5 = ic.ivfDB.opkgsDB.updatePaymentTime(pkgsid, time);
             String re = ic.ivfDB.obildDB.updatePaymentPeriod(txtVn.Text, pkgsid, period1.ToString(), name);
+            ic.ivfDB.insertLogPage(ic.userId, "FrmCashierAdd", "GrfPkgPayPeriod_AfterEdit", "vsid " + txtVsId.Text + " period1 " + period1.ToString() + " period2 " + period2.ToString() + " period3 " + period3.ToString() + " period4 " + period4.ToString());
+
             long chk = 0;
             if(long.TryParse(re, out chk))
             {

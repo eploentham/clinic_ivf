@@ -179,10 +179,11 @@ namespace clinic_ivf.gui
             lbLoading.AutoSize = false;
             lbLoading.Size = new Size(300, 60);
             this.Controls.Add(lbLoading);
+            //ribbonLabelMessage.f
 
             ic.setCboLangSticker(cboLangSticker,"Thai");
 
-            ic.ivfDB.bspDB.setCboBsp(cboApmBsp, "");
+            ic.ivfDB.bspDB.setCboBsp(cboApmBsp, ic.iniC.service_point_id);
             ic.ivfDB.opkgstDB.setCboPackageSellThru(cboSellThruID, "");
             ic.ivfDB.dtrOldDB.setCboDoctor(cboDoctor, "");
             ic.ivfDB.dtrOldDB.setCboDoctor(cboEggStiDtr, "");
@@ -291,7 +292,9 @@ namespace clinic_ivf.gui
             chkDenyAllergy.ValueChanged += ChkDenyAllergy_ValueChanged;
             richTextBox1.TextChanged += RichTextBox1_TextChanged;
             richTextBox1.DoubleClick += RichTextBox1_DoubleClick;
-            
+            cboApmBsp.SelectedItemChanged += CboApmBsp_SelectedItemChanged;
+
+
 
             setControl(vn);
             ChkDenyAllergy_CheckedChanged(null, null);
@@ -342,6 +345,25 @@ namespace clinic_ivf.gui
             pageLoad = false;
         }
 
+        private void CboApmBsp_SelectedItemChanged(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (pageLoad) return;
+            sep.Clear();
+        }
+
+        public void setTxtProgressNoteMessage(String txt)
+        {
+            try
+            {
+                ribbonLabelMessage.Text = txt;
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex);
+                LogWriter logw = new LogWriter("e", "FrmNurseAdd2 setTxtProgressNoteMessage  " + ex.Message);
+            }
+        }
         private void BackColorPicker_SelectedColorChanged(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
@@ -386,7 +408,9 @@ namespace clinic_ivf.gui
         private void RichTextBox1_TextChanged(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            SaveDocumentButton.SmallImage = Resources.Save_large;
+            //SaveDocumentButton.SmallImage = Resources.Save_large;
+            SaveDocumentButton.SmallImage = Resources.SaveAs_large;
+            ic.SendMessage("nurse#progress_note#edit#"+ic.userId + "#"+txtVn.Text.Trim());
         }
 
         private void ChkDenyAllergy_ValueChanged(object sender, EventArgs e)
@@ -434,7 +458,7 @@ namespace clinic_ivf.gui
                 
             }
             Clipboard.SetText(txt);
-            //this.richTextBox1.Paste();
+            this.richTextBox1.Paste();
         }
 
         private void TabOrder_SelectedIndexChanged(object sender, EventArgs e)
@@ -2298,6 +2322,9 @@ namespace clinic_ivf.gui
             this.SaveDocumentAs(this.documentFileType);
             stt.Show("<p><b>save success</b></p> <br>", richTextBox1, 10, 20, 5);
             SaveDocumentButton.SmallImage = Resources.Save_small;
+
+            ic.ivfDB.insertLogPage(ic.userId, "FrmNurseAdd2", "SaveDocument", "progressnote_" + txtVnProgressNote.Text + ".rtf");
+
             setGrfPg();
             return true;
         }
@@ -3773,6 +3800,15 @@ namespace clinic_ivf.gui
             if (cboApmTimepApm.Text.Equals(""))
             {
                 MessageBox.Show("เวลานัด ไม่ถูกต้อง", "");
+                return;
+            }
+            //cboApmBsp
+            String servicepoint = "";
+            servicepoint =  cboApmBsp.SelectedItem == null ? "" : ((ComboBoxItem)cboApmBsp.SelectedItem).Value;
+            if (servicepoint.Length <= 0)
+            {
+                MessageBox.Show("Station ไม่ถูกต้อง", "");
+                sep.SetError(cboApmBsp, "Station ไม่ถูกต้อง");
                 return;
             }
             ic.cStf.staff_id = "";
@@ -5327,10 +5363,11 @@ namespace clinic_ivf.gui
                 //richTextBox1.SelectionStart = richTextBox1.Find(stkd0.DUName, index, richTextBox1.TextLength, RichTextBoxFinds.None);
                 richTextBox1.SelectionBackColor = Color.White;
                 //richTextBox1.SelectionLength = richTextBox1.Find(stkdLast.EUsage, index, richTextBox1.TextLength, RichTextBoxFinds.None);
-
-
-                richTextBox1.Select(num0, (numLast - num0 + stkdLast.date_cancel.Length));
-                richTextBox1.SelectionBackColor = Color.White;
+                if (numLast > 0)
+                {
+                    richTextBox1.Select(num0, (numLast - num0 + stkdLast.date_cancel.Length));
+                    richTextBox1.SelectionBackColor = Color.White;
+                }
             }
             
 
@@ -8682,6 +8719,7 @@ namespace clinic_ivf.gui
             lbLoading.Text = "กรุณารอซักครู่ ...";
             lbLoading.Hide();
             sB1.Text = "Date " + ic.cop.day + "-" + ic.cop.month + "-" + ic.cop.year + " Server " + ic.iniC.hostDB + " FTP " + ic.iniC.hostFTP + "/" + ic.iniC.folderFTP;
+            ic.frmnurseadd2 = this;
         }
     }
 }

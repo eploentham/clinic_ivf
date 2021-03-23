@@ -125,7 +125,18 @@ namespace clinic_ivf.gui
             menuCust.Click += MenuCust_Click;
             menuDeposit.Click += MenuDeposit_Click;
             menuTemplateDrug.Click += MenuTemplateDrug_Click;
+            menuCashierDeposit.Click += MenuCashierDeposit_Click;
             //ic.logw.WriteLog("d", "MainMenu initConfig end");
+        }
+
+        private void MenuCashierDeposit_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            FrmDeposit frm = new FrmDeposit(ic);
+            frm.FormBorderStyle = FormBorderStyle.FixedSingle;
+            frm.WindowState = FormWindowState.Normal;
+            frm.StartPosition = FormStartPosition.CenterScreen;
+            frm.ShowDialog(this);
         }
 
         private void MenuTemplateDrug_Click(object sender, EventArgs e)
@@ -604,35 +615,44 @@ namespace clinic_ivf.gui
         private void MainMenu4_FormClosing(object sender, FormClosingEventArgs e)
         {
             //throw new NotImplementedException();
-            if (e.CloseReason == CloseReason.UserClosing)
+            try
             {
-                if (ic.video != null)
+                if (e.CloseReason == CloseReason.UserClosing)
                 {
-                    ic.logw.WriteLog("w", "MainMenu4_FormClosing ic.video != null");
-                    if (ic.video.IsRunning)
+                    if (ic.video != null)
                     {
-                        ic.video.Stop();
+                        ic.logw.WriteLog("w", "MainMenu4_FormClosing ic.video != null");
+                        if (ic.video.IsRunning)
+                        {
+                            ic.logw.WriteLog("w", "MainMenu4_FormClosing ic.video.IsRunning");
+                            ic.video.Stop();
+                        }
+                        ic.video = null;
                     }
-                    ic.video = null;
+                    if (!flagExit)
+                    {
+                        if (MessageBox.Show("ต้องการออกจากโปรแกรม3", "ออกจากโปรแกรม", MessageBoxButtons.OKCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+                        {
+                            //Close();
+                            //return true;
+                        }
+                        else
+                        {
+                            e.Cancel = true;
+                        }
+                    }
+                    //appExit();
                 }
-                if (!flagExit)
+                else
                 {
-                    if (MessageBox.Show("ต้องการออกจากโปรแกรม3", "ออกจากโปรแกรม", MessageBoxButtons.OKCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-                    {
-                        //Close();
-                        //return true;
-                    }
-                    else
-                    {
-                        e.Cancel = true;
-                    }
+                    e.Cancel = true;
                 }
-                //appExit();
             }
-            else
+            catch(Exception ex)
             {
-                e.Cancel = true;
+                ic.logw.WriteLog("e", "MainMenu4_FormClosing "+ex.Message);
             }
+            
         }
         private Boolean appExit()
         {

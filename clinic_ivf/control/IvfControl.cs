@@ -70,6 +70,10 @@ namespace clinic_ivf.control
         Hashtable _styles;
         public LogWriter logw;
         public int spermFreezingDecimal = 0;
+        UdpClient listener;
+        IPEndPoint groupEP;
+        private const int listenPort = 11000;
+        public FrmNurseAdd2 frmnurseadd2;
         //public FtpClient ftpC;
         public enum NID_FIELD
         {
@@ -147,6 +151,12 @@ namespace clinic_ivf.control
             sStf = new Staff();
             cop = new Company();
             logw = new LogWriter();
+            new Thread(() =>
+            {
+                Thread.CurrentThread.IsBackground = true;
+                StartListener();
+            }).Start();
+
             //MessageBox.Show("003 " + appName+ "\nStartupPath"+ StartupPath, "");
             //MessageBox.Show("00411111112", "");
             GetConfig();
@@ -166,6 +176,85 @@ namespace clinic_ivf.control
             else
             {
                 theme = iniC.themeApplication;
+            }
+        }
+        public void SendMessage(String message)
+        {
+            try
+            {
+                Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
+
+                IPAddress broadcast = IPAddress.Parse(iniC.ipAddressBroadcast);
+
+                byte[] sendbuf = Encoding.ASCII.GetBytes(message.Trim());
+                IPEndPoint ep = new IPEndPoint(broadcast, 11000);
+
+                socket.SendTo(sendbuf, ep);
+
+                Console.WriteLine("Message sent to the broadcast address ");
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex);
+                LogWriter logw = new LogWriter("e", "IvfControl SendMessage  " + ex.Message);
+            }
+            
+        }
+        private void StartListener()
+        {
+            try
+            {
+                UdpClient listener = new UdpClient(listenPort);
+                IPEndPoint groupEP = new IPEndPoint(IPAddress.Any, listenPort);
+                while (true)
+                {
+                    Console.WriteLine("Waiting for broadcast");
+                    byte[] bytes = listener.Receive(ref groupEP);
+
+                    String result = System.Text.Encoding.UTF8.GetString(bytes);
+                    if (result.Length > 0)
+                    {
+                        String[] result1 = result.Split('#');
+                        if (result1.Length == 5)
+                        {
+                            String module = "", process = "", flag = "", userid = "", vn = "";
+                            module = result1[0];
+                            process = result1[1];
+                            flag = result1[2];
+                            userid = result1[3];
+                            vn = result1[4];
+
+                            if (module.Equals("nurse"))
+                            {
+                                if (process.Equals("progress_note"))
+                                {
+                                    if (flag.Equals("edit"))
+                                    {
+                                        if (!userid.Equals(this.userId))
+                                        {
+                                            String name = "";
+                                            name = ivfDB.stfDB.getStaffNameBylStf(userid);
+                                            frmnurseadd2.setTxtProgressNoteMessage(name + " open progress note");
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    Console.WriteLine($"Received broadcast from {groupEP} :");
+                    Console.WriteLine($" {Encoding.ASCII.GetString(bytes, 0, bytes.Length)}");
+                }
+            }
+            catch (SocketException e)
+            {
+                Console.WriteLine(e);
+                LogWriter logw = new LogWriter("e", "IvfControl StartListener  "+e.Message);
+                //logw.WriteLog("e", "IvfControl StartListener  00");
+            }
+            finally
+            {
+                listener.Close();
             }
         }
         public String GetCurrentExecutingDirectory()
@@ -208,6 +297,12 @@ namespace clinic_ivf.control
                 iniC.folderFTP = iniF.getIni("ftp", "folderFTP");
                 iniC.usePassiveFTP = iniF.getIni("ftp", "usePassiveFTP");
                 iniC.pathChar = iniF.getIni("ftp", "pathChar");
+
+                iniC.hostDBLogTask = iniF.getIni("connection", "hostDBLogTask");
+                iniC.nameDBLogTask = iniF.getIni("connection", "nameDBLogTask");
+                iniC.userDBLogTask = iniF.getIni("connection", "userDBLogTask");
+                iniC.passDBLogTask = iniF.getIni("connection", "passDBLogTask");
+                iniC.portDBLogTask = iniF.getIni("connection", "portDBLogTask");
 
                 iniC.grdViewFontSize = iniF.getIni("app", "grdViewFontSize");
                 iniC.grdViewFontName = iniF.getIni("app", "grdViewFontName");
@@ -256,6 +351,7 @@ namespace clinic_ivf.control
                 iniC.pdfFontName = iniF.getIni("app", "pdfFontName");
                 iniC.pdfViewFontSize = iniF.getIni("app", "pdfViewFontSize");
                 iniC.pathDownloadFile = iniF.getIni("app", "pathDownloadFile");
+                iniC.ipAddressBroadcast = iniF.getIni("app", "ipAddressBroadcast");
 
                 iniC.email_form = iniF.getIni("email", "email_form");
                 iniC.email_auth_user = iniF.getIni("email", "email_auth_user");
@@ -323,6 +419,7 @@ namespace clinic_ivf.control
                 iniC.spermFreezingDecimal = iniC.spermFreezingDecimal == null ? "0" : iniC.spermFreezingDecimal.Equals("") ? "0" : iniC.spermFreezingDecimal;
                 iniC.statusNurseOrderInclude = iniC.statusNurseOrderInclude == null ? "0" : iniC.statusNurseOrderInclude.Equals("") ? "0" : iniC.statusNurseOrderInclude;
                 iniC.pathDownloadFile = iniC.pathDownloadFile == null ? "C:\\Manual" : iniC.pathDownloadFile.Equals("") ? "C:\\Manual" : iniC.pathDownloadFile;
+                iniC.ipAddressBroadcast = iniC.ipAddressBroadcast == null ? "192.168.1.255" : iniC.ipAddressBroadcast.Equals("") ? "192.168.1.255" : iniC.ipAddressBroadcast;
 
                 int.TryParse(iniC.grdViewFontSize, out grdViewFontSize);
                 int.TryParse(iniC.spermFreezingDecimal, out spermFreezingDecimal);
