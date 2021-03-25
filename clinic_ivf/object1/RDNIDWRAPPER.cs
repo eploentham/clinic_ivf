@@ -7,7 +7,7 @@ using System.Security.Cryptography;
 using System.Runtime.InteropServices;
 using System.IO;
 
-namespace clinic_ivf
+namespace clinic_ivf.object1
 {
     internal static partial class DefineConstants
     {
@@ -25,10 +25,10 @@ namespace clinic_ivf
         public const int NID_SUPPORTED_READER_NOT_FOUND = -11;
     }
 
-    class  RDNID
+    class RDNID
     {
-       
-        const string _RDNIDLib_DLL_ = "RDNIDLib.DLL";
+
+        const string _RDNIDLib_DLL_ = "RDNIDLibD.DLL";
 
         [DllImport(_RDNIDLib_DLL_,
                 EntryPoint = "OpenNIDLib", CharSet = CharSet.Auto, SetLastError = true)]
@@ -40,30 +40,30 @@ namespace clinic_ivf
         [DllImport(_RDNIDLib_DLL_)]
         public static extern Int32 LoadNIDData();
 
-        [DllImport(_RDNIDLib_DLL_, 
+        [DllImport(_RDNIDLib_DLL_,
                 EntryPoint = "getReaderListRD", CharSet = CharSet.Auto, SetLastError = true)]
         public static extern Int32 getReaderListRD([Out] byte[] _szReaders, int size);
 
         [DllImport(_RDNIDLib_DLL_,
                 EntryPoint = "selectReaderRD", CharSet = CharSet.Auto, SetLastError = true)]
-        public static extern IntPtr selectReaderRD( byte[] _szReaders);
+        public static extern IntPtr selectReaderRD(byte[] _szReaders);
 
         [DllImport(_RDNIDLib_DLL_,
                 EntryPoint = "deselectReaderRD", CharSet = CharSet.Auto, SetLastError = true)]
-        public static extern Int32 deselectReaderRD( IntPtr obj);
+        public static extern Int32 deselectReaderRD(IntPtr obj);
 
         [DllImport(_RDNIDLib_DLL_,
                 EntryPoint = "disconnectCardRD", CharSet = CharSet.Auto, SetLastError = true)]
-        public static extern Int32 disconnectCardRD(IntPtr obj); 
+        public static extern Int32 disconnectCardRD(IntPtr obj);
 
         [DllImport(_RDNIDLib_DLL_,
                 EntryPoint = "isCardInsertRD", CharSet = CharSet.Auto, SetLastError = true)]
-        public static extern Int32 isCardInsertRD( IntPtr obj);
+        public static extern Int32 isCardInsertRD(IntPtr obj);
 
         [DllImport(_RDNIDLib_DLL_,
                 EntryPoint = "getNIDNumberRD", CharSet = CharSet.Auto, SetLastError = true)]
         public static extern Int32 getNIDNumberRD(IntPtr obj, [Out] byte[] strID);
-        
+
         [DllImport(_RDNIDLib_DLL_,
                 EntryPoint = "getNIDTextRD", CharSet = CharSet.Auto, SetLastError = true)]
         public static extern Int32 getNIDTextRD(IntPtr obj, [Out] byte[] strData, int sizeData);
@@ -94,6 +94,14 @@ namespace clinic_ivf
         [DllImport(_RDNIDLib_DLL_,
                 EntryPoint = "updateLicenseFileRD", CharSet = CharSet.Auto, SetLastError = true)]
         public static extern Int32 updateLicenseFileRD(byte[] targetPath);
+
+        [DllImport(_RDNIDLib_DLL_,
+                EntryPoint = "getAtrDD", CharSet = CharSet.Auto, SetLastError = true)]
+        public static extern Int32 getAtrDD(IntPtr obj, [Out] byte[] strData, int sizeData);
+
+        [DllImport(_RDNIDLib_DLL_,
+                EntryPoint = "getRidDD", CharSet = CharSet.Auto, SetLastError = true)]
+        public static extern Int32 getRidDD(IntPtr obj, [Out] byte[] strData);
 
         [DllImport(_RDNIDLib_DLL_,
                 EntryPoint = "openNIDLibRD", CharSet = CharSet.Auto, SetLastError = true)]

@@ -1584,6 +1584,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="RDNIDLib.DLD">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="UL.PCX">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -1592,9 +1595,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="RDNIDLib.DLX">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Include="report\Appointment_daily.xsc">
       <DependentUpon>Appointment_daily.xsd</DependentUpon>
     </None>
@@ -2450,9 +2450,6 @@
     <Content Include="ivf_lis.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="RDNIDlib.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <None Include="Resources\front_desk_icon_127279.ico" />
     <None Include="Resources\excel.png" />
     <None Include="Resources\excel_1.jpg" />
@@ -2475,6 +2472,9 @@
     <None Include="Resources\iconarchive-red-orb-alphabet-letter-t.ico" />
     <None Include="Resources\doctor32.png" />
     <None Include="Resources\nurse32.png" />
+    <Content Include="RDNIDlibD.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="TSCLIB.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -2,6 +2,7 @@
 using C1.Win.C1Input;
 using C1.Win.C1SuperTooltip;
 using clinic_ivf.control;
+using clinic_ivf.object1;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -34,6 +35,7 @@ namespace clinic_ivf.gui
         C1SuperErrorProvider sep;
         Boolean flagReadCard = false;
         String _CardReaderTFK2700 = "";
+        List<String> lSmartCard;
         RDNID mRDNIDWRAPPER = new RDNID();
         string StartupPath = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location);
         enum NID_FIELD
@@ -92,6 +94,7 @@ namespace clinic_ivf.gui
             stt = new C1SuperTooltip();
             sep = new C1SuperErrorProvider();
             chkToday.Checked = true;
+            lSmartCard = new List<string>();
 
             btnNew.Click += BtnNew_Click;
             txtSearch.KeyUp += TxtSearch_KeyUp;
@@ -327,18 +330,92 @@ namespace clinic_ivf.gui
             }
             sB1.Text = "Date " + ic.cop.day + "-" + ic.cop.month + "-" + ic.cop.year + " Server " + ic.iniC.hostDB + "/" + ic.iniC.nameDB + " FTP " + ic.iniC.hostFTP + "/" + ic.iniC.folderFTP;
             txtSearch.Focus();
+            string StartupPath = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location);
+            string fileName = StartupPath + "\\RDNIDLib.DLD";
+            if (System.IO.File.Exists(fileName) == false)
+            {
+                MessageBox.Show("RDNIDLib.DLD not found");
+            }
+            byte[] _lic = String2Byte(fileName);
+            int nres = 0;
+            nres = RDNID.openNIDLibRD(_lic);
+            if (nres != 0)
+            {
+                String m;
+                m = String.Format(" error no {0} ", nres);
+                MessageBox.Show(m);
+            }
+            byte[] Licinfo = new byte[1024];
+            RDNID.getLicenseInfoRD(Licinfo);
+            byte[] Softinfo = new byte[1024];
+            RDNID.getSoftwareInfoRD(Softinfo);
+            ListCardReader();
+        }
+        private void ListCardReader()
+        {
+            byte[] szReaders = new byte[1024 * 2];
+            int size = szReaders.Length;
+            int numreader = RDNID.getReaderListRD(szReaders, size);
+            if (numreader <= 0)
+                return;
+            String s = aByteToString(szReaders);
+            String[] readlist = s.Split(';');
+            if (readlist != null)
+            {
+                for (int i = 0; i < readlist.Length; i++)
+                    //m_ListReaderCard.Items.Add(readlist[i]);
+                    lSmartCard.Add(readlist[i]);
+                //m_ListReaderCard.SelectedIndex = 0;
+            }
+        }
+        static string aByteToString(byte[] b)
+        {
+            Encoding ut = Encoding.GetEncoding(874); // 874 for Thai langauge
+            int i;
+            for (i = 0; b[i] != 0; i++) ;
+
+            string s = ut.GetString(b);
+            s = s.Substring(0, i);
+            return s;
+        }
+        static byte[] String2Byte(string s)
+        {
+            // Create two different encodings.
+            Encoding ascii = Encoding.GetEncoding(874);
+            Encoding unicode = Encoding.Unicode;
+
+            // Convert the string into a byte array.
+            byte[] unicodeBytes = unicode.GetBytes(s);
+
+            // Perform the conversion from one encoding to the other.
+            byte[] asciiBytes = Encoding.Convert(unicode, ascii, unicodeBytes);
+
+            return asciiBytes;
+        }
+        public IntPtr selectReader(String reader)
+        {
+            IntPtr mCard = (IntPtr)0;
+            byte[] _reader = String2Byte(reader);
+            IntPtr res = (IntPtr)RDNID.selectReaderRD(_reader);
+            if ((Int64)res > 0)
+                mCard = (IntPtr)res;
+            return mCard;
         }
         protected int ReadCard()
         {
             try
             {
-                byte[] Licinfo = new byte[1024];
-                RDNID.getLicenseInfoRD(Licinfo);
+                
+                if (lSmartCard == null) return 0;
+                if (lSmartCard.Count <= 0) return 0;
+                //byte[] Licinfo = new byte[1024];
+                //RDNID.getLicenseInfoRD(Licinfo);
                 //m_lblDLXInfo.Text = ic.aByteToString(Licinfo);
+                String strTerminal = lSmartCard[0];
+                //_CardReaderTFK2700 = ic.ListCardReader();
+                //String strTerminal = _CardReaderTFK2700;
                 //String strTerminal = m_ListReaderCard.GetItemText(m_ListReaderCard.SelectedItem);
-                _CardReaderTFK2700 = ic.ListCardReader();
-                String strTerminal = _CardReaderTFK2700;
-                IntPtr obj = ic.selectReader(strTerminal);
+                IntPtr obj = selectReader(strTerminal);
 
                 Int32 nInsertCard = 0;
                 nInsertCard = RDNID.connectCardRD(obj);

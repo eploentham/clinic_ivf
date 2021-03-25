@@ -1150,6 +1150,15 @@ namespace clinic_ivf.control
             }
             return equals;
         }
+        public IntPtr selectReader(String reader)
+        {
+            IntPtr mCard = (IntPtr)0;
+            byte[] _reader = String2Byte(reader);
+            IntPtr res = (IntPtr)RDNID.selectReaderRD(_reader);
+            if ((Int64)res > 0)
+                mCard = (IntPtr)res;
+            return mCard;
+        }
         public String ListCardReader()
         {
             string fileName = StartupPath + "\\RDNIDLib.DLX";
@@ -1209,15 +1218,6 @@ namespace clinic_ivf.control
             string s = ut.GetString(b);
             s = s.Substring(0, i);
             return s;
-        }
-        public IntPtr selectReader(String reader)
-        {
-            IntPtr mCard = (IntPtr)0;
-            byte[] _reader = String2Byte(reader);
-            IntPtr res = (IntPtr)RDNID.selectReaderRD(_reader);
-            if ((Int64)res > 0)
-                mCard = (IntPtr)res;
-            return mCard;
         }
         static byte[] String2Byte(string s)
         {
