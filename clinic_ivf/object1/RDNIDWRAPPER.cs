@@ -25,9 +25,8 @@ namespace clinic_ivf.object1
         public const int NID_SUPPORTED_READER_NOT_FOUND = -11;
     }
 
-    class RDNID
+    public class RDNID
     {
-
         const string _RDNIDLib_DLL_ = "RDNIDLibD.DLL";
 
         [DllImport(_RDNIDLib_DLL_,
