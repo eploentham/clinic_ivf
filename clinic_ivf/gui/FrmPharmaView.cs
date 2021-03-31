@@ -1,4 +1,5 @@
-﻿using C1.Win.C1Command;
+﻿using C1.C1Excel;
+using C1.Win.C1Command;
 using C1.Win.C1FlexGrid;
 using C1.Win.C1Input;
 using C1.Win.C1SplitContainer;
@@ -9,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
@@ -44,7 +46,7 @@ namespace clinic_ivf.gui
         Label lbtxtRptDateStart, lbtxtRptDateEnd;
         C1DateEdit txtRptDateStart, txtRptDateEnd;
 
-        int colRptDrugDailyTime = 1, colRptDrugDailyDrugCode = 2, colRptDrugDailyDrugName = 3, colRptDrugDailyPttHn = 4, colRptDrugDailyPttName = 5, colRptDrugDailyQty = 6;
+        int colRptDrugDailyTime = 1, colRptDrugDailyDrugCode = 2, colRptDrugDailyDrugName = 3, colRptDrugDailyVN=4, colRptDrugDailyPttHn = 5, colRptDrugDailyPttName = 6, colRptDrugDailyQty = 7;
 
         Boolean pageLoad = false;
         Timer timer;
@@ -245,17 +247,18 @@ namespace clinic_ivf.gui
             ic.setControlLabel(ref lbtxtRptDateStart, fEdit, "วันที่เริ่มต้น :", "lbtxtRptDateStart", gapX, gapY);
             size = ic.MeasureString(lbtxtRptDateStart);
             ic.setControlC1DateTimeEdit(ref txtRptDateStart, "txtRptDateStart", xCol2, gapY);
-
+            txtRptDateStart.Value = DateTime.Now;
             gapY += gapLine;
             ic.setControlLabel(ref lbtxtRptDateEnd, fEdit, "วันที่สิ้นสุด :", "lbtxtRptDateEnd", gapX, gapY);
             size = ic.MeasureString(lbtxtRptDateEnd);
             ic.setControlC1DateTimeEdit(ref txtRptDateEnd, "txtRptDateEnd", xCol2, gapY);
-
+            txtRptDateEnd.Value = DateTime.Now;
             gapY += gapLine;
             ic.setControlC1Button(ref btnOk, fEdit, "OK", "btnOk", xCol1-40, gapY);
             ic.setControlC1Button(ref btnExcel, fEdit, "Excel", "btnExcel", xCol2, gapY);
 
             btnOk.Click += BtnOk_Click;
+            btnExcel.Click += BtnExcel_Click;
 
             scRptReportCriteria.Controls.Add(lbtxtRptDateStart);
             scRptReportCriteria.Controls.Add(txtRptDateStart);
@@ -264,7 +267,42 @@ namespace clinic_ivf.gui
             scRptReportCriteria.Controls.Add(btnOk);
             scRptReportCriteria.Controls.Add(btnExcel);
         }
+        private void BtnExcel_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (grfRptName.Row == 1 && grfRpt.Rows.Count>0)
+            {
+                SaveFileDialog dlg = new SaveFileDialog();
+                dlg.DefaultExt = "xls";
+                dlg.Filter = "Excel |*.xls";
+                dlg.InitialDirectory = ic.iniC.pathSaveExcelAppointment;
+                dlg.FileName = "*.xls";
+                if (dlg.ShowDialog() != DialogResult.OK)
+                    return;
 
+                // clear book
+                C1XLBook _book = new C1XLBook();
+                //_book.Clear();
+                //_book.Sheets.Clear();
+
+                // copy grids to book sheets
+                //foreach (TabPage pg in _tab.TabPages)
+                //{
+                //    C1FlexGrid grid = pg.Controls[0] as C1FlexGrid;
+                XLSheet sheet = _book.Sheets.Add("pharmacy");
+                ic.SaveSheet(grfRpt, sheet, _book, false);
+                //}
+
+                // save selected sheet index
+                if (_book.Sheets.Count >= 1)
+                    _book.Sheets.SelectedIndex = 1;
+
+                // save the book
+                _book.Save(dlg.FileName);
+                Application.DoEvents();
+                Process.Start("explorer.exe", dlg.FileName);
+            }
+        }
         private void BtnOk_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
@@ -283,10 +321,10 @@ namespace clinic_ivf.gui
             DateTime.TryParse(txtRptDateEnd.Text, out enddate1);
             startdate = startdate1.ToString("yyyy-MM-dd", new CultureInfo("en-US"));
             enddate = enddate1.ToString("yyyy-MM-dd", new CultureInfo("en-US"));
-            dt = ic.ivfDB.oJpxdDB.selectByDate(startdate, enddate);
+            dt = ic.ivfDB.oJpxdDB.selectByDate1(startdate, enddate);
             grfRpt.Rows.Count = 1;
             grfRpt.Rows.Count = dt.Rows.Count + 1;
-            grfRpt.Cols.Count = 7;
+            grfRpt.Cols.Count = 8;
 
             grfRpt.Cols[colRptDrugDailyDrugCode].Width = 80;
             grfRpt.Cols[colRptDrugDailyDrugName].Width = 300;
@@ -294,6 +332,7 @@ namespace clinic_ivf.gui
             grfRpt.Cols[colRptDrugDailyPttName].Width = 300;
             grfRpt.Cols[colRptDrugDailyQty].Width = 80;
             grfRpt.Cols[colRptDrugDailyTime].Width = 140;
+            grfRpt.Cols[colRptDrugDailyVN].Width = 80;
             grfRpt.Cols[colRptDrugDailyTime].Caption = "TIME";
             grfRpt.Cols[colRptDrugDailyQty].Caption = "QTY";
             grfRpt.Cols[colRptDrugDailyPttName].Caption = "Patient Name";
@@ -301,6 +340,7 @@ namespace clinic_ivf.gui
             grfRpt.Cols[colRptDrugDailyDrugName].Caption = "NAME";
             grfRpt.Cols[colRptDrugDailyDrugCode].Caption = "CODE";
             grfRpt.Cols[colRptDrugDailyTime].Caption = "Date ";
+            grfRpt.Cols[colRptDrugDailyVN].Caption = "VN ";
             ContextMenu menuGw = new ContextMenu();
             //menuGw.MenuItems.Add("&receive operation", new EventHandler(ContextMenu_Apm));
             grfRpt.ContextMenu = menuGw;
@@ -309,10 +349,11 @@ namespace clinic_ivf.gui
             {
                 grfRpt[i, colRptDrugDailyDrugCode] = row["DUID"].ToString();
                 grfRpt[i, colRptDrugDailyDrugName] = row["DUName"].ToString();
-                grfRpt[i, colRptDrugDailyPttHn] = ic.showHN(row["PIDS"].ToString(), row["patient_year"].ToString());
+                grfRpt[i, colRptDrugDailyPttHn] = ic.showHN(row["patient_hn"].ToString(), row["patient_year"].ToString());
                 grfRpt[i, colRptDrugDailyPttName] = row["patient_name"].ToString();
                 grfRpt[i, colRptDrugDailyQty] = row["QTY"].ToString();
-                grfRpt[i, colRptDrugDailyTime] = ic.datetimetoShow(row["pharmacy_finish_date_time"].ToString());
+                grfRpt[i, colRptDrugDailyTime] = ic.datetimetoShow(row["order_date_time"].ToString());
+                grfRpt[i, colRptDrugDailyVN] = ic.showVN(row["vn"].ToString());
                 i++;
             }
             grfRpt.Cols[colRptDrugDailyDrugCode].AllowEditing = false;
@@ -321,6 +362,7 @@ namespace clinic_ivf.gui
             grfRpt.Cols[colRptDrugDailyPttName].AllowEditing = false;
             grfRpt.Cols[colRptDrugDailyQty].AllowEditing = false;
             grfRpt.Cols[colRptDrugDailyTime].AllowEditing = false;
+            grfRpt.Cols[colRptDrugDailyVN].AllowEditing = false;
         }
         private void initGrfRpt()
         {

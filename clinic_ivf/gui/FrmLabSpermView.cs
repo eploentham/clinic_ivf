@@ -990,6 +990,7 @@ namespace clinic_ivf.gui
                 }
                 else if (row[ic.ivfDB.lspermDB.lsperm.status_lab_sperm].ToString().Equals("4"))
                 {
+                    //row1[colPcDate] = ic.datetoShow(row[ic.ivfDB.lspermDB.lsperm.iui_date].ToString());
                     row1[colPcDate] = ic.datetoShow(row[ic.ivfDB.lspermDB.lsperm.iui_date].ToString());
                     //row1[colOPUTime] = ic.timetoShow(row[ic.ivfDB.lspermDB.lsperm.sperm_analysis_date_start].ToString());
                 }

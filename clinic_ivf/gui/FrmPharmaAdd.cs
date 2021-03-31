@@ -1049,8 +1049,12 @@ namespace clinic_ivf.gui
         {
             //throw new NotImplementedException();
             //ic.ivfDB.nurseFinish(txtVnOld.Text);
-            ic.ivfDB.oJpxdDB.updateStatusFinishByVN(txtVn.Text);
-            ic.ivfDB.vsDB.updateStatusPharmacyFinish(txtVn.Text);
+            if (!flagedit.Equals("noedit"))
+            {
+                ic.ivfDB.oJpxdDB.updateStatusFinishByVN(txtVn.Text);
+                ic.ivfDB.vsDB.updateStatusPharmacyFinish(txtVn.Text);
+            }
+            
             //VisitOld ovs = new VisitOld();
             //ovs = ic.ivfDB.ovsDB.selectByPk1(txtVnOld.Text);
             //if (vs.VSID.Equals("999"))

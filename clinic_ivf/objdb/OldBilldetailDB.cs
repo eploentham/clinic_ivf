@@ -259,7 +259,7 @@ namespace clinic_ivf.objdb
                 "Left Join LabItemGroup labg on lab.LGID = labg.LGID " +
                 "Left Join StockDrug drug on obilld.item_id = drug.DUID and obilld.status = 'drug' " +
                 "Left Join SpecialItem spec on obilld.item_id = spec.SID and obilld.status = 'special' " +
-                "Where bill.PIDS >= '" + hn + "' and obilld." + obilld.active + "= '1' and bill.active = '1' " +
+                "Where bill.PIDS = '" + hn + "' and obilld." + obilld.active + "= '1' and bill.active = '1' " +
                 "Order By bill.bill_id, obilld.ID ";
             dt = conn.selectData(conn.conn, sql);
             return dt;

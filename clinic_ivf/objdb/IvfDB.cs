@@ -662,7 +662,8 @@ namespace clinic_ivf.objdb
             opu.req_id = reqid;
             opu.sperm_analysis_date_start = lformA.sperm_analysis_date_start;
             opu.spern_freezing_date_start = lformA.sperm_freezing_date_start;
-            opu.iui_date = lformA.iui_date;
+            //opu.iui_date = lformA.iui_date;
+            opu.iui_date = lformA.sperm_iui_date;
             opu.pasa_tese_date = lformA.pasa_tese_date;
             opu.form_a_id = lformA.form_a_id;
             //opu.doctor_id = lbreq.doctor_id;

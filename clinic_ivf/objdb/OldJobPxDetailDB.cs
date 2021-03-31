@@ -351,10 +351,26 @@ namespace clinic_ivf.objdb
             DataTable dt = new DataTable();
             String sql = "select oJpxd.DUID,oJpxd.ID,oJpxd.DUName,oJpxd.Price,sum(oJpxd.QTY) as QTY,oJpxd.TUsage,oJpxd.EUsage,oJpxd.Extra,oJpxd.row1, ptt.patient_name,JobPx.Date, JobPx.PIDS,oJpxd.Status, oJpxd.pharmacy_finish_date_time, ptt.patient_year " +
                 "From " + oJpxd.table + " oJpxd " +
-                "inner join JobPx on JobPx.VN = oJpxd.VN " +
-                "inner join t_patient ptt on JobPx.PID = ptt.t_patient_id " +
-                "inner join t_visit vs on JobPx.VN = vs.visit_vn " +
+                "left join JobPx on JobPx.VN = oJpxd.VN " +
+                "left join t_patient ptt on JobPx.PID = ptt.t_patient_id " +
+                "left join t_visit vs on JobPx.VN = vs.visit_vn " +
                 "Where JobPx.Date >='" + startdate + " 00:00:00' and JobPx.Date <='" + endate+ " 23:59:59' " +
+                //"Group By oJpxd.DUID " +
+                "Group By oJpxd.pharmacy_finish_date_time,ptt.patient_name, oJpxd.DUID ,oJpxd.ID,oJpxd.DUName,oJpxd.Price,oJpxd.TUsage,oJpxd.EUsage,oJpxd.Extra,oJpxd.row1,oJpxd.Status " +
+                "Order By oJpxd.pharmacy_finish_date_time, oJpxd." + oJpxd.DUName;
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
+        public DataTable selectByDate1(String startdate, String endate)
+        {
+            DataTable dt = new DataTable();
+            String sql = "select oJpxd.DUID,oJpxd.ID,oJpxd.DUName,oJpxd.Price,sum(oJpxd.QTY) as QTY,oJpxd.TUsage,oJpxd.EUsage,oJpxd.Extra,oJpxd.row1, ptt.patient_name" +
+                ", ptt.patient_hn,oJpxd.Status, oJpxd.pharmacy_finish_date_time, ptt.patient_year, oJpxd.order_date_time,oJpxd.VN " +
+                "From " + oJpxd.table + " oJpxd " +
+                //"left join JobPx on JobPx.VN = oJpxd.VN " +
+                "left join t_patient ptt on oJpxd.PID = ptt.t_patient_id " +
+                "left join t_visit vs on oJpxd.VN = vs.visit_vn " +
+                "Where oJpxd.order_date_time >='" + startdate + " 00:00:00' and oJpxd.order_date_time <='" + endate + " 23:59:59' " +
                 //"Group By oJpxd.DUID " +
                 "Group By oJpxd.pharmacy_finish_date_time,ptt.patient_name, oJpxd.DUID ,oJpxd.ID,oJpxd.DUName,oJpxd.Price,oJpxd.TUsage,oJpxd.EUsage,oJpxd.Extra,oJpxd.row1,oJpxd.Status " +
                 "Order By oJpxd.pharmacy_finish_date_time, oJpxd." + oJpxd.DUName;

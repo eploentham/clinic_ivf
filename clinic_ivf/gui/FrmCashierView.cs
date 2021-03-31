@@ -114,6 +114,7 @@ namespace clinic_ivf.gui
             txtCldDate.Value = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd");
             txtRptDateStart.Value = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd");
             txtRptDateEnd.Value = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd");
+            txtRptDateStart.Value = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd");
 
             txtCldDate.ValueChanged += TxtCldDate_ValueChanged;
 
@@ -156,15 +157,15 @@ namespace clinic_ivf.gui
         private async void TxtCldDate_ValueChanged(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            showLbLoading();
+            //showLbLoading();
             
-            Task<int> taskCldDate = new Task<int>(setControlCld);
-            taskCldDate.Start();
+            //Task<int> taskCldDate = new Task<int>(setControlCld);
+            //taskCldDate.Start();
             //setControlCld();
             //setGrfCloseDay();
-            int ret = await taskCldDate;
-            if(ret>0)
-                hideLbLoading();
+            //int ret = await taskCldDate;
+            //if(ret>0)
+            //    hideLbLoading();
         }
 
         private void TxtSearch_KeyUp(object sender, KeyEventArgs e)
@@ -315,9 +316,23 @@ namespace clinic_ivf.gui
             // save grid as sheet in the book
             FileFlags flags = FileFlags.IncludeFixedCells;
             grfRpt.SaveGrid(dlg.FileName, FileFormatEnum.Excel, flags);
+
+            C1XLBook _book = new C1XLBook();
+            XLSheet sheet = _book.Sheets.Add("cashier_report");
+            ic.SaveSheet(grfRpt, sheet, _book, false);
+            //}
+
+            // save selected sheet index
+            if(_book.Sheets.Count>=1)
+                _book.Sheets.SelectedIndex = 1;
+
+            // save the book
+            _book.Save(dlg.FileName);
+            Application.DoEvents();
+            Process.Start("explorer.exe", dlg.FileName);
         }
 
-        private async void BtnRptOk_Click(object sender, EventArgs e)
+        private void BtnRptOk_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
             showLbLoading();
@@ -921,6 +936,7 @@ namespace clinic_ivf.gui
             //}
             dateStart = ic.datetoDB(txtRptDateStart.Text);
             dateEnd = ic.datetoDB(txtRptDateEnd.Text);
+            ic.ivfDB.insertLogPage(ic.userId, "FrmCashierView", "setGrfRpt001 ", "dateStart " + dateStart + " dateEnd " + dateEnd);
             grfRpt.Clear();
             grfRpt.Cols.Count = 19;
             DataTable dt = new DataTable();
@@ -1199,8 +1215,8 @@ namespace clinic_ivf.gui
                 FrmWaiting frmW = new FrmWaiting();
                 frmW.Show();
 
-                setControlCld();
-                setGrfCloseDay();
+                //setControlCld();
+                //setGrfCloseDay();
 
                 frmW.Dispose();
             }
@@ -1627,9 +1643,9 @@ namespace clinic_ivf.gui
             //throw new NotImplementedException();
             if (grfCld.Row < 0) return;
             if (grfCld.Col < 0) return;
-            String bilid = "";
-            bilid = grfCld[grfCld.Row, colCldBillId].ToString();
-            setGrfBillD(bilid);
+            //String bilid = "";
+            //bilid = grfCld[grfCld.Row, colCldBillId].ToString();
+            //setGrfBillD(bilid);
         }
 
         private void ContextMenu_export_closeday(object sender, System.EventArgs e)
