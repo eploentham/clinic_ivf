@@ -1212,13 +1212,13 @@ namespace clinic_ivf.gui
             }
             else if (tC.SelectedTab == tabCloseDay)
             {
-                FrmWaiting frmW = new FrmWaiting();
-                frmW.Show();
+                //FrmWaiting frmW = new FrmWaiting();
+                //frmW.Show();
 
                 //setControlCld();
                 //setGrfCloseDay();
 
-                frmW.Dispose();
+                //frmW.Dispose();
             }
             else if (tC.SelectedTab == tabSearch)
             {
@@ -1309,7 +1309,7 @@ namespace clinic_ivf.gui
                 txtTotalCash.Value = amt.ToString("#,###.00");
             }));
             ret = 1;
-            setGrfCloseDay();
+            //setGrfCloseDay();
             return ret;
         }
         private void Timer_Tick(object sender, EventArgs e)

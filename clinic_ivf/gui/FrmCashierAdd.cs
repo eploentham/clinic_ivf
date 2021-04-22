@@ -348,7 +348,10 @@ namespace clinic_ivf.gui
                     printReceipt("2");
                     //printReceipt("2");
                 }
-                ic.ivfDB.vsDB.updateStatusCashierFinish(txtVn.Text);
+                if (!flagedit.Equals("noedit"))
+                {
+                    ic.ivfDB.vsDB.updateStatusCashierFinish(txtVn.Text);
+                }
             }
         }
         private void printReceipt(String flagExtra)
@@ -364,7 +367,6 @@ namespace clinic_ivf.gui
                 MessageBox.Show("ยังไม่ได้เลือก ประเภทบัญชี", "");
                 return;
             }
-
             Decimal totalcredit = 0, totalcash = 0, total = 0, discount = 0, totaltransfer=0;
             Decimal.TryParse(txtTotalCredit.Text.Replace(",", ""), out totalcredit);
             Decimal.TryParse(txtTotalCash.Text.Replace(",", ""), out totalcash);
@@ -425,7 +427,7 @@ namespace clinic_ivf.gui
                 txtTotalCash.Focus();
                 return;
             }
-            ic.ivfDB.insertLogPage(ic.userId, "FrmCashierAdd", "printReceipt", "vsid " + txtVsId.Text + " cashid1 " + cashid1 + " creditid1 " + creditid1 + " transferid " + transferid + " creditbankik " + creditbankik+ " total " + total+ " flagExtra " + flagExtra);
+            
             PrinterSettings settings = new PrinterSettings();
             printerOld = settings.PrinterName;
             SetDefaultPrinter(ic.iniC.printerBill);
@@ -495,6 +497,8 @@ namespace clinic_ivf.gui
                 //dtpgk = ic.ivfDB.opkgsDB.selectByVN1(txtVn.Text);
                 //dtpgk = ic.ivfDB.opkgsDB.selectByPID(ovs.PID);    // ต้องดึงตาม HN เพราะ ถ้ามีงวดการชำระ          //      -0020
                 dtpgk = ic.ivfDB.opkgsDB.selectByPID(vs.t_patient_id);    // ต้องดึงตาม HN เพราะ ถ้ามีงวดการชำระ            //      +0020
+                ic.ivfDB.insertLogPage(ic.userId, "FrmCashierAdd", "printReceipt", "vsid " + txtVsId.Text + " vs.t_patient_id " + vs.t_patient_id + " cashid1 " + cashid1 + " creditid1 " + creditid1 + " transferid " + transferid + " creditbankik " + creditbankik + " total " + total + " flagExtra " + flagExtra+ " dtpgk.Rows.Count " + dtpgk.Rows.Count);
+                //ic.ivfDB.insertLogPage(ic.userId, "FrmCashierAdd", "GrfPkgPayPeriod_AfterEdit", "vsid " + txtVsId.Text + " period1 " + period1.ToString() + " period2 " + period2.ToString() + " period3 " + period3.ToString() + " period4 " + period4.ToString());
                 foreach (DataRow row in dtpgk.Rows)
                 {
                     String times = "", chkperiod="";
@@ -505,24 +509,28 @@ namespace clinic_ivf.gui
                     ic.ivfDB.updatePackagePaymentComplete(vs.t_patient_id, row["PCKSID"].ToString());            //      +0020
                     if (Decimal.TryParse(row["Payment1"].ToString(), out price) && row["P1BDetailID"].ToString().Equals("0"))
                     {
-                        ic.ivfDB.opkgsDB.updateP1BillNo(row["PCKSID"].ToString(), billNo.Replace(ic.cop.prefix_receipt_doc, "").Replace(ic.cop.prefix_receipt1_doc, ""));
+                        String re = ic.ivfDB.opkgsDB.updateP1BillNo(row["PCKSID"].ToString(), billNo.Replace(ic.cop.prefix_receipt_doc, "").Replace(ic.cop.prefix_receipt1_doc, ""));
                         chkperiod = " PCKSID " + row["PCKSID"].ToString()+ " billNo " + billNo+ " Payment1 ";
+                        ic.ivfDB.insertLogPage(ic.userId, "FrmCashierAdd", "printReceipt", "foreach (DataRow row in dtpgk.Rows) Payment1 re "+re+ " billNo " + billNo+ " prefix_receipt1_doc " + ic.cop.prefix_receipt1_doc);
                         //times = "1";
                     }
                     else if (Decimal.TryParse(row["Payment2"].ToString(), out price) && row["P2BDetailID"].ToString().Equals("0"))
                     {
-                        ic.ivfDB.opkgsDB.updateP2BillNo(row["PCKSID"].ToString(), billNo.Replace(ic.cop.prefix_receipt_doc, "").Replace(ic.cop.prefix_receipt1_doc, ""));
+                        String re = ic.ivfDB.opkgsDB.updateP2BillNo(row["PCKSID"].ToString(), billNo.Replace(ic.cop.prefix_receipt_doc, "").Replace(ic.cop.prefix_receipt1_doc, ""));
                         chkperiod = " PCKSID " + row["PCKSID"].ToString() + " billNo " + billNo + " Payment2 ";
+                        ic.ivfDB.insertLogPage(ic.userId, "FrmCashierAdd", "printReceipt", "foreach (DataRow row in dtpgk.Rows) Payment2 re " + re + " billNo " + billNo + " prefix_receipt1_doc " + ic.cop.prefix_receipt1_doc);
                     }
                     else if (Decimal.TryParse(row["Payment3"].ToString(), out price) && row["P3BDetailID"].ToString().Equals("0"))
                     {
-                        ic.ivfDB.opkgsDB.updateP3BillNo(row["PCKSID"].ToString(), billNo.Replace(ic.cop.prefix_receipt_doc, "").Replace(ic.cop.prefix_receipt1_doc, ""));
+                        String re = ic.ivfDB.opkgsDB.updateP3BillNo(row["PCKSID"].ToString(), billNo.Replace(ic.cop.prefix_receipt_doc, "").Replace(ic.cop.prefix_receipt1_doc, ""));
                         chkperiod = " PCKSID " + row["PCKSID"].ToString() + " billNo " + billNo + " Payment3 ";
+                        ic.ivfDB.insertLogPage(ic.userId, "FrmCashierAdd", "printReceipt", "foreach (DataRow row in dtpgk.Rows) Payment3 re " + re + " billNo " + billNo + " prefix_receipt1_doc " + ic.cop.prefix_receipt1_doc);
                     }
                     else if (Decimal.TryParse(row["Payment4"].ToString(), out price) && row["P4BDetailID"].ToString().Equals("0"))
                     {
-                        ic.ivfDB.opkgsDB.updateP4BillNo(row["PCKSID"].ToString(), billNo.Replace(ic.cop.prefix_receipt_doc, "").Replace(ic.cop.prefix_receipt1_doc, ""));
+                        String re = ic.ivfDB.opkgsDB.updateP4BillNo(row["PCKSID"].ToString(), billNo.Replace(ic.cop.prefix_receipt_doc, "").Replace(ic.cop.prefix_receipt1_doc, ""));
                         chkperiod = " PCKSID " + row["PCKSID"].ToString() + " billNo " + billNo + " Payment4 ";
+                        ic.ivfDB.insertLogPage(ic.userId, "FrmCashierAdd", "printReceipt", "foreach (DataRow row in dtpgk.Rows) Payment4 re " + re + " billNo " + billNo + " prefix_receipt1_doc " + ic.cop.prefix_receipt1_doc);
                     }
                 }
                 ic.ivfDB.insertLogPage(ic.userId, "FrmCashierAdd", "printReceipt if (receiptno11.Length <= 0) ", "vsid " + txtVsId.Text + " billNo " + billNo + " dtpgk.Rows.count "+ dtpgk.Rows.Count + " flagExtra " + flagExtra);
@@ -895,7 +903,6 @@ namespace clinic_ivf.gui
             calTotalCredit("charge");
             txtPayCreditCard.Value = "";
         }
-
         private void BtnClose_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
@@ -2263,6 +2270,7 @@ namespace clinic_ivf.gui
         }
         private void calTotalCredit(String flagcharge)
         {
+            if (flagedit.Equals("noedit")) return;
             Decimal total = 0, cash=0, credit=0, per=0, paycredit=0;
             Decimal.TryParse(txtTotal.Text, out total);
             Decimal.TryParse(txtTotalCash.Text, out cash);

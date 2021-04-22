@@ -422,7 +422,6 @@ namespace clinic_ivf.gui
                 }
             }
         }
-
         private void TxtCongenital_ValueChanged(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
@@ -464,6 +463,7 @@ namespace clinic_ivf.gui
             //throw new NotImplementedException();
             try
             {
+                ic.logw.WriteLog("d", "processID " + ic.processID + " FrmNurseAdd2 TabOrder_SelectedIndexChanged HN " + txtHn.Text.Trim() + " tabOrder.SelectedTab "+ tabOrder.SelectedTab.Name);
                 if (tabOrder.SelectedTab == tabBloodLab)
                 {
                     if (!tabBloodLabLoad)
@@ -2386,7 +2386,7 @@ namespace clinic_ivf.gui
             //string filePathName = this.documentPath + '\\' + this.documentName;
             try
             {
-                ic.logw.WriteLog("d", "FrmNurseAdd2 SaveDocumentAs HN " + txtHn.Text + " VN " + txtVn.Text);
+                ic.logw.WriteLog("d", "processID " + ic.processID+" FrmNurseAdd2 SaveDocumentAs HN " + txtHn.Text + " VN " + txtVn.Text);
                 String filePathName = this.documentPath + '\\' + this.documentName;
                 if (File.Exists(filePathName))
                 {
@@ -2450,6 +2450,7 @@ namespace clinic_ivf.gui
                 return;
             }
             ic.cStf.staff_id = "";
+            ic.ivfDB.insertLogPage(ic.userId, "FrmNurseAdd2", "BtnEggStiSave_Click", "txtEggStiId" + txtEggStiId.Text);
             FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
             frm.ShowDialog(this);
             if (!ic.cStf.staff_id.Equals(""))
@@ -3346,6 +3347,7 @@ namespace clinic_ivf.gui
             DateTime lmpdate1 = new DateTime();
             lmpdate = ic.datetoDB(txtEggStiVisitLMP.Text);
             ic.logw.WriteLog("g","BtnGenEggSti_Click HN "+txtHn.Text+" VN "+txtVn.Text);
+            ic.ivfDB.insertLogPage(ic.userId, "FrmNurseAdd2", "BtnGenEggSti_Click", "HN " + txtHn.Text + " VN " + txtVn.Text);
             if (!DateTime.TryParse(lmpdate, out lmpdate1))
             {
                 MessageBox.Show("วันที่ LMP Date ไม่ถูกต้อง ", "");
@@ -8742,6 +8744,7 @@ namespace clinic_ivf.gui
                 finally
                 {
                     hideLbLoadingInvoke();
+                    grfPg.Sort(SortFlags.Descending, colPgId);
                 }
             });
             pump.Start();
@@ -8787,6 +8790,7 @@ namespace clinic_ivf.gui
             lbLoading.Hide();
             sB1.Text = "Date " + ic.cop.day + "-" + ic.cop.month + "-" + ic.cop.year + " Server " + ic.iniC.hostDB + " FTP " + ic.iniC.hostFTP + "/" + ic.iniC.folderFTP;
             ic.frmnurseadd2 = this;
+            ic.logw.WriteLog("d", "processID " + ic.processID + " FrmNurseAdd2 FrmNurseAdd2_Load HN "+txtHn.Text.Trim());
         }
     }
 }

@@ -75,6 +75,8 @@ namespace clinic_ivf.control
         private const int listenPort = 11000;
         public FrmNurseAdd2 frmnurseadd2;
         //public FtpClient ftpC;
+        public int processID=0;
+        public String machinename = "";
         public enum NID_FIELD
         {
             NID_Number,   //1234567890123#
@@ -177,6 +179,8 @@ namespace clinic_ivf.control
             {
                 theme = iniC.themeApplication;
             }
+            processID = Process.GetCurrentProcess().Id;
+            machinename = Process.GetCurrentProcess().MachineName;
         }
         public void SendMessage(String message)
         {

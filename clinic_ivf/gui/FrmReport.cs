@@ -719,7 +719,9 @@ namespace clinic_ivf.gui
                 {
                     rpt.SetParameterValue("line1", ic.cop.comp_name_t);
                     rpt.SetParameterValue("line2", ic.cop.addr1);
-                    rpt.SetParameterValue("line3", ic.cop.addr2);
+                    //rpt.SetParameterValue("line3", ic.cop.addr2);
+                    rpt.SetParameterValue("line3", "TAX ID " + ic.cop.tax_id);
+                    //rpt.SetParameterValue("line4", "TAX ID " + ic.cop.tax_id);
                     rpt.SetParameterValue("line4", "");
                 }
                 if (billname.IndexOf("Receipt")>=0)

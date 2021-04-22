@@ -47,12 +47,13 @@ namespace clinic_ivf.gui
             {
                 //ic.logw.WriteLog("d", "MainMenu if (login.LogonSuccessful.Equals('1')) ");
                 initConfig();
-                new Thread(() =>
-                {
-                    Thread.CurrentThread.IsBackground = true;
-                    /* run your code here */
-                    
-                }).Start();
+                ic.logw.WriteLog("d", "processID " + ic.processID + " MainMenu Construtor " );
+                //new Thread(() =>
+                //{
+                //    Thread.CurrentThread.IsBackground = true;
+                //    /* run your code here */
+
+                //}).Start();
             }
             else
             {
@@ -633,6 +634,7 @@ namespace clinic_ivf.gui
                     {
                         if (MessageBox.Show("ต้องการออกจากโปรแกรม3", "ออกจากโปรแกรม", MessageBoxButtons.OKCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.OK)
                         {
+                            ic.logw.WriteLog("d", "processID " + ic.processID + " MainMenu MainMenu4_FormClosing ");
                             //Close();
                             //return true;
                         }
@@ -666,6 +668,7 @@ namespace clinic_ivf.gui
                     ic.video.Stop();
                     ic.video = null;
                 }
+                ic.logw.WriteLog("d", "processID " + ic.processID + " Meni appExit ");
                 Close();
                 return true;
             }
@@ -777,8 +780,8 @@ namespace clinic_ivf.gui
         {
             String date = "";
             date = DateTime.Now.Year+"-"+ DateTime.Now.ToString("MM-dd");
-            this.Text = ic.iniC.statusAppDonor.Equals("1") ? "โปรแกรมClinic IVF Donor " +"สวัสดี คุณ "+ic.user.staff_fname_t +" "+ic.user.staff_lname_t+" Update 2021-03-31 "
-                : "โปรแกรมClinic IVF " + "สวัสดี คุณ " + ic.user.staff_fname_t + " " + ic.user.staff_lname_t + " Update 2021-03-31 format date " + date;
+            this.Text = ic.iniC.statusAppDonor.Equals("1") ? "โปรแกรมClinic IVF Donor " +"สวัสดี คุณ "+ic.user.staff_fname_t +" "+ic.user.staff_lname_t+" Update 2021-04-05 "
+                : "โปรแกรมClinic IVF " + "สวัสดี คุณ " + ic.user.staff_fname_t + " " + ic.user.staff_lname_t + " Update 2021-04-05 format date " + date;
             //theme1.SetTheme(this, ic.theme);
             theme1.SetTheme(this, ic.theme);
             theme1.SetTheme(menuStrip1, ic.theme);

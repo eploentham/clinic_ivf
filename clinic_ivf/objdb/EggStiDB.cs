@@ -137,11 +137,11 @@ namespace clinic_ivf.objdb
                 "," + eggs.egg_sti_date + "='" + p.egg_sti_date + "'" +
                 "," + eggs.doctor_id + "='" + p.doctor_id + "'" +
                 "," + eggs.status_abnormal + "='" + p.status_abnormal + "'" +
-                "," + eggs.abnormal1 + "='" + p.abnormal1 + "'" +
-                "," + eggs.abnormal2 + "='" + p.abnormal2 + "'" +
+                "," + eggs.abnormal1 + "='" + p.abnormal1.Replace("'", "''") + "'" +
+                "," + eggs.abnormal2 + "='" + p.abnormal2.Replace("'", "''") + "'" +
                 "," + eggs.status_typing + "='" + p.status_typing + "'" +
                 "," + eggs.status_typing_other + "='" + p.status_typing_other + "'" +
-                "," + eggs.typing_other + "='" + p.typing_other + "'" +
+                "," + eggs.typing_other + "='" + p.typing_other.Replace("'", "''") + "'" +
                 "," + eggs.status_infectious + "='" + p.status_infectious + "'" +
                 "," + eggs.status_add_lab + "='" + p.status_add_lab + "'" +
                 "," + eggs.add_lab + "='" + p.add_lab + "'" +
